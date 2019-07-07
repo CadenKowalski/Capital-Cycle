@@ -15,9 +15,13 @@
 		57A3457022D2AE1B0070898F /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A3456F22D2AE1B0070898F /* Colors.swift */; };
 		57A3457222D2AE410070898F /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A3457122D2AE410070898F /* Gradient.swift */; };
 		57A3457422D2AEBD0070898F /* PageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A3457322D2AEBD0070898F /* PageVC.swift */; };
+		57A3457622D2B3360070898F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 57A3457522D2B3360070898F /* GoogleService-Info.plist */; };
+		587C376EC4CB7518541634C2 /* Pods_Capital_Cycle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEF63791B26DFB42FF56342B /* Pods_Capital_Cycle.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B759B91042E916978C852B7 /* Pods-Capital Cycle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Capital Cycle.release.xcconfig"; path = "Target Support Files/Pods-Capital Cycle/Pods-Capital Cycle.release.xcconfig"; sourceTree = "<group>"; };
+		3ED851B8F1F29AADABBA5620 /* Pods-Capital Cycle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Capital Cycle.debug.xcconfig"; path = "Target Support Files/Pods-Capital Cycle/Pods-Capital Cycle.debug.xcconfig"; sourceTree = "<group>"; };
 		57A3455422D2AA080070898F /* Capital Cycle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Capital Cycle.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		57A3455722D2AA080070898F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		57A3455922D2AA080070898F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SceneDelegate.swift; path = ../SceneDelegate.swift; sourceTree = "<group>"; };
@@ -28,6 +32,8 @@
 		57A3456F22D2AE1B0070898F /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		57A3457122D2AE410070898F /* Gradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
 		57A3457322D2AEBD0070898F /* PageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageVC.swift; sourceTree = "<group>"; };
+		57A3457522D2B3360070898F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DEF63791B26DFB42FF56342B /* Pods_Capital_Cycle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Capital_Cycle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,17 +41,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				587C376EC4CB7518541634C2 /* Pods_Capital_Cycle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		45667D88ED611215D1658AE6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DEF63791B26DFB42FF56342B /* Pods_Capital_Cycle.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		57A3454B22D2AA080070898F = {
 			isa = PBXGroup;
 			children = (
 				57A3455622D2AA080070898F /* Capital Cycle */,
 				57A3455522D2AA080070898F /* Products */,
+				E3F1B6A89D5A36CE63ABCD1D /* Pods */,
+				45667D88ED611215D1658AE6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -77,6 +94,7 @@
 				57A3455922D2AA080070898F /* SceneDelegate.swift */,
 				57A3456022D2AA0B0070898F /* Assets.xcassets */,
 				57A3456522D2AA0B0070898F /* Info.plist */,
+				57A3457522D2B3360070898F /* GoogleService-Info.plist */,
 			);
 			path = "Important Stuff";
 			sourceTree = "<group>";
@@ -105,6 +123,16 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		E3F1B6A89D5A36CE63ABCD1D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3ED851B8F1F29AADABBA5620 /* Pods-Capital Cycle.debug.xcconfig */,
+				0B759B91042E916978C852B7 /* Pods-Capital Cycle.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -112,9 +140,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 57A3456822D2AA0B0070898F /* Build configuration list for PBXNativeTarget "Capital Cycle" */;
 			buildPhases = (
+				DAAE7F0DA20713180A4A04D2 /* [CP] Check Pods Manifest.lock */,
 				57A3455022D2AA080070898F /* Sources */,
 				57A3455122D2AA080070898F /* Frameworks */,
 				57A3455222D2AA080070898F /* Resources */,
+				BD420C78F0B853F6DFC67954 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -164,12 +194,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				57A3456422D2AA0B0070898F /* LaunchScreen.storyboard in Resources */,
+				57A3457622D2B3360070898F /* GoogleService-Info.plist in Resources */,
 				57A3456122D2AA0B0070898F /* Assets.xcassets in Resources */,
 				57A3455F22D2AA080070898F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BD420C78F0B853F6DFC67954 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Capital Cycle/Pods-Capital Cycle-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Capital Cycle/Pods-Capital Cycle-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Capital Cycle/Pods-Capital Cycle-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DAAE7F0DA20713180A4A04D2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Capital Cycle-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		57A3455022D2AA080070898F /* Sources */ = {
@@ -322,6 +395,7 @@
 		};
 		57A3456922D2AA0B0070898F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3ED851B8F1F29AADABBA5620 /* Pods-Capital Cycle.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -341,6 +415,7 @@
 		};
 		57A3456A22D2AA0B0070898F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0B759B91042E916978C852B7 /* Pods-Capital Cycle.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
