@@ -10,51 +10,165 @@
         <!--PageVC-->
         <scene sceneID="TFe-gl-g9U">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="jM6-Kb-J6q" customClass="PageVC" customModule="Capital_Cycle" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="jM6-Kb-J6q" customClass="PageVC" customModule="Capital_Cycle" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RPw-A3-6lN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4" y="43"/>
         </scene>
-        <!--View Controller-->
+        <!--Page One-->
         <scene sceneID="w1u-NA-bWP">
             <objects>
-                <viewController storyboardIdentifier="PageOne" id="bH8-1u-VSq" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PageOne" id="bH8-1u-VSq" customClass="PageOne" customModule="Capital_Cycle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zTk-ZV-eln">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E4V-Od-9gE">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZu-KI-aQI">
+                                        <rect key="frame" x="132.66666666666666" y="50" width="110" height="28"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="110" id="IIZ-Uj-xlA"/>
+                                            <constraint firstAttribute="height" constant="28" id="oZy-Jl-6fr"/>
+                                        </constraints>
+                                        <attributedString key="attributedText">
+                                            <fragment content="Overview">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="25" name="Avenir-Medium"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="dZu-KI-aQI" firstAttribute="centerX" secondItem="E4V-Od-9gE" secondAttribute="centerX" id="7Iz-RM-HCJ"/>
+                                    <constraint firstItem="dZu-KI-aQI" firstAttribute="top" secondItem="E4V-Od-9gE" secondAttribute="centerY" id="8nH-dq-YMC"/>
+                                    <constraint firstAttribute="height" constant="100" id="L6f-kV-R5C"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="E4V-Od-9gE" firstAttribute="trailing" secondItem="Upw-lg-ypp" secondAttribute="trailing" id="7eK-MD-Tvu"/>
+                            <constraint firstItem="E4V-Od-9gE" firstAttribute="top" secondItem="zTk-ZV-eln" secondAttribute="top" id="B8z-VI-rrK"/>
+                            <constraint firstItem="E4V-Od-9gE" firstAttribute="leading" secondItem="Upw-lg-ypp" secondAttribute="leading" id="eb3-aP-FVQ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Upw-lg-ypp"/>
                     </view>
+                    <connections>
+                        <outlet property="gradientView" destination="E4V-Od-9gE" id="S28-W7-RDG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Izh-eE-oWs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-702" y="717"/>
+            <point key="canvasLocation" x="-703.20000000000005" y="716.74876847290648"/>
         </scene>
-        <!--View Controller-->
+        <!--Page Two-->
         <scene sceneID="9SG-Q6-eE7">
             <objects>
-                <viewController storyboardIdentifier="PageTwo" id="taV-Cw-Qjl" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PageTwo" id="taV-Cw-Qjl" customClass="PageTwo" customModule="Capital_Cycle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LYe-c5-YI6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T0G-Ie-q5d">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9bX-0Q-aKy">
+                                        <rect key="frame" x="135" y="50" width="105" height="28"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="28" id="6xj-9p-S3Y"/>
+                                            <constraint firstAttribute="width" constant="105" id="nmP-Ql-J1Z"/>
+                                        </constraints>
+                                        <attributedString key="attributedText">
+                                            <fragment content="Schedule">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="25" name="Avenir-Medium"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="ReW-ng-tl5"/>
+                                    <constraint firstItem="9bX-0Q-aKy" firstAttribute="top" secondItem="T0G-Ie-q5d" secondAttribute="centerY" id="fE1-zT-Nff"/>
+                                    <constraint firstItem="9bX-0Q-aKy" firstAttribute="centerX" secondItem="T0G-Ie-q5d" secondAttribute="centerX" id="rvC-0S-Tch"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="T0G-Ie-q5d" firstAttribute="leading" secondItem="u15-kR-fO8" secondAttribute="leading" id="GPO-la-jnY"/>
+                            <constraint firstItem="T0G-Ie-q5d" firstAttribute="trailing" secondItem="u15-kR-fO8" secondAttribute="trailing" id="gda-q8-Hr5"/>
+                            <constraint firstItem="T0G-Ie-q5d" firstAttribute="top" secondItem="LYe-c5-YI6" secondAttribute="top" id="vAh-NK-d6x"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="u15-kR-fO8"/>
                     </view>
+                    <connections>
+                        <outlet property="gradientView" destination="T0G-Ie-q5d" id="mIZ-WQ-mIk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xxV-8X-MPw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4" y="717"/>
         </scene>
-        <!--View Controller-->
+        <!--Page Three-->
         <scene sceneID="0Bt-6K-n3s">
             <objects>
-                <viewController storyboardIdentifier="PageThree" id="74j-qu-bLv" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PageThree" id="74j-qu-bLv" customClass="PageThree" customModule="Capital_Cycle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qap-h7-a5m">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kr4-03-y19">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dCK-ah-geS">
+                                        <rect key="frame" x="155" y="50" width="65" height="28"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="28" id="GIy-YG-bF4"/>
+                                            <constraint firstAttribute="width" constant="65" id="fTA-ng-Tek"/>
+                                        </constraints>
+                                        <attributedString key="attributedText">
+                                            <fragment content="Store">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="25" name="Avenir-Medium"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="7fy-Cg-hTG"/>
+                                    <constraint firstItem="dCK-ah-geS" firstAttribute="centerX" secondItem="kr4-03-y19" secondAttribute="centerX" id="YkJ-XI-dwr"/>
+                                    <constraint firstItem="dCK-ah-geS" firstAttribute="top" secondItem="kr4-03-y19" secondAttribute="centerY" id="tv7-hj-QvO"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="kr4-03-y19" firstAttribute="leading" secondItem="5Bv-hQ-KB6" secondAttribute="leading" id="8M9-oA-keO"/>
+                            <constraint firstItem="kr4-03-y19" firstAttribute="top" secondItem="qap-h7-a5m" secondAttribute="top" id="8mm-nf-ndo"/>
+                            <constraint firstItem="kr4-03-y19" firstAttribute="trailing" secondItem="5Bv-hQ-KB6" secondAttribute="trailing" id="ZQm-HF-3pV"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="5Bv-hQ-KB6"/>
                     </view>
+                    <connections>
+                        <outlet property="gradientView" destination="kr4-03-y19" id="jkg-8q-cW4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8HV-gq-bco" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
