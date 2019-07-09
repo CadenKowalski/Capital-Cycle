@@ -346,6 +346,71 @@ Email: CapitalCycleCamp@gmail.com</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nEi-nu-aGc" userLabel="Products Collection">
+                                <rect key="frame" x="0.0" y="100" width="375" height="712"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="712" id="bhg-KT-bhK"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="7" minimumInteritemSpacing="7" id="fOM-Xc-zQZ">
+                                    <size key="itemSize" width="179" height="243"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="35"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProductCell" id="rR6-UO-ViD" userLabel="Product Cell" customClass="ProductCell" customModule="Capital_Cycle" customModuleProvider="target">
+                                        <rect key="frame" x="5" y="5" width="179" height="243"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="179" height="243"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CapitalCycleStoreLogo" translatesAutoresizingMaskIntoConstraints="NO" id="d65-9A-NGq" userLabel="Product Image">
+                                                    <rect key="frame" x="0.0" y="0.0" width="179" height="182"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="d65-9A-NGq" secondAttribute="height" multiplier="179:182" id="lIn-Vn-0As"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fuo-Yj-ZHB" userLabel="Product Lbl">
+                                                    <rect key="frame" x="8" y="190" width="71.333333333333329" height="46.666666666666657"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment>
+                                                            <string key="content">Session 1
+</string>
+                                                            <attributes>
+                                                                <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <font key="NSFont" size="17" name="Avenir-Book"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="$375">
+                                                            <attributes>
+                                                                <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <font key="NSFont" size="17" name="Avenir-Book"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="Fuo-Yj-ZHB" firstAttribute="leading" secondItem="rR6-UO-ViD" secondAttribute="leading" constant="8" id="4na-2w-ssb"/>
+                                            <constraint firstItem="d65-9A-NGq" firstAttribute="trailing" secondItem="rR6-UO-ViD" secondAttribute="trailing" id="GB7-yU-RkZ"/>
+                                            <constraint firstItem="d65-9A-NGq" firstAttribute="leading" secondItem="rR6-UO-ViD" secondAttribute="leading" id="Xcy-dc-AbX"/>
+                                            <constraint firstItem="d65-9A-NGq" firstAttribute="top" secondItem="rR6-UO-ViD" secondAttribute="top" id="okJ-sv-Sx5"/>
+                                            <constraint firstItem="Fuo-Yj-ZHB" firstAttribute="top" secondItem="d65-9A-NGq" secondAttribute="bottom" constant="8" id="u94-rc-wlj"/>
+                                        </constraints>
+                                        <size key="customSize" width="179" height="243"/>
+                                        <connections>
+                                            <outlet property="productImg" destination="d65-9A-NGq" id="cEe-1H-G2A"/>
+                                            <outlet property="productInfo" destination="Fuo-Yj-ZHB" id="sDC-3T-plO"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kr4-03-y19">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                 <subviews>
@@ -377,22 +442,29 @@ Email: CapitalCycleCamp@gmail.com</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="nEi-nu-aGc" firstAttribute="leading" secondItem="5Bv-hQ-KB6" secondAttribute="leading" id="3tL-BG-6Uq"/>
+                            <constraint firstAttribute="bottom" secondItem="nEi-nu-aGc" secondAttribute="bottom" id="7TE-As-BlL"/>
                             <constraint firstItem="kr4-03-y19" firstAttribute="leading" secondItem="5Bv-hQ-KB6" secondAttribute="leading" id="8M9-oA-keO"/>
                             <constraint firstItem="kr4-03-y19" firstAttribute="top" secondItem="qap-h7-a5m" secondAttribute="top" id="8mm-nf-ndo"/>
+                            <constraint firstItem="nEi-nu-aGc" firstAttribute="trailing" secondItem="5Bv-hQ-KB6" secondAttribute="trailing" id="TfI-2B-Mup"/>
                             <constraint firstItem="kr4-03-y19" firstAttribute="trailing" secondItem="5Bv-hQ-KB6" secondAttribute="trailing" id="ZQm-HF-3pV"/>
+                            <constraint firstItem="nEi-nu-aGc" firstAttribute="top" secondItem="kr4-03-y19" secondAttribute="bottom" id="ex0-17-zny"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5Bv-hQ-KB6"/>
                     </view>
                     <connections>
                         <outlet property="gradientView" destination="kr4-03-y19" id="jkg-8q-cW4"/>
+                        <outlet property="productsCollection" destination="nEi-nu-aGc" id="vx6-Ut-83g"/>
+                        <outlet property="productsCollectionHeight" destination="bhg-KT-bhK" id="V7Y-7T-bBe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8HV-gq-bco" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="708" y="717"/>
+            <point key="canvasLocation" x="708" y="716.74876847290648"/>
         </scene>
     </scenes>
     <resources>
+        <image name="CapitalCycleStoreLogo" width="118" height="122"/>
         <image name="FacebookLogo" width="166.66667175292969" height="166.66667175292969"/>
         <image name="InstagramLogo" width="166.66667175292969" height="166.66667175292969"/>
     </resources>

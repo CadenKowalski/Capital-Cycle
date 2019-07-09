@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		578AF9DC22D41F2E007B42A9 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578AF9DB22D41F2E007B42A9 /* Product.swift */; };
+		578AF9DE22D41FA0007B42A9 /* ProductData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578AF9DD22D41FA0007B42A9 /* ProductData.swift */; };
+		578AF9E022D4201E007B42A9 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578AF9DF22D4201E007B42A9 /* ProductCell.swift */; };
 		57A3455822D2AA080070898F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A3455722D2AA080070898F /* AppDelegate.swift */; };
 		57A3455A22D2AA080070898F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A3455922D2AA080070898F /* SceneDelegate.swift */; };
 		57A3455F22D2AA080070898F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57A3455D22D2AA080070898F /* Main.storyboard */; };
@@ -25,6 +28,9 @@
 /* Begin PBXFileReference section */
 		0B759B91042E916978C852B7 /* Pods-Capital Cycle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Capital Cycle.release.xcconfig"; path = "Target Support Files/Pods-Capital Cycle/Pods-Capital Cycle.release.xcconfig"; sourceTree = "<group>"; };
 		3ED851B8F1F29AADABBA5620 /* Pods-Capital Cycle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Capital Cycle.debug.xcconfig"; path = "Target Support Files/Pods-Capital Cycle/Pods-Capital Cycle.debug.xcconfig"; sourceTree = "<group>"; };
+		578AF9DB22D41F2E007B42A9 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		578AF9DD22D41FA0007B42A9 /* ProductData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductData.swift; sourceTree = "<group>"; };
+		578AF9DF22D4201E007B42A9 /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		57A3455422D2AA080070898F /* Capital Cycle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Capital Cycle.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		57A3455722D2AA080070898F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		57A3455922D2AA080070898F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SceneDelegate.swift; path = ../SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +115,8 @@
 			isa = PBXGroup;
 			children = (
 				57A3456F22D2AE1B0070898F /* Colors.swift */,
+				578AF9DB22D41F2E007B42A9 /* Product.swift */,
+				578AF9DD22D41FA0007B42A9 /* ProductData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -117,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				57A3457122D2AE410070898F /* Gradient.swift */,
+				578AF9DF22D4201E007B42A9 /* ProductCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -258,7 +267,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				57A3457822D2BB5B0070898F /* PageOne.swift in Sources */,
+				578AF9E022D4201E007B42A9 /* ProductCell.swift in Sources */,
+				578AF9DE22D41FA0007B42A9 /* ProductData.swift in Sources */,
 				57A3457222D2AE410070898F /* Gradient.swift in Sources */,
+				578AF9DC22D41F2E007B42A9 /* Product.swift in Sources */,
 				57A3457422D2AEBD0070898F /* PageVC.swift in Sources */,
 				57A3457A22D2BB970070898F /* PageTwo.swift in Sources */,
 				57A3457022D2AE1B0070898F /* Colors.swift in Sources */,
