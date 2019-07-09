@@ -14,7 +14,7 @@ class PageTwo: UIViewController {
     @IBOutlet weak var gradientView: UIView!
     @IBOutlet weak var scrollViewDisplay: UIView!
     @IBOutlet weak var dayLbl: UILabel!
-    @IBOutlet weak var dateLbl: UILabel!
+    @IBOutlet weak var dailyDateLbl: UILabel!
     @IBOutlet weak var overviewBtn: UIButton!
     @IBOutlet weak var eightActivityLbl: UILabel!
     @IBOutlet weak var nineActivityLbl: UILabel!
@@ -39,8 +39,8 @@ class PageTwo: UIViewController {
     @IBOutlet weak var fridayLbl: UILabel!
     private let Service = GTLRSheetsService()
     let spreadsheetID = "1alCW-eSX-lC6CUi0lbmNK7hpfkUhpOqhrbWZCBJgXuk"
-    let date = Date()
-    let calendar = Calendar.current
+    let Day = Calendar.current.component(.weekday, from: Date())
+    let Hour = Calendar.current.component(.hour, from: Date())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,27 +52,31 @@ class PageTwo: UIViewController {
     
     // Formats the UI
     func customizeLayout() {
+        // Sets gradients
         gradientView.setTwoGradientBackground(colorOne: Colors.Orange, colorTwo: Colors.Purple)
-        dailyBtn.setTwoGradientButton(colorOne: Colors.Orange, colorTwo: Colors.Purple, cornerRadius: 12)
+        dailyBtn.setTwoGradientButton(colorOne: Colors.Orange, colorTwo: Colors.Purple, cornerRadius: 10)
         overviewBtn.setTwoGradientButton(colorOne: Colors.Orange, colorTwo: Colors.Purple, cornerRadius: 11)
         
+        // Formats the daily date label
         let formatter = DateFormatter()
         formatter.dateStyle = .short
         formatter.timeStyle = .none
-        dateLbl.text = "\(formatter.string(from: date))"
+        dailyDateLbl.text = "\(formatter.string(from: Date()))"
         
-        let startOfWeek = Date().startOfWeek
-        overviewDateLbl.text = "\(formatter.string(from: startOfWeek!))"
+        // Formats the start of week label
+        overviewDateLbl.text = "\(formatter.string(from: Date().startOfWeek!))"
         
-        let Days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
-        dailyBtn.titleLabel?.font = UIFont(name: "Avenir-Book", size: 17.0)
-        if calendar.component(.weekday, from: date) == 7 || calendar.component(.weekday, from: date) == 1 {
+        // Formats the daily button
+        let Days = ["M", "T", "W", "TH", "F"]
+        dailyBtn.titleLabel?.font = UIFont(name: "Avenir-Medium", size: 17.0)
+        dailyBtn.titleLabel?.textAlignment = .center
+        if Day == 7 || Day == 1 {
             dailyBtn.setTitle("Monday", for: .normal)
         } else {
-            if calendar.component(.hour, from: date) > 17 {
-                dailyBtn.setTitle("\(Days[calendar.component(.weekday, from: date) - 1])", for: .normal)
+            if Hour > 17 {
+                dailyBtn.setTitle("\(Days[Day - 1])", for: .normal)
             } else {
-                dailyBtn.setTitle("\(Days[calendar.component(.weekday, from: date) - 2])", for: .normal)
+                dailyBtn.setTitle("\(Days[Day - 2])", for: .normal)
             }
         }
     }
@@ -89,18 +93,17 @@ class PageTwo: UIViewController {
     // Displays daily spreadhseet data
     @objc func displayDailyData(Ticket: GTLRServiceTicket, finishedWithObject Result: GTLRSheets_ValueRange, Error: NSError?) {
         let activityLblList = [eightActivityLbl, nineActivityLbl, tenActivityLbl, elevenActivityLbl, twelveActivityLbl, oneActivityLbl, twoActivityLbl, threeActivityLbl, fourActivityLbl, fiveActivityLbl, sixActivityLbl, itemsLbl]
-        
-        let weekActivitiesList = Result.values! // 2D list of all the days
-        let dayActivitiesList: Array<Any> // List of all the days activities
+        let weekActivitiesList = Result.values!
+        let dayActivitiesList: Array<Any>
         
         // Decides which day to show
-        if calendar.component(.weekday, from: date) == 7 {
+        if Day == 7 {
             dayActivitiesList = weekActivitiesList[0]
         } else {
-            if calendar.component(.hour, from: date) > 17 { // if it's past 5:00PM
-                dayActivitiesList = weekActivitiesList[calendar.component(.weekday, from: date) - 1] // Display data for the next day
-            } else { // If it's before 5:00PM
-                dayActivitiesList = weekActivitiesList[calendar.component(.weekday, from: date) - 2] // Display data for the current day
+            if Hour > 17 {
+                dayActivitiesList = weekActivitiesList[Day - 1]
+            } else {
+                dayActivitiesList = weekActivitiesList[Day - 2]
             }
         }
         
