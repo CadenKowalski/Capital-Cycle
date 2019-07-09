@@ -20,14 +20,223 @@
             <objects>
                 <viewController storyboardIdentifier="PageOne" id="bH8-1u-VSq" customClass="PageOne" customModule="Capital_Cycle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zTk-ZV-eln">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E1U-Sr-1yu">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="1166"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YlL-WF-Z3k" userLabel="Scroll View Display">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1181.6666666666667"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tnX-Rc-hHc">
+                                                <rect key="frame" x="8" y="108" width="125" height="28"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="28" id="B33-5S-c30"/>
+                                                    <constraint firstAttribute="width" constant="125" id="e61-m3-WDb"/>
+                                                </constraints>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="Camp Dates:">
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="20" name="Avenir-Heavy"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ihh-44-Xpe" userLabel="Dates Lbl">
+                                                <rect key="frame" x="32" y="144" width="374" height="164"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment>
+                                                        <string key="content">Week 1: Jun 17 - 21 
+Week 2: Jun 24 - 28 
+Week 3: Jul 1 - 5 
+Week 4: Jul 8 - 12 
+Week 5: Jul 15 - 19 
+Week 6: Jul 22 - 26</string>
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="20" name="Avenir-Medium"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gya-0b-gFj" userLabel="Camp Hours Lbl">
+                                                <rect key="frame" x="8" y="316" width="125" height="28"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="125" id="7MJ-6B-AWT"/>
+                                                    <constraint firstAttribute="height" constant="28" id="fJA-wi-fIV"/>
+                                                </constraints>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="Camp Hours:">
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="20" name="Avenir-Heavy"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9AM - 6PM or 8AM - 6PM with early drop-off" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8wX-ni-yL7" userLabel="Hours Lbl">
+                                                <rect key="frame" x="32" y="352" width="374" height="54.666666666666686"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l5e-4D-pxz" userLabel="Camp Price Lbl">
+                                                <rect key="frame" x="8" y="414.66666666666669" width="115" height="28"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="28" id="FsK-Jx-4aK"/>
+                                                    <constraint firstAttribute="width" constant="115" id="u3X-hz-Pcp"/>
+                                                </constraints>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="Camp Price:">
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="20" name="Avenir-Heavy"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="srY-QF-c10" userLabel="Price Lbl">
+                                                <rect key="frame" x="32" y="450.66666666666669" width="374" height="54.666666666666686"/>
+                                                <string key="text">Weeks 1 &amp; 3: $375 
+Weeks 2, 4, 5 &amp; 6: $430</string>
+                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Questions?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MLA-pY-GRJ" userLabel="Questions Lbl">
+                                                <rect key="frame" x="8" y="513.33333333333337" width="105" height="28"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="28" id="1A0-eK-jvu"/>
+                                                    <constraint firstAttribute="width" constant="105" id="f52-6T-fQG"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yHx-Q1-GR3" userLabel="Contacts Lbl">
+                                                <rect key="frame" x="32" y="549.33333333333337" width="374" height="54.666666666666629"/>
+                                                <string key="text">Phone: 202.510.1342 
+Email: CapitalCycleCamp@gmail.com</string>
+                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Typical Day:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pZb-1y-mSA" userLabel="Typical Day Lbl">
+                                                <rect key="frame" x="8" y="612" width="112" height="28"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="28" id="7X1-jK-5Wz"/>
+                                                    <constraint firstAttribute="width" constant="112" id="frL-P7-w4r"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r2K-gt-ZXY" userLabel="Day Lbl">
+                                                <rect key="frame" x="32" y="648" width="374" height="382.66666666666674"/>
+                                                <string key="text">Early drop off begins at 8AM and parents can drop their kids off any time after that. Camp begins at 9AM and campers will play a variety of games at the school for about an hour. At around 10AM, we prepare to leave (apply sunscreen, fill waterbottles, use the restroom, pack lunches/ backpacks). We will usually bike all of the way to our destination and once we get there, we will eat lunch and do the activity that we have planned. At around 3-4PM we will bike back to the school and play games until parents come to pick up campers.</string>
+                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cBm-x8-BxN" userLabel="Facebook Btn">
+                                                <rect key="frame" x="152" y="1038.6666666666667" width="40" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="gIs-ez-uIa"/>
+                                                    <constraint firstAttribute="height" constant="40" id="upr-vT-Wl3"/>
+                                                </constraints>
+                                                <state key="normal" image="FacebookLogo"/>
+                                                <connections>
+                                                    <action selector="Facebook:" destination="bH8-1u-VSq" eventType="touchUpInside" id="cbS-pt-LAP"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J93-kR-cR5" userLabel="Instagram Btn">
+                                                <rect key="frame" x="222" y="1038.6666666666667" width="40" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="13K-b1-Uxa"/>
+                                                    <constraint firstAttribute="height" constant="40" id="6CB-g3-bXP"/>
+                                                </constraints>
+                                                <state key="normal" image="InstagramLogo"/>
+                                                <connections>
+                                                    <action selector="Instagram:" destination="bH8-1u-VSq" eventType="touchUpInside" id="Zxy-cb-0NK"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="noU-0s-Ggg" userLabel="Sign Up Btn">
+                                                <rect key="frame" x="107" y="1086.6666666666667" width="200" height="60"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="200" id="j8z-By-UF5"/>
+                                                    <constraint firstAttribute="height" constant="60" id="oXm-Ft-xdC"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
+                                                <state key="normal" title="Sign Up">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="SignUp:" destination="bH8-1u-VSq" eventType="touchUpInside" id="6rC-er-5Zw"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="yHx-Q1-GR3" firstAttribute="trailing" secondItem="YlL-WF-Z3k" secondAttribute="trailing" constant="-8" id="24A-We-UPb"/>
+                                            <constraint firstItem="MLA-pY-GRJ" firstAttribute="top" secondItem="srY-QF-c10" secondAttribute="bottom" constant="8" id="53f-M0-fGF"/>
+                                            <constraint firstItem="tnX-Rc-hHc" firstAttribute="top" secondItem="YlL-WF-Z3k" secondAttribute="top" constant="108" id="5N8-Fe-3hv"/>
+                                            <constraint firstItem="gya-0b-gFj" firstAttribute="leading" secondItem="YlL-WF-Z3k" secondAttribute="leading" constant="8" id="5UT-u7-VPR"/>
+                                            <constraint firstItem="J93-kR-cR5" firstAttribute="top" secondItem="r2K-gt-ZXY" secondAttribute="bottom" constant="8" id="829-4t-H3M"/>
+                                            <constraint firstItem="MLA-pY-GRJ" firstAttribute="leading" secondItem="YlL-WF-Z3k" secondAttribute="leading" constant="8" id="9Jc-5p-RpL"/>
+                                            <constraint firstItem="Ihh-44-Xpe" firstAttribute="leading" secondItem="YlL-WF-Z3k" secondAttribute="leading" constant="32" id="Apc-Lc-Fo7"/>
+                                            <constraint firstItem="tnX-Rc-hHc" firstAttribute="leading" secondItem="YlL-WF-Z3k" secondAttribute="leading" constant="8" id="HzX-Gs-5W4"/>
+                                            <constraint firstItem="J93-kR-cR5" firstAttribute="leading" secondItem="YlL-WF-Z3k" secondAttribute="centerX" constant="15" id="IOT-fM-zsr"/>
+                                            <constraint firstItem="pZb-1y-mSA" firstAttribute="leading" secondItem="YlL-WF-Z3k" secondAttribute="leading" constant="8" id="IPK-gX-lpy"/>
+                                            <constraint firstItem="pZb-1y-mSA" firstAttribute="top" secondItem="yHx-Q1-GR3" secondAttribute="bottom" constant="8" id="J5z-lN-fLI"/>
+                                            <constraint firstItem="yHx-Q1-GR3" firstAttribute="top" secondItem="MLA-pY-GRJ" secondAttribute="bottom" constant="8" id="JbK-c4-GyT"/>
+                                            <constraint firstItem="l5e-4D-pxz" firstAttribute="top" secondItem="8wX-ni-yL7" secondAttribute="bottom" constant="8" id="L7E-iS-dVB"/>
+                                            <constraint firstItem="8wX-ni-yL7" firstAttribute="leading" secondItem="YlL-WF-Z3k" secondAttribute="leading" constant="32" id="LZF-B6-j5a"/>
+                                            <constraint firstItem="8wX-ni-yL7" firstAttribute="top" secondItem="gya-0b-gFj" secondAttribute="bottom" constant="8" id="MZH-Lv-Q66"/>
+                                            <constraint firstItem="srY-QF-c10" firstAttribute="top" secondItem="l5e-4D-pxz" secondAttribute="bottom" constant="8" id="N1I-gT-t5E"/>
+                                            <constraint firstItem="r2K-gt-ZXY" firstAttribute="leading" secondItem="YlL-WF-Z3k" secondAttribute="leading" constant="32" id="U75-kn-cMa"/>
+                                            <constraint firstItem="yHx-Q1-GR3" firstAttribute="leading" secondItem="YlL-WF-Z3k" secondAttribute="leading" constant="32" id="UT0-2r-swV"/>
+                                            <constraint firstItem="cBm-x8-BxN" firstAttribute="trailing" secondItem="YlL-WF-Z3k" secondAttribute="centerX" constant="-15" id="Zby-9H-0cL"/>
+                                            <constraint firstItem="gya-0b-gFj" firstAttribute="top" secondItem="Ihh-44-Xpe" secondAttribute="bottom" constant="8" id="dLM-vA-cdi"/>
+                                            <constraint firstItem="l5e-4D-pxz" firstAttribute="leading" secondItem="YlL-WF-Z3k" secondAttribute="leading" constant="8" id="fO8-y0-5xx"/>
+                                            <constraint firstItem="cBm-x8-BxN" firstAttribute="top" secondItem="r2K-gt-ZXY" secondAttribute="bottom" constant="8" id="fSf-N3-g2m"/>
+                                            <constraint firstItem="srY-QF-c10" firstAttribute="leading" secondItem="YlL-WF-Z3k" secondAttribute="leading" constant="32" id="glk-Ny-N5n"/>
+                                            <constraint firstItem="Ihh-44-Xpe" firstAttribute="trailing" secondItem="YlL-WF-Z3k" secondAttribute="trailing" constant="-8" id="hxD-jA-Tls"/>
+                                            <constraint firstItem="noU-0s-Ggg" firstAttribute="top" secondItem="cBm-x8-BxN" secondAttribute="bottom" constant="8" id="kQQ-x4-n7t"/>
+                                            <constraint firstItem="noU-0s-Ggg" firstAttribute="centerX" secondItem="YlL-WF-Z3k" secondAttribute="centerX" id="kw1-Ya-9mp"/>
+                                            <constraint firstItem="r2K-gt-ZXY" firstAttribute="top" secondItem="pZb-1y-mSA" secondAttribute="bottom" constant="8" id="sjW-Qr-aHz"/>
+                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="noU-0s-Ggg" secondAttribute="bottom" constant="35" id="woS-3r-CKJ"/>
+                                            <constraint firstItem="Ihh-44-Xpe" firstAttribute="top" secondItem="tnX-Rc-hHc" secondAttribute="bottom" constant="8" id="x7D-Ha-SsF"/>
+                                            <constraint firstItem="srY-QF-c10" firstAttribute="trailing" secondItem="YlL-WF-Z3k" secondAttribute="trailing" constant="-8" id="xwj-gM-IJf"/>
+                                            <constraint firstItem="8wX-ni-yL7" firstAttribute="trailing" secondItem="YlL-WF-Z3k" secondAttribute="trailing" constant="-8" id="z4e-US-FxU"/>
+                                            <constraint firstItem="r2K-gt-ZXY" firstAttribute="trailing" secondItem="YlL-WF-Z3k" secondAttribute="trailing" constant="-8" id="zn7-Xd-yUR"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="YlL-WF-Z3k" firstAttribute="width" secondItem="E1U-Sr-1yu" secondAttribute="width" id="4rL-0f-o7t"/>
+                                    <constraint firstItem="YlL-WF-Z3k" firstAttribute="top" secondItem="E1U-Sr-1yu" secondAttribute="top" id="5Sb-HC-kt1"/>
+                                    <constraint firstItem="YlL-WF-Z3k" firstAttribute="trailing" secondItem="E1U-Sr-1yu" secondAttribute="trailing" id="JqJ-bk-Rp6"/>
+                                    <constraint firstItem="YlL-WF-Z3k" firstAttribute="leading" secondItem="E1U-Sr-1yu" secondAttribute="leading" id="gA5-nD-jRc"/>
+                                    <constraint firstItem="YlL-WF-Z3k" firstAttribute="bottom" secondItem="E1U-Sr-1yu" secondAttribute="bottom" id="gga-HJ-3wn"/>
+                                    <constraint firstItem="YlL-WF-Z3k" firstAttribute="height" secondItem="E1U-Sr-1yu" secondAttribute="height" priority="250" id="kbT-3w-eyR"/>
+                                </constraints>
+                            </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E4V-Od-9gE">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZu-KI-aQI">
-                                        <rect key="frame" x="132.66666666666666" y="50" width="110" height="28"/>
+                                        <rect key="frame" x="152" y="41" width="110" height="28"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="110" id="IIZ-Uj-xlA"/>
                                             <constraint firstAttribute="height" constant="28" id="oZy-Jl-6fr"/>
@@ -46,27 +255,35 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="dZu-KI-aQI" firstAttribute="centerX" secondItem="E4V-Od-9gE" secondAttribute="centerX" id="7Iz-RM-HCJ"/>
-                                    <constraint firstItem="dZu-KI-aQI" firstAttribute="top" secondItem="E4V-Od-9gE" secondAttribute="centerY" id="8nH-dq-YMC"/>
+                                    <constraint firstItem="dZu-KI-aQI" firstAttribute="centerY" secondItem="E4V-Od-9gE" secondAttribute="centerY" constant="5" id="8nH-dq-YMC"/>
+                                    <constraint firstItem="dZu-KI-aQI" firstAttribute="centerX" secondItem="E4V-Od-9gE" secondAttribute="centerX" id="Ivh-jm-vc0"/>
                                     <constraint firstAttribute="height" constant="100" id="L6f-kV-R5C"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="E4V-Od-9gE" firstAttribute="trailing" secondItem="Upw-lg-ypp" secondAttribute="trailing" id="7eK-MD-Tvu"/>
-                            <constraint firstItem="E4V-Od-9gE" firstAttribute="top" secondItem="zTk-ZV-eln" secondAttribute="top" id="B8z-VI-rrK"/>
-                            <constraint firstItem="E4V-Od-9gE" firstAttribute="leading" secondItem="Upw-lg-ypp" secondAttribute="leading" id="eb3-aP-FVQ"/>
+                            <constraint firstItem="E1U-Sr-1yu" firstAttribute="bottom" secondItem="Upw-lg-ypp" secondAttribute="bottom" id="FZa-ik-dl1"/>
+                            <constraint firstItem="E4V-Od-9gE" firstAttribute="trailing" secondItem="Upw-lg-ypp" secondAttribute="trailing" id="IL4-De-zlo"/>
+                            <constraint firstItem="E4V-Od-9gE" firstAttribute="leading" secondItem="Upw-lg-ypp" secondAttribute="leading" id="J5q-Qj-BUG"/>
+                            <constraint firstItem="E1U-Sr-1yu" firstAttribute="top" secondItem="zTk-ZV-eln" secondAttribute="top" id="W8T-qZ-mDe"/>
+                            <constraint firstItem="E1U-Sr-1yu" firstAttribute="leading" secondItem="zTk-ZV-eln" secondAttribute="leading" id="bPQ-yl-mDj"/>
+                            <constraint firstItem="E1U-Sr-1yu" firstAttribute="trailing" secondItem="zTk-ZV-eln" secondAttribute="trailing" id="lgh-N8-BXc"/>
+                            <constraint firstItem="E4V-Od-9gE" firstAttribute="top" secondItem="zTk-ZV-eln" secondAttribute="top" id="pBP-6K-4no"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Upw-lg-ypp"/>
                     </view>
+                    <size key="freeformSize" width="414" height="1200"/>
                     <connections>
+                        <outlet property="campDatesLbl" destination="tnX-Rc-hHc" id="6CZ-Z8-tO7"/>
                         <outlet property="gradientView" destination="E4V-Od-9gE" id="S28-W7-RDG"/>
+                        <outlet property="scrollViewDisplay" destination="YlL-WF-Z3k" id="n6Y-2t-Smf"/>
+                        <outlet property="signUpBtn" destination="noU-0s-Ggg" id="6Fw-ft-Pz4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Izh-eE-oWs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-703.20000000000005" y="716.74876847290648"/>
+            <point key="canvasLocation" x="-878.39999999999998" y="859.35960591133005"/>
         </scene>
         <!--Page Two-->
         <scene sceneID="9SG-Q6-eE7">
@@ -105,7 +322,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="T0G-Ie-q5d" firstAttribute="leading" secondItem="u15-kR-fO8" secondAttribute="leading" id="GPO-la-jnY"/>
                             <constraint firstItem="T0G-Ie-q5d" firstAttribute="trailing" secondItem="u15-kR-fO8" secondAttribute="trailing" id="gda-q8-Hr5"/>
@@ -158,7 +375,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="kr4-03-y19" firstAttribute="leading" secondItem="5Bv-hQ-KB6" secondAttribute="leading" id="8M9-oA-keO"/>
                             <constraint firstItem="kr4-03-y19" firstAttribute="top" secondItem="qap-h7-a5m" secondAttribute="top" id="8mm-nf-ndo"/>
@@ -175,4 +392,8 @@
             <point key="canvasLocation" x="708" y="717"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="FacebookLogo" width="166.66667175292969" height="166.66667175292969"/>
+        <image name="InstagramLogo" width="166.66667175292969" height="166.66667175292969"/>
+    </resources>
 </document>
