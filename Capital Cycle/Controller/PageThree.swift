@@ -33,16 +33,13 @@ class PageThree: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     
     // Formats the UI
     func customizeLayout() {
-        // Formats the gradient view
         gradientView.setTwoGradientBackground(colorOne: Colors.Orange, colorTwo: Colors.Purple)
-        
-        // Sets UI constraints
         productsCollectionHeight.constant = view.frame.maxY - gradientView.frame.maxY
     }
     
     // MARK: Collection View
     
-    // Loads the product in formation
+    // Loads the product information
     func loadProducts() {
         Products = ProductData.Instance.getProducts()
     }
@@ -73,6 +70,9 @@ class PageThree: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     }
 }
 
+//MARK: Extensions
+
+// Dynamically adjusts the cell size based on the screen size
 extension PageThree: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width / 2 - 9, height: (view.frame.width / 2 - 12) * 1.4)

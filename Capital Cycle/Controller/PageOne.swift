@@ -23,7 +23,6 @@ class PageOne: UIViewController {
     
     // Formats the UI
     func customizeLayout() {
-        // Adds gradients
         gradientView.setTwoGradientBackground(colorOne: Colors.Orange, colorTwo: Colors.Purple)
         signUpBtn.setTwoGradientButton(colorOne: Colors.Orange, colorTwo: Colors.Purple, cornerRadius: 30)
     }
