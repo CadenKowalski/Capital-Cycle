@@ -23,6 +23,7 @@
 		57A3457822D2BB5B0070898F /* PageOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A3457722D2BB5B0070898F /* PageOne.swift */; };
 		57A3457A22D2BB970070898F /* PageTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A3457922D2BB970070898F /* PageTwo.swift */; };
 		57A3457C22D2BBB90070898F /* PageThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A3457B22D2BBB90070898F /* PageThree.swift */; };
+		57ED6A2F22D578A200E3A362 /* PageFour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57ED6A2E22D578A200E3A362 /* PageFour.swift */; };
 		587C376EC4CB7518541634C2 /* Pods_Capital_Cycle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEF63791B26DFB42FF56342B /* Pods_Capital_Cycle.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		57A3457722D2BB5B0070898F /* PageOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageOne.swift; sourceTree = "<group>"; };
 		57A3457922D2BB970070898F /* PageTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageTwo.swift; sourceTree = "<group>"; };
 		57A3457B22D2BBB90070898F /* PageThree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageThree.swift; sourceTree = "<group>"; };
+		57ED6A2E22D578A200E3A362 /* PageFour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageFour.swift; sourceTree = "<group>"; };
 		DEF63791B26DFB42FF56342B /* Pods_Capital_Cycle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Capital_Cycle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -148,6 +150,7 @@
 				57A3457722D2BB5B0070898F /* PageOne.swift */,
 				57A3457922D2BB970070898F /* PageTwo.swift */,
 				57A3457B22D2BBB90070898F /* PageThree.swift */,
+				57ED6A2E22D578A200E3A362 /* PageFour.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				578AF9E022D4201E007B42A9 /* ProductCell.swift in Sources */,
 				578AF9DE22D41FA0007B42A9 /* ProductData.swift in Sources */,
 				57A3457222D2AE410070898F /* Gradient.swift in Sources */,
+				57ED6A2F22D578A200E3A362 /* PageFour.swift in Sources */,
 				578AF9DC22D41F2E007B42A9 /* Product.swift in Sources */,
 				57A3457422D2AEBD0070898F /* PageVC.swift in Sources */,
 				57A3457A22D2BB970070898F /* PageTwo.swift in Sources */,

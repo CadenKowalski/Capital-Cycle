@@ -12,7 +12,7 @@ class PageVC: UIPageViewController, UIPageViewControllerDelegate, UIPageViewCont
 
     var pageControl = UIPageControl()
     lazy var orderedVCs: [UIViewController] = {
-        return [self.newVC(VC: "PageOne"), self.newVC(VC: "PageTwo"), self.newVC(VC: "PageThree")]
+        return [self.newVC(VC: "PageOne"), self.newVC(VC: "PageTwo"), self.newVC(VC: "PageThree"), self.newVC(VC: "PageFour")]
     }()
     
     override func viewDidLoad() {

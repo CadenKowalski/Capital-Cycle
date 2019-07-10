@@ -283,7 +283,7 @@ Email: CapitalCycleCamp@gmail.com</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Izh-eE-oWs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-878.39999999999998" y="859.35960591133005"/>
+            <point key="canvasLocation" x="-704" y="859"/>
         </scene>
         <!--Page Two-->
         <scene sceneID="9SG-Q6-eE7">
@@ -814,7 +814,7 @@ Email: CapitalCycleCamp@gmail.com</string>
                                         <attributedString key="attributedText">
                                             <fragment content="Schedule">
                                                 <attributes>
-                                                    <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <font key="NSFont" size="25" name="Avenir-Medium"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
@@ -1006,7 +1006,406 @@ Email: CapitalCycleCamp@gmail.com</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8HV-gq-bco" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="844" y="717"/>
+            <point key="canvasLocation" x="676" y="717"/>
+        </scene>
+        <!--Page Four-->
+        <scene sceneID="VNX-Ic-yG0">
+            <objects>
+                <viewController storyboardIdentifier="PageFour" id="F6A-9z-wnz" customClass="PageFour" customModule="Capital_Cycle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8VS-e5-9M6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1200"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="grX-QG-9rR" userLabel="FAQ Scroll View">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="1166"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ozb-mo-4Pz" userLabel="FAQ Scroll View Display">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1332"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VAg-9A-wTE" userLabel="Question">
+                                                <rect key="frame" x="8" y="116" width="359" height="78"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="Q: When do you usually head out in the morning?">
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="20" name="Avenir-Medium"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment>
+                                                        <string key="content">
+A: Around 10:00 - 10:30</string>
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="17" name="Avenir-Book"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nwh-Oe-MxM" userLabel="Question">
+                                                <rect key="frame" x="8" y="202" width="359" height="78"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="Q: When do you usually arrive back at camp?">
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="20" name="Avenir-Medium"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment>
+                                                        <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                                        <attributes>
+                                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                            <font key="NSFont" size="17" name="Avenir-Book"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment content="A: Around 3:00 - 4:00">
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="17" name="Avenir-Book"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jxw-fb-hF6" userLabel="Question">
+                                                <rect key="frame" x="8" y="288" width="359" height="74"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="Q: What if it rains?">
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="20" name="Avenir-Medium"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment>
+                                                        <string key="content">
+A: We will play it by ear but will ?? on the side of caution to ensure that campers remain safe</string>
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="17" name="Avenir-Book"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U2k-9L-uOQ" userLabel="Question">
+                                                <rect key="frame" x="8" y="370" width="359" height="74"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="Q: Do you group kids by ability or age?">
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="20" name="Avenir-Medium"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment>
+                                                        <string key="content">
+A: Both. It usually depends on the length of the ride. </string>
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="17" name="Avenir-Book"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nbJ-zA-YJA" userLabel="Question">
+                                                <rect key="frame" x="8" y="451.99999999999994" width="359" height="124.33333333333331"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment>
+                                                        <string key="content">Q: What if my kid is unable to bike back from the destination?
+</string>
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="20" name="Avenir-Medium"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment content="A: We generally push kids to make it back on their own but we are prepared to call an Uber or Lyft and ride back with them.">
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="17" name="Avenir-Book"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="215-il-Yfy" userLabel="Question">
+                                                <rect key="frame" x="8" y="584.33333333333337" width="359" height="50.666666666666629"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="Q: Can I get a sibling discount?">
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="20" name="Avenir-Medium"/>
+                                                            <font key="NSOriginalFont" size="17" name="Avenir-Book"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment>
+                                                        <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="17" name="Avenir-Medium"/>
+                                                            <font key="NSOriginalFont" size="17" name="Avenir-Book"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment content="A: TBD">
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="17" name="Avenir-Book"/>
+                                                            <font key="NSOriginalFont" size="17" name="Avenir-Book"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QEh-PN-ytA" userLabel="Question">
+                                                <rect key="frame" x="8" y="643" width="359" height="147.66666666666663"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="Q: What if my child is not a confident rider?">
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="20" name="Avenir-Medium"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment>
+                                                        <string key="content">
+A: We will work with them throughout the week pushing them outside their comfort zone but we can always put them in a less advanced group that will go a shorter distance. </string>
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="17" name="Avenir-Book"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="knM-nP-4F5" userLabel="Question">
+                                                <rect key="frame" x="8" y="798.66666666666663" width="359" height="124.33333333333337"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="Q: What if I need to pick my child up early one day?">
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="20" name="Avenir-Medium"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment>
+                                                        <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="17" name="Avenir-Medium"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment content="A: Contact the camp manager, Chris, at +1 (202) 288-5245 and we will make sure to have your child back in time.">
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="17" name="Avenir-Book"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPA-W2-Wyi" userLabel="Question">
+                                                <rect key="frame" x="8" y="931" width="359" height="101.33333333333326"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="Q: What if my child doesn't have a bike?">
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="20" name="Avenir-Medium"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment>
+                                                        <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" metaFont="system" size="17"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment content="A: We ask that all campers who attend bike camp, have a bike.">
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="17" name="Avenir-Book"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ULk-If-Tsu" userLabel="Question">
+                                                <rect key="frame" x="8" y="1040.3333333333333" width="359" height="151.66666666666674"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="Q: Can my child arrive and/ or leave camp by themselves or do I need to be present?">
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="20" name="Avenir-Medium"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment>
+                                                        <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="17" name="Avenir-Medium"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment content="A: If you give the counselors explicit permission for your child to arrive and/or leave camp by themselves, that is an option.">
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="17" name="Avenir-Book"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xrZ-KW-8hl" userLabel="Question">
+                                                <rect key="frame" x="8" y="1200" width="359" height="97"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="Q: What do you do when not biking?">
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="20" name="Avenir-Medium"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment>
+                                                        <string key="content">
+A: We have a variety of games and books as well as a gym and playground to occupy down time.</string>
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="17" name="Avenir-Book"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="xrZ-KW-8hl" firstAttribute="top" secondItem="ULk-If-Tsu" secondAttribute="bottom" constant="8" id="5s4-Z8-2WG"/>
+                                            <constraint firstItem="yPA-W2-Wyi" firstAttribute="leading" secondItem="Ozb-mo-4Pz" secondAttribute="leading" constant="8" id="726-Ih-Lts"/>
+                                            <constraint firstItem="U2k-9L-uOQ" firstAttribute="top" secondItem="Jxw-fb-hF6" secondAttribute="bottom" constant="8" id="7Tn-s1-tv3"/>
+                                            <constraint firstAttribute="trailing" secondItem="215-il-Yfy" secondAttribute="trailing" constant="8" id="BW8-jK-Gt3"/>
+                                            <constraint firstAttribute="trailing" secondItem="QEh-PN-ytA" secondAttribute="trailing" constant="8" id="GBm-Pb-YMn"/>
+                                            <constraint firstAttribute="trailing" secondItem="nbJ-zA-YJA" secondAttribute="trailing" constant="8" id="Oj9-ir-Ksw"/>
+                                            <constraint firstItem="VAg-9A-wTE" firstAttribute="top" secondItem="Ozb-mo-4Pz" secondAttribute="top" constant="116" id="Or7-vq-Y5V"/>
+                                            <constraint firstItem="knM-nP-4F5" firstAttribute="leading" secondItem="Ozb-mo-4Pz" secondAttribute="leading" constant="8" id="PhQ-IU-c01"/>
+                                            <constraint firstAttribute="trailing" secondItem="yPA-W2-Wyi" secondAttribute="trailing" constant="8" id="Q0q-iW-nhv"/>
+                                            <constraint firstItem="nbJ-zA-YJA" firstAttribute="top" secondItem="U2k-9L-uOQ" secondAttribute="bottom" constant="8" id="RCE-oz-wdN"/>
+                                            <constraint firstItem="QEh-PN-ytA" firstAttribute="leading" secondItem="Ozb-mo-4Pz" secondAttribute="leading" constant="8" id="ZNB-zK-IAO"/>
+                                            <constraint firstItem="Nwh-Oe-MxM" firstAttribute="top" secondItem="VAg-9A-wTE" secondAttribute="bottom" constant="8" id="aGT-hI-5VQ"/>
+                                            <constraint firstItem="xrZ-KW-8hl" firstAttribute="leading" secondItem="Ozb-mo-4Pz" secondAttribute="leading" constant="8" id="boz-an-Ubd"/>
+                                            <constraint firstItem="yPA-W2-Wyi" firstAttribute="top" secondItem="knM-nP-4F5" secondAttribute="bottom" constant="8" id="c0m-e1-pgO"/>
+                                            <constraint firstItem="VAg-9A-wTE" firstAttribute="leading" secondItem="Ozb-mo-4Pz" secondAttribute="leading" constant="8" id="c0u-fg-MsT"/>
+                                            <constraint firstItem="U2k-9L-uOQ" firstAttribute="leading" secondItem="Ozb-mo-4Pz" secondAttribute="leading" constant="8" id="d3U-b9-S1k"/>
+                                            <constraint firstAttribute="trailing" secondItem="ULk-If-Tsu" secondAttribute="trailing" constant="8" id="drR-y3-8FC"/>
+                                            <constraint firstAttribute="trailing" secondItem="VAg-9A-wTE" secondAttribute="trailing" constant="8" id="glo-EX-mjE"/>
+                                            <constraint firstItem="ULk-If-Tsu" firstAttribute="top" secondItem="yPA-W2-Wyi" secondAttribute="bottom" constant="8" id="hBO-im-lgR"/>
+                                            <constraint firstItem="knM-nP-4F5" firstAttribute="top" secondItem="QEh-PN-ytA" secondAttribute="bottom" constant="8" id="j9A-aP-Bt3"/>
+                                            <constraint firstAttribute="trailing" secondItem="U2k-9L-uOQ" secondAttribute="trailing" constant="8" id="jmi-wB-2BL"/>
+                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="xrZ-KW-8hl" secondAttribute="bottom" constant="35" id="k9q-Cm-M5p"/>
+                                            <constraint firstAttribute="trailing" secondItem="knM-nP-4F5" secondAttribute="trailing" constant="8" id="kQJ-5J-z06"/>
+                                            <constraint firstAttribute="trailing" secondItem="xrZ-KW-8hl" secondAttribute="trailing" constant="8" id="kea-v3-Jwa"/>
+                                            <constraint firstItem="QEh-PN-ytA" firstAttribute="top" secondItem="215-il-Yfy" secondAttribute="bottom" constant="8" id="lXN-Md-bPZ"/>
+                                            <constraint firstItem="215-il-Yfy" firstAttribute="top" secondItem="nbJ-zA-YJA" secondAttribute="bottom" constant="8" id="mPy-bo-9xo"/>
+                                            <constraint firstAttribute="trailing" secondItem="Nwh-Oe-MxM" secondAttribute="trailing" constant="8" id="mmC-9E-YDW"/>
+                                            <constraint firstItem="Nwh-Oe-MxM" firstAttribute="leading" secondItem="Ozb-mo-4Pz" secondAttribute="leading" constant="8" id="p7I-lb-7DP"/>
+                                            <constraint firstItem="nbJ-zA-YJA" firstAttribute="leading" secondItem="Ozb-mo-4Pz" secondAttribute="leading" constant="8" id="qJC-3S-Xhq"/>
+                                            <constraint firstItem="Jxw-fb-hF6" firstAttribute="top" secondItem="Nwh-Oe-MxM" secondAttribute="bottom" constant="8" id="rbf-6Y-esl"/>
+                                            <constraint firstAttribute="trailing" secondItem="Jxw-fb-hF6" secondAttribute="trailing" constant="8" id="sAH-jZ-laB"/>
+                                            <constraint firstItem="215-il-Yfy" firstAttribute="leading" secondItem="Ozb-mo-4Pz" secondAttribute="leading" constant="8" id="xmj-nN-dFK"/>
+                                            <constraint firstItem="ULk-If-Tsu" firstAttribute="leading" secondItem="Ozb-mo-4Pz" secondAttribute="leading" constant="8" id="yvL-Nz-7UD"/>
+                                            <constraint firstItem="Jxw-fb-hF6" firstAttribute="leading" secondItem="Ozb-mo-4Pz" secondAttribute="leading" constant="8" id="zEH-Kc-oLT"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Ozb-mo-4Pz" firstAttribute="leading" secondItem="grX-QG-9rR" secondAttribute="leading" id="B2O-pg-zPw"/>
+                                    <constraint firstItem="Ozb-mo-4Pz" firstAttribute="trailing" secondItem="grX-QG-9rR" secondAttribute="trailing" id="Q5e-gq-VQh"/>
+                                    <constraint firstItem="Ozb-mo-4Pz" firstAttribute="bottom" secondItem="grX-QG-9rR" secondAttribute="bottom" id="RJc-Gc-OWG"/>
+                                    <constraint firstItem="Ozb-mo-4Pz" firstAttribute="width" secondItem="grX-QG-9rR" secondAttribute="width" id="Sg5-cW-eBF"/>
+                                    <constraint firstItem="Ozb-mo-4Pz" firstAttribute="top" secondItem="grX-QG-9rR" secondAttribute="top" id="gDL-0w-USd"/>
+                                    <constraint firstItem="Ozb-mo-4Pz" firstAttribute="height" secondItem="grX-QG-9rR" secondAttribute="height" priority="250" id="rrA-EN-N8x"/>
+                                </constraints>
+                            </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7qZ-6e-4gC" userLabel="Gradient View">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MdU-L6-JD5">
+                                        <rect key="frame" x="155" y="41" width="65" height="28"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="28" id="Zfz-WQ-8z0"/>
+                                            <constraint firstAttribute="width" constant="65" id="dhY-Ay-tK7"/>
+                                        </constraints>
+                                        <attributedString key="attributedText">
+                                            <fragment content="FAQ">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="25" name="Avenir-Medium"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="MdU-L6-JD5" firstAttribute="centerY" secondItem="7qZ-6e-4gC" secondAttribute="centerY" constant="5" id="Off-GJ-0xj"/>
+                                    <constraint firstItem="MdU-L6-JD5" firstAttribute="centerX" secondItem="7qZ-6e-4gC" secondAttribute="centerX" id="RHF-PL-SdM"/>
+                                    <constraint firstAttribute="height" constant="100" id="XkF-Nm-exH"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="grX-QG-9rR" firstAttribute="leading" secondItem="boU-Ua-Adt" secondAttribute="leading" id="4Oa-3d-FXR"/>
+                            <constraint firstItem="grX-QG-9rR" firstAttribute="bottom" secondItem="boU-Ua-Adt" secondAttribute="bottom" id="DDv-Oo-ce4"/>
+                            <constraint firstItem="7qZ-6e-4gC" firstAttribute="leading" secondItem="boU-Ua-Adt" secondAttribute="leading" id="K1f-D7-Ta3"/>
+                            <constraint firstItem="grX-QG-9rR" firstAttribute="trailing" secondItem="boU-Ua-Adt" secondAttribute="trailing" id="RPd-jc-NZ8"/>
+                            <constraint firstItem="grX-QG-9rR" firstAttribute="top" secondItem="8VS-e5-9M6" secondAttribute="top" id="WNY-Cq-Fnj"/>
+                            <constraint firstItem="7qZ-6e-4gC" firstAttribute="trailing" secondItem="boU-Ua-Adt" secondAttribute="trailing" id="k1T-w2-1XT"/>
+                            <constraint firstItem="7qZ-6e-4gC" firstAttribute="top" secondItem="8VS-e5-9M6" secondAttribute="top" id="mLG-Mn-DgX"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="boU-Ua-Adt"/>
+                    </view>
+                    <size key="freeformSize" width="375" height="1200"/>
+                    <connections>
+                        <outlet property="gradientView" destination="7qZ-6e-4gC" id="GFl-5x-iMA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uBk-Hx-su6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1324" y="859"/>
         </scene>
     </scenes>
     <resources>
