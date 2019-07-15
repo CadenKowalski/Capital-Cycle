@@ -12,6 +12,7 @@ import SafariServices
 class PageThree: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     @IBOutlet weak var gradientView: UIView!
+    @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
     @IBOutlet weak var productsCollection: UICollectionView!
     @IBOutlet weak var productsCollectionHeight: NSLayoutConstraint!
     private(set) public var Products = [Product]()
@@ -33,7 +34,14 @@ class PageThree: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     
     // Formats the UI
     func customizeLayout() {
+        // Formats the gradient view
+        gradientViewHeight.constant = 0.15 * view.frame.height
+        gradientView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.15)
+        
+        // Sets the gradients
         gradientView.setTwoGradientBackground(colorOne: Colors.Orange, colorTwo: Colors.Purple)
+        
+        // Formats the products collection view
         productsCollectionHeight.constant = view.frame.maxY - gradientView.frame.maxY
     }
     

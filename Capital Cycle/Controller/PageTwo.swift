@@ -11,10 +11,14 @@ import UIKit
 class PageTwo: UIViewController {
 
     @IBOutlet weak var gradientView: UIView!
+    @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
     @IBOutlet weak var scrollViewDisplay: UIView!
     @IBOutlet weak var dayLbl: UILabel!
+    @IBOutlet weak var dayLblYConstraint: NSLayoutConstraint!
     @IBOutlet weak var dailyDateLbl: UILabel!
+    @IBOutlet weak var dailyDateLblYConstraint: NSLayoutConstraint!
     @IBOutlet weak var overviewBtn: UIButton!
+    @IBOutlet weak var overviewBtnYConstraint: NSLayoutConstraint!
     @IBOutlet weak var eightActivityLbl: UILabel!
     @IBOutlet weak var nineActivityLbl: UILabel!
     @IBOutlet weak var tenActivityLbl: UILabel!
@@ -30,7 +34,10 @@ class PageTwo: UIViewController {
     @IBOutlet weak var overviewScrollView: UIView!
     @IBOutlet weak var overviewView: UIView!
     @IBOutlet weak var overviewDateLbl: UILabel!
+    @IBOutlet weak var overviewDateLblYConstraint: NSLayoutConstraint!
+    @IBOutlet weak var overviewLblYConstraint: NSLayoutConstraint!
     @IBOutlet weak var dailyBtn: UIButton!
+    @IBOutlet weak var dailyBtnYConstraint: NSLayoutConstraint!
     @IBOutlet weak var mondayLbl: UILabel!
     @IBOutlet weak var tuesdayLbl: UILabel!
     @IBOutlet weak var wednesdayLbl: UILabel!
@@ -48,6 +55,18 @@ class PageTwo: UIViewController {
     
     // Formats the UI
     func customizeLayout() {
+        // Formats the gradient view
+        gradientViewHeight.constant = 0.15 * view.frame.height
+        gradientView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.15)
+        
+        // Readjusts the Y constraints
+        dayLblYConstraint.constant = gradientViewHeight.constant + 8
+        dailyDateLblYConstraint.constant = gradientViewHeight.constant + 8
+        overviewBtnYConstraint.constant = gradientViewHeight.constant + 8
+        overviewDateLblYConstraint.constant = gradientViewHeight.constant + 8
+        overviewLblYConstraint.constant = gradientViewHeight.constant + 8
+        dailyBtnYConstraint.constant = gradientViewHeight.constant + 8
+        
         // Sets gradients
         gradientView.setTwoGradientBackground(colorOne: Colors.Orange, colorTwo: Colors.Purple)
         dailyBtn.setTwoGradientButton(colorOne: Colors.Orange, colorTwo: Colors.Purple, cornerRadius: 10)
@@ -63,11 +82,11 @@ class PageTwo: UIViewController {
         overviewDateLbl.text = "\(formatter.string(from: Date().startOfWeek!))"
         
         // Formats the daily button
-        let Days = ["M", "T", "W", "TH", "F"]
+        let Days = ["Mon", "Tues", "Wed", "Thurs", "Fri"]
         dailyBtn.titleLabel?.font = UIFont(name: "Avenir-Heavy", size: 17.0)
         dailyBtn.titleLabel?.textAlignment = .center
         if Day == 7 || Day == 1 {
-            dailyBtn.setTitle("M", for: .normal)
+            dailyBtn.setTitle("Mon", for: .normal)
         } else {
             if Hour > 17 {
                 dailyBtn.setTitle("\(Days[Day - 1])", for: .normal)

@@ -276,7 +276,9 @@ Email: CapitalCycleCamp@gmail.com</string>
                     <size key="freeformSize" width="414" height="1200"/>
                     <connections>
                         <outlet property="campDatesLbl" destination="tnX-Rc-hHc" id="6CZ-Z8-tO7"/>
+                        <outlet property="campDatesYConstraint" destination="5N8-Fe-3hv" id="T2a-U0-vfa"/>
                         <outlet property="gradientView" destination="E4V-Od-9gE" id="S28-W7-RDG"/>
+                        <outlet property="gradientViewHeight" destination="L6f-kV-R5C" id="lKj-c9-ThF"/>
                         <outlet property="scrollViewDisplay" destination="YlL-WF-Z3k" id="n6Y-2t-Smf"/>
                         <outlet property="signUpBtn" destination="noU-0s-Ggg" id="6Fw-ft-Pz4"/>
                     </connections>
@@ -518,18 +520,18 @@ Email: CapitalCycleCamp@gmail.com</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xzd-ON-vXg">
-                                                <rect key="frame" x="331" y="108" width="75" height="30"/>
+                                                <rect key="frame" x="326" y="108" width="80" height="30"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="Z5S-kk-ZYu"/>
-                                                    <constraint firstAttribute="width" constant="75" id="oaQ-D3-e9O"/>
+                                                    <constraint firstAttribute="width" constant="80" id="oaQ-D3-e9O"/>
                                                 </constraints>
                                                 <state key="normal">
                                                     <attributedString key="attributedTitle">
                                                         <fragment content="Overview">
                                                             <attributes>
                                                                 <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <font key="NSFont" size="17" name="Avenir-Book"/>
+                                                                <font key="NSFont" size="17" name="Avenir-Medium"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
@@ -736,12 +738,12 @@ Email: CapitalCycleCamp@gmail.com</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xdx-mw-SBM">
-                                                        <rect key="frame" x="376" y="108" width="30" height="30"/>
+                                                        <rect key="frame" x="356" y="108" width="50" height="30"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="30" id="IUE-Lb-TlL"/>
+                                                            <constraint firstAttribute="width" constant="50" id="IUE-Lb-TlL"/>
                                                             <constraint firstAttribute="height" constant="30" id="hbh-ra-tJf"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <state key="normal">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
@@ -853,20 +855,27 @@ Email: CapitalCycleCamp@gmail.com</string>
                     <size key="freeformSize" width="414" height="900"/>
                     <connections>
                         <outlet property="dailyBtn" destination="Xdx-mw-SBM" id="NgB-wv-lgi"/>
+                        <outlet property="dailyBtnYConstraint" destination="du2-DB-89N" id="QKt-rs-jLe"/>
                         <outlet property="dailyDateLbl" destination="s8S-P4-4en" id="pNi-3f-VER"/>
+                        <outlet property="dailyDateLblYConstraint" destination="dcX-wn-8Wb" id="ONH-qV-b4L"/>
                         <outlet property="dayLbl" destination="asp-o6-c41" id="flF-WO-I1c"/>
+                        <outlet property="dayLblYConstraint" destination="XpW-wG-0vN" id="o2W-4d-tQo"/>
                         <outlet property="eightActivityLbl" destination="bTA-Hq-0Dx" id="NxG-ZB-tJ3"/>
                         <outlet property="elevenActivityLbl" destination="KTh-v1-b7w" id="PRZ-OZ-PWr"/>
                         <outlet property="fiveActivityLbl" destination="ogf-Fb-5v9" id="NS3-Zo-P2g"/>
                         <outlet property="fourActivityLbl" destination="ych-FS-vqx" id="lPg-bG-wRh"/>
                         <outlet property="fridayLbl" destination="TSM-en-rQB" id="d7D-l8-IFb"/>
                         <outlet property="gradientView" destination="cXw-42-buD" id="0L6-Kg-80u"/>
+                        <outlet property="gradientViewHeight" destination="7uh-km-9YW" id="xx8-BQ-vWA"/>
                         <outlet property="itemsLbl" destination="Q5u-fA-xFm" id="dbq-uH-oJf"/>
                         <outlet property="mondayLbl" destination="1Ma-Ml-8EO" id="MuB-7h-rV4"/>
                         <outlet property="nineActivityLbl" destination="s4T-0P-Cii" id="yNb-iq-Ai0"/>
                         <outlet property="oneActivityLbl" destination="kAb-Rn-ckE" id="mbD-Z1-3Ii"/>
                         <outlet property="overviewBtn" destination="xzd-ON-vXg" id="6ZD-Ya-6o4"/>
+                        <outlet property="overviewBtnYConstraint" destination="v2I-Sk-J9a" id="EoS-ID-7Lh"/>
                         <outlet property="overviewDateLbl" destination="NW4-hz-dnS" id="phh-lZ-xdU"/>
+                        <outlet property="overviewDateLblYConstraint" destination="oFH-1U-eNt" id="4yK-Cu-pV1"/>
+                        <outlet property="overviewLblYConstraint" destination="ScM-mZ-Q1R" id="SVk-jU-E0h"/>
                         <outlet property="overviewScrollView" destination="nMg-Ua-UuL" id="sSs-QO-Xok"/>
                         <outlet property="overviewView" destination="y27-XQ-Lmd" id="cYU-j8-FkO"/>
                         <outlet property="scrollViewDisplay" destination="n5w-1x-fUR" id="uDg-kY-aIu"/>
@@ -1000,6 +1009,7 @@ Email: CapitalCycleCamp@gmail.com</string>
                     </view>
                     <connections>
                         <outlet property="gradientView" destination="kr4-03-y19" id="jkg-8q-cW4"/>
+                        <outlet property="gradientViewHeight" destination="7fy-Cg-hTG" id="lOw-4y-SXn"/>
                         <outlet property="productsCollection" destination="nEi-nu-aGc" id="vx6-Ut-83g"/>
                         <outlet property="productsCollectionHeight" destination="bhg-KT-bhK" id="V7Y-7T-bBe"/>
                     </connections>
@@ -1401,6 +1411,8 @@ A: We have a variety of games and books as well as a gym and playground to occup
                     <size key="freeformSize" width="375" height="1200"/>
                     <connections>
                         <outlet property="gradientView" destination="7qZ-6e-4gC" id="GFl-5x-iMA"/>
+                        <outlet property="gradientViewHeight" destination="XkF-Nm-exH" id="7CW-bb-BdR"/>
+                        <outlet property="questionYConstraint" destination="Or7-vq-Y5V" id="wvi-YH-V65"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uBk-Hx-su6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
