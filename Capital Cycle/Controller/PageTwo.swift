@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import GoogleAPIClientForREST
 
 class PageTwo: UIViewController {
 
@@ -37,17 +36,14 @@ class PageTwo: UIViewController {
     @IBOutlet weak var wednesdayLbl: UILabel!
     @IBOutlet weak var thursdayLbl: UILabel!
     @IBOutlet weak var fridayLbl: UILabel!
-    private let Service = GTLRSheetsService()
-    let spreadsheetID = "1alCW-eSX-lC6CUi0lbmNK7hpfkUhpOqhrbWZCBJgXuk"
     let Day = Calendar.current.component(.weekday, from: Date())
     let Hour = Calendar.current.component(.hour, from: Date())
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Service.apiKey = "AIzaSyBIdPHR_nqgL9G6fScmlcPMReBM5PmtVD8"
         customizeLayout()
-        fetchDailyData()
-        fetchOverviewData()
+        displayDailyData()
+        displayOverviewData()
     }
     
     // Formats the UI
@@ -68,10 +64,10 @@ class PageTwo: UIViewController {
         
         // Formats the daily button
         let Days = ["M", "T", "W", "TH", "F"]
-        dailyBtn.titleLabel?.font = UIFont(name: "Avenir-Medium", size: 17.0)
+        dailyBtn.titleLabel?.font = UIFont(name: "Avenir-Heavy", size: 17.0)
         dailyBtn.titleLabel?.textAlignment = .center
         if Day == 7 || Day == 1 {
-            dailyBtn.setTitle("Monday", for: .normal)
+            dailyBtn.setTitle("M", for: .normal)
         } else {
             if Hour > 17 {
                 dailyBtn.setTitle("\(Days[Day - 1])", for: .normal)
@@ -83,17 +79,10 @@ class PageTwo: UIViewController {
     
     // MARK: Daily spreadsheet data
     
-    // Fetches daily spreadsheet data
-    func fetchDailyData() {
-        let Range = "Schedule Data!A2:M6"
-        let Query = GTLRSheetsQuery_SpreadsheetsValuesGet.query(withSpreadsheetId: spreadsheetID, range: Range)
-        Service.executeQuery(Query, delegate: self, didFinish: #selector(displayDailyData(Ticket:finishedWithObject:Error:)))
-    }
-    
     // Displays daily spreadhseet data
-    @objc func displayDailyData(Ticket: GTLRServiceTicket, finishedWithObject Result: GTLRSheets_ValueRange, Error: NSError?) {
+    func displayDailyData() {
         let activityLblList = [eightActivityLbl, nineActivityLbl, tenActivityLbl, elevenActivityLbl, twelveActivityLbl, oneActivityLbl, twoActivityLbl, threeActivityLbl, fourActivityLbl, fiveActivityLbl, sixActivityLbl, itemsLbl]
-        let weekActivitiesList = Result.values!
+        let weekActivitiesList = dailyData.values! as! [[String]]
         let dayActivitiesList: Array<Any>
         
         // Decides which day to show
@@ -119,17 +108,10 @@ class PageTwo: UIViewController {
     
     // MARK: Overview spreadhseet data
     
-    // Fetches overview spreadhseet data
-    func fetchOverviewData() {
-        let Range = "Schedule Data!A9:C13"
-        let Query = GTLRSheetsQuery_SpreadsheetsValuesGet.query(withSpreadsheetId: spreadsheetID, range: Range)
-        Service.executeQuery(Query, delegate: self, didFinish: #selector(displayOverviewData(Ticket:finishedWithObject:Error:)))
-    }
-    
     // Displays overview spreadsheet data
-    @objc func displayOverviewData(Ticket: GTLRServiceTicket, finishedWithObject Result: GTLRSheets_ValueRange, Error: NSError?) {
+    func displayOverviewData() {
         let overviewList = [mondayLbl, tuesdayLbl, wednesdayLbl, thursdayLbl, fridayLbl]
-        let Week = Result.values! // 2D list of all the days
+        let Week = overviewData.values! // 2D list of all the days
         var Index = 0
         for Day in Week {
             overviewList[Index]?.text = "\(Day[1])\n\(Day[2])"

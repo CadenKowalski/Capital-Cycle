@@ -512,7 +512,7 @@ Email: CapitalCycleCamp@gmail.com</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Items" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q5u-fA-xFm" userLabel="Items Lbl">
-                                                <rect key="frame" x="156" y="774.66666666666663" width="250" height="27.333333333333371"/>
+                                                <rect key="frame" x="170" y="774.66666666666663" width="236" height="27.333333333333371"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
@@ -549,7 +549,7 @@ Email: CapitalCycleCamp@gmail.com</string>
                                             <constraint firstItem="8pm-ev-dbA" firstAttribute="top" secondItem="kAb-Rn-ckE" secondAttribute="bottom" constant="30" id="3fB-59-nbm"/>
                                             <constraint firstItem="asp-o6-c41" firstAttribute="centerX" secondItem="n5w-1x-fUR" secondAttribute="centerX" id="4cx-BD-NVk"/>
                                             <constraint firstItem="PtR-I2-aeg" firstAttribute="trailing" secondItem="YKZ-ur-20S" secondAttribute="trailing" constant="-8" id="5eR-Qm-3mq"/>
-                                            <constraint firstItem="Q5u-fA-xFm" firstAttribute="leading" secondItem="pbc-9W-Yc0" secondAttribute="trailing" constant="16" id="5tA-lx-Dcs"/>
+                                            <constraint firstItem="Q5u-fA-xFm" firstAttribute="leading" secondItem="pbc-9W-Yc0" secondAttribute="trailing" constant="30" id="5tA-lx-Dcs"/>
                                             <constraint firstItem="14S-6m-x47" firstAttribute="top" secondItem="bTA-Hq-0Dx" secondAttribute="bottom" constant="30" id="5xj-Kx-VYj"/>
                                             <constraint firstItem="kAb-Rn-ckE" firstAttribute="leading" secondItem="Grn-TK-OPP" secondAttribute="trailing" constant="30" id="9H7-Ti-3dw"/>
                                             <constraint firstItem="kAb-Rn-ckE" firstAttribute="trailing" secondItem="YKZ-ur-20S" secondAttribute="trailing" constant="-8" id="AgH-5L-Hae"/>
@@ -741,7 +741,7 @@ Email: CapitalCycleCamp@gmail.com</string>
                                                             <constraint firstAttribute="width" constant="30" id="IUE-Lb-TlL"/>
                                                             <constraint firstAttribute="height" constant="30" id="hbh-ra-tJf"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
                                                         <state key="normal">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
