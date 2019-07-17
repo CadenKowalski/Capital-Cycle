@@ -19,6 +19,8 @@ class PageFour: UIViewController {
         customizeLayout()
     }
     
+    // MARK: View settup
+    
     func customizeLayout() {
         // Formats the gradient view
         gradientViewHeight.constant = 0.15 * view.frame.height

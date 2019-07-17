@@ -41,11 +41,11 @@ class PageVC: UIPageViewController, UIPageViewControllerDelegate, UIPageViewCont
     func fetchDailyData() {
         let Range = "Schedule Data!A2:M6"
         let Query = GTLRSheetsQuery_SpreadsheetsValuesGet.query(withSpreadsheetId: spreadsheetID, range: Range)
-        Service.executeQuery(Query, delegate: self, didFinish: #selector(setDailyData(Ticket:finishedWithObject:Error:)))
+        Service.executeQuery(Query, delegate: self, didFinish: #selector(setDailyData(Ticket:didFinishSelector:Error:)))
     }
     
-    // Sets the spreadhseet results to a global variable
-    @objc func setDailyData(Ticket: GTLRServiceTicket, finishedWithObject Result: GTLRSheets_ValueRange, Error: NSError?) {
+    // Sets the spreadsheet data to a global variable
+    @objc func setDailyData(Ticket: GTLRServiceTicket, didFinishSelector Result: GTLRSheets_ValueRange, Error: NSError?) {
         dailyData = Result
     }
     
@@ -53,11 +53,11 @@ class PageVC: UIPageViewController, UIPageViewControllerDelegate, UIPageViewCont
     func fetchOverviewData() {
         let Range = "Schedule Data!A9:C13"
         let Query = GTLRSheetsQuery_SpreadsheetsValuesGet.query(withSpreadsheetId: spreadsheetID, range: Range)
-        Service.executeQuery(Query, delegate: self, didFinish: #selector(setOverviewyData(Ticket:finishedWithObject:Error:)))
+        Service.executeQuery(Query, delegate: self, didFinish: #selector(setOverviewData(Ticket:didFinishSelector:Error:)))
     }
     
-    // Sets the spreadhseet results to a global variable
-    @objc func setOverviewyData(Ticket: GTLRServiceTicket, finishedWithObject Result: GTLRSheets_ValueRange, Error: NSError?) {
+    // Sets the spreadsheet data to a global variable
+    @objc func setOverviewData(Ticket: GTLRServiceTicket, didFinishSelector Result: GTLRSheets_ValueRange, Error: NSError?) {
         overviewData = Result
     }
     

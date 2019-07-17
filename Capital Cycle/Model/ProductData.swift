@@ -17,6 +17,7 @@ class ProductData {
         Product(Info: "Session 4 (5 days)\n$430", ImgName: "CapitalCycleStoreLogo"),
         Product(Info: "Session 5 (5 days)\n$430", ImgName: "CapitalCycleStoreLogo"),
         Product(Info: "Session 6 (5 days)\n$430", ImgName: "CapitalCycleStoreLogo"),
+        Product(Info: "Before care\n$10 per day", ImgName: "CapitalCycleStoreLogo"),
         Product(Info: "Camp T-shirt\n$20", ImgName: "ShirtImg")]
     
     func getProducts() -> [Product] {

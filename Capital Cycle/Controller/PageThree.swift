@@ -22,6 +22,7 @@ class PageThree: UIViewController, UICollectionViewDelegate, UICollectionViewDat
                        "https://capitalcyclecamp.org/pay-for-camp/session-4-5-day-71116",
                        "https://capitalcyclecamp.org/pay-for-camp/5-day-session-5-71816",
                        "https://capitalcyclecamp.org/pay-for-camp/5-day-session-5-71816-7rnnm",
+                       "https://capitalcyclecamp.org",
                        "https://capitalcyclecamp.org/pay-for-camp/bike-camp-t-shirt"]
     
     override func viewDidLoad() {
@@ -31,6 +32,8 @@ class PageThree: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         productsCollection.delegate = self
         productsCollection.dataSource = self
     }
+    
+    // MARK: View settup
     
     // Formats the UI
     func customizeLayout() {

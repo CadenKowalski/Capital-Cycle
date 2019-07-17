@@ -23,6 +23,8 @@ class PageOne: UIViewController {
         customizeLayout()
     }
     
+    // MARK: View settup
+    
     // Formats the UI
     func customizeLayout() {
         // Formats the gradient view

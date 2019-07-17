@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleAPIClientForREST
 
 class PageTwo: UIViewController {
 
@@ -53,13 +54,15 @@ class PageTwo: UIViewController {
         displayOverviewData()
     }
     
+    // MARK: View settup
+    
     // Formats the UI
     func customizeLayout() {
         // Formats the gradient view
         gradientViewHeight.constant = 0.15 * view.frame.height
         gradientView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.15)
         
-        // Readjusts the Y constraints
+        // Readjusts the Y constraints relative to the gradient view height
         dayLblYConstraint.constant = gradientViewHeight.constant + 8
         dailyDateLblYConstraint.constant = gradientViewHeight.constant + 8
         overviewBtnYConstraint.constant = gradientViewHeight.constant + 8
@@ -104,7 +107,7 @@ class PageTwo: UIViewController {
         let weekActivitiesList = dailyData.values! as! [[String]]
         let dayActivitiesList: Array<Any>
         
-        // Decides which day to show
+        // Decides which days data to show
         if Day == 7 {
             dayActivitiesList = weekActivitiesList[0]
         } else {
@@ -137,7 +140,7 @@ class PageTwo: UIViewController {
             Index += 1
         }
     }
-    
+
     // Switches between the overview and daily views
     @IBAction func switchViews(_ sender: UIButton) {
         if overviewScrollView.isHidden {
