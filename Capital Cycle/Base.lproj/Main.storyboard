@@ -20,14 +20,14 @@
             <objects>
                 <viewController storyboardIdentifier="PageOne" id="bH8-1u-VSq" customClass="PageOne" customModule="Capital_Cycle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zTk-ZV-eln">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="1200"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E1U-Sr-1yu">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="1166"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="1266"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YlL-WF-Z3k" userLabel="Scroll View Display">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1181.6666666666667"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1291"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tnX-Rc-hHc">
                                                 <rect key="frame" x="8" y="108" width="125" height="28"/>
@@ -50,16 +50,24 @@
                                                 <rect key="frame" x="32" y="144" width="374" height="164"/>
                                                 <attributedString key="attributedText">
                                                     <fragment>
-                                                        <string key="content">Week 1: Jun 17 - 21 
-Week 2: Jun 24 - 28 
-Week 3: Jul 1 - 5 
-Week 4: Jul 8 - 12 
-Week 5: Jul 15 - 19 
-Week 6: Jul 22 - 26</string>
+                                                        <string key="content">Session 1: Jun 17 - 21 
+Session 2: Jun 24 - 28 
+</string>
                                                         <attributes>
                                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <font key="NSFont" size="20" name="Avenir-Medium"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment>
+                                                        <string key="content">Session 3: Jul 1 - 5 
+Session 4: Jul 8 - 12 
+Session 5: Jul 15 - 19 
+Session 6: Jul 22 - 26</string>
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="20" name="Avenir-Medium"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                                         </attributes>
                                                     </fragment>
                                                 </attributedString>
@@ -82,7 +90,7 @@ Week 6: Jul 22 - 26</string>
                                                 </attributedString>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9AM - 6PM or 8AM - 6PM with early drop-off" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8wX-ni-yL7" userLabel="Hours Lbl">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9AM - 6PM or 8AM - 6PM with before care" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8wX-ni-yL7" userLabel="Hours Lbl">
                                                 <rect key="frame" x="32" y="352" width="374" height="54.666666666666686"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -105,16 +113,17 @@ Week 6: Jul 22 - 26</string>
                                                 </attributedString>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="srY-QF-c10" userLabel="Price Lbl">
-                                                <rect key="frame" x="32" y="450.66666666666669" width="374" height="54.666666666666686"/>
-                                                <string key="text">Weeks 1 &amp; 3: $375 
-Weeks 2, 4, 5 &amp; 6: $430</string>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="srY-QF-c10" userLabel="Price Lbl">
+                                                <rect key="frame" x="32" y="450.66666666666669" width="374" height="82.000000000000057"/>
+                                                <string key="text">Sessions 1 &amp; 3: $375 
+Sessions 2, 4, 5 &amp; 6: $430
+Before Care: $10 per day</string>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Questions?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MLA-pY-GRJ" userLabel="Questions Lbl">
-                                                <rect key="frame" x="8" y="513.33333333333337" width="105" height="28"/>
+                                                <rect key="frame" x="8" y="540.66666666666663" width="105" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28" id="1A0-eK-jvu"/>
                                                     <constraint firstAttribute="width" constant="105" id="f52-6T-fQG"/>
@@ -123,16 +132,142 @@ Weeks 2, 4, 5 &amp; 6: $430</string>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yHx-Q1-GR3" userLabel="Contacts Lbl">
-                                                <rect key="frame" x="32" y="549.33333333333337" width="374" height="54.666666666666629"/>
-                                                <string key="text">Phone: 202.510.1342 
-Email: CapitalCycleCamp@gmail.com</string>
-                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yHx-Q1-GR3" userLabel="Contacts Lbl">
+                                                <rect key="frame" x="32" y="576.66666666666663" width="374" height="136.66666666666663"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="Email: CapitalCycleCamp@gmail.com">
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="20" name="Avenir-Medium"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                                <tabStops>
+                                                                    <textTab alignment="left" location="28">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="56">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="84">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="112">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="140">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="168">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="196">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="224">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="252">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="280">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="308">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="336">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                </tabStops>
+                                                            </paragraphStyle>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment>
+                                                        <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="20" name="Avenir-Heavy"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                                <tabStops>
+                                                                    <textTab alignment="left" location="28">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="56">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="84">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="112">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="140">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="168">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="196">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="224">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="252">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="280">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="308">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="336">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                </tabStops>
+                                                            </paragraphStyle>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment content="Camp Owner - Ben Berkow">
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="20" name="Avenir-Heavy"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment>
+                                                        <string key="content">
+Phone: 202.510.1342 
+</string>
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="20" name="Avenir-Medium"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment content="Site Manager - Chris Prosser">
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="20" name="Avenir-Heavy"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment>
+                                                        <string key="content">
+Phone: 202.288.5245</string>
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="20" name="Avenir-Medium"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Typical Day:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pZb-1y-mSA" userLabel="Typical Day Lbl">
-                                                <rect key="frame" x="8" y="612" width="112" height="28"/>
+                                                <rect key="frame" x="8" y="721.33333333333337" width="112" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28" id="7X1-jK-5Wz"/>
                                                     <constraint firstAttribute="width" constant="112" id="frL-P7-w4r"/>
@@ -142,14 +277,14 @@ Email: CapitalCycleCamp@gmail.com</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r2K-gt-ZXY" userLabel="Day Lbl">
-                                                <rect key="frame" x="32" y="648" width="374" height="382.66666666666674"/>
-                                                <string key="text">Early drop off begins at 8AM and parents can drop their kids off any time after that. Camp begins at 9AM and campers will play a variety of games at the school for about an hour. At around 10AM, we prepare to leave (apply sunscreen, fill waterbottles, use the restroom, pack lunches/ backpacks). We will usually bike all of the way to our destination and once we get there, we will eat lunch and do the activity that we have planned. At around 3-4PM we will bike back to the school and play games until parents come to pick up campers.</string>
+                                                <rect key="frame" x="32" y="757.33333333333337" width="374" height="382.66666666666663"/>
+                                                <string key="text">Early drop off begins at 8AM and parents can drop their kids off any time after that. Camp begins at 9AM and campers will play a variety of games at the school for about an hour. At around 10AM, we prepare to leave (apply sunscreen, fill waterbottles, use the restroom, pack backpacks). We will usually bike all of the way to our destination and once we get there, we will eat lunch and do the activity that we have planned. At around 3-4PM we will bike back to the school and play games until parents come to pick up campers.</string>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cBm-x8-BxN" userLabel="Facebook Btn">
-                                                <rect key="frame" x="152" y="1038.6666666666667" width="40" height="40"/>
+                                                <rect key="frame" x="152" y="1148" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="gIs-ez-uIa"/>
                                                     <constraint firstAttribute="height" constant="40" id="upr-vT-Wl3"/>
@@ -160,7 +295,7 @@ Email: CapitalCycleCamp@gmail.com</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J93-kR-cR5" userLabel="Instagram Btn">
-                                                <rect key="frame" x="222" y="1038.6666666666667" width="40" height="40"/>
+                                                <rect key="frame" x="222" y="1148" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="13K-b1-Uxa"/>
                                                     <constraint firstAttribute="height" constant="40" id="6CB-g3-bXP"/>
@@ -171,7 +306,7 @@ Email: CapitalCycleCamp@gmail.com</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="noU-0s-Ggg" userLabel="Sign Up Btn">
-                                                <rect key="frame" x="107" y="1086.6666666666667" width="200" height="60"/>
+                                                <rect key="frame" x="107" y="1196" width="200" height="60"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="200" id="j8z-By-UF5"/>
                                                     <constraint firstAttribute="height" constant="60" id="oXm-Ft-xdC"/>
@@ -273,7 +408,7 @@ Email: CapitalCycleCamp@gmail.com</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Upw-lg-ypp"/>
                     </view>
-                    <size key="freeformSize" width="414" height="1200"/>
+                    <size key="freeformSize" width="414" height="1300"/>
                     <connections>
                         <outlet property="campDatesLbl" destination="tnX-Rc-hHc" id="6CZ-Z8-tO7"/>
                         <outlet property="campDatesYConstraint" destination="5N8-Fe-3hv" id="T2a-U0-vfa"/>
@@ -285,7 +420,7 @@ Email: CapitalCycleCamp@gmail.com</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Izh-eE-oWs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-704" y="859"/>
+            <point key="canvasLocation" x="-701" y="896"/>
         </scene>
         <!--Page Two-->
         <scene sceneID="9SG-Q6-eE7">
