@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14810.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jM6-Kb-J6q">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14810.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="D3Y-25-YLq">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14766.15"/>
@@ -7,13 +7,94 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Home-->
+        <scene sceneID="vaV-Kx-tDH">
+            <objects>
+                <viewController title="Home" id="D3Y-25-YLq" customClass="Home" customModule="Capital_Cycle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8a6-95-yn9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CapitalCycleLogo" translatesAutoresizingMaskIntoConstraints="NO" id="s2A-ml-rUY">
+                                <rect key="frame" x="16" y="45" width="343" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="EbH-XL-Yck"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="u5q-kX-1LG" userLabel="Content View">
+                                <rect key="frame" x="102.66666666666669" y="395" width="170" height="110"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vdd-GH-6Hr">
+                                        <rect key="frame" x="0.0" y="0.0" width="170" height="50"/>
+                                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Log In">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <font key="NSFont" size="20" name="Avenir-Heavy"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
+                                        <connections>
+                                            <action selector="logInBtn:" destination="J2K-EY-BKS" eventType="touchUpInside" id="Xma-EL-NRK"/>
+                                            <segue destination="v2Q-k5-Eoj" kind="show" id="gIt-1E-gpT"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HFw-5Y-4Tg">
+                                        <rect key="frame" x="0.0" y="60" width="170" height="50"/>
+                                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Sign Up">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <font key="NSFont" size="20" name="Avenir-Heavy"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
+                                        <connections>
+                                            <segue destination="A2Z-6c-UZy" kind="show" id="19j-mR-7GT"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="170" id="aSV-An-DnW"/>
+                                    <constraint firstAttribute="height" constant="110" id="zc1-ff-Ue3"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.63137254901960782" green="0.31372549019607843" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="u5q-kX-1LG" firstAttribute="top" secondItem="s2A-ml-rUY" secondAttribute="bottom" constant="100" id="HyW-YE-XyL"/>
+                            <constraint firstItem="s2A-ml-rUY" firstAttribute="leading" secondItem="xz5-KO-kaS" secondAttribute="leading" constant="16" id="IqB-6l-Ca3"/>
+                            <constraint firstItem="s2A-ml-rUY" firstAttribute="trailing" secondItem="8a6-95-yn9" secondAttribute="trailing" constant="-16" id="Mh0-f2-Rrb"/>
+                            <constraint firstItem="s2A-ml-rUY" firstAttribute="top" secondItem="8a6-95-yn9" secondAttribute="top" constant="45" id="tTh-Gl-l8M"/>
+                            <constraint firstItem="u5q-kX-1LG" firstAttribute="centerX" secondItem="8a6-95-yn9" secondAttribute="centerX" id="xwE-ja-Wbz"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="xz5-KO-kaS"/>
+                    </view>
+                    <connections>
+                        <outlet property="logInBtn" destination="Vdd-GH-6Hr" id="MOf-aR-SZy"/>
+                        <outlet property="signUpBtn" destination="HFw-5Y-4Tg" id="wMs-c0-Mvy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gSp-Am-WXh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="J2K-EY-BKS" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="377" y="-1404"/>
+        </scene>
         <!--PageVC-->
         <scene sceneID="TFe-gl-g9U">
             <objects>
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="jM6-Kb-J6q" customClass="PageVC" customModule="Capital_Cycle" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RPw-A3-6lN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4" y="43"/>
+            <point key="canvasLocation" x="377" y="99"/>
         </scene>
         <!--Page One-->
         <scene sceneID="w1u-NA-bWP">
@@ -139,46 +220,7 @@ Before Care: $10 per day</string>
                                                         <attributes>
                                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <font key="NSFont" size="20" name="Avenir-Medium"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                                                <tabStops>
-                                                                    <textTab alignment="left" location="28">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="56">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="84">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="112">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="140">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="168">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="196">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="224">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="252">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="280">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="308">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="336">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                </tabStops>
-                                                            </paragraphStyle>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                                         </attributes>
                                                     </fragment>
                                                     <fragment>
@@ -188,46 +230,7 @@ Cg
                                                         <attributes>
                                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <font key="NSFont" size="20" name="Avenir-Heavy"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                                                <tabStops>
-                                                                    <textTab alignment="left" location="28">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="56">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="84">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="112">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="140">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="168">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="196">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="224">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="252">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="280">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="308">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="336">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                </tabStops>
-                                                            </paragraphStyle>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                                         </attributes>
                                                     </fragment>
                                                     <fragment content="Camp Owner - Ben Berkow">
@@ -387,12 +390,31 @@ Phone: 202.288.5245</string>
                                         </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dUL-KX-KV6" userLabel="Log In Btn">
+                                        <rect key="frame" x="349" y="8" width="49" height="35.333333333333336"/>
+                                        <state key="normal">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Log In">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <font key="NSFont" size="17" name="Avenir-Medium"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
+                                        <connections>
+                                            <action selector="LogIn:" destination="bH8-1u-VSq" eventType="touchUpInside" id="9Nv-In-o20"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="dZu-KI-aQI" firstAttribute="centerY" secondItem="E4V-Od-9gE" secondAttribute="centerY" constant="5" id="8nH-dq-YMC"/>
+                                    <constraint firstItem="dUL-KX-KV6" firstAttribute="top" secondItem="E4V-Od-9gE" secondAttribute="top" constant="8" id="HEr-rk-m0v"/>
                                     <constraint firstItem="dZu-KI-aQI" firstAttribute="centerX" secondItem="E4V-Od-9gE" secondAttribute="centerX" id="Ivh-jm-vc0"/>
                                     <constraint firstAttribute="height" constant="100" id="L6f-kV-R5C"/>
+                                    <constraint firstAttribute="trailing" secondItem="dUL-KX-KV6" secondAttribute="trailing" constant="16" id="xit-he-1cd"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -420,7 +442,7 @@ Phone: 202.288.5245</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Izh-eE-oWs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-701" y="896"/>
+            <point key="canvasLocation" x="-718" y="998"/>
         </scene>
         <!--Page Two-->
         <scene sceneID="9SG-Q6-eE7">
@@ -1026,7 +1048,7 @@ Phone: 202.288.5245</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xxV-8X-MPw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1.6000000000000001" y="748.52216748768478"/>
+            <point key="canvasLocation" x="29" y="850"/>
         </scene>
         <!--Page Three-->
         <scene sceneID="0Bt-6K-n3s">
@@ -1151,7 +1173,7 @@ Phone: 202.288.5245</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8HV-gq-bco" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="676" y="717"/>
+            <point key="canvasLocation" x="724" y="818"/>
         </scene>
         <!--Page Four-->
         <scene sceneID="VNX-Ic-yG0">
@@ -1552,12 +1574,153 @@ A: We have a variety of games and books as well as a gym and playground to occup
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uBk-Hx-su6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1324" y="859"/>
+            <point key="canvasLocation" x="1417" y="961"/>
+        </scene>
+        <!--Log In-->
+        <scene sceneID="MlW-tO-DMH">
+            <objects>
+                <viewController title="Log In" id="v2Q-k5-Eoj" customClass="LogIn" customModule="Capital_Cycle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="43c-jI-F7U">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wvG-jg-f8l" userLabel="Email">
+                                <rect key="frame" x="16" y="114.33333333333331" width="343" height="34"/>
+                                <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done" textContentType="email"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tTZ-I0-VVo" userLabel="Password">
+                                <rect key="frame" x="16" y="164.33333333333334" width="343" height="34"/>
+                                <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" textContentType="password"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wxJ-Jb-Yd3" userLabel="Log In Btn">
+                                <rect key="frame" x="158" y="45" width="59" height="39.333333333333343"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Log In">
+                                            <attributes>
+                                                <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" size="20" name="Avenir-Heavy"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="logIn:" destination="v2Q-k5-Eoj" eventType="touchUpInside" id="5sK-UL-Kan"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.63137254901960782" green="0.31372549019607843" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="5Wo-YH-b5x" firstAttribute="trailing" secondItem="wvG-jg-f8l" secondAttribute="trailing" constant="16" id="ACC-z6-Xl3"/>
+                            <constraint firstItem="wvG-jg-f8l" firstAttribute="top" secondItem="wxJ-Jb-Yd3" secondAttribute="bottom" constant="30" id="BXU-hT-SZC"/>
+                            <constraint firstItem="wvG-jg-f8l" firstAttribute="leading" secondItem="5Wo-YH-b5x" secondAttribute="leading" constant="16" id="Elo-Yw-oOP"/>
+                            <constraint firstItem="wxJ-Jb-Yd3" firstAttribute="top" secondItem="5Wo-YH-b5x" secondAttribute="top" constant="45" id="K93-IB-lA2"/>
+                            <constraint firstItem="wxJ-Jb-Yd3" firstAttribute="centerX" secondItem="43c-jI-F7U" secondAttribute="centerX" id="r6r-cA-0WE"/>
+                            <constraint firstItem="5Wo-YH-b5x" firstAttribute="trailing" secondItem="tTZ-I0-VVo" secondAttribute="trailing" constant="16" id="sug-iM-7bQ"/>
+                            <constraint firstItem="tTZ-I0-VVo" firstAttribute="top" secondItem="wvG-jg-f8l" secondAttribute="bottom" constant="16" id="szJ-gz-rfk"/>
+                            <constraint firstItem="tTZ-I0-VVo" firstAttribute="leading" secondItem="5Wo-YH-b5x" secondAttribute="leading" constant="16" id="wq1-Rg-ve4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="5Wo-YH-b5x"/>
+                    </view>
+                    <connections>
+                        <outlet property="emailTxtField" destination="wvG-jg-f8l" id="mib-Kn-mmf"/>
+                        <outlet property="passwordTxtField" destination="tTZ-I0-VVo" id="H17-fg-Bhv"/>
+                        <segue destination="jM6-Kb-J6q" kind="show" identifier="LogIn" id="JVj-89-k2w"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2JP-Fh-IfX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="31" y="-667"/>
+        </scene>
+        <!--Sign Up-->
+        <scene sceneID="Td0-EP-Ujf">
+            <objects>
+                <viewController title="Sign Up" id="A2Z-6c-UZy" customClass="SignUp" customModule="Capital_Cycle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2Sb-N8-kMT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O6n-C3-gRh">
+                                <rect key="frame" x="16" y="114.33333333333331" width="343" height="34"/>
+                                <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done" textContentType="email"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GNk-Ht-aHI">
+                                <rect key="frame" x="16" y="164.33333333333334" width="343" height="34"/>
+                                <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" textContentType="new-password"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3u5-72-jbV">
+                                <rect key="frame" x="16" y="214.33333333333334" width="343" height="34"/>
+                                <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" textContentType="new-password"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2DJ-Cf-dWE" userLabel="Sign Up Btn">
+                                <rect key="frame" x="150.66666666666666" y="45" width="74" height="39.333333333333343"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Sign Up">
+                                            <attributes>
+                                                <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" size="20" name="Avenir-Heavy"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="signUp:" destination="A2Z-6c-UZy" eventType="touchUpInside" id="cZ7-9n-7wv"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.63137254901960782" green="0.31372549019607843" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="O6n-C3-gRh" firstAttribute="top" secondItem="2DJ-Cf-dWE" secondAttribute="bottom" constant="30" id="ACt-GV-c0P"/>
+                            <constraint firstItem="3u5-72-jbV" firstAttribute="leading" secondItem="VUr-xS-gve" secondAttribute="leading" constant="16" id="E5C-Eb-Hsb"/>
+                            <constraint firstItem="VUr-xS-gve" firstAttribute="trailing" secondItem="O6n-C3-gRh" secondAttribute="trailing" constant="16" id="LRi-Uk-m1M"/>
+                            <constraint firstItem="GNk-Ht-aHI" firstAttribute="top" secondItem="O6n-C3-gRh" secondAttribute="bottom" constant="16" id="Pfy-5R-DpU"/>
+                            <constraint firstItem="3u5-72-jbV" firstAttribute="top" secondItem="GNk-Ht-aHI" secondAttribute="bottom" constant="16" id="Uo1-u1-H4m"/>
+                            <constraint firstItem="2DJ-Cf-dWE" firstAttribute="top" secondItem="VUr-xS-gve" secondAttribute="top" constant="45" id="cf2-9u-rU6"/>
+                            <constraint firstItem="2DJ-Cf-dWE" firstAttribute="centerX" secondItem="2Sb-N8-kMT" secondAttribute="centerX" id="gh1-9E-TqA"/>
+                            <constraint firstItem="GNk-Ht-aHI" firstAttribute="leading" secondItem="VUr-xS-gve" secondAttribute="leading" constant="16" id="kYd-vk-dQJ"/>
+                            <constraint firstItem="O6n-C3-gRh" firstAttribute="leading" secondItem="VUr-xS-gve" secondAttribute="leading" constant="16" id="tRA-sb-pFy"/>
+                            <constraint firstItem="VUr-xS-gve" firstAttribute="trailing" secondItem="3u5-72-jbV" secondAttribute="trailing" constant="16" id="wQ7-Od-qyG"/>
+                            <constraint firstItem="VUr-xS-gve" firstAttribute="trailing" secondItem="GNk-Ht-aHI" secondAttribute="trailing" constant="16" id="zhu-Ej-3iQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="VUr-xS-gve"/>
+                    </view>
+                    <connections>
+                        <outlet property="confmPassTxtField" destination="3u5-72-jbV" id="3db-DV-YYz"/>
+                        <outlet property="emailTxtField" destination="O6n-C3-gRh" id="wWQ-hu-gXX"/>
+                        <outlet property="passTxtField" destination="GNk-Ht-aHI" id="c5F-tV-zWi"/>
+                        <segue destination="jM6-Kb-J6q" kind="show" identifier="SignUp" id="Sdy-Gj-ANw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fLH-LB-9yH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="724" y="-667"/>
         </scene>
     </scenes>
     <resources>
+        <image name="CapitalCycleLogo" width="341.33334350585938" height="341.33334350585938"/>
         <image name="CapitalCycleStoreLogo" width="118" height="122"/>
         <image name="FacebookLogo" width="166.66667175292969" height="166.66667175292969"/>
         <image name="InstagramLogo" width="166.66667175292969" height="166.66667175292969"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="JVj-89-k2w"/>
+    </inferredMetricsTieBreakers>
 </document>
