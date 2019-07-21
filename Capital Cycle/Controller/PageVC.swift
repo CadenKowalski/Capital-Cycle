@@ -28,7 +28,7 @@ class PageVC: UIPageViewController, UIPageViewControllerDelegate, UIPageViewCont
         if let firstVC = orderedVCs.first {
             setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
         }
-        
+
         self.delegate = self
         configurePageControl()
         Service.apiKey = "AIzaSyBIdPHR_nqgL9G6fScmlcPMReBM5PmtVD8"

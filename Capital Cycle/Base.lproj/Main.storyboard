@@ -311,7 +311,7 @@ Phone: 202.288.5245</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q6C-0K-vCN" userLabel="Settings Btn">
-                                        <rect key="frame" x="12" y="11.999999999999996" width="30" height="30.666666666666675"/>
+                                        <rect key="frame" x="16" y="15.999999999999996" width="30" height="30.666666666666675"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="gHc-g7-bs4"/>
                                             <constraint firstAttribute="width" constant="30" id="gWR-Xs-02p"/>
@@ -329,8 +329,8 @@ Phone: 202.288.5245</string>
                                     <constraint firstItem="dZu-KI-aQI" firstAttribute="centerY" secondItem="E4V-Od-9gE" secondAttribute="centerY" constant="5" id="8nH-dq-YMC"/>
                                     <constraint firstItem="dZu-KI-aQI" firstAttribute="centerX" secondItem="E4V-Od-9gE" secondAttribute="centerX" id="Ivh-jm-vc0"/>
                                     <constraint firstAttribute="height" constant="100" id="L6f-kV-R5C"/>
-                                    <constraint firstItem="Q6C-0K-vCN" firstAttribute="top" secondItem="E4V-Od-9gE" secondAttribute="top" constant="12" id="WVi-yP-Fso"/>
-                                    <constraint firstItem="Q6C-0K-vCN" firstAttribute="leading" secondItem="E4V-Od-9gE" secondAttribute="leading" constant="12" id="cnp-Ag-lIO"/>
+                                    <constraint firstItem="Q6C-0K-vCN" firstAttribute="top" secondItem="E4V-Od-9gE" secondAttribute="top" constant="16" id="WVi-yP-Fso"/>
+                                    <constraint firstItem="Q6C-0K-vCN" firstAttribute="leading" secondItem="E4V-Od-9gE" secondAttribute="leading" constant="16" id="cnp-Ag-lIO"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -898,7 +898,7 @@ Phone: 202.288.5245</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ucQ-X1-3da" userLabel="Settings Btn">
-                                        <rect key="frame" x="12" y="11.999999999999996" width="30" height="30.666666666666675"/>
+                                        <rect key="frame" x="16" y="15.999999999999996" width="30" height="30.666666666666675"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="3Nc-Sb-xF3"/>
                                             <constraint firstAttribute="width" constant="30" id="ZwR-sV-bse"/>
@@ -914,10 +914,10 @@ Phone: 202.288.5245</string>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="7uh-km-9YW"/>
-                                    <constraint firstItem="ucQ-X1-3da" firstAttribute="top" secondItem="cXw-42-buD" secondAttribute="top" constant="12" id="Z05-Bh-qlB"/>
+                                    <constraint firstItem="ucQ-X1-3da" firstAttribute="top" secondItem="cXw-42-buD" secondAttribute="top" constant="16" id="Z05-Bh-qlB"/>
                                     <constraint firstItem="yxy-7o-B0d" firstAttribute="centerY" secondItem="cXw-42-buD" secondAttribute="centerY" constant="5" id="bmX-ju-t3T"/>
                                     <constraint firstItem="yxy-7o-B0d" firstAttribute="centerX" secondItem="cXw-42-buD" secondAttribute="centerX" id="utE-96-gOk"/>
-                                    <constraint firstItem="ucQ-X1-3da" firstAttribute="leading" secondItem="cXw-42-buD" secondAttribute="leading" constant="12" id="z5m-Tc-6KZ"/>
+                                    <constraint firstItem="ucQ-X1-3da" firstAttribute="leading" secondItem="cXw-42-buD" secondAttribute="leading" constant="16" id="z5m-Tc-6KZ"/>
                                 </constraints>
                                 <viewLayoutGuide key="safeArea" id="sM4-dh-VAu"/>
                             </view>
@@ -1140,7 +1140,7 @@ Phone: 202.288.5245</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WYD-fk-ieQ" userLabel="Settings Btn">
-                                        <rect key="frame" x="12" y="11.999999999999996" width="30" height="30.666666666666675"/>
+                                        <rect key="frame" x="16" y="15.999999999999996" width="30" height="30.666666666666675"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="EDK-0x-vPc"/>
                                             <constraint firstAttribute="height" constant="30" id="wjb-op-aTX"/>
@@ -1156,9 +1156,9 @@ Phone: 202.288.5245</string>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="7fy-Cg-hTG"/>
-                                    <constraint firstItem="WYD-fk-ieQ" firstAttribute="leading" secondItem="kr4-03-y19" secondAttribute="leading" constant="12" id="Utc-H6-QpJ"/>
+                                    <constraint firstItem="WYD-fk-ieQ" firstAttribute="leading" secondItem="kr4-03-y19" secondAttribute="leading" constant="16" id="Utc-H6-QpJ"/>
                                     <constraint firstItem="dCK-ah-geS" firstAttribute="centerX" secondItem="kr4-03-y19" secondAttribute="centerX" id="YkJ-XI-dwr"/>
-                                    <constraint firstItem="WYD-fk-ieQ" firstAttribute="top" secondItem="kr4-03-y19" secondAttribute="top" constant="12" id="eLE-K2-4Ol"/>
+                                    <constraint firstItem="WYD-fk-ieQ" firstAttribute="top" secondItem="kr4-03-y19" secondAttribute="top" constant="16" id="eLE-K2-4Ol"/>
                                     <constraint firstItem="dCK-ah-geS" firstAttribute="centerY" secondItem="kr4-03-y19" secondAttribute="centerY" constant="5" id="tv7-hj-QvO"/>
                                 </constraints>
                             </view>
@@ -1564,7 +1564,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tb1-Xi-Kio" userLabel="Settings Btn">
-                                <rect key="frame" x="12" y="11.999999999999996" width="30" height="30.666666666666675"/>
+                                <rect key="frame" x="16" y="15.999999999999996" width="30" height="30.666666666666675"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="MMK-vW-fqY"/>
                                     <constraint firstAttribute="width" constant="30" id="f29-k7-TMh"/>
@@ -1579,9 +1579,9 @@ A: We have a variety of games and books as well as a gym and playground to occup
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="tb1-Xi-Kio" firstAttribute="top" secondItem="8VS-e5-9M6" secondAttribute="top" constant="12" id="0Gs-zk-oXz"/>
+                            <constraint firstItem="tb1-Xi-Kio" firstAttribute="top" secondItem="8VS-e5-9M6" secondAttribute="top" constant="16" id="0Gs-zk-oXz"/>
                             <constraint firstItem="grX-QG-9rR" firstAttribute="leading" secondItem="boU-Ua-Adt" secondAttribute="leading" id="4Oa-3d-FXR"/>
-                            <constraint firstItem="tb1-Xi-Kio" firstAttribute="leading" secondItem="boU-Ua-Adt" secondAttribute="leading" constant="12" id="6za-eF-sOY"/>
+                            <constraint firstItem="tb1-Xi-Kio" firstAttribute="leading" secondItem="boU-Ua-Adt" secondAttribute="leading" constant="16" id="6za-eF-sOY"/>
                             <constraint firstItem="grX-QG-9rR" firstAttribute="bottom" secondItem="boU-Ua-Adt" secondAttribute="bottom" id="DDv-Oo-ce4"/>
                             <constraint firstItem="7qZ-6e-4gC" firstAttribute="leading" secondItem="boU-Ua-Adt" secondAttribute="leading" id="K1f-D7-Ta3"/>
                             <constraint firstItem="grX-QG-9rR" firstAttribute="trailing" secondItem="boU-Ua-Adt" secondAttribute="trailing" id="RPd-jc-NZ8"/>
@@ -1624,7 +1624,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5rT-LV-p55" userLabel="Settings Btn">
-                                        <rect key="frame" x="12" y="11.999999999999996" width="30" height="30.666666666666675"/>
+                                        <rect key="frame" x="16" y="15.999999999999996" width="30" height="30.666666666666675"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="aXo-dR-9Ym"/>
                                             <constraint firstAttribute="height" constant="30" id="jtK-Xo-DCE"/>
@@ -1640,9 +1640,9 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="6S0-jD-G92"/>
-                                    <constraint firstItem="5rT-LV-p55" firstAttribute="leading" secondItem="kdO-CT-UdU" secondAttribute="leading" constant="12" id="EO3-4T-1fb"/>
+                                    <constraint firstItem="5rT-LV-p55" firstAttribute="leading" secondItem="kdO-CT-UdU" secondAttribute="leading" constant="16" id="EO3-4T-1fb"/>
                                     <constraint firstItem="OhW-dJ-0nM" firstAttribute="centerY" secondItem="kdO-CT-UdU" secondAttribute="centerY" constant="5" id="FN3-Tg-kHP"/>
-                                    <constraint firstItem="5rT-LV-p55" firstAttribute="top" secondItem="kdO-CT-UdU" secondAttribute="top" constant="12" id="KyP-pf-ycc"/>
+                                    <constraint firstItem="5rT-LV-p55" firstAttribute="top" secondItem="kdO-CT-UdU" secondAttribute="top" constant="16" id="KyP-pf-ycc"/>
                                     <constraint firstItem="OhW-dJ-0nM" firstAttribute="centerX" secondItem="kdO-CT-UdU" secondAttribute="centerX" id="Pwd-Ww-caP"/>
                                 </constraints>
                             </view>
@@ -1759,8 +1759,8 @@ A: We have a variety of games and books as well as a gym and playground to occup
                         <outlet property="gradientView" destination="HmA-eO-hef" id="eaH-j0-djy"/>
                         <outlet property="gradientViewHeight" destination="ioO-Kj-laH" id="Lwe-6O-iK7"/>
                         <outlet property="passTxtField" destination="tTZ-I0-VVo" id="Mt6-iM-A0h"/>
-                        <segue destination="jM6-Kb-J6q" kind="show" identifier="LogIn" id="JVj-89-k2w"/>
-                        <segue destination="jM6-Kb-J6q" kind="show" identifier="AlreadyLoggedIn" id="6V9-QI-sCX"/>
+                        <segue destination="jM6-Kb-J6q" kind="presentation" identifier="LogIn" modalPresentationStyle="fullScreen" id="JVj-89-k2w"/>
+                        <segue destination="jM6-Kb-J6q" kind="presentation" identifier="AlreadyLoggedIn" modalPresentationStyle="fullScreen" id="6V9-QI-sCX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2JP-Fh-IfX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1850,7 +1850,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                         <outlet property="gradientView" destination="1lx-NS-scX" id="VWA-pG-bIa"/>
                         <outlet property="gradientViewHeight" destination="Ptp-Qi-M9e" id="zfO-12-r04"/>
                         <outlet property="passTxtField" destination="GNk-Ht-aHI" id="c5F-tV-zWi"/>
-                        <segue destination="jM6-Kb-J6q" kind="show" identifier="SignUp" id="Sdy-Gj-ANw"/>
+                        <segue destination="jM6-Kb-J6q" kind="presentation" identifier="SignUp" modalPresentationStyle="fullScreen" id="Sdy-Gj-ANw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fLH-LB-9yH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1860,7 +1860,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="724" y="-667"/>
+            <point key="canvasLocation" x="828" y="-667"/>
         </scene>
     </scenes>
     <resources>
@@ -1870,7 +1870,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
         <image name="gear" catalog="system" width="64" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="4VI-xZ-OTW"/>
+        <segue reference="i74-cw-zSX"/>
         <segue reference="6V9-QI-sCX"/>
     </inferredMetricsTieBreakers>
 </document>
