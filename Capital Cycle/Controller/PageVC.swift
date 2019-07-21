@@ -8,6 +8,7 @@
 
 import UIKit
 import GoogleAPIClientForREST
+import FirebaseAuth
 
 var dailyData = GTLRSheets_ValueRange()
 var overviewData = GTLRSheets_ValueRange()
@@ -64,6 +65,10 @@ class PageVC: UIPageViewController, UIPageViewControllerDelegate, UIPageViewCont
     // MARK: Set Up Page View Controller
     
     func configurePageControl() {
+        if Auth.auth().currentUser?.uid == "fipBSdkNpZXSsr26UGDFvY3zRa52" {
+            orderedVCs.append(self.newVC(VC: "PageFive"))
+        }
+        
         pageControl = UIPageControl(frame: CGRect(x: 0, y: UIScreen.main.bounds.maxY - 50, width: UIScreen.main.bounds.width, height: 50))
         pageControl.numberOfPages = orderedVCs.count
         pageControl.currentPage = 0

@@ -11,6 +11,8 @@ import FirebaseAuth
 
 class SignUp: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var gradientView: UIView!
+    @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
     @IBOutlet weak var emailTxtField: UITextField!
     @IBOutlet weak var passTxtField: UITextField!
     @IBOutlet weak var confmPassTxtField: UITextField!
@@ -23,20 +25,26 @@ class SignUp: UIViewController, UITextFieldDelegate {
         customizeLayout()
     }
     
+    // MARK: View Setup
+    
+    // Formats the UI
     func customizeLayout() {
+        // Formats the gradient view
+        gradientViewHeight.constant = 0.15 * view.frame.height
+        gradientView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.15)
+        
+        // Sets the gradients
+        gradientView.setTwoGradientBackground(colorOne: Colors.Orange, colorTwo: Colors.Purple)
+
+        // Formats the placeholder text
         emailTxtField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
         passTxtField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
         confmPassTxtField.attributedPlaceholder = NSAttributedString(string: "Confirm Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        if emailTxtField.text != "" && passTxtField.text != "" && confmPassTxtField.text != "" {
-            signUp()
-        }
-        return true
-    }
+    // MARK: Sign Up
     
+    // Signs Up the user
     func signUp() {
         if passTxtField.text != confmPassTxtField.text {
             let Alert = UIAlertController(title: "Password Incorret", message: "Please make sure your passwords match", preferredStyle: .alert)
@@ -57,11 +65,19 @@ class SignUp: UIViewController, UITextFieldDelegate {
         }
     }
     
-    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+    // MARK: Dismiss Keyboard
+    
+    // Dismiss keybpard when "done" is pressed
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
+        if emailTxtField.text != "" && passTxtField.text != "" && confmPassTxtField.text != "" {
+            signUp()
+        }
+        return true
     }
     
-    @IBAction func signUp(_ sender: UIButton) {
-        signUp()
+    // Dismiss keyboard when view is tapped
+    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        self.view.endEditing(true)
     }
 }

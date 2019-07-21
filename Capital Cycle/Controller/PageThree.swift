@@ -33,7 +33,7 @@ class PageThree: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         productsCollection.dataSource = self
     }
     
-    // MARK: View settup
+    // MARK: View Setup
     
     // Formats the UI
     func customizeLayout() {

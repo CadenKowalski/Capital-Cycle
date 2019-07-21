@@ -11,10 +11,29 @@ import FirebaseAuth
 
 class Settings: UIViewController {
 
+    @IBOutlet weak var gradientView: UIView!
+    @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        customizeLayout()
     }
     
+    // MARK: View Setup
+    
+    // Formats the UI
+    func customizeLayout() {
+        // Formats the gradient view
+        gradientViewHeight.constant = 0.15 * view.frame.height
+        gradientView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.15)
+        
+        // Sets the gradients
+        gradientView.setTwoGradientBackground(colorOne: Colors.Orange, colorTwo: Colors.Purple)
+    }
+    
+    // MARK: Settings
+    
+    // Logs out the user
     @IBAction func logOut(_ sender: UIButton) {
         do {
             try Auth.auth().signOut()

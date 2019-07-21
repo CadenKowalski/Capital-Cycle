@@ -11,6 +11,8 @@ import FirebaseAuth
 
 class LogIn: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var gradientView: UIView!
+    @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
     @IBOutlet weak var emailTxtField: UITextField!
     @IBOutlet weak var passTxtField: UITextField!
     
@@ -21,19 +23,33 @@ class LogIn: UIViewController, UITextFieldDelegate {
         customizeLayout()
     }
     
+    // Logs in a user automatically if they have already logged in
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if Auth.auth().currentUser != nil {
+            self.performSegue(withIdentifier: "AlreadyLoggedIn", sender: nil)
+        }
+    }
+    
+    // MARK: View Setup
+    
+    // Formats the UI
     func customizeLayout() {
+        //Formats the grdient view
+        gradientViewHeight.constant = 0.15 * view.frame.height
+        gradientView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.15)
+        
+        // Sets the gradients
+        gradientView.setTwoGradientBackground(colorOne: Colors.Orange, colorTwo: Colors.Purple)
+        
+        // Formats placeholder text
         emailTxtField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
         passTxtField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        if emailTxtField.text != "" && passTxtField.text != "" {
-            logIn()
-        }
-        return true
-    }
+    // MARK: Log In
     
+    // Logs the user in
     func logIn() {
         Auth.auth().signIn(withEmail: emailTxtField.text!, password: passTxtField.text!) { (user, error) in
             if error == nil {
@@ -47,11 +63,19 @@ class LogIn: UIViewController, UITextFieldDelegate {
         }
     }
     
-    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+    // MARK: Dismiss Keyboard
+    
+    // Dismiss keyboard when "done" is pressed
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
+        if emailTxtField.text != "" && passTxtField.text != "" {
+            logIn()
+        }
+        return true
     }
     
-    @IBAction func logIn(_ sender: UIButton) {
-        logIn()
+    // Dismiss keyboard when view tapped
+    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        self.view.endEditing(true)
     }
 }

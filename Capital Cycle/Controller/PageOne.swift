@@ -23,7 +23,7 @@ class PageOne: UIViewController {
         customizeLayout()
     }
     
-    // MARK: View settup
+    // MARK: View Setup
     
     // Formats the UI
     func customizeLayout() {

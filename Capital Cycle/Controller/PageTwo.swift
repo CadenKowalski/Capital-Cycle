@@ -54,7 +54,7 @@ class PageTwo: UIViewController {
         displayOverviewData()
     }
     
-    // MARK: View settup
+    // MARK: View Setup
     
     // Formats the UI
     func customizeLayout() {
