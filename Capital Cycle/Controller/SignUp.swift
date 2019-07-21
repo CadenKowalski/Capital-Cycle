@@ -27,22 +27,24 @@ class SignUp: UIViewController, UITextFieldDelegate {
         emailTxtField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
         passTxtField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
         confmPassTxtField.attributedPlaceholder = NSAttributedString(string: "Confirm Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
-        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
+        if emailTxtField.text != "" && passTxtField.text != "" && confmPassTxtField.text != "" {
+            signUp()
+        }
         return true
     }
     
-    @IBAction func signUp(_ sender: UIButton) {
+    func signUp() {
         if passTxtField.text != confmPassTxtField.text {
             let Alert = UIAlertController(title: "Password Incorret", message: "Please make sure your passwords match", preferredStyle: .alert)
             let Action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             Alert.addAction(Action)
             present(Alert, animated: true, completion: nil)
         } else {
-            Auth.auth().createUser(withEmail: emailTxtField.text!, password: passTxtField.text!) { (user, error) in
+                Auth.auth().createUser(withEmail: emailTxtField.text!, password: passTxtField.text!) { (user, error) in
                 if error == nil {
                     self.performSegue(withIdentifier: "SignUp", sender: self)
                 } else {
@@ -53,5 +55,13 @@ class SignUp: UIViewController, UITextFieldDelegate {
                 }
             }
         }
+    }
+    
+    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        self.view.endEditing(true)
+    }
+    
+    @IBAction func signUp(_ sender: UIButton) {
+        signUp()
     }
 }

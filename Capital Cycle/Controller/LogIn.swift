@@ -12,28 +12,30 @@ import FirebaseAuth
 class LogIn: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var emailTxtField: UITextField!
-    @IBOutlet weak var passwordTxtField: UITextField!
+    @IBOutlet weak var passTxtField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         emailTxtField.delegate = self
-        passwordTxtField.delegate = self
+        passTxtField.delegate = self
         customizeLayout()
     }
     
     func customizeLayout() {
         emailTxtField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
-        passwordTxtField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
-        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
+        passTxtField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
+        if emailTxtField.text != "" && passTxtField.text != "" {
+            logIn()
+        }
         return true
     }
     
-    @IBAction func logIn(_ sender: UIButton) {
-        Auth.auth().signIn(withEmail: emailTxtField.text!, password: passwordTxtField.text!) { (user, error) in
+    func logIn() {
+        Auth.auth().signIn(withEmail: emailTxtField.text!, password: passTxtField.text!) { (user, error) in
             if error == nil {
                 self.performSegue(withIdentifier: "LogIn", sender: self)
             } else {
@@ -43,5 +45,13 @@ class LogIn: UIViewController, UITextFieldDelegate {
                 self.present(Alert, animated: true, completion: nil)
             }
         }
+    }
+    
+    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        self.view.endEditing(true)
+    }
+    
+    @IBAction func logIn(_ sender: UIButton) {
+        logIn()
     }
 }

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14810.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="D3Y-25-YLq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14845" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="D3Y-25-YLq">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14766.15"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14799.2"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="iOS 13.0 system colors" minToolsVersion="11.0"/>
     </dependencies>
     <scenes>
         <!--Home-->
@@ -456,7 +457,7 @@ Phone: 202.288.5245</string>
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="900"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="asp-o6-c41" userLabel="Day Lbl">
-                                                <rect key="frame" x="189" y="108" width="36.333333333333343" height="28"/>
+                                                <rect key="frame" x="189" y="108" width="36" height="28"/>
                                                 <attributedString key="attributedText">
                                                     <fragment content="Day">
                                                         <attributes>
@@ -469,7 +470,7 @@ Phone: 202.288.5245</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s8S-P4-4en" userLabel="Daily Date Lbl">
-                                                <rect key="frame" x="8" y="110" width="36.666666666666664" height="23.333333333333343"/>
+                                                <rect key="frame" x="8" y="110" width="37" height="23.666666666666657"/>
                                                 <attributedString key="attributedText">
                                                     <fragment content="Date">
                                                         <attributes>
@@ -866,7 +867,7 @@ Phone: 202.288.5245</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ekl-51-q1N">
-                                                        <rect key="frame" x="162.33333333333334" y="108" width="89.333333333333343" height="28"/>
+                                                        <rect key="frame" x="162.66666666666666" y="108" width="89" height="28"/>
                                                         <attributedString key="attributedText">
                                                             <fragment content="Overview">
                                                                 <attributes>
@@ -879,7 +880,7 @@ Phone: 202.288.5245</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NW4-hz-dnS">
-                                                        <rect key="frame" x="8" y="110" width="36.666666666666664" height="23.333333333333343"/>
+                                                        <rect key="frame" x="8" y="110" width="37" height="23.666666666666657"/>
                                                         <attributedString key="attributedText">
                                                             <fragment content="Date">
                                                                 <attributes>
@@ -966,7 +967,7 @@ Phone: 202.288.5245</string>
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yxy-7o-B0d">
-                                        <rect key="frame" x="155.66666666666666" y="38" width="102.99999999999997" height="34.333333333333343"/>
+                                        <rect key="frame" x="155.66666666666666" y="38" width="102.99999999999997" height="34"/>
                                         <attributedString key="attributedText">
                                             <fragment content="Schedule">
                                                 <attributes>
@@ -1620,21 +1621,21 @@ A: We have a variety of games and books as well as a gym and playground to occup
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wvG-jg-f8l" userLabel="Email">
-                                <rect key="frame" x="16" y="158.33333333333334" width="343" height="34"/>
+                                <rect key="frame" x="16" y="114.66666666666669" width="343" height="34"/>
                                 <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done" textContentType="email"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tTZ-I0-VVo" userLabel="Password">
-                                <rect key="frame" x="16" y="208.33333333333334" width="343" height="34"/>
+                                <rect key="frame" x="16" y="164.66666666666666" width="343" height="34"/>
                                 <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wxJ-Jb-Yd3" userLabel="Log In Btn">
-                                <rect key="frame" x="158" y="89" width="59" height="39.333333333333343"/>
+                                <rect key="frame" x="158" y="45" width="59" height="39.666666666666657"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
                                         <fragment content="Log In">
@@ -1652,6 +1653,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.63137254901960782" green="0.31372549019607843" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="5Wo-YH-b5x" firstAttribute="trailing" secondItem="wvG-jg-f8l" secondAttribute="trailing" constant="16" id="ACC-z6-Xl3"/>
                             <constraint firstItem="wvG-jg-f8l" firstAttribute="top" secondItem="wxJ-Jb-Yd3" secondAttribute="bottom" constant="30" id="BXU-hT-SZC"/>
@@ -1663,14 +1665,22 @@ A: We have a variety of games and books as well as a gym and playground to occup
                             <constraint firstItem="tTZ-I0-VVo" firstAttribute="leading" secondItem="5Wo-YH-b5x" secondAttribute="leading" constant="16" id="wq1-Rg-ve4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5Wo-YH-b5x"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="rf0-tR-gUT" appends="YES" id="8JO-xc-2Bo"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="emailTxtField" destination="wvG-jg-f8l" id="mib-Kn-mmf"/>
-                        <outlet property="passwordTxtField" destination="tTZ-I0-VVo" id="H17-fg-Bhv"/>
+                        <outlet property="passTxtField" destination="tTZ-I0-VVo" id="Mt6-iM-A0h"/>
                         <segue destination="jM6-Kb-J6q" kind="show" identifier="LogIn" id="JVj-89-k2w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2JP-Fh-IfX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="rf0-tR-gUT" userLabel="Dismiss Keyboard">
+                    <connections>
+                        <action selector="dismissKeyboard:" destination="v2Q-k5-Eoj" id="MOn-0h-7SB"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="31" y="-667"/>
         </scene>
@@ -1683,28 +1693,28 @@ A: We have a variety of games and books as well as a gym and playground to occup
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O6n-C3-gRh">
-                                <rect key="frame" x="16" y="114.33333333333331" width="343" height="34"/>
+                                <rect key="frame" x="16" y="114.66666666666669" width="343" height="34"/>
                                 <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done" textContentType="email"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GNk-Ht-aHI">
-                                <rect key="frame" x="16" y="164.33333333333334" width="343" height="34"/>
+                                <rect key="frame" x="16" y="164.66666666666666" width="343" height="34"/>
                                 <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES" textContentType="new-password"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3u5-72-jbV">
-                                <rect key="frame" x="16" y="214.33333333333334" width="343" height="34"/>
+                                <rect key="frame" x="16" y="214.66666666666666" width="343" height="34"/>
                                 <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES" textContentType="new-password"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2DJ-Cf-dWE" userLabel="Sign Up Btn">
-                                <rect key="frame" x="150.66666666666666" y="45" width="74" height="39.333333333333343"/>
+                                <rect key="frame" x="150.66666666666666" y="45" width="74" height="39.666666666666657"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
                                         <fragment content="Sign Up">
@@ -1722,6 +1732,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.63137254901960782" green="0.31372549019607843" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="O6n-C3-gRh" firstAttribute="top" secondItem="2DJ-Cf-dWE" secondAttribute="bottom" constant="30" id="ACt-GV-c0P"/>
                             <constraint firstItem="3u5-72-jbV" firstAttribute="leading" secondItem="VUr-xS-gve" secondAttribute="leading" constant="16" id="E5C-Eb-Hsb"/>
@@ -1736,6 +1747,9 @@ A: We have a variety of games and books as well as a gym and playground to occup
                             <constraint firstItem="VUr-xS-gve" firstAttribute="trailing" secondItem="GNk-Ht-aHI" secondAttribute="trailing" constant="16" id="zhu-Ej-3iQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VUr-xS-gve"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="rmA-jg-0kP" appends="YES" id="XGt-MV-EKx"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="confmPassTxtField" destination="3u5-72-jbV" id="3db-DV-YYz"/>
@@ -1745,6 +1759,11 @@ A: We have a variety of games and books as well as a gym and playground to occup
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fLH-LB-9yH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="rmA-jg-0kP" userLabel="Dismiss Keyboard">
+                    <connections>
+                        <action selector="dismissKeyboard:" destination="A2Z-6c-UZy" id="3It-qO-NzS"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="724" y="-667"/>
         </scene>
