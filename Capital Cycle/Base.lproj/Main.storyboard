@@ -32,7 +32,7 @@
                                                 <fragment content="Log In">
                                                     <attributes>
                                                         <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <font key="NSFont" size="20" name="Avenir-Heavy"/>
+                                                        <font key="NSFont" size="20" name="Avenir-Medium"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                     </attributes>
                                                 </fragment>
@@ -51,7 +51,7 @@
                                                 <fragment content="Sign Up">
                                                     <attributes>
                                                         <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <font key="NSFont" size="20" name="Avenir-Heavy"/>
+                                                        <font key="NSFont" size="20" name="Avenir-Medium"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                     </attributes>
                                                 </fragment>
@@ -81,6 +81,7 @@
                     <connections>
                         <outlet property="logInBtn" destination="Vdd-GH-6Hr" id="MOf-aR-SZy"/>
                         <outlet property="signUpBtn" destination="HFw-5Y-4Tg" id="wMs-c0-Mvy"/>
+                        <segue destination="jM6-Kb-J6q" kind="show" identifier="RememberMe" id="uBn-B2-aBS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gSp-Am-WXh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -390,31 +391,27 @@ Phone: 202.288.5245</string>
                                         </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dUL-KX-KV6" userLabel="Log In Btn">
-                                        <rect key="frame" x="349" y="8" width="49" height="35.333333333333336"/>
-                                        <state key="normal">
-                                            <attributedString key="attributedTitle">
-                                                <fragment content="Log In">
-                                                    <attributes>
-                                                        <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <font key="NSFont" size="17" name="Avenir-Medium"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
-                                        </state>
+                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q6C-0K-vCN" userLabel="Settings Btn">
+                                        <rect key="frame" x="12" y="11.999999999999996" width="30" height="30.666666666666675"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="gHc-g7-bs4"/>
+                                            <constraint firstAttribute="width" constant="30" id="gWR-Xs-02p"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" backgroundImage="gear" catalog="system"/>
                                         <connections>
-                                            <action selector="LogIn:" destination="bH8-1u-VSq" eventType="touchUpInside" id="9Nv-In-o20"/>
+                                            <segue destination="ECW-nJ-Zo5" kind="show" id="stl-Sk-OpA"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="dZu-KI-aQI" firstAttribute="centerY" secondItem="E4V-Od-9gE" secondAttribute="centerY" constant="5" id="8nH-dq-YMC"/>
-                                    <constraint firstItem="dUL-KX-KV6" firstAttribute="top" secondItem="E4V-Od-9gE" secondAttribute="top" constant="8" id="HEr-rk-m0v"/>
                                     <constraint firstItem="dZu-KI-aQI" firstAttribute="centerX" secondItem="E4V-Od-9gE" secondAttribute="centerX" id="Ivh-jm-vc0"/>
                                     <constraint firstAttribute="height" constant="100" id="L6f-kV-R5C"/>
-                                    <constraint firstAttribute="trailing" secondItem="dUL-KX-KV6" secondAttribute="trailing" constant="16" id="xit-he-1cd"/>
+                                    <constraint firstItem="Q6C-0K-vCN" firstAttribute="top" secondItem="E4V-Od-9gE" secondAttribute="top" constant="12" id="WVi-yP-Fso"/>
+                                    <constraint firstItem="Q6C-0K-vCN" firstAttribute="leading" secondItem="E4V-Od-9gE" secondAttribute="leading" constant="12" id="cnp-Ag-lIO"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -442,7 +439,7 @@ Phone: 202.288.5245</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Izh-eE-oWs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-718" y="998"/>
+            <point key="canvasLocation" x="-718.39999999999998" y="997.53694581280797"/>
         </scene>
         <!--Page Two-->
         <scene sceneID="9SG-Q6-eE7">
@@ -1050,6 +1047,44 @@ Phone: 202.288.5245</string>
             </objects>
             <point key="canvasLocation" x="29" y="850"/>
         </scene>
+        <!--Settings-->
+        <scene sceneID="OZi-0K-fvl">
+            <objects>
+                <viewController id="ECW-nJ-Zo5" customClass="Settings" customModule="Capital_Cycle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zlY-FZ-jSm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a6D-9Z-fg7">
+                                <rect key="frame" x="148.66666666666666" y="693.66666666666663" width="78" height="39.333333333333371"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Log Out">
+                                            <attributes>
+                                                <color key="NSColor" cocoaTouchSystemColor="systemRedColor"/>
+                                                <font key="NSFont" size="20" name="Avenir-Heavy"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="logOut:" destination="ECW-nJ-Zo5" eventType="touchUpInside" id="PLl-0v-07g"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="a6D-9Z-fg7" firstAttribute="centerX" secondItem="zlY-FZ-jSm" secondAttribute="centerX" id="CZb-yO-xXq"/>
+                            <constraint firstAttribute="bottom" secondItem="a6D-9Z-fg7" secondAttribute="bottom" constant="25" id="qiF-Vf-f3g"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="rZe-8C-x75"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h3b-Ww-RFV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="418.39999999999998" y="1577.5862068965519"/>
+        </scene>
         <!--Page Three-->
         <scene sceneID="0Bt-6K-n3s">
             <objects>
@@ -1585,21 +1620,21 @@ A: We have a variety of games and books as well as a gym and playground to occup
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wvG-jg-f8l" userLabel="Email">
-                                <rect key="frame" x="16" y="114.33333333333331" width="343" height="34"/>
+                                <rect key="frame" x="16" y="158.33333333333334" width="343" height="34"/>
                                 <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done" textContentType="email"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tTZ-I0-VVo" userLabel="Password">
-                                <rect key="frame" x="16" y="164.33333333333334" width="343" height="34"/>
+                                <rect key="frame" x="16" y="208.33333333333334" width="343" height="34"/>
                                 <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" textContentType="password"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wxJ-Jb-Yd3" userLabel="Log In Btn">
-                                <rect key="frame" x="158" y="45" width="59" height="39.333333333333343"/>
+                                <rect key="frame" x="158" y="89" width="59" height="39.333333333333343"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
                                         <fragment content="Log In">
@@ -1659,14 +1694,14 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" textContentType="new-password"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES" textContentType="new-password"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3u5-72-jbV">
                                 <rect key="frame" x="16" y="214.33333333333334" width="343" height="34"/>
                                 <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" textContentType="new-password"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES" textContentType="new-password"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2DJ-Cf-dWE" userLabel="Sign Up Btn">
                                 <rect key="frame" x="150.66666666666666" y="45" width="74" height="39.333333333333343"/>
@@ -1719,6 +1754,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
         <image name="CapitalCycleStoreLogo" width="118" height="122"/>
         <image name="FacebookLogo" width="166.66667175292969" height="166.66667175292969"/>
         <image name="InstagramLogo" width="166.66667175292969" height="166.66667175292969"/>
+        <image name="gear" catalog="system" width="64" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="JVj-89-k2w"/>

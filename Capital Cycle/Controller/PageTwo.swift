@@ -108,7 +108,7 @@ class PageTwo: UIViewController {
         let dayActivitiesList: Array<Any>
         
         // Decides which days data to show
-        if Day == 7 {
+        if Day == 7 || Day == 1 {
             dayActivitiesList = weekActivitiesList[0]
         } else {
             if Hour > 17 {

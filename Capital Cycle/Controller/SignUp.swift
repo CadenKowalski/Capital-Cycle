@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseAuth
 
-class SignUp: UIViewController {
+class SignUp: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var emailTxtField: UITextField!
     @IBOutlet weak var passTxtField: UITextField!
@@ -17,6 +17,9 @@ class SignUp: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        emailTxtField.delegate = self
+        passTxtField.delegate = self
+        confmPassTxtField.delegate = self
         customizeLayout()
     }
     
@@ -24,6 +27,12 @@ class SignUp: UIViewController {
         emailTxtField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
         passTxtField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
         confmPassTxtField.attributedPlaceholder = NSAttributedString(string: "Confirm Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
     }
     
     @IBAction func signUp(_ sender: UIButton) {
