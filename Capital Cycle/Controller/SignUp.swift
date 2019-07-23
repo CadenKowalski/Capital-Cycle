@@ -16,6 +16,8 @@ class SignUp: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailTxtField: UITextField!
     @IBOutlet weak var passTxtField: UITextField!
     @IBOutlet weak var confmPassTxtField: UITextField!
+    @IBOutlet weak var privacyPolicyTxtView: UITextView!
+    var Agree = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +42,28 @@ class SignUp: UIViewController, UITextFieldDelegate {
         emailTxtField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
         passTxtField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
         confmPassTxtField.attributedPlaceholder = NSAttributedString(string: "Confirm Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
+        
+        // Formats the privacy policy text view
+        privacyPolicyTxtView.layer.cornerRadius = 20
+    }
+    
+    // User agrees to privacy policy and terms of service
+    @IBAction func agreeToPolicies(_ sender: UIButton) {
+        if !Agree {
+            sender.setImage(UIImage(named: "Checked"), for: .normal)
+            Agree = true
+            if emailTxtField.text != "" && passTxtField.text != "" && confmPassTxtField.text != "" {
+                signUp()
+            }
+        } else {
+            sender.setImage(UIImage(named: "Unchecked"), for: .normal)
+            Agree = false
+        }
+    }
+    
+    // Displays the privacy policy text view
+    @IBAction func privacyPolicy(_ sender: UIButton) {
+        privacyPolicyTxtView.isHidden = false
     }
     
     // MARK: Sign Up
@@ -48,6 +72,11 @@ class SignUp: UIViewController, UITextFieldDelegate {
     func signUp() {
         if passTxtField.text != confmPassTxtField.text {
             let Alert = UIAlertController(title: "Password Incorret", message: "Please make sure your passwords match", preferredStyle: .alert)
+            let Action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            Alert.addAction(Action)
+            present(Alert, animated: true, completion: nil)
+        } else if Agree == false {
+            let Alert = UIAlertController(title: "Error", message: "Please make sure you agree to the privacy policy and terms of serivce", preferredStyle: .alert)
             let Action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             Alert.addAction(Action)
             present(Alert, animated: true, completion: nil)
@@ -65,12 +94,12 @@ class SignUp: UIViewController, UITextFieldDelegate {
         }
     }
     
-    // MARK: Dismiss Keyboard
+    // MARK: Dismiss
     
     // Dismiss keybpard when "done" is pressed
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
-        if emailTxtField.text != "" && passTxtField.text != "" && confmPassTxtField.text != "" {
+        if emailTxtField.text != "" && passTxtField.text != "" && confmPassTxtField.text != "" && Agree == true {
             signUp()
         }
         return true
@@ -79,5 +108,9 @@ class SignUp: UIViewController, UITextFieldDelegate {
     // Dismiss keyboard when view is tapped
     @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
         self.view.endEditing(true)
+    }
+    
+    @IBAction func dismissPrivacyPolicy(_ sender: UITapGestureRecognizer) {
+        privacyPolicyTxtView.isHidden = true
     }
 }
