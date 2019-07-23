@@ -73,7 +73,12 @@ class PageVC: UIPageViewController, UIPageViewControllerDelegate, UIPageViewCont
         pageControl.numberOfPages = orderedVCs.count
         pageControl.currentPage = 0
         pageControl.pageIndicatorTintColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
-        pageControl.currentPageIndicatorTintColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        if traitCollection.userInterfaceStyle == .light {
+            pageControl.currentPageIndicatorTintColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        } else {
+            pageControl.currentPageIndicatorTintColor = #colorLiteral(red: 0.75, green: 0.75, blue: 0.75, alpha: 1)
+        }
+            
         self.view.addSubview(pageControl)
     }
     
