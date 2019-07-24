@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import CoreData
 
 class SignUp: UIViewController, UITextFieldDelegate {
 
@@ -16,6 +17,7 @@ class SignUp: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailTxtField: UITextField!
     @IBOutlet weak var passTxtField: UITextField!
     @IBOutlet weak var confmPassTxtField: UITextField!
+    @IBOutlet weak var signedInBtn: UIButton!
     @IBOutlet weak var privacyPolicyTxtView: UITextView!
     var Agree = false
     
@@ -61,6 +63,17 @@ class SignUp: UIViewController, UITextFieldDelegate {
         }
     }
     
+    // Keep the user signed in or not
+    @IBAction func keepSignedIn(_ sender: UIButton) {
+        if !signedIn {
+            signedIn = true
+            sender.setImage(UIImage(named: "Checked"), for: .normal)
+        } else {
+            signedIn = false
+            sender.setImage(UIImage(named: "Unchecked"), for: .normal)
+        }
+    }
+
     // Displays the privacy policy text view
     @IBAction func privacyPolicy(_ sender: UIButton) {
         privacyPolicyTxtView.isHidden = false
@@ -81,8 +94,9 @@ class SignUp: UIViewController, UITextFieldDelegate {
             Alert.addAction(Action)
             present(Alert, animated: true, completion: nil)
         } else {
-                Auth.auth().createUser(withEmail: emailTxtField.text!, password: passTxtField.text!) { (user, error) in
+            Auth.auth().createUser(withEmail: emailTxtField.text!, password: passTxtField.text!) { (user, error) in
                 if error == nil {
+                    self.updateContext()
                     self.performSegue(withIdentifier: "SignUp", sender: self)
                 } else {
                     let Alert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
@@ -94,6 +108,24 @@ class SignUp: UIViewController, UITextFieldDelegate {
         }
     }
     
+    // MARK: Core Data
+    
+    // Updates the context with new values
+    func updateContext() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let Context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Authentication")
+        do {
+            let fetchResults = try Context.fetch(fetchRequest)
+            let isSignedIn = fetchResults.first as! NSManagedObject
+            isSignedIn.setValue(signedIn, forKey: "signedIn")
+            try Context.save()
+        } catch {
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
+    }
+    
     // MARK: Dismiss
     
     // Dismiss keybpard when "done" is pressed
@@ -102,6 +134,7 @@ class SignUp: UIViewController, UITextFieldDelegate {
         if emailTxtField.text != "" && passTxtField.text != "" && confmPassTxtField.text != "" && Agree == true {
             signUp()
         }
+        
         return true
     }
     

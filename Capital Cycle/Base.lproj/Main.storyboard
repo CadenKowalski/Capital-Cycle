@@ -1362,7 +1362,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="euE-3o-OpQ">
-                                <rect key="frame" x="97" y="216" width="181" height="23.333333333333343"/>
+                                <rect key="frame" x="97" y="249.00000000000003" width="181" height="23.333333333333343"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="181" id="71E-yr-dN4"/>
                                     <constraint firstAttribute="height" constant="23.329999999999998" id="eon-Jq-wRg"/>
@@ -1372,7 +1372,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3vu-Nn-vdL">
-                                <rect key="frame" x="157" y="247.33333333333337" width="61" height="21"/>
+                                <rect key="frame" x="157" y="280.33333333333331" width="61" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="gah-2t-alk"/>
                                     <constraint firstAttribute="width" constant="61" id="jY4-Lp-ZG2"/>
@@ -1406,6 +1406,29 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                     <constraint firstAttribute="height" constant="100" id="ioO-Kj-laH"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qgq-dg-T1L" userLabel="Check Box">
+                                <rect key="frame" x="13" y="213" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="Xwg-fC-ncE"/>
+                                    <constraint firstAttribute="height" constant="25" id="g3h-fg-aUZ"/>
+                                </constraints>
+                                <state key="normal" image="Unchecked">
+                                    <color key="titleColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="keepSignedIn:" destination="v2Q-k5-Eoj" eventType="touchUpInside" id="KT4-pY-vpT"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keep me signed in" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="den-8a-0tj">
+                                <rect key="frame" x="42" y="219" width="85" height="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="85" id="Ncc-Sx-wJg"/>
+                                    <constraint firstAttribute="height" constant="14" id="hR4-4i-GOb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="10"/>
+                                <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" name="ViewColor"/>
                         <gestureRecognizers/>
@@ -1413,12 +1436,16 @@ A: We have a variety of games and books as well as a gym and playground to occup
                             <constraint firstItem="5Wo-YH-b5x" firstAttribute="trailing" secondItem="wvG-jg-f8l" secondAttribute="trailing" constant="16" id="ACC-z6-Xl3"/>
                             <constraint firstItem="wvG-jg-f8l" firstAttribute="leading" secondItem="5Wo-YH-b5x" secondAttribute="leading" constant="16" id="Elo-Yw-oOP"/>
                             <constraint firstItem="3vu-Nn-vdL" firstAttribute="centerX" secondItem="43c-jI-F7U" secondAttribute="centerX" id="JR1-81-oV7"/>
+                            <constraint firstItem="den-8a-0tj" firstAttribute="top" secondItem="tTZ-I0-VVo" secondAttribute="bottom" constant="19" id="JZy-5b-as3"/>
                             <constraint firstItem="3vu-Nn-vdL" firstAttribute="top" secondItem="euE-3o-OpQ" secondAttribute="bottom" constant="8" id="RZB-04-mww"/>
-                            <constraint firstItem="euE-3o-OpQ" firstAttribute="top" secondItem="tTZ-I0-VVo" secondAttribute="bottom" constant="16" id="YZP-6p-zp1"/>
                             <constraint firstItem="HmA-eO-hef" firstAttribute="top" secondItem="43c-jI-F7U" secondAttribute="top" id="Z5z-C5-boh"/>
                             <constraint firstItem="HmA-eO-hef" firstAttribute="leading" secondItem="5Wo-YH-b5x" secondAttribute="leading" id="c9F-Fl-iPg"/>
+                            <constraint firstItem="den-8a-0tj" firstAttribute="leading" secondItem="qgq-dg-T1L" secondAttribute="trailing" constant="4" id="dnJ-IR-gS1"/>
+                            <constraint firstItem="euE-3o-OpQ" firstAttribute="top" secondItem="den-8a-0tj" secondAttribute="bottom" constant="16" id="jmO-kv-9TV"/>
                             <constraint firstItem="wvG-jg-f8l" firstAttribute="top" secondItem="HmA-eO-hef" secondAttribute="bottom" constant="16" id="o81-Co-P7y"/>
                             <constraint firstItem="HmA-eO-hef" firstAttribute="trailing" secondItem="5Wo-YH-b5x" secondAttribute="trailing" id="p7X-Fb-wAL"/>
+                            <constraint firstItem="qgq-dg-T1L" firstAttribute="top" secondItem="tTZ-I0-VVo" secondAttribute="bottom" constant="13" id="q95-Fz-JoT"/>
+                            <constraint firstItem="qgq-dg-T1L" firstAttribute="leading" secondItem="5Wo-YH-b5x" secondAttribute="leading" constant="13" id="rFX-FT-OkF"/>
                             <constraint firstItem="5Wo-YH-b5x" firstAttribute="trailing" secondItem="tTZ-I0-VVo" secondAttribute="trailing" constant="16" id="sug-iM-7bQ"/>
                             <constraint firstItem="tTZ-I0-VVo" firstAttribute="top" secondItem="wvG-jg-f8l" secondAttribute="bottom" constant="16" id="szJ-gz-rfk"/>
                             <constraint firstItem="euE-3o-OpQ" firstAttribute="centerX" secondItem="43c-jI-F7U" secondAttribute="centerX" id="v5n-9P-X6E"/>
@@ -1434,6 +1461,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                         <outlet property="gradientView" destination="HmA-eO-hef" id="eaH-j0-djy"/>
                         <outlet property="gradientViewHeight" destination="ioO-Kj-laH" id="Lwe-6O-iK7"/>
                         <outlet property="passTxtField" destination="tTZ-I0-VVo" id="Mt6-iM-A0h"/>
+                        <outlet property="signedInBtn" destination="qgq-dg-T1L" id="sTz-1s-2Lt"/>
                         <segue destination="jM6-Kb-J6q" kind="presentation" identifier="LogIn" modalPresentationStyle="fullScreen" id="JVj-89-k2w"/>
                         <segue destination="jM6-Kb-J6q" kind="presentation" identifier="AlreadyLoggedIn" modalPresentationStyle="fullScreen" id="6V9-QI-sCX"/>
                     </connections>
@@ -1497,19 +1525,44 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES" textContentType="new-password"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ra-2Z-TlZ" userLabel="Check Box">
+                                <rect key="frame" x="13" y="263" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="KJ9-md-jns"/>
+                                    <constraint firstAttribute="width" constant="25" id="i3Y-IW-h3I"/>
+                                </constraints>
+                                <state key="normal" image="Unchecked">
+                                    <color key="titleColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="keepSignedIn:" destination="A2Z-6c-UZy" eventType="touchUpInside" id="Ywc-dy-GXh"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keep me signed in" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rje-J8-oBE" userLabel="Keep Me Signed In">
+                                <rect key="frame" x="42" y="270" width="85" height="13"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="13" id="VUS-7L-2MU"/>
+                                    <constraint firstAttribute="width" constant="85" id="kEy-FT-Gm8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="10"/>
+                                <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5fa-Sm-lDz" userLabel="Check Box">
-                                <rect key="frame" x="13" y="259" width="25" height="25"/>
+                                <rect key="frame" x="13" y="298" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="Gdo-s2-9C5"/>
                                     <constraint firstAttribute="height" constant="25" id="JLd-UU-dZ6"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="Unchecked"/>
+                                <state key="normal" image="Unchecked">
+                                    <color key="titleColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="agreeToPolicies:" destination="A2Z-6c-UZy" eventType="touchUpInside" id="dU9-H9-SyC"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I have read and agree to the" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8bD-Zf-iA1" userLabel="Agree Lbl">
-                                <rect key="frame" x="42" y="266" width="128.66666666666666" height="13.666666666666686"/>
+                                <rect key="frame" x="42" y="305" width="128.66666666666666" height="13.666666666666686"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="128.66999999999999" id="dg3-fk-B1C"/>
                                 </constraints>
@@ -1518,7 +1571,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6V0-zb-pDi" userLabel="Privacy Policy Btn">
-                                <rect key="frame" x="172" y="265" width="62" height="15"/>
+                                <rect key="frame" x="172" y="304" width="62" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="VVE-sO-cQJ"/>
                                     <constraint firstAttribute="width" constant="62" id="kB4-GQ-Xn5"/>
@@ -1554,26 +1607,30 @@ A: We have a variety of games and books as well as a gym and playground to occup
                         <color key="backgroundColor" name="ViewColor"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="Rje-J8-oBE" firstAttribute="leading" secondItem="5ra-2Z-TlZ" secondAttribute="trailing" constant="4" id="5j5-Fz-2co"/>
+                            <constraint firstItem="6V0-zb-pDi" firstAttribute="top" secondItem="Rje-J8-oBE" secondAttribute="bottom" constant="21" id="AMB-jj-1CK"/>
                             <constraint firstItem="1lx-NS-scX" firstAttribute="top" secondItem="VUr-xS-gve" secondAttribute="top" id="DZu-jQ-h50"/>
                             <constraint firstItem="3u5-72-jbV" firstAttribute="leading" secondItem="VUr-xS-gve" secondAttribute="leading" constant="16" id="E5C-Eb-Hsb"/>
                             <constraint firstItem="yHY-qM-To4" firstAttribute="bottom" secondItem="2Sb-N8-kMT" secondAttribute="bottom" constant="-16" id="GnS-qB-e8V"/>
                             <constraint firstItem="yHY-qM-To4" firstAttribute="top" secondItem="1lx-NS-scX" secondAttribute="top" constant="16" id="ImE-lD-TNH"/>
                             <constraint firstItem="O6n-C3-gRh" firstAttribute="top" secondItem="1lx-NS-scX" secondAttribute="bottom" constant="16" id="J2w-Mv-paG"/>
-                            <constraint firstItem="5fa-Sm-lDz" firstAttribute="top" secondItem="3u5-72-jbV" secondAttribute="bottom" constant="9" id="JR8-o1-Hu0"/>
                             <constraint firstItem="VUr-xS-gve" firstAttribute="trailing" secondItem="O6n-C3-gRh" secondAttribute="trailing" constant="16" id="LRi-Uk-m1M"/>
                             <constraint firstItem="1lx-NS-scX" firstAttribute="trailing" secondItem="VUr-xS-gve" secondAttribute="trailing" id="Lkh-r4-WQv"/>
                             <constraint firstItem="8bD-Zf-iA1" firstAttribute="leading" secondItem="5fa-Sm-lDz" secondAttribute="trailing" constant="4" id="MOa-N2-FFY"/>
                             <constraint firstItem="GNk-Ht-aHI" firstAttribute="top" secondItem="O6n-C3-gRh" secondAttribute="bottom" constant="16" id="Pfy-5R-DpU"/>
                             <constraint firstItem="3u5-72-jbV" firstAttribute="top" secondItem="GNk-Ht-aHI" secondAttribute="bottom" constant="16" id="Uo1-u1-H4m"/>
-                            <constraint firstItem="8bD-Zf-iA1" firstAttribute="top" secondItem="3u5-72-jbV" secondAttribute="bottom" constant="16" id="VnP-Jz-3TF"/>
                             <constraint firstItem="6V0-zb-pDi" firstAttribute="leading" secondItem="8bD-Zf-iA1" secondAttribute="trailing" constant="1.3300000000000001" id="YiB-Jw-pU5"/>
-                            <constraint firstItem="6V0-zb-pDi" firstAttribute="top" secondItem="3u5-72-jbV" secondAttribute="bottom" constant="15" id="YqQ-JI-Z71"/>
+                            <constraint firstItem="Rje-J8-oBE" firstAttribute="top" secondItem="3u5-72-jbV" secondAttribute="bottom" constant="20" id="atl-sn-DJe"/>
+                            <constraint firstItem="5ra-2Z-TlZ" firstAttribute="leading" secondItem="VUr-xS-gve" secondAttribute="leading" constant="13" id="hIu-oQ-n7T"/>
                             <constraint firstItem="GNk-Ht-aHI" firstAttribute="leading" secondItem="VUr-xS-gve" secondAttribute="leading" constant="16" id="kYd-vk-dQJ"/>
                             <constraint firstItem="1lx-NS-scX" firstAttribute="leading" secondItem="VUr-xS-gve" secondAttribute="leading" id="lhX-Av-yGS"/>
+                            <constraint firstItem="8bD-Zf-iA1" firstAttribute="top" secondItem="Rje-J8-oBE" secondAttribute="bottom" constant="22" id="ohK-f4-Jzw"/>
                             <constraint firstItem="yHY-qM-To4" firstAttribute="leading" secondItem="VUr-xS-gve" secondAttribute="leading" constant="16" id="p9u-km-1u8"/>
                             <constraint firstItem="5fa-Sm-lDz" firstAttribute="leading" secondItem="VUr-xS-gve" secondAttribute="leading" constant="13" id="qXM-XV-Nev"/>
+                            <constraint firstItem="5ra-2Z-TlZ" firstAttribute="top" secondItem="3u5-72-jbV" secondAttribute="bottom" constant="13" id="s9M-13-4tR"/>
                             <constraint firstItem="O6n-C3-gRh" firstAttribute="leading" secondItem="VUr-xS-gve" secondAttribute="leading" constant="16" id="tRA-sb-pFy"/>
                             <constraint firstItem="VUr-xS-gve" firstAttribute="trailing" secondItem="3u5-72-jbV" secondAttribute="trailing" constant="16" id="wQ7-Od-qyG"/>
+                            <constraint firstItem="5fa-Sm-lDz" firstAttribute="top" secondItem="5ra-2Z-TlZ" secondAttribute="bottom" constant="10" id="yRO-6i-NPf"/>
                             <constraint firstItem="VUr-xS-gve" firstAttribute="trailing" secondItem="yHY-qM-To4" secondAttribute="trailing" constant="16" id="zDO-U8-D67"/>
                             <constraint firstItem="VUr-xS-gve" firstAttribute="trailing" secondItem="GNk-Ht-aHI" secondAttribute="trailing" constant="16" id="zhu-Ej-3iQ"/>
                         </constraints>
@@ -1589,6 +1646,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                         <outlet property="gradientViewHeight" destination="Ptp-Qi-M9e" id="zfO-12-r04"/>
                         <outlet property="passTxtField" destination="GNk-Ht-aHI" id="c5F-tV-zWi"/>
                         <outlet property="privacyPolicyTxtView" destination="yHY-qM-To4" id="NN3-Nd-qmr"/>
+                        <outlet property="signedInBtn" destination="5ra-2Z-TlZ" id="ir5-XE-ayL"/>
                         <segue destination="jM6-Kb-J6q" kind="presentation" identifier="SignUp" modalPresentationStyle="fullScreen" id="Sdy-Gj-ANw"/>
                     </connections>
                 </viewController>
@@ -1628,6 +1686,6 @@ A: We have a variety of games and books as well as a gym and playground to occup
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="RM7-KP-pjo"/>
-        <segue reference="Sdy-Gj-ANw"/>
+        <segue reference="JVj-89-k2w"/>
     </inferredMetricsTieBreakers>
 </document>
