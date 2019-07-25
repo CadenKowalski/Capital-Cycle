@@ -893,21 +893,47 @@ Phone: 202.288.5245</string>
                                     <constraint firstItem="EHs-R7-608" firstAttribute="centerY" secondItem="hBp-xz-Gw8" secondAttribute="centerY" constant="5" id="eZQ-Gp-bIE"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a6D-9Z-fg7">
-                                <rect key="frame" x="148.66666666666666" y="693.66666666666663" width="78" height="39.333333333333371"/>
-                                <state key="normal">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Log Out">
-                                            <attributes>
-                                                <color key="NSColor" cocoaTouchSystemColor="systemRedColor"/>
-                                                <font key="NSFont" size="20" name="Avenir-Heavy"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6D-9Z-fg7">
+                                <rect key="frame" x="148.66666666666666" y="712" width="78" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="1kY-fg-e8E"/>
+                                    <constraint firstAttribute="width" constant="78" id="cow-q6-9qL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
+                                <state key="normal" title="Log Out">
+                                    <color key="titleColor" cocoaTouchSystemColor="systemRedColor"/>
                                 </state>
                                 <connections>
                                     <action selector="logOut:" destination="ECW-nJ-Zo5" eventType="touchUpInside" id="PLl-0v-07g"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keep me signed in" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v4f-EM-SRo">
+                                <rect key="frame" x="16" y="116" width="143.33333333333334" height="23.333333333333343"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23.329999999999998" id="R1C-mG-Fhk"/>
+                                    <constraint firstAttribute="width" constant="143.33000000000001" id="iqC-Zc-B2I"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
+                                <color key="textColor" name="LabelColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vEF-3o-tyJ">
+                                <rect key="frame" x="310" y="112" width="51" height="31"/>
+                                <color key="onTintColor" name="LabelColor"/>
+                                <color key="thumbTintColor" name="ViewColor"/>
+                            </switch>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oag-v8-Mpp">
+                                <rect key="frame" x="114" y="675" width="147" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="RIw-gP-nMH"/>
+                                    <constraint firstAttribute="width" constant="147" id="uPg-YD-bA1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
+                                <state key="normal" title="Reset Password">
+                                    <color key="titleColor" cocoaTouchSystemColor="systemRedColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="resetPassword:" destination="ECW-nJ-Zo5" eventType="touchUpInside" id="P6f-z1-FvF"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -915,9 +941,15 @@ Phone: 202.288.5245</string>
                         <constraints>
                             <constraint firstItem="hBp-xz-Gw8" firstAttribute="leading" secondItem="rZe-8C-x75" secondAttribute="leading" id="5eA-NT-ukR"/>
                             <constraint firstItem="hBp-xz-Gw8" firstAttribute="trailing" secondItem="rZe-8C-x75" secondAttribute="trailing" id="9WQ-VH-Gvn"/>
+                            <constraint firstItem="a6D-9Z-fg7" firstAttribute="top" secondItem="oag-v8-Mpp" secondAttribute="bottom" constant="16" id="Bq1-kt-1DF"/>
                             <constraint firstItem="a6D-9Z-fg7" firstAttribute="centerX" secondItem="zlY-FZ-jSm" secondAttribute="centerX" id="CZb-yO-xXq"/>
+                            <constraint firstItem="oag-v8-Mpp" firstAttribute="centerX" secondItem="zlY-FZ-jSm" secondAttribute="centerX" id="FoN-v6-mRF"/>
+                            <constraint firstItem="v4f-EM-SRo" firstAttribute="top" secondItem="hBp-xz-Gw8" secondAttribute="bottom" constant="16" id="IAw-vY-Xel"/>
+                            <constraint firstItem="rZe-8C-x75" firstAttribute="trailing" secondItem="vEF-3o-tyJ" secondAttribute="trailing" constant="16" id="QsV-1Y-oaS"/>
                             <constraint firstItem="hBp-xz-Gw8" firstAttribute="top" secondItem="rZe-8C-x75" secondAttribute="top" id="Vs9-AV-nzK"/>
+                            <constraint firstItem="v4f-EM-SRo" firstAttribute="leading" secondItem="rZe-8C-x75" secondAttribute="leading" constant="16" id="pYL-pX-qG9"/>
                             <constraint firstAttribute="bottom" secondItem="a6D-9Z-fg7" secondAttribute="bottom" constant="25" id="qiF-Vf-f3g"/>
+                            <constraint firstItem="vEF-3o-tyJ" firstAttribute="top" secondItem="hBp-xz-Gw8" secondAttribute="bottom" constant="12" id="xSc-G9-zAe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rZe-8C-x75"/>
                     </view>
@@ -1362,7 +1394,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="euE-3o-OpQ">
-                                <rect key="frame" x="97" y="249.00000000000003" width="181" height="23.333333333333343"/>
+                                <rect key="frame" x="97" y="267" width="181" height="23.333333333333314"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="181" id="71E-yr-dN4"/>
                                     <constraint firstAttribute="height" constant="23.329999999999998" id="eon-Jq-wRg"/>
@@ -1372,7 +1404,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3vu-Nn-vdL">
-                                <rect key="frame" x="157" y="280.33333333333331" width="61" height="21"/>
+                                <rect key="frame" x="157" y="298.33333333333331" width="61" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="gah-2t-alk"/>
                                     <constraint firstAttribute="width" constant="61" id="jY4-Lp-ZG2"/>
@@ -1407,7 +1439,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qgq-dg-T1L" userLabel="Check Box">
-                                <rect key="frame" x="13" y="213" width="25" height="25"/>
+                                <rect key="frame" x="13" y="231" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="Xwg-fC-ncE"/>
                                     <constraint firstAttribute="height" constant="25" id="g3h-fg-aUZ"/>
@@ -1420,7 +1452,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keep me signed in" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="den-8a-0tj">
-                                <rect key="frame" x="42" y="219" width="85" height="14"/>
+                                <rect key="frame" x="42" y="237" width="85" height="14"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="85" id="Ncc-Sx-wJg"/>
                                     <constraint firstAttribute="height" constant="14" id="hR4-4i-GOb"/>
@@ -1429,26 +1461,42 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ovt-Gf-r3U">
+                                <rect key="frame" x="126" y="208" width="123" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="123" id="Nv8-mc-t5w"/>
+                                    <constraint firstAttribute="height" constant="15" id="qWL-Tj-XwE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
+                                <state key="normal" title="Forgot your password?">
+                                    <color key="titleColor" cocoaTouchSystemColor="linkColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="resetPassword:" destination="v2Q-k5-Eoj" eventType="touchUpInside" id="8vc-AY-R8l"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" name="ViewColor"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="qgq-dg-T1L" firstAttribute="top" secondItem="ovt-Gf-r3U" secondAttribute="bottom" constant="8" id="86z-Xe-QFE"/>
                             <constraint firstItem="5Wo-YH-b5x" firstAttribute="trailing" secondItem="wvG-jg-f8l" secondAttribute="trailing" constant="16" id="ACC-z6-Xl3"/>
                             <constraint firstItem="wvG-jg-f8l" firstAttribute="leading" secondItem="5Wo-YH-b5x" secondAttribute="leading" constant="16" id="Elo-Yw-oOP"/>
                             <constraint firstItem="3vu-Nn-vdL" firstAttribute="centerX" secondItem="43c-jI-F7U" secondAttribute="centerX" id="JR1-81-oV7"/>
-                            <constraint firstItem="den-8a-0tj" firstAttribute="top" secondItem="tTZ-I0-VVo" secondAttribute="bottom" constant="19" id="JZy-5b-as3"/>
                             <constraint firstItem="3vu-Nn-vdL" firstAttribute="top" secondItem="euE-3o-OpQ" secondAttribute="bottom" constant="8" id="RZB-04-mww"/>
                             <constraint firstItem="HmA-eO-hef" firstAttribute="top" secondItem="43c-jI-F7U" secondAttribute="top" id="Z5z-C5-boh"/>
                             <constraint firstItem="HmA-eO-hef" firstAttribute="leading" secondItem="5Wo-YH-b5x" secondAttribute="leading" id="c9F-Fl-iPg"/>
                             <constraint firstItem="den-8a-0tj" firstAttribute="leading" secondItem="qgq-dg-T1L" secondAttribute="trailing" constant="4" id="dnJ-IR-gS1"/>
                             <constraint firstItem="euE-3o-OpQ" firstAttribute="top" secondItem="den-8a-0tj" secondAttribute="bottom" constant="16" id="jmO-kv-9TV"/>
+                            <constraint firstItem="den-8a-0tj" firstAttribute="top" secondItem="ovt-Gf-r3U" secondAttribute="bottom" constant="14" id="lPX-im-Tfn"/>
+                            <constraint firstItem="ovt-Gf-r3U" firstAttribute="top" secondItem="tTZ-I0-VVo" secondAttribute="bottom" constant="8" id="o1T-JU-lvf"/>
                             <constraint firstItem="wvG-jg-f8l" firstAttribute="top" secondItem="HmA-eO-hef" secondAttribute="bottom" constant="16" id="o81-Co-P7y"/>
                             <constraint firstItem="HmA-eO-hef" firstAttribute="trailing" secondItem="5Wo-YH-b5x" secondAttribute="trailing" id="p7X-Fb-wAL"/>
-                            <constraint firstItem="qgq-dg-T1L" firstAttribute="top" secondItem="tTZ-I0-VVo" secondAttribute="bottom" constant="13" id="q95-Fz-JoT"/>
                             <constraint firstItem="qgq-dg-T1L" firstAttribute="leading" secondItem="5Wo-YH-b5x" secondAttribute="leading" constant="13" id="rFX-FT-OkF"/>
                             <constraint firstItem="5Wo-YH-b5x" firstAttribute="trailing" secondItem="tTZ-I0-VVo" secondAttribute="trailing" constant="16" id="sug-iM-7bQ"/>
                             <constraint firstItem="tTZ-I0-VVo" firstAttribute="top" secondItem="wvG-jg-f8l" secondAttribute="bottom" constant="16" id="szJ-gz-rfk"/>
                             <constraint firstItem="euE-3o-OpQ" firstAttribute="centerX" secondItem="43c-jI-F7U" secondAttribute="centerX" id="v5n-9P-X6E"/>
+                            <constraint firstItem="ovt-Gf-r3U" firstAttribute="centerX" secondItem="43c-jI-F7U" secondAttribute="centerX" id="vyd-Y7-5in"/>
                             <constraint firstItem="tTZ-I0-VVo" firstAttribute="leading" secondItem="5Wo-YH-b5x" secondAttribute="leading" constant="16" id="wq1-Rg-ve4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5Wo-YH-b5x"/>

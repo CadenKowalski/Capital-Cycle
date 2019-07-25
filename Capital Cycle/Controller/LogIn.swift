@@ -82,6 +82,33 @@ class LogIn: UIViewController, UITextFieldDelegate {
         }
     }
     
+    // Resets the users password
+    @IBAction func resetPassword(_ sender: UIButton) {
+        let resetPasswordAlert = UIAlertController(title: "Reset Password", message: "Enter your email adress", preferredStyle: .alert)
+            resetPasswordAlert.addTextField { (textField) in
+                textField.placeholder = "Email"
+                textField.keyboardType = .emailAddress
+                textField.font = UIFont(name: "Avenir-Book", size: 13.0)
+            }
+            
+            resetPasswordAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            resetPasswordAlert.addAction(UIAlertAction(title: "Reset Password", style: .default, handler: { (Action) in
+                let userEmail = resetPasswordAlert.textFields?.first?.text
+                Auth.auth().sendPasswordReset(withEmail: userEmail!, completion: { (Error) in
+                    if Error != nil {
+                        let resetFailedAlert = UIAlertController(title: "Reset Failed", message: "Error: \(String(describing: Error?.localizedDescription))", preferredStyle: .alert)
+                        resetFailedAlert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                        self.present(resetFailedAlert, animated: true, completion: nil)
+                    } else {
+                        let resetEmailSentAlert = UIAlertController(title: "Email sent successfully", message: "Check your email", preferredStyle: .alert)
+                        resetEmailSentAlert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                        self.present(resetEmailSentAlert, animated: true, completion: nil)
+                    }
+                })
+            }))
+        self.present(resetPasswordAlert, animated: true, completion: nil)
+    }
+    
     // MARK: Core Data
         
     // Updates the context with new values

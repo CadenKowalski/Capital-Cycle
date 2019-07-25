@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreData
-var list: [Bool]!
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
