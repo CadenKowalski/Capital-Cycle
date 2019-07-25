@@ -8,11 +8,13 @@
 
 import UIKit
 import FirebaseAuth
+import CoreData
 
 class Settings: UIViewController {
 
     @IBOutlet weak var gradientView: UIView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var signedInSwitch: UISwitch!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,9 +31,27 @@ class Settings: UIViewController {
         
         // Sets the gradients
         gradientView.setTwoGradientBackground(colorOne: Colors.Orange, colorTwo: Colors.Purple)
+        
+        // Sets the "keep me signed in" switch to reflect the actual value
+        if signedIn {
+            signedInSwitch.isOn = true
+        } else {
+            signedInSwitch.isOn = false
+        }
     }
     
     // MARK: Settings
+    
+    // Allows the user to update whether they want to stay signed in or not
+    @IBAction func staySignedIn(_ sender: UISwitch) {
+        if sender.isOn {
+            signedIn = true
+            updateContext()
+        } else {
+            signedIn = false
+            updateContext()
+        }
+    }
     
     // Resets the user's password
     @IBAction func resetPassword(_ sender: UIButton) {
@@ -65,10 +85,32 @@ class Settings: UIViewController {
     @IBAction func logOut(_ sender: UIButton?) {
         do {
             try Auth.auth().signOut()
+            if sender != nil {
+                signedIn = false
+                updateContext()
+            }
         } catch let signOutError as NSError {
             print("Error signing out: %@", signOutError)
         }
         
         self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: Core Data
+    
+    // Updates the context with new values
+    func updateContext() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let Context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Authentication")
+        do {
+            let fetchResults = try Context.fetch(fetchRequest)
+            let isSignedIn = fetchResults.first as! NSManagedObject
+            isSignedIn.setValue(signedIn, forKey: "signedIn")
+            try Context.save()
+        } catch {
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
     }
 }

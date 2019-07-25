@@ -31,6 +31,12 @@ class LogIn: UIViewController, UITextFieldDelegate {
         if Auth.auth().currentUser != nil && signedIn == true {
             self.performSegue(withIdentifier: "AlreadyLoggedIn", sender: nil)
         }
+        
+        if signedIn {
+            signedInBtn.setImage(UIImage(named: "Checked"), for: .normal)
+        } else {
+            signedInBtn.setImage(UIImage(named: "Unchecked"), for: .normal)
+        }
     }
     
     // MARK: View Setup
@@ -47,11 +53,6 @@ class LogIn: UIViewController, UITextFieldDelegate {
         // Formats placeholder text
         emailTxtField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
         passTxtField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
-        
-        // Sets the check box for signing in to the correct value
-        if signedIn {
-            signedInBtn.setImage(UIImage(named: "Checked"), for: .normal)
-        }
     }
     
     // Keep the user signed in or not

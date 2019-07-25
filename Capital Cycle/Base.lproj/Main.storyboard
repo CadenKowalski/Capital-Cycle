@@ -921,6 +921,9 @@ Phone: 202.288.5245</string>
                                 <rect key="frame" x="310" y="112" width="51" height="31"/>
                                 <color key="onTintColor" name="LabelColor"/>
                                 <color key="thumbTintColor" name="ViewColor"/>
+                                <connections>
+                                    <action selector="staySignedIn:" destination="ECW-nJ-Zo5" eventType="valueChanged" id="aXt-p2-fGt"/>
+                                </connections>
                             </switch>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oag-v8-Mpp">
                                 <rect key="frame" x="114" y="675" width="147" height="21"/>
@@ -956,6 +959,7 @@ Phone: 202.288.5245</string>
                     <connections>
                         <outlet property="gradientView" destination="hBp-xz-Gw8" id="I94-bk-LKD"/>
                         <outlet property="gradientViewHeight" destination="FUe-lV-muf" id="7VG-cz-a45"/>
+                        <outlet property="signedInSwitch" destination="vEF-3o-tyJ" id="bnY-Pm-Zct"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h3b-Ww-RFV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
