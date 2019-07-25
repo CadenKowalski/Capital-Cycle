@@ -17,6 +17,7 @@ class LogIn: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailTxtField: UITextField!
     @IBOutlet weak var passTxtField: UITextField!
     @IBOutlet weak var signedInBtn: UIButton!
+    var userExists: Bool!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +33,7 @@ class LogIn: UIViewController, UITextFieldDelegate {
             self.performSegue(withIdentifier: "AlreadyLoggedIn", sender: nil)
         }
         
-        if signedIn {
+        if signedIn && Auth.auth().currentUser != nil {
             signedInBtn.setImage(UIImage(named: "Checked"), for: .normal)
         } else {
             signedInBtn.setImage(UIImage(named: "Unchecked"), for: .normal)

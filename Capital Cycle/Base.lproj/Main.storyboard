@@ -894,7 +894,7 @@ Phone: 202.288.5245</string>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6D-9Z-fg7">
-                                <rect key="frame" x="148.66666666666666" y="712" width="78" height="21"/>
+                                <rect key="frame" x="148.66666666666666" y="646" width="78" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="1kY-fg-e8E"/>
                                     <constraint firstAttribute="width" constant="78" id="cow-q6-9qL"/>
@@ -905,6 +905,20 @@ Phone: 202.288.5245</string>
                                 </state>
                                 <connections>
                                     <action selector="logOut:" destination="ECW-nJ-Zo5" eventType="touchUpInside" id="PLl-0v-07g"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YID-nf-kbH">
+                                <rect key="frame" x="99.666666666666686" y="712" width="176" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="1DN-RZ-wds"/>
+                                    <constraint firstAttribute="width" constant="176" id="XM0-Gs-X4r"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
+                                <state key="normal" title="Delete my account">
+                                    <color key="titleColor" cocoaTouchSystemColor="systemRedColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteAccount:" destination="ECW-nJ-Zo5" eventType="touchUpInside" id="aUr-gR-DAa"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keep me signed in" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v4f-EM-SRo">
@@ -926,7 +940,7 @@ Phone: 202.288.5245</string>
                                 </connections>
                             </switch>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oag-v8-Mpp">
-                                <rect key="frame" x="114" y="675" width="147" height="21"/>
+                                <rect key="frame" x="114" y="679" width="147" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="RIw-gP-nMH"/>
                                     <constraint firstAttribute="width" constant="147" id="uPg-YD-bA1"/>
@@ -942,16 +956,18 @@ Phone: 202.288.5245</string>
                         </subviews>
                         <color key="backgroundColor" name="ViewColor"/>
                         <constraints>
+                            <constraint firstItem="YID-nf-kbH" firstAttribute="top" secondItem="oag-v8-Mpp" secondAttribute="bottom" constant="12" id="3CB-P9-xux"/>
                             <constraint firstItem="hBp-xz-Gw8" firstAttribute="leading" secondItem="rZe-8C-x75" secondAttribute="leading" id="5eA-NT-ukR"/>
                             <constraint firstItem="hBp-xz-Gw8" firstAttribute="trailing" secondItem="rZe-8C-x75" secondAttribute="trailing" id="9WQ-VH-Gvn"/>
-                            <constraint firstItem="a6D-9Z-fg7" firstAttribute="top" secondItem="oag-v8-Mpp" secondAttribute="bottom" constant="16" id="Bq1-kt-1DF"/>
                             <constraint firstItem="a6D-9Z-fg7" firstAttribute="centerX" secondItem="zlY-FZ-jSm" secondAttribute="centerX" id="CZb-yO-xXq"/>
                             <constraint firstItem="oag-v8-Mpp" firstAttribute="centerX" secondItem="zlY-FZ-jSm" secondAttribute="centerX" id="FoN-v6-mRF"/>
+                            <constraint firstItem="YID-nf-kbH" firstAttribute="centerX" secondItem="zlY-FZ-jSm" secondAttribute="centerX" id="Hvc-VK-ePL"/>
                             <constraint firstItem="v4f-EM-SRo" firstAttribute="top" secondItem="hBp-xz-Gw8" secondAttribute="bottom" constant="16" id="IAw-vY-Xel"/>
+                            <constraint firstItem="oag-v8-Mpp" firstAttribute="top" secondItem="a6D-9Z-fg7" secondAttribute="bottom" constant="12" id="IgD-Va-Ab9"/>
                             <constraint firstItem="rZe-8C-x75" firstAttribute="trailing" secondItem="vEF-3o-tyJ" secondAttribute="trailing" constant="16" id="QsV-1Y-oaS"/>
                             <constraint firstItem="hBp-xz-Gw8" firstAttribute="top" secondItem="rZe-8C-x75" secondAttribute="top" id="Vs9-AV-nzK"/>
+                            <constraint firstAttribute="bottom" secondItem="YID-nf-kbH" secondAttribute="bottom" constant="25" id="i4o-HT-OGl"/>
                             <constraint firstItem="v4f-EM-SRo" firstAttribute="leading" secondItem="rZe-8C-x75" secondAttribute="leading" constant="16" id="pYL-pX-qG9"/>
-                            <constraint firstAttribute="bottom" secondItem="a6D-9Z-fg7" secondAttribute="bottom" constant="25" id="qiF-Vf-f3g"/>
                             <constraint firstItem="vEF-3o-tyJ" firstAttribute="top" secondItem="hBp-xz-Gw8" secondAttribute="bottom" constant="12" id="xSc-G9-zAe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rZe-8C-x75"/>

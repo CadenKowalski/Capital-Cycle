@@ -53,34 +53,6 @@ class Settings: UIViewController {
         }
     }
     
-    // Resets the user's password
-    @IBAction func resetPassword(_ sender: UIButton) {
-        let resetPasswordAlert = UIAlertController(title: "Reset Password", message: "Enter your email adress", preferredStyle: .alert)
-        resetPasswordAlert.addTextField { (textField) in
-            textField.placeholder = "Email"
-            textField.keyboardType = .emailAddress
-            textField.font = UIFont(name: "Avenir-Book", size: 13.0)
-        }
-        
-        resetPasswordAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        resetPasswordAlert.addAction(UIAlertAction(title: "Reset Password", style: .default, handler: { (Action) in
-            let userEmail = resetPasswordAlert.textFields?.first?.text
-            Auth.auth().sendPasswordReset(withEmail: userEmail!, completion: { (Error) in
-                if Error != nil {
-                    let resetFailedAlert = UIAlertController(title: "Reset Failed", message: "Error: \(String(describing: Error?.localizedDescription))", preferredStyle: .alert)
-                    resetFailedAlert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                    self.present(resetFailedAlert, animated: true, completion: nil)
-                } else {
-                    let resetEmailSentAlert = UIAlertController(title: "Email sent successfully", message: "Check your email", preferredStyle: .alert)
-                    resetEmailSentAlert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { _ in self.logOut(nil)}))
-                    self.present(resetEmailSentAlert, animated: true, completion: nil)
-                }
-            })
-        }))
-        
-        self.present(resetPasswordAlert, animated: true, completion: nil)
-    }
-    
     // Logs out the user
     @IBAction func logOut(_ sender: UIButton?) {
         do {
@@ -95,6 +67,54 @@ class Settings: UIViewController {
         
         self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
     }
+    
+    // Resets the user's password
+    @IBAction func resetPassword(_ sender: UIButton) {
+        let resetPasswordAlert = UIAlertController(title: "Reset Password", message: "Enter your email adress", preferredStyle: .alert)
+        resetPasswordAlert.addTextField { (textField) in
+            textField.placeholder = "Email"
+            textField.keyboardType = .emailAddress
+            textField.font = UIFont(name: "Avenir-Book", size: 13.0)
+        }
+        
+        resetPasswordAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        resetPasswordAlert.addAction(UIAlertAction(title: "Reset Password", style: .destructive, handler: { (Action) in
+            let userEmail = resetPasswordAlert.textFields?.first?.text
+            Auth.auth().sendPasswordReset(withEmail: userEmail!, completion: { (Error) in
+                if Error != nil {
+                    let resetFailedAlert = UIAlertController(title: "Reset Failed", message: "Error: \(String(describing: Error?.localizedDescription))", preferredStyle: .alert)
+                    resetFailedAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(resetFailedAlert, animated: true, completion: nil)
+                } else {
+                    let resetEmailSentAlert = UIAlertController(title: "Email sent successfully", message: "Check your email", preferredStyle: .alert)
+                    resetEmailSentAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in self.logOut(nil)}))
+                    self.present(resetEmailSentAlert, animated: true, completion: nil)
+                }
+            })
+        }))
+        
+        self.present(resetPasswordAlert, animated: true, completion: nil)
+    }
+    
+    // Allows the user to delete their account
+    @IBAction func deleteAccount(_ sender: UIButton) {
+        let confirmDeleteAlert = UIAlertController(title: "Confirm", message: "Are you sure you want to delete your account?", preferredStyle: .alert)
+        confirmDeleteAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        confirmDeleteAlert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (Action) in
+            Auth.auth().currentUser?.delete(completion: { Error in
+                if Error != nil {
+                    let deleteFailedAlert = UIAlertController(title: "Delete Failed", message: "Error: \(String(describing: Error?.localizedDescription))", preferredStyle: .alert)
+                    deleteFailedAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(deleteFailedAlert, animated: true, completion: nil)
+                } else {
+                   self.logOut(sender)
+                }
+            })
+        }))
+        
+        self.present(confirmDeleteAlert, animated: true, completion: nil)
+    }
+    
     
     // MARK: Core Data
     
