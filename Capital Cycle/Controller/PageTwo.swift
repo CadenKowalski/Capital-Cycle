@@ -13,13 +13,12 @@ class PageTwo: UIViewController {
 
     @IBOutlet weak var gradientView: UIView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var scrollViewDisplay: UIView!
+    @IBOutlet weak var dailyScrollView: UIScrollView!
+    @IBOutlet weak var dailyScrollViewYConstraint: NSLayoutConstraint!
+    @IBOutlet weak var dailyScrollViewDisplay: UIView!
     @IBOutlet weak var dayLbl: UILabel!
-    @IBOutlet weak var dayLblYConstraint: NSLayoutConstraint!
     @IBOutlet weak var dailyDateLbl: UILabel!
-    @IBOutlet weak var dailyDateLblYConstraint: NSLayoutConstraint!
     @IBOutlet weak var overviewBtn: UIButton!
-    @IBOutlet weak var overviewBtnYConstraint: NSLayoutConstraint!
     @IBOutlet weak var eightActivityLbl: UILabel!
     @IBOutlet weak var nineActivityLbl: UILabel!
     @IBOutlet weak var tenActivityLbl: UILabel!
@@ -33,25 +32,44 @@ class PageTwo: UIViewController {
     @IBOutlet weak var sixActivityLbl: UILabel!
     @IBOutlet weak var itemsLbl: UILabel!
     @IBOutlet weak var overviewScrollView: UIView!
-    @IBOutlet weak var overviewView: UIView!
+    @IBOutlet weak var overviewScrollViewYConstraint: NSLayoutConstraint!
+    @IBOutlet weak var overviewScroll: UIScrollView!
+    @IBOutlet weak var overviewScrollViewDisplay: UIView!
     @IBOutlet weak var overviewDateLbl: UILabel!
-    @IBOutlet weak var overviewDateLblYConstraint: NSLayoutConstraint!
-    @IBOutlet weak var overviewLblYConstraint: NSLayoutConstraint!
     @IBOutlet weak var dailyBtn: UIButton!
-    @IBOutlet weak var dailyBtnYConstraint: NSLayoutConstraint!
     @IBOutlet weak var mondayLbl: UILabel!
     @IBOutlet weak var tuesdayLbl: UILabel!
     @IBOutlet weak var wednesdayLbl: UILabel!
     @IBOutlet weak var thursdayLbl: UILabel!
     @IBOutlet weak var fridayLbl: UILabel!
+    @IBOutlet weak var noConnectionView: UIView!
     let Day = Calendar.current.component(.weekday, from: Date())
     let Hour = Calendar.current.component(.hour, from: Date())
+    let spreadsheetID = "1alCW-eSX-lC6CUi0lbmNK7hpfkUhpOqhrbWZCBJgXuk"
+    var dailyRefreshControl = UIRefreshControl()
+    var overviewRefreshControl = UIRefreshControl()
+    let Service = GTLRSheetsService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         customizeLayout()
-        displayDailyData()
-        displayOverviewData()
+        Service.apiKey = "AIzaSyBIdPHR_nqgL9G6fScmlcPMReBM5PmtVD8"
+        if Reachability.isConnectedToNetwork() {
+            fetchDailyData()
+            fetchOverviewData()
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        if !Reachability.isConnectedToNetwork() {
+            UIView.animate(withDuration: 0.25, animations: { () -> Void in
+                self.noConnectionView.alpha = 1})
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
+                UIView.animate(withDuration: 0.25, animations: { () -> Void in
+                    self.noConnectionView.alpha = 0})
+            })
+        }
     }
     
     // MARK: View Setup
@@ -63,12 +81,8 @@ class PageTwo: UIViewController {
         gradientView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.15)
         
         // Readjusts the Y constraints relative to the gradient view height
-        dayLblYConstraint.constant = gradientViewHeight.constant + 8
-        dailyDateLblYConstraint.constant = gradientViewHeight.constant + 8
-        overviewBtnYConstraint.constant = gradientViewHeight.constant + 8
-        overviewDateLblYConstraint.constant = gradientViewHeight.constant + 8
-        overviewLblYConstraint.constant = gradientViewHeight.constant + 8
-        dailyBtnYConstraint.constant = gradientViewHeight.constant + 8
+        dailyScrollViewYConstraint.constant = 0.15 * view.frame.height + 8
+        overviewScrollViewYConstraint.constant = 0.15 * view.frame.height + 8
         
         // Sets gradients
         gradientView.setTwoGradientBackground(colorOne: Colors.Orange, colorTwo: Colors.Purple)
@@ -97,14 +111,32 @@ class PageTwo: UIViewController {
                 dailyBtn.setTitle("\(Days[Day - 2])", for: .normal)
             }
         }
+        
+        // Formats the no connection view
+        noConnectionView.alpha = 0
+        
+        // Formats the refresh view
+        dailyRefreshControl.backgroundColor = UIColor(named: "ViewColor")
+        dailyRefreshControl.addTarget(self, action: #selector(updateData), for: .valueChanged)
+        dailyScrollView.refreshControl = dailyRefreshControl
+        overviewRefreshControl.backgroundColor = UIColor(named: "ViewColor")
+        overviewRefreshControl.addTarget(self, action: #selector(updateData), for: .valueChanged)
+        overviewScroll.refreshControl = overviewRefreshControl
     }
     
     // MARK: Daily spreadsheet data
+
+    // Fetches the daily spreadsheet data
+    func fetchDailyData() {
+        let Range = "Schedule Data!A2:M6"
+        let Query = GTLRSheetsQuery_SpreadsheetsValuesGet.query(withSpreadsheetId: spreadsheetID, range: Range)
+        Service.executeQuery(Query, delegate: self, didFinish: #selector(displayDailyData(Ticket:finishedWithObject:Error:)))
+    }
     
-    // Displays daily spreadhseet data
-    func displayDailyData() {
-        let activityLblList = [eightActivityLbl, nineActivityLbl, tenActivityLbl, elevenActivityLbl, twelveActivityLbl, oneActivityLbl, twoActivityLbl, threeActivityLbl, fourActivityLbl, fiveActivityLbl, sixActivityLbl, itemsLbl]
-        let weekActivitiesList = dailyData.values! as! [[String]]
+    // Displays the daily spreadsheet data
+    @objc func displayDailyData(Ticket: GTLRServiceTicket, finishedWithObject Result: GTLRSheets_ValueRange, Error: NSError?) {
+        let activityLblList = [eightActivityLbl, nineActivityLbl, tenActivityLbl, elevenActivityLbl, twelveActivityLbl, oneActivityLbl, twoActivityLbl, threeActivityLbl, fourActivityLbl,fiveActivityLbl, sixActivityLbl, itemsLbl]
+        let weekActivitiesList = Result.values! as! [[String]]
         let dayActivitiesList: Array<Any>
         
         // Decides which days data to show
@@ -130,17 +162,34 @@ class PageTwo: UIViewController {
     
     // MARK: Overview spreadhseet data
     
-    // Displays overview spreadsheet data
-    func displayOverviewData() {
+    // Fetches overview spreadhseet data
+    func fetchOverviewData() {
+        let Range = "Schedule Data!A9:C13"
+        let Query = GTLRSheetsQuery_SpreadsheetsValuesGet.query(withSpreadsheetId: spreadsheetID, range: Range)
+        Service.executeQuery(Query, delegate: self, didFinish: #selector(setOverviewData(Ticket:finishedWithObject:Error:)))
+    }
+    
+    // Displays the overview spreadsheet data
+    @objc func setOverviewData(Ticket: GTLRServiceTicket, finishedWithObject Result: GTLRSheets_ValueRange, Error: NSError?) {
         let overviewList = [mondayLbl, tuesdayLbl, wednesdayLbl, thursdayLbl, fridayLbl]
-        let Week = overviewData.values! // 2D list of all the days
+        let Week = Result.values! // 2D list of all the days
         var Index = 0
         for Day in Week {
             overviewList[Index]?.text = "\(Day[1])\n\(Day[2])"
             Index += 1
         }
     }
-
+    
+    @objc func updateData(_ sender: UIRefreshControl) {
+        if Reachability.isConnectedToNetwork() {
+            fetchDailyData()
+            fetchOverviewData()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
+                sender.endRefreshing()
+            })
+        }
+    }
+    
     // Switches between the overview and daily views
     @IBAction func switchViews(_ sender: UIButton) {
         if overviewScrollView.isHidden {

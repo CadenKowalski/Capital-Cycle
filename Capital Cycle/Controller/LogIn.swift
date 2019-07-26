@@ -17,7 +17,6 @@ class LogIn: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailTxtField: UITextField!
     @IBOutlet weak var passTxtField: UITextField!
     @IBOutlet weak var signedInBtn: UIButton!
-    var userExists: Bool!
     
     override func viewDidLoad() {
         super.viewDidLoad()
