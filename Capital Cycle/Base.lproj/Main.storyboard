@@ -766,19 +766,19 @@ Phone: 202.288.5245</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jRw-hE-nSm" userLabel="No Connection View">
-                                <rect key="frame" x="89.666666666666686" y="435" width="235" height="30"/>
+                                <rect key="frame" x="89.666666666666686" y="412.66666666666669" width="235" height="75"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Could not refresh" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VFW-do-Kdz" userLabel="No Connection">
-                                        <rect key="frame" x="15" y="-2" width="204.66666666666666" height="34.333333333333336"/>
+                                        <rect key="frame" x="15" y="20.333333333333318" width="204.66666666666666" height="34.333333333333343"/>
                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="25"/>
-                                        <color key="textColor" cocoaTouchSystemColor="systemRedColor"/>
+                                        <color key="textColor" name="LabelColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" name="ViewColor"/>
+                                <color key="backgroundColor" name="ContrastViewColor"/>
                                 <constraints>
                                     <constraint firstItem="VFW-do-Kdz" firstAttribute="centerX" secondItem="jRw-hE-nSm" secondAttribute="centerX" id="0JQ-gt-eU0"/>
-                                    <constraint firstAttribute="height" constant="30" id="GSn-hP-qJS"/>
+                                    <constraint firstAttribute="height" constant="75" id="GSn-hP-qJS"/>
                                     <constraint firstItem="VFW-do-Kdz" firstAttribute="centerY" secondItem="jRw-hE-nSm" secondAttribute="centerY" id="bOR-hf-EMV"/>
                                     <constraint firstAttribute="width" constant="235" id="pPF-Jn-bxP"/>
                                 </constraints>

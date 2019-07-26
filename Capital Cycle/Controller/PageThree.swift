@@ -11,11 +11,13 @@ import SafariServices
 
 class PageThree: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
+    // Storyboard outlets
     @IBOutlet weak var gradientView: UIView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
     @IBOutlet weak var productsCollection: UICollectionView!
     @IBOutlet weak var productsCollectionHeight: NSLayoutConstraint!
     private(set) public var Products = [Product]()
+    // Code global vars
     let websiteURLs = ["https://capitalcyclecamp.org/pay-for-camp/5-day-session-1-6216",
                        "https://capitalcyclecamp.org/pay-for-camp/1-5-day-session-of-cycle-camp-spring-break-and-summer-session-1245",
                        "https://capitalcyclecamp.org/pay-for-camp/4-day-session-of-cycle-camp",
@@ -29,8 +31,6 @@ class PageThree: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         super.viewDidLoad()
         customizeLayout()
         loadProducts()
-        productsCollection.delegate = self
-        productsCollection.dataSource = self
     }
     
     // MARK: View Setup
@@ -45,6 +45,8 @@ class PageThree: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         gradientView.setTwoGradientBackground(colorOne: Colors.Orange, colorTwo: Colors.Purple)
         
         // Formats the products collection view
+        productsCollection.delegate = self
+        productsCollection.dataSource = self
         productsCollectionHeight.constant = view.frame.maxY - gradientView.frame.maxY
     }
     

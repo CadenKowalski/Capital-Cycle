@@ -12,6 +12,7 @@ import CoreData
 
 class SignUp: UIViewController, UITextFieldDelegate {
 
+    // Storyboard outlets
     @IBOutlet weak var gradientView: UIView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
     @IBOutlet weak var emailTxtField: UITextField!
@@ -19,13 +20,11 @@ class SignUp: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var confmPassTxtField: UITextField!
     @IBOutlet weak var signedInBtn: UIButton!
     @IBOutlet weak var privacyPolicyTxtView: UITextView!
+    // Code global vars
     var Agree = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        emailTxtField.delegate = self
-        passTxtField.delegate = self
-        confmPassTxtField.delegate = self
         customizeLayout()
     }
     
@@ -47,6 +46,11 @@ class SignUp: UIViewController, UITextFieldDelegate {
         
         // Formats the privacy policy text view
         privacyPolicyTxtView.layer.cornerRadius = 20
+        
+        // Sets up the text fields
+        emailTxtField.delegate = self
+        passTxtField.delegate = self
+        confmPassTxtField.delegate = self
     }
     
     // User agrees to privacy policy and terms of service
@@ -143,6 +147,7 @@ class SignUp: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
     }
     
+    // Dismiss the privacy policy view when view is tapped
     @IBAction func dismissPrivacyPolicy(_ sender: UITapGestureRecognizer) {
         privacyPolicyTxtView.isHidden = true
     }

@@ -11,8 +11,10 @@ import GoogleAPIClientForREST
 
 class PageTwo: UIViewController {
 
+    // Storyboard outlets
     @IBOutlet weak var gradientView: UIView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
+    // Daily scroll view
     @IBOutlet weak var dailyScrollView: UIScrollView!
     @IBOutlet weak var dailyScrollViewYConstraint: NSLayoutConstraint!
     @IBOutlet weak var dailyScrollViewDisplay: UIView!
@@ -31,6 +33,7 @@ class PageTwo: UIViewController {
     @IBOutlet weak var fiveActivityLbl: UILabel!
     @IBOutlet weak var sixActivityLbl: UILabel!
     @IBOutlet weak var itemsLbl: UILabel!
+    // Overview scroll view
     @IBOutlet weak var overviewScrollView: UIView!
     @IBOutlet weak var overviewScrollViewYConstraint: NSLayoutConstraint!
     @IBOutlet weak var overviewScroll: UIScrollView!
@@ -43,6 +46,7 @@ class PageTwo: UIViewController {
     @IBOutlet weak var thursdayLbl: UILabel!
     @IBOutlet weak var fridayLbl: UILabel!
     @IBOutlet weak var noConnectionView: UIView!
+    // Code global vars
     let Day = Calendar.current.component(.weekday, from: Date())
     let Hour = Calendar.current.component(.hour, from: Date())
     let spreadsheetID = "1alCW-eSX-lC6CUi0lbmNK7hpfkUhpOqhrbWZCBJgXuk"
@@ -53,7 +57,6 @@ class PageTwo: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         customizeLayout()
-        Service.apiKey = "AIzaSyBIdPHR_nqgL9G6fScmlcPMReBM5PmtVD8"
         if Reachability.isConnectedToNetwork() {
             fetchDailyData()
             fetchOverviewData()
@@ -81,13 +84,16 @@ class PageTwo: UIViewController {
         gradientView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.15)
         
         // Readjusts the Y constraints relative to the gradient view height
-        dailyScrollViewYConstraint.constant = 0.15 * view.frame.height + 8
-        overviewScrollViewYConstraint.constant = 0.15 * view.frame.height + 8
+        dailyScrollViewYConstraint.constant = gradientView.frame.height + 8
+        overviewScrollViewYConstraint.constant = gradientView.frame.height + 8
         
         // Sets gradients
         gradientView.setTwoGradientBackground(colorOne: Colors.Orange, colorTwo: Colors.Purple)
         dailyBtn.setTwoGradientButton(colorOne: Colors.Orange, colorTwo: Colors.Purple, cornerRadius: 10)
         overviewBtn.setTwoGradientButton(colorOne: Colors.Orange, colorTwo: Colors.Purple, cornerRadius: 11)
+        
+        // Sets the API key for the GTLR Service so that the app can access the spreadhseet without credentials
+        Service.apiKey = "AIzaSyBIdPHR_nqgL9G6fScmlcPMReBM5PmtVD8"
         
         // Formats the daily date label
         let formatter = DateFormatter()
@@ -113,6 +119,7 @@ class PageTwo: UIViewController {
         }
         
         // Formats the no connection view
+        noConnectionView.layer.cornerRadius = 20
         noConnectionView.alpha = 0
         
         // Formats the refresh view
@@ -180,10 +187,15 @@ class PageTwo: UIViewController {
         }
     }
     
+    // Refreshes the schedule labels if there is an internet connection
     @objc func updateData(_ sender: UIRefreshControl) {
         if Reachability.isConnectedToNetwork() {
             fetchDailyData()
             fetchOverviewData()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
+                sender.endRefreshing()
+            })
+        } else {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
                 sender.endRefreshing()
             })
@@ -202,6 +214,7 @@ class PageTwo: UIViewController {
 
 // MARK: Extensions
 
+// Sets the type of calendar
 extension Calendar {
     static let gregorian = Calendar(identifier: .gregorian)
 }

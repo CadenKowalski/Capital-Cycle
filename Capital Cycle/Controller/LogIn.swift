@@ -12,6 +12,7 @@ import CoreData
 
 class LogIn: UIViewController, UITextFieldDelegate {
 
+    // Storyboard outlets
     @IBOutlet weak var gradientView: UIView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
     @IBOutlet weak var emailTxtField: UITextField!
@@ -20,8 +21,6 @@ class LogIn: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        emailTxtField.delegate = self
-        passTxtField.delegate = self
         customizeLayout()
     }
     
@@ -53,6 +52,10 @@ class LogIn: UIViewController, UITextFieldDelegate {
         // Formats placeholder text
         emailTxtField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
         passTxtField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
+        
+        // Sets up the text fields
+        emailTxtField.delegate = self
+        passTxtField.delegate = self
     }
     
     // Keep the user signed in or not
@@ -107,6 +110,7 @@ class LogIn: UIViewController, UITextFieldDelegate {
                     }
                 })
             }))
+        
         self.present(resetPasswordAlert, animated: true, completion: nil)
     }
     
@@ -136,6 +140,7 @@ class LogIn: UIViewController, UITextFieldDelegate {
         if emailTxtField.text != "" && passTxtField.text != "" {
             logIn()
         }
+        
         return true
     }
     

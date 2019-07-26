@@ -10,6 +10,7 @@ import UIKit
 
 class PageFive: UIViewController {
 
+    // Storyboard outlets
     @IBOutlet weak var gradientView: UIView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
     

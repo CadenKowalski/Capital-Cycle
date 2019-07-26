@@ -12,6 +12,7 @@ import CoreData
 
 class Settings: UIViewController {
 
+    // Storyboard outlets
     @IBOutlet weak var gradientView: UIView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
     @IBOutlet weak var signedInSwitch: UISwitch!

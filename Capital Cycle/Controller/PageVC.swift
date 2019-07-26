@@ -11,6 +11,7 @@ import FirebaseAuth
 
 class PageVC: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
 
+    // Code global vars
     var pageControl = UIPageControl()
     lazy var orderedVCs: [UIViewController] = {
         return [self.newVC(VC: "PageOne"), self.newVC(VC: "PageTwo"), self.newVC(VC: "PageThree"), self.newVC(VC: "PageFour")]
@@ -18,18 +19,19 @@ class PageVC: UIPageViewController, UIPageViewControllerDelegate, UIPageViewCont
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.dataSource = self
-        if let firstVC = orderedVCs.first {
-            setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
-        }
-
-        self.delegate = self
         configurePageControl()
     }
     
     // MARK: Set Up Page View Controller
     
+    // Sets up the page controller
     func configurePageControl() {
+        self.delegate = self
+        self.dataSource = self
+        if let firstVC = orderedVCs.first {
+            setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
+        }
+        
         if Auth.auth().currentUser?.uid == "fipBSdkNpZXSsr26UGDFvY3zRa52" {
             orderedVCs.append(self.newVC(VC: "PageFive"))
         }
@@ -47,10 +49,12 @@ class PageVC: UIPageViewController, UIPageViewControllerDelegate, UIPageViewCont
         self.view.addSubview(pageControl)
     }
     
+    // Adds a view controller to the page view
     func newVC(VC: String) -> UIViewController {
         return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: VC)
     }
     
+    // Returns the previous view controller
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore VC: UIViewController) -> UIViewController? {
         guard let VCIndex = orderedVCs.firstIndex(of: VC) else {
             return nil
@@ -68,6 +72,7 @@ class PageVC: UIPageViewController, UIPageViewControllerDelegate, UIPageViewCont
         return orderedVCs[previousIndex]
     }
     
+    // Returns the next view controller
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter VC: UIViewController) -> UIViewController? {
         guard let VCIndex = orderedVCs.firstIndex(of: VC) else {
             return nil
@@ -86,6 +91,7 @@ class PageVC: UIPageViewController, UIPageViewControllerDelegate, UIPageViewCont
         return orderedVCs[nextIndex]
     }
     
+    // Sets the current page of the page controller AKA the first page of the app
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         let pageContentVC = pageViewController.viewControllers![0]
         self.pageControl.currentPage = orderedVCs.firstIndex(of: pageContentVC)!
