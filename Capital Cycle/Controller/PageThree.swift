@@ -50,7 +50,7 @@ class PageThree: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         productsCollectionHeight.constant = view.frame.maxY - gradientView.frame.maxY
     }
     
-    // MARK: Collection View
+    // MARK: Collection View Setup
     
     // Loads the product information
     func loadProducts() {

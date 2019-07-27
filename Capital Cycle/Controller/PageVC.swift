@@ -14,7 +14,7 @@ class PageVC: UIPageViewController, UIPageViewControllerDelegate, UIPageViewCont
     // Code global vars
     var pageControl = UIPageControl()
     lazy var orderedVCs: [UIViewController] = {
-        return [self.newVC(VC: "PageOne"), self.newVC(VC: "PageTwo"), self.newVC(VC: "PageThree"), self.newVC(VC: "PageFour")]
+        return [newVC(VC: "PageOne"), newVC(VC: "PageTwo")]
     }()
     
     override func viewDidLoad() {
@@ -22,7 +22,7 @@ class PageVC: UIPageViewController, UIPageViewControllerDelegate, UIPageViewCont
         configurePageControl()
     }
     
-    // MARK: Set Up Page View Controller
+    // MARK: Page View Controller Setup
     
     // Sets up the page controller
     func configurePageControl() {
@@ -32,8 +32,16 @@ class PageVC: UIPageViewController, UIPageViewControllerDelegate, UIPageViewCont
             setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
         }
         
-        if Auth.auth().currentUser?.uid == "fipBSdkNpZXSsr26UGDFvY3zRa52" {
-            orderedVCs.append(self.newVC(VC: "PageFive"))
+        switch userType {
+        case .camper:
+            orderedVCs.append(newVC(VC: "PageFour"))
+        case .parent:
+            orderedVCs.append(newVC(VC: "PageThree"))
+            orderedVCs.append(newVC(VC: "PageFour"))
+        case .counselor:
+            orderedVCs.append(newVC(VC: "PageFive"))
+        default:
+            return
         }
         
         pageControl = UIPageControl(frame: CGRect(x: 0, y: UIScreen.main.bounds.maxY - 50, width: UIScreen.main.bounds.width, height: 50))

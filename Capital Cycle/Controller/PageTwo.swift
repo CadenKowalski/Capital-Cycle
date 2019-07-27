@@ -106,8 +106,6 @@ class PageTwo: UIViewController {
         
         // Formats the daily button
         let Days = ["Mon", "Tues", "Wed", "Thurs", "Fri"]
-        dailyBtn.titleLabel?.font = UIFont(name: "Avenir-Heavy", size: 17.0)
-        dailyBtn.titleLabel?.textAlignment = .center
         if Day == 7 || Day == 1 {
             dailyBtn.setTitle("Mon", for: .normal)
         } else {
