@@ -18,6 +18,7 @@ class LogIn: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailTxtField: UITextField!
     @IBOutlet weak var passTxtField: UITextField!
     @IBOutlet weak var signedInBtn: UIButton!
+    @IBOutlet weak var logInBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,14 +49,13 @@ class LogIn: UIViewController, UITextFieldDelegate {
         
         // Sets the gradients
         gradientView.setTwoGradientBackground(colorOne: Colors.Orange, colorTwo: Colors.Purple)
-        
-        // Formats placeholder text
-        emailTxtField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
-        passTxtField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
-        
+        logInBtn.setTwoGradientButton(colorOne: Colors.Orange, colorTwo: Colors.Purple, cornerRadius: 22.5)
+
         // Sets up the text fields
         emailTxtField.delegate = self
         passTxtField.delegate = self
+        emailTxtField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
+        passTxtField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
     }
     
     // Keep the user signed in or not
@@ -72,8 +72,8 @@ class LogIn: UIViewController, UITextFieldDelegate {
     // MARK: Log In
     
     // Logs the user in
-    func logIn() {
-        Auth.auth().signIn(withEmail: emailTxtField.text!, password: passTxtField.text!) { (user, error) in
+    @IBAction func logIn(_ sender: UIButton) {
+        Auth.auth().signIn(withEmail: emailTxtField.text!, password: passTxtField.text!) {(user, error) in
             if error == nil {
                 self.updateContext()
                 self.performSegue(withIdentifier: "LogIn", sender: self)
@@ -137,10 +137,6 @@ class LogIn: UIViewController, UITextFieldDelegate {
     // Dismiss keyboard when "done" is pressed
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
-        if emailTxtField.text != "" && passTxtField.text != "" {
-            logIn()
-        }
-        
         return true
     }
     

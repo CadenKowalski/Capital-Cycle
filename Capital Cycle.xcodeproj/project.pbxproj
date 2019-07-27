@@ -157,8 +157,8 @@
 		57A3456E22D2AA810070898F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				5700629A22E3BB590032EFAB /* SignUp.swift */,
 				5700629822E3BB400032EFAB /* LogIn.swift */,
+				5700629A22E3BB590032EFAB /* SignUp.swift */,
 				571C2F3E22E41CB6001D4438 /* Settings.swift */,
 				57A3457322D2AEBD0070898F /* PageVC.swift */,
 				57A3457722D2BB5B0070898F /* PageOne.swift */,

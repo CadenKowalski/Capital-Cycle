@@ -1433,7 +1433,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="euE-3o-OpQ">
-                                <rect key="frame" x="97" y="267" width="181" height="23.333333333333314"/>
+                                <rect key="frame" x="97" y="717.66666666666663" width="181" height="23.333333333333371"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="181" id="71E-yr-dN4"/>
                                     <constraint firstAttribute="height" constant="23.329999999999998" id="eon-Jq-wRg"/>
@@ -1443,7 +1443,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3vu-Nn-vdL">
-                                <rect key="frame" x="157" y="298.33333333333331" width="61" height="21"/>
+                                <rect key="frame" x="157" y="749" width="61" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="gah-2t-alk"/>
                                     <constraint firstAttribute="width" constant="61" id="jY4-Lp-ZG2"/>
@@ -1514,6 +1514,20 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                     <action selector="resetPassword:" destination="v2Q-k5-Eoj" eventType="touchUpInside" id="8vc-AY-R8l"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VQ6-lr-Ida">
+                                <rect key="frame" x="117.66666666666669" y="267" width="140" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="FjA-hs-cA2"/>
+                                    <constraint firstAttribute="width" constant="140" id="bFS-s9-dtb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
+                                <state key="normal" title="Log In">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="logIn:" destination="v2Q-k5-Eoj" eventType="touchUpInside" id="NCM-6J-hec"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" name="ViewColor"/>
                         <gestureRecognizers/>
@@ -1523,10 +1537,12 @@ A: We have a variety of games and books as well as a gym and playground to occup
                             <constraint firstItem="wvG-jg-f8l" firstAttribute="leading" secondItem="5Wo-YH-b5x" secondAttribute="leading" constant="16" id="Elo-Yw-oOP"/>
                             <constraint firstItem="3vu-Nn-vdL" firstAttribute="centerX" secondItem="43c-jI-F7U" secondAttribute="centerX" id="JR1-81-oV7"/>
                             <constraint firstItem="3vu-Nn-vdL" firstAttribute="top" secondItem="euE-3o-OpQ" secondAttribute="bottom" constant="8" id="RZB-04-mww"/>
+                            <constraint firstItem="5Wo-YH-b5x" firstAttribute="bottom" secondItem="3vu-Nn-vdL" secondAttribute="bottom" constant="8" id="Y3i-IA-KYX"/>
                             <constraint firstItem="HmA-eO-hef" firstAttribute="top" secondItem="43c-jI-F7U" secondAttribute="top" id="Z5z-C5-boh"/>
                             <constraint firstItem="HmA-eO-hef" firstAttribute="leading" secondItem="5Wo-YH-b5x" secondAttribute="leading" id="c9F-Fl-iPg"/>
+                            <constraint firstItem="VQ6-lr-Ida" firstAttribute="centerX" secondItem="43c-jI-F7U" secondAttribute="centerX" id="dha-N3-lRH"/>
                             <constraint firstItem="den-8a-0tj" firstAttribute="leading" secondItem="qgq-dg-T1L" secondAttribute="trailing" constant="4" id="dnJ-IR-gS1"/>
-                            <constraint firstItem="euE-3o-OpQ" firstAttribute="top" secondItem="den-8a-0tj" secondAttribute="bottom" constant="16" id="jmO-kv-9TV"/>
+                            <constraint firstItem="VQ6-lr-Ida" firstAttribute="top" secondItem="den-8a-0tj" secondAttribute="bottom" constant="16" id="hwg-Rr-U0V"/>
                             <constraint firstItem="den-8a-0tj" firstAttribute="top" secondItem="ovt-Gf-r3U" secondAttribute="bottom" constant="14" id="lPX-im-Tfn"/>
                             <constraint firstItem="ovt-Gf-r3U" firstAttribute="top" secondItem="tTZ-I0-VVo" secondAttribute="bottom" constant="8" id="o1T-JU-lvf"/>
                             <constraint firstItem="wvG-jg-f8l" firstAttribute="top" secondItem="HmA-eO-hef" secondAttribute="bottom" constant="16" id="o81-Co-P7y"/>
@@ -1547,6 +1563,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                         <outlet property="emailTxtField" destination="wvG-jg-f8l" id="mib-Kn-mmf"/>
                         <outlet property="gradientView" destination="HmA-eO-hef" id="eaH-j0-djy"/>
                         <outlet property="gradientViewHeight" destination="ioO-Kj-laH" id="Lwe-6O-iK7"/>
+                        <outlet property="logInBtn" destination="VQ6-lr-Ida" id="tgD-8Q-YQF"/>
                         <outlet property="passTxtField" destination="tTZ-I0-VVo" id="Mt6-iM-A0h"/>
                         <outlet property="signedInBtn" destination="qgq-dg-T1L" id="sTz-1s-2Lt"/>
                         <segue destination="jM6-Kb-J6q" kind="presentation" identifier="LogIn" modalPresentationStyle="fullScreen" id="JVj-89-k2w"/>
@@ -1702,6 +1719,20 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                     <action selector="privacyPolicy:" destination="A2Z-6c-UZy" eventType="touchUpInside" id="W59-LV-efX"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ajG-sE-VYd">
+                                <rect key="frame" x="112.66666666666669" y="385" width="150" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="0yC-cd-1Kq"/>
+                                    <constraint firstAttribute="width" constant="150" id="oWa-uw-8YP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
+                                <state key="normal" title="Sign Up">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="signUp:" destination="A2Z-6c-UZy" eventType="touchUpInside" id="ts1-Ff-kWO"/>
+                                </connections>
+                            </button>
                             <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Privacy Policy" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kzh-E1-mfx" userLabel="Privacy Policy">
                                 <rect key="frame" x="16" y="16" width="343" height="726"/>
                                 <color key="backgroundColor" name="ContrastViewColor"/>
@@ -1725,6 +1756,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                             <constraint firstItem="Rje-J8-oBE" firstAttribute="leading" secondItem="5ra-2Z-TlZ" secondAttribute="trailing" constant="4" id="5j5-Fz-2co"/>
                             <constraint firstItem="qf8-Wn-zz9" firstAttribute="leading" secondItem="ILc-KA-kIH" secondAttribute="trailing" constant="4" id="80j-L6-gQX"/>
                             <constraint firstItem="6V0-zb-pDi" firstAttribute="top" secondItem="Rje-J8-oBE" secondAttribute="bottom" constant="21" id="AMB-jj-1CK"/>
+                            <constraint firstItem="ajG-sE-VYd" firstAttribute="centerX" secondItem="2Sb-N8-kMT" secondAttribute="centerX" id="BeJ-ph-aRW"/>
                             <constraint firstItem="1lx-NS-scX" firstAttribute="top" secondItem="VUr-xS-gve" secondAttribute="top" id="DZu-jQ-h50"/>
                             <constraint firstItem="3u5-72-jbV" firstAttribute="leading" secondItem="VUr-xS-gve" secondAttribute="leading" constant="16" id="E5C-Eb-Hsb"/>
                             <constraint firstItem="Kzh-E1-mfx" firstAttribute="leading" secondItem="2Sb-N8-kMT" secondAttribute="leading" constant="16" id="E9K-yM-YEH"/>
@@ -1732,6 +1764,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                             <constraint firstItem="VUr-xS-gve" firstAttribute="trailing" secondItem="O6n-C3-gRh" secondAttribute="trailing" constant="16" id="LRi-Uk-m1M"/>
                             <constraint firstItem="1lx-NS-scX" firstAttribute="trailing" secondItem="VUr-xS-gve" secondAttribute="trailing" id="Lkh-r4-WQv"/>
                             <constraint firstItem="8bD-Zf-iA1" firstAttribute="leading" secondItem="5fa-Sm-lDz" secondAttribute="trailing" constant="4" id="MOa-N2-FFY"/>
+                            <constraint firstItem="ajG-sE-VYd" firstAttribute="top" secondItem="6V0-zb-pDi" secondAttribute="bottom" constant="16" id="N6o-Ba-xvu"/>
                             <constraint firstItem="GNk-Ht-aHI" firstAttribute="top" secondItem="O6n-C3-gRh" secondAttribute="bottom" constant="16" id="Pfy-5R-DpU"/>
                             <constraint firstItem="Rje-J8-oBE" firstAttribute="top" secondItem="qf8-Wn-zz9" secondAttribute="bottom" constant="20" id="Qms-QZ-2kB"/>
                             <constraint firstItem="3u5-72-jbV" firstAttribute="top" secondItem="GNk-Ht-aHI" secondAttribute="bottom" constant="16" id="Uo1-u1-H4m"/>
@@ -1767,6 +1800,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                         <outlet property="gradientViewHeight" destination="Ptp-Qi-M9e" id="zfO-12-r04"/>
                         <outlet property="passTxtField" destination="GNk-Ht-aHI" id="c5F-tV-zWi"/>
                         <outlet property="privacyPolicyTxtView" destination="Kzh-E1-mfx" id="c2d-Ig-GTc"/>
+                        <outlet property="signUpBtn" destination="ajG-sE-VYd" id="ogV-tA-VkO"/>
                         <outlet property="signedInBtn" destination="5ra-2Z-TlZ" id="ir5-XE-ayL"/>
                         <outlet property="userTypeLbl" destination="qf8-Wn-zz9" id="jsr-iE-gsQ"/>
                         <outlet property="userTypePickerView" destination="YuM-PM-C54" id="QEB-vs-07b"/>
@@ -1813,7 +1847,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="CFn-zx-hpt"/>
+        <segue reference="stl-Sk-OpA"/>
         <segue reference="Sdy-Gj-ANw"/>
     </inferredMetricsTieBreakers>
 </document>

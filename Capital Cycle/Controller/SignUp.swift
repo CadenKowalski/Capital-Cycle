@@ -22,6 +22,7 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
     @IBOutlet weak var confmPassTxtField: UITextField!
     @IBOutlet weak var userTypeLbl: UILabel!
     @IBOutlet weak var signedInBtn: UIButton!
+    @IBOutlet weak var signUpBtn: UIButton!
     @IBOutlet weak var privacyPolicyTxtView: UITextView!
     @IBOutlet weak var userTypePickerView: UIPickerView!
     // Code global vars
@@ -43,6 +44,7 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
         
         // Sets the gradients
         gradientView.setTwoGradientBackground(colorOne: Colors.Orange, colorTwo: Colors.Purple)
+        signUpBtn.setTwoGradientButton(colorOne: Colors.Orange, colorTwo: Colors.Purple, cornerRadius: 22.5)
 
         // Sets up the text fields
         emailTxtField.delegate = self
@@ -136,19 +138,16 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
     // User agrees to privacy policy and terms of service
     @IBAction func agreeToPolicies(_ sender: UIButton) {
         if !Agree {
-            sender.setImage(UIImage(named: "Checked"), for: .normal)
             Agree = true
-            if emailTxtField.text != "" && passTxtField.text != "" && confmPassTxtField.text != "" {
-                signUp()
-            }
+            sender.setImage(UIImage(named: "Checked"), for: .normal)
         } else {
-            sender.setImage(UIImage(named: "Unchecked"), for: .normal)
             Agree = false
+            sender.setImage(UIImage(named: "Unchecked"), for: .normal)
         }
     }
 
-    // Signs Up the user
-    func signUp() {
+    // Signs up the user
+    @IBAction func signUp(_ sender: UIButton) {
         if passTxtField.text != confmPassTxtField.text {
             let Alert = UIAlertController(title: "Password Incorret", message: "Please make sure your passwords match", preferredStyle: .alert)
             let Action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
@@ -200,10 +199,6 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
     // Dismiss keybpard when "done" is pressed
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
-        if emailTxtField.text != "" && passTxtField.text != "" && confmPassTxtField.text != "" && Agree == true {
-            signUp()
-        }
-        
         return true
     }
     
