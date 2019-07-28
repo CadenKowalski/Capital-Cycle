@@ -123,7 +123,7 @@ class Settings: UIViewController {
     func updateContext() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let Context = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Authentication")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
         do {
             let fetchResults = try Context.fetch(fetchRequest)
             let isSignedIn = fetchResults.first as! NSManagedObject

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreData
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -29,20 +28,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     // Called when the scene has moved from an inactive state to an active state.
     func sceneDidBecomeActive(_ scene: UIScene) {
-        // Sets the signedIn variable to its most recetn core data value
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        let Context = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Authentication")
-        do {
-            let fetchResults = try Context.fetch(fetchRequest)
-            let authenticationInstance = fetchResults.first as! Authentication
-            let signedInValue = authenticationInstance.value(forKey: "signedIn") as! Bool
-            signedIn = signedInValue
-        } catch {
-            let nserror = error as NSError
-            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-        }
-
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
     }
 

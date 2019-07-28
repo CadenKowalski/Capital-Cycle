@@ -17,7 +17,6 @@ class PageOne: UIViewController {
     @IBOutlet weak var scrollViewDisplay: UIView!
     @IBOutlet weak var campDatesLbl: UILabel!
     @IBOutlet weak var campDatesYConstraint: NSLayoutConstraint!
-    @IBOutlet weak var signUpBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,12 +31,11 @@ class PageOne: UIViewController {
         gradientViewHeight.constant = 0.15 * view.frame.height
         gradientView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.15)
         
-        // Readjusts the Y constraints
-        campDatesYConstraint.constant = gradientViewHeight.constant + 8
-        
         // Sets the gradients
         gradientView.setTwoGradientBackground(colorOne: Colors.Orange, colorTwo: Colors.Purple)
-        signUpBtn.setTwoGradientButton(colorOne: Colors.Orange, colorTwo: Colors.Purple, cornerRadius: 30)
+        
+        // Readjusts the Y constraints
+        campDatesYConstraint.constant = gradientViewHeight.constant + 8
     }
     
     // MARK: Actions
@@ -60,12 +58,5 @@ class PageOne: UIViewController {
         } else {
             UIApplication.shared.open(NSURL(string: "https://instagram.com/capitalcyclecamp/")! as URL)
         }
-    }
-    
-    // Takes the user to the Capital Cycle Camp sign up page
-    @IBAction func SignUp(_ sender: UIButton) {
-        let websiteURL = NSURL(string: "https://capitalcyclecamp.org/signup")! as URL
-        let svc = SFSafariViewController(url: websiteURL)
-        present(svc, animated: true, completion: nil)
     }
 }

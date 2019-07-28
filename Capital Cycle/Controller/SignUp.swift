@@ -10,8 +10,6 @@ import UIKit
 import FirebaseAuth
 import CoreData
 
-var userType = SignUp.UserType.none
-
 class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
     // Storyboard outlets
@@ -91,7 +89,7 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
     // Is called when the picker view is used
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if typesOfUser[row] == "--" {
-            userType = .none
+            userType = SignUp.UserType.none
         } else if typesOfUser[row] == "Camper" {
             userType = .camper
         } else if typesOfUser[row] == "Parent" {
@@ -158,7 +156,7 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
             let Action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             Alert.addAction(Action)
             present(Alert, animated: true, completion: nil)
-        } else if userType == .none {
+        } else if userType == SignUp.UserType.none {
             userTypeLbl.backgroundColor = .red
             userTypeLbl.alpha = 0.5
         } else {
@@ -182,11 +180,22 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
     func updateContext() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let Context = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Authentication")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
         do {
             let fetchResults = try Context.fetch(fetchRequest)
-            let isSignedIn = fetchResults.first as! NSManagedObject
-            isSignedIn.setValue(signedIn, forKey: "signedIn")
+            let User = fetchResults.first as! NSManagedObject
+            User.setValue(signedIn, forKey: "signedIn")
+            switch userType {
+            case .camper:
+                User.setValue("Camper", forKey: "type")
+            case .parent:
+                User.setValue("Parent", forKey: "type")
+            case .counselor:
+                User.setValue("Counselor", forKey: "type")
+            default:
+                return
+            }
+            
             try Context.save()
         } catch {
             let nserror = error as NSError

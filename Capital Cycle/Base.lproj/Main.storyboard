@@ -22,14 +22,14 @@
             <objects>
                 <viewController storyboardIdentifier="PageOne" id="bH8-1u-VSq" customClass="PageOne" customModule="Capital_Cycle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zTk-ZV-eln">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="1300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1225"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E1U-Sr-1yu">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="1266"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="1191"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YlL-WF-Z3k" userLabel="Scroll View Display">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1291"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1223"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Camp Dates:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tnX-Rc-hHc">
                                                 <rect key="frame" x="8" y="108" width="125" height="28"/>
@@ -148,20 +148,6 @@ Phone: 202.288.5245</string>
                                                     <action selector="Instagram:" destination="bH8-1u-VSq" eventType="touchUpInside" id="Zxy-cb-0NK"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="noU-0s-Ggg" userLabel="Sign Up Btn">
-                                                <rect key="frame" x="107" y="1196" width="200" height="60"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="200" id="j8z-By-UF5"/>
-                                                    <constraint firstAttribute="height" constant="60" id="oXm-Ft-xdC"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
-                                                <state key="normal" title="Sign Up">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="SignUp:" destination="bH8-1u-VSq" eventType="touchUpInside" id="6rC-er-5Zw"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" name="ViewColor"/>
                                         <constraints>
@@ -181,6 +167,7 @@ Phone: 202.288.5245</string>
                                             <constraint firstItem="8wX-ni-yL7" firstAttribute="leading" secondItem="YlL-WF-Z3k" secondAttribute="leading" constant="32" id="LZF-B6-j5a"/>
                                             <constraint firstItem="8wX-ni-yL7" firstAttribute="top" secondItem="gya-0b-gFj" secondAttribute="bottom" constant="8" id="MZH-Lv-Q66"/>
                                             <constraint firstItem="srY-QF-c10" firstAttribute="top" secondItem="l5e-4D-pxz" secondAttribute="bottom" constant="8" id="N1I-gT-t5E"/>
+                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="J93-kR-cR5" secondAttribute="bottom" constant="35" id="Qo5-qv-VZd"/>
                                             <constraint firstItem="r2K-gt-ZXY" firstAttribute="leading" secondItem="YlL-WF-Z3k" secondAttribute="leading" constant="32" id="U75-kn-cMa"/>
                                             <constraint firstItem="yHx-Q1-GR3" firstAttribute="leading" secondItem="YlL-WF-Z3k" secondAttribute="leading" constant="32" id="UT0-2r-swV"/>
                                             <constraint firstItem="cBm-x8-BxN" firstAttribute="trailing" secondItem="YlL-WF-Z3k" secondAttribute="centerX" constant="-15" id="Zby-9H-0cL"/>
@@ -189,10 +176,7 @@ Phone: 202.288.5245</string>
                                             <constraint firstItem="cBm-x8-BxN" firstAttribute="top" secondItem="r2K-gt-ZXY" secondAttribute="bottom" constant="8" id="fSf-N3-g2m"/>
                                             <constraint firstItem="srY-QF-c10" firstAttribute="leading" secondItem="YlL-WF-Z3k" secondAttribute="leading" constant="32" id="glk-Ny-N5n"/>
                                             <constraint firstItem="Ihh-44-Xpe" firstAttribute="trailing" secondItem="YlL-WF-Z3k" secondAttribute="trailing" constant="-8" id="hxD-jA-Tls"/>
-                                            <constraint firstItem="noU-0s-Ggg" firstAttribute="top" secondItem="cBm-x8-BxN" secondAttribute="bottom" constant="8" id="kQQ-x4-n7t"/>
-                                            <constraint firstItem="noU-0s-Ggg" firstAttribute="centerX" secondItem="YlL-WF-Z3k" secondAttribute="centerX" id="kw1-Ya-9mp"/>
                                             <constraint firstItem="r2K-gt-ZXY" firstAttribute="top" secondItem="pZb-1y-mSA" secondAttribute="bottom" constant="8" id="sjW-Qr-aHz"/>
-                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="noU-0s-Ggg" secondAttribute="bottom" constant="35" id="woS-3r-CKJ"/>
                                             <constraint firstItem="Ihh-44-Xpe" firstAttribute="top" secondItem="tnX-Rc-hHc" secondAttribute="bottom" constant="8" id="x7D-Ha-SsF"/>
                                             <constraint firstItem="srY-QF-c10" firstAttribute="trailing" secondItem="YlL-WF-Z3k" secondAttribute="trailing" constant="-8" id="xwj-gM-IJf"/>
                                             <constraint firstItem="8wX-ni-yL7" firstAttribute="trailing" secondItem="YlL-WF-Z3k" secondAttribute="trailing" constant="-8" id="z4e-US-FxU"/>
@@ -266,14 +250,13 @@ Phone: 202.288.5245</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Upw-lg-ypp"/>
                     </view>
-                    <size key="freeformSize" width="414" height="1300"/>
+                    <size key="freeformSize" width="414" height="1225"/>
                     <connections>
                         <outlet property="campDatesLbl" destination="tnX-Rc-hHc" id="6CZ-Z8-tO7"/>
                         <outlet property="campDatesYConstraint" destination="5N8-Fe-3hv" id="T2a-U0-vfa"/>
                         <outlet property="gradientView" destination="E4V-Od-9gE" id="S28-W7-RDG"/>
                         <outlet property="gradientViewHeight" destination="L6f-kV-R5C" id="lKj-c9-ThF"/>
                         <outlet property="scrollViewDisplay" destination="YlL-WF-Z3k" id="n6Y-2t-Smf"/>
-                        <outlet property="signUpBtn" destination="noU-0s-Ggg" id="6Fw-ft-Pz4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Izh-eE-oWs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1800,7 +1783,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                         <outlet property="gradientViewHeight" destination="Ptp-Qi-M9e" id="zfO-12-r04"/>
                         <outlet property="passTxtField" destination="GNk-Ht-aHI" id="c5F-tV-zWi"/>
                         <outlet property="privacyPolicyTxtView" destination="Kzh-E1-mfx" id="c2d-Ig-GTc"/>
-                        <outlet property="signUpBtn" destination="ajG-sE-VYd" id="ogV-tA-VkO"/>
+                        <outlet property="signUpBtn" destination="ajG-sE-VYd" id="rvm-Am-rg7"/>
                         <outlet property="signedInBtn" destination="5ra-2Z-TlZ" id="ir5-XE-ayL"/>
                         <outlet property="userTypeLbl" destination="qf8-Wn-zz9" id="jsr-iE-gsQ"/>
                         <outlet property="userTypePickerView" destination="YuM-PM-C54" id="QEB-vs-07b"/>
