@@ -12,6 +12,8 @@ import CoreData
 
 var signedIn: Bool!
 var userType: SignUp.UserType!
+var weekActivitiesList: [[String]]!
+var Week: [[String]]!
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -55,9 +57,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Configures Firebase in app
         FirebaseApp.configure()
         
-        // Either instantiates a record for the User entity or sets the attribute signedIn to its core data value if one already exists
+        // Configures the schedule core data entity
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return true }
         let Context = appDelegate.persistentContainer.viewContext
+        let Schedules = fetchRecordsOfEntity(Entity: "Schedule", Context: Context)
+        if let Schedule = Schedules.first {
+            weekActivitiesList = Schedule.value(forKey: "daily") as? [[String]]
+            Week = Schedule.value(forKey: "overview") as? [[String]]
+        } else if let Schedule = instantiateRecordForEntity(Entity: "Schedule", Context: Context) {
+            if Schedule.value(forKey: "daily") == nil {
+                Schedule.setValue([[""]], forKey: "daily")
+                weekActivitiesList = [[""]]
+            }
+            
+            if Schedule.value(forKey: "overview") == nil {
+                Schedule.setValue([[""]], forKey: "overview")
+                Week = [[""]]
+            }
+        }
+        
+        // Configures the User core data entity
         let Users = fetchRecordsOfEntity(Entity: "User", Context: Context)
         if let User = Users.first {
             signedIn = User.value(forKey: "signedIn") as? Bool
@@ -121,6 +140,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
+        
         return container
     }()
 }

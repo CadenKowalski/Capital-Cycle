@@ -14,7 +14,7 @@ class PageVC: UIPageViewController, UIPageViewControllerDelegate, UIPageViewCont
     // Code global vars
     var pageControl = UIPageControl()
     lazy var orderedVCs: [UIViewController] = {
-        return [newVC(VC: "PageOne"), newVC(VC: "PageTwo")]
+        return [newVC(VC: "OverviewPage"), newVC(VC: "SchedulePage")]
     }()
     
     override func viewDidLoad() {
@@ -34,12 +34,12 @@ class PageVC: UIPageViewController, UIPageViewControllerDelegate, UIPageViewCont
         
         switch userType {
         case .camper:
-            orderedVCs.append(newVC(VC: "PageFour"))
+            orderedVCs.append(newVC(VC: "FAQPage"))
         case .parent:
-            orderedVCs.append(newVC(VC: "PageThree"))
-            orderedVCs.append(newVC(VC: "PageFour"))
+            orderedVCs.append(newVC(VC: "StorePage"))
+            orderedVCs.append(newVC(VC: "FAQPage"))
         case .counselor:
-            orderedVCs.append(newVC(VC: "PageFive"))
+            orderedVCs.append(newVC(VC: "CamperInfoPage"))
         default:
             return
         }

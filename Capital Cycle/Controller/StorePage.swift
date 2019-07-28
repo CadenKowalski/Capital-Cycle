@@ -1,5 +1,5 @@
 //
-//  PageThree.swift
+//  StorePage.swift
 //  Capital Cycle
 //
 //  Created by Caden Kowalski on 7/7/19.
@@ -9,7 +9,7 @@
 import UIKit
 import SafariServices
 
-class PageThree: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class StorePage: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     // Storyboard outlets
     @IBOutlet weak var gradientView: UIView!
@@ -86,7 +86,7 @@ class PageThree: UIViewController, UICollectionViewDelegate, UICollectionViewDat
 //MARK: Extensions
 
 // Dynamically adjusts the cell size based on the screen size
-extension PageThree: UICollectionViewDelegateFlowLayout {
+extension StorePage: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width / 2 - 9, height: (view.frame.width / 2 - 12) * 1.4)
     }

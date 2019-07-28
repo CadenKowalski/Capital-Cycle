@@ -1,5 +1,5 @@
 //
-//  PageOne.swift
+//  OverviewPage.swift
 //  Capital Cycle
 //
 //  Created by Caden Kowalski on 7/7/19.
@@ -9,7 +9,7 @@
 import UIKit
 import SafariServices
 
-class PageOne: UIViewController {
+class OverviewPage: UIViewController {
 
     // Storyboard outlets
     @IBOutlet weak var gradientView: UIView!

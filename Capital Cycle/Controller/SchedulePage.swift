@@ -1,5 +1,5 @@
 //
-//  PageTwo.swift
+//  SchedulePage.swift
 //  Capital Cycle
 //
 //  Created by Caden Kowalski on 7/7/19.
@@ -8,9 +8,9 @@
 
 import UIKit
 import GoogleAPIClientForREST
+import CoreData
 
-class PageTwo: UIViewController {
-
+class SchedulePage: UIViewController {
     // Storyboard outlets
     @IBOutlet weak var gradientView: UIView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
@@ -57,10 +57,8 @@ class PageTwo: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         customizeLayout()
-        if Reachability.isConnectedToNetwork() {
-            fetchDailyData()
-            fetchOverviewData()
-        }
+        fetchDailyData()
+        fetchOverviewData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -141,7 +139,11 @@ class PageTwo: UIViewController {
     // Displays the daily spreadsheet data
     @objc func displayDailyData(Ticket: GTLRServiceTicket, finishedWithObject Result: GTLRSheets_ValueRange, Error: NSError?) {
         let activityLblList = [eightActivityLbl, nineActivityLbl, tenActivityLbl, elevenActivityLbl, twelveActivityLbl, oneActivityLbl, twoActivityLbl, threeActivityLbl, fourActivityLbl,fiveActivityLbl, sixActivityLbl, itemsLbl]
-        let weekActivitiesList = Result.values! as! [[String]]
+        if Reachability.isConnectedToNetwork() {
+            weekActivitiesList = Result.values! as? [[String]]
+            updateContext()
+        }
+        
         let dayActivitiesList: Array<Any>
         
         // Decides which days data to show
@@ -177,7 +179,10 @@ class PageTwo: UIViewController {
     // Displays the overview spreadsheet data
     @objc func setOverviewData(Ticket: GTLRServiceTicket, finishedWithObject Result: GTLRSheets_ValueRange, Error: NSError?) {
         let overviewList = [mondayLbl, tuesdayLbl, wednesdayLbl, thursdayLbl, fridayLbl]
-        let Week = Result.values! // 2D list of all the days
+        if Reachability.isConnectedToNetwork() {
+            Week = Result.values! as? [[String]]
+            updateContext()
+        }
         var Index = 0
         for Day in Week {
             overviewList[Index]?.text = "\(Day[1])\n\(Day[2])"
@@ -209,6 +214,25 @@ class PageTwo: UIViewController {
         }
     }
 }
+
+// MARK: Core Data
+    
+// Updates the context with new values
+    func updateContext() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let Context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Schedule")
+        do {
+            let fetchResults = try Context.fetch(fetchRequest)
+            let Schedule = fetchResults.first as! NSManagedObject
+            Schedule.setValue(weekActivitiesList, forKey: "daily")
+            Schedule.setValue(Week, forKey: "overview")
+            try Context.save()
+        } catch {
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
+    }
 
 // MARK: Extensions
 

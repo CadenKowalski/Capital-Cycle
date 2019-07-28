@@ -166,7 +166,7 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
                     self.performSegue(withIdentifier: "SignUp", sender: self)
                 } else {
                     let Alert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
-                    let Action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    let Action = UIAlertAction(title: "OK", style: .default, handler: nil)
                     Alert.addAction(Action)
                     self.present(Alert, animated: true, completion: nil)
                 }
