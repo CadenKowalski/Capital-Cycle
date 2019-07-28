@@ -162,7 +162,7 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
         } else {
             Auth.auth().createUser(withEmail: emailTxtField.text!, password: passTxtField.text!) { (user, error) in
                 if error == nil {
-                    self.updateContext()
+                    self.createUser(email: self.emailTxtField.text!)
                     self.performSegue(withIdentifier: "SignUp", sender: self)
                 } else {
                     let Alert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
@@ -176,26 +176,24 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
     
     // MARK: Core Data
     
-    // Updates the context with new values
-    func updateContext() {
+    // Create a core data user
+    func createUser(email: String) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let Context = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+        let User = NSEntityDescription.insertNewObject(forEntityName: "User", into: Context)
+        User.setValue(email, forKey: "email")
+        User.setValue(signedIn, forKey: "signedIn")
+        switch userType {
+        case .camper:
+            User.setValue("Camper", forKey: "type")
+        case .parent:
+            User.setValue("Parent", forKey: "type")
+        case .counselor:
+            User.setValue("Counselor", forKey: "type")
+        default:
+            return
+        }
         do {
-            let fetchResults = try Context.fetch(fetchRequest)
-            let User = fetchResults.first as! NSManagedObject
-            User.setValue(signedIn, forKey: "signedIn")
-            switch userType {
-            case .camper:
-                User.setValue("Camper", forKey: "type")
-            case .parent:
-                User.setValue("Parent", forKey: "type")
-            case .counselor:
-                User.setValue("Counselor", forKey: "type")
-            default:
-                return
-            }
-            
             try Context.save()
         } catch {
             let nserror = error as NSError

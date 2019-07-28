@@ -31,12 +31,6 @@ class LogIn: UIViewController, UITextFieldDelegate {
         if Auth.auth().currentUser != nil && signedIn == true {
             self.performSegue(withIdentifier: "AlreadyLoggedIn", sender: nil)
         }
-        
-        if signedIn && Auth.auth().currentUser != nil {
-            signedInBtn.setImage(UIImage(named: "Checked"), for: .normal)
-        } else {
-            signedInBtn.setImage(UIImage(named: "Unchecked"), for: .normal)
-        }
     }
     
     // MARK: View Setup
@@ -76,6 +70,7 @@ class LogIn: UIViewController, UITextFieldDelegate {
         Auth.auth().signIn(withEmail: emailTxtField.text!, password: passTxtField.text!) {(user, error) in
             if error == nil {
                 self.updateContext()
+                self.fetchValuesFromContext()
                 self.performSegue(withIdentifier: "LogIn", sender: self)
             } else {
                 let Alert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
@@ -122,10 +117,41 @@ class LogIn: UIViewController, UITextFieldDelegate {
         let Context = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
         do {
-            let fetchResults = try Context.fetch(fetchRequest)
-            let isSignedIn = fetchResults.first as! NSManagedObject
-            isSignedIn.setValue(signedIn, forKey: "signedIn")
+            let Users = try Context.fetch(fetchRequest) as! [NSManagedObject]
+            for User in Users {
+                if User.value(forKey: "email") as? String == Auth.auth().currentUser?.email {
+                    User.setValue(signedIn, forKey: "signedIn")
+                }
+            }
             try Context.save()
+        } catch {
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
+    }
+    
+    func fetchValuesFromContext() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let Context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+        do {
+            let Users = try Context.fetch(fetchRequest) as? [NSManagedObject]
+            for User in Users! {
+                if User.value(forKey: "email") as? String == Auth.auth().currentUser?.email {
+                    switch User.value(forKey: "type") as? String {
+                    case "Camper":
+                        userType = .camper
+                    case "Parent":
+                        userType = .parent
+                    case "Counselor":
+                        userType = .counselor
+                    default:
+                        return
+                    }
+                    
+                    return
+                }
+            }
         } catch {
             let nserror = error as NSError
             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")

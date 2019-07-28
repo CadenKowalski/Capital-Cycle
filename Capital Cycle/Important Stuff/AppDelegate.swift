@@ -57,10 +57,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Configures Firebase in app
         FirebaseApp.configure()
         
-        // Configures the schedule core data entity
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return true }
         let Context = appDelegate.persistentContainer.viewContext
         let Schedules = fetchRecordsOfEntity(Entity: "Schedule", Context: Context)
+        // Configures the Schedule core data entity
         if let Schedule = Schedules.first {
             weekActivitiesList = Schedule.value(forKey: "daily") as? [[String]]
             Week = Schedule.value(forKey: "overview") as? [[String]]
@@ -78,30 +78,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Configures the User core data entity
         let Users = fetchRecordsOfEntity(Entity: "User", Context: Context)
-        if let User = Users.first {
-            signedIn = User.value(forKey: "signedIn") as? Bool
-            switch User.value(forKey: "type") as? String {
-            case "None":
-                userType = SignUp.UserType.none
-            case "Camper":
-                userType = .camper
-            case "Parent":
-                userType = .parent
-            case "Counselor":
-                userType = .counselor
-            default:
-                return true
+        if let _ = Users.first {
+            for User in Users {
+                if User.value(forKey: "email") as? String == Auth.auth().currentUser?.email {
+                    signedIn = User.value(forKey: "signedIn") as? Bool
+                    switch User.value(forKey: "type") as? String {
+                    case "None":
+                        userType = SignUp.UserType.none
+                    case "Camper":
+                        userType = .camper
+                    case "Parent":
+                        userType = .parent
+                    case "Counselor":
+                        userType = .counselor
+                    default:
+                        return true
+                    }
+                }
             }
-        } else if let User = instantiateRecordForEntity(Entity: "User", Context: Context) {
-            if User.value(forKey: "signedIn") == nil {
-                User.setValue(false, forKey: "signedIn")
-                signedIn = false
-            }
-            
-            if User.value(forKey: "type") == nil {
-                User.setValue("None", forKey: "type")
-                userType = SignUp.UserType.none
-            }
+        } else {
+            signedIn = false
         }
         
         SaveContext(ContextName: Context)

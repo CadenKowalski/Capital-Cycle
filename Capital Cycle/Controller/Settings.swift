@@ -125,9 +125,12 @@ class Settings: UIViewController {
         let Context = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
         do {
-            let fetchResults = try Context.fetch(fetchRequest)
-            let isSignedIn = fetchResults.first as! NSManagedObject
-            isSignedIn.setValue(signedIn, forKey: "signedIn")
+            let Users = try Context.fetch(fetchRequest) as! [NSManagedObject]
+            for User in Users {
+                if User.value(forKey: "email") as? String == Auth.auth().currentUser?.email {
+                    User.setValue(signedIn, forKey: "signedIn")
+                }
+            }
             try Context.save()
         } catch {
             let nserror = error as NSError
