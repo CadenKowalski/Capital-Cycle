@@ -14,6 +14,7 @@ var signedIn: Bool!
 var userType: SignUp.UserType!
 var weekActivitiesList: [[String]]!
 var Week: [[String]]!
+var camperInfo: [[String]]!
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

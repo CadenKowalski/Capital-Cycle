@@ -1339,6 +1339,118 @@ A: We have a variety of games and books as well as a gym and playground to occup
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aML-ci-l1n" userLabel="Camper Scroll View">
+                                <rect key="frame" x="0.0" y="110" width="375" height="668"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FX1-S6-vw9" userLabel="Scroll View Display">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="668"/>
+                                        <subviews>
+                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zQz-Ii-lcy" userLabel="Camper Info View">
+                                                <rect key="frame" x="16" y="10" width="343" height="642"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Camper Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0kj-HB-fqT">
+                                                        <rect key="frame" x="104.00000000000001" y="7.9999999999999982" width="135.33333333333337" height="27.333333333333329"/>
+                                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
+                                                        <color key="textColor" name="LabelColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parent Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VvE-cC-Zsu">
+                                                        <rect key="frame" x="8.0000000000000071" y="43.333333333333343" width="122.66666666666669" height="27.333333333333329"/>
+                                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
+                                                        <color key="textColor" name="LabelColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L3U-lf-AnQ">
+                                                        <rect key="frame" x="31.999999999999996" y="78.666666666666657" width="54.666666666666657" height="27.333333333333329"/>
+                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parent Phone" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pge-hr-csv">
+                                                        <rect key="frame" x="8" y="114" width="126" height="27.333333333333343"/>
+                                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
+                                                        <color key="textColor" name="LabelColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="313-zK-qht">
+                                                        <rect key="frame" x="32" y="149.33333333333331" width="75" height="27.333333333333343"/>
+                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parent Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zgs-li-Yn9">
+                                                        <rect key="frame" x="8" y="184.66666666666669" width="118" height="27.333333333333343"/>
+                                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
+                                                        <color key="textColor" name="LabelColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t25-Av-k9u">
+                                                        <rect key="frame" x="32" y="220" width="303" height="27.333333333333343"/>
+                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signed Waiver" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XgM-tu-lN0">
+                                                        <rect key="frame" x="8" y="255.33333333333334" width="135.33333333333334" height="27.333333333333343"/>
+                                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
+                                                        <color key="textColor" name="LabelColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bool" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ajb-0o-pyW">
+                                                        <rect key="frame" x="32" y="290.66666666666669" width="41.333333333333343" height="27.333333333333314"/>
+                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" name="ContrastViewColor"/>
+                                                <gestureRecognizers/>
+                                                <constraints>
+                                                    <constraint firstItem="L3U-lf-AnQ" firstAttribute="leading" secondItem="zQz-Ii-lcy" secondAttribute="leading" constant="32" id="5Bg-d9-nG0"/>
+                                                    <constraint firstItem="XgM-tu-lN0" firstAttribute="leading" secondItem="zQz-Ii-lcy" secondAttribute="leading" constant="8" id="6Jm-Ba-BLi"/>
+                                                    <constraint firstItem="Pge-hr-csv" firstAttribute="top" secondItem="L3U-lf-AnQ" secondAttribute="bottom" constant="8" id="83d-K5-0JP"/>
+                                                    <constraint firstItem="Pge-hr-csv" firstAttribute="leading" secondItem="zQz-Ii-lcy" secondAttribute="leading" constant="8" id="GL8-vF-dLo"/>
+                                                    <constraint firstItem="VvE-cC-Zsu" firstAttribute="leading" secondItem="zQz-Ii-lcy" secondAttribute="leading" constant="8" id="Hz9-NH-pTK"/>
+                                                    <constraint firstItem="L3U-lf-AnQ" firstAttribute="top" secondItem="VvE-cC-Zsu" secondAttribute="bottom" constant="8" id="KYK-i4-3dY"/>
+                                                    <constraint firstItem="313-zK-qht" firstAttribute="leading" secondItem="zQz-Ii-lcy" secondAttribute="leading" constant="32" id="POY-2s-S49"/>
+                                                    <constraint firstItem="0kj-HB-fqT" firstAttribute="centerX" secondItem="zQz-Ii-lcy" secondAttribute="centerX" id="Rtd-nU-tlY"/>
+                                                    <constraint firstItem="313-zK-qht" firstAttribute="top" secondItem="Pge-hr-csv" secondAttribute="bottom" constant="8" id="VKK-lV-Tlg"/>
+                                                    <constraint firstItem="t25-Av-k9u" firstAttribute="leading" secondItem="zQz-Ii-lcy" secondAttribute="leading" constant="32" id="YhY-Zs-O08"/>
+                                                    <constraint firstItem="0kj-HB-fqT" firstAttribute="top" secondItem="zQz-Ii-lcy" secondAttribute="top" constant="8" id="Yre-Gh-pUu"/>
+                                                    <constraint firstItem="XgM-tu-lN0" firstAttribute="top" secondItem="t25-Av-k9u" secondAttribute="bottom" constant="8" id="alA-td-3NL"/>
+                                                    <constraint firstItem="VvE-cC-Zsu" firstAttribute="top" secondItem="0kj-HB-fqT" secondAttribute="bottom" constant="8" id="emO-2p-RDf"/>
+                                                    <constraint firstItem="zgs-li-Yn9" firstAttribute="top" secondItem="313-zK-qht" secondAttribute="bottom" constant="8" id="gMC-XQ-oc0"/>
+                                                    <constraint firstItem="ajb-0o-pyW" firstAttribute="leading" secondItem="zQz-Ii-lcy" secondAttribute="leading" constant="32" id="gOf-0P-2z9"/>
+                                                    <constraint firstItem="ajb-0o-pyW" firstAttribute="top" secondItem="XgM-tu-lN0" secondAttribute="bottom" constant="8" id="gxS-fN-Ssg"/>
+                                                    <constraint firstItem="t25-Av-k9u" firstAttribute="top" secondItem="zgs-li-Yn9" secondAttribute="bottom" constant="8" id="obf-yA-pmx"/>
+                                                    <constraint firstAttribute="trailing" secondItem="t25-Av-k9u" secondAttribute="trailing" constant="8" id="wzV-dy-yL5"/>
+                                                    <constraint firstItem="zgs-li-Yn9" firstAttribute="leading" secondItem="zQz-Ii-lcy" secondAttribute="leading" constant="8" id="ytb-sk-a11"/>
+                                                </constraints>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="hG8-zH-fQI" appends="YES" id="uPw-7u-57k"/>
+                                                </connections>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" name="ViewColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="668" id="9lp-nH-p4W"/>
+                                            <constraint firstItem="zQz-Ii-lcy" firstAttribute="leading" secondItem="FX1-S6-vw9" secondAttribute="leading" constant="16" id="AXm-uJ-a1c"/>
+                                            <constraint firstItem="zQz-Ii-lcy" firstAttribute="top" secondItem="FX1-S6-vw9" secondAttribute="top" constant="10" id="LlZ-P8-r0X"/>
+                                            <constraint firstAttribute="trailing" secondItem="zQz-Ii-lcy" secondAttribute="trailing" constant="16" id="XQb-tR-MIL"/>
+                                            <constraint firstAttribute="bottom" secondItem="zQz-Ii-lcy" secondAttribute="bottom" constant="16" id="zXM-aq-lCz"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" name="ViewColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="FX1-S6-vw9" secondAttribute="trailing" id="7bz-Uw-54o"/>
+                                    <constraint firstItem="FX1-S6-vw9" firstAttribute="width" secondItem="aML-ci-l1n" secondAttribute="width" id="8yd-Hm-WZI"/>
+                                    <constraint firstItem="FX1-S6-vw9" firstAttribute="leading" secondItem="aML-ci-l1n" secondAttribute="leading" id="REi-We-bDX"/>
+                                    <constraint firstItem="FX1-S6-vw9" firstAttribute="top" secondItem="aML-ci-l1n" secondAttribute="top" id="lCj-2v-gel"/>
+                                    <constraint firstAttribute="bottom" secondItem="FX1-S6-vw9" secondAttribute="bottom" id="pVZ-rA-6U8"/>
+                                    <constraint firstItem="FX1-S6-vw9" firstAttribute="height" secondItem="aML-ci-l1n" secondAttribute="height" priority="250" id="qxE-E0-hoo"/>
+                                </constraints>
+                            </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kdO-CT-UdU" userLabel="Gradient View">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                 <subviews>
@@ -1378,18 +1490,37 @@ A: We have a variety of games and books as well as a gym and playground to occup
                         </subviews>
                         <color key="backgroundColor" name="ViewColor"/>
                         <constraints>
+                            <constraint firstItem="3kn-Hd-nEv" firstAttribute="trailing" secondItem="aML-ci-l1n" secondAttribute="trailing" id="NJY-H8-wqg"/>
                             <constraint firstItem="kdO-CT-UdU" firstAttribute="top" secondItem="jhy-7z-bQb" secondAttribute="top" id="Q6m-Sk-jKB"/>
+                            <constraint firstItem="3kn-Hd-nEv" firstAttribute="bottom" secondItem="aML-ci-l1n" secondAttribute="bottom" id="iES-r1-u7w"/>
+                            <constraint firstItem="aML-ci-l1n" firstAttribute="leading" secondItem="3kn-Hd-nEv" secondAttribute="leading" id="l9K-2U-2fS"/>
+                            <constraint firstItem="aML-ci-l1n" firstAttribute="top" secondItem="jhy-7z-bQb" secondAttribute="top" constant="110" id="lbp-VI-h43"/>
                             <constraint firstItem="kdO-CT-UdU" firstAttribute="trailing" secondItem="3kn-Hd-nEv" secondAttribute="trailing" id="ll0-zM-JjI"/>
                             <constraint firstItem="kdO-CT-UdU" firstAttribute="leading" secondItem="3kn-Hd-nEv" secondAttribute="leading" id="roE-sE-39p"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3kn-Hd-nEv"/>
                     </view>
+                    <size key="freeformSize" width="375" height="812"/>
                     <connections>
+                        <outlet property="camperInfoView" destination="zQz-Ii-lcy" id="s2R-ee-RiO"/>
+                        <outlet property="camperName" destination="0kj-HB-fqT" id="NAa-L5-Jz6"/>
+                        <outlet property="camperScrollViewYConstraint" destination="lbp-VI-h43" id="7Kn-xd-ErE"/>
                         <outlet property="gradientView" destination="kdO-CT-UdU" id="jae-En-uNs"/>
                         <outlet property="gradientViewHeight" destination="6S0-jD-G92" id="QXj-Tk-4uT"/>
+                        <outlet property="parentEmailLbl" destination="t25-Av-k9u" id="2Qt-pD-hFl"/>
+                        <outlet property="parentNameLbl" destination="L3U-lf-AnQ" id="2XJ-KB-QKP"/>
+                        <outlet property="parentPhoneLbl" destination="313-zK-qht" id="hJA-hZ-gwy"/>
+                        <outlet property="scrollViewDisplay" destination="FX1-S6-vw9" id="6sy-OL-6sT"/>
+                        <outlet property="scrollViewDisplayHeight" destination="9lp-nH-p4W" id="Lf8-Gx-GuK"/>
+                        <outlet property="signedWaiverLbl" destination="ajb-0o-pyW" id="nnt-KN-AJ4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ooO-Ce-bYw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="hG8-zH-fQI" userLabel="Dismiss Camper Info View">
+                    <connections>
+                        <action selector="dismissCamperInfoView:" destination="45k-fV-EgM" id="JkN-GT-jcV"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2074.4000000000001" y="817.98029556650249"/>
         </scene>
@@ -1831,6 +1962,6 @@ A: We have a variety of games and books as well as a gym and playground to occup
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="i74-cw-zSX"/>
-        <segue reference="6V9-QI-sCX"/>
+        <segue reference="Sdy-Gj-ANw"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -108,7 +108,11 @@ class SchedulePage: UIViewController {
             dailyBtn.setTitle("Mon", for: .normal)
         } else {
             if Hour > 17 {
-                dailyBtn.setTitle("\(Days[Day - 1])", for: .normal)
+                if Day == 6 {
+                    dailyBtn.setTitle("Mon", for: .normal)                }
+                else {
+                    dailyBtn.setTitle("\(Days[Day - 1])", for: .normal)
+                }
             } else {
                 dailyBtn.setTitle("\(Days[Day - 2])", for: .normal)
             }
@@ -127,7 +131,7 @@ class SchedulePage: UIViewController {
         overviewScroll.refreshControl = overviewRefreshControl
     }
     
-    // MARK: Daily spreadsheet data
+    // MARK: Daily Spreadsheet Data
 
     // Fetches the daily spreadsheet data
     func fetchDailyData() {
@@ -151,7 +155,11 @@ class SchedulePage: UIViewController {
             dayActivitiesList = weekActivitiesList[0]
         } else {
             if Hour > 17 {
-                dayActivitiesList = weekActivitiesList[Day - 1]
+                if Day == 6 {
+                    dayActivitiesList = weekActivitiesList[0]
+            } else {
+                    dayActivitiesList = weekActivitiesList[Day - 1]
+                }
             } else {
                 dayActivitiesList = weekActivitiesList[Day - 2]
             }
@@ -167,7 +175,7 @@ class SchedulePage: UIViewController {
         dayLbl.text = "\(dayActivitiesList[0])"
     }
     
-    // MARK: Overview spreadhseet data
+    // MARK: Overview Spreadhseet Sata
     
     // Fetches overview spreadhseet data
     func fetchOverviewData() {
