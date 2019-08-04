@@ -175,7 +175,7 @@ class SchedulePage: UIViewController {
         dayLbl.text = "\(dayActivitiesList[0])"
     }
     
-    // MARK: Overview Spreadhseet Sata
+    // MARK: Overview Spreadhseet Data
     
     // Fetches overview spreadhseet data
     func fetchOverviewData() {
@@ -229,12 +229,12 @@ class SchedulePage: UIViewController {
     func updateContext() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let Context = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Schedule")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Spreadsheet")
         do {
             let fetchResults = try Context.fetch(fetchRequest)
-            let Schedule = fetchResults.first as! NSManagedObject
-            Schedule.setValue(weekActivitiesList, forKey: "daily")
-            Schedule.setValue(Week, forKey: "overview")
+            let Spreadsheet = fetchResults.first as! NSManagedObject
+            Spreadsheet.setValue(weekActivitiesList, forKey: "dailyData")
+            Spreadsheet.setValue(Week, forKey: "overviewData")
             try Context.save()
         } catch {
             let nserror = error as NSError

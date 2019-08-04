@@ -60,20 +60,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return true }
         let Context = appDelegate.persistentContainer.viewContext
-        let Schedules = fetchRecordsOfEntity(Entity: "Schedule", Context: Context)
-        // Configures the Schedule core data entity
-        if let Schedule = Schedules.first {
-            weekActivitiesList = Schedule.value(forKey: "daily") as? [[String]]
-            Week = Schedule.value(forKey: "overview") as? [[String]]
-        } else if let Schedule = instantiateRecordForEntity(Entity: "Schedule", Context: Context) {
-            if Schedule.value(forKey: "daily") == nil {
-                Schedule.setValue([[""]], forKey: "daily")
+        let Spreadsheet = fetchRecordsOfEntity(Entity: "Spreadsheet", Context: Context)
+        // Configures the Spreadsheet core data entity
+        if let Sheet = Spreadsheet.first {
+            weekActivitiesList = Sheet.value(forKey: "dailyData") as? [[String]]
+            Week = Sheet.value(forKey: "overviewData") as? [[String]]
+            camperInfo = Sheet.value(forKey: "camperInfo") as? [[String]]
+        } else if let Spreadsheet = instantiateRecordForEntity(Entity: "Spreadsheet", Context: Context) {
+            if Spreadsheet.value(forKey: "dailyData") == nil {
+                Spreadsheet.setValue([[""]], forKey: "dailyData")
                 weekActivitiesList = [[""]]
             }
             
-            if Schedule.value(forKey: "overview") == nil {
-                Schedule.setValue([[""]], forKey: "overview")
+            if Spreadsheet.value(forKey: "overviewData") == nil {
+                Spreadsheet.setValue([[""]], forKey: "overviewData")
                 Week = [[""]]
+            }
+            
+            if Spreadsheet.value(forKey: "camperInfo") == nil {
+                Spreadsheet.setValue([[""]], forKey: "camperInfo")
+                camperInfo = [[""]]
             }
         }
         
@@ -92,6 +98,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         userType = .parent
                     case "Counselor":
                         userType = .counselor
+                    case "Admin":
+                        userType = .admin
                     default:
                         return true
                     }

@@ -40,6 +40,10 @@ class PageVC: UIPageViewController, UIPageViewControllerDelegate, UIPageViewCont
             orderedVCs.append(newVC(VC: "FAQPage"))
         case .counselor:
             orderedVCs.append(newVC(VC: "CamperInfoPage"))
+        case .admin:
+            orderedVCs.append(newVC(VC: "StorePage"))
+            orderedVCs.append(newVC(VC: "FAQPage"))
+            orderedVCs.append(newVC(VC: "CamperInfoPage"))
         default:
             return
         }

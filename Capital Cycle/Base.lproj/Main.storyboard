@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14845" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="v2Q-k5-Eoj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14854.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="v2Q-k5-Eoj">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14799.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14806.4"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
-        <capability name="iOS 13.0 system colors" minToolsVersion="11.0"/>
     </dependencies>
     <scenes>
         <!--PageVC-->
@@ -29,7 +28,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="1191"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YlL-WF-Z3k" userLabel="Scroll View Display">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1223"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1191"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Camp Dates:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tnX-Rc-hHc">
                                                 <rect key="frame" x="8" y="108" width="125" height="28"/>
@@ -42,19 +41,19 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ihh-44-Xpe" userLabel="Dates Lbl">
-                                                <rect key="frame" x="32" y="144" width="374" height="164"/>
+                                                <rect key="frame" x="32" y="144" width="374" height="139.33333333333337"/>
                                                 <string key="text">Session 1: Jun 17 - 21 
 Session 2: Jun 24 - 28 
 Session 3: Jul 1 - 5 
 Session 4: Jul 8 - 12 
 Session 5: Jul 15 - 19 
 Session 6: Jul 22 - 26</string>
-                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
                                                 <color key="textColor" name="LabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Camp Hours:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gya-0b-gFj" userLabel="Camp Hours Lbl">
-                                                <rect key="frame" x="8" y="316" width="125" height="28"/>
+                                                <rect key="frame" x="8" y="291.33333333333331" width="125" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="125" id="7MJ-6B-AWT"/>
                                                     <constraint firstAttribute="height" constant="28" id="fJA-wi-fIV"/>
@@ -64,13 +63,13 @@ Session 6: Jul 22 - 26</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9AM - 6PM or 8AM - 6PM with before care" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8wX-ni-yL7" userLabel="Hours Lbl">
-                                                <rect key="frame" x="32" y="352" width="374" height="54.666666666666686"/>
-                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                                <rect key="frame" x="32" y="327.33333333333331" width="374" height="23.333333333333314"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
                                                 <color key="textColor" name="LabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Camp Price:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l5e-4D-pxz" userLabel="Camp Price Lbl">
-                                                <rect key="frame" x="8" y="414.66666666666669" width="115" height="28"/>
+                                                <rect key="frame" x="8" y="358.66666666666669" width="115" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28" id="FsK-Jx-4aK"/>
                                                     <constraint firstAttribute="width" constant="115" id="u3X-hz-Pcp"/>
@@ -80,54 +79,54 @@ Session 6: Jul 22 - 26</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="srY-QF-c10" userLabel="Price Lbl">
-                                                <rect key="frame" x="32" y="450.66666666666669" width="374" height="82.000000000000057"/>
+                                                <rect key="frame" x="32" y="394.66666666666669" width="374" height="69.666666666666686"/>
                                                 <string key="text">Sessions 1 &amp; 3: $375 
 Sessions 2, 4, 5 &amp; 6: $430
 Before Care: $10 per day</string>
-                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
                                                 <color key="textColor" name="LabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Questions?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MLA-pY-GRJ" userLabel="Questions Lbl">
-                                                <rect key="frame" x="8" y="540.66666666666663" width="105" height="28"/>
+                                                <rect key="frame" x="8" y="472.33333333333331" width="107.66666666666667" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28" id="1A0-eK-jvu"/>
-                                                    <constraint firstAttribute="width" constant="105" id="f52-6T-fQG"/>
+                                                    <constraint firstAttribute="width" constant="107.67" id="zlk-7k-vOk"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                 <color key="textColor" name="LabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yHx-Q1-GR3" userLabel="Contacts Lbl">
-                                                <rect key="frame" x="32" y="576.66666666666663" width="374" height="136.66666666666663"/>
+                                                <rect key="frame" x="32" y="508.33333333333331" width="374" height="116.33333333333331"/>
                                                 <string key="text">Email: CapitalCycleCamp@gmail.com
 Camp Owner - Ben Berkow
 Phone: 202.510.1342 
 Site Manager - Chris Prosser
 Phone: 202.288.5245</string>
-                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
                                                 <color key="textColor" name="LabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Typical Day:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pZb-1y-mSA" userLabel="Typical Day Lbl">
-                                                <rect key="frame" x="8" y="721.33333333333337" width="112" height="28"/>
+                                                <rect key="frame" x="8.0000000000000071" y="632.66666666666663" width="114.66666666666669" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28" id="7X1-jK-5Wz"/>
-                                                    <constraint firstAttribute="width" constant="112" id="frL-P7-w4r"/>
+                                                    <constraint firstAttribute="width" constant="114.67" id="i5a-ta-eOv"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                 <color key="textColor" name="LabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r2K-gt-ZXY" userLabel="Day Lbl">
-                                                <rect key="frame" x="32" y="757.33333333333337" width="374" height="382.66666666666663"/>
+                                                <rect key="frame" x="32" y="668.66666666666663" width="374" height="278.66666666666663"/>
                                                 <string key="text">Early drop off begins at 8AM and parents can drop their kids off any time after that. Camp begins at 9AM and campers will play a variety of games at the school for about an hour. At around 10AM, we prepare to leave (apply sunscreen, fill waterbottles, use the restroom, pack backpacks). We will usually bike all of the way to our destination and once we get there, we will eat lunch and do the activity that we have planned. At around 3-4PM we will bike back to the school and play games until parents come to pick up campers.</string>
-                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
                                                 <color key="textColor" name="LabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cBm-x8-BxN" userLabel="Facebook Btn">
-                                                <rect key="frame" x="152" y="1148" width="40" height="40"/>
+                                                <rect key="frame" x="152" y="955.33333333333337" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="gIs-ez-uIa"/>
                                                     <constraint firstAttribute="height" constant="40" id="upr-vT-Wl3"/>
@@ -138,7 +137,7 @@ Phone: 202.288.5245</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J93-kR-cR5" userLabel="Instagram Btn">
-                                                <rect key="frame" x="222" y="1148" width="40" height="40"/>
+                                                <rect key="frame" x="222" y="955.33333333333337" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="13K-b1-Uxa"/>
                                                     <constraint firstAttribute="height" constant="40" id="6CB-g3-bXP"/>
@@ -197,21 +196,14 @@ Phone: 202.288.5245</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E4V-Od-9gE">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZu-KI-aQI">
-                                        <rect key="frame" x="152" y="41" width="110" height="28"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZu-KI-aQI">
+                                        <rect key="frame" x="151.66666666666666" y="41" width="110.99999999999997" height="28"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="110" id="IIZ-Uj-xlA"/>
+                                            <constraint firstAttribute="width" constant="111" id="Hcd-6e-NsV"/>
                                             <constraint firstAttribute="height" constant="28" id="oZy-Jl-6fr"/>
                                         </constraints>
-                                        <attributedString key="attributedText">
-                                            <fragment content="Overview">
-                                                <attributes>
-                                                    <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <font key="NSFont" size="25" name="Avenir-Medium"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                </attributes>
-                                            </fragment>
-                                        </attributedString>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q6C-0K-vCN" userLabel="Settings Btn">
@@ -769,17 +761,10 @@ Phone: 202.288.5245</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cXw-42-buD" userLabel="Gradient View">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yxy-7o-B0d">
-                                        <rect key="frame" x="155.66666666666666" y="38" width="102.99999999999997" height="34"/>
-                                        <attributedString key="attributedText">
-                                            <fragment content="Schedule">
-                                                <attributes>
-                                                    <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <font key="NSFont" size="25" name="Avenir-Medium"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                </attributes>
-                                            </fragment>
-                                        </attributedString>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Schedule" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yxy-7o-B0d">
+                                        <rect key="frame" x="153.66666666666666" y="40" width="106.99999999999997" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ucQ-X1-3da" userLabel="Settings Btn">
@@ -903,7 +888,7 @@ Phone: 202.288.5245</string>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                 <state key="normal" title="Log Out">
-                                    <color key="titleColor" cocoaTouchSystemColor="systemRedColor"/>
+                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="logOut:" destination="ECW-nJ-Zo5" eventType="touchUpInside" id="PLl-0v-07g"/>
@@ -917,7 +902,7 @@ Phone: 202.288.5245</string>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                 <state key="normal" title="Delete my account">
-                                    <color key="titleColor" cocoaTouchSystemColor="systemRedColor"/>
+                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="deleteAccount:" destination="ECW-nJ-Zo5" eventType="touchUpInside" id="aUr-gR-DAa"/>
@@ -949,7 +934,7 @@ Phone: 202.288.5245</string>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                 <state key="normal" title="Reset Password">
-                                    <color key="titleColor" cocoaTouchSystemColor="systemRedColor"/>
+                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="resetPassword:" destination="ECW-nJ-Zo5" eventType="touchUpInside" id="P6f-z1-FvF"/>
@@ -1048,21 +1033,14 @@ $375</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kr4-03-y19">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dCK-ah-geS">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Store" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dCK-ah-geS">
                                         <rect key="frame" x="155" y="41" width="65" height="28"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="28" id="GIy-YG-bF4"/>
                                             <constraint firstAttribute="width" constant="65" id="fTA-ng-Tek"/>
                                         </constraints>
-                                        <attributedString key="attributedText">
-                                            <fragment content="Store">
-                                                <attributes>
-                                                    <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <font key="NSFont" size="25" name="Avenir-Medium"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                </attributes>
-                                            </fragment>
-                                        </attributedString>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WYD-fk-ieQ" userLabel="Settings Btn">
@@ -1267,21 +1245,14 @@ A: We have a variety of games and books as well as a gym and playground to occup
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7qZ-6e-4gC" userLabel="Gradient View">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MdU-L6-JD5">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FAQ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MdU-L6-JD5">
                                         <rect key="frame" x="155" y="41" width="65" height="28"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="28" id="Zfz-WQ-8z0"/>
                                             <constraint firstAttribute="width" constant="65" id="dhY-Ay-tK7"/>
                                         </constraints>
-                                        <attributedString key="attributedText">
-                                            <fragment content="FAQ">
-                                                <attributes>
-                                                    <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <font key="NSFont" size="25" name="Avenir-Medium"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                </attributes>
-                                            </fragment>
-                                        </attributedString>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -1460,7 +1431,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                             <constraint firstAttribute="width" constant="142" id="gkS-6f-dv9"/>
                                             <constraint firstAttribute="height" constant="35" id="yYG-Yh-wXA"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="25"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1536,14 +1507,14 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 <rect key="frame" x="16" y="116" width="343" height="34"/>
                                 <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done" textContentType="email"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tTZ-I0-VVo" userLabel="Password">
                                 <rect key="frame" x="16" y="166" width="343" height="34"/>
                                 <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="euE-3o-OpQ">
@@ -1552,19 +1523,19 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                     <constraint firstAttribute="width" constant="181" id="71E-yr-dN4"/>
                                     <constraint firstAttribute="height" constant="23.329999999999998" id="eon-Jq-wRg"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" name="LabelColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3vu-Nn-vdL">
-                                <rect key="frame" x="157" y="741" width="61" height="21"/>
+                                <rect key="frame" x="156.66666666666666" y="741" width="62" height="21"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="62" id="VJJ-6k-bKc"/>
                                     <constraint firstAttribute="height" constant="21" id="gah-2t-alk"/>
-                                    <constraint firstAttribute="width" constant="61" id="jY4-Lp-ZG2"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                 <state key="normal" title="Sign Up">
-                                    <color key="titleColor" cocoaTouchSystemColor="linkColor"/>
+                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="A2Z-6c-UZy" kind="show" id="pK6-B0-FNP"/>
@@ -1579,7 +1550,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                             <constraint firstAttribute="height" constant="35" id="8kK-Q4-Qam"/>
                                             <constraint firstAttribute="width" constant="71" id="RN2-eo-NHJ"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="25"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1605,24 +1576,24 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keep me signed in" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="den-8a-0tj">
-                                <rect key="frame" x="42" y="237" width="85" height="14"/>
+                                <rect key="frame" x="42.000000000000007" y="237" width="88.666666666666686" height="14"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="85" id="Ncc-Sx-wJg"/>
                                     <constraint firstAttribute="height" constant="14" id="hR4-4i-GOb"/>
+                                    <constraint firstAttribute="width" constant="88.670000000000002" id="zXe-Sh-YzT"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="10"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ovt-Gf-r3U">
-                                <rect key="frame" x="126" y="208" width="123" height="15"/>
+                                <rect key="frame" x="123.66666666666669" y="208" width="128" height="15"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="123" id="Nv8-mc-t5w"/>
                                     <constraint firstAttribute="height" constant="15" id="qWL-Tj-XwE"/>
+                                    <constraint firstAttribute="width" constant="128" id="whY-BS-JAj"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                 <state key="normal" title="Forgot your password?">
-                                    <color key="titleColor" cocoaTouchSystemColor="linkColor"/>
+                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="resetPassword:" destination="v2Q-k5-Eoj" eventType="touchUpInside" id="8vc-AY-R8l"/>
@@ -1710,7 +1681,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                             <constraint firstAttribute="width" constant="89" id="Bez-2I-G6W"/>
                                             <constraint firstAttribute="height" constant="35" id="dhi-Dj-AOA"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="25"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1726,29 +1697,29 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 <rect key="frame" x="16" y="116" width="343" height="34"/>
                                 <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done" textContentType="email"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GNk-Ht-aHI">
                                 <rect key="frame" x="16" y="166" width="343" height="34"/>
                                 <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES" textContentType="new-password"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3u5-72-jbV">
                                 <rect key="frame" x="16" y="216" width="343" height="34"/>
                                 <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES" textContentType="new-password"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I am a" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ILc-KA-kIH">
-                                <rect key="frame" x="15.999999999999996" y="272" width="46.666666666666657" height="23.666666666666686"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I am a" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ILc-KA-kIH">
+                                <rect key="frame" x="15.999999999999996" y="272" width="46.666666666666657" height="20.333333333333314"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="46.670000000000002" id="H9Y-Vh-tmU"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1759,7 +1730,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="7ed-O5-aSu"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                                 <connections>
@@ -1767,7 +1738,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 </connections>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ra-2Z-TlZ" userLabel="Check Box">
-                                <rect key="frame" x="13" y="313.33333333333331" width="25" height="25"/>
+                                <rect key="frame" x="13" y="310" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="KJ9-md-jns"/>
                                     <constraint firstAttribute="width" constant="25" id="i3Y-IW-h3I"/>
@@ -1780,17 +1751,17 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keep me signed in" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rje-J8-oBE" userLabel="Keep Me Signed In">
-                                <rect key="frame" x="42" y="320" width="85" height="13"/>
+                                <rect key="frame" x="42.000000000000007" y="317" width="88.666666666666686" height="13"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="88.670000000000002" id="JD9-Id-OgX"/>
                                     <constraint firstAttribute="height" constant="13" id="VUS-7L-2MU"/>
-                                    <constraint firstAttribute="width" constant="85" id="kEy-FT-Gm8"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="10"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5fa-Sm-lDz" userLabel="Check Box">
-                                <rect key="frame" x="13" y="348.33333333333331" width="25" height="25"/>
+                                <rect key="frame" x="13" y="345" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="Gdo-s2-9C5"/>
                                     <constraint firstAttribute="height" constant="25" id="JLd-UU-dZ6"/>
@@ -1803,27 +1774,26 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I have read and agree to the" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8bD-Zf-iA1" userLabel="Agree Lbl">
-                                <rect key="frame" x="42" y="355" width="128.66666666666666" height="13.666666666666686"/>
+                                <rect key="frame" x="42" y="352" width="135.33333333333334" height="12"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="128.66999999999999" id="dg3-fk-B1C"/>
+                                    <constraint firstAttribute="width" constant="135.33000000000001" id="bJW-Uj-KAg"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="10"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6V0-zb-pDi" userLabel="Privacy Policy Btn">
-                                <rect key="frame" x="172" y="354" width="62" height="15"/>
+                                <rect key="frame" x="178.66666666666666" y="351" width="67" height="15"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="67" id="LXy-Cx-dha"/>
                                     <constraint firstAttribute="height" constant="15" id="VVE-sO-cQJ"/>
-                                    <constraint firstAttribute="width" constant="62" id="kB4-GQ-Xn5"/>
                                 </constraints>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
                                         <fragment content="Privacy Policy">
                                             <attributes>
                                                 <color key="NSColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                                <font key="NSFont" size="10" name="Avenir-Medium"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                <font key="NSFont" metaFont="system" size="10"/>
                                                 <integer key="NSUnderline" value="1"/>
                                             </attributes>
                                         </fragment>
@@ -1834,7 +1804,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ajG-sE-VYd">
-                                <rect key="frame" x="112.66666666666669" y="385" width="150" height="45"/>
+                                <rect key="frame" x="112.66666666666669" y="382" width="150" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="0yC-cd-1Kq"/>
                                     <constraint firstAttribute="width" constant="150" id="oWa-uw-8YP"/>
@@ -1852,7 +1822,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 <color key="backgroundColor" name="ContrastViewColor"/>
                                 <gestureRecognizers/>
                                 <color key="textColor" name="LabelColor"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="cZw-p2-ndt" appends="YES" id="o8C-N9-jK2"/>
@@ -1880,7 +1850,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                             <constraint firstItem="8bD-Zf-iA1" firstAttribute="leading" secondItem="5fa-Sm-lDz" secondAttribute="trailing" constant="4" id="MOa-N2-FFY"/>
                             <constraint firstItem="ajG-sE-VYd" firstAttribute="top" secondItem="6V0-zb-pDi" secondAttribute="bottom" constant="16" id="N6o-Ba-xvu"/>
                             <constraint firstItem="GNk-Ht-aHI" firstAttribute="top" secondItem="O6n-C3-gRh" secondAttribute="bottom" constant="16" id="Pfy-5R-DpU"/>
-                            <constraint firstItem="Rje-J8-oBE" firstAttribute="top" secondItem="qf8-Wn-zz9" secondAttribute="bottom" constant="20" id="Qms-QZ-2kB"/>
+                            <constraint firstItem="Rje-J8-oBE" firstAttribute="top" secondItem="qf8-Wn-zz9" secondAttribute="bottom" constant="17" id="Qms-QZ-2kB"/>
                             <constraint firstItem="3u5-72-jbV" firstAttribute="top" secondItem="GNk-Ht-aHI" secondAttribute="bottom" constant="16" id="Uo1-u1-H4m"/>
                             <constraint firstItem="6V0-zb-pDi" firstAttribute="leading" secondItem="8bD-Zf-iA1" secondAttribute="trailing" constant="1.3300000000000001" id="YiB-Jw-pU5"/>
                             <constraint firstAttribute="trailing" secondItem="Kzh-E1-mfx" secondAttribute="trailing" constant="16" id="alr-Mz-bIl"/>
@@ -1948,20 +1918,20 @@ A: We have a variety of games and books as well as a gym and playground to occup
         <image name="Unchecked" width="66.666664123535156" height="66.666664123535156"/>
         <image name="gear" catalog="system" width="64" height="60"/>
         <namedColor name="CellColor">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color white="0.30000001192092896" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
         <namedColor name="ContrastViewColor">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color white="0.17647058823529413" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
         <namedColor name="LabelColor">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color white="0.89999997615814209" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
         <namedColor name="ViewColor">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.10999999940395355" green="0.10999999940395355" blue="0.11800000071525574" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="i74-cw-zSX"/>
+        <segue reference="CFn-zx-hpt"/>
         <segue reference="Sdy-Gj-ANw"/>
     </inferredMetricsTieBreakers>
 </document>

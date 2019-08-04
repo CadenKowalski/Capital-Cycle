@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 import GoogleAPIClientForREST
 
 class CamperInfoPage: UIViewController {
@@ -66,7 +67,11 @@ class CamperInfoPage: UIViewController {
     
     // Sets the number of campers
     @objc func setNumCampers(Ticket: GTLRServiceTicket, finishedWithObject Result: GTLRSheets_ValueRange, Error: NSError?) {
-        fetchCamperInfo(numCampers: (Result.values![0][0] as! String))
+        if Reachability.isConnectedToNetwork() {
+            fetchCamperInfo(numCampers: (Result.values![0][0] as! String))
+        } else {
+            fetchCamperInfo(numCampers: String(camperInfo!.count))
+        }
     }
     
     // Fetches the camper info data
@@ -78,7 +83,11 @@ class CamperInfoPage: UIViewController {
     
     // Adds the camper info to a list of UIButtons
     @objc func addCamperInfo(Ticket: GTLRServiceTicket, finishedWithObject Result: GTLRSheets_ValueRange, Error: NSError?) {
-        camperInfo = Result.values as? [[String]]
+        if Reachability.isConnectedToNetwork() {
+            camperInfo = Result.values as? [[String]]
+            updateContext()
+        }
+        
         createBtn(numBtns: (camperInfo?.count)!)
     }
     
@@ -118,6 +127,24 @@ class CamperInfoPage: UIViewController {
         parentPhoneLbl.text = "\(camperInfo[camperBtns.firstIndex(of: sender)!][2])"
         parentEmailLbl.text = "\(camperInfo[camperBtns.firstIndex(of: sender)!][3])"
         signedWaiverLbl.text = "\(camperInfo[camperBtns.firstIndex(of: sender)!][4])"
+    }
+    
+    // MARK: Core Data
+        
+    // Updates the context with new values
+    func updateContext() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let Context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Spreadsheet")
+        do {
+            let fetchResults = try Context.fetch(fetchRequest)
+            let Spreadsheet = fetchResults.first as! NSManagedObject
+            Spreadsheet.setValue(camperInfo, forKey: "camperInfo")
+            try Context.save()
+        } catch {
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
     }
     
     // MARK: Dismiss

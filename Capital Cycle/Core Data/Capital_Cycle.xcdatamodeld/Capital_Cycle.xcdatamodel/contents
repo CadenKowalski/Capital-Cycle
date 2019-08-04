@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14877.5" systemVersion="19A512f" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Schedule" representedClassName="Schedule" syncable="YES" codeGenerationType="class">
-        <attribute name="daily" optional="YES" attributeType="Transformable" customClassName="[[String]]" storedInTruthFile="YES"/>
-        <attribute name="overview" optional="YES" attributeType="Transformable"/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14886.2" systemVersion="19A526h" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Spreadsheet" representedClassName="Spreadsheet" syncable="YES" codeGenerationType="class">
+        <attribute name="camperInfo" optional="YES" attributeType="Transformable" customClassName="[[String]]"/>
+        <attribute name="dailyData" optional="YES" attributeType="Transformable" customClassName="[[String]]" storedInTruthFile="YES"/>
+        <attribute name="overviewData" optional="YES" attributeType="Transformable"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
         <attribute name="email" optional="YES" attributeType="String"/>
@@ -10,7 +11,7 @@
         <attribute name="type" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Schedule" positionX="160" positionY="192" width="128" height="73"/>
+        <element name="Spreadsheet" positionX="160" positionY="192" width="128" height="88"/>
         <element name="User" positionX="-54" positionY="-9" width="128" height="88"/>
     </elements>
 </model>

@@ -110,6 +110,7 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
         case camper
         case parent
         case counselor
+        case admin
     }
     
     // User declares of which type they are
@@ -162,6 +163,10 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
         } else {
             Auth.auth().createUser(withEmail: emailTxtField.text!, password: passTxtField.text!) { (user, error) in
                 if error == nil {
+                    if Auth.auth().currentUser?.email == "cadenkowalski1@gmail.com" {
+                        userType = .admin
+                    }
+                    
                     self.createUser(email: self.emailTxtField.text!)
                     self.performSegue(withIdentifier: "SignUp", sender: self)
                 } else {
@@ -190,6 +195,8 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
             User.setValue("Parent", forKey: "type")
         case .counselor:
             User.setValue("Counselor", forKey: "type")
+        case .admin:
+            User.setValue("Admin", forKey: "type")
         default:
             return
         }

@@ -146,6 +146,8 @@ class LogIn: UIViewController, UITextFieldDelegate {
                         userType = .parent
                     case "Counselor":
                         userType = .counselor
+                    case "Admin":
+                        userType = .admin
                     default:
                         return
                     }
