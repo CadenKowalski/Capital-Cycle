@@ -167,8 +167,7 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
                         userType = .admin
                     }
                     
-                    self.createUser(email: self.emailTxtField.text!)
-                    self.performSegue(withIdentifier: "SignUp", sender: self)
+                    Auth.auth().currentUser?.sendEmailVerification(completion: nil)
                 } else {
                     let Alert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
                     let Action = UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -176,35 +175,6 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
                     self.present(Alert, animated: true, completion: nil)
                 }
             }
-        }
-    }
-    
-    // MARK: Core Data
-    
-    // Create a core data user
-    func createUser(email: String) {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        let Context = appDelegate.persistentContainer.viewContext
-        let User = NSEntityDescription.insertNewObject(forEntityName: "User", into: Context)
-        User.setValue(email, forKey: "email")
-        User.setValue(signedIn, forKey: "signedIn")
-        switch userType {
-        case .camper:
-            User.setValue("Camper", forKey: "type")
-        case .parent:
-            User.setValue("Parent", forKey: "type")
-        case .counselor:
-            User.setValue("Counselor", forKey: "type")
-        case .admin:
-            User.setValue("Admin", forKey: "type")
-        default:
-            return
-        }
-        do {
-            try Context.save()
-        } catch {
-            let nserror = error as NSError
-            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
     }
     

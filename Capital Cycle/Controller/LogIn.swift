@@ -70,9 +70,13 @@ class LogIn: UIViewController, UITextFieldDelegate {
     @IBAction func logIn(_ sender: UIButton) {
         Auth.auth().signIn(withEmail: emailTxtField.text!, password: passTxtField.text!) {(user, error) in
             if error == nil {
-                self.updateContext()
-                self.fetchValuesFromContext()
-                self.performSegue(withIdentifier: "LogIn", sender: self)
+                if Auth.auth().currentUser!.isEmailVerified {
+                    self.updateContext()
+                    self.fetchValuesFromContext()
+                    self.performSegue(withIdentifier: "LogIn", sender: self)
+                } else {
+                    self.performSegue(withIdentifier: "verifyUserLoggingIn", sender: nil)
+                }
             } else {
                 let Alert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
                 let Action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
