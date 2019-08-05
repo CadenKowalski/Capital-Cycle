@@ -74,7 +74,7 @@ class LogIn: UIViewController, UITextFieldDelegate {
     @IBAction func logIn(_ sender: UIButton) {
         Auth.auth().signIn(withEmail: emailTxtField.text!, password: passTxtField.text!) {(user, error) in
             if error == nil {
-                if Auth.auth().currentUser!.isEmailVerified {
+                if Auth.auth().currentUser!.isEmailVerified || userType == .counselor {
                     self.updateContext()
                     self.fetchValuesFromContext()
                     self.performSegue(withIdentifier: "LogIn", sender: self)

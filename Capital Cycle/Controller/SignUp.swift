@@ -24,6 +24,9 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
     @IBOutlet weak var privacyPolicyTxtView: UITextView!
     @IBOutlet weak var userTypePickerView: UIPickerView!
     // Code global vars
+    static let Instance = SignUp()
+    var counselorEmail: String!
+    var counselorPass: String!
     var Agree = false
     var typesOfUser = ["--", "Camper", "Parent", "Counselor"]
     
@@ -161,19 +164,26 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
             userTypeLbl.backgroundColor = .red
             userTypeLbl.alpha = 0.5
         } else {
-            Auth.auth().createUser(withEmail: emailTxtField.text!, password: passTxtField.text!) { (user, error) in
-                if error == nil {
-                    if Auth.auth().currentUser?.email == "cadenkowalski1@gmail.com" {
-                        userType = .admin
+            SignUp.Instance.counselorEmail = emailTxtField.text!
+            SignUp.Instance.counselorPass = passTxtField.text!
+            if userType != .counselor {
+                Auth.auth().createUser(withEmail: emailTxtField.text!, password: passTxtField.text!) { (user, error) in
+                    if error == nil {
+                        if Auth.auth().currentUser?.email == "cadenkowalski1@gmail.com" {
+                            userType = .admin
+                        }
+                        
+                        self.performSegue(withIdentifier: "VerifyUser", sender: nil)
+                        Auth.auth().currentUser?.sendEmailVerification(completion: nil)
+                    } else {
+                        let Alert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
+                        let Action = UIAlertAction(title: "OK", style: .default, handler: nil)
+                        Alert.addAction(Action)
+                        self.present(Alert, animated: true, completion: nil)
                     }
-                    
-                    Auth.auth().currentUser?.sendEmailVerification(completion: nil)
-                } else {
-                    let Alert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
-                    let Action = UIAlertAction(title: "OK", style: .default, handler: nil)
-                    Alert.addAction(Action)
-                    self.present(Alert, animated: true, completion: nil)
                 }
+            } else {
+                self.performSegue(withIdentifier: "VerifyCounselor", sender: nil)
             }
         }
     }

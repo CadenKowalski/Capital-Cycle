@@ -763,6 +763,9 @@ Phone: 202.288.5245</string>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Schedule" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yxy-7o-B0d">
                                         <rect key="frame" x="153.66666666666666" y="40" width="106.99999999999997" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="107" id="D1C-Bb-bz6"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1665,6 +1668,85 @@ A: We have a variety of games and books as well as a gym and playground to occup
             </objects>
             <point key="canvasLocation" x="377" y="-1300"/>
         </scene>
+        <!--Verify Counselor-->
+        <scene sceneID="nw4-eo-JZK">
+            <objects>
+                <viewController id="PqR-3q-0Zd" customClass="VerifyCounselor" customModule="Capital_Cycle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KbT-6w-SgI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q6N-tY-NJl">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Counselor Verification" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w37-FH-WaY">
+                                        <rect key="frame" x="61.666666666666671" y="37.666666666666664" width="251.66666666666663" height="34.999999999999993"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="251.66999999999999" id="74t-eT-GYf"/>
+                                            <constraint firstAttribute="height" constant="35" id="lFc-F8-Xtw"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="Qia-lc-zhU"/>
+                                    <constraint firstItem="w37-FH-WaY" firstAttribute="centerX" secondItem="q6N-tY-NJl" secondAttribute="centerX" id="ZCO-y7-Mmk"/>
+                                    <constraint firstItem="w37-FH-WaY" firstAttribute="centerY" secondItem="q6N-tY-NJl" secondAttribute="centerY" constant="5" id="gb9-kZ-RdC"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your counselor ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ImQ-oN-SYA">
+                                <rect key="frame" x="87.000000000000014" y="132" width="201.33333333333337" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" name="LabelColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Counselor ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9ow-Jy-lkc">
+                                <rect key="frame" x="16" y="172" width="343" height="34"/>
+                                <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" textContentType="password"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i7f-fV-KfT">
+                                <rect key="frame" x="156.66666666666666" y="222" width="62" height="33"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                <state key="normal" title="Sign Up">
+                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="signUp:" destination="PqR-3q-0Zd" eventType="touchUpInside" id="pGb-QE-nJ0"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" name="ViewColor"/>
+                        <constraints>
+                            <constraint firstItem="q6N-tY-NJl" firstAttribute="leading" secondItem="hVU-Ut-g83" secondAttribute="leading" id="3SR-eZ-X3K"/>
+                            <constraint firstItem="i7f-fV-KfT" firstAttribute="centerX" secondItem="KbT-6w-SgI" secondAttribute="centerX" id="AdW-Xb-XE4"/>
+                            <constraint firstItem="ImQ-oN-SYA" firstAttribute="top" secondItem="q6N-tY-NJl" secondAttribute="bottom" constant="32" id="Caw-n8-7Qh"/>
+                            <constraint firstItem="ImQ-oN-SYA" firstAttribute="centerX" secondItem="KbT-6w-SgI" secondAttribute="centerX" id="Gcw-1i-22p"/>
+                            <constraint firstItem="q6N-tY-NJl" firstAttribute="top" secondItem="KbT-6w-SgI" secondAttribute="top" id="Ggs-fl-841"/>
+                            <constraint firstItem="i7f-fV-KfT" firstAttribute="top" secondItem="9ow-Jy-lkc" secondAttribute="bottom" constant="16" id="OhI-ua-FSq"/>
+                            <constraint firstItem="hVU-Ut-g83" firstAttribute="trailing" secondItem="9ow-Jy-lkc" secondAttribute="trailing" constant="16" id="PBm-Ql-AUO"/>
+                            <constraint firstItem="9ow-Jy-lkc" firstAttribute="leading" secondItem="hVU-Ut-g83" secondAttribute="leading" constant="16" id="atT-sF-lZ3"/>
+                            <constraint firstItem="q6N-tY-NJl" firstAttribute="trailing" secondItem="hVU-Ut-g83" secondAttribute="trailing" id="b3f-35-PDs"/>
+                            <constraint firstItem="9ow-Jy-lkc" firstAttribute="top" secondItem="ImQ-oN-SYA" secondAttribute="bottom" constant="16" id="dCA-um-gg4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hVU-Ut-g83"/>
+                    </view>
+                    <connections>
+                        <outlet property="counselorIdTxtField" destination="9ow-Jy-lkc" id="NhQ-zd-Nvj"/>
+                        <outlet property="gradientView" destination="q6N-tY-NJl" id="VgH-9C-nzw"/>
+                        <outlet property="gradientViewHeight" destination="Qia-lc-zhU" id="7A8-9K-gd9"/>
+                        <segue destination="jM6-Kb-J6q" kind="presentation" identifier="VerifiedCounselor" modalPresentationStyle="fullScreen" id="8gZ-wr-hIi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fji-Wq-9qB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-647.20000000000005" y="-582.26600985221683"/>
+        </scene>
         <!--Sign Up-->
         <scene sceneID="Td0-EP-Ujf">
             <objects>
@@ -1794,7 +1876,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                         <fragment content="Privacy Policy">
                                             <attributes>
                                                 <color key="NSColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                                <font key="NSFont" metaFont="label"/>
+                                                <font key="NSFont" metaFont="system" size="10"/>
                                                 <integer key="NSUnderline" value="1"/>
                                             </attributes>
                                         </fragment>
@@ -1816,7 +1898,6 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 </state>
                                 <connections>
                                     <action selector="signUp:" destination="A2Z-6c-UZy" eventType="touchUpInside" id="ts1-Ff-kWO"/>
-                                    <segue destination="EiY-kr-02N" kind="show" id="sdE-ep-tzc"/>
                                 </connections>
                             </button>
                             <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Privacy Policy" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kzh-E1-mfx" userLabel="Privacy Policy">
@@ -1890,6 +1971,8 @@ A: We have a variety of games and books as well as a gym and playground to occup
                         <outlet property="signedInBtn" destination="5ra-2Z-TlZ" id="ir5-XE-ayL"/>
                         <outlet property="userTypeLbl" destination="qf8-Wn-zz9" id="jsr-iE-gsQ"/>
                         <outlet property="userTypePickerView" destination="YuM-PM-C54" id="QEB-vs-07b"/>
+                        <segue destination="EiY-kr-02N" kind="presentation" identifier="VerifyUser" id="2oz-0z-gZa"/>
+                        <segue destination="PqR-3q-0Zd" kind="presentation" identifier="VerifyCounselor" id="4C1-jd-XD5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fLH-LB-9yH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1909,7 +1992,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-482" y="-558"/>
+            <point key="canvasLocation" x="377" y="-582"/>
         </scene>
         <!--Verify User-->
         <scene sceneID="1vs-iM-xvA">
@@ -1925,6 +2008,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verify Email" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SeM-IO-tK5">
                                         <rect key="frame" x="120.66666666666669" y="37.666666666666664" width="134" height="34.999999999999993"/>
                                         <constraints>
+                                            <constraint firstAttribute="width" constant="134" id="R4k-bD-xc6"/>
                                             <constraint firstAttribute="height" constant="35" id="cfp-Lg-zuS"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
@@ -1982,7 +2066,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G8l-P8-eAc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1310" y="-559"/>
+            <point key="canvasLocation" x="1295" y="-582"/>
         </scene>
     </scenes>
     <resources>
@@ -2005,8 +2089,8 @@ A: We have a variety of games and books as well as a gym and playground to occup
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="EsD-nZ-GiX"/>
-        <segue reference="CFn-zx-hpt"/>
-        <segue reference="6V9-QI-sCX"/>
+        <segue reference="2oz-0z-gZa"/>
+        <segue reference="i74-cw-zSX"/>
+        <segue reference="8gZ-wr-hIi"/>
     </inferredMetricsTieBreakers>
 </document>

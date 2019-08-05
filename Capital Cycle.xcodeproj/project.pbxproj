@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5700629922E3BB400032EFAB /* LogIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5700629822E3BB400032EFAB /* LogIn.swift */; };
 		5700629B22E3BB590032EFAB /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5700629A22E3BB590032EFAB /* SignUp.swift */; };
+		570681BB22F7AF3D00B17207 /* VerifyCounselor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570681BA22F7AF3D00B17207 /* VerifyCounselor.swift */; };
 		571C2F3F22E41CB6001D4438 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571C2F3E22E41CB6001D4438 /* Settings.swift */; };
 		576FCFB322E4B82F00C346E4 /* CamperInfoPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576FCFB222E4B82F00C346E4 /* CamperInfoPage.swift */; };
 		578AF9DC22D41F2E007B42A9 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578AF9DB22D41F2E007B42A9 /* Product.swift */; };
@@ -38,6 +39,7 @@
 		3ED851B8F1F29AADABBA5620 /* Pods-Capital Cycle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Capital Cycle.debug.xcconfig"; path = "Target Support Files/Pods-Capital Cycle/Pods-Capital Cycle.debug.xcconfig"; sourceTree = "<group>"; };
 		5700629822E3BB400032EFAB /* LogIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogIn.swift; sourceTree = "<group>"; };
 		5700629A22E3BB590032EFAB /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
+		570681BA22F7AF3D00B17207 /* VerifyCounselor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyCounselor.swift; sourceTree = "<group>"; };
 		571C2F3E22E41CB6001D4438 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		576FCFB222E4B82F00C346E4 /* CamperInfoPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CamperInfoPage.swift; path = "../../../../../../../System/Volumes/Data/Users/cadenkowalski/Desktop/Xcode Projects/Capital Cycle/Capital Cycle/Controller/CamperInfoPage.swift"; sourceTree = "<group>"; };
 		578AF9DB22D41F2E007B42A9 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				5700629822E3BB400032EFAB /* LogIn.swift */,
 				5700629A22E3BB590032EFAB /* SignUp.swift */,
 				57AFA1AF22F77F5100C2988C /* VerifyUser.swift */,
+				570681BA22F7AF3D00B17207 /* VerifyCounselor.swift */,
 				571C2F3E22E41CB6001D4438 /* Settings.swift */,
 				57A3457322D2AEBD0070898F /* PageVC.swift */,
 				57A3457722D2BB5B0070898F /* OverviewPage.swift */,
@@ -309,6 +312,7 @@
 				57A3457A22D2BB970070898F /* SchedulePage.swift in Sources */,
 				57AFA1B022F77F5100C2988C /* VerifyUser.swift in Sources */,
 				57A3457022D2AE1B0070898F /* Colors.swift in Sources */,
+				570681BB22F7AF3D00B17207 /* VerifyCounselor.swift in Sources */,
 				5700629922E3BB400032EFAB /* LogIn.swift in Sources */,
 				57A3455822D2AA080070898F /* AppDelegate.swift in Sources */,
 				57A3455A22D2AA080070898F /* SceneDelegate.swift in Sources */,
