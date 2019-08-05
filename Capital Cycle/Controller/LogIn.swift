@@ -28,8 +28,12 @@ class LogIn: UIViewController, UITextFieldDelegate {
     // Logs in a user automatically if they have already logged in
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if Auth.auth().currentUser != nil && signedIn == true {
-            self.performSegue(withIdentifier: "AlreadyLoggedIn", sender: nil)
+        if Auth.auth().currentUser != nil {
+            Auth.auth().currentUser?.reload(completion: { (Action) in
+                if Auth.auth().currentUser != nil && signedIn == true {
+                    self.performSegue(withIdentifier: "AlreadyLoggedIn", sender: nil)
+                }
+            })
         }
     }
     

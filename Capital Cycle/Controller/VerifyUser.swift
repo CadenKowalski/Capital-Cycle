@@ -34,11 +34,12 @@ class VerifyUser: UIViewController, UIAdaptivePresentationControllerDelegate {
     }
     
     @IBAction func checkForVerifiedUser(_ sender: UIButton) {
-        Auth.auth().currentUser?.reload(completion: nil)
-        if Auth.auth().currentUser!.isEmailVerified {
-            self.createUser(email: (Auth.auth().currentUser?.email)!)
-            self.performSegue(withIdentifier: "verifiedUser", sender: nil)
-        }
+        Auth.auth().currentUser?.reload(completion: { (Action) in
+            if Auth.auth().currentUser!.isEmailVerified {
+                self.createUser(email: (Auth.auth().currentUser?.email)!)
+                self.performSegue(withIdentifier: "verifiedUser", sender: nil)
+            }
+        })
     }
     
     // MARK: Core Data
