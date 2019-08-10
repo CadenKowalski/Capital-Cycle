@@ -11,7 +11,9 @@
         <!--PageVC-->
         <scene sceneID="TFe-gl-g9U">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="jM6-Kb-J6q" customClass="PageVC" customModule="Capital_Cycle" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="jM6-Kb-J6q" customClass="PageVC" customModule="Capital_Cycle" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="sJd-C3-ZMd"/>
+                </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RPw-A3-6lN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="377" y="99"/>
@@ -216,7 +218,7 @@ Phone: 202.288.5245</string>
                                         <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" backgroundImage="gear" catalog="system"/>
                                         <connections>
-                                            <segue destination="ECW-nJ-Zo5" kind="show" id="stl-Sk-OpA"/>
+                                            <segue destination="ECW-nJ-Zo5" kind="presentation" id="stl-Sk-OpA"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -891,7 +893,7 @@ Phone: 202.288.5245</string>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                 <state key="normal" title="Log Out">
-                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="logOut:" destination="ECW-nJ-Zo5" eventType="touchUpInside" id="PLl-0v-07g"/>
@@ -905,7 +907,7 @@ Phone: 202.288.5245</string>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                 <state key="normal" title="Delete my account">
-                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="deleteAccount:" destination="ECW-nJ-Zo5" eventType="touchUpInside" id="aUr-gR-DAa"/>
@@ -937,7 +939,7 @@ Phone: 202.288.5245</string>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                 <state key="normal" title="Reset Password">
-                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="resetPassword:" destination="ECW-nJ-Zo5" eventType="touchUpInside" id="P6f-z1-FvF"/>
@@ -1335,44 +1337,44 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L3U-lf-AnQ">
-                                                        <rect key="frame" x="31.999999999999996" y="78.666666666666657" width="54.666666666666657" height="27.333333333333329"/>
-                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                                        <rect key="frame" x="32" y="78.666666666666657" width="49.333333333333343" height="24.666666666666671"/>
+                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parent Phone" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pge-hr-csv">
-                                                        <rect key="frame" x="8" y="114" width="126" height="27.333333333333343"/>
+                                                        <rect key="frame" x="8" y="111.33333333333334" width="126" height="27.333333333333343"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                         <color key="textColor" name="LabelColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="313-zK-qht">
-                                                        <rect key="frame" x="32" y="149.33333333333331" width="75" height="27.333333333333343"/>
-                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                                        <rect key="frame" x="32.000000000000007" y="146.66666666666669" width="67.666666666666686" height="24.666666666666657"/>
+                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parent Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zgs-li-Yn9">
-                                                        <rect key="frame" x="8" y="184.66666666666669" width="118" height="27.333333333333343"/>
+                                                        <rect key="frame" x="8" y="179.33333333333331" width="118" height="27.333333333333343"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                         <color key="textColor" name="LabelColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t25-Av-k9u">
-                                                        <rect key="frame" x="32" y="220" width="303" height="27.333333333333343"/>
-                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                                        <rect key="frame" x="32" y="214.66666666666669" width="303" height="24.666666666666657"/>
+                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signed Waiver" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XgM-tu-lN0">
-                                                        <rect key="frame" x="8" y="255.33333333333334" width="135.33333333333334" height="27.333333333333343"/>
+                                                        <rect key="frame" x="8" y="247.33333333333334" width="135.33333333333334" height="27.333333333333343"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                         <color key="textColor" name="LabelColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bool" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ajb-0o-pyW">
-                                                        <rect key="frame" x="32" y="290.66666666666669" width="41.333333333333343" height="27.333333333333314"/>
-                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                                        <rect key="frame" x="32" y="282.66666666666669" width="37.333333333333343" height="24.666666666666686"/>
+                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -1538,7 +1540,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                 <state key="normal" title="Sign Up">
-                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="A2Z-6c-UZy" kind="show" id="pK6-B0-FNP"/>
@@ -1596,7 +1598,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                 <state key="normal" title="Forgot your password?">
-                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="resetPassword:" destination="v2Q-k5-Eoj" eventType="touchUpInside" id="8vc-AY-R8l"/>
@@ -1714,7 +1716,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 <rect key="frame" x="156.66666666666666" y="222" width="62" height="33"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                 <state key="normal" title="Sign Up">
-                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="signUp:" destination="PqR-3q-0Zd" eventType="touchUpInside" id="pGb-QE-nJ0"/>
@@ -1866,7 +1868,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6V0-zb-pDi" userLabel="Privacy Policy Btn">
-                                <rect key="frame" x="178.66666666666666" y="351" width="67" height="15"/>
+                                <rect key="frame" x="180.33333333333334" y="351" width="67" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="67" id="LXy-Cx-dha"/>
                                     <constraint firstAttribute="height" constant="15" id="VVE-sO-cQJ"/>
@@ -1875,8 +1877,9 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                     <attributedString key="attributedTitle">
                                         <fragment content="Privacy Policy">
                                             <attributes>
-                                                <color key="NSColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                <color key="NSColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <font key="NSFont" metaFont="system" size="10"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 <integer key="NSUnderline" value="1"/>
                                             </attributes>
                                         </fragment>
@@ -1935,7 +1938,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                             <constraint firstItem="GNk-Ht-aHI" firstAttribute="top" secondItem="O6n-C3-gRh" secondAttribute="bottom" constant="16" id="Pfy-5R-DpU"/>
                             <constraint firstItem="Rje-J8-oBE" firstAttribute="top" secondItem="qf8-Wn-zz9" secondAttribute="bottom" constant="17" id="Qms-QZ-2kB"/>
                             <constraint firstItem="3u5-72-jbV" firstAttribute="top" secondItem="GNk-Ht-aHI" secondAttribute="bottom" constant="16" id="Uo1-u1-H4m"/>
-                            <constraint firstItem="6V0-zb-pDi" firstAttribute="leading" secondItem="8bD-Zf-iA1" secondAttribute="trailing" constant="1.3300000000000001" id="YiB-Jw-pU5"/>
+                            <constraint firstItem="6V0-zb-pDi" firstAttribute="leading" secondItem="8bD-Zf-iA1" secondAttribute="trailing" constant="3" id="YiB-Jw-pU5"/>
                             <constraint firstAttribute="trailing" secondItem="Kzh-E1-mfx" secondAttribute="trailing" constant="16" id="alr-Mz-bIl"/>
                             <constraint firstAttribute="bottom" secondItem="YuM-PM-C54" secondAttribute="bottom" id="fo2-MD-ufw"/>
                             <constraint firstItem="5ra-2Z-TlZ" firstAttribute="leading" secondItem="VUr-xS-gve" secondAttribute="leading" constant="13" id="hIu-oQ-n7T"/>
@@ -2039,7 +2042,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                 <state key="normal" title="Refresh">
-                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="checkForVerifiedUser:" destination="EiY-kr-02N" eventType="touchUpInside" id="a7n-d5-iYg"/>
@@ -2091,6 +2094,6 @@ A: We have a variety of games and books as well as a gym and playground to occup
     <inferredMetricsTieBreakers>
         <segue reference="2oz-0z-gZa"/>
         <segue reference="i74-cw-zSX"/>
-        <segue reference="8gZ-wr-hIi"/>
+        <segue reference="6V9-QI-sCX"/>
     </inferredMetricsTieBreakers>
 </document>

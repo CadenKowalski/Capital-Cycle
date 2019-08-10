@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return entityRecord
     }
     
-    // Returns the record for a given entity
+    // Returns the records for a given entity
     func fetchRecordsOfEntity(Entity: String, Context: NSManagedObjectContext) -> [NSManagedObject] {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Entity)
         var Record = [NSManagedObject]()
@@ -103,6 +103,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     default:
                         return true
                     }
+                } else {
+                    signedIn = false
                 }
             }
         } else {

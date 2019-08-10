@@ -34,7 +34,7 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate {
         
         // Sets up the text field
         counselorIdTxtField.delegate = self
-        counselorIdTxtField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
+        counselorIdTxtField.attributedPlaceholder = NSAttributedString(string: "Counselor ID", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
     }
     
     @IBAction func signUp(_ sender: UIButton) {
