@@ -35,7 +35,7 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
         customizeLayout()
     }
     
-    // MARK: View Setup
+    // MARK: View Setup / Management
     
     // Formats the UI
     func customizeLayout() {
@@ -55,7 +55,7 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
         passTxtField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
         confmPassTxtField.attributedPlaceholder = NSAttributedString(string: "Confirm Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
         
-        // FSets up the user type label
+        // Sets up the user type label
         userTypeLbl.isUserInteractionEnabled = true
         userTypeLbl.layer.cornerRadius = 6
         
@@ -66,13 +66,61 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
         userTypePickerView.delegate = self
         userTypePickerView.dataSource = self
     }
+    
+    // Keep the user signed in or not
+    @IBAction func keepSignedIn(_ sender: UIButton) {
+        if !signedIn {
+            signedIn = true
+            sender.setImage(UIImage(named: "Checked"), for: .normal)
+        } else {
+            signedIn = false
+            sender.setImage(UIImage(named: "Unchecked"), for: .normal)
+        }
+    }
+    
+    // User declares of which type they are
+    @IBAction func showUserTypes(_ sender: UITapGestureRecognizer) {
+        self.view.endEditing(true)
+        if userTypePickerView.isHidden {
+            userTypePickerView.isHidden = false
+        } else {
+            userTypePickerView.isHidden = true
+        }
+    }
 
     // Displays the privacy policy text view
     @IBAction func privacyPolicy(_ sender: UIButton) {
         privacyPolicyTxtView.isHidden = false
     }
     
+    // User agrees to privacy policy and terms of service
+    @IBAction func agreeToPolicies(_ sender: UIButton) {
+        if !Agree {
+            Agree = true
+            sender.setImage(UIImage(named: "Checked"), for: .normal)
+        } else {
+            Agree = false
+            sender.setImage(UIImage(named: "Unchecked"), for: .normal)
+        }
+    }
+    
+    // Shows an alert
+    func showAlert(title: String, message: String, actionTitle: String, actionStyle: UIAlertAction.Style) {
+        let Alert = UIAlertController(title: title, message:  message, preferredStyle: .alert)
+        Alert.addAction(UIAlertAction(title: actionTitle, style: actionStyle, handler: nil))
+        present(Alert, animated: true, completion: nil)
+    }
+    
     // MARK: UIPickerView Setup
+    
+    // Defines the poosible types of users
+    enum UserType {
+        case none
+        case camper
+        case parent
+        case counselor
+        case admin
+    }
     
     // Sets the number of columns
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -89,7 +137,7 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
         return typesOfUser[row]
     }
     
-    // Is called when the picker view is used
+    // Called when the picker view is used
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if typesOfUser[row] == "--" {
             userType = SignUp.UserType.none
@@ -106,80 +154,31 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
     }
     
     // MARK: Sign Up
-    
-    // Defines the poosible types of users
-    enum UserType {
-        case none
-        case camper
-        case parent
-        case counselor
-        case admin
-    }
-    
-    // User declares of which type they are
-    @IBAction func showUserTypes(_ sender: UITapGestureRecognizer) {
-        self.view.endEditing(true)
-        if userTypePickerView.isHidden {
-            userTypePickerView.isHidden = false
-        } else {
-            userTypePickerView.isHidden = true
-        }
-    }
-    
-    // Keep the user signed in or not
-    @IBAction func keepSignedIn(_ sender: UIButton) {
-        if !signedIn {
-            signedIn = true
-            sender.setImage(UIImage(named: "Checked"), for: .normal)
-        } else {
-            signedIn = false
-            sender.setImage(UIImage(named: "Unchecked"), for: .normal)
-        }
-    }
-    
-    // User agrees to privacy policy and terms of service
-    @IBAction func agreeToPolicies(_ sender: UIButton) {
-        if !Agree {
-            Agree = true
-            sender.setImage(UIImage(named: "Checked"), for: .normal)
-        } else {
-            Agree = false
-            sender.setImage(UIImage(named: "Unchecked"), for: .normal)
-        }
-    }
 
     // Signs up the user
     @IBAction func signUp(_ sender: UIButton) {
+        if emailTxtField.text == "cadenkowalski1@gmail.com" {
+            userType = .admin
+        }
+
         if passTxtField.text != confmPassTxtField.text {
-            let Alert = UIAlertController(title: "Password Incorret", message: "Please make sure your passwords match", preferredStyle: .alert)
-            let Action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            Alert.addAction(Action)
-            present(Alert, animated: true, completion: nil)
+            showAlert(title: "Passwords don't match", message: "Please make sure your passwords match", actionTitle: "OK", actionStyle: .default)
         } else if Agree == false {
-            let Alert = UIAlertController(title: "Error", message: "Please make sure you agree to the privacy policy and terms of serivce", preferredStyle: .alert)
-            let Action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            Alert.addAction(Action)
-            present(Alert, animated: true, completion: nil)
-        } else if userType == SignUp.UserType.none {
+            showAlert(title: "Uh oh", message: "Please agree to the privacy policy and terms of serivce", actionTitle: "OK", actionStyle: .default)
+        } else if userType == SignUp.UserType.none && userType != .admin {
             userTypeLbl.backgroundColor = .red
             userTypeLbl.alpha = 0.5
         } else {
             SignUp.Instance.counselorEmail = emailTxtField.text!
             SignUp.Instance.counselorPass = passTxtField.text!
-            if userType != .counselor {
+            
+            if userType != .counselor  && userType != .admin {
                 Auth.auth().createUser(withEmail: emailTxtField.text!, password: passTxtField.text!) { (user, error) in
                     if error == nil {
-                        if Auth.auth().currentUser?.email == "cadenkowalski1@gmail.com" {
-                            userType = .admin
-                        }
-                        
                         self.performSegue(withIdentifier: "VerifyUser", sender: nil)
                         Auth.auth().currentUser?.sendEmailVerification(completion: nil)
                     } else {
-                        let Alert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
-                        let Action = UIAlertAction(title: "OK", style: .default, handler: nil)
-                        Alert.addAction(Action)
-                        self.present(Alert, animated: true, completion: nil)
+                        self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
                     }
                 }
             } else {

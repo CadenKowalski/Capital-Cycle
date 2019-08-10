@@ -37,7 +37,7 @@ class LogIn: UIViewController, UITextFieldDelegate {
         }
     }
     
-    // MARK: View Setup
+    // MARK: View Setup / Management
     
     // Formats the UI
     func customizeLayout() {
@@ -68,13 +68,20 @@ class LogIn: UIViewController, UITextFieldDelegate {
         }
     }
     
+    // Shows an alert
+    func showAlert(title: String, message: String, actionTitle: String, actionStyle: UIAlertAction.Style) {
+        let Alert = UIAlertController(title: title, message:  message, preferredStyle: .alert)
+        Alert.addAction(UIAlertAction(title: actionTitle, style: actionStyle, handler: nil))
+        present(Alert, animated: true, completion: nil)
+    }
+    
     // MARK: Log In
     
     // Logs the user in
     @IBAction func logIn(_ sender: UIButton) {
         Auth.auth().signIn(withEmail: emailTxtField.text!, password: passTxtField.text!) {(user, error) in
             if error == nil {
-                if Auth.auth().currentUser!.isEmailVerified || userType == .counselor {
+                if Auth.auth().currentUser!.isEmailVerified || userType == .counselor || userType == .admin {
                     self.updateContext()
                     self.fetchValuesFromContext()
                     self.performSegue(withIdentifier: "LogIn", sender: self)
@@ -82,10 +89,7 @@ class LogIn: UIViewController, UITextFieldDelegate {
                     self.performSegue(withIdentifier: "verifyUserLoggingIn", sender: nil)
                 }
             } else {
-                let Alert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
-                let Action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                Alert.addAction(Action)
-                self.present(Alert, animated: true, completion: nil)
+                self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
             }
         }
     }
@@ -104,13 +108,9 @@ class LogIn: UIViewController, UITextFieldDelegate {
                 let userEmail = resetPasswordAlert.textFields?.first?.text
                 Auth.auth().sendPasswordReset(withEmail: userEmail!, completion: { (Error) in
                     if Error != nil {
-                        let resetFailedAlert = UIAlertController(title: "Reset Failed", message: "Error: \(String(describing: Error?.localizedDescription))", preferredStyle: .alert)
-                        resetFailedAlert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                        self.present(resetFailedAlert, animated: true, completion: nil)
+                        self.showAlert(title: "Reset Falied", message: "Error: \(String(describing: Error?.localizedDescription))", actionTitle: "OK", actionStyle: .default)
                     } else {
-                        let resetEmailSentAlert = UIAlertController(title: "Email sent successfully", message: "Check your email", preferredStyle: .alert)
-                        resetEmailSentAlert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                        self.present(resetEmailSentAlert, animated: true, completion: nil)
+                        self.showAlert(title: "Email sent successfully", message: "Check your email to reset password", actionTitle: "OK", actionStyle: .default)
                     }
                 })
             }))
@@ -132,6 +132,7 @@ class LogIn: UIViewController, UITextFieldDelegate {
                     User.setValue(signedIn, forKey: "signedIn")
                 }
             }
+            
             try Context.save()
         } catch {
             let nserror = error as NSError

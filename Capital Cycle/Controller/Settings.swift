@@ -22,7 +22,7 @@ class Settings: UIViewController {
         customizeLayout()
     }
     
-    // MARK: View Setup
+    // MARK: View Setup / Management
     
     // Formats the UI
     func customizeLayout() {
@@ -39,6 +39,13 @@ class Settings: UIViewController {
         } else {
             signedInSwitch.isOn = false
         }
+    }
+    
+    // Shows an alert
+    func showAlert(title: String, message: String, actionTitle: String, actionStyle: UIAlertAction.Style) {
+        let Alert = UIAlertController(title: title, message:  message, preferredStyle: .alert)
+        Alert.addAction(UIAlertAction(title: actionTitle, style: actionStyle, handler: nil))
+        present(Alert, animated: true, completion: nil)
     }
     
     // MARK: Settings
@@ -63,7 +70,7 @@ class Settings: UIViewController {
                 updateContext()
             }
         } catch let signOutError as NSError {
-            print("Error signing out: %@", signOutError)
+            showAlert(title: "Error", message: signOutError.localizedDescription, actionTitle: "OK", actionStyle: .default)
         }
         
         self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
@@ -83,13 +90,9 @@ class Settings: UIViewController {
             let userEmail = resetPasswordAlert.textFields?.first?.text
             Auth.auth().sendPasswordReset(withEmail: userEmail!, completion: { (Error) in
                 if Error != nil {
-                    let resetFailedAlert = UIAlertController(title: "Reset Failed", message: "Error: \(String(describing: Error?.localizedDescription))", preferredStyle: .alert)
-                    resetFailedAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    self.present(resetFailedAlert, animated: true, completion: nil)
+                    self.showAlert(title: "Reset Failed", message: "Error: \(String(describing: Error?.localizedDescription))", actionTitle: "OK", actionStyle: .default)
                 } else {
-                    let resetEmailSentAlert = UIAlertController(title: "Email sent successfully", message: "Check your email", preferredStyle: .alert)
-                    resetEmailSentAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in self.logOut(nil)}))
-                    self.present(resetEmailSentAlert, animated: true, completion: nil)
+                    self.showAlert(title: "Email sent successfully", message: "Check your email to reset password", actionTitle: "OK", actionStyle: .default)
                 }
             })
         }))
@@ -104,9 +107,7 @@ class Settings: UIViewController {
         confirmDeleteAlert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (Action) in
             Auth.auth().currentUser?.delete(completion: { Error in
                 if Error != nil {
-                    let deleteFailedAlert = UIAlertController(title: "Delete Failed", message: "Error: \(String(describing: Error?.localizedDescription))", preferredStyle: .alert)
-                    deleteFailedAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    self.present(deleteFailedAlert, animated: true, completion: nil)
+                    self.showAlert(title: "Delete Failed", message: "Error: \(String(describing: Error?.localizedDescription))", actionTitle: "OK", actionStyle: .default)
                 } else {
                    self.logOut(sender)
                 }

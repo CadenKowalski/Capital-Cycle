@@ -45,8 +45,7 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate {
                     self.createUser(email: (Auth.auth().currentUser?.email)!)
                 } else {
                     let Alert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
-                    let Action = UIAlertAction(title: "OK", style: .default, handler: nil)
-                    Alert.addAction(Action)
+                    Alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                     self.present(Alert, animated: true, completion: nil)
                 }
             }

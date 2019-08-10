@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 import Firebase
 import CoreData
 
@@ -60,30 +61,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return true }
         let Context = appDelegate.persistentContainer.viewContext
-        let Spreadsheet = fetchRecordsOfEntity(Entity: "Spreadsheet", Context: Context)
+        
         // Configures the Spreadsheet core data entity
+        let Spreadsheet = fetchRecordsOfEntity(Entity: "Spreadsheet", Context: Context)
         if let Sheet = Spreadsheet.first {
             weekActivitiesList = Sheet.value(forKey: "dailyData") as? [[String]]
             Week = Sheet.value(forKey: "overviewData") as? [[String]]
             camperInfo = Sheet.value(forKey: "camperInfo") as? [[String]]
         } else if let Spreadsheet = instantiateRecordForEntity(Entity: "Spreadsheet", Context: Context) {
-            if Spreadsheet.value(forKey: "dailyData") == nil {
-                Spreadsheet.setValue([[""]], forKey: "dailyData")
-                weekActivitiesList = [[""]]
-            }
-            
-            if Spreadsheet.value(forKey: "overviewData") == nil {
-                Spreadsheet.setValue([[""]], forKey: "overviewData")
-                Week = [[""]]
-            }
-            
-            if Spreadsheet.value(forKey: "camperInfo") == nil {
-                Spreadsheet.setValue([[""]], forKey: "camperInfo")
-                camperInfo = [[""]]
-            }
+            Spreadsheet.setValue([[""]], forKey: "dailyData")
+            Spreadsheet.setValue([[""]], forKey: "overviewData")
+            Spreadsheet.setValue([[""]], forKey: "camperInfo")
+            weekActivitiesList = [[""]]
+            Week = [[""]]
+            camperInfo = [[""]]
         }
         
-        // Configures the User core data entity
+        // Configures the User core data entity if they are automatically signed in
         let Users = fetchRecordsOfEntity(Entity: "User", Context: Context)
         if let _ = Users.first {
             for User in Users {
@@ -109,6 +103,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         } else {
             signedIn = false
+            userType = SignUp.UserType.none
         }
         
         SaveContext(ContextName: Context)
@@ -137,7 +132,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
     
-    // MARK: - Core Data stack
+    // MARK: - Core Data Stack
 
     // Sets up the container that the context is stored in
     lazy var persistentContainer: NSPersistentContainer = {

@@ -10,7 +10,7 @@ import UIKit
 import FirebaseAuth
 import CoreData
 
-class VerifyUser: UIViewController, UIAdaptivePresentationControllerDelegate {
+class VerifyUser: UIViewController {
 
     // Storyboard outlets
     @IBOutlet weak var gradientView: UIView!
@@ -38,6 +38,10 @@ class VerifyUser: UIViewController, UIAdaptivePresentationControllerDelegate {
             if Auth.auth().currentUser!.isEmailVerified {
                 self.createUser(email: (Auth.auth().currentUser?.email)!)
                 self.performSegue(withIdentifier: "verifiedUser", sender: nil)
+            } else {
+                let Alert = UIAlertController(title: "Uh oh", message: "It looks like you haven't verified your email yet", preferredStyle: .alert)
+                Alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(Alert, animated: true, completion: nil)
             }
         })
     }
@@ -63,6 +67,7 @@ class VerifyUser: UIViewController, UIAdaptivePresentationControllerDelegate {
         default:
             return
         }
+        
         do {
             try Context.save()
         } catch {
