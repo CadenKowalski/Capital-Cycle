@@ -30,6 +30,7 @@
 		57A3457A22D2BB970070898F /* SchedulePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A3457922D2BB970070898F /* SchedulePage.swift */; };
 		57A3457C22D2BBB90070898F /* StorePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A3457B22D2BBB90070898F /* StorePage.swift */; };
 		57AFA1B022F77F5100C2988C /* VerifyUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AFA1AF22F77F5100C2988C /* VerifyUser.swift */; };
+		57E30C2C2300548B004D7061 /* NewUserForDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E30C2B2300548B004D7061 /* NewUserForDevice.swift */; };
 		57ED6A2F22D578A200E3A362 /* FAQPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57ED6A2E22D578A200E3A362 /* FAQPage.swift */; };
 		587C376EC4CB7518541634C2 /* Pods_Capital_Cycle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEF63791B26DFB42FF56342B /* Pods_Capital_Cycle.framework */; };
 /* End PBXBuildFile section */
@@ -62,6 +63,7 @@
 		57A3457922D2BB970070898F /* SchedulePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePage.swift; sourceTree = "<group>"; };
 		57A3457B22D2BBB90070898F /* StorePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorePage.swift; sourceTree = "<group>"; };
 		57AFA1AF22F77F5100C2988C /* VerifyUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyUser.swift; sourceTree = "<group>"; };
+		57E30C2B2300548B004D7061 /* NewUserForDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserForDevice.swift; sourceTree = "<group>"; };
 		57ED6A2E22D578A200E3A362 /* FAQPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQPage.swift; sourceTree = "<group>"; };
 		DEF63791B26DFB42FF56342B /* Pods_Capital_Cycle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Capital_Cycle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -162,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				5700629822E3BB400032EFAB /* LogIn.swift */,
+				57E30C2B2300548B004D7061 /* NewUserForDevice.swift */,
 				5700629A22E3BB590032EFAB /* SignUp.swift */,
 				57AFA1AF22F77F5100C2988C /* VerifyUser.swift */,
 				570681BA22F7AF3D00B17207 /* VerifyCounselor.swift */,
@@ -318,6 +321,7 @@
 				57A3455A22D2AA080070898F /* SceneDelegate.swift in Sources */,
 				576FCFB322E4B82F00C346E4 /* CamperInfoPage.swift in Sources */,
 				5700629B22E3BB590032EFAB /* SignUp.swift in Sources */,
+				57E30C2C2300548B004D7061 /* NewUserForDevice.swift in Sources */,
 				5795C62422EA6CC200A0A171 /* TestForConnection.swift in Sources */,
 				57A3457C22D2BBB90070898F /* StorePage.swift in Sources */,
 				578AF9E422D428AF007B42A9 /* Capital_Cycle.xcdatamodeld in Sources */,

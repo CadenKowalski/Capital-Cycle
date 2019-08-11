@@ -84,7 +84,11 @@ class LogIn: UIViewController, UITextFieldDelegate {
                 if Auth.auth().currentUser!.isEmailVerified || userType == .counselor || userType == .admin {
                     self.updateContext()
                     self.fetchValuesFromContext()
-                    self.performSegue(withIdentifier: "LogIn", sender: self)
+                    if self.userInCoreData() {
+                        self.performSegue(withIdentifier: "LogIn", sender: self)
+                    } else {
+                        self.performSegue(withIdentifier: "newUserForDevice", sender: self)
+                    }
                 } else {
                     self.performSegue(withIdentifier: "verifyUserLoggingIn", sender: nil)
                 }
@@ -140,6 +144,7 @@ class LogIn: UIViewController, UITextFieldDelegate {
         }
     }
     
+    // Fetches the logged in users core data values
     func fetchValuesFromContext() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let Context = appDelegate.persistentContainer.viewContext
@@ -168,6 +173,29 @@ class LogIn: UIViewController, UITextFieldDelegate {
             let nserror = error as NSError
             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
+    }
+    
+    // Checks if a user is stored in core data
+    func userInCoreData() -> Bool {
+        var hasUser: Bool!
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return true }
+        let Context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+        do {
+            let Users = try Context.fetch(fetchRequest) as? [NSManagedObject]
+            for User in Users! {
+                if User.value(forKey: "email") as? String == Auth.auth().currentUser?.email {
+                    hasUser =  true
+                } else {
+                    hasUser =  false
+                }
+            }
+        } catch {
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
+
+        return hasUser
     }
     
     // MARK: Dismiss Keyboard

@@ -171,7 +171,6 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
         } else {
             SignUp.Instance.counselorEmail = emailTxtField.text!
             SignUp.Instance.counselorPass = passTxtField.text!
-            
             if userType != .counselor  && userType != .admin {
                 Auth.auth().createUser(withEmail: emailTxtField.text!, password: passTxtField.text!) { (user, error) in
                     if error == nil {
