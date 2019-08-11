@@ -46,15 +46,14 @@ class LogIn: UIViewController, UITextFieldDelegate {
         gradientView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.15)
         
         // Sets the gradients
-        gradientView.setTwoGradientBackground(colorOne: Colors.Orange, colorTwo: Colors.Purple)
-        logInBtn.setTwoGradientButton(colorOne: Colors.Orange, colorTwo: Colors.Purple, cornerRadius: 22.5)
+        gradientView.setTwoGradientBackground()
+        logInBtn.setTwoGradientButton(cornerRadius: 22.5)
 
         // Sets up the text fields
         emailTxtField.delegate = self
         passTxtField.delegate = self
         emailTxtField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
         passTxtField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
-
     }
     
     // Keep the user signed in or not

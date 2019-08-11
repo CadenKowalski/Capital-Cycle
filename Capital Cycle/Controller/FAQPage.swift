@@ -31,6 +31,6 @@ class FAQPage: UIViewController {
         questionYConstraint.constant = gradientViewHeight.constant + 8
         
         // Sets the gradients
-        gradientView.setTwoGradientBackground(colorOne: Colors.Orange, colorTwo: Colors.Purple)
+        gradientView.setTwoGradientBackground()
     }
 }

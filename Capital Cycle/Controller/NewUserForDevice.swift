@@ -35,8 +35,8 @@ class NewUserForDevice: UIViewController, UIPickerViewDelegate, UIPickerViewData
         gradientView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.15)
         
         // Sets the gradients
-        gradientView.setTwoGradientBackground(colorOne: Colors.Orange, colorTwo: Colors.Purple)
-        logInBtn.setTwoGradientButton(colorOne: Colors.Orange, colorTwo: Colors.Purple, cornerRadius: 22.5)
+        gradientView.setTwoGradientBackground()
+        logInBtn.setTwoGradientButton(cornerRadius: 22.5)
         
         // Sets up the user type label
         userTypeLbl.isUserInteractionEnabled = true

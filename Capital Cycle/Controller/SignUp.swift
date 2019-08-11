@@ -44,8 +44,8 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
         gradientView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.15)
         
         // Sets the gradients
-        gradientView.setTwoGradientBackground(colorOne: Colors.Orange, colorTwo: Colors.Purple)
-        signUpBtn.setTwoGradientButton(colorOne: Colors.Orange, colorTwo: Colors.Purple, cornerRadius: 22.5)
+        gradientView.setTwoGradientBackground()
+        signUpBtn.setTwoGradientButton(cornerRadius: 22.5)
 
         // Sets up the text fields
         emailTxtField.delegate = self

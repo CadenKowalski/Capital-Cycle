@@ -31,7 +31,7 @@ class Settings: UIViewController {
         gradientView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.15)
         
         // Sets the gradients
-        gradientView.setTwoGradientBackground(colorOne: Colors.Orange, colorTwo: Colors.Purple)
+        gradientView.setTwoGradientBackground()
         
         // Sets the "keep me signed in" switch to reflect the actual value
         if signedIn {

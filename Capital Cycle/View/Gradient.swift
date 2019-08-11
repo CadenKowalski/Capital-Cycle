@@ -11,19 +11,19 @@ import UIKit
 
 extension UIView {
     
-    func setTwoGradientBackground(colorOne: UIColor, colorTwo: UIColor) {
+    func setTwoGradientBackground() {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = bounds
-        gradientLayer.colors = [colorOne.cgColor, colorTwo.cgColor]
+        gradientLayer.colors = [#colorLiteral(red: 0.9176470588, green: 0.5882352941, blue: 0.3607843137, alpha: 1).cgColor, #colorLiteral(red: 0.7882352941, green: 0.3725490196, blue: 0.8470588235, alpha: 1).cgColor]
         gradientLayer.startPoint = CGPoint(x: 1.0, y: 1.0)
         gradientLayer.endPoint = CGPoint(x: 0.0, y: 0.0)
         layer.insertSublayer(gradientLayer, at: 0)
     }
     
-    func setTwoGradientButton(colorOne: UIColor, colorTwo: UIColor, cornerRadius: CGFloat) {
+    func setTwoGradientButton(cornerRadius: CGFloat) {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = bounds
-        gradientLayer.colors = [colorOne.cgColor, colorTwo.cgColor]
+        gradientLayer.colors = [#colorLiteral(red: 0.9176470588, green: 0.5882352941, blue: 0.3607843137, alpha: 1).cgColor, #colorLiteral(red: 0.7882352941, green: 0.3725490196, blue: 0.8470588235, alpha: 1).cgColor]
         gradientLayer.startPoint = CGPoint(x: 1.0, y: 1.0)
         gradientLayer.endPoint = CGPoint(x: 0.0, y: 0.0)
         gradientLayer.cornerRadius = cornerRadius
