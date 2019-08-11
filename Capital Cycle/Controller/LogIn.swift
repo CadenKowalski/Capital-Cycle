@@ -80,9 +80,9 @@ class LogIn: UIViewController, UITextFieldDelegate {
     @IBAction func logIn(_ sender: UIButton) {
         Auth.auth().signIn(withEmail: emailTxtField.text!, password: passTxtField.text!) {(user, error) in
             if error == nil {
+                self.fetchValuesFromContext()
                 if Auth.auth().currentUser!.isEmailVerified || userType == .counselor || userType == .admin {
                     self.updateContext()
-                    self.fetchValuesFromContext()
                     if self.userInCoreData() {
                         self.performSegue(withIdentifier: "LogIn", sender: self)
                     } else {
