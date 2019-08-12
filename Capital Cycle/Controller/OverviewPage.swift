@@ -45,7 +45,7 @@ class OverviewPage: UIViewController {
     
     // MARK: Actions
     
-    // Opens the maps app to Minor Elementary
+    // Opens the maps app to the camp location
     @IBAction func openMapsToLocation(_ sender: UITapGestureRecognizer) {
         let latitude: CLLocationDegrees = 38.8975
         let longitude: CLLocationDegrees = -76.9829

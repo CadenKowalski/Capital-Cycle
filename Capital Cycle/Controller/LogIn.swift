@@ -7,8 +7,7 @@
 //
 
 import UIKit
-import FirebaseAuth
-import CoreData
+import Firebase
 
 class LogIn: UIViewController, UITextFieldDelegate {
 
@@ -19,6 +18,8 @@ class LogIn: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passTxtField: UITextField!
     @IBOutlet weak var signedInBtn: UIButton!
     @IBOutlet weak var logInBtn: UIButton!
+    // Code global vars
+    let databaseRef = Firestore.firestore().collection("Users")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,13 +29,15 @@ class LogIn: UIViewController, UITextFieldDelegate {
     // Logs in a user automatically if they have already logged in
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if Auth.auth().currentUser != nil {
-            Auth.auth().currentUser?.reload(completion: { (Action) in
-                if Auth.auth().currentUser != nil && signedIn == true {
-                    self.performSegue(withIdentifier: "AlreadyLoggedIn", sender: nil)
+        Auth.auth().currentUser?.reload(completion: { (action) in
+            if Auth.auth().currentUser != nil {
+                self.fetchUserValues(email: (Auth.auth().currentUser?.email)!) {
+                    if Auth.auth().currentUser != nil && signedIn == true {
+                        self.performSegue(withIdentifier: "AlreadyLoggedIn", sender: nil)
+                    }
                 }
-            })
-        }
+            }
+        })
     }
     
     // MARK: View Setup / Management
@@ -80,16 +83,13 @@ class LogIn: UIViewController, UITextFieldDelegate {
     @IBAction func logIn(_ sender: UIButton) {
         Auth.auth().signIn(withEmail: emailTxtField.text!, password: passTxtField.text!) {(user, error) in
             if error == nil {
-                self.fetchValuesFromContext()
-                if Auth.auth().currentUser!.isEmailVerified || userType == .counselor || userType == .admin {
-                    self.updateContext()
-                    if self.userInCoreData() {
+                self.fetchUserValues(email: (Auth.auth().currentUser?.email)!) {
+                    if Auth.auth().currentUser!.isEmailVerified || userType == .counselor || userType == .admin {
+                        self.updateUser(email: (Auth.auth().currentUser?.email)!)
                         self.performSegue(withIdentifier: "LogIn", sender: self)
                     } else {
-                        self.performSegue(withIdentifier: "newUserForDevice", sender: self)
+                        self.performSegue(withIdentifier: "verifyUserLoggingIn", sender: nil)
                     }
-                } else {
-                    self.performSegue(withIdentifier: "verifyUserLoggingIn", sender: nil)
                 }
             } else {
                 self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
@@ -111,7 +111,7 @@ class LogIn: UIViewController, UITextFieldDelegate {
                 let userEmail = resetPasswordAlert.textFields?.first?.text
                 Auth.auth().sendPasswordReset(withEmail: userEmail!, completion: { (Error) in
                     if Error != nil {
-                        self.showAlert(title: "Reset Falied", message: "Error: \(String(describing: Error?.localizedDescription))", actionTitle: "OK", actionStyle: .default)
+                        self.showAlert(title: "Reset Falied", message: "Error: \(Error!.localizedDescription)", actionTitle: "OK", actionStyle: .default)
                     } else {
                         self.showAlert(title: "Email sent successfully", message: "Check your email to reset password", actionTitle: "OK", actionStyle: .default)
                     }
@@ -121,80 +121,41 @@ class LogIn: UIViewController, UITextFieldDelegate {
         self.present(resetPasswordAlert, animated: true, completion: nil)
     }
     
-    // MARK: Core Data
-        
-    // Updates the context with new values
-    func updateContext() {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        let Context = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
-        do {
-            let Users = try Context.fetch(fetchRequest) as! [NSManagedObject]
-            for User in Users {
-                if User.value(forKey: "email") as? String == Auth.auth().currentUser?.email {
-                    User.setValue(signedIn, forKey: "signedIn")
-                }
+    // MARK: Firebase
+    
+    func updateUser(email: String) {
+        databaseRef.document(email).updateData(["signedIn": signedIn!]) { error in
+            if error != nil {
+                self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
             }
-            
-            try Context.save()
-        } catch {
-            let nserror = error as NSError
-            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
     }
     
-    // Fetches the logged in users core data values
-    func fetchValuesFromContext() {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        let Context = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
-        do {
-            let Users = try Context.fetch(fetchRequest) as? [NSManagedObject]
-            for User in Users! {
-                if User.value(forKey: "email") as? String == Auth.auth().currentUser?.email {
-                    switch User.value(forKey: "type") as? String {
-                    case "Camper":
-                        userType = .camper
-                    case "Parent":
-                        userType = .parent
-                    case "Counselor":
-                        userType = .counselor
-                    case "Admin":
-                        userType = .admin
-                    default:
-                        return
-                    }
-                    
+    // Fetches user values from the Firebase Firestore
+    func fetchUserValues(email: String, completion: @escaping () -> Void) {
+        let userRef = databaseRef.document(email)
+        userRef.getDocument { (document, error) in
+            if error == nil {
+                signedIn = document?.get("signedIn") as? Bool
+                switch document?.get("Type") as! String {
+                case "Camper":
+                    userType = .camper
+                case "Parent":
+                    userType = .parent
+                case "Counselor":
+                    userType = .counselor
+                case "Admin":
+                    userType = .admin
+                default:
                     return
                 }
+                
+                completion()
+            } else {
+                self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
+                completion()
             }
-        } catch {
-            let nserror = error as NSError
-            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
-    }
-    
-    // Checks if a user is stored in core data
-    func userInCoreData() -> Bool {
-        var hasUser: Bool!
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return true }
-        let Context = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
-        do {
-            let Users = try Context.fetch(fetchRequest) as? [NSManagedObject]
-            for User in Users! {
-                if User.value(forKey: "email") as? String == Auth.auth().currentUser?.email {
-                    hasUser =  true
-                } else {
-                    hasUser =  false
-                }
-            }
-        } catch {
-            let nserror = error as NSError
-            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-        }
-
-        return hasUser
     }
     
     // MARK: Dismiss Keyboard

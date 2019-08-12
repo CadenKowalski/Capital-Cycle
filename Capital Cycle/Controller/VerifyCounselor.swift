@@ -7,21 +7,23 @@
 //
 
 import UIKit
-import CoreData
-import FirebaseAuth
+import Firebase
 
 class VerifyCounselor: UIViewController, UITextFieldDelegate {
 
+    // Storyboard outlets
     @IBOutlet weak var gradientView: UIView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
     @IBOutlet weak var counselorIdTxtField: UITextField!
+    // Global code vars
+    let databaseRef = Firestore.firestore().collection("Users")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         customizeLayout()
     }
     
-    // MARK: View Setup
+    // MARK: View Setup / Management
     
     // Formats the UI
     func customizeLayout() {
@@ -35,18 +37,27 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate {
         // Sets up the text field
         counselorIdTxtField.delegate = self
         counselorIdTxtField.attributedPlaceholder = NSAttributedString(string: "Counselor ID", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
+        
     }
     
+    // Shows an alert
+    func showAlert(title: String, message: String, actionTitle: String, actionStyle: UIAlertAction.Style) {
+        let Alert = UIAlertController(title: title, message:  message, preferredStyle: .alert)
+        Alert.addAction(UIAlertAction(title: actionTitle, style: actionStyle, handler: nil))
+        present(Alert, animated: true, completion: nil)
+    }
+    
+    // MARK: Sign Up
+    
+    // Signs up the user
     @IBAction func signUp(_ sender: UIButton) {
         if counselorIdTxtField.text == "082404" {
-            Auth.auth().createUser(withEmail: SignUp.Instance.counselorEmail, password: SignUp.Instance.counselorPass) { (user, error) in
+            Auth.auth().createUser(withEmail: SignUp.Instance.signUpEmail, password: SignUp.Instance.signUpPass) { (user, error) in
                 if error == nil {
+                    self.uploadUser(email: SignUp.Instance.signUpEmail)
                     self.performSegue(withIdentifier: "VerifiedCounselor", sender: nil)
-                    self.createUser(email: (Auth.auth().currentUser?.email)!)
                 } else {
-                    let Alert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
-                    Alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    self.present(Alert, animated: true, completion: nil)
+                    self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
                 }
             }
         } else {
@@ -55,32 +66,24 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate {
         }
     }
     
-    // MARK: Core Data
+    // MARK: Firebase
     
-    // Create a core data user
-    func createUser(email: String) {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        let Context = appDelegate.persistentContainer.viewContext
-        let User = NSEntityDescription.insertNewObject(forEntityName: "User", into: Context)
-        User.setValue(email, forKey: "email")
-        User.setValue(signedIn, forKey: "signedIn")
+    // Uploads a user to the Firebase Firestore
+    func uploadUser(email: String) {
+        var userTypeString: String
         switch userType {
-        case .camper:
-            User.setValue("Camper", forKey: "type")
-        case .parent:
-            User.setValue("Parent", forKey: "type")
         case .counselor:
-            User.setValue("Counselor", forKey: "type")
+            userTypeString = "Counselor"
         case .admin:
-            User.setValue("Admin", forKey: "type")
+            userTypeString = "Admin"
         default:
             return
         }
-        do {
-            try Context.save()
-        } catch {
-            let nserror = error as NSError
-            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        
+        databaseRef.document(email).setData(["Email": email, "Type": userTypeString, "signedIn": signedIn!]) { error in
+            if error != nil {
+                self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
+            }
         }
     }
 }

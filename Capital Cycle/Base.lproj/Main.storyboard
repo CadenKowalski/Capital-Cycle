@@ -941,7 +941,7 @@ Phone: 202.288.5245</string>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                 <state key="normal" title="Log Out">
-                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="logOut:" destination="ECW-nJ-Zo5" eventType="touchUpInside" id="PLl-0v-07g"/>
@@ -955,7 +955,7 @@ Phone: 202.288.5245</string>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                 <state key="normal" title="Delete my account">
-                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="deleteAccount:" destination="ECW-nJ-Zo5" eventType="touchUpInside" id="aUr-gR-DAa"/>
@@ -987,7 +987,7 @@ Phone: 202.288.5245</string>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                 <state key="normal" title="Reset Password">
-                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="resetPassword:" destination="ECW-nJ-Zo5" eventType="touchUpInside" id="P6f-z1-FvF"/>
@@ -1433,7 +1433,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                         <state key="normal" title="Done">
-                                                            <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="dismissCamperInfoView:" destination="45k-fV-EgM" eventType="touchUpInside" id="yc2-22-mcE"/>
@@ -1595,7 +1595,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                 <state key="normal" title="Sign Up">
-                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="A2Z-6c-UZy" kind="show" id="pK6-B0-FNP"/>
@@ -1653,7 +1653,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                 <state key="normal" title="Forgot your password?">
-                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="resetPassword:" destination="v2Q-k5-Eoj" eventType="touchUpInside" id="8vc-AY-R8l"/>
@@ -1714,7 +1714,6 @@ A: We have a variety of games and books as well as a gym and playground to occup
                         <segue destination="jM6-Kb-J6q" kind="presentation" identifier="LogIn" modalPresentationStyle="fullScreen" id="JVj-89-k2w"/>
                         <segue destination="jM6-Kb-J6q" kind="presentation" identifier="AlreadyLoggedIn" modalPresentationStyle="fullScreen" id="6V9-QI-sCX"/>
                         <segue destination="EiY-kr-02N" kind="presentation" identifier="verifyUserLoggingIn" id="EsD-nZ-GiX"/>
-                        <segue destination="v7e-Lo-XTj" kind="show" identifier="newUserForDevice" id="cCY-u6-nNm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2JP-Fh-IfX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1772,7 +1771,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 <rect key="frame" x="156.66666666666666" y="222" width="62" height="33"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                 <state key="normal" title="Sign Up">
-                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="signUp:" destination="PqR-3q-0Zd" eventType="touchUpInside" id="pGb-QE-nJ0"/>
@@ -2098,7 +2097,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                 <state key="normal" title="Refresh">
-                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="checkForVerifiedUser:" destination="EiY-kr-02N" eventType="touchUpInside" id="a7n-d5-iYg"/>
@@ -2127,124 +2126,6 @@ A: We have a variety of games and books as well as a gym and playground to occup
             </objects>
             <point key="canvasLocation" x="1295" y="-582"/>
         </scene>
-        <!--New User For Device-->
-        <scene sceneID="lAE-Zq-Jnl">
-            <objects>
-                <viewController id="v7e-Lo-XTj" customClass="NewUserForDevice" customModule="Capital_Cycle" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="l6H-BZ-EnC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="It looks like you haven't signed in on this device before." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jDI-oO-GOb">
-                                <rect key="frame" x="37.666666666666657" y="132" width="300" height="40.666666666666657"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="9NC-7x-dsy"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" name="LabelColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I am a" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MLm-ZW-Iep">
-                                <rect key="frame" x="15.999999999999996" y="198.66666666666666" width="46.666666666666657" height="20.333333333333343"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="46.670000000000002" id="Dm5-vr-zCF"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZZT-hg-Ygy" userLabel="User Type Lbl">
-                                <rect key="frame" x="66.666666666666657" y="192.66666666666666" width="292.33333333333337" height="34"/>
-                                <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="34" id="Uzk-9T-pm9"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="W0I-3P-uGd" appends="YES" id="hdB-Ws-d5W"/>
-                                </connections>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cvl-XF-pGv" userLabel="Gradient View">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New User" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ImS-xM-de8">
-                                        <rect key="frame" x="132.33333333333334" y="37.666666666666664" width="110.33333333333334" height="34.999999999999993"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="110.33" id="OQ5-jL-iKP"/>
-                                            <constraint firstAttribute="height" constant="35" id="nsC-Ik-dhP"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="G1q-7g-tex"/>
-                                    <constraint firstItem="ImS-xM-de8" firstAttribute="centerY" secondItem="Cvl-XF-pGv" secondAttribute="centerY" constant="5" id="Ouz-ux-8e1"/>
-                                    <constraint firstItem="ImS-xM-de8" firstAttribute="centerX" secondItem="Cvl-XF-pGv" secondAttribute="centerX" id="pcW-na-FkJ"/>
-                                </constraints>
-                            </view>
-                            <pickerView hidden="YES" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CN2-Q2-lvJ" userLabel="User Type Picker View">
-                                <rect key="frame" x="0.0" y="542" width="375" height="216"/>
-                            </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="da7-3A-Nte">
-                                <rect key="frame" x="117.66666666666669" y="242.66666666666663" width="140" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="140" id="alO-7M-KTj"/>
-                                    <constraint firstAttribute="height" constant="45" id="ghh-z2-Mbz"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
-                                <state key="normal" title="Log In">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="logIn:" destination="v7e-Lo-XTj" eventType="touchUpInside" id="17h-va-5Cn"/>
-                                    <action selector="logIn:" destination="v2Q-k5-Eoj" eventType="touchUpInside" id="Zta-j8-HOZ"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" name="ViewColor"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="CN2-Q2-lvJ" secondAttribute="bottom" id="6Xe-IJ-TOK"/>
-                            <constraint firstItem="da7-3A-Nte" firstAttribute="top" secondItem="ZZT-hg-Ygy" secondAttribute="bottom" constant="16" id="7PX-L7-O7n"/>
-                            <constraint firstItem="CN2-Q2-lvJ" firstAttribute="trailing" secondItem="QeM-Wf-ra6" secondAttribute="trailing" id="CFa-Hh-2jN"/>
-                            <constraint firstItem="jDI-oO-GOb" firstAttribute="centerX" secondItem="l6H-BZ-EnC" secondAttribute="centerX" id="G8y-QW-Lvj"/>
-                            <constraint firstItem="MLm-ZW-Iep" firstAttribute="top" secondItem="jDI-oO-GOb" secondAttribute="bottom" constant="26" id="XdY-Cd-ufB"/>
-                            <constraint firstItem="Cvl-XF-pGv" firstAttribute="leading" secondItem="QeM-Wf-ra6" secondAttribute="leading" id="Y0g-aG-zQ4"/>
-                            <constraint firstItem="Cvl-XF-pGv" firstAttribute="top" secondItem="QeM-Wf-ra6" secondAttribute="top" id="Ymv-Mx-E7d"/>
-                            <constraint firstItem="ZZT-hg-Ygy" firstAttribute="top" secondItem="jDI-oO-GOb" secondAttribute="bottom" constant="20" id="cKN-jU-bXy"/>
-                            <constraint firstItem="Cvl-XF-pGv" firstAttribute="trailing" secondItem="QeM-Wf-ra6" secondAttribute="trailing" id="ePo-Jc-cfj"/>
-                            <constraint firstItem="ZZT-hg-Ygy" firstAttribute="leading" secondItem="MLm-ZW-Iep" secondAttribute="trailing" constant="4" id="epS-8h-dhb"/>
-                            <constraint firstItem="CN2-Q2-lvJ" firstAttribute="leading" secondItem="QeM-Wf-ra6" secondAttribute="leading" id="kpz-Le-I91"/>
-                            <constraint firstItem="MLm-ZW-Iep" firstAttribute="leading" secondItem="QeM-Wf-ra6" secondAttribute="leading" constant="16" id="kzt-2Z-5al"/>
-                            <constraint firstItem="QeM-Wf-ra6" firstAttribute="trailing" secondItem="ZZT-hg-Ygy" secondAttribute="trailing" constant="16" id="lkw-BS-B2v"/>
-                            <constraint firstItem="da7-3A-Nte" firstAttribute="centerX" secondItem="l6H-BZ-EnC" secondAttribute="centerX" id="moE-sG-Ene"/>
-                            <constraint firstItem="jDI-oO-GOb" firstAttribute="top" secondItem="Cvl-XF-pGv" secondAttribute="bottom" constant="32" id="qLK-iU-scH"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="QeM-Wf-ra6"/>
-                    </view>
-                    <connections>
-                        <outlet property="gradientView" destination="Cvl-XF-pGv" id="Jim-8T-KrN"/>
-                        <outlet property="gradientViewHeight" destination="G1q-7g-tex" id="vHL-eo-9vh"/>
-                        <outlet property="logInBtn" destination="da7-3A-Nte" id="lGf-ss-RzD"/>
-                        <outlet property="userTypeLbl" destination="ZZT-hg-Ygy" id="8Zs-d2-sb7"/>
-                        <outlet property="userTypePickerView" destination="CN2-Q2-lvJ" id="LmJ-1Z-gqn"/>
-                        <segue destination="jM6-Kb-J6q" kind="presentation" identifier="logInNewUser" modalPresentationStyle="fullScreen" id="Qic-zH-tL0"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jNj-W9-mbs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="W0I-3P-uGd" userLabel="Show User Types">
-                    <connections>
-                        <action selector="showUserTypes:" destination="v7e-Lo-XTj" id="xKn-uI-QQ5"/>
-                    </connections>
-                </tapGestureRecognizer>
-            </objects>
-            <point key="canvasLocation" x="1294" y="-1300"/>
-        </scene>
     </scenes>
     <resources>
         <image name="CapitalCycleStoreLogo" width="118" height="122"/>
@@ -2269,8 +2150,8 @@ A: We have a variety of games and books as well as a gym and playground to occup
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="EsD-nZ-GiX"/>
+        <segue reference="2oz-0z-gZa"/>
         <segue reference="stl-Sk-OpA"/>
-        <segue reference="Qic-zH-tL0"/>
+        <segue reference="TDc-Gp-ks8"/>
     </inferredMetricsTieBreakers>
 </document>

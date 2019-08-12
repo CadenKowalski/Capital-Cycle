@@ -7,21 +7,22 @@
 //
 
 import UIKit
-import FirebaseAuth
-import CoreData
+import Firebase
 
 class VerifyUser: UIViewController {
 
     // Storyboard outlets
     @IBOutlet weak var gradientView: UIView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
+    // Global code vars
+    let databaseRef = Firestore.firestore().collection("Users")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         customizeLayout()
     }
     
-    // MARK: View Setup
+    // MARK: View Setup / Management
     
     // Formats the UI
     func customizeLayout() {
@@ -33,46 +34,43 @@ class VerifyUser: UIViewController {
         gradientView.setTwoGradientBackground()
     }
     
+    // Shows an alert
+    func showAlert(title: String, message: String, actionTitle: String, actionStyle: UIAlertAction.Style) {
+        let Alert = UIAlertController(title: title, message:  message, preferredStyle: .alert)
+        Alert.addAction(UIAlertAction(title: actionTitle, style: actionStyle, handler: nil))
+        present(Alert, animated: true, completion: nil)
+    }
+    
+    // Checks if the user has verified their email
     @IBAction func checkForVerifiedUser(_ sender: UIButton) {
         Auth.auth().currentUser?.reload(completion: { (Action) in
             if Auth.auth().currentUser!.isEmailVerified {
-                self.createUser(email: (Auth.auth().currentUser?.email)!)
+                self.uploadUser(email: (Auth.auth().currentUser?.email)!)
                 self.performSegue(withIdentifier: "verifiedUser", sender: nil)
             } else {
-                let Alert = UIAlertController(title: "Uh oh", message: "It looks like you haven't verified your email yet", preferredStyle: .alert)
-                Alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(Alert, animated: true, completion: nil)
+                self.showAlert(title: "Uh oh", message: "It looks like you haven't verified your email yet", actionTitle: "OK", actionStyle: .default)
             }
         })
     }
     
-    // MARK: Core Data
+    // MARK: Firebase
     
-    // Create a core data user
-    func createUser(email: String) {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        let Context = appDelegate.persistentContainer.viewContext
-        let User = NSEntityDescription.insertNewObject(forEntityName: "User", into: Context)
-        User.setValue(email, forKey: "email")
-        User.setValue(signedIn, forKey: "signedIn")
+    // Uploads a user to the Firebase Firestore
+    func uploadUser(email: String) {
+        var userTypeString: String
         switch userType {
         case .camper:
-            User.setValue("Camper", forKey: "type")
+            userTypeString = "Camper"
         case .parent:
-            User.setValue("Parent", forKey: "type")
-        case .counselor:
-            User.setValue("Counselor", forKey: "type")
-        case .admin:
-            User.setValue("Admin", forKey: "type")
+            userTypeString = "Parent"
         default:
             return
         }
         
-        do {
-            try Context.save()
-        } catch {
-            let nserror = error as NSError
-            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        databaseRef.document(email).setData(["Email": email, "Type": userTypeString, "signedIn": signedIn!]) { error in
+            if error != nil {
+                self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
+            }
         }
     }
 }

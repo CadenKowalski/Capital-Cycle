@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import FirebaseAuth
+import Firebase
 
 class PageVC: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
 

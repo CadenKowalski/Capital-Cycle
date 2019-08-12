@@ -7,8 +7,7 @@
 //
 
 import UIKit
-import FirebaseAuth
-import CoreData
+import Firebase
 
 class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
@@ -25,8 +24,8 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
     @IBOutlet weak var userTypePickerView: UIPickerView!
     // Code global vars
     static let Instance = SignUp()
-    var counselorEmail: String!
-    var counselorPass: String!
+    var signUpEmail: String!
+    var signUpPass: String!
     var Agree = false
     var typesOfUser = ["--", "Camper", "Parent", "Counselor"]
     
@@ -149,8 +148,12 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
             userType = .counselor
         }
         
-        userTypeLbl.text = typesOfUser[row]
         userTypePickerView.isHidden = true
+        userTypeLbl.text = typesOfUser[row]
+        if userType != UserType.none {
+            userTypeLbl.backgroundColor = #colorLiteral(red: 0.75, green: 0.75, blue: 0.75, alpha: 1)
+            userTypeLbl.alpha = 1.0
+        }
     }
     
     // MARK: Sign Up
@@ -169,8 +172,8 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
             userTypeLbl.backgroundColor = .red
             userTypeLbl.alpha = 0.5
         } else {
-            SignUp.Instance.counselorEmail = emailTxtField.text!
-            SignUp.Instance.counselorPass = passTxtField.text!
+            SignUp.Instance.signUpEmail = emailTxtField.text!
+            SignUp.Instance.signUpPass = passTxtField.text!
             if userType != .counselor  && userType != .admin {
                 Auth.auth().createUser(withEmail: emailTxtField.text!, password: passTxtField.text!) { (user, error) in
                     if error == nil {

@@ -7,8 +7,7 @@
 //
 
 import UIKit
-import FirebaseAuth
-import CoreData
+import Firebase
 
 class Settings: UIViewController {
 
@@ -16,6 +15,8 @@ class Settings: UIViewController {
     @IBOutlet weak var gradientView: UIView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
     @IBOutlet weak var signedInSwitch: UISwitch!
+    // Code global vars
+    let databaseRef = Firestore.firestore().collection("Users")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,10 +55,10 @@ class Settings: UIViewController {
     @IBAction func staySignedIn(_ sender: UISwitch) {
         if sender.isOn {
             signedIn = true
-            updateContext()
+            updateUser(email: (Auth.auth().currentUser?.email)!)
         } else {
             signedIn = false
-            updateContext()
+            updateUser(email: (Auth.auth().currentUser?.email)!)
         }
     }
     
@@ -90,7 +91,7 @@ class Settings: UIViewController {
             let userEmail = resetPasswordAlert.textFields?.first?.text
             Auth.auth().sendPasswordReset(withEmail: userEmail!, completion: { (Error) in
                 if Error != nil {
-                    self.showAlert(title: "Reset Failed", message: "Error: \(String(describing: Error?.localizedDescription))", actionTitle: "OK", actionStyle: .default)
+                    self.showAlert(title: "Reset Failed", message: "Error: \(Error!.localizedDescription)", actionTitle: "OK", actionStyle: .default)
                 } else {
                     self.showAlert(title: "Email sent successfully", message: "Check your email to reset password", actionTitle: "OK", actionStyle: .default)
                 }
@@ -107,7 +108,7 @@ class Settings: UIViewController {
         confirmDeleteAlert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (Action) in
             Auth.auth().currentUser?.delete(completion: { Error in
                 if Error != nil {
-                    self.showAlert(title: "Delete Failed", message: "Error: \(String(describing: Error?.localizedDescription))", actionTitle: "OK", actionStyle: .default)
+                    self.showAlert(title: "Delete Failed", message: "Error: \(Error!.localizedDescription)", actionTitle: "OK", actionStyle: .default)
                 } else {
                    self.logOut(sender)
                 }
@@ -117,25 +118,13 @@ class Settings: UIViewController {
         self.present(confirmDeleteAlert, animated: true, completion: nil)
     }
     
+    // MARK: Firebase
     
-    // MARK: Core Data
-    
-    // Updates the context with new values
-    func updateContext() {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        let Context = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
-        do {
-            let Users = try Context.fetch(fetchRequest) as! [NSManagedObject]
-            for User in Users {
-                if User.value(forKey: "email") as? String == Auth.auth().currentUser?.email {
-                    User.setValue(signedIn, forKey: "signedIn")
-                }
+    func updateUser(email: String) {
+        databaseRef.document(email).updateData(["signedIn": signedIn!]) { error in
+            if error != nil {
+                self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
             }
-            try Context.save()
-        } catch {
-            let nserror = error as NSError
-            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
     }
 }

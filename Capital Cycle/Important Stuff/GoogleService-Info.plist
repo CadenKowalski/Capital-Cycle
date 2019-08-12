@@ -31,6 +31,6 @@
 	<key>GOOGLE_APP_ID</key>
 	<string>1:242371580492:ios:5fd9560626284b1c</string>
 	<key>DATABASE_URL</key>
-	<string>https://capital-cycle-app.firebaseio.com</string>
+	<string>https://capital-cycle-app.firebaseio.com/</string>
 </dict>
 </plist>

@@ -5,13 +5,7 @@
         <attribute name="dailyData" optional="YES" attributeType="Transformable" customClassName="[[String]]" storedInTruthFile="YES"/>
         <attribute name="overviewData" optional="YES" attributeType="Transformable"/>
     </entity>
-    <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
-        <attribute name="email" optional="YES" attributeType="String"/>
-        <attribute name="signedIn" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="type" optional="YES" attributeType="String"/>
-    </entity>
     <elements>
         <element name="Spreadsheet" positionX="160" positionY="192" width="128" height="88"/>
-        <element name="User" positionX="-54" positionY="-9" width="128" height="88"/>
     </elements>
 </model>
