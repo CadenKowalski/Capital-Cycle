@@ -149,7 +149,7 @@ Phone: 202.288.5245</string>
                                                     <action selector="Instagram:" destination="bH8-1u-VSq" eventType="touchUpInside" id="Zxy-cb-0NK"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Camp Location:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dqt-9W-aeU">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Camp Location:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dqt-9W-aeU" userLabel="Camp Location Lbl">
                                                 <rect key="frame" x="8" y="358.66666666666669" width="146" height="27.333333333333314"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="27.329999999999998" id="Wab-hX-NQ7"/>
@@ -159,8 +159,9 @@ Phone: 202.288.5245</string>
                                                 <color key="textColor" name="LabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rhe-8X-Nng">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rhe-8X-Nng" userLabel="Location Lbl">
                                                 <rect key="frame" x="32" y="394" width="374" height="46.666666666666686"/>
+                                                <gestureRecognizers/>
                                                 <attributedString key="attributedText">
                                                     <fragment>
                                                         <string key="content">Minor Elementary 
@@ -181,6 +182,9 @@ Phone: 202.288.5245</string>
                                                     </fragment>
                                                 </attributedString>
                                                 <nil key="highlightedColor"/>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="VdN-xI-s1m" appends="YES" id="244-Ib-Zqt"/>
+                                                </connections>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" name="ViewColor"/>
@@ -288,10 +292,16 @@ Phone: 202.288.5245</string>
                         <outlet property="campDatesYConstraint" destination="5N8-Fe-3hv" id="T2a-U0-vfa"/>
                         <outlet property="gradientView" destination="E4V-Od-9gE" id="S28-W7-RDG"/>
                         <outlet property="gradientViewHeight" destination="L6f-kV-R5C" id="lKj-c9-ThF"/>
+                        <outlet property="locationLbl" destination="rhe-8X-Nng" id="d06-eC-MpR"/>
                         <outlet property="scrollViewDisplay" destination="YlL-WF-Z3k" id="n6Y-2t-Smf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Izh-eE-oWs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="VdN-xI-s1m" userLabel="Open Maps Tap Gesture Recognizer">
+                    <connections>
+                        <action selector="openMapsToLocation:" destination="bH8-1u-VSq" id="40E-hK-xVV"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-1390" y="945"/>
         </scene>

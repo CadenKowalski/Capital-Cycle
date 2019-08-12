@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 import SafariServices
 
 class OverviewPage: UIViewController {
@@ -17,6 +18,7 @@ class OverviewPage: UIViewController {
     @IBOutlet weak var scrollViewDisplay: UIView!
     @IBOutlet weak var campDatesLbl: UILabel!
     @IBOutlet weak var campDatesYConstraint: NSLayoutConstraint!
+    @IBOutlet weak var locationLbl: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,9 +38,26 @@ class OverviewPage: UIViewController {
         
         // Readjusts the Y constraints
         campDatesYConstraint.constant = gradientViewHeight.constant + 8
+        
+        // Sets up the location lbl
+        locationLbl.isUserInteractionEnabled = true
     }
     
     // MARK: Actions
+    
+    // Opens the maps app to Minor Elementary
+    @IBAction func openMapsToLocation(_ sender: UITapGestureRecognizer) {
+        let latitude: CLLocationDegrees = 38.8975
+        let longitude: CLLocationDegrees = -76.9829
+        let regionDistance: CLLocationDistance = 500
+        let Coordinates = CLLocationCoordinate2DMake(latitude, longitude)
+        let regionSpan = MKCoordinateRegion(center: Coordinates, latitudinalMeters: regionDistance, longitudinalMeters: regionDistance)
+        let Options = [MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center), MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)]
+        let Placemark = MKPlacemark(coordinate: Coordinates, addressDictionary: nil)
+        let mapItem = MKMapItem(placemark: Placemark)
+        mapItem.name = "Minor Elementary"
+        mapItem.openInMaps(launchOptions: Options)
+    }
     
     // Takes the user to the CapitalCycleCamp Facebook page
     @IBAction func Facebook(_ sender: UIButton) {
