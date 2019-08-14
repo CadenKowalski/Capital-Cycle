@@ -83,7 +83,7 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate {
             return
         }
         
-        databaseRef.document(email).setData(["Email": email, "Type": userTypeString, "signedIn": signedIn!]) { error in
+        databaseRef.document(email).setData(["email": email, "type": userTypeString, "signedIn": signedIn!]) { error in
             if error != nil {
                 self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
             }

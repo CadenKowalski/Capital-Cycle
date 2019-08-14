@@ -69,13 +69,21 @@ class Settings: UIViewController {
     @IBAction func logOut(_ sender: UIButton?) {
         signedIn = false
         do {
-            let email = (Auth.auth().currentUser?.email)!
             if sender == nil {
-                self.databaseRef.document(email).delete(completion: { error in
-                    self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
+                let email = Auth.auth().currentUser?.email
+                Auth.auth().currentUser?.delete(completion: { error in
+                    if error == nil {
+                        self.databaseRef.document(email!).delete(completion: { error in
+                            if error != nil {
+                                self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
+                            }
+                        })
+                    } else {
+                        self.showAlert(title: "Delete Failed", message: "Error: \(error!.localizedDescription)", actionTitle: "OK", actionStyle: .default)
+                    }
                 })
             } else {
-                updateUser(email: email)
+                updateUser(email: (Auth.auth().currentUser?.email)!)
             }
             
             try Auth.auth().signOut()
@@ -113,14 +121,8 @@ class Settings: UIViewController {
     @IBAction func deleteAccount(_ sender: UIButton) {
         let confirmDeleteAlert = UIAlertController(title: "Confirm", message: "Are you sure you want to delete your account?", preferredStyle: .alert)
         confirmDeleteAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        confirmDeleteAlert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (Action) in
-            Auth.auth().currentUser?.delete(completion: { error in
-                if error == nil {
-                    self.logOut(sender)
-                } else {
-                    self.showAlert(title: "Delete Failed", message: "Error: \(error!.localizedDescription)", actionTitle: "OK", actionStyle: .default)
-                }
-            })
+        confirmDeleteAlert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { action in
+            self.logOut(nil)
         }))
         
         self.present(confirmDeleteAlert, animated: true, completion: nil)

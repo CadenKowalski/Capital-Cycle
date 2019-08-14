@@ -159,7 +159,7 @@ class LogIn: UIViewController, UITextFieldDelegate {
         userRef.getDocument { (document, error) in
             if error == nil {
                 signedIn = document?.get("signedIn") as? Bool
-                switch document?.get("Type") as! String {
+                switch document?.get("type") as! String {
                 case "Camper":
                     userType = .camper
                 case "Parent":

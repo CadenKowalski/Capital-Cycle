@@ -1938,7 +1938,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                         <fragment content="Privacy Policy">
                                             <attributes>
                                                 <color key="NSColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <font key="NSFont" metaFont="system" size="10"/>
+                                                <font key="NSFont" metaFont="menu" size="10"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 <integer key="NSUnderline" value="1"/>
                                             </attributes>
