@@ -27,13 +27,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E1U-Sr-1yu">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="1191"/>
+                                <rect key="frame" x="0.0" y="108" width="414" height="1083"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YlL-WF-Z3k" userLabel="Scroll View Display">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1191"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1083"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Camp Dates:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tnX-Rc-hHc">
-                                                <rect key="frame" x="8" y="108" width="125" height="28"/>
+                                                <rect key="frame" x="8" y="0.0" width="125" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28" id="B33-5S-c30"/>
                                                     <constraint firstAttribute="width" constant="125" id="e61-m3-WDb"/>
@@ -43,7 +43,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ihh-44-Xpe" userLabel="Dates Lbl">
-                                                <rect key="frame" x="32" y="144" width="374" height="139.33333333333337"/>
+                                                <rect key="frame" x="32" y="36" width="374" height="139.33333333333334"/>
                                                 <string key="text">Session 1: Jun 17 - 21 
 Session 2: Jun 24 - 28 
 Session 3: Jul 1 - 5 
@@ -55,7 +55,7 @@ Session 6: Jul 22 - 26</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Camp Hours:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gya-0b-gFj" userLabel="Camp Hours Lbl">
-                                                <rect key="frame" x="8" y="291.33333333333331" width="125" height="28"/>
+                                                <rect key="frame" x="8" y="183.33333333333331" width="125" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="125" id="7MJ-6B-AWT"/>
                                                     <constraint firstAttribute="height" constant="28" id="fJA-wi-fIV"/>
@@ -65,13 +65,13 @@ Session 6: Jul 22 - 26</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9AM - 6PM or 8AM - 6PM with before care" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8wX-ni-yL7" userLabel="Hours Lbl">
-                                                <rect key="frame" x="32" y="327.33333333333331" width="374" height="23.333333333333314"/>
+                                                <rect key="frame" x="32" y="219.33333333333331" width="374" height="23.333333333333343"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
                                                 <color key="textColor" name="LabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Camp Price:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l5e-4D-pxz" userLabel="Camp Price Lbl">
-                                                <rect key="frame" x="8" y="448.66666666666669" width="115" height="28"/>
+                                                <rect key="frame" x="8" y="340.66666666666669" width="115" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28" id="FsK-Jx-4aK"/>
                                                     <constraint firstAttribute="width" constant="115" id="u3X-hz-Pcp"/>
@@ -81,7 +81,7 @@ Session 6: Jul 22 - 26</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="srY-QF-c10" userLabel="Price Lbl">
-                                                <rect key="frame" x="32" y="484.66666666666669" width="374" height="69.666666666666686"/>
+                                                <rect key="frame" x="32" y="376.66666666666669" width="374" height="69.666666666666686"/>
                                                 <string key="text">Sessions 1 &amp; 3: $375 
 Sessions 2, 4, 5 &amp; 6: $430
 Before Care: $10 per day</string>
@@ -90,7 +90,7 @@ Before Care: $10 per day</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Questions?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MLA-pY-GRJ" userLabel="Questions Lbl">
-                                                <rect key="frame" x="8" y="562.33333333333337" width="107.66666666666667" height="28"/>
+                                                <rect key="frame" x="8" y="454.33333333333337" width="107.66666666666667" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28" id="1A0-eK-jvu"/>
                                                     <constraint firstAttribute="width" constant="107.67" id="zlk-7k-vOk"/>
@@ -100,7 +100,7 @@ Before Care: $10 per day</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yHx-Q1-GR3" userLabel="Contacts Lbl">
-                                                <rect key="frame" x="32" y="598.33333333333337" width="374" height="116.33333333333337"/>
+                                                <rect key="frame" x="32" y="490.33333333333331" width="374" height="116.33333333333331"/>
                                                 <string key="text">Email: CapitalCycleCamp@gmail.com
 Camp Owner - Ben Berkow
 Phone: 202.510.1342 
@@ -121,14 +121,14 @@ Phone: 202.288.5245</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r2K-gt-ZXY" userLabel="Day Lbl">
-                                                <rect key="frame" x="32" y="758.66666666666663" width="374" height="278.66666666666663"/>
+                                                <rect key="frame" x="32" y="650.66666666666663" width="374" height="278.66666666666663"/>
                                                 <string key="text">Early drop off begins at 8AM and parents can drop their kids off any time after that. Camp begins at 9AM and campers will play a variety of games at the school for about an hour. At around 10AM, we prepare to leave (apply sunscreen, fill waterbottles, use the restroom, pack backpacks). We will usually bike all of the way to our destination and once we get there, we will eat lunch and do the activity that we have planned. At around 3-4PM we will bike back to the school and play games until parents come to pick up campers.</string>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
                                                 <color key="textColor" name="LabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cBm-x8-BxN" userLabel="Facebook Btn">
-                                                <rect key="frame" x="152" y="1045.3333333333333" width="40" height="40"/>
+                                                <rect key="frame" x="152" y="937.33333333333326" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="gIs-ez-uIa"/>
                                                     <constraint firstAttribute="height" constant="40" id="upr-vT-Wl3"/>
@@ -139,7 +139,7 @@ Phone: 202.288.5245</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J93-kR-cR5" userLabel="Instagram Btn">
-                                                <rect key="frame" x="222" y="1045.3333333333333" width="40" height="40"/>
+                                                <rect key="frame" x="222" y="937.33333333333326" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="13K-b1-Uxa"/>
                                                     <constraint firstAttribute="height" constant="40" id="6CB-g3-bXP"/>
@@ -150,7 +150,7 @@ Phone: 202.288.5245</string>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Camp Location:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dqt-9W-aeU" userLabel="Camp Location Lbl">
-                                                <rect key="frame" x="8" y="358.66666666666669" width="146" height="27.333333333333314"/>
+                                                <rect key="frame" x="8" y="250.66666666666671" width="146" height="27.333333333333343"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="27.329999999999998" id="Wab-hX-NQ7"/>
                                                     <constraint firstAttribute="width" constant="146" id="t6n-LF-XVT"/>
@@ -160,7 +160,7 @@ Phone: 202.288.5245</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rhe-8X-Nng" userLabel="Location Lbl">
-                                                <rect key="frame" x="32" y="394" width="374" height="46.666666666666686"/>
+                                                <rect key="frame" x="32" y="286" width="374" height="46.666666666666686"/>
                                                 <gestureRecognizers/>
                                                 <attributedString key="attributedText">
                                                     <fragment>
@@ -192,7 +192,7 @@ Phone: 202.288.5245</string>
                                             <constraint firstItem="yHx-Q1-GR3" firstAttribute="trailing" secondItem="YlL-WF-Z3k" secondAttribute="trailing" constant="-8" id="24A-We-UPb"/>
                                             <constraint firstItem="Dqt-9W-aeU" firstAttribute="leading" secondItem="YlL-WF-Z3k" secondAttribute="leading" constant="8" id="2lc-r2-Ehz"/>
                                             <constraint firstItem="MLA-pY-GRJ" firstAttribute="top" secondItem="srY-QF-c10" secondAttribute="bottom" constant="8" id="53f-M0-fGF"/>
-                                            <constraint firstItem="tnX-Rc-hHc" firstAttribute="top" secondItem="YlL-WF-Z3k" secondAttribute="top" constant="108" id="5N8-Fe-3hv"/>
+                                            <constraint firstItem="tnX-Rc-hHc" firstAttribute="top" secondItem="YlL-WF-Z3k" secondAttribute="top" id="5N8-Fe-3hv"/>
                                             <constraint firstItem="gya-0b-gFj" firstAttribute="leading" secondItem="YlL-WF-Z3k" secondAttribute="leading" constant="8" id="5UT-u7-VPR"/>
                                             <constraint firstItem="l5e-4D-pxz" firstAttribute="top" secondItem="rhe-8X-Nng" secondAttribute="bottom" constant="8" id="73I-rM-Yvp"/>
                                             <constraint firstItem="J93-kR-cR5" firstAttribute="top" secondItem="r2K-gt-ZXY" secondAttribute="bottom" constant="8" id="829-4t-H3M"/>
@@ -279,7 +279,7 @@ Phone: 202.288.5245</string>
                             <constraint firstItem="E1U-Sr-1yu" firstAttribute="bottom" secondItem="Upw-lg-ypp" secondAttribute="bottom" id="FZa-ik-dl1"/>
                             <constraint firstItem="E4V-Od-9gE" firstAttribute="trailing" secondItem="Upw-lg-ypp" secondAttribute="trailing" id="IL4-De-zlo"/>
                             <constraint firstItem="E4V-Od-9gE" firstAttribute="leading" secondItem="Upw-lg-ypp" secondAttribute="leading" id="J5q-Qj-BUG"/>
-                            <constraint firstItem="E1U-Sr-1yu" firstAttribute="top" secondItem="zTk-ZV-eln" secondAttribute="top" id="W8T-qZ-mDe"/>
+                            <constraint firstItem="E1U-Sr-1yu" firstAttribute="top" secondItem="zTk-ZV-eln" secondAttribute="top" constant="108" id="W8T-qZ-mDe"/>
                             <constraint firstItem="E1U-Sr-1yu" firstAttribute="leading" secondItem="zTk-ZV-eln" secondAttribute="leading" id="bPQ-yl-mDj"/>
                             <constraint firstItem="E1U-Sr-1yu" firstAttribute="trailing" secondItem="zTk-ZV-eln" secondAttribute="trailing" id="lgh-N8-BXc"/>
                             <constraint firstItem="E4V-Od-9gE" firstAttribute="top" secondItem="zTk-ZV-eln" secondAttribute="top" id="pBP-6K-4no"/>
@@ -288,12 +288,11 @@ Phone: 202.288.5245</string>
                     </view>
                     <size key="freeformSize" width="414" height="1225"/>
                     <connections>
-                        <outlet property="campDatesLbl" destination="tnX-Rc-hHc" id="6CZ-Z8-tO7"/>
-                        <outlet property="campDatesYConstraint" destination="5N8-Fe-3hv" id="T2a-U0-vfa"/>
                         <outlet property="gradientView" destination="E4V-Od-9gE" id="S28-W7-RDG"/>
                         <outlet property="gradientViewHeight" destination="L6f-kV-R5C" id="lKj-c9-ThF"/>
                         <outlet property="locationLbl" destination="rhe-8X-Nng" id="d06-eC-MpR"/>
                         <outlet property="scrollViewDisplay" destination="YlL-WF-Z3k" id="n6Y-2t-Smf"/>
+                        <outlet property="scrollViewYConstraint" destination="W8T-qZ-mDe" id="cgP-Ct-dtd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Izh-eE-oWs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1152,13 +1151,13 @@ $375</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="grX-QG-9rR" userLabel="FAQ Scroll View">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="1166"/>
+                                <rect key="frame" x="0.0" y="108" width="375" height="1058"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ozb-mo-4Pz" userLabel="FAQ Scroll View Display">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1543"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1427"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VAg-9A-wTE" userLabel="Question">
-                                                <rect key="frame" x="8" y="116" width="359" height="82"/>
+                                                <rect key="frame" x="8" y="0.0" width="359" height="82"/>
                                                 <string key="text">Q: When do you usually head out in the morning?
 A: Around 10:00 - 10:30</string>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
@@ -1166,7 +1165,7 @@ A: Around 10:00 - 10:30</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nwh-Oe-MxM" userLabel="Question">
-                                                <rect key="frame" x="8" y="206" width="359" height="82"/>
+                                                <rect key="frame" x="8" y="90" width="359" height="82"/>
                                                 <string key="text">Q: When do you usually arrive back at camp?
 A: Around 3:00 - 4:00</string>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
@@ -1174,7 +1173,7 @@ A: Around 3:00 - 4:00</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jxw-fb-hF6" userLabel="Question">
-                                                <rect key="frame" x="8" y="296" width="359" height="109.33333333333331"/>
+                                                <rect key="frame" x="8" y="180" width="359" height="109.33333333333331"/>
                                                 <string key="text">Q: What if it rains?
 A: We will play it by ear but will ?? on the side of caution to ensure that campers remain safe</string>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
@@ -1182,7 +1181,7 @@ A: We will play it by ear but will ?? on the side of caution to ensure that camp
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U2k-9L-uOQ" userLabel="Question">
-                                                <rect key="frame" x="8" y="413.33333333333331" width="359" height="82"/>
+                                                <rect key="frame" x="8" y="297.33333333333331" width="359" height="82"/>
                                                 <string key="text">Q: Do you group kids by ability or age?
 A: Both. It usually depends on the length of the ride. </string>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
@@ -1190,7 +1189,7 @@ A: Both. It usually depends on the length of the ride. </string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nbJ-zA-YJA" userLabel="Question">
-                                                <rect key="frame" x="8" y="503.33333333333326" width="359" height="164"/>
+                                                <rect key="frame" x="8" y="387.33333333333331" width="359" height="163.99999999999994"/>
                                                 <string key="text">Q: What if my kid is unable to bike back from the destination?
 A: We generally push kids to make it back on their own but we are prepared to call an Uber or Lyft and ride back with them.</string>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
@@ -1198,7 +1197,7 @@ A: We generally push kids to make it back on their own but we are prepared to ca
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="215-il-Yfy" userLabel="Question">
-                                                <rect key="frame" x="8" y="675.33333333333337" width="359" height="54.666666666666629"/>
+                                                <rect key="frame" x="8" y="559.33333333333337" width="359" height="54.666666666666629"/>
                                                 <string key="text">Q: Can I get a sibling discount?
 A: TBD</string>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
@@ -1206,7 +1205,7 @@ A: TBD</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QEh-PN-ytA" userLabel="Question">
-                                                <rect key="frame" x="8" y="738" width="359" height="191.33333333333337"/>
+                                                <rect key="frame" x="8" y="622" width="359" height="191.33333333333337"/>
                                                 <string key="text">Q: What if my child is not a confident rider?
 A: We will work with them throughout the week pushing them outside their comfort zone but we can always put them in a less advanced group that will go a shorter distance. </string>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
@@ -1214,7 +1213,7 @@ A: We will work with them throughout the week pushing them outside their comfort
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="knM-nP-4F5" userLabel="Question">
-                                                <rect key="frame" x="8" y="937.33333333333337" width="359" height="136.66666666666663"/>
+                                                <rect key="frame" x="8" y="821.33333333333337" width="359" height="136.66666666666663"/>
                                                 <string key="text">Q: What if I need to pick my child up early one day?
 A: Contact the camp manager, Chris, at +1 (202) 288-5245 and we will make sure to have your child back in time.</string>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
@@ -1222,7 +1221,7 @@ A: Contact the camp manager, Chris, at +1 (202) 288-5245 and we will make sure t
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPA-W2-Wyi" userLabel="Question">
-                                                <rect key="frame" x="8" y="1082" width="359" height="109.33333333333326"/>
+                                                <rect key="frame" x="8" y="966" width="359" height="109.33333333333326"/>
                                                 <string key="text">Q: What if my child doesn't have a bike?
 A: We ask that all campers who attend bike camp, have a bike.</string>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
@@ -1230,7 +1229,7 @@ A: We ask that all campers who attend bike camp, have a bike.</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ULk-If-Tsu" userLabel="Question">
-                                                <rect key="frame" x="8" y="1199.3333333333333" width="359" height="191.33333333333326"/>
+                                                <rect key="frame" x="8" y="1083.3333333333333" width="359" height="191.33333333333326"/>
                                                 <string key="text">Q: Can my child arrive and/ or leave camp by themselves or do I need to be present?
 A: If you give the counselors explicit permission for your child to arrive and/or leave camp by themselves, that is an option.</string>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
@@ -1238,7 +1237,7 @@ A: If you give the counselors explicit permission for your child to arrive and/o
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xrZ-KW-8hl" userLabel="Question">
-                                                <rect key="frame" x="8" y="1398.6666666666667" width="359" height="109.33333333333326"/>
+                                                <rect key="frame" x="8" y="1282.6666666666667" width="359" height="109.33333333333326"/>
                                                 <string key="text">Q: What do you do when not biking?
 A: We have a variety of games and books as well as a gym and playground to occupy down time.</string>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
@@ -1254,7 +1253,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                             <constraint firstAttribute="trailing" secondItem="215-il-Yfy" secondAttribute="trailing" constant="8" id="BW8-jK-Gt3"/>
                                             <constraint firstAttribute="trailing" secondItem="QEh-PN-ytA" secondAttribute="trailing" constant="8" id="GBm-Pb-YMn"/>
                                             <constraint firstAttribute="trailing" secondItem="nbJ-zA-YJA" secondAttribute="trailing" constant="8" id="Oj9-ir-Ksw"/>
-                                            <constraint firstItem="VAg-9A-wTE" firstAttribute="top" secondItem="Ozb-mo-4Pz" secondAttribute="top" constant="116" id="Or7-vq-Y5V"/>
+                                            <constraint firstItem="VAg-9A-wTE" firstAttribute="top" secondItem="Ozb-mo-4Pz" secondAttribute="top" id="Or7-vq-Y5V"/>
                                             <constraint firstItem="knM-nP-4F5" firstAttribute="leading" secondItem="Ozb-mo-4Pz" secondAttribute="leading" constant="8" id="PhQ-IU-c01"/>
                                             <constraint firstAttribute="trailing" secondItem="yPA-W2-Wyi" secondAttribute="trailing" constant="8" id="Q0q-iW-nhv"/>
                                             <constraint firstItem="nbJ-zA-YJA" firstAttribute="top" secondItem="U2k-9L-uOQ" secondAttribute="bottom" constant="8" id="RCE-oz-wdN"/>
@@ -1338,7 +1337,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                             <constraint firstItem="grX-QG-9rR" firstAttribute="bottom" secondItem="boU-Ua-Adt" secondAttribute="bottom" id="DDv-Oo-ce4"/>
                             <constraint firstItem="7qZ-6e-4gC" firstAttribute="leading" secondItem="boU-Ua-Adt" secondAttribute="leading" id="K1f-D7-Ta3"/>
                             <constraint firstItem="grX-QG-9rR" firstAttribute="trailing" secondItem="boU-Ua-Adt" secondAttribute="trailing" id="RPd-jc-NZ8"/>
-                            <constraint firstItem="grX-QG-9rR" firstAttribute="top" secondItem="8VS-e5-9M6" secondAttribute="top" id="WNY-Cq-Fnj"/>
+                            <constraint firstItem="grX-QG-9rR" firstAttribute="top" secondItem="8VS-e5-9M6" secondAttribute="top" constant="108" id="WNY-Cq-Fnj"/>
                             <constraint firstItem="7qZ-6e-4gC" firstAttribute="trailing" secondItem="boU-Ua-Adt" secondAttribute="trailing" id="k1T-w2-1XT"/>
                             <constraint firstItem="7qZ-6e-4gC" firstAttribute="top" secondItem="8VS-e5-9M6" secondAttribute="top" id="mLG-Mn-DgX"/>
                         </constraints>
@@ -1348,7 +1347,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                     <connections>
                         <outlet property="gradientView" destination="7qZ-6e-4gC" id="GFl-5x-iMA"/>
                         <outlet property="gradientViewHeight" destination="XkF-Nm-exH" id="7CW-bb-BdR"/>
-                        <outlet property="questionYConstraint" destination="Or7-vq-Y5V" id="wvi-YH-V65"/>
+                        <outlet property="scrollViewYConstraint" destination="WNY-Cq-Fnj" id="F66-Td-i2Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uBk-Hx-su6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1373,55 +1372,55 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                                 <rect key="frame" x="16" y="10" width="343" height="642"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Camper Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0kj-HB-fqT">
-                                                        <rect key="frame" x="104.00000000000001" y="7.9999999999999982" width="135.33333333333337" height="27.333333333333329"/>
+                                                        <rect key="frame" x="104" y="8.0000000000000018" width="135" height="27.666666666666671"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                         <color key="textColor" name="LabelColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parent Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VvE-cC-Zsu">
-                                                        <rect key="frame" x="8.0000000000000071" y="43.333333333333343" width="122.66666666666669" height="27.333333333333329"/>
+                                                        <rect key="frame" x="8" y="43.666666666666657" width="123" height="27"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                         <color key="textColor" name="LabelColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L3U-lf-AnQ">
-                                                        <rect key="frame" x="32" y="78.666666666666657" width="49.333333333333343" height="24.666666666666671"/>
+                                                        <rect key="frame" x="31.999999999999996" y="78.666666666666657" width="49.666666666666657" height="25"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parent Phone" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pge-hr-csv">
-                                                        <rect key="frame" x="8" y="111.33333333333334" width="126" height="27.333333333333343"/>
+                                                        <rect key="frame" x="8" y="111.66666666666666" width="126" height="27.333333333333343"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                         <color key="textColor" name="LabelColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="313-zK-qht">
-                                                        <rect key="frame" x="32.000000000000007" y="146.66666666666669" width="67.666666666666686" height="24.666666666666657"/>
+                                                        <rect key="frame" x="32.000000000000007" y="147" width="67.666666666666686" height="25"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parent Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zgs-li-Yn9">
-                                                        <rect key="frame" x="8" y="179.33333333333331" width="118" height="27.333333333333343"/>
+                                                        <rect key="frame" x="8" y="180" width="118" height="27.666666666666657"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                         <color key="textColor" name="LabelColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t25-Av-k9u">
-                                                        <rect key="frame" x="32" y="214.66666666666669" width="303" height="24.666666666666657"/>
+                                                        <rect key="frame" x="32" y="215.66666666666669" width="303" height="24.666666666666657"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signed Waiver" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XgM-tu-lN0">
-                                                        <rect key="frame" x="8" y="247.33333333333334" width="135.33333333333334" height="27.333333333333343"/>
+                                                        <rect key="frame" x="8" y="248.33333333333331" width="135.66666666666666" height="27"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                         <color key="textColor" name="LabelColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bool" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ajb-0o-pyW">
-                                                        <rect key="frame" x="32" y="282.66666666666669" width="37.333333333333343" height="24.666666666666686"/>
+                                                        <rect key="frame" x="31.999999999999996" y="283.33333333333331" width="37.666666666666657" height="25"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -1673,6 +1672,9 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                     <action selector="logIn:" destination="v2Q-k5-Eoj" eventType="touchUpInside" id="NCM-6J-hec"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="vM3-aN-snM">
+                                <rect key="frame" x="169" y="271" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" name="ViewColor"/>
                         <gestureRecognizers/>
@@ -1698,6 +1700,8 @@ A: We have a variety of games and books as well as a gym and playground to occup
                             <constraint firstItem="euE-3o-OpQ" firstAttribute="centerX" secondItem="43c-jI-F7U" secondAttribute="centerX" id="v5n-9P-X6E"/>
                             <constraint firstItem="ovt-Gf-r3U" firstAttribute="centerX" secondItem="43c-jI-F7U" secondAttribute="centerX" id="vyd-Y7-5in"/>
                             <constraint firstItem="tTZ-I0-VVo" firstAttribute="leading" secondItem="5Wo-YH-b5x" secondAttribute="leading" constant="16" id="wq1-Rg-ve4"/>
+                            <constraint firstItem="vM3-aN-snM" firstAttribute="centerX" secondItem="43c-jI-F7U" secondAttribute="centerX" id="xGh-eC-iII"/>
+                            <constraint firstItem="vM3-aN-snM" firstAttribute="centerY" secondItem="VQ6-lr-Ida" secondAttribute="centerY" id="ycf-Pj-VSh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5Wo-YH-b5x"/>
                         <connections>
@@ -1709,6 +1713,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                         <outlet property="gradientView" destination="HmA-eO-hef" id="eaH-j0-djy"/>
                         <outlet property="gradientViewHeight" destination="ioO-Kj-laH" id="Lwe-6O-iK7"/>
                         <outlet property="logInBtn" destination="VQ6-lr-Ida" id="tgD-8Q-YQF"/>
+                        <outlet property="logInBtnProgressWheel" destination="vM3-aN-snM" id="aSp-DB-JNF"/>
                         <outlet property="passTxtField" destination="tTZ-I0-VVo" id="Mt6-iM-A0h"/>
                         <outlet property="signedInBtn" destination="qgq-dg-T1L" id="sTz-1s-2Lt"/>
                         <segue destination="jM6-Kb-J6q" kind="presentation" identifier="LogIn" modalPresentationStyle="fullScreen" id="JVj-89-k2w"/>
@@ -1755,7 +1760,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your counselor ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ImQ-oN-SYA">
-                                <rect key="frame" x="87.000000000000014" y="132" width="201.33333333333337" height="24"/>
+                                <rect key="frame" x="87" y="132" width="201" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" name="LabelColor"/>
                                 <nil key="highlightedColor"/>
@@ -1855,7 +1860,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES" textContentType="new-password"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I am a" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ILc-KA-kIH">
-                                <rect key="frame" x="15.999999999999996" y="272" width="46.666666666666657" height="20.333333333333314"/>
+                                <rect key="frame" x="15.999999999999996" y="272" width="46.666666666666657" height="20.666666666666686"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="46.670000000000002" id="H9Y-Vh-tmU"/>
                                 </constraints>
@@ -1878,7 +1883,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 </connections>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ra-2Z-TlZ" userLabel="Check Box">
-                                <rect key="frame" x="13" y="310" width="25" height="25"/>
+                                <rect key="frame" x="13" y="310.33333333333331" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="KJ9-md-jns"/>
                                     <constraint firstAttribute="width" constant="25" id="i3Y-IW-h3I"/>
@@ -1901,7 +1906,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5fa-Sm-lDz" userLabel="Check Box">
-                                <rect key="frame" x="13" y="345" width="25" height="25"/>
+                                <rect key="frame" x="13" y="345.33333333333331" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="Gdo-s2-9C5"/>
                                     <constraint firstAttribute="height" constant="25" id="JLd-UU-dZ6"/>
@@ -2150,8 +2155,8 @@ A: We have a variety of games and books as well as a gym and playground to occup
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2oz-0z-gZa"/>
-        <segue reference="stl-Sk-OpA"/>
-        <segue reference="TDc-Gp-ks8"/>
+        <segue reference="EsD-nZ-GiX"/>
+        <segue reference="4VI-xZ-OTW"/>
+        <segue reference="JVj-89-k2w"/>
     </inferredMetricsTieBreakers>
 </document>

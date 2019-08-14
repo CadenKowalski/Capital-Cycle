@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseAuth
+import FirebaseFirestore
 
 class Settings: UIViewController {
 
@@ -28,13 +29,15 @@ class Settings: UIViewController {
     // Formats the UI
     func customizeLayout() {
         // Formats the gradient view
-        gradientViewHeight.constant = 0.15 * view.frame.height
-        gradientView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.15)
+        if view.frame.height < 700 {
+            gradientViewHeight.constant = 0.15 * view.frame.height
+            gradientView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.15)
+        }
         
         // Sets the gradients
-        gradientView.setTwoGradientBackground()
+        gradientView.setGradientBackground()
         
-        // Sets the "keep me signed in" switch to reflect the actual value
+        // Sets the "keep me signed in" switch to reflect the signedIn value
         if signedIn {
             signedInSwitch.isOn = true
         } else {
@@ -55,26 +58,31 @@ class Settings: UIViewController {
     @IBAction func staySignedIn(_ sender: UISwitch) {
         if sender.isOn {
             signedIn = true
-            updateUser(email: (Auth.auth().currentUser?.email)!)
         } else {
             signedIn = false
-            updateUser(email: (Auth.auth().currentUser?.email)!)
         }
+        
+        updateUser(email: (Auth.auth().currentUser?.email)!)
     }
     
     // Logs out the user
     @IBAction func logOut(_ sender: UIButton?) {
+        signedIn = false
         do {
-            try Auth.auth().signOut()
-            if sender != nil {
-                signedIn = false
-                updateContext()
+            let email = (Auth.auth().currentUser?.email)!
+            if sender == nil {
+                self.databaseRef.document(email).delete(completion: { error in
+                    self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
+                })
+            } else {
+                updateUser(email: email)
             }
-        } catch let signOutError as NSError {
-            showAlert(title: "Error", message: signOutError.localizedDescription, actionTitle: "OK", actionStyle: .default)
+            
+            try Auth.auth().signOut()
+            self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+        } catch let error as NSError {
+            showAlert(title: "Error", message: error.localizedDescription, actionTitle: "OK", actionStyle: .default)
         }
-        
-        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
     }
     
     // Resets the user's password
@@ -89,11 +97,11 @@ class Settings: UIViewController {
         resetPasswordAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         resetPasswordAlert.addAction(UIAlertAction(title: "Reset Password", style: .destructive, handler: { (Action) in
             let userEmail = resetPasswordAlert.textFields?.first?.text
-            Auth.auth().sendPasswordReset(withEmail: userEmail!, completion: { (Error) in
-                if Error != nil {
-                    self.showAlert(title: "Reset Failed", message: "Error: \(Error!.localizedDescription)", actionTitle: "OK", actionStyle: .default)
-                } else {
+            Auth.auth().sendPasswordReset(withEmail: userEmail!, completion: { error in
+                if error == nil {
                     self.showAlert(title: "Email sent successfully", message: "Check your email to reset password", actionTitle: "OK", actionStyle: .default)
+                } else {
+                    self.showAlert(title: "Reset Failed", message: "Error: \(error!.localizedDescription)", actionTitle: "OK", actionStyle: .default)
                 }
             })
         }))
@@ -106,11 +114,11 @@ class Settings: UIViewController {
         let confirmDeleteAlert = UIAlertController(title: "Confirm", message: "Are you sure you want to delete your account?", preferredStyle: .alert)
         confirmDeleteAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         confirmDeleteAlert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (Action) in
-            Auth.auth().currentUser?.delete(completion: { Error in
-                if Error != nil {
-                    self.showAlert(title: "Delete Failed", message: "Error: \(Error!.localizedDescription)", actionTitle: "OK", actionStyle: .default)
+            Auth.auth().currentUser?.delete(completion: { error in
+                if error == nil {
+                    self.logOut(sender)
                 } else {
-                   self.logOut(sender)
+                    self.showAlert(title: "Delete Failed", message: "Error: \(error!.localizedDescription)", actionTitle: "OK", actionStyle: .default)
                 }
             })
         }))

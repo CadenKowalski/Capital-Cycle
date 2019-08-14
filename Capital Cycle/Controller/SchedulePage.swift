@@ -78,17 +78,19 @@ class SchedulePage: UIViewController {
     // Formats the UI
     func customizeLayout() {
         // Formats the gradient view
-        gradientViewHeight.constant = 0.15 * view.frame.height
-        gradientView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.15)
+        if view.frame.height < 700 {
+            gradientViewHeight.constant = 0.15 * view.frame.height
+            gradientView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.15)
+        }
         
         // Readjusts the Y constraints relative to the gradient view height
         dailyScrollViewYConstraint.constant = gradientView.frame.height + 8
         overviewScrollViewYConstraint.constant = gradientView.frame.height + 8
         
         // Sets gradients
-        gradientView.setTwoGradientBackground()
-        dailyBtn.setTwoGradientButton(cornerRadius: 10)
-        overviewBtn.setTwoGradientButton(cornerRadius: 11)
+        gradientView.setGradientBackground()
+        dailyBtn.setGradientButton(cornerRadius: 10)
+        overviewBtn.setGradientButton(cornerRadius: 11)
         
         // Sets the API key for the GTLR Service so that the app can access the spreadhseet without credentials
         Service.apiKey = "AIzaSyBIdPHR_nqgL9G6fScmlcPMReBM5PmtVD8"

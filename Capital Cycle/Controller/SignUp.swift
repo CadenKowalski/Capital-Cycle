@@ -39,12 +39,14 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
     // Formats the UI
     func customizeLayout() {
         // Formats the gradient view
-        gradientViewHeight.constant = 0.15 * view.frame.height
-        gradientView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.15)
+        if view.frame.height < 700 {
+            gradientViewHeight.constant = 0.15 * view.frame.height
+            gradientView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.15)
+        }
         
         // Sets the gradients
-        gradientView.setTwoGradientBackground()
-        signUpBtn.setTwoGradientButton(cornerRadius: 22.5)
+        gradientView.setGradientBackground()
+        signUpBtn.setGradientButton(cornerRadius: 22.5)
 
         // Sets up the text fields
         emailTxtField.delegate = self
@@ -174,7 +176,9 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
         } else {
             SignUp.Instance.signUpEmail = emailTxtField.text!
             SignUp.Instance.signUpPass = passTxtField.text!
-            if userType != .counselor  && userType != .admin {
+            if userType == .counselor  || userType == .admin {
+                self.performSegue(withIdentifier: "VerifyCounselor", sender: nil)
+            } else {
                 Auth.auth().createUser(withEmail: emailTxtField.text!, password: passTxtField.text!) { (user, error) in
                     if error == nil {
                         self.performSegue(withIdentifier: "VerifyUser", sender: nil)
@@ -183,8 +187,6 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
                         self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
                     }
                 }
-            } else {
-                self.performSegue(withIdentifier: "VerifyCounselor", sender: nil)
             }
         }
     }

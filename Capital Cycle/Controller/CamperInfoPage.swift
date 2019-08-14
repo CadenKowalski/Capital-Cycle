@@ -40,11 +40,13 @@ class CamperInfoPage: UIViewController {
     // Formats the UI
     func customizeLayout() {
         // Formats the gradient view
-        gradientViewHeight.constant = 0.15 * view.frame.height
-        gradientView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.15)
+        if view.frame.height < 700 {
+            gradientViewHeight.constant = 0.15 * view.frame.height
+            gradientView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.15)
+        }
         
         // Sets the gradients
-        gradientView.setTwoGradientBackground()
+        gradientView.setGradientBackground()
         
         // Readjusts the Y constraints relative to the gradient view height
         camperScrollViewYConstraint.constant = gradientView.frame.height + 10

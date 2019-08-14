@@ -38,11 +38,13 @@ class StorePage: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     // Formats the UI
     func customizeLayout() {
         // Formats the gradient view
-        gradientViewHeight.constant = 0.15 * view.frame.height
-        gradientView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.15)
+        if view.frame.height < 700 {
+            gradientViewHeight.constant = 0.15 * view.frame.height
+            gradientView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.15)
+        }
         
         // Sets the gradients
-        gradientView.setTwoGradientBackground()
+        gradientView.setGradientBackground()
         
         // Formats the products collection view
         productsCollection.delegate = self

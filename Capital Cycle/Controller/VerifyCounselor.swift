@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseAuth
+import FirebaseFirestore
 
 class VerifyCounselor: UIViewController, UITextFieldDelegate {
 
@@ -28,11 +29,13 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate {
     // Formats the UI
     func customizeLayout() {
         // Formats the gradient view
-        gradientViewHeight.constant = 0.15 * view.frame.height
-        gradientView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.15)
+        if view.frame.height < 700 {
+            gradientViewHeight.constant = 0.15 * view.frame.height
+            gradientView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.15)
+        }
         
         // Sets the gradients
-        gradientView.setTwoGradientBackground()
+        gradientView.setGradientBackground()
         
         // Sets up the text field
         counselorIdTxtField.delegate = self
@@ -54,8 +57,8 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate {
         if counselorIdTxtField.text == "082404" {
             Auth.auth().createUser(withEmail: SignUp.Instance.signUpEmail, password: SignUp.Instance.signUpPass) { (user, error) in
                 if error == nil {
-                    self.uploadUser(email: SignUp.Instance.signUpEmail)
                     self.performSegue(withIdentifier: "VerifiedCounselor", sender: nil)
+                    self.uploadUser(email: SignUp.Instance.signUpEmail)
                 } else {
                     self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
                 }

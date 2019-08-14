@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseAuth
+import FirebaseFirestore
 
 class VerifyUser: UIViewController {
 
@@ -27,11 +28,13 @@ class VerifyUser: UIViewController {
     // Formats the UI
     func customizeLayout() {
         // Formats the gradient view
-        gradientViewHeight.constant = 0.15 * view.frame.height
-        gradientView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.15)
+        if view.frame.height < 700 {
+            gradientViewHeight.constant = 0.15 * view.frame.height
+            gradientView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.15)
+        }
         
         // Sets the gradients
-        gradientView.setTwoGradientBackground()
+        gradientView.setGradientBackground()
     }
     
     // Shows an alert
@@ -45,8 +48,8 @@ class VerifyUser: UIViewController {
     @IBAction func checkForVerifiedUser(_ sender: UIButton) {
         Auth.auth().currentUser?.reload(completion: { (Action) in
             if Auth.auth().currentUser!.isEmailVerified {
-                self.uploadUser(email: (Auth.auth().currentUser?.email)!)
                 self.performSegue(withIdentifier: "verifiedUser", sender: nil)
+                self.uploadUser(email: (Auth.auth().currentUser?.email)!)
             } else {
                 self.showAlert(title: "Uh oh", message: "It looks like you haven't verified your email yet", actionTitle: "OK", actionStyle: .default)
             }

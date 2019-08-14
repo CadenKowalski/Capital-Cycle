@@ -15,9 +15,8 @@ class OverviewPage: UIViewController {
     // Storyboard outlets
     @IBOutlet weak var gradientView: UIView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var scrollViewYConstraint: NSLayoutConstraint!
     @IBOutlet weak var scrollViewDisplay: UIView!
-    @IBOutlet weak var campDatesLbl: UILabel!
-    @IBOutlet weak var campDatesYConstraint: NSLayoutConstraint!
     @IBOutlet weak var locationLbl: UILabel!
     
     override func viewDidLoad() {
@@ -30,14 +29,16 @@ class OverviewPage: UIViewController {
     // Formats the UI
     func customizeLayout() {
         // Formats the gradient view
-        gradientViewHeight.constant = 0.15 * view.frame.height
-        gradientView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.15)
+        if view.frame.height < 700 {
+            gradientViewHeight.constant = 0.15 * view.frame.height
+            gradientView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.15)
+        }
         
         // Sets the gradients
-        gradientView.setTwoGradientBackground()
+        gradientView.setGradientBackground()
         
         // Readjusts the Y constraints
-        campDatesYConstraint.constant = gradientViewHeight.constant + 8
+        scrollViewYConstraint.constant = gradientViewHeight.constant + 8
         
         // Sets up the location lbl
         locationLbl.isUserInteractionEnabled = true

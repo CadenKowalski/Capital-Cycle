@@ -11,7 +11,7 @@ import UIKit
 
 extension UIView {
     
-    func setTwoGradientBackground() {
+    func setGradientBackground() {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = bounds
         gradientLayer.colors = [#colorLiteral(red: 0.9176470588, green: 0.5882352941, blue: 0.3607843137, alpha: 1).cgColor, #colorLiteral(red: 0.7882352941, green: 0.3725490196, blue: 0.8470588235, alpha: 1).cgColor]
@@ -20,7 +20,7 @@ extension UIView {
         layer.insertSublayer(gradientLayer, at: 0)
     }
     
-    func setTwoGradientButton(cornerRadius: CGFloat) {
+    func setGradientButton(cornerRadius: CGFloat) {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = bounds
         gradientLayer.colors = [#colorLiteral(red: 0.9176470588, green: 0.5882352941, blue: 0.3607843137, alpha: 1).cgColor, #colorLiteral(red: 0.7882352941, green: 0.3725490196, blue: 0.8470588235, alpha: 1).cgColor]

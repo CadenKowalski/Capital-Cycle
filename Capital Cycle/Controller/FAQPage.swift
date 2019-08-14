@@ -13,7 +13,7 @@ class FAQPage: UIViewController {
     // Storyboard outlets
     @IBOutlet weak var gradientView: UIView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var questionYConstraint: NSLayoutConstraint!
+    @IBOutlet weak var scrollViewYConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,13 +24,15 @@ class FAQPage: UIViewController {
     
     func customizeLayout() {
         // Formats the gradient view
-        gradientViewHeight.constant = 0.15 * view.frame.height
-        gradientView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.15)
+        if view.frame.height < 700 {
+            gradientViewHeight.constant = 0.15 * view.frame.height
+            gradientView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.15)
+        }
         
         // Readjusts the Y constraints
-        questionYConstraint.constant = gradientViewHeight.constant + 8
+        scrollViewYConstraint.constant = gradientViewHeight.constant + 8
         
         // Sets the gradients
-        gradientView.setTwoGradientBackground()
+        gradientView.setGradientBackground()
     }
 }
