@@ -26,7 +26,6 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
     // Code global vars
     static let Instance = SignUp()
     var signUpEmail: String!
-    var signUpPass: String!
     var Agree = false
     var typesOfUser = ["--", "Camper", "Parent", "Counselor"]
     
@@ -208,20 +207,18 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
     func signUp(email: String, password: String) {
         formatProgressWheel(toShow: true)
         SignUp.Instance.signUpEmail = email
-        SignUp.Instance.signUpPass = password
-        if userType == .counselor  || userType == .admin {
-            self.performSegue(withIdentifier: "VerifyCounselor", sender: nil)
-            formatProgressWheel(toShow: false)
-        } else {
-            Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
-                if error == nil {
+        Auth.auth().createUser(withEmail: email, password: password) { (_, error) in
+            if error == nil {
+                if userType == .counselor  || userType == .admin {
+                    self.performSegue(withIdentifier: "VerifyCounselor", sender: nil)
+                } else {
                     self.performSegue(withIdentifier: "VerifyUser", sender: nil)
                     Auth.auth().currentUser?.sendEmailVerification(completion: nil)
-                } else {
-                    self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
                 }
                 
                 self.formatProgressWheel(toShow: false)
+            } else {
+                self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
             }
         }
     }

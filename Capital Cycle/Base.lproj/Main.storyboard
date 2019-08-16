@@ -318,7 +318,7 @@ Phone: 202.288.5245</string>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-1390" y="945"/>
+            <point key="canvasLocation" x="-1250" y="945"/>
         </scene>
         <!--Schedule Page-->
         <scene sceneID="9SG-Q6-eE7">
@@ -1864,7 +1864,6 @@ A: We have a variety of games and books as well as a gym and playground to occup
                         <outlet property="signedInBtn" destination="qgq-dg-T1L" id="sTz-1s-2Lt"/>
                         <segue destination="jM6-Kb-J6q" kind="presentation" identifier="LogIn" modalPresentationStyle="fullScreen" id="JVj-89-k2w"/>
                         <segue destination="jM6-Kb-J6q" kind="presentation" identifier="AlreadyLoggedIn" modalPresentationStyle="fullScreen" id="6V9-QI-sCX"/>
-                        <segue destination="EiY-kr-02N" kind="presentation" identifier="verifyUserLoggingIn" id="EsD-nZ-GiX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2JP-Fh-IfX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1874,7 +1873,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="377" y="-1300"/>
+            <point key="canvasLocation" x="377" y="-1295"/>
         </scene>
         <!--Verify Counselor-->
         <scene sceneID="nw4-eo-JZK">
@@ -1948,6 +1947,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hVU-Ut-g83"/>
                     </view>
+                    <navigationItem key="navigationItem" id="T3E-AM-VVH"/>
                     <connections>
                         <outlet property="counselorIdTxtField" destination="9ow-Jy-lkc" id="NhQ-zd-Nvj"/>
                         <outlet property="gradientView" destination="q6N-tY-NJl" id="VgH-9C-nzw"/>
@@ -1958,7 +1958,23 @@ A: We have a variety of games and books as well as a gym and playground to occup
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fji-Wq-9qB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-647.20000000000005" y="-582.26600985221683"/>
+            <point key="canvasLocation" x="-1222" y="-582"/>
+        </scene>
+        <!--Counselor Navigation Controller-->
+        <scene sceneID="vU8-yd-3XE">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="6RS-j4-91T" customClass="CounselorNavigationController" customModule="Capital_Cycle" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gz5-0i-Xid">
+                        <rect key="frame" x="0.0" y="-54" width="0.0" height="0.0"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="PqR-3q-0Zd" kind="relationship" relationship="rootViewController" id="Jrk-qb-Och"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0zS-DR-EP6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-423" y="-582"/>
         </scene>
         <!--Sign Up-->
         <scene sceneID="Td0-EP-Ujf">
@@ -2191,8 +2207,8 @@ A: We have a variety of games and books as well as a gym and playground to occup
                         <outlet property="signedInBtn" destination="5ra-2Z-TlZ" id="ir5-XE-ayL"/>
                         <outlet property="userTypeLbl" destination="qf8-Wn-zz9" id="jsr-iE-gsQ"/>
                         <outlet property="userTypePickerView" destination="YuM-PM-C54" id="QEB-vs-07b"/>
-                        <segue destination="EiY-kr-02N" kind="presentation" identifier="VerifyUser" id="2oz-0z-gZa"/>
-                        <segue destination="PqR-3q-0Zd" kind="presentation" identifier="VerifyCounselor" id="4C1-jd-XD5"/>
+                        <segue destination="mAf-zE-l5X" kind="presentation" identifier="VerifyUser" id="mej-9o-CWq"/>
+                        <segue destination="6RS-j4-91T" kind="presentation" identifier="VerifyCounselor" id="tbw-D7-jg1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fLH-LB-9yH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2213,6 +2229,22 @@ A: We have a variety of games and books as well as a gym and playground to occup
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="377" y="-582"/>
+        </scene>
+        <!--User Navigation Controller-->
+        <scene sceneID="hHi-TU-fIg">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="mAf-zE-l5X" customClass="UserNavigationController" customModule="Capital_Cycle" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fQZ-ft-Bwe">
+                        <rect key="frame" x="0.0" y="-54" width="0.0" height="0.0"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="EiY-kr-02N" kind="relationship" relationship="rootViewController" id="yFk-gw-2GY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sbn-Mg-B8z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1172" y="-582"/>
         </scene>
         <!--Verify User-->
         <scene sceneID="1vs-iM-xvA">
@@ -2235,25 +2267,11 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AQ8-Fy-3vg">
-                                        <rect key="frame" x="329" y="17" width="30" height="29"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="30r-au-MoR"/>
-                                            <constraint firstAttribute="width" constant="30" id="F45-wU-XFq"/>
-                                        </constraints>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" backgroundImage="xmark.circle" catalog="system"/>
-                                        <connections>
-                                            <action selector="dismissVerifyEmailView:" destination="EiY-kr-02N" eventType="touchUpInside" id="ic3-1Y-KWq"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="SeM-IO-tK5" firstAttribute="centerX" secondItem="PCn-Gb-xIH" secondAttribute="centerX" id="6HR-en-ecZ"/>
                                     <constraint firstAttribute="height" constant="100" id="FiV-5P-ufN"/>
-                                    <constraint firstAttribute="trailing" secondItem="AQ8-Fy-3vg" secondAttribute="trailing" constant="16" id="P9N-gf-MIf"/>
-                                    <constraint firstItem="AQ8-Fy-3vg" firstAttribute="top" secondItem="PCn-Gb-xIH" secondAttribute="top" constant="16" id="Xgk-ba-Tdx"/>
                                     <constraint firstItem="SeM-IO-tK5" firstAttribute="centerY" secondItem="PCn-Gb-xIH" secondAttribute="centerY" constant="5" id="YV0-FT-lDM"/>
                                 </constraints>
                             </view>
@@ -2301,13 +2319,14 @@ A: We have a variety of games and books as well as a gym and playground to occup
                             <constraint firstItem="V1b-ew-6lp" firstAttribute="top" secondItem="6nR-yb-9oz" secondAttribute="bottom" constant="16" id="7Sm-EN-Udp"/>
                             <constraint firstItem="6nR-yb-9oz" firstAttribute="top" secondItem="PCn-Gb-xIH" secondAttribute="bottom" constant="32" id="DB4-VT-WWa"/>
                             <constraint firstItem="PCn-Gb-xIH" firstAttribute="leading" secondItem="avs-hS-JXJ" secondAttribute="leading" id="PSR-1J-hNK"/>
-                            <constraint firstItem="PCn-Gb-xIH" firstAttribute="top" secondItem="avs-hS-JXJ" secondAttribute="top" id="TxP-CD-MlU"/>
+                            <constraint firstItem="PCn-Gb-xIH" firstAttribute="top" secondItem="POM-GW-GWI" secondAttribute="top" id="TxP-CD-MlU"/>
                             <constraint firstItem="PCn-Gb-xIH" firstAttribute="trailing" secondItem="avs-hS-JXJ" secondAttribute="trailing" id="r5h-dl-7ia"/>
                             <constraint firstItem="6nR-yb-9oz" firstAttribute="centerX" secondItem="POM-GW-GWI" secondAttribute="centerX" id="yi2-EF-vyF"/>
                             <constraint firstItem="Xrn-NV-cTi" firstAttribute="centerX" secondItem="POM-GW-GWI" secondAttribute="centerX" id="zOO-OJ-0Qt"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="avs-hS-JXJ"/>
                     </view>
+                    <navigationItem key="navigationItem" id="WcA-Wi-Daq"/>
                     <connections>
                         <outlet property="gradientView" destination="PCn-Gb-xIH" id="eEk-vO-NGY"/>
                         <outlet property="gradientViewHeight" destination="FiV-5P-ufN" id="lAe-UN-k1l"/>
@@ -2318,7 +2337,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G8l-P8-eAc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1295" y="-582"/>
+            <point key="canvasLocation" x="1926" y="-582"/>
         </scene>
     </scenes>
     <resources>
@@ -2326,9 +2345,8 @@ A: We have a variety of games and books as well as a gym and playground to occup
         <image name="FacebookLogo" width="166.66667175292969" height="166.66667175292969"/>
         <image name="InstagramLogo" width="166.66667175292969" height="166.66667175292969"/>
         <image name="Unchecked" width="66.666664123535156" height="66.666664123535156"/>
-        <image name="gear" catalog="system" width="64" height="60"/>
-        <image name="person.circle" catalog="system" width="64" height="62"/>
-        <image name="xmark.circle" catalog="system" width="64" height="62"/>
+        <image name="gear" catalog="system" width="32" height="32"/>
+        <image name="person.circle" catalog="system" width="32" height="32"/>
         <namedColor name="CellColor">
             <color white="0.30000001192092896" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
@@ -2346,9 +2364,8 @@ A: We have a variety of games and books as well as a gym and playground to occup
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2oz-0z-gZa"/>
-        <segue reference="DGH-Tt-RWu"/>
-        <segue reference="i74-cw-zSX"/>
+        <segue reference="DzP-Fk-IQ5"/>
+        <segue reference="stl-Sk-OpA"/>
         <segue reference="8gZ-wr-hIi"/>
     </inferredMetricsTieBreakers>
 </document>

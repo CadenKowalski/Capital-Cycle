@@ -10,7 +10,7 @@ import UIKit
 import FirebaseAuth
 import FirebaseFirestore
 
-class VerifyCounselor: UIViewController, UITextFieldDelegate {
+class VerifyCounselor: UIViewController, UITextFieldDelegate, UIAdaptivePresentationControllerDelegate {
 
     // Storyboard outlets
     @IBOutlet weak var gradientView: UIView!
@@ -43,6 +43,8 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate {
         counselorIdTxtField.delegate = self
         counselorIdTxtField.attributedPlaceholder = NSAttributedString(string: "Counselor ID", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
         
+        // Prevents the user from dismissing the view without deleting the account
+        isModalInPresentation = true
     }
     
     // Shows an alert
@@ -57,14 +59,8 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate {
     // Signs up the user
     @IBAction func signUp(_ sender: UIButton) {
         if counselorIdTxtField.text == "082404" {
-            Auth.auth().createUser(withEmail: SignUp.Instance.signUpEmail, password: SignUp.Instance.signUpPass) { (user, error) in
-                if error == nil {
-                    self.performSegue(withIdentifier: "VerifiedCounselor", sender: nil)
-                    self.uploadUser(email: SignUp.Instance.signUpEmail)
-                } else {
-                    self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
-                }
-            }
+            performSegue(withIdentifier: "VerifiedCounselor", sender: nil)
+            self.uploadUser(email: SignUp.Instance.signUpEmail)
         } else {
             counselorIdTxtField.backgroundColor = .red
             counselorIdTxtField.alpha = 0.5
@@ -90,5 +86,18 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate {
                 self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
             }
         }
+    }
+    
+    // MARK: Dismiss
+    
+    func presentationControllerDidAttemptToDismiss(_ presentationController: UIPresentationController) {
+        let Alert = UIAlertController(title: nil, message: "This action will delete your account. Are you sure you want to continue?", preferredStyle: .actionSheet)
+        Alert.addAction(UIAlertAction(title: "Delete my account", style: .destructive) { action in
+            self.dismiss(animated: true, completion: nil)
+            Auth.auth().currentUser?.delete()
+        })
+        
+        Alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(Alert, animated: true, completion: nil)
     }
 }

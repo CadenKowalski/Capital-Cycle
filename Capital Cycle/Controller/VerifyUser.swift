@@ -93,9 +93,14 @@ class VerifyUser: UIViewController, UIAdaptivePresentationControllerDelegate {
     
     // MARK: Dismiss
     
-    @IBAction func dismissVerifyEmailView(_ sender: UIButton) {
-        dismiss(animated: true, completion: {
-            Auth.auth().currentUser?.delete(completion: nil)
+    func presentationControllerDidAttemptToDismiss(_ presentationController: UIPresentationController) {
+        let Alert = UIAlertController(title: nil, message: "This action will delete your account. Are you sure you want to continue?", preferredStyle: .actionSheet)
+        Alert.addAction(UIAlertAction(title: "Delete my account", style: .destructive) { action in
+            self.dismiss(animated: true, completion: nil)
+            Auth.auth().currentUser?.delete()
         })
+        
+        Alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(Alert, animated: true, completion: nil)
     }
 }
