@@ -2111,7 +2111,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="signUp:" destination="A2Z-6c-UZy" eventType="touchUpInside" id="ts1-Ff-kWO"/>
+                                    <action selector="verifyInputs:" destination="A2Z-6c-UZy" eventType="touchUpInside" id="vFr-I5-xTP"/>
                                 </connections>
                             </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="gnJ-16-wrf">

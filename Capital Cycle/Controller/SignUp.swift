@@ -177,38 +177,75 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
     // MARK: Sign Up
 
     // Signs up the user
-    @IBAction func signUp(_ sender: UIButton) {
-        if emailTxtField.text == "cadenkowalski1@gmail.com" {
+    @IBAction func verifyInputs(_ sender: UIButton) {
+        let email = emailTxtField.text ?? ""
+        let password = passTxtField.text ?? ""
+        if email == "cadenkowalski1@gmail.com" {
             userType = .admin
         }
 
-        if passTxtField.text != confmPassTxtField.text {
+        if password != confmPassTxtField.text {
             showAlert(title: "Passwords don't match", message: "Please make sure your passwords match", actionTitle: "OK", actionStyle: .default)
         } else if Agree == false {
             showAlert(title: "Uh oh", message: "Please agree to the privacy policy and terms of serivce", actionTitle: "OK", actionStyle: .default)
         } else if userType == SignUp.UserType.none && userType != .admin {
             userTypeLbl.backgroundColor = .red
             userTypeLbl.alpha = 0.5
+        } else if passwordIsTooWeak(password: password) && password.count > 5 {
+            let Alert = UIAlertController(title: "Password not recommended", message: "We recommend that your password contain a number or symbol and be different cases", preferredStyle: .alert)
+            Alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            Alert.addAction(UIAlertAction(title: "Continue", style: .destructive, handler: { action in
+                self.signUp(email: email, password: password)
+            }))
+            
+            present(Alert, animated: true, completion: nil)
         } else {
-            formatProgressWheel(toShow: true)
-            SignUp.Instance.signUpEmail = emailTxtField.text!
-            SignUp.Instance.signUpPass = passTxtField.text!
-            if userType == .counselor  || userType == .admin {
-                self.performSegue(withIdentifier: "VerifyCounselor", sender: nil)
-                formatProgressWheel(toShow: false)
-            } else {
-                Auth.auth().createUser(withEmail: emailTxtField.text!, password: passTxtField.text!) { (user, error) in
-                    if error == nil {
-                        self.performSegue(withIdentifier: "VerifyUser", sender: nil)
-                        Auth.auth().currentUser?.sendEmailVerification(completion: nil)
-                    } else {
-                        self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
-                    }
-                    
-                    self.formatProgressWheel(toShow: false)
+            signUp(email: email, password: password)
+        }
+    }
+    
+    // Signs up the user
+    func signUp(email: String, password: String) {
+        formatProgressWheel(toShow: true)
+        SignUp.Instance.signUpEmail = email
+        SignUp.Instance.signUpPass = password
+        if userType == .counselor  || userType == .admin {
+            self.performSegue(withIdentifier: "VerifyCounselor", sender: nil)
+            formatProgressWheel(toShow: false)
+        } else {
+            Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
+                if error == nil {
+                    self.performSegue(withIdentifier: "VerifyUser", sender: nil)
+                    Auth.auth().currentUser?.sendEmailVerification(completion: nil)
+                } else {
+                    self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
                 }
+                
+                self.formatProgressWheel(toShow: false)
             }
         }
+    }
+    
+    // Tests if a password is too weak
+    func passwordIsTooWeak(password: String) -> Bool {
+        var tooWeak: Bool
+        var passwordContainsSymbol = false
+        let letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+        for letter in password {
+            if !letters.contains(String(letter)) {
+                passwordContainsSymbol = true
+            }
+        }
+        
+        if !passwordContainsSymbol {
+            tooWeak = true
+        } else if password == password.lowercased() || password == password.uppercased() {
+            tooWeak = true
+        } else {
+            tooWeak = false
+        }
+        
+        return tooWeak
     }
     
     // MARK: Dismiss
