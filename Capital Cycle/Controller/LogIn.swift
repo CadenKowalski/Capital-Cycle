@@ -10,7 +10,7 @@ import UIKit
 import FirebaseAuth
 import FirebaseFirestore
 
-class LogIn: UIViewController, UITextFieldDelegate, UIAdaptivePresentationControllerDelegate {
+class LogIn: UIViewController, UITextFieldDelegate {
 
     // Storyboard outlets
     @IBOutlet weak var gradientView: UIView!

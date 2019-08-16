@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		5700629922E3BB400032EFAB /* LogIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5700629822E3BB400032EFAB /* LogIn.swift */; };
 		5700629B22E3BB590032EFAB /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5700629A22E3BB590032EFAB /* SignUp.swift */; };
-		571C2F3F22E41CB6001D4438 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571C2F3E22E41CB6001D4438 /* Settings.swift */; };
+		571C2F3F22E41CB6001D4438 /* GeneralSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571C2F3E22E41CB6001D4438 /* GeneralSettings.swift */; };
 		576FCFB322E4B82F00C346E4 /* CamperInfoPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576FCFB222E4B82F00C346E4 /* CamperInfoPage.swift */; };
 		578AF9DC22D41F2E007B42A9 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578AF9DB22D41F2E007B42A9 /* Product.swift */; };
 		578AF9DE22D41FA0007B42A9 /* ProductData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578AF9DD22D41FA0007B42A9 /* ProductData.swift */; };
@@ -29,6 +29,7 @@
 		57A3457C22D2BBB90070898F /* StorePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A3457B22D2BBB90070898F /* StorePage.swift */; };
 		57AFA1B022F77F5100C2988C /* VerifyUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AFA1AF22F77F5100C2988C /* VerifyUser.swift */; };
 		57AFFD652300FAF000B6CD7B /* VerifyCounselor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AFFD642300FAF000B6CD7B /* VerifyCounselor.swift */; };
+		57B7FCA523064A0200D97E3A /* AccountSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B7FCA423064A0200D97E3A /* AccountSettings.swift */; };
 		57ED6A2F22D578A200E3A362 /* FAQPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57ED6A2E22D578A200E3A362 /* FAQPage.swift */; };
 		587C376EC4CB7518541634C2 /* Pods_Capital_Cycle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEF63791B26DFB42FF56342B /* Pods_Capital_Cycle.framework */; };
 /* End PBXBuildFile section */
@@ -38,7 +39,7 @@
 		3ED851B8F1F29AADABBA5620 /* Pods-Capital Cycle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Capital Cycle.debug.xcconfig"; path = "Target Support Files/Pods-Capital Cycle/Pods-Capital Cycle.debug.xcconfig"; sourceTree = "<group>"; };
 		5700629822E3BB400032EFAB /* LogIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogIn.swift; sourceTree = "<group>"; };
 		5700629A22E3BB590032EFAB /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
-		571C2F3E22E41CB6001D4438 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		571C2F3E22E41CB6001D4438 /* GeneralSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettings.swift; sourceTree = "<group>"; };
 		576FCFB222E4B82F00C346E4 /* CamperInfoPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CamperInfoPage.swift; path = "../../../../../../../System/Volumes/Data/Users/cadenkowalski/Desktop/Xcode Projects/Capital Cycle/Capital Cycle/Controller/CamperInfoPage.swift"; sourceTree = "<group>"; };
 		578AF9DB22D41F2E007B42A9 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		578AF9DD22D41FA0007B42A9 /* ProductData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductData.swift; sourceTree = "<group>"; };
@@ -60,6 +61,7 @@
 		57A3457B22D2BBB90070898F /* StorePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorePage.swift; sourceTree = "<group>"; };
 		57AFA1AF22F77F5100C2988C /* VerifyUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyUser.swift; sourceTree = "<group>"; };
 		57AFFD642300FAF000B6CD7B /* VerifyCounselor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyCounselor.swift; sourceTree = "<group>"; };
+		57B7FCA423064A0200D97E3A /* AccountSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettings.swift; sourceTree = "<group>"; };
 		57ED6A2E22D578A200E3A362 /* FAQPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQPage.swift; sourceTree = "<group>"; };
 		DEF63791B26DFB42FF56342B /* Pods_Capital_Cycle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Capital_Cycle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -162,13 +164,14 @@
 				5700629A22E3BB590032EFAB /* SignUp.swift */,
 				57AFA1AF22F77F5100C2988C /* VerifyUser.swift */,
 				57AFFD642300FAF000B6CD7B /* VerifyCounselor.swift */,
-				571C2F3E22E41CB6001D4438 /* Settings.swift */,
 				57A3457322D2AEBD0070898F /* PageVC.swift */,
 				57A3457722D2BB5B0070898F /* OverviewPage.swift */,
 				57A3457922D2BB970070898F /* SchedulePage.swift */,
 				57A3457B22D2BBB90070898F /* StorePage.swift */,
 				57ED6A2E22D578A200E3A362 /* FAQPage.swift */,
 				576FCFB222E4B82F00C346E4 /* CamperInfoPage.swift */,
+				571C2F3E22E41CB6001D4438 /* GeneralSettings.swift */,
+				57B7FCA423064A0200D97E3A /* AccountSettings.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -301,7 +304,7 @@
 				57A3457822D2BB5B0070898F /* OverviewPage.swift in Sources */,
 				578AF9E022D4201E007B42A9 /* ProductCell.swift in Sources */,
 				578AF9DE22D41FA0007B42A9 /* ProductData.swift in Sources */,
-				571C2F3F22E41CB6001D4438 /* Settings.swift in Sources */,
+				571C2F3F22E41CB6001D4438 /* GeneralSettings.swift in Sources */,
 				57A3457222D2AE410070898F /* Gradient.swift in Sources */,
 				57ED6A2F22D578A200E3A362 /* FAQPage.swift in Sources */,
 				578AF9DC22D41F2E007B42A9 /* Product.swift in Sources */,
@@ -316,6 +319,7 @@
 				5700629B22E3BB590032EFAB /* SignUp.swift in Sources */,
 				5795C62422EA6CC200A0A171 /* TestForConnection.swift in Sources */,
 				57A3457C22D2BBB90070898F /* StorePage.swift in Sources */,
+				57B7FCA523064A0200D97E3A /* AccountSettings.swift in Sources */,
 				578AF9E422D428AF007B42A9 /* Capital_Cycle.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

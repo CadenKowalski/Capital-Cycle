@@ -1,21 +1,20 @@
 //
-//  Settings.swift
+//  AccountSettings.swift
 //  Capital Cycle
 //
-//  Created by Caden Kowalski on 7/21/19.
+//  Created by Caden Kowalski on 8/15/19.
 //  Copyright © 2019 Caden Kowalski. All rights reserved.
 //
 
 import UIKit
-import FirebaseAuth
 import FirebaseFirestore
+import FirebaseAuth
 
-class Settings: UIViewController {
+class AccountSettings: UIViewController {
 
     // Storyboard outlets
     @IBOutlet weak var gradientView: UIView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var signedInSwitch: UISwitch!
     // Code global vars
     let databaseRef = Firestore.firestore().collection("Users")
     
@@ -36,13 +35,6 @@ class Settings: UIViewController {
         
         // Sets the gradients
         gradientView.setGradientBackground()
-        
-        // Sets the "keep me signed in" switch to reflect the signedIn value
-        if signedIn {
-            signedInSwitch.isOn = true
-        } else {
-            signedInSwitch.isOn = false
-        }
     }
     
     // Shows an alert
@@ -53,17 +45,6 @@ class Settings: UIViewController {
     }
     
     // MARK: Settings
-    
-    // Allows the user to update whether they want to stay signed in or not
-    @IBAction func staySignedIn(_ sender: UISwitch) {
-        if sender.isOn {
-            signedIn = true
-        } else {
-            signedIn = false
-        }
-        
-        updateUser(email: (Auth.auth().currentUser?.email)!)
-    }
     
     // Logs out the user
     @IBAction func logOut(_ sender: UIButton?) {

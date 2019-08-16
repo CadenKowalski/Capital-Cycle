@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UIAdaptivePresentationControllerDelegate {
+class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
     // Storyboard outlets
     @IBOutlet weak var gradientView: UIView!

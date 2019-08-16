@@ -263,14 +263,30 @@ Phone: 202.288.5245</string>
                                             <segue destination="ECW-nJ-Zo5" kind="presentation" id="stl-Sk-OpA"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OcY-mR-OkY">
+                                        <rect key="frame" x="368" y="17" width="30" height="29"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="X9w-ni-Ms6"/>
+                                            <constraint firstAttribute="width" constant="30" id="tYg-5m-E0Q"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" backgroundImage="person.circle" catalog="system">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="D9c-sc-o2H" kind="presentation" id="DzP-Fk-IQ5"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="dZu-KI-aQI" firstAttribute="centerY" secondItem="E4V-Od-9gE" secondAttribute="centerY" constant="5" id="8nH-dq-YMC"/>
                                     <constraint firstItem="dZu-KI-aQI" firstAttribute="centerX" secondItem="E4V-Od-9gE" secondAttribute="centerX" id="Ivh-jm-vc0"/>
                                     <constraint firstAttribute="height" constant="100" id="L6f-kV-R5C"/>
+                                    <constraint firstItem="OcY-mR-OkY" firstAttribute="top" secondItem="E4V-Od-9gE" secondAttribute="top" constant="16" id="PGd-bA-pYd"/>
                                     <constraint firstItem="Q6C-0K-vCN" firstAttribute="top" secondItem="E4V-Od-9gE" secondAttribute="top" constant="16" id="WVi-yP-Fso"/>
                                     <constraint firstItem="Q6C-0K-vCN" firstAttribute="leading" secondItem="E4V-Od-9gE" secondAttribute="leading" constant="16" id="cnp-Ag-lIO"/>
+                                    <constraint firstAttribute="trailing" secondItem="OcY-mR-OkY" secondAttribute="trailing" constant="16" id="zlL-6z-2k0"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -843,6 +859,20 @@ Phone: 202.288.5245</string>
                                 </constraints>
                                 <viewLayoutGuide key="safeArea" id="sM4-dh-VAu"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uR6-yc-rFn">
+                                <rect key="frame" x="368" y="17" width="30" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="AbN-nL-dz8"/>
+                                    <constraint firstAttribute="width" constant="30" id="lx4-bF-f75"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" backgroundImage="person.circle" catalog="system">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="D9c-sc-o2H" kind="presentation" id="8S8-zq-Dgv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" name="ViewColor"/>
                         <constraints>
@@ -856,10 +886,12 @@ Phone: 202.288.5245</string>
                             <constraint firstItem="nMg-Ua-UuL" firstAttribute="trailing" secondItem="sDi-PL-Mci" secondAttribute="trailing" id="DQc-Y9-iOT"/>
                             <constraint firstItem="n5w-1x-fUR" firstAttribute="height" secondItem="cTg-mg-juz" secondAttribute="height" priority="250" id="EbK-1c-Q8i"/>
                             <constraint firstItem="cXw-42-buD" firstAttribute="top" secondItem="cTg-mg-juz" secondAttribute="top" id="Iaj-XC-osz"/>
+                            <constraint firstItem="uR6-yc-rFn" firstAttribute="top" secondItem="cTg-mg-juz" secondAttribute="top" constant="16" id="VUd-MN-MCW"/>
                             <constraint firstItem="jRw-hE-nSm" firstAttribute="centerY" secondItem="cTg-mg-juz" secondAttribute="centerY" id="a6t-It-dvE"/>
                             <constraint firstItem="cXw-42-buD" firstAttribute="leading" secondItem="cTg-mg-juz" secondAttribute="leading" id="cUd-fS-oII"/>
                             <constraint firstItem="7uq-vL-WCO" firstAttribute="trailing" secondItem="sDi-PL-Mci" secondAttribute="trailing" id="cyO-my-rDl"/>
                             <constraint firstItem="7uq-vL-WCO" firstAttribute="top" secondItem="cTg-mg-juz" secondAttribute="top" constant="110" id="gE3-dA-V3p"/>
+                            <constraint firstAttribute="trailing" secondItem="uR6-yc-rFn" secondAttribute="trailing" constant="16" id="lJu-ml-CzQ"/>
                             <constraint firstItem="n5w-1x-fUR" firstAttribute="width" secondItem="cTg-mg-juz" secondAttribute="width" id="olB-fp-P14"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="sDi-PL-Mci"/>
@@ -904,10 +936,10 @@ Phone: 202.288.5245</string>
             </objects>
             <point key="canvasLocation" x="-424" y="825"/>
         </scene>
-        <!--Settings-->
+        <!--General Settings-->
         <scene sceneID="OZi-0K-fvl">
             <objects>
-                <viewController id="ECW-nJ-Zo5" customClass="Settings" customModule="Capital_Cycle" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ECW-nJ-Zo5" customClass="GeneralSettings" customModule="Capital_Cycle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zlY-FZ-jSm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -916,11 +948,11 @@ Phone: 202.288.5245</string>
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EHs-R7-608">
-                                        <rect key="frame" x="142" y="38" width="91" height="34"/>
+                                        <rect key="frame" x="140" y="40" width="95" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="91" id="jd8-dY-j1B"/>
+                                            <constraint firstAttribute="width" constant="95" id="iNC-Op-FC1"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="25"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -932,34 +964,6 @@ Phone: 202.288.5245</string>
                                     <constraint firstItem="EHs-R7-608" firstAttribute="centerY" secondItem="hBp-xz-Gw8" secondAttribute="centerY" constant="5" id="eZQ-Gp-bIE"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6D-9Z-fg7">
-                                <rect key="frame" x="148.66666666666666" y="646" width="78" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="1kY-fg-e8E"/>
-                                    <constraint firstAttribute="width" constant="78" id="cow-q6-9qL"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
-                                <state key="normal" title="Log Out">
-                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="logOut:" destination="ECW-nJ-Zo5" eventType="touchUpInside" id="PLl-0v-07g"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YID-nf-kbH">
-                                <rect key="frame" x="99.666666666666686" y="712" width="176" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="1DN-RZ-wds"/>
-                                    <constraint firstAttribute="width" constant="176" id="XM0-Gs-X4r"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
-                                <state key="normal" title="Delete my account">
-                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="deleteAccount:" destination="ECW-nJ-Zo5" eventType="touchUpInside" id="aUr-gR-DAa"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keep me signed in" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v4f-EM-SRo">
                                 <rect key="frame" x="16" y="116" width="143.33333333333334" height="23.333333333333343"/>
                                 <constraints>
@@ -978,34 +982,33 @@ Phone: 202.288.5245</string>
                                     <action selector="staySignedIn:" destination="ECW-nJ-Zo5" eventType="valueChanged" id="aXt-p2-fGt"/>
                                 </connections>
                             </switch>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oag-v8-Mpp">
-                                <rect key="frame" x="114" y="679" width="147" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="RIw-gP-nMH"/>
-                                    <constraint firstAttribute="width" constant="147" id="uPg-YD-bA1"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
-                                <state key="normal" title="Reset Password">
-                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send me notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NcP-na-i5u">
+                                <rect key="frame" x="16" y="155.33333333333334" width="166.33333333333334" height="23.333333333333343"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2dq-Ws-yyw" userLabel="Norifications Switch">
+                                <rect key="frame" x="310" y="151" width="51" height="31"/>
+                                <color key="onTintColor" name="LabelColor"/>
+                                <color key="thumbTintColor" name="ViewColor"/>
                                 <connections>
-                                    <action selector="resetPassword:" destination="ECW-nJ-Zo5" eventType="touchUpInside" id="P6f-z1-FvF"/>
+                                    <action selector="receiveNotifications:" destination="ECW-nJ-Zo5" eventType="valueChanged" id="VoP-sE-Yb4"/>
+                                    <action selector="staySignedIn:" destination="ECW-nJ-Zo5" eventType="valueChanged" id="ds5-iy-dgg"/>
                                 </connections>
-                            </button>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" name="ViewColor"/>
                         <constraints>
-                            <constraint firstItem="YID-nf-kbH" firstAttribute="top" secondItem="oag-v8-Mpp" secondAttribute="bottom" constant="12" id="3CB-P9-xux"/>
+                            <constraint firstItem="NcP-na-i5u" firstAttribute="leading" secondItem="rZe-8C-x75" secondAttribute="leading" constant="16" id="0Ii-A0-snO"/>
                             <constraint firstItem="hBp-xz-Gw8" firstAttribute="leading" secondItem="rZe-8C-x75" secondAttribute="leading" id="5eA-NT-ukR"/>
+                            <constraint firstItem="rZe-8C-x75" firstAttribute="trailing" secondItem="2dq-Ws-yyw" secondAttribute="trailing" constant="16" id="7ii-lU-vax"/>
                             <constraint firstItem="hBp-xz-Gw8" firstAttribute="trailing" secondItem="rZe-8C-x75" secondAttribute="trailing" id="9WQ-VH-Gvn"/>
-                            <constraint firstItem="a6D-9Z-fg7" firstAttribute="centerX" secondItem="zlY-FZ-jSm" secondAttribute="centerX" id="CZb-yO-xXq"/>
-                            <constraint firstItem="oag-v8-Mpp" firstAttribute="centerX" secondItem="zlY-FZ-jSm" secondAttribute="centerX" id="FoN-v6-mRF"/>
-                            <constraint firstItem="YID-nf-kbH" firstAttribute="centerX" secondItem="zlY-FZ-jSm" secondAttribute="centerX" id="Hvc-VK-ePL"/>
+                            <constraint firstItem="NcP-na-i5u" firstAttribute="top" secondItem="v4f-EM-SRo" secondAttribute="bottom" constant="16" id="AdX-lu-yJi"/>
                             <constraint firstItem="v4f-EM-SRo" firstAttribute="top" secondItem="hBp-xz-Gw8" secondAttribute="bottom" constant="16" id="IAw-vY-Xel"/>
-                            <constraint firstItem="oag-v8-Mpp" firstAttribute="top" secondItem="a6D-9Z-fg7" secondAttribute="bottom" constant="12" id="IgD-Va-Ab9"/>
+                            <constraint firstItem="2dq-Ws-yyw" firstAttribute="top" secondItem="vEF-3o-tyJ" secondAttribute="bottom" constant="8" id="NRf-KD-MqZ"/>
                             <constraint firstItem="rZe-8C-x75" firstAttribute="trailing" secondItem="vEF-3o-tyJ" secondAttribute="trailing" constant="16" id="QsV-1Y-oaS"/>
                             <constraint firstItem="hBp-xz-Gw8" firstAttribute="top" secondItem="rZe-8C-x75" secondAttribute="top" id="Vs9-AV-nzK"/>
-                            <constraint firstAttribute="bottom" secondItem="YID-nf-kbH" secondAttribute="bottom" constant="25" id="i4o-HT-OGl"/>
                             <constraint firstItem="v4f-EM-SRo" firstAttribute="leading" secondItem="rZe-8C-x75" secondAttribute="leading" constant="16" id="pYL-pX-qG9"/>
                             <constraint firstItem="vEF-3o-tyJ" firstAttribute="top" secondItem="hBp-xz-Gw8" secondAttribute="bottom" constant="12" id="xSc-G9-zAe"/>
                         </constraints>
@@ -1014,12 +1017,107 @@ Phone: 202.288.5245</string>
                     <connections>
                         <outlet property="gradientView" destination="hBp-xz-Gw8" id="I94-bk-LKD"/>
                         <outlet property="gradientViewHeight" destination="FUe-lV-muf" id="7VG-cz-a45"/>
+                        <outlet property="notificationsSwitch" destination="2dq-Ws-yyw" id="SQH-9s-mxi"/>
                         <outlet property="signedInSwitch" destination="vEF-3o-tyJ" id="bnY-Pm-Zct"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h3b-Ww-RFV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="377" y="1837"/>
+            <point key="canvasLocation" x="-6" y="1840"/>
+        </scene>
+        <!--Account Settings-->
+        <scene sceneID="kUz-5d-E8g">
+            <objects>
+                <viewController id="D9c-sc-o2H" customClass="AccountSettings" customModule="Capital_Cycle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RWn-1Z-azi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F2f-dP-KQA">
+                                <rect key="frame" x="148.66666666666666" y="646" width="78" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="78" id="Bx9-PH-5bR"/>
+                                    <constraint firstAttribute="height" constant="21" id="MKY-Eq-5d7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
+                                <state key="normal" title="Log Out">
+                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="logOut:" destination="D9c-sc-o2H" eventType="touchUpInside" id="U7h-ND-daX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j6F-a2-tkK">
+                                <rect key="frame" x="99.666666666666686" y="712" width="176" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="176" id="OrN-nj-4wh"/>
+                                    <constraint firstAttribute="height" constant="21" id="vYI-PU-4k6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
+                                <state key="normal" title="Delete my account">
+                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteAccount:" destination="D9c-sc-o2H" eventType="touchUpInside" id="UhA-3s-XXU"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aBH-zv-Xul">
+                                <rect key="frame" x="114" y="679" width="147" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="ACa-0L-qeu"/>
+                                    <constraint firstAttribute="width" constant="147" id="xWW-xf-M9k"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
+                                <state key="normal" title="Reset Password">
+                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="resetPassword:" destination="D9c-sc-o2H" eventType="touchUpInside" id="kLN-46-203"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JZ3-jd-Iqg" userLabel="Gradient View">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fqM-3x-e4M">
+                                        <rect key="frame" x="139.66666666666666" y="40" width="96" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="96" id="rIu-EX-3Im"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="fqM-3x-e4M" firstAttribute="centerY" secondItem="JZ3-jd-Iqg" secondAttribute="centerY" constant="5" id="6aO-Li-3Wn"/>
+                                    <constraint firstAttribute="height" constant="100" id="cS0-pL-qq5"/>
+                                    <constraint firstItem="fqM-3x-e4M" firstAttribute="centerX" secondItem="JZ3-jd-Iqg" secondAttribute="centerX" id="uj9-dH-D0g"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" name="ViewColor"/>
+                        <constraints>
+                            <constraint firstItem="j6F-a2-tkK" firstAttribute="centerX" secondItem="RWn-1Z-azi" secondAttribute="centerX" id="7Gj-qC-Bbq"/>
+                            <constraint firstItem="j6F-a2-tkK" firstAttribute="top" secondItem="aBH-zv-Xul" secondAttribute="bottom" constant="12" id="7ta-SG-VdF"/>
+                            <constraint firstItem="JZ3-jd-Iqg" firstAttribute="top" secondItem="RWn-1Z-azi" secondAttribute="top" id="Fxz-JL-UPA"/>
+                            <constraint firstItem="JZ3-jd-Iqg" firstAttribute="leading" secondItem="hgD-NQ-vKY" secondAttribute="leading" id="Haz-WT-Qm3"/>
+                            <constraint firstItem="aBH-zv-Xul" firstAttribute="centerX" secondItem="RWn-1Z-azi" secondAttribute="centerX" id="Hgq-Fg-0q0"/>
+                            <constraint firstItem="JZ3-jd-Iqg" firstAttribute="trailing" secondItem="hgD-NQ-vKY" secondAttribute="trailing" id="U36-W2-NMw"/>
+                            <constraint firstItem="F2f-dP-KQA" firstAttribute="centerX" secondItem="RWn-1Z-azi" secondAttribute="centerX" id="bGT-oM-2WO"/>
+                            <constraint firstAttribute="bottom" secondItem="j6F-a2-tkK" secondAttribute="bottom" constant="25" id="cd3-RC-y2m"/>
+                            <constraint firstItem="aBH-zv-Xul" firstAttribute="top" secondItem="F2f-dP-KQA" secondAttribute="bottom" constant="12" id="sYY-qQ-khb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hgD-NQ-vKY"/>
+                    </view>
+                    <connections>
+                        <outlet property="gradientView" destination="JZ3-jd-Iqg" id="WBg-nb-GG9"/>
+                        <outlet property="gradientViewHeight" destination="cS0-pL-qq5" id="QjX-Qz-A9h"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aoy-dT-eGP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="833" y="1840"/>
         </scene>
         <!--Store Page-->
         <scene sceneID="0Bt-6K-n3s">
@@ -1118,6 +1216,20 @@ $375</string>
                                     <constraint firstItem="dCK-ah-geS" firstAttribute="centerY" secondItem="kr4-03-y19" secondAttribute="centerY" constant="5" id="tv7-hj-QvO"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XnG-Qb-K8d">
+                                <rect key="frame" x="329" y="17" width="30" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="hmn-wz-TK8"/>
+                                    <constraint firstAttribute="width" constant="30" id="sNY-eG-rYo"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" backgroundImage="person.circle" catalog="system">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="D9c-sc-o2H" kind="presentation" id="bJ9-tp-Bgz"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" name="ViewColor"/>
                         <constraints>
@@ -1125,6 +1237,8 @@ $375</string>
                             <constraint firstAttribute="bottom" secondItem="nEi-nu-aGc" secondAttribute="bottom" id="7TE-As-BlL"/>
                             <constraint firstItem="kr4-03-y19" firstAttribute="leading" secondItem="5Bv-hQ-KB6" secondAttribute="leading" id="8M9-oA-keO"/>
                             <constraint firstItem="kr4-03-y19" firstAttribute="top" secondItem="qap-h7-a5m" secondAttribute="top" id="8mm-nf-ndo"/>
+                            <constraint firstAttribute="trailing" secondItem="XnG-Qb-K8d" secondAttribute="trailing" constant="16" id="DPf-dF-I5u"/>
+                            <constraint firstItem="XnG-Qb-K8d" firstAttribute="top" secondItem="qap-h7-a5m" secondAttribute="top" constant="16" id="EWG-Se-dlr"/>
                             <constraint firstItem="nEi-nu-aGc" firstAttribute="trailing" secondItem="5Bv-hQ-KB6" secondAttribute="trailing" id="TfI-2B-Mup"/>
                             <constraint firstItem="kr4-03-y19" firstAttribute="trailing" secondItem="5Bv-hQ-KB6" secondAttribute="trailing" id="ZQm-HF-3pV"/>
                             <constraint firstItem="nEi-nu-aGc" firstAttribute="top" secondItem="kr4-03-y19" secondAttribute="bottom" id="ex0-17-zny"/>
@@ -1315,6 +1429,20 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                     <constraint firstAttribute="height" constant="100" id="XkF-Nm-exH"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sgi-Gb-hZd">
+                                <rect key="frame" x="329" y="17" width="30" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="Ipn-cr-okJ"/>
+                                    <constraint firstAttribute="height" constant="30" id="yyH-P9-RKg"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" backgroundImage="person.circle" catalog="system">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="D9c-sc-o2H" kind="presentation" id="Uvk-U7-eky"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tb1-Xi-Kio" userLabel="Settings Btn">
                                 <rect key="frame" x="16" y="15.999999999999996" width="30" height="30.666666666666675"/>
                                 <constraints>
@@ -1338,7 +1466,9 @@ A: We have a variety of games and books as well as a gym and playground to occup
                             <constraint firstItem="7qZ-6e-4gC" firstAttribute="leading" secondItem="boU-Ua-Adt" secondAttribute="leading" id="K1f-D7-Ta3"/>
                             <constraint firstItem="grX-QG-9rR" firstAttribute="trailing" secondItem="boU-Ua-Adt" secondAttribute="trailing" id="RPd-jc-NZ8"/>
                             <constraint firstItem="grX-QG-9rR" firstAttribute="top" secondItem="8VS-e5-9M6" secondAttribute="top" constant="108" id="WNY-Cq-Fnj"/>
+                            <constraint firstItem="sgi-Gb-hZd" firstAttribute="top" secondItem="8VS-e5-9M6" secondAttribute="top" constant="16" id="YCh-pn-7vt"/>
                             <constraint firstItem="7qZ-6e-4gC" firstAttribute="trailing" secondItem="boU-Ua-Adt" secondAttribute="trailing" id="k1T-w2-1XT"/>
+                            <constraint firstAttribute="trailing" secondItem="sgi-Gb-hZd" secondAttribute="trailing" constant="16" id="lFn-po-8iV"/>
                             <constraint firstItem="7qZ-6e-4gC" firstAttribute="top" secondItem="8VS-e5-9M6" secondAttribute="top" id="mLG-Mn-DgX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="boU-Ua-Adt"/>
@@ -1432,7 +1562,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                         <state key="normal" title="Done">
-                                                            <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="dismissCamperInfoView:" destination="45k-fV-EgM" eventType="touchUpInside" id="yc2-22-mcE"/>
@@ -1522,16 +1652,32 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                     <constraint firstItem="OhW-dJ-0nM" firstAttribute="centerX" secondItem="kdO-CT-UdU" secondAttribute="centerX" id="Pwd-Ww-caP"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vsz-Ym-1NA">
+                                <rect key="frame" x="329" y="17" width="30" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="JCY-Lf-Wvp"/>
+                                    <constraint firstAttribute="height" constant="30" id="MlF-i2-Tdr"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" backgroundImage="person.circle" catalog="system">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="D9c-sc-o2H" kind="presentation" id="DGH-Tt-RWu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" name="ViewColor"/>
                         <constraints>
                             <constraint firstItem="3kn-Hd-nEv" firstAttribute="trailing" secondItem="aML-ci-l1n" secondAttribute="trailing" id="NJY-H8-wqg"/>
                             <constraint firstItem="kdO-CT-UdU" firstAttribute="top" secondItem="jhy-7z-bQb" secondAttribute="top" id="Q6m-Sk-jKB"/>
+                            <constraint firstAttribute="trailing" secondItem="Vsz-Ym-1NA" secondAttribute="trailing" constant="16" id="cbS-yO-0Tf"/>
                             <constraint firstItem="3kn-Hd-nEv" firstAttribute="bottom" secondItem="aML-ci-l1n" secondAttribute="bottom" id="iES-r1-u7w"/>
                             <constraint firstItem="aML-ci-l1n" firstAttribute="leading" secondItem="3kn-Hd-nEv" secondAttribute="leading" id="l9K-2U-2fS"/>
                             <constraint firstItem="aML-ci-l1n" firstAttribute="top" secondItem="jhy-7z-bQb" secondAttribute="top" constant="110" id="lbp-VI-h43"/>
                             <constraint firstItem="kdO-CT-UdU" firstAttribute="trailing" secondItem="3kn-Hd-nEv" secondAttribute="trailing" id="ll0-zM-JjI"/>
                             <constraint firstItem="kdO-CT-UdU" firstAttribute="leading" secondItem="3kn-Hd-nEv" secondAttribute="leading" id="roE-sE-39p"/>
+                            <constraint firstItem="Vsz-Ym-1NA" firstAttribute="top" secondItem="jhy-7z-bQb" secondAttribute="top" constant="16" id="wQ0-H2-Dfv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3kn-Hd-nEv"/>
                     </view>
@@ -1594,7 +1740,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                 <state key="normal" title="Sign Up">
-                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="A2Z-6c-UZy" kind="show" id="pK6-B0-FNP"/>
@@ -1652,7 +1798,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                 <state key="normal" title="Forgot your password?">
-                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="resetPassword:" destination="v2Q-k5-Eoj" eventType="touchUpInside" id="8vc-AY-R8l"/>
@@ -2127,7 +2273,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                 <state key="normal" title="Refresh">
-                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="checkForVerifiedUser:" destination="EiY-kr-02N" eventType="touchUpInside" id="a7n-d5-iYg"/>
@@ -2181,6 +2327,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
         <image name="InstagramLogo" width="166.66667175292969" height="166.66667175292969"/>
         <image name="Unchecked" width="66.666664123535156" height="66.666664123535156"/>
         <image name="gear" catalog="system" width="64" height="60"/>
+        <image name="person.circle" catalog="system" width="64" height="62"/>
         <image name="xmark.circle" catalog="system" width="64" height="62"/>
         <namedColor name="CellColor">
             <color white="0.30000001192092896" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2200,7 +2347,8 @@ A: We have a variety of games and books as well as a gym and playground to occup
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="2oz-0z-gZa"/>
-        <segue reference="4VI-xZ-OTW"/>
-        <segue reference="TDc-Gp-ks8"/>
+        <segue reference="DGH-Tt-RWu"/>
+        <segue reference="i74-cw-zSX"/>
+        <segue reference="8gZ-wr-hIi"/>
     </inferredMetricsTieBreakers>
 </document>
