@@ -10,11 +10,13 @@ import UIKit
 import FirebaseAuth
 import FirebaseFirestore
 
-class VerifyUser: UIViewController {
+class VerifyUser: UIViewController, UIAdaptivePresentationControllerDelegate {
 
     // Storyboard outlets
     @IBOutlet weak var gradientView: UIView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var refreshBtn: UIButton!
+    @IBOutlet weak var signUpBtn: UIButton!
     // Global code vars
     let databaseRef = Firestore.firestore().collection("Users")
     
@@ -35,6 +37,10 @@ class VerifyUser: UIViewController {
         
         // Sets the gradients
         gradientView.setGradientBackground()
+        signUpBtn.setGradientButton(cornerRadius: 22.5)
+        
+        // Prevents the user from dismissing the view without deleting the account
+        isModalInPresentation = true
     }
     
     // Shows an alert
@@ -44,16 +50,24 @@ class VerifyUser: UIViewController {
         present(Alert, animated: true, completion: nil)
     }
     
+    // MARK: Sign Up
+    
     // Checks if the user has verified their email
     @IBAction func checkForVerifiedUser(_ sender: UIButton) {
         Auth.auth().currentUser?.reload(completion: { (Action) in
             if Auth.auth().currentUser!.isEmailVerified {
-                self.performSegue(withIdentifier: "verifiedUser", sender: nil)
-                self.uploadUser(email: (Auth.auth().currentUser?.email)!)
+                self.refreshBtn.isHidden = true
+                self.signUpBtn.isHidden = false
             } else {
                 self.showAlert(title: "Uh oh", message: "It looks like you haven't verified your email yet", actionTitle: "OK", actionStyle: .default)
             }
         })
+    }
+    
+    // Signs up the user
+    @IBAction func signUp(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "verifiedUser", sender: nil)
+        self.uploadUser(email: (Auth.auth().currentUser?.email)!)
     }
     
     // MARK: Firebase
@@ -75,5 +89,13 @@ class VerifyUser: UIViewController {
                 self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
             }
         }
+    }
+    
+    // MARK: Dismiss
+    
+    @IBAction func dismissVerifyEmailView(_ sender: UIButton) {
+        dismiss(animated: true, completion: {
+            Auth.auth().currentUser?.delete(completion: nil)
+        })
     }
 }

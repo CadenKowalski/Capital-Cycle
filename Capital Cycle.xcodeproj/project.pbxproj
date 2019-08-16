@@ -114,7 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				578AF9E122D4288F007B42A9 /* Core Data */,
-				57A3456B22D2AA4C0070898F /* Important Stuff */,
+				57A3456B22D2AA4C0070898F /* Resources */,
 				57A3456C22D2AA750070898F /* Model */,
 				57A3456D22D2AA7C0070898F /* View */,
 				57A3456E22D2AA810070898F /* Controller */,
@@ -124,7 +124,7 @@
 			path = "Capital Cycle";
 			sourceTree = "<group>";
 		};
-		57A3456B22D2AA4C0070898F /* Important Stuff */ = {
+		57A3456B22D2AA4C0070898F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				57A3455722D2AA080070898F /* AppDelegate.swift */,
@@ -133,7 +133,7 @@
 				57A3456522D2AA0B0070898F /* Info.plist */,
 				57A3457522D2B3360070898F /* GoogleService-Info.plist */,
 			);
-			path = "Important Stuff";
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		57A3456C22D2AA750070898F /* Model */ = {

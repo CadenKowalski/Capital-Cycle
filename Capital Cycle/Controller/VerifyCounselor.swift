@@ -16,6 +16,7 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var gradientView: UIView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
     @IBOutlet weak var counselorIdTxtField: UITextField!
+    @IBOutlet weak var signUpBtn: UIButton!
     // Global code vars
     let databaseRef = Firestore.firestore().collection("Users")
     
@@ -36,6 +37,7 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate {
         
         // Sets the gradients
         gradientView.setGradientBackground()
+        signUpBtn.setGradientButton(cornerRadius: 22.5)
         
         // Sets up the text field
         counselorIdTxtField.delegate = self

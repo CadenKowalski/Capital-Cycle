@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UIAdaptivePresentationControllerDelegate {
 
     // Storyboard outlets
     @IBOutlet weak var gradientView: UIView!
@@ -20,6 +20,7 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
     @IBOutlet weak var userTypeLbl: UILabel!
     @IBOutlet weak var signedInBtn: UIButton!
     @IBOutlet weak var signUpBtn: UIButton!
+    @IBOutlet weak var signUpBtnProgressWheel: UIActivityIndicatorView!
     @IBOutlet weak var privacyPolicyTxtView: UITextView!
     @IBOutlet weak var userTypePickerView: UIPickerView!
     // Code global vars
@@ -66,6 +67,9 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
         // Sets up the picker view
         userTypePickerView.delegate = self
         userTypePickerView.dataSource = self
+        
+        // Formats the progress wheel
+        signUpBtnProgressWheel.isHidden = true
     }
     
     // Keep the user signed in or not
@@ -110,6 +114,18 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
         let Alert = UIAlertController(title: title, message:  message, preferredStyle: .alert)
         Alert.addAction(UIAlertAction(title: actionTitle, style: actionStyle, handler: nil))
         present(Alert, animated: true, completion: nil)
+    }
+    
+    func formatProgressWheel(toShow: Bool) {
+        if toShow {
+            signUpBtnProgressWheel.isHidden = false
+            signUpBtn.alpha = 0.25
+            signUpBtnProgressWheel.startAnimating()
+        } else {
+            signUpBtnProgressWheel.isHidden = true
+            signUpBtn.alpha = 1.0
+            signUpBtnProgressWheel.stopAnimating()
+        }
     }
     
     // MARK: UIPickerView Setup
@@ -174,10 +190,12 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
             userTypeLbl.backgroundColor = .red
             userTypeLbl.alpha = 0.5
         } else {
+            formatProgressWheel(toShow: true)
             SignUp.Instance.signUpEmail = emailTxtField.text!
             SignUp.Instance.signUpPass = passTxtField.text!
             if userType == .counselor  || userType == .admin {
                 self.performSegue(withIdentifier: "VerifyCounselor", sender: nil)
+                formatProgressWheel(toShow: false)
             } else {
                 Auth.auth().createUser(withEmail: emailTxtField.text!, password: passTxtField.text!) { (user, error) in
                     if error == nil {
@@ -186,6 +204,8 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
                     } else {
                         self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
                     }
+                    
+                    self.formatProgressWheel(toShow: false)
                 }
             }
         }

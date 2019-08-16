@@ -940,7 +940,7 @@ Phone: 202.288.5245</string>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                 <state key="normal" title="Log Out">
-                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="logOut:" destination="ECW-nJ-Zo5" eventType="touchUpInside" id="PLl-0v-07g"/>
@@ -954,7 +954,7 @@ Phone: 202.288.5245</string>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                 <state key="normal" title="Delete my account">
-                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="deleteAccount:" destination="ECW-nJ-Zo5" eventType="touchUpInside" id="aUr-gR-DAa"/>
@@ -986,7 +986,7 @@ Phone: 202.288.5245</string>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                 <state key="normal" title="Reset Password">
-                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="resetPassword:" destination="ECW-nJ-Zo5" eventType="touchUpInside" id="P6f-z1-FvF"/>
@@ -1432,7 +1432,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                         <state key="normal" title="Done">
-                                                            <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="dismissCamperInfoView:" destination="45k-fV-EgM" eventType="touchUpInside" id="yc2-22-mcE"/>
@@ -1594,7 +1594,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                 <state key="normal" title="Sign Up">
-                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="A2Z-6c-UZy" kind="show" id="pK6-B0-FNP"/>
@@ -1652,7 +1652,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                 <state key="normal" title="Forgot your password?">
-                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="resetPassword:" destination="v2Q-k5-Eoj" eventType="touchUpInside" id="8vc-AY-R8l"/>
@@ -1772,11 +1772,15 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" textContentType="password"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i7f-fV-KfT">
-                                <rect key="frame" x="156.66666666666666" y="222" width="62" height="33"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i7f-fV-KfT" userLabel="Sign Up Btn">
+                                <rect key="frame" x="117.66666666666669" y="222" width="140" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="0a0-Uy-udw"/>
+                                    <constraint firstAttribute="width" constant="140" id="AWJ-Aq-ck7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                 <state key="normal" title="Sign Up">
-                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="signUp:" destination="PqR-3q-0Zd" eventType="touchUpInside" id="pGb-QE-nJ0"/>
@@ -1802,6 +1806,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                         <outlet property="counselorIdTxtField" destination="9ow-Jy-lkc" id="NhQ-zd-Nvj"/>
                         <outlet property="gradientView" destination="q6N-tY-NJl" id="VgH-9C-nzw"/>
                         <outlet property="gradientViewHeight" destination="Qia-lc-zhU" id="7A8-9K-gd9"/>
+                        <outlet property="signUpBtn" destination="i7f-fV-KfT" id="Gxw-gf-6LW"/>
                         <segue destination="jM6-Kb-J6q" kind="presentation" identifier="VerifiedCounselor" modalPresentationStyle="fullScreen" id="8gZ-wr-hIi"/>
                     </connections>
                 </viewController>
@@ -1938,7 +1943,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                         <fragment content="Privacy Policy">
                                             <attributes>
                                                 <color key="NSColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <font key="NSFont" metaFont="menu" size="10"/>
+                                                <font key="NSFont" metaFont="system" size="10"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 <integer key="NSUnderline" value="1"/>
                                             </attributes>
@@ -1963,6 +1968,9 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                     <action selector="signUp:" destination="A2Z-6c-UZy" eventType="touchUpInside" id="ts1-Ff-kWO"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="gnJ-16-wrf">
+                                <rect key="frame" x="169" y="386" width="37" height="37"/>
+                            </activityIndicatorView>
                             <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Privacy Policy" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kzh-E1-mfx" userLabel="Privacy Policy">
                                 <rect key="frame" x="16" y="16" width="343" height="726"/>
                                 <color key="backgroundColor" name="ContrastViewColor"/>
@@ -1982,6 +1990,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="VUr-xS-gve" firstAttribute="trailing" secondItem="qf8-Wn-zz9" secondAttribute="trailing" constant="16" id="0sm-Um-6aZ"/>
+                            <constraint firstItem="gnJ-16-wrf" firstAttribute="centerX" secondItem="ajG-sE-VYd" secondAttribute="centerX" id="3VB-pt-bFI"/>
                             <constraint firstItem="5ra-2Z-TlZ" firstAttribute="top" secondItem="ILc-KA-kIH" secondAttribute="bottom" constant="17.666666666666686" id="4PJ-It-yep"/>
                             <constraint firstItem="Rje-J8-oBE" firstAttribute="leading" secondItem="5ra-2Z-TlZ" secondAttribute="trailing" constant="4" id="5j5-Fz-2co"/>
                             <constraint firstItem="qf8-Wn-zz9" firstAttribute="leading" secondItem="ILc-KA-kIH" secondAttribute="trailing" constant="4" id="80j-L6-gQX"/>
@@ -2002,6 +2011,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                             <constraint firstAttribute="trailing" secondItem="Kzh-E1-mfx" secondAttribute="trailing" constant="16" id="alr-Mz-bIl"/>
                             <constraint firstAttribute="bottom" secondItem="YuM-PM-C54" secondAttribute="bottom" id="fo2-MD-ufw"/>
                             <constraint firstItem="5ra-2Z-TlZ" firstAttribute="leading" secondItem="VUr-xS-gve" secondAttribute="leading" constant="13" id="hIu-oQ-n7T"/>
+                            <constraint firstItem="gnJ-16-wrf" firstAttribute="centerY" secondItem="ajG-sE-VYd" secondAttribute="centerY" id="iy8-5f-BB2"/>
                             <constraint firstItem="GNk-Ht-aHI" firstAttribute="leading" secondItem="VUr-xS-gve" secondAttribute="leading" constant="16" id="kYd-vk-dQJ"/>
                             <constraint firstItem="Kzh-E1-mfx" firstAttribute="top" secondItem="VUr-xS-gve" secondAttribute="top" constant="16" id="l2b-gh-Ln5"/>
                             <constraint firstItem="ILc-KA-kIH" firstAttribute="leading" secondItem="VUr-xS-gve" secondAttribute="leading" constant="16" id="lNw-fz-KaB"/>
@@ -2031,6 +2041,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                         <outlet property="passTxtField" destination="GNk-Ht-aHI" id="c5F-tV-zWi"/>
                         <outlet property="privacyPolicyTxtView" destination="Kzh-E1-mfx" id="c2d-Ig-GTc"/>
                         <outlet property="signUpBtn" destination="ajG-sE-VYd" id="rvm-Am-rg7"/>
+                        <outlet property="signUpBtnProgressWheel" destination="gnJ-16-wrf" id="2JD-TC-7xz"/>
                         <outlet property="signedInBtn" destination="5ra-2Z-TlZ" id="ir5-XE-ayL"/>
                         <outlet property="userTypeLbl" destination="qf8-Wn-zz9" id="jsr-iE-gsQ"/>
                         <outlet property="userTypePickerView" destination="YuM-PM-C54" id="QEB-vs-07b"/>
@@ -2078,11 +2089,25 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AQ8-Fy-3vg">
+                                        <rect key="frame" x="329" y="17" width="30" height="29"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="30r-au-MoR"/>
+                                            <constraint firstAttribute="width" constant="30" id="F45-wU-XFq"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" backgroundImage="xmark.circle" catalog="system"/>
+                                        <connections>
+                                            <action selector="dismissVerifyEmailView:" destination="EiY-kr-02N" eventType="touchUpInside" id="ic3-1Y-KWq"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="SeM-IO-tK5" firstAttribute="centerX" secondItem="PCn-Gb-xIH" secondAttribute="centerX" id="6HR-en-ecZ"/>
                                     <constraint firstAttribute="height" constant="100" id="FiV-5P-ufN"/>
+                                    <constraint firstAttribute="trailing" secondItem="AQ8-Fy-3vg" secondAttribute="trailing" constant="16" id="P9N-gf-MIf"/>
+                                    <constraint firstItem="AQ8-Fy-3vg" firstAttribute="top" secondItem="PCn-Gb-xIH" secondAttribute="top" constant="16" id="Xgk-ba-Tdx"/>
                                     <constraint firstItem="SeM-IO-tK5" firstAttribute="centerY" secondItem="PCn-Gb-xIH" secondAttribute="centerY" constant="5" id="YV0-FT-lDM"/>
                                 </constraints>
                             </view>
@@ -2095,22 +2120,37 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 <color key="textColor" name="LabelColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V1b-ew-6lp">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V1b-ew-6lp" userLabel="Refresh Btn">
                                 <rect key="frame" x="152.66666666666666" y="196" width="70" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="OSh-6B-h35"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                 <state key="normal" title="Refresh">
-                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="checkForVerifiedUser:" destination="EiY-kr-02N" eventType="touchUpInside" id="a7n-d5-iYg"/>
                                 </connections>
                             </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xrn-NV-cTi">
+                                <rect key="frame" x="117.66666666666669" y="196" width="140" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="140" id="bLr-2e-BNl"/>
+                                    <constraint firstAttribute="height" constant="45" id="mWo-cx-csO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
+                                <state key="normal" title="Sign Up">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="signUp:" destination="EiY-kr-02N" eventType="touchUpInside" id="i1S-h6-86l"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" name="ViewColor"/>
                         <constraints>
+                            <constraint firstItem="Xrn-NV-cTi" firstAttribute="top" secondItem="6nR-yb-9oz" secondAttribute="bottom" constant="16" id="1d7-8f-z1a"/>
                             <constraint firstItem="V1b-ew-6lp" firstAttribute="centerX" secondItem="POM-GW-GWI" secondAttribute="centerX" id="5FN-Uy-eAC"/>
                             <constraint firstItem="V1b-ew-6lp" firstAttribute="top" secondItem="6nR-yb-9oz" secondAttribute="bottom" constant="16" id="7Sm-EN-Udp"/>
                             <constraint firstItem="6nR-yb-9oz" firstAttribute="top" secondItem="PCn-Gb-xIH" secondAttribute="bottom" constant="32" id="DB4-VT-WWa"/>
@@ -2118,12 +2158,15 @@ A: We have a variety of games and books as well as a gym and playground to occup
                             <constraint firstItem="PCn-Gb-xIH" firstAttribute="top" secondItem="avs-hS-JXJ" secondAttribute="top" id="TxP-CD-MlU"/>
                             <constraint firstItem="PCn-Gb-xIH" firstAttribute="trailing" secondItem="avs-hS-JXJ" secondAttribute="trailing" id="r5h-dl-7ia"/>
                             <constraint firstItem="6nR-yb-9oz" firstAttribute="centerX" secondItem="POM-GW-GWI" secondAttribute="centerX" id="yi2-EF-vyF"/>
+                            <constraint firstItem="Xrn-NV-cTi" firstAttribute="centerX" secondItem="POM-GW-GWI" secondAttribute="centerX" id="zOO-OJ-0Qt"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="avs-hS-JXJ"/>
                     </view>
                     <connections>
                         <outlet property="gradientView" destination="PCn-Gb-xIH" id="eEk-vO-NGY"/>
                         <outlet property="gradientViewHeight" destination="FiV-5P-ufN" id="lAe-UN-k1l"/>
+                        <outlet property="refreshBtn" destination="V1b-ew-6lp" id="iqr-53-73n"/>
+                        <outlet property="signUpBtn" destination="Xrn-NV-cTi" id="nMZ-ae-1Sl"/>
                         <segue destination="jM6-Kb-J6q" kind="presentation" identifier="verifiedUser" modalPresentationStyle="fullScreen" id="TDc-Gp-ks8"/>
                     </connections>
                 </viewController>
@@ -2138,6 +2181,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
         <image name="InstagramLogo" width="166.66667175292969" height="166.66667175292969"/>
         <image name="Unchecked" width="66.666664123535156" height="66.666664123535156"/>
         <image name="gear" catalog="system" width="64" height="60"/>
+        <image name="xmark.circle" catalog="system" width="64" height="62"/>
         <namedColor name="CellColor">
             <color white="0.30000001192092896" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
@@ -2155,8 +2199,8 @@ A: We have a variety of games and books as well as a gym and playground to occup
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="EsD-nZ-GiX"/>
+        <segue reference="2oz-0z-gZa"/>
         <segue reference="4VI-xZ-OTW"/>
-        <segue reference="JVj-89-k2w"/>
+        <segue reference="TDc-Gp-ks8"/>
     </inferredMetricsTieBreakers>
 </document>
