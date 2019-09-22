@@ -115,6 +115,7 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
         present(Alert, animated: true, completion: nil)
     }
     
+    // Switches on and off the progress wheel
     func formatProgressWheel(toShow: Bool) {
         if toShow {
             signUpBtnProgressWheel.isHidden = false
@@ -216,10 +217,11 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
                     Auth.auth().currentUser?.sendEmailVerification(completion: nil)
                 }
                 
-                self.formatProgressWheel(toShow: false)
             } else {
                 self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
             }
+            
+            self.formatProgressWheel(toShow: false)
         }
     }
     

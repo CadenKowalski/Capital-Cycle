@@ -110,12 +110,13 @@ class LogIn: UIViewController, UITextFieldDelegate {
                 self.updateUser(email: (Auth.auth().currentUser?.email)!)
                 self.fetchUserValues(email: (Auth.auth().currentUser?.email)!) {
                     self.performSegue(withIdentifier: "LogIn", sender: self)
+                    self.formatProgressWheel(toShow: false)
                 }
             } else {
                 self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
+                self.formatProgressWheel(toShow: false)
             }
             
-            self.formatProgressWheel(toShow: false)
         }
     }
     

@@ -10,13 +10,19 @@ import UIKit
 import FirebaseFirestore
 import FirebaseAuth
 
-class AccountSettings: UIViewController {
+class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     // Storyboard outlets
     @IBOutlet weak var gradientView: UIView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var emailLbl: UILabel!
+    @IBOutlet weak var userTypeLbl: UILabel!
+    @IBOutlet weak var cancelBtn: UIButton!
+    @IBOutlet weak var userTypePickerView: UIPickerView!
     // Code global vars
     let databaseRef = Firestore.firestore().collection("Users")
+    var typesOfUser = ["Current", "Camper", "Parent", "Counselor"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +41,27 @@ class AccountSettings: UIViewController {
         
         // Sets the gradients
         gradientView.setGradientBackground()
+        
+        // Formats the profile image view
+        profileImageView.layer.cornerRadius = 50
+        
+        // Formats the email and userType labels
+        emailLbl.text = "Email: \((Auth.auth().currentUser?.email)!)"
+        userTypeLbl.text = "I am a " + "\(userType!)".capitalized
+        if userType == .admin {
+            userTypeLbl.text = "I am an " + "\(userType!)".capitalized
+        }
+        
+        // Sets up the picker view
+        cancelBtn.isHidden = true
+        userTypePickerView.delegate = self
+        userTypePickerView.dataSource = self
+    }
+    
+    // Dismisses the UIPickerView
+    @IBAction func dismissUserTypePickerView(_ sender: Any) {
+        userTypePickerView.isHidden = true
+        cancelBtn.isHidden = true
     }
     
     // Shows an alert
@@ -44,7 +71,55 @@ class AccountSettings: UIViewController {
         present(Alert, animated: true, completion: nil)
     }
     
+    // MARK: UIPickerView Setup
+    
+    // Sets the number of columns
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    // Sets the number of rows
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return 4
+    }
+    
+    // Sets titles for respective rows
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return typesOfUser[row]
+    }
+    
+    // Called when the picker view is used
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if typesOfUser[row] == "Camper" {
+            userType = .camper
+        } else if typesOfUser[row] == "Parent" {
+            userType = .parent
+        } else {
+            userType = .counselor
+        }
+        
+        userTypePickerView.isHidden = true
+        cancelBtn.isHidden = true
+        if typesOfUser[row] != "Current" {
+            userTypeLbl.text = "I am a " + "\(typesOfUser[row])".capitalized
+            if userType == .admin {
+                userTypeLbl.text = "I am an " + "\(typesOfUser[row])".capitalized
+            }
+        }
+    }
+    
     // MARK: Settings
+    
+    // Changes the User Type
+    @IBAction func changeUserType(_ sender: UIButton) {
+        if userTypePickerView.isHidden {
+            userTypePickerView.isHidden = false
+            cancelBtn.isHidden = false
+        } else {
+            userTypePickerView.isHidden = true
+            cancelBtn.isHidden = true
+        }
+    }
     
     // Logs out the user
     @IBAction func logOut(_ sender: UIButton?) {

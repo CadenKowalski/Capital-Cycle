@@ -94,6 +94,7 @@ class VerifyUser: UIViewController, UIAdaptivePresentationControllerDelegate {
     // MARK: Dismiss
     
     func presentationControllerDidAttemptToDismiss(_ presentationController: UIPresentationController) {
+        print(true)
         let Alert = UIAlertController(title: nil, message: "This action will delete your account. Are you sure you want to continue?", preferredStyle: .actionSheet)
         Alert.addAction(UIAlertAction(title: "Delete my account", style: .destructive) { action in
             self.dismiss(animated: true, completion: nil)

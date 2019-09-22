@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14854.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="v2Q-k5-Eoj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="v2Q-k5-Eoj">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14806.4"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -251,10 +251,10 @@ Phone: 202.288.5245</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q6C-0K-vCN" userLabel="Settings Btn">
-                                        <rect key="frame" x="16" y="15.999999999999996" width="30" height="30.666666666666675"/>
+                                        <rect key="frame" x="16" y="15.999999999999993" width="40" height="40.666666666666671"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="gHc-g7-bs4"/>
-                                            <constraint firstAttribute="width" constant="30" id="gWR-Xs-02p"/>
+                                            <constraint firstAttribute="height" constant="40" id="gHc-g7-bs4"/>
+                                            <constraint firstAttribute="width" constant="40" id="gWR-Xs-02p"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -263,11 +263,11 @@ Phone: 202.288.5245</string>
                                             <segue destination="ECW-nJ-Zo5" kind="presentation" id="stl-Sk-OpA"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OcY-mR-OkY">
-                                        <rect key="frame" x="368" y="17" width="30" height="29"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OcY-mR-OkY" userLabel="Account Btn">
+                                        <rect key="frame" x="358" y="17" width="40" height="39"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="X9w-ni-Ms6"/>
-                                            <constraint firstAttribute="width" constant="30" id="tYg-5m-E0Q"/>
+                                            <constraint firstAttribute="height" constant="40" id="X9w-ni-Ms6"/>
+                                            <constraint firstAttribute="width" constant="40" id="tYg-5m-E0Q"/>
                                         </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" backgroundImage="person.circle" catalog="system">
@@ -836,10 +836,10 @@ Phone: 202.288.5245</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ucQ-X1-3da" userLabel="Settings Btn">
-                                        <rect key="frame" x="16" y="15.999999999999996" width="30" height="30.666666666666675"/>
+                                        <rect key="frame" x="16" y="15.999999999999993" width="40" height="40.666666666666671"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="3Nc-Sb-xF3"/>
-                                            <constraint firstAttribute="width" constant="30" id="ZwR-sV-bse"/>
+                                            <constraint firstAttribute="height" constant="40" id="3Nc-Sb-xF3"/>
+                                            <constraint firstAttribute="width" constant="40" id="ZwR-sV-bse"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -848,31 +848,33 @@ Phone: 202.288.5245</string>
                                             <segue destination="ECW-nJ-Zo5" kind="show" id="CFn-zx-hpt"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NMI-M9-zq1" userLabel="Account Btn">
+                                        <rect key="frame" x="358" y="17" width="40" height="39"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="AuX-Ek-3Aj"/>
+                                            <constraint firstAttribute="height" constant="40" id="iSa-ce-KGr"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" backgroundImage="person.circle" catalog="system">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="D9c-sc-o2H" kind="presentation" id="13v-vZ-tnK"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="7uh-km-9YW"/>
+                                    <constraint firstItem="NMI-M9-zq1" firstAttribute="top" secondItem="cXw-42-buD" secondAttribute="top" constant="16" id="MEA-4s-zVk"/>
                                     <constraint firstItem="ucQ-X1-3da" firstAttribute="top" secondItem="cXw-42-buD" secondAttribute="top" constant="16" id="Z05-Bh-qlB"/>
                                     <constraint firstItem="yxy-7o-B0d" firstAttribute="centerY" secondItem="cXw-42-buD" secondAttribute="centerY" constant="5" id="bmX-ju-t3T"/>
+                                    <constraint firstAttribute="trailing" secondItem="NMI-M9-zq1" secondAttribute="trailing" constant="16" id="jZM-jB-tqV"/>
                                     <constraint firstItem="yxy-7o-B0d" firstAttribute="centerX" secondItem="cXw-42-buD" secondAttribute="centerX" id="utE-96-gOk"/>
                                     <constraint firstItem="ucQ-X1-3da" firstAttribute="leading" secondItem="cXw-42-buD" secondAttribute="leading" constant="16" id="z5m-Tc-6KZ"/>
                                 </constraints>
                                 <viewLayoutGuide key="safeArea" id="sM4-dh-VAu"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uR6-yc-rFn">
-                                <rect key="frame" x="368" y="17" width="30" height="29"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="AbN-nL-dz8"/>
-                                    <constraint firstAttribute="width" constant="30" id="lx4-bF-f75"/>
-                                </constraints>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" backgroundImage="person.circle" catalog="system">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <segue destination="D9c-sc-o2H" kind="presentation" id="8S8-zq-Dgv"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" name="ViewColor"/>
                         <constraints>
@@ -886,12 +888,10 @@ Phone: 202.288.5245</string>
                             <constraint firstItem="nMg-Ua-UuL" firstAttribute="trailing" secondItem="sDi-PL-Mci" secondAttribute="trailing" id="DQc-Y9-iOT"/>
                             <constraint firstItem="n5w-1x-fUR" firstAttribute="height" secondItem="cTg-mg-juz" secondAttribute="height" priority="250" id="EbK-1c-Q8i"/>
                             <constraint firstItem="cXw-42-buD" firstAttribute="top" secondItem="cTg-mg-juz" secondAttribute="top" id="Iaj-XC-osz"/>
-                            <constraint firstItem="uR6-yc-rFn" firstAttribute="top" secondItem="cTg-mg-juz" secondAttribute="top" constant="16" id="VUd-MN-MCW"/>
                             <constraint firstItem="jRw-hE-nSm" firstAttribute="centerY" secondItem="cTg-mg-juz" secondAttribute="centerY" id="a6t-It-dvE"/>
                             <constraint firstItem="cXw-42-buD" firstAttribute="leading" secondItem="cTg-mg-juz" secondAttribute="leading" id="cUd-fS-oII"/>
                             <constraint firstItem="7uq-vL-WCO" firstAttribute="trailing" secondItem="sDi-PL-Mci" secondAttribute="trailing" id="cyO-my-rDl"/>
                             <constraint firstItem="7uq-vL-WCO" firstAttribute="top" secondItem="cTg-mg-juz" secondAttribute="top" constant="110" id="gE3-dA-V3p"/>
-                            <constraint firstAttribute="trailing" secondItem="uR6-yc-rFn" secondAttribute="trailing" constant="16" id="lJu-ml-CzQ"/>
                             <constraint firstItem="n5w-1x-fUR" firstAttribute="width" secondItem="cTg-mg-juz" secondAttribute="width" id="olB-fp-P14"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="sDi-PL-Mci"/>
@@ -1095,29 +1095,114 @@ Phone: 202.288.5245</string>
                                     <constraint firstItem="fqM-3x-e4M" firstAttribute="centerX" secondItem="JZ3-jd-Iqg" secondAttribute="centerX" id="uj9-dH-D0g"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Type" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WZ6-LX-trs">
+                                <rect key="frame" x="132" y="145" width="76.333333333333314" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="eBY-QT-QGw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
+                                <color key="textColor" name="LabelColor"/>
+                                <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T8Z-2D-dEH" userLabel="Change Btn">
+                                <rect key="frame" x="143.66666666666666" y="166" width="53" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="gka-lm-Xvg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                                <state key="normal" title="Change"/>
+                                <connections>
+                                    <action selector="changeUserType:" destination="D9c-sc-o2H" eventType="touchUpInside" id="SYc-w1-oMw"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U2v-Qh-GTp">
+                                <rect key="frame" x="16" y="240" width="343" height="23.333333333333314"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
+                                <color key="textColor" name="LabelColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="gYP-kz-BVS">
+                                <rect key="frame" x="16" y="117" width="100" height="98.666666666666671"/>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="7VU-XR-7Q8"/>
+                                    <constraint firstAttribute="width" constant="100" id="hf9-zo-l9b"/>
+                                </constraints>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="light"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="JLe-3x-Due" appends="YES" id="AOX-li-zED"/>
+                                </connections>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Iy-Fo-8yA">
+                                <rect key="frame" x="51" y="211" width="30" height="20.666666666666657"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20.670000000000002" id="x5m-Tx-r2B"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                                <state key="normal" title="Edit">
+                                    <color key="titleColor" name="LabelColor"/>
+                                </state>
+                            </button>
+                            <pickerView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H8d-i7-asj">
+                                <rect key="frame" x="0.0" y="542" width="375" height="216"/>
+                                <color key="backgroundColor" name="ViewColor"/>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oxr-Cq-GOP">
+                                <rect key="frame" x="319" y="605" width="48" height="30"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" name="LabelColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="dismissUserTypePickerView:" destination="D9c-sc-o2H" eventType="touchUpInside" id="XId-fq-AfN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" name="ViewColor"/>
                         <constraints>
+                            <constraint firstItem="U2v-Qh-GTp" firstAttribute="top" secondItem="gYP-kz-BVS" secondAttribute="bottom" constant="24" id="148-8G-7E3"/>
                             <constraint firstItem="j6F-a2-tkK" firstAttribute="centerX" secondItem="RWn-1Z-azi" secondAttribute="centerX" id="7Gj-qC-Bbq"/>
                             <constraint firstItem="j6F-a2-tkK" firstAttribute="top" secondItem="aBH-zv-Xul" secondAttribute="bottom" constant="12" id="7ta-SG-VdF"/>
+                            <constraint firstItem="T8Z-2D-dEH" firstAttribute="centerX" secondItem="WZ6-LX-trs" secondAttribute="centerX" id="9T1-VY-3cL"/>
+                            <constraint firstAttribute="bottom" secondItem="H8d-i7-asj" secondAttribute="bottom" id="BG2-nn-vHD"/>
                             <constraint firstItem="JZ3-jd-Iqg" firstAttribute="top" secondItem="RWn-1Z-azi" secondAttribute="top" id="Fxz-JL-UPA"/>
                             <constraint firstItem="JZ3-jd-Iqg" firstAttribute="leading" secondItem="hgD-NQ-vKY" secondAttribute="leading" id="Haz-WT-Qm3"/>
                             <constraint firstItem="aBH-zv-Xul" firstAttribute="centerX" secondItem="RWn-1Z-azi" secondAttribute="centerX" id="Hgq-Fg-0q0"/>
+                            <constraint firstItem="gYP-kz-BVS" firstAttribute="top" secondItem="JZ3-jd-Iqg" secondAttribute="bottom" constant="16" id="I5c-Ft-ROy"/>
+                            <constraint firstItem="8Iy-Fo-8yA" firstAttribute="top" secondItem="gYP-kz-BVS" secondAttribute="bottom" constant="-5" id="JFi-XF-BQ6"/>
+                            <constraint firstAttribute="trailing" secondItem="H8d-i7-asj" secondAttribute="trailing" id="PdT-1X-zYF"/>
+                            <constraint firstItem="WZ6-LX-trs" firstAttribute="top" secondItem="JZ3-jd-Iqg" secondAttribute="bottom" constant="45" id="SRE-kx-5Bf"/>
                             <constraint firstItem="JZ3-jd-Iqg" firstAttribute="trailing" secondItem="hgD-NQ-vKY" secondAttribute="trailing" id="U36-W2-NMw"/>
+                            <constraint firstItem="hgD-NQ-vKY" firstAttribute="trailing" secondItem="U2v-Qh-GTp" secondAttribute="trailing" constant="16" id="YBZ-Ws-D4N"/>
+                            <constraint firstItem="T8Z-2D-dEH" firstAttribute="centerX" secondItem="WZ6-LX-trs" secondAttribute="centerX" id="Yk7-Kn-56M"/>
+                            <constraint firstItem="H8d-i7-asj" firstAttribute="leading" secondItem="RWn-1Z-azi" secondAttribute="leading" id="bCX-iW-OZ8"/>
                             <constraint firstItem="F2f-dP-KQA" firstAttribute="centerX" secondItem="RWn-1Z-azi" secondAttribute="centerX" id="bGT-oM-2WO"/>
                             <constraint firstAttribute="bottom" secondItem="j6F-a2-tkK" secondAttribute="bottom" constant="25" id="cd3-RC-y2m"/>
+                            <constraint firstItem="WZ6-LX-trs" firstAttribute="leading" secondItem="gYP-kz-BVS" secondAttribute="trailing" constant="16" id="eYD-W0-iVR"/>
+                            <constraint firstItem="8Iy-Fo-8yA" firstAttribute="centerX" secondItem="gYP-kz-BVS" secondAttribute="centerX" id="iP7-rT-nhE"/>
+                            <constraint firstItem="T8Z-2D-dEH" firstAttribute="top" secondItem="WZ6-LX-trs" secondAttribute="bottom" id="iRE-En-MD8"/>
+                            <constraint firstItem="gYP-kz-BVS" firstAttribute="leading" secondItem="RWn-1Z-azi" secondAttribute="leading" constant="16" id="lvc-oM-vCU"/>
+                            <constraint firstItem="hgD-NQ-vKY" firstAttribute="trailing" secondItem="oxr-Cq-GOP" secondAttribute="trailing" constant="8" id="oMf-D0-XDd"/>
                             <constraint firstItem="aBH-zv-Xul" firstAttribute="top" secondItem="F2f-dP-KQA" secondAttribute="bottom" constant="12" id="sYY-qQ-khb"/>
+                            <constraint firstItem="U2v-Qh-GTp" firstAttribute="leading" secondItem="hgD-NQ-vKY" secondAttribute="leading" constant="16" id="seo-Kf-Ggw"/>
+                            <constraint firstItem="oxr-Cq-GOP" firstAttribute="centerY" secondItem="H8d-i7-asj" secondAttribute="centerY" constant="-30" id="vmB-L4-8bJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hgD-NQ-vKY"/>
                     </view>
                     <connections>
+                        <outlet property="cancelBtn" destination="oxr-Cq-GOP" id="Ydd-SO-GLS"/>
+                        <outlet property="emailLbl" destination="U2v-Qh-GTp" id="dHg-NW-4Rv"/>
                         <outlet property="gradientView" destination="JZ3-jd-Iqg" id="WBg-nb-GG9"/>
                         <outlet property="gradientViewHeight" destination="cS0-pL-qq5" id="QjX-Qz-A9h"/>
+                        <outlet property="profileImageView" destination="gYP-kz-BVS" id="qcl-qA-myw"/>
+                        <outlet property="userTypeLbl" destination="WZ6-LX-trs" id="fSB-ed-2nc"/>
+                        <outlet property="userTypePickerView" destination="H8d-i7-asj" id="Vvz-RS-lX0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aoy-dT-eGP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="JLe-3x-Due" userLabel="Change Profile Pic Tap Gesture Recognizer"/>
             </objects>
-            <point key="canvasLocation" x="833" y="1840"/>
+            <point key="canvasLocation" x="832.79999999999995" y="1839.9014778325125"/>
         </scene>
         <!--Store Page-->
         <scene sceneID="0Bt-6K-n3s">
@@ -1194,10 +1279,10 @@ $375</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WYD-fk-ieQ" userLabel="Settings Btn">
-                                        <rect key="frame" x="16" y="15.999999999999996" width="30" height="30.666666666666675"/>
+                                        <rect key="frame" x="16" y="15.999999999999993" width="40" height="40.666666666666671"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="EDK-0x-vPc"/>
-                                            <constraint firstAttribute="height" constant="30" id="wjb-op-aTX"/>
+                                            <constraint firstAttribute="width" constant="40" id="EDK-0x-vPc"/>
+                                            <constraint firstAttribute="height" constant="40" id="wjb-op-aTX"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1206,30 +1291,32 @@ $375</string>
                                             <segue destination="ECW-nJ-Zo5" kind="show" id="RM7-KP-pjo"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bl4-nt-0lH" userLabel="Account Btn">
+                                        <rect key="frame" x="319" y="17" width="40" height="39"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="VhJ-zV-bI6"/>
+                                            <constraint firstAttribute="width" constant="40" id="nGr-mG-VTv"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" backgroundImage="person.circle" catalog="system">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="D9c-sc-o2H" kind="presentation" id="0gP-vi-mhT"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="7fy-Cg-hTG"/>
+                                    <constraint firstItem="bl4-nt-0lH" firstAttribute="top" secondItem="kr4-03-y19" secondAttribute="top" constant="16" id="UmN-PQ-x3W"/>
                                     <constraint firstItem="WYD-fk-ieQ" firstAttribute="leading" secondItem="kr4-03-y19" secondAttribute="leading" constant="16" id="Utc-H6-QpJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="bl4-nt-0lH" secondAttribute="trailing" constant="16" id="X5R-3W-AHh"/>
                                     <constraint firstItem="dCK-ah-geS" firstAttribute="centerX" secondItem="kr4-03-y19" secondAttribute="centerX" id="YkJ-XI-dwr"/>
                                     <constraint firstItem="WYD-fk-ieQ" firstAttribute="top" secondItem="kr4-03-y19" secondAttribute="top" constant="16" id="eLE-K2-4Ol"/>
                                     <constraint firstItem="dCK-ah-geS" firstAttribute="centerY" secondItem="kr4-03-y19" secondAttribute="centerY" constant="5" id="tv7-hj-QvO"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XnG-Qb-K8d">
-                                <rect key="frame" x="329" y="17" width="30" height="29"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="hmn-wz-TK8"/>
-                                    <constraint firstAttribute="width" constant="30" id="sNY-eG-rYo"/>
-                                </constraints>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" backgroundImage="person.circle" catalog="system">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <segue destination="D9c-sc-o2H" kind="presentation" id="bJ9-tp-Bgz"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" name="ViewColor"/>
                         <constraints>
@@ -1237,8 +1324,6 @@ $375</string>
                             <constraint firstAttribute="bottom" secondItem="nEi-nu-aGc" secondAttribute="bottom" id="7TE-As-BlL"/>
                             <constraint firstItem="kr4-03-y19" firstAttribute="leading" secondItem="5Bv-hQ-KB6" secondAttribute="leading" id="8M9-oA-keO"/>
                             <constraint firstItem="kr4-03-y19" firstAttribute="top" secondItem="qap-h7-a5m" secondAttribute="top" id="8mm-nf-ndo"/>
-                            <constraint firstAttribute="trailing" secondItem="XnG-Qb-K8d" secondAttribute="trailing" constant="16" id="DPf-dF-I5u"/>
-                            <constraint firstItem="XnG-Qb-K8d" firstAttribute="top" secondItem="qap-h7-a5m" secondAttribute="top" constant="16" id="EWG-Se-dlr"/>
                             <constraint firstItem="nEi-nu-aGc" firstAttribute="trailing" secondItem="5Bv-hQ-KB6" secondAttribute="trailing" id="TfI-2B-Mup"/>
                             <constraint firstItem="kr4-03-y19" firstAttribute="trailing" secondItem="5Bv-hQ-KB6" secondAttribute="trailing" id="ZQm-HF-3pV"/>
                             <constraint firstItem="nEi-nu-aGc" firstAttribute="top" secondItem="kr4-03-y19" secondAttribute="bottom" id="ex0-17-zny"/>
@@ -1429,31 +1514,31 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                     <constraint firstAttribute="height" constant="100" id="XkF-Nm-exH"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sgi-Gb-hZd">
-                                <rect key="frame" x="329" y="17" width="30" height="29"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="Ipn-cr-okJ"/>
-                                    <constraint firstAttribute="height" constant="30" id="yyH-P9-RKg"/>
-                                </constraints>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" backgroundImage="person.circle" catalog="system">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <segue destination="D9c-sc-o2H" kind="presentation" id="Uvk-U7-eky"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tb1-Xi-Kio" userLabel="Settings Btn">
-                                <rect key="frame" x="16" y="15.999999999999996" width="30" height="30.666666666666675"/>
+                                <rect key="frame" x="16" y="15.999999999999993" width="40" height="40.666666666666671"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="MMK-vW-fqY"/>
-                                    <constraint firstAttribute="width" constant="30" id="f29-k7-TMh"/>
+                                    <constraint firstAttribute="height" constant="40" id="MMK-vW-fqY"/>
+                                    <constraint firstAttribute="width" constant="40" id="f29-k7-TMh"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" backgroundImage="gear" catalog="system"/>
                                 <connections>
                                     <segue destination="ECW-nJ-Zo5" kind="show" id="4VI-xZ-OTW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Bn-MX-rLx" userLabel="Account Btn">
+                                <rect key="frame" x="319" y="17" width="40" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="5ZM-To-WdG"/>
+                                    <constraint firstAttribute="height" constant="40" id="tHt-dz-9Zp"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" backgroundImage="person.circle" catalog="system">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="D9c-sc-o2H" kind="presentation" id="FyG-rU-agW"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1466,9 +1551,9 @@ A: We have a variety of games and books as well as a gym and playground to occup
                             <constraint firstItem="7qZ-6e-4gC" firstAttribute="leading" secondItem="boU-Ua-Adt" secondAttribute="leading" id="K1f-D7-Ta3"/>
                             <constraint firstItem="grX-QG-9rR" firstAttribute="trailing" secondItem="boU-Ua-Adt" secondAttribute="trailing" id="RPd-jc-NZ8"/>
                             <constraint firstItem="grX-QG-9rR" firstAttribute="top" secondItem="8VS-e5-9M6" secondAttribute="top" constant="108" id="WNY-Cq-Fnj"/>
-                            <constraint firstItem="sgi-Gb-hZd" firstAttribute="top" secondItem="8VS-e5-9M6" secondAttribute="top" constant="16" id="YCh-pn-7vt"/>
+                            <constraint firstItem="6Bn-MX-rLx" firstAttribute="top" secondItem="8VS-e5-9M6" secondAttribute="top" constant="16" id="Xfn-C3-6I1"/>
+                            <constraint firstAttribute="trailing" secondItem="6Bn-MX-rLx" secondAttribute="trailing" constant="16" id="Z7a-md-1SI"/>
                             <constraint firstItem="7qZ-6e-4gC" firstAttribute="trailing" secondItem="boU-Ua-Adt" secondAttribute="trailing" id="k1T-w2-1XT"/>
-                            <constraint firstAttribute="trailing" secondItem="sgi-Gb-hZd" secondAttribute="trailing" constant="16" id="lFn-po-8iV"/>
                             <constraint firstItem="7qZ-6e-4gC" firstAttribute="top" secondItem="8VS-e5-9M6" secondAttribute="top" id="mLG-Mn-DgX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="boU-Ua-Adt"/>
@@ -1630,16 +1715,30 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5rT-LV-p55" userLabel="Settings Btn">
-                                        <rect key="frame" x="16" y="15.999999999999996" width="30" height="30.666666666666675"/>
+                                        <rect key="frame" x="16" y="15.999999999999993" width="40" height="40.666666666666671"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="aXo-dR-9Ym"/>
-                                            <constraint firstAttribute="height" constant="30" id="jtK-Xo-DCE"/>
+                                            <constraint firstAttribute="width" constant="40" id="aXo-dR-9Ym"/>
+                                            <constraint firstAttribute="height" constant="40" id="jtK-Xo-DCE"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" backgroundImage="gear" catalog="system"/>
                                         <connections>
                                             <segue destination="ECW-nJ-Zo5" kind="show" id="i74-cw-zSX"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1NM-gb-9Bb" userLabel="Account Btn">
+                                        <rect key="frame" x="319" y="17" width="40" height="39"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="AUU-fa-DBS"/>
+                                            <constraint firstAttribute="height" constant="40" id="gKv-Nr-uCw"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" backgroundImage="person.circle" catalog="system">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="D9c-sc-o2H" kind="presentation" id="ey9-lr-fUT"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1650,34 +1749,20 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                     <constraint firstItem="OhW-dJ-0nM" firstAttribute="centerY" secondItem="kdO-CT-UdU" secondAttribute="centerY" constant="5" id="FN3-Tg-kHP"/>
                                     <constraint firstItem="5rT-LV-p55" firstAttribute="top" secondItem="kdO-CT-UdU" secondAttribute="top" constant="16" id="KyP-pf-ycc"/>
                                     <constraint firstItem="OhW-dJ-0nM" firstAttribute="centerX" secondItem="kdO-CT-UdU" secondAttribute="centerX" id="Pwd-Ww-caP"/>
+                                    <constraint firstAttribute="trailing" secondItem="1NM-gb-9Bb" secondAttribute="trailing" constant="16" id="Tb4-2o-Dof"/>
+                                    <constraint firstItem="1NM-gb-9Bb" firstAttribute="top" secondItem="kdO-CT-UdU" secondAttribute="top" constant="16" id="iwU-fE-cdf"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vsz-Ym-1NA">
-                                <rect key="frame" x="329" y="17" width="30" height="29"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="JCY-Lf-Wvp"/>
-                                    <constraint firstAttribute="height" constant="30" id="MlF-i2-Tdr"/>
-                                </constraints>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" backgroundImage="person.circle" catalog="system">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <segue destination="D9c-sc-o2H" kind="presentation" id="DGH-Tt-RWu"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" name="ViewColor"/>
                         <constraints>
                             <constraint firstItem="3kn-Hd-nEv" firstAttribute="trailing" secondItem="aML-ci-l1n" secondAttribute="trailing" id="NJY-H8-wqg"/>
                             <constraint firstItem="kdO-CT-UdU" firstAttribute="top" secondItem="jhy-7z-bQb" secondAttribute="top" id="Q6m-Sk-jKB"/>
-                            <constraint firstAttribute="trailing" secondItem="Vsz-Ym-1NA" secondAttribute="trailing" constant="16" id="cbS-yO-0Tf"/>
                             <constraint firstItem="3kn-Hd-nEv" firstAttribute="bottom" secondItem="aML-ci-l1n" secondAttribute="bottom" id="iES-r1-u7w"/>
                             <constraint firstItem="aML-ci-l1n" firstAttribute="leading" secondItem="3kn-Hd-nEv" secondAttribute="leading" id="l9K-2U-2fS"/>
                             <constraint firstItem="aML-ci-l1n" firstAttribute="top" secondItem="jhy-7z-bQb" secondAttribute="top" constant="110" id="lbp-VI-h43"/>
                             <constraint firstItem="kdO-CT-UdU" firstAttribute="trailing" secondItem="3kn-Hd-nEv" secondAttribute="trailing" id="ll0-zM-JjI"/>
                             <constraint firstItem="kdO-CT-UdU" firstAttribute="leading" secondItem="3kn-Hd-nEv" secondAttribute="leading" id="roE-sE-39p"/>
-                            <constraint firstItem="Vsz-Ym-1NA" firstAttribute="top" secondItem="jhy-7z-bQb" secondAttribute="top" constant="16" id="wQ0-H2-Dfv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3kn-Hd-nEv"/>
                     </view>
@@ -1969,7 +2054,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="PqR-3q-0Zd" kind="relationship" relationship="rootViewController" id="Jrk-qb-Och"/>
+                        <segue destination="PqR-3q-0Zd" kind="relationship" relationship="rootViewController" id="9Ok-oP-fJ8"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0zS-DR-EP6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2207,8 +2292,8 @@ A: We have a variety of games and books as well as a gym and playground to occup
                         <outlet property="signedInBtn" destination="5ra-2Z-TlZ" id="ir5-XE-ayL"/>
                         <outlet property="userTypeLbl" destination="qf8-Wn-zz9" id="jsr-iE-gsQ"/>
                         <outlet property="userTypePickerView" destination="YuM-PM-C54" id="QEB-vs-07b"/>
-                        <segue destination="mAf-zE-l5X" kind="presentation" identifier="VerifyUser" id="mej-9o-CWq"/>
-                        <segue destination="6RS-j4-91T" kind="presentation" identifier="VerifyCounselor" id="tbw-D7-jg1"/>
+                        <segue destination="6RS-j4-91T" kind="presentation" identifier="VerifyCounselor" id="tBS-Ou-0eG"/>
+                        <segue destination="mAf-zE-l5X" kind="presentation" identifier="VerifyUser" id="A25-06-JRb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fLH-LB-9yH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2239,7 +2324,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="EiY-kr-02N" kind="relationship" relationship="rootViewController" id="yFk-gw-2GY"/>
+                        <segue destination="EiY-kr-02N" kind="relationship" relationship="rootViewController" id="Da0-1K-zk3"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sbn-Mg-B8z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2345,8 +2430,8 @@ A: We have a variety of games and books as well as a gym and playground to occup
         <image name="FacebookLogo" width="166.66667175292969" height="166.66667175292969"/>
         <image name="InstagramLogo" width="166.66667175292969" height="166.66667175292969"/>
         <image name="Unchecked" width="66.666664123535156" height="66.666664123535156"/>
-        <image name="gear" catalog="system" width="32" height="32"/>
-        <image name="person.circle" catalog="system" width="32" height="32"/>
+        <image name="gear" catalog="system" width="64" height="60"/>
+        <image name="person.circle" catalog="system" width="64" height="62"/>
         <namedColor name="CellColor">
             <color white="0.30000001192092896" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
@@ -2364,8 +2449,8 @@ A: We have a variety of games and books as well as a gym and playground to occup
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="DzP-Fk-IQ5"/>
-        <segue reference="stl-Sk-OpA"/>
-        <segue reference="8gZ-wr-hIi"/>
+        <segue reference="ey9-lr-fUT"/>
+        <segue reference="i74-cw-zSX"/>
+        <segue reference="TDc-Gp-ks8"/>
     </inferredMetricsTieBreakers>
 </document>
