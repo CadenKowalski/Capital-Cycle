@@ -241,12 +241,12 @@ Phone: 202.288.5245</string>
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZu-KI-aQI">
-                                        <rect key="frame" x="151.66666666666666" y="41" width="110.99999999999997" height="28"/>
+                                        <rect key="frame" x="143" y="41" width="128" height="28"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="111" id="Hcd-6e-NsV"/>
+                                            <constraint firstAttribute="width" constant="128" id="ab2-Ih-5Oj"/>
                                             <constraint firstAttribute="height" constant="28" id="oZy-Jl-6fr"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -307,6 +307,7 @@ Phone: 202.288.5245</string>
                         <outlet property="gradientView" destination="E4V-Od-9gE" id="S28-W7-RDG"/>
                         <outlet property="gradientViewHeight" destination="L6f-kV-R5C" id="lKj-c9-ThF"/>
                         <outlet property="locationLbl" destination="rhe-8X-Nng" id="d06-eC-MpR"/>
+                        <outlet property="overviewLblYConstraint" destination="8nH-dq-YMC" id="LXc-Xf-zSF"/>
                         <outlet property="scrollViewDisplay" destination="YlL-WF-Z3k" id="n6Y-2t-Smf"/>
                         <outlet property="scrollViewYConstraint" destination="W8T-qZ-mDe" id="cgP-Ct-dtd"/>
                     </connections>
@@ -827,11 +828,11 @@ Phone: 202.288.5245</string>
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Schedule" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yxy-7o-B0d">
-                                        <rect key="frame" x="153.66666666666666" y="40" width="106.99999999999997" height="30"/>
+                                        <rect key="frame" x="143" y="37" width="128" height="36"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="107" id="D1C-Bb-bz6"/>
+                                            <constraint firstAttribute="width" constant="128" id="xc5-MA-oB1"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -922,6 +923,7 @@ Phone: 202.288.5245</string>
                         <outlet property="overviewScrollView" destination="nMg-Ua-UuL" id="sSs-QO-Xok"/>
                         <outlet property="overviewScrollViewDisplay" destination="y27-XQ-Lmd" id="R8O-ut-DZD"/>
                         <outlet property="overviewScrollViewYConstraint" destination="8Zc-Qe-zW7" id="s2g-JG-ETv"/>
+                        <outlet property="scheduleLblYConstraint" destination="bmX-ju-t3T" id="Z16-TJ-IpY"/>
                         <outlet property="sixActivityLbl" destination="AnL-oW-lHu" id="KYy-Ga-xQW"/>
                         <outlet property="tenActivityLbl" destination="Nn3-34-utR" id="c3P-TW-Gol"/>
                         <outlet property="threeActivityLbl" destination="7gl-U5-obT" id="Y3E-2w-NNR"/>
@@ -948,11 +950,11 @@ Phone: 202.288.5245</string>
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EHs-R7-608">
-                                        <rect key="frame" x="140" y="40" width="95" height="30"/>
+                                        <rect key="frame" x="130.66666666666666" y="37" width="113.66666666666666" height="36"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="95" id="iNC-Op-FC1"/>
+                                            <constraint firstAttribute="width" constant="113.67" id="D2r-FI-3Df"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1041,7 +1043,7 @@ Phone: 202.288.5245</string>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                 <state key="normal" title="Log Out">
-                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="logOut:" destination="D9c-sc-o2H" eventType="touchUpInside" id="U7h-ND-daX"/>
@@ -1055,7 +1057,7 @@ Phone: 202.288.5245</string>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                 <state key="normal" title="Delete my account">
-                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="deleteAccount:" destination="D9c-sc-o2H" eventType="touchUpInside" id="UhA-3s-XXU"/>
@@ -1069,7 +1071,7 @@ Phone: 202.288.5245</string>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                 <state key="normal" title="Reset Password">
-                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="resetPassword:" destination="D9c-sc-o2H" eventType="touchUpInside" id="kLN-46-203"/>
@@ -1079,11 +1081,11 @@ Phone: 202.288.5245</string>
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fqM-3x-e4M">
-                                        <rect key="frame" x="139.66666666666666" y="40" width="96" height="30"/>
+                                        <rect key="frame" x="130.33333333333334" y="37" width="114.33333333333334" height="36"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="96" id="rIu-EX-3Im"/>
+                                            <constraint firstAttribute="width" constant="114.33" id="XWd-R3-lo7"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1269,12 +1271,12 @@ $375</string>
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Store" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dCK-ah-geS">
-                                        <rect key="frame" x="155" y="41" width="65" height="28"/>
+                                        <rect key="frame" x="151" y="41" width="73" height="28"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="28" id="GIy-YG-bF4"/>
-                                            <constraint firstAttribute="width" constant="65" id="fTA-ng-Tek"/>
+                                            <constraint firstAttribute="width" constant="73" id="klL-oK-icd"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1331,10 +1333,11 @@ $375</string>
                         <viewLayoutGuide key="safeArea" id="5Bv-hQ-KB6"/>
                     </view>
                     <connections>
-                        <outlet property="gradientView" destination="kr4-03-y19" id="jkg-8q-cW4"/>
+                        <outlet property="gradientView" destination="kr4-03-y19" id="d8Y-st-Rgi"/>
                         <outlet property="gradientViewHeight" destination="7fy-Cg-hTG" id="lOw-4y-SXn"/>
                         <outlet property="productsCollection" destination="nEi-nu-aGc" id="vx6-Ut-83g"/>
                         <outlet property="productsCollectionHeight" destination="bhg-KT-bhK" id="V7Y-7T-bBe"/>
+                        <outlet property="storeLblYConstraint" destination="tv7-hj-QvO" id="ry5-zj-Fjx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8HV-gq-bco" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1497,12 +1500,12 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FAQ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MdU-L6-JD5">
-                                        <rect key="frame" x="155" y="41" width="65" height="28"/>
+                                        <rect key="frame" x="158.66666666666666" y="41" width="57.666666666666657" height="28"/>
                                         <constraints>
+                                            <constraint firstAttribute="width" constant="57.670000000000002" id="Q5z-58-6lp"/>
                                             <constraint firstAttribute="height" constant="28" id="Zfz-WQ-8z0"/>
-                                            <constraint firstAttribute="width" constant="65" id="dhY-Ay-tK7"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1560,6 +1563,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                     </view>
                     <size key="freeformSize" width="375" height="1200"/>
                     <connections>
+                        <outlet property="FAQLblYConstraint" destination="Off-GJ-0xj" id="kQa-1A-66X"/>
                         <outlet property="gradientView" destination="7qZ-6e-4gC" id="GFl-5x-iMA"/>
                         <outlet property="gradientViewHeight" destination="XkF-Nm-exH" id="7CW-bb-BdR"/>
                         <outlet property="scrollViewYConstraint" destination="WNY-Cq-Fnj" id="F66-Td-i2Y"/>
@@ -1647,7 +1651,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                         <state key="normal" title="Done">
-                                                            <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="dismissCamperInfoView:" destination="45k-fV-EgM" eventType="touchUpInside" id="yc2-22-mcE"/>
@@ -1705,12 +1709,12 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Camper Info" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OhW-dJ-0nM">
-                                        <rect key="frame" x="116.66666666666669" y="37.666666666666664" width="142" height="34.999999999999993"/>
+                                        <rect key="frame" x="104" y="37.666666666666664" width="167" height="34.999999999999993"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="142" id="gkS-6f-dv9"/>
+                                            <constraint firstAttribute="width" constant="166.66999999999999" id="dpj-D5-TT1"/>
                                             <constraint firstAttribute="height" constant="35" id="yYG-Yh-wXA"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1768,6 +1772,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                     </view>
                     <size key="freeformSize" width="375" height="812"/>
                     <connections>
+                        <outlet property="camperInfoLblYConstraint" destination="FN3-Tg-kHP" id="rla-XV-seG"/>
                         <outlet property="camperInfoView" destination="zQz-Ii-lcy" id="s2R-ee-RiO"/>
                         <outlet property="camperName" destination="0kj-HB-fqT" id="NAa-L5-Jz6"/>
                         <outlet property="camperScrollViewYConstraint" destination="lbp-VI-h43" id="7Kn-xd-ErE"/>
@@ -1825,7 +1830,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                 <state key="normal" title="Sign Up">
-                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="A2Z-6c-UZy" kind="show" id="pK6-B0-FNP"/>
@@ -1835,12 +1840,12 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log In" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MH2-Dp-khf">
-                                        <rect key="frame" x="152" y="37.666666666666664" width="71" height="34.999999999999993"/>
+                                        <rect key="frame" x="146.33333333333334" y="37.666666666666664" width="82.333333333333343" height="34.999999999999993"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="8kK-Q4-Qam"/>
-                                            <constraint firstAttribute="width" constant="71" id="RN2-eo-NHJ"/>
+                                            <constraint firstAttribute="width" constant="82.329999999999998" id="bgC-E2-MIa"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1883,7 +1888,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                 <state key="normal" title="Forgot your password?">
-                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="resetPassword:" destination="v2Q-k5-Eoj" eventType="touchUpInside" id="8vc-AY-R8l"/>
@@ -1945,6 +1950,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                         <outlet property="gradientViewHeight" destination="ioO-Kj-laH" id="Lwe-6O-iK7"/>
                         <outlet property="logInBtn" destination="VQ6-lr-Ida" id="tgD-8Q-YQF"/>
                         <outlet property="logInBtnProgressWheel" destination="vM3-aN-snM" id="aSp-DB-JNF"/>
+                        <outlet property="logInLblYConstraint" destination="2Tc-1c-PSP" id="efV-mj-CX0"/>
                         <outlet property="passTxtField" destination="tTZ-I0-VVo" id="Mt6-iM-A0h"/>
                         <outlet property="signedInBtn" destination="qgq-dg-T1L" id="sTz-1s-2Lt"/>
                         <segue destination="jM6-Kb-J6q" kind="presentation" identifier="LogIn" modalPresentationStyle="fullScreen" id="JVj-89-k2w"/>
@@ -2073,12 +2079,12 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WFi-Tg-OYo">
-                                        <rect key="frame" x="143" y="37.666666666666664" width="89" height="34.999999999999993"/>
+                                        <rect key="frame" x="134" y="37.666666666666664" width="107" height="34.999999999999993"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="89" id="Bez-2I-G6W"/>
+                                            <constraint firstAttribute="width" constant="106.67" id="F7v-r1-CT2"/>
                                             <constraint firstAttribute="height" constant="35" id="dhi-Dj-AOA"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -2376,7 +2382,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                 <state key="normal" title="Refresh">
-                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="checkForVerifiedUser:" destination="EiY-kr-02N" eventType="touchUpInside" id="a7n-d5-iYg"/>
@@ -2451,6 +2457,6 @@ A: We have a variety of games and books as well as a gym and playground to occup
     <inferredMetricsTieBreakers>
         <segue reference="ey9-lr-fUT"/>
         <segue reference="i74-cw-zSX"/>
-        <segue reference="TDc-Gp-ks8"/>
+        <segue reference="8gZ-wr-hIi"/>
     </inferredMetricsTieBreakers>
 </document>

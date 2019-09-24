@@ -105,7 +105,11 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
             if userType == .admin {
                 userTypeLbl.text = "I am an " + "\(typesOfUser[row])".capitalized
             }
+
+            updateUser(email: (Auth.auth().currentUser?.email!)!)
         }
+        
+        print(userType!)
     }
     
     // MARK: Settings
@@ -187,7 +191,19 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
     // MARK: Firebase
     
     func updateUser(email: String) {
-        databaseRef.document(email).updateData(["signedIn": signedIn!]) { error in
+        var userTypeString: String
+        switch userType {
+        case .camper:
+            userTypeString = "Camper"
+        case .parent:
+            userTypeString = "Parent"
+        case .counselor:
+            userTypeString = "Counselor"
+        default:
+            return
+        }
+        
+        databaseRef.document(email).updateData(["signedIn": signedIn!, "userType": userTypeString]) { error in
             if error != nil {
                 self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
             }

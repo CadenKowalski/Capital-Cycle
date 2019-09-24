@@ -14,6 +14,7 @@ class SchedulePage: UIViewController {
     // Storyboard outlets
     @IBOutlet weak var gradientView: UIView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var scheduleLblYConstraint: NSLayoutConstraint!
     // Daily scroll view
     @IBOutlet weak var dailyScrollView: UIScrollView!
     @IBOutlet weak var dailyScrollViewYConstraint: NSLayoutConstraint!
@@ -81,6 +82,8 @@ class SchedulePage: UIViewController {
         if view.frame.height < 700 {
             gradientViewHeight.constant = 0.15 * view.frame.height
             gradientView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.15)
+        } else if view.frame.height >= 812 {
+           scheduleLblYConstraint.constant = 15
         }
         
         // Readjusts the Y constraints relative to the gradient view height

@@ -15,6 +15,7 @@ class CamperInfoPage: UIViewController {
     // Storyboard outlets
     @IBOutlet weak var gradientView: UIView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var camperInfoLblYConstraint: NSLayoutConstraint!
     @IBOutlet weak var camperScrollViewYConstraint: NSLayoutConstraint!
     @IBOutlet weak var scrollViewDisplay: UIView!
     @IBOutlet weak var scrollViewDisplayHeight: NSLayoutConstraint!
@@ -43,6 +44,8 @@ class CamperInfoPage: UIViewController {
         if view.frame.height < 700 {
             gradientViewHeight.constant = 0.15 * view.frame.height
             gradientView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.15)
+        } else if view.frame.height >= 812 {
+            camperInfoLblYConstraint.constant = 15
         }
         
         // Sets the gradients

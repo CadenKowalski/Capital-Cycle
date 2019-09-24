@@ -15,6 +15,7 @@ class LogIn: UIViewController, UITextFieldDelegate {
     // Storyboard outlets
     @IBOutlet weak var gradientView: UIView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var logInLblYConstraint: NSLayoutConstraint!
     @IBOutlet weak var emailTxtField: UITextField!
     @IBOutlet weak var passTxtField: UITextField!
     @IBOutlet weak var signedInBtn: UIButton!
@@ -54,8 +55,10 @@ class LogIn: UIViewController, UITextFieldDelegate {
         if view.frame.height < 700 {
             gradientViewHeight.constant = 0.15 * view.frame.height
             gradientView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.15)
+        } else if view.frame.height >= 812 {
+            logInLblYConstraint.constant = 15
         }
-        
+
         // Sets the gradients
         gradientView.setGradientBackground()
         logInBtn.setGradientButton(cornerRadius: 22.5)
