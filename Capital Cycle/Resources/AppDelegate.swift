@@ -15,6 +15,8 @@ var userType: SignUp.UserType!
 var weekActivitiesList: [[String]]!
 var Week: [[String]]!
 var camperInfo: [[String]]!
+var hapticFeedback: Bool!
+let databaseRef = Firestore.firestore().collection("Users")
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -26,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Configures Firebase in app
         FirebaseApp.configure()
         
+        // Configures the core data context
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return true }
         let Context = appDelegate.persistentContainer.viewContext
         
@@ -44,6 +47,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             camperInfo = [[""]]
         }
         
+        // Configures the settings entities
+        let Settings = fetchRecordsOfEntity(Entity: "Settings", Context: Context)
+        if let Settings = Settings.first {
+            hapticFeedback = Settings.value(forKey: "hapticFeedback") as? Bool
+        } else if let Settings = instantiateRecordForEntity(Entity: "Settings", Context: Context) {
+            Settings.setValue(true, forKey: "hapticFeedback")
+            hapticFeedback = true
+        }
+        
         signedIn = false
         userType = SignUp.UserType.none
         SaveContext(ContextName: Context)
@@ -56,6 +68,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let Context = appDelegate.persistentContainer.viewContext
         SaveContext(ContextName: Context)
+        // Deletes a user when they force quit the app without verrifying their email after signing up
+        if Auth.auth().currentUser!.isEmailVerified {
+            let email = Auth.auth().currentUser?.email
+            Auth.auth().currentUser?.delete(completion: { error in
+                if error == nil {
+                    databaseRef.document(email!).delete(completion: { error in
+                        if error != nil {
+                            print("Error 1")
+                        }
+                    })
+                } else {
+                    print("Error 2")
+                }
+            })
+        }
     }
 
     // MARK: UISceneSession Lifecycle

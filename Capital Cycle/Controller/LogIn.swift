@@ -39,6 +39,10 @@ class LogIn: UIViewController, UITextFieldDelegate {
                     if Auth.auth().currentUser != nil && signedIn == true {
                         self.performSegue(withIdentifier: "AlreadyLoggedIn", sender: nil)
                         self.formatProgressWheel(toShow: false)
+                        if hapticFeedback == true {
+                            let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
+                            selectionFeedbackGenerator.selectionChanged()
+                        }
                     }
                     
                     self.formatProgressWheel(toShow: false)
@@ -114,6 +118,10 @@ class LogIn: UIViewController, UITextFieldDelegate {
                 self.fetchUserValues(email: (Auth.auth().currentUser?.email)!) {
                     self.performSegue(withIdentifier: "LogIn", sender: self)
                     self.formatProgressWheel(toShow: false)
+                    if hapticFeedback == true {
+                        let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
+                        selectionFeedbackGenerator.selectionChanged()
+                    }
                 }
             } else {
                 self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)

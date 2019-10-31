@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="v2Q-k5-Eoj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="v2Q-k5-Eoj">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15508"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -251,7 +251,7 @@ Phone: 202.288.5245</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q6C-0K-vCN" userLabel="Settings Btn">
-                                        <rect key="frame" x="16" y="15.999999999999993" width="40" height="40.666666666666671"/>
+                                        <rect key="frame" x="16" y="15.999999999999996" width="40" height="40.333333333333329"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="gHc-g7-bs4"/>
                                             <constraint firstAttribute="width" constant="40" id="gWR-Xs-02p"/>
@@ -264,7 +264,7 @@ Phone: 202.288.5245</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OcY-mR-OkY" userLabel="Account Btn">
-                                        <rect key="frame" x="358" y="17" width="40" height="39"/>
+                                        <rect key="frame" x="358" y="17" width="40" height="38.666666666666671"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="X9w-ni-Ms6"/>
                                             <constraint firstAttribute="width" constant="40" id="tYg-5m-E0Q"/>
@@ -837,7 +837,7 @@ Phone: 202.288.5245</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ucQ-X1-3da" userLabel="Settings Btn">
-                                        <rect key="frame" x="16" y="15.999999999999993" width="40" height="40.666666666666671"/>
+                                        <rect key="frame" x="16" y="15.999999999999996" width="40" height="40.333333333333329"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="3Nc-Sb-xF3"/>
                                             <constraint firstAttribute="width" constant="40" id="ZwR-sV-bse"/>
@@ -850,7 +850,7 @@ Phone: 202.288.5245</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NMI-M9-zq1" userLabel="Account Btn">
-                                        <rect key="frame" x="358" y="17" width="40" height="39"/>
+                                        <rect key="frame" x="358" y="17" width="40" height="38.666666666666671"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="AuX-Ek-3Aj"/>
                                             <constraint firstAttribute="height" constant="40" id="iSa-ce-KGr"/>
@@ -990,6 +990,12 @@ Phone: 202.288.5245</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Haptic feedback" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="anc-el-uxP">
+                                <rect key="frame" x="15.999999999999993" y="194.66666666666666" width="126.33333333333331" height="23.333333333333343"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2dq-Ws-yyw" userLabel="Norifications Switch">
                                 <rect key="frame" x="310" y="151" width="51" height="31"/>
                                 <color key="onTintColor" name="LabelColor"/>
@@ -997,6 +1003,14 @@ Phone: 202.288.5245</string>
                                 <connections>
                                     <action selector="receiveNotifications:" destination="ECW-nJ-Zo5" eventType="valueChanged" id="VoP-sE-Yb4"/>
                                     <action selector="staySignedIn:" destination="ECW-nJ-Zo5" eventType="valueChanged" id="ds5-iy-dgg"/>
+                                </connections>
+                            </switch>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wBn-Fw-OgL" userLabel="Norifications Switch">
+                                <rect key="frame" x="310" y="190" width="51" height="31"/>
+                                <color key="onTintColor" name="LabelColor"/>
+                                <color key="thumbTintColor" name="ViewColor"/>
+                                <connections>
+                                    <action selector="hapticVibration:" destination="ECW-nJ-Zo5" eventType="valueChanged" id="HgZ-UK-f0v"/>
                                 </connections>
                             </switch>
                         </subviews>
@@ -1011,14 +1025,19 @@ Phone: 202.288.5245</string>
                             <constraint firstItem="2dq-Ws-yyw" firstAttribute="top" secondItem="vEF-3o-tyJ" secondAttribute="bottom" constant="8" id="NRf-KD-MqZ"/>
                             <constraint firstItem="rZe-8C-x75" firstAttribute="trailing" secondItem="vEF-3o-tyJ" secondAttribute="trailing" constant="16" id="QsV-1Y-oaS"/>
                             <constraint firstItem="hBp-xz-Gw8" firstAttribute="top" secondItem="rZe-8C-x75" secondAttribute="top" id="Vs9-AV-nzK"/>
+                            <constraint firstItem="anc-el-uxP" firstAttribute="leading" secondItem="rZe-8C-x75" secondAttribute="leading" constant="16" id="ePa-DZ-qqx"/>
+                            <constraint firstItem="wBn-Fw-OgL" firstAttribute="top" secondItem="2dq-Ws-yyw" secondAttribute="bottom" constant="8" id="fte-Ri-2UQ"/>
+                            <constraint firstItem="anc-el-uxP" firstAttribute="top" secondItem="NcP-na-i5u" secondAttribute="bottom" constant="16" id="iy1-bp-CwV"/>
                             <constraint firstItem="v4f-EM-SRo" firstAttribute="leading" secondItem="rZe-8C-x75" secondAttribute="leading" constant="16" id="pYL-pX-qG9"/>
                             <constraint firstItem="vEF-3o-tyJ" firstAttribute="top" secondItem="hBp-xz-Gw8" secondAttribute="bottom" constant="12" id="xSc-G9-zAe"/>
+                            <constraint firstItem="rZe-8C-x75" firstAttribute="trailing" secondItem="wBn-Fw-OgL" secondAttribute="trailing" constant="16" id="yBt-Uf-oUK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rZe-8C-x75"/>
                     </view>
                     <connections>
                         <outlet property="gradientView" destination="hBp-xz-Gw8" id="I94-bk-LKD"/>
                         <outlet property="gradientViewHeight" destination="FUe-lV-muf" id="7VG-cz-a45"/>
+                        <outlet property="hapticFeedbackSwitch" destination="wBn-Fw-OgL" id="Tyl-zv-c11"/>
                         <outlet property="notificationsSwitch" destination="2dq-Ws-yyw" id="SQH-9s-mxi"/>
                         <outlet property="signedInSwitch" destination="vEF-3o-tyJ" id="bnY-Pm-Zct"/>
                     </connections>
@@ -1043,7 +1062,7 @@ Phone: 202.288.5245</string>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                 <state key="normal" title="Log Out">
-                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="logOut:" destination="D9c-sc-o2H" eventType="touchUpInside" id="U7h-ND-daX"/>
@@ -1057,7 +1076,7 @@ Phone: 202.288.5245</string>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                 <state key="normal" title="Delete my account">
-                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="deleteAccount:" destination="D9c-sc-o2H" eventType="touchUpInside" id="UhA-3s-XXU"/>
@@ -1071,7 +1090,7 @@ Phone: 202.288.5245</string>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                 <state key="normal" title="Reset Password">
-                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="resetPassword:" destination="D9c-sc-o2H" eventType="touchUpInside" id="kLN-46-203"/>
@@ -1124,7 +1143,7 @@ Phone: 202.288.5245</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="gYP-kz-BVS">
-                                <rect key="frame" x="16" y="117" width="100" height="98.666666666666671"/>
+                                <rect key="frame" x="16" y="117" width="100" height="98.333333333333329"/>
                                 <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -1281,7 +1300,7 @@ $375</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WYD-fk-ieQ" userLabel="Settings Btn">
-                                        <rect key="frame" x="16" y="15.999999999999993" width="40" height="40.666666666666671"/>
+                                        <rect key="frame" x="16" y="15.999999999999996" width="40" height="40.333333333333329"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="EDK-0x-vPc"/>
                                             <constraint firstAttribute="height" constant="40" id="wjb-op-aTX"/>
@@ -1294,7 +1313,7 @@ $375</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bl4-nt-0lH" userLabel="Account Btn">
-                                        <rect key="frame" x="319" y="17" width="40" height="39"/>
+                                        <rect key="frame" x="319" y="17" width="40" height="38.666666666666671"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="VhJ-zV-bI6"/>
                                             <constraint firstAttribute="width" constant="40" id="nGr-mG-VTv"/>
@@ -1518,7 +1537,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tb1-Xi-Kio" userLabel="Settings Btn">
-                                <rect key="frame" x="16" y="15.999999999999993" width="40" height="40.666666666666671"/>
+                                <rect key="frame" x="16" y="15.999999999999996" width="40" height="40.333333333333329"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="MMK-vW-fqY"/>
                                     <constraint firstAttribute="width" constant="40" id="f29-k7-TMh"/>
@@ -1531,7 +1550,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Bn-MX-rLx" userLabel="Account Btn">
-                                <rect key="frame" x="319" y="17" width="40" height="39"/>
+                                <rect key="frame" x="319" y="17" width="40" height="38.666666666666671"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="5ZM-To-WdG"/>
                                     <constraint firstAttribute="height" constant="40" id="tHt-dz-9Zp"/>
@@ -1651,7 +1670,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                         <state key="normal" title="Done">
-                                                            <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="dismissCamperInfoView:" destination="45k-fV-EgM" eventType="touchUpInside" id="yc2-22-mcE"/>
@@ -1719,7 +1738,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5rT-LV-p55" userLabel="Settings Btn">
-                                        <rect key="frame" x="16" y="15.999999999999993" width="40" height="40.666666666666671"/>
+                                        <rect key="frame" x="16" y="15.999999999999996" width="40" height="40.333333333333329"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="aXo-dR-9Ym"/>
                                             <constraint firstAttribute="height" constant="40" id="jtK-Xo-DCE"/>
@@ -1732,7 +1751,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1NM-gb-9Bb" userLabel="Account Btn">
-                                        <rect key="frame" x="319" y="17" width="40" height="39"/>
+                                        <rect key="frame" x="319" y="17" width="40" height="38.666666666666671"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="AUU-fa-DBS"/>
                                             <constraint firstAttribute="height" constant="40" id="gKv-Nr-uCw"/>
@@ -1830,7 +1849,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                 <state key="normal" title="Sign Up">
-                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="A2Z-6c-UZy" kind="show" id="pK6-B0-FNP"/>
@@ -1888,7 +1907,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                 <state key="normal" title="Forgot your password?">
-                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="resetPassword:" destination="v2Q-k5-Eoj" eventType="touchUpInside" id="8vc-AY-R8l"/>
@@ -2382,7 +2401,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                 <state key="normal" title="Refresh">
-                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="checkForVerifiedUser:" destination="EiY-kr-02N" eventType="touchUpInside" id="a7n-d5-iYg"/>
@@ -2436,27 +2455,27 @@ A: We have a variety of games and books as well as a gym and playground to occup
         <image name="FacebookLogo" width="166.66667175292969" height="166.66667175292969"/>
         <image name="InstagramLogo" width="166.66667175292969" height="166.66667175292969"/>
         <image name="Unchecked" width="66.666664123535156" height="66.666664123535156"/>
-        <image name="gear" catalog="system" width="64" height="60"/>
-        <image name="person.circle" catalog="system" width="64" height="62"/>
+        <image name="gear" catalog="system" width="64" height="58"/>
+        <image name="person.circle" catalog="system" width="64" height="60"/>
         <namedColor name="CellColor">
-            <color white="0.30000001192092896" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="ContrastViewColor">
-            <color white="0.17647058823529413" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color white="0.75" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
         <namedColor name="LabelColor">
-            <color white="0.89999997615814209" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
         <namedColor name="LabelColor">
             <color white="0.89999997615814209" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
         <namedColor name="ViewColor">
-            <color red="0.10999999940395355" green="0.10999999940395355" blue="0.11800000071525574" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ey9-lr-fUT"/>
-        <segue reference="i74-cw-zSX"/>
+        <segue reference="FyG-rU-agW"/>
+        <segue reference="4VI-xZ-OTW"/>
         <segue reference="8gZ-wr-hIi"/>
     </inferredMetricsTieBreakers>
 </document>

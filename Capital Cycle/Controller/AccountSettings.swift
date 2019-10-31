@@ -108,8 +108,6 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
 
             updateUser(email: (Auth.auth().currentUser?.email!)!)
         }
-        
-        print(userType!)
     }
     
     // MARK: Settings
@@ -203,7 +201,7 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
             return
         }
         
-        databaseRef.document(email).updateData(["signedIn": signedIn!, "userType": userTypeString]) { error in
+        databaseRef.document(email).updateData(["signedIn": signedIn!, "type": userTypeString]) { error in
             if error != nil {
                 self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
             }

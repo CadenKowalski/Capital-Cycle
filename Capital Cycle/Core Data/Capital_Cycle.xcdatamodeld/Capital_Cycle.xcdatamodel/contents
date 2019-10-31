@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14886.2" systemVersion="19A526h" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15508" systemVersion="19B86a" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Settings" representedClassName="Settings" syncable="YES" codeGenerationType="class">
+        <attribute name="hapticFeedback" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+    </entity>
     <entity name="Spreadsheet" representedClassName="Spreadsheet" syncable="YES" codeGenerationType="class">
         <attribute name="camperInfo" optional="YES" attributeType="Transformable" customClassName="[[String]]"/>
         <attribute name="dailyData" optional="YES" attributeType="Transformable" customClassName="[[String]]" storedInTruthFile="YES"/>
@@ -7,5 +10,6 @@
     </entity>
     <elements>
         <element name="Spreadsheet" positionX="160" positionY="192" width="128" height="88"/>
+        <element name="Settings" positionX="162" positionY="216" width="128" height="58"/>
     </elements>
 </model>

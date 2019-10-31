@@ -196,6 +196,7 @@ class SchedulePage: UIViewController {
             Week = Result.values! as? [[String]]
             updateContext()
         }
+        
         var Index = 0
         for Day in Week {
             overviewList[Index]?.text = "\(Day[1])\n\(Day[2])"
@@ -224,6 +225,11 @@ class SchedulePage: UIViewController {
             overviewScrollView.isHidden = false
         } else {
             overviewScrollView.isHidden = true
+        }
+        
+        if hapticFeedback == true {
+            let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
+            selectionFeedbackGenerator.selectionChanged()
         }
     }
 }

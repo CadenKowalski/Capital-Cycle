@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 import FirebaseAuth
 import FirebaseFirestore
 
@@ -17,6 +18,7 @@ class GeneralSettings: UIViewController {
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
     @IBOutlet weak var signedInSwitch: UISwitch!
     @IBOutlet weak var notificationsSwitch: UISwitch!
+    @IBOutlet weak var hapticFeedbackSwitch: UISwitch!
     // Code global vars
     let databaseRef = Firestore.firestore().collection("Users")
     
@@ -38,12 +40,9 @@ class GeneralSettings: UIViewController {
         // Sets the gradients
         gradientView.setGradientBackground()
         
-        // Sets the "keep me signed in" switch to reflect the signedIn value
-        if signedIn {
-            signedInSwitch.isOn = true
-        } else {
-            signedInSwitch.isOn = false
-        }
+        // Sets the switches to reflect their actual values
+        signedInSwitch.isOn = signedIn
+        hapticFeedbackSwitch.isOn = hapticFeedback
     }
     
     // Shows an alert
@@ -69,6 +68,35 @@ class GeneralSettings: UIViewController {
     // Allows the user to update whether they want to receive notifications or not
     @IBAction func receiveNotifications(_ sender: UISwitch) {
     }
+    
+    // Allows the user to decide whether they want to get haptic feedback or not
+    @IBAction func hapticVibration(_ sender: UISwitch) {
+        if sender.isOn {
+            hapticFeedback = true
+        } else {
+            hapticFeedback = false
+        }
+        
+        updateContext()
+    }
+    
+    // MARK: Core Data
+        
+    // Updates the context with new values
+        func updateContext() {
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+            let Context = appDelegate.persistentContainer.viewContext
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Settings")
+            do {
+                let fetchResults = try Context.fetch(fetchRequest)
+                let Settings = fetchResults.first as! NSManagedObject
+                Settings.setValue(hapticFeedback, forKey: "hapticFeedback")
+                try Context.save()
+            } catch {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
     
     // MARK: Firebase
 
