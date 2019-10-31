@@ -227,9 +227,9 @@ class SchedulePage: UIViewController {
             overviewScrollView.isHidden = true
         }
         
-        if hapticFeedback == true {
-            let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
-            selectionFeedbackGenerator.selectionChanged()
+        if hapticFeedback {
+            let feedbackGenerator = UISelectionFeedbackGenerator()
+            feedbackGenerator.selectionChanged()
         }
     }
 }

@@ -47,10 +47,19 @@ class OverviewPage: UIViewController {
         locationLbl.isUserInteractionEnabled = true
     }
     
+    // Initiates haptic feedback
+    func giveHapticFeedback() {
+        if hapticFeedback {
+            let feedbackGenerator = UISelectionFeedbackGenerator()
+            feedbackGenerator.selectionChanged()
+        }
+    }
+    
     // MARK: Actions
     
     // Opens the maps app to the camp location
     @IBAction func openMapsToLocation(_ sender: UITapGestureRecognizer) {
+        giveHapticFeedback()
         let latitude: CLLocationDegrees = 38.8975
         let longitude: CLLocationDegrees = -76.9829
         let regionDistance: CLLocationDistance = 500
@@ -65,6 +74,7 @@ class OverviewPage: UIViewController {
     
     // Takes the user to the CapitalCycleCamp Facebook page
     @IBAction func Facebook(_ sender: UIButton) {
+        giveHapticFeedback()
         let facebookAppURL = URL(string: "fb://profile/839679162770435")!
         if UIApplication.shared.canOpenURL(facebookAppURL) {
             UIApplication.shared.open(facebookAppURL, options: [:], completionHandler: nil)
@@ -75,6 +85,7 @@ class OverviewPage: UIViewController {
     
     // Takes the user to the CapitalCycleCamp Instagram page
     @IBAction func Instagram(_ sender: UIButton) {
+        giveHapticFeedback()
         let instagramURL = NSURL(string: "instagram://capitalcyclecamp/")! as URL
         if UIApplication.shared.canOpenURL(instagramURL as URL) {
             UIApplication.shared.open(instagramURL, options: [:], completionHandler: nil)

@@ -39,10 +39,7 @@ class LogIn: UIViewController, UITextFieldDelegate {
                     if Auth.auth().currentUser != nil && signedIn == true {
                         self.performSegue(withIdentifier: "AlreadyLoggedIn", sender: nil)
                         self.formatProgressWheel(toShow: false)
-                        if hapticFeedback == true {
-                            let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
-                            selectionFeedbackGenerator.selectionChanged()
-                        }
+                        self.giveHapticFeedback()
                     }
                     
                     self.formatProgressWheel(toShow: false)
@@ -79,6 +76,7 @@ class LogIn: UIViewController, UITextFieldDelegate {
     
     // Keep the user signed in or not
     @IBAction func keepSignedIn(_ sender: UIButton) {
+        giveHapticFeedback()
         if !signedIn {
             signedIn = true
             sender.setImage(UIImage(named: "Checked"), for: .normal)
@@ -88,11 +86,22 @@ class LogIn: UIViewController, UITextFieldDelegate {
         }
     }
     
+    // Initiates haptic feedback
+    func giveHapticFeedback() {
+        let feedbackGenerator = UISelectionFeedbackGenerator()
+        feedbackGenerator.selectionChanged()
+    }
+    
     // Shows an alert
     func showAlert(title: String, message: String, actionTitle: String, actionStyle: UIAlertAction.Style) {
         let Alert = UIAlertController(title: title, message:  message, preferredStyle: .alert)
         Alert.addAction(UIAlertAction(title: actionTitle, style: actionStyle, handler: nil))
         present(Alert, animated: true, completion: nil)
+        if hapticFeedback {
+            let feedbackGenerator = UINotificationFeedbackGenerator()
+            feedbackGenerator.prepare()
+            feedbackGenerator.notificationOccurred(.error)
+        }
     }
     
     func formatProgressWheel(toShow: Bool) {
@@ -118,16 +127,12 @@ class LogIn: UIViewController, UITextFieldDelegate {
                 self.fetchUserValues(email: (Auth.auth().currentUser?.email)!) {
                     self.performSegue(withIdentifier: "LogIn", sender: self)
                     self.formatProgressWheel(toShow: false)
-                    if hapticFeedback == true {
-                        let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
-                        selectionFeedbackGenerator.selectionChanged()
-                    }
+                    self.giveHapticFeedback()
                 }
             } else {
                 self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
                 self.formatProgressWheel(toShow: false)
             }
-            
         }
     }
     

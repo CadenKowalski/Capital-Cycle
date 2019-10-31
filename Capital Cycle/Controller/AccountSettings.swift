@@ -58,6 +58,14 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
         userTypePickerView.dataSource = self
     }
     
+    // Initiates haptic feedback
+    func giveHapticFeedback() {
+        if hapticFeedback {
+            let feedbackGenerator = UISelectionFeedbackGenerator()
+            feedbackGenerator.selectionChanged()
+        }
+    }
+    
     // Dismisses the UIPickerView
     @IBAction func dismissUserTypePickerView(_ sender: Any) {
         userTypePickerView.isHidden = true
@@ -69,6 +77,11 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
         let Alert = UIAlertController(title: title, message:  message, preferredStyle: .alert)
         Alert.addAction(UIAlertAction(title: actionTitle, style: actionStyle, handler: nil))
         present(Alert, animated: true, completion: nil)
+        if hapticFeedback {
+            let feedbackGenerator = UINotificationFeedbackGenerator()
+            feedbackGenerator.prepare()
+            feedbackGenerator.notificationOccurred(.error)
+        }
     }
     
     // MARK: UIPickerView Setup
@@ -114,6 +127,7 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
     
     // Changes the User Type
     @IBAction func changeUserType(_ sender: UIButton) {
+        giveHapticFeedback()
         if userTypePickerView.isHidden {
             userTypePickerView.isHidden = false
             cancelBtn.isHidden = false
@@ -125,6 +139,7 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
     
     // Logs out the user
     @IBAction func logOut(_ sender: UIButton?) {
+        giveHapticFeedback()
         signedIn = false
         do {
             if sender == nil {
@@ -153,6 +168,7 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
     
     // Resets the user's password
     @IBAction func resetPassword(_ sender: UIButton) {
+        giveHapticFeedback()
         let resetPasswordAlert = UIAlertController(title: "Reset Password", message: "Enter your email adress", preferredStyle: .alert)
         resetPasswordAlert.addTextField { (textField) in
             textField.placeholder = "Email"
@@ -177,6 +193,7 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
     
     // Allows the user to delete their account
     @IBAction func deleteAccount(_ sender: UIButton) {
+        giveHapticFeedback()
         let confirmDeleteAlert = UIAlertController(title: "Confirm", message: "Are you sure you want to delete your account?", preferredStyle: .alert)
         confirmDeleteAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         confirmDeleteAlert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { action in

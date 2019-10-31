@@ -85,6 +85,10 @@ class StorePage: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         let websiteURL = URL(string: "\(websiteURLs[indexPath.row])")!
         let sVC = SFSafariViewController(url: websiteURL)
         present(sVC, animated: true, completion: nil)
+        if hapticFeedback {
+            let feedbackGenerator = UISelectionFeedbackGenerator()
+            feedbackGenerator.selectionChanged()
+        }
     }
 }
 

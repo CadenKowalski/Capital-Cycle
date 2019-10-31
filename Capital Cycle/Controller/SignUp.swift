@@ -73,6 +73,7 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
     
     // Keep the user signed in or not
     @IBAction func keepSignedIn(_ sender: UIButton) {
+        giveHapticFeedback(error: false)
         if !signedIn {
             signedIn = true
             sender.setImage(UIImage(named: "Checked"), for: .normal)
@@ -99,6 +100,7 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
     
     // User agrees to privacy policy and terms of service
     @IBAction func agreeToPolicies(_ sender: UIButton) {
+        giveHapticFeedback(error: false)
         if !Agree {
             Agree = true
             sender.setImage(UIImage(named: "Checked"), for: .normal)
@@ -108,11 +110,24 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
         }
     }
     
+    // Initiates haptic feedback
+    func giveHapticFeedback(error: Bool) {
+        if error {
+            let feedbackGenerator = UINotificationFeedbackGenerator()
+            feedbackGenerator.prepare()
+            feedbackGenerator.notificationOccurred(.error)
+        } else {
+            let feedbackGenerator = UISelectionFeedbackGenerator()
+            feedbackGenerator.selectionChanged()
+        }
+    }
+    
     // Shows an alert
     func showAlert(title: String, message: String, actionTitle: String, actionStyle: UIAlertAction.Style) {
         let Alert = UIAlertController(title: title, message:  message, preferredStyle: .alert)
         Alert.addAction(UIAlertAction(title: actionTitle, style: actionStyle, handler: nil))
         present(Alert, animated: true, completion: nil)
+        giveHapticFeedback(error: true)
     }
     
     // Switches on and off the progress wheel
@@ -171,6 +186,7 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
         if userType != UserType.none {
             userTypeLbl.backgroundColor = #colorLiteral(red: 0.75, green: 0.75, blue: 0.75, alpha: 1)
             userTypeLbl.alpha = 1.0
+            giveHapticFeedback(error: true)
         }
     }
     

@@ -48,6 +48,11 @@ class VerifyUser: UIViewController, UIAdaptivePresentationControllerDelegate {
         let Alert = UIAlertController(title: title, message:  message, preferredStyle: .alert)
         Alert.addAction(UIAlertAction(title: actionTitle, style: actionStyle, handler: nil))
         present(Alert, animated: true, completion: nil)
+        if hapticFeedback {
+            let feedbackGenerator = UINotificationFeedbackGenerator()
+            feedbackGenerator.prepare()
+            feedbackGenerator.notificationOccurred(.error)
+        }
     }
     
     // MARK: Sign Up
@@ -67,6 +72,10 @@ class VerifyUser: UIViewController, UIAdaptivePresentationControllerDelegate {
     // Signs up the user
     @IBAction func signUp(_ sender: UIButton) {
         self.performSegue(withIdentifier: "verifiedUser", sender: nil)
+        if hapticFeedback {
+            let feedbackGenerator = UISelectionFeedbackGenerator()
+            feedbackGenerator.selectionChanged()
+        }
         self.uploadUser(email: (Auth.auth().currentUser?.email)!)
     }
     

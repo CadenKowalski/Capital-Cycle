@@ -52,6 +52,11 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate, UIAdaptivePresenta
         let Alert = UIAlertController(title: title, message:  message, preferredStyle: .alert)
         Alert.addAction(UIAlertAction(title: actionTitle, style: actionStyle, handler: nil))
         present(Alert, animated: true, completion: nil)
+        if hapticFeedback {
+            let feedbackGenerator = UINotificationFeedbackGenerator()
+            feedbackGenerator.prepare()
+            feedbackGenerator.notificationOccurred(.error)
+        }
     }
     
     // MARK: Sign Up
@@ -60,6 +65,10 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate, UIAdaptivePresenta
     @IBAction func signUp(_ sender: UIButton) {
         if counselorIdTxtField.text == "082404" {
             performSegue(withIdentifier: "VerifiedCounselor", sender: nil)
+            if hapticFeedback {
+                let feedbackGenerator = UISelectionFeedbackGenerator()
+                feedbackGenerator.selectionChanged()
+            }
             self.uploadUser(email: SignUp.Instance.signUpEmail)
         } else {
             counselorIdTxtField.backgroundColor = .red

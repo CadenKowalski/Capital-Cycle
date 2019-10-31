@@ -132,6 +132,10 @@ class CamperInfoPage: UIViewController {
         parentPhoneLbl.text = "\(camperInfo[camperBtns.firstIndex(of: sender)!][2])"
         parentEmailLbl.text = "\(camperInfo[camperBtns.firstIndex(of: sender)!][3])"
         signedWaiverLbl.text = "\(camperInfo[camperBtns.firstIndex(of: sender)!][4])"
+        if hapticFeedback {
+            let feedbackGenerator = UISelectionFeedbackGenerator()
+            feedbackGenerator.selectionChanged()
+        }
     }
     
     // MARK: Core Data
