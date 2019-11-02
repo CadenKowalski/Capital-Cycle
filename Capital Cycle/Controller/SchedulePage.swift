@@ -15,6 +15,7 @@ class SchedulePage: UIViewController {
     @IBOutlet weak var gradientView: UIView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
     @IBOutlet weak var scheduleLblYConstraint: NSLayoutConstraint!
+    @IBOutlet weak var accountSettingsImageView: UIImageView!
     // Daily scroll view
     @IBOutlet weak var dailyScrollView: UIScrollView!
     @IBOutlet weak var dailyScrollViewYConstraint: NSLayoutConstraint!
@@ -94,6 +95,11 @@ class SchedulePage: UIViewController {
         gradientView.setGradientBackground()
         dailyBtn.setGradientButton(cornerRadius: 10)
         overviewBtn.setGradientButton(cornerRadius: 11)
+        
+        // Sets the profile image on the account settings button
+        accountSettingsImageView.isUserInteractionEnabled = true
+        accountSettingsImageView.layer.cornerRadius = 20
+        accountSettingsImageView.image = profileImage
         
         // Sets the API key for the GTLR Service so that the app can access the spreadhseet without credentials
         Service.apiKey = "AIzaSyBIdPHR_nqgL9G6fScmlcPMReBM5PmtVD8"

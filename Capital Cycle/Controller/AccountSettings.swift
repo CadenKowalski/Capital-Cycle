@@ -10,7 +10,7 @@ import UIKit
 import FirebaseFirestore
 import FirebaseAuth
 
-class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     // Storyboard outlets
     @IBOutlet weak var gradientView: UIView!
@@ -44,6 +44,8 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
         
         // Formats the profile image view
         profileImageView.layer.cornerRadius = 50
+        profileImageView.isUserInteractionEnabled = true
+        profileImageView.image = profileImage
         
         // Formats the email and userType labels
         emailLbl.text = "Email: \((Auth.auth().currentUser?.email)!)"
@@ -135,6 +137,32 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
             userTypePickerView.isHidden = true
             cancelBtn.isHidden = true
         }
+    }
+    
+    // Displays the image picker to allow users to set/reset their profile image
+    @IBAction func chooseProfileImage(_ sender: UITapGestureRecognizer) {
+        let Alert = UIAlertController(title: nil, message: "How do you want to select your image?", preferredStyle: .actionSheet)
+        Alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: nil))
+        Alert.addAction(UIAlertAction(title: "Photos Library", style: .default, handler:  { (Action) in
+            let imagePickerController = UIImagePickerController()
+            imagePickerController.delegate = self
+            imagePickerController.allowsEditing = true
+            imagePickerController.sourceType = .photoLibrary
+            self.present(imagePickerController, animated: true, completion: nil)
+        }))
+        
+        Alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(Alert, animated: true, completion: nil)
+    }
+    
+    // Sets the selected image to the users profile image
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let Image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            profileImage = Image
+            profileImageView.image = profileImage
+        }
+        
+        dismiss(animated: true, completion: nil)
     }
     
     // Logs out the user

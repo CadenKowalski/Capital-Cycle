@@ -15,6 +15,7 @@ class StorePage: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     @IBOutlet weak var gradientView: UIView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
     @IBOutlet weak var storeLblYConstraint: NSLayoutConstraint!
+    @IBOutlet weak var accountSettingsImageView: UIImageView!
     @IBOutlet weak var productsCollection: UICollectionView!
     @IBOutlet weak var productsCollectionHeight: NSLayoutConstraint!
     private(set) public var Products = [Product]()
@@ -48,6 +49,11 @@ class StorePage: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         
         // Sets the gradients
         gradientView.setGradientBackground()
+        
+        // Sets the profile image on the account settings button
+        accountSettingsImageView.isUserInteractionEnabled = true
+        accountSettingsImageView.layer.cornerRadius = 20
+        accountSettingsImageView.image = profileImage
         
         // Formats the products collection view
         productsCollection.delegate = self

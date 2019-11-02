@@ -14,6 +14,7 @@ class FAQPage: UIViewController {
     @IBOutlet weak var gradientView: UIView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
     @IBOutlet weak var FAQLblYConstraint: NSLayoutConstraint!
+    @IBOutlet weak var accountSettingsImageView: UIImageView!
     @IBOutlet weak var scrollViewYConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
@@ -31,6 +32,11 @@ class FAQPage: UIViewController {
         } else if view.frame.height >= 812 {
             FAQLblYConstraint.constant = 15
         }
+        
+        // Sets the profile image on the account settings button
+        accountSettingsImageView.isUserInteractionEnabled = true
+        accountSettingsImageView.layer.cornerRadius = 20
+        accountSettingsImageView.image = profileImage
         
         // Readjusts the Y constraints
         scrollViewYConstraint.constant = gradientViewHeight.constant + 8

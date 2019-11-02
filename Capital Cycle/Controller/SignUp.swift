@@ -9,11 +9,12 @@
 import UIKit
 import Firebase
 
-class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     // Storyboard outlets
     @IBOutlet weak var gradientView: UIView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var emailTxtField: UITextField!
     @IBOutlet weak var passTxtField: UITextField!
     @IBOutlet weak var confmPassTxtField: UITextField!
@@ -26,6 +27,7 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
     // Code global vars
     static let Instance = SignUp()
     var signUpEmail: String!
+    var profileImageUrl: String!
     var Agree = false
     var typesOfUser = ["--", "Camper", "Parent", "Counselor"]
     
@@ -48,6 +50,10 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
         gradientView.setGradientBackground()
         signUpBtn.setGradientButton(cornerRadius: 22.5)
 
+        // Sets up the profile image view
+        profileImageView.layer.cornerRadius = 50
+        profileImageView.isUserInteractionEnabled = true
+        
         // Sets up the text fields
         emailTxtField.delegate = self
         passTxtField.delegate = self
@@ -69,6 +75,32 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
         
         // Formats the progress wheel
         signUpBtnProgressWheel.isHidden = true
+    }
+    
+    // Displays the image picker to allow users to set/reset their profile image
+    @IBAction func chooseProfileImage(_ sender: UITapGestureRecognizer) {
+        let Alert = UIAlertController(title: nil, message: "How do you want to select your image?", preferredStyle: .actionSheet)
+        Alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: nil))
+        Alert.addAction(UIAlertAction(title: "Photos Library", style: .default, handler:  { (Action) in
+            let imagePickerController = UIImagePickerController()
+            imagePickerController.delegate = self
+            imagePickerController.allowsEditing = true
+            imagePickerController.sourceType = .photoLibrary
+            self.present(imagePickerController, animated: true, completion: nil)
+        }))
+        
+        Alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(Alert, animated: true, completion: nil)
+    }
+    
+    // Sets the selected image to the users profile image
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let Image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            profileImage = Image
+            profileImageView.image = profileImage
+        }
+        
+        dismiss(animated: true, completion: nil)
     }
     
     // Keep the user signed in or not
@@ -192,7 +224,7 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
     
     // MARK: Sign Up
 
-    // Signs up the user
+    // Verifies the users information
     @IBAction func verifyInputs(_ sender: UIButton) {
         let email = emailTxtField.text ?? ""
         let password = passTxtField.text ?? ""
@@ -220,6 +252,27 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
         }
     }
     
+    // Uploads the users profile image to Firebase
+    func getProfileImageUrl() {
+        let uid = Auth.auth().currentUser?.uid
+        let storageReference = Storage.storage().reference().child("user/\(String(describing: uid))")
+        let imageData = profileImage.jpegData(compressionQuality: 1.0)!
+        storageReference.putData(imageData, metadata: nil) { (metaData, error) in
+            if error == nil {
+                storageReference.downloadURL(completion: { (url, error) in
+                    if error == nil {
+                        let urlString = url?.absoluteString
+                        SignUp.Instance.profileImageUrl = urlString
+                    } else {
+                        self.showAlert(title: "Error", message: "Could not upload image", actionTitle: "OK", actionStyle: .default)
+                    }
+                })
+            } else {
+                self.showAlert(title: "Error", message: "Could not upload image", actionTitle: "OK", actionStyle: .default)
+            }
+        }
+    }
+    
     // Signs up the user
     func signUp(email: String, password: String) {
         formatProgressWheel(toShow: true)
@@ -233,6 +286,7 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
                     Auth.auth().currentUser?.sendEmailVerification(completion: nil)
                 }
                 
+                self.getProfileImageUrl()
             } else {
                 self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
             }

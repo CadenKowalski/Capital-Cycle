@@ -16,6 +16,7 @@ class CamperInfoPage: UIViewController {
     @IBOutlet weak var gradientView: UIView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
     @IBOutlet weak var camperInfoLblYConstraint: NSLayoutConstraint!
+    @IBOutlet weak var accountSettingsImageView: UIImageView!
     @IBOutlet weak var camperScrollViewYConstraint: NSLayoutConstraint!
     @IBOutlet weak var scrollViewDisplay: UIView!
     @IBOutlet weak var scrollViewDisplayHeight: NSLayoutConstraint!
@@ -53,6 +54,11 @@ class CamperInfoPage: UIViewController {
         
         // Readjusts the Y constraints relative to the gradient view height
         camperScrollViewYConstraint.constant = gradientView.frame.height + 10
+        
+        // Sets the profile image on the account settings button
+        accountSettingsImageView.isUserInteractionEnabled = true
+        accountSettingsImageView.layer.cornerRadius = 20
+        accountSettingsImageView.image = profileImage
         
         // Formats the camper info view
         camperInfoView.layer.cornerRadius = 20

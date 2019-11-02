@@ -263,30 +263,28 @@ Phone: 202.288.5245</string>
                                             <segue destination="ECW-nJ-Zo5" kind="presentation" id="stl-Sk-OpA"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OcY-mR-OkY" userLabel="Account Btn">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="adt-QC-e0q">
                                         <rect key="frame" x="358" y="17" width="40" height="38.666666666666671"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="X9w-ni-Ms6"/>
-                                            <constraint firstAttribute="width" constant="40" id="tYg-5m-E0Q"/>
-                                        </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" backgroundImage="person.circle" catalog="system">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="tEm-TW-4iG"/>
+                                            <constraint firstAttribute="height" constant="40" id="xpE-H5-iLB"/>
+                                        </constraints>
                                         <connections>
-                                            <segue destination="D9c-sc-o2H" kind="presentation" id="DzP-Fk-IQ5"/>
+                                            <outletCollection property="gestureRecognizers" destination="BIt-Ma-rhu" appends="YES" id="ejz-OM-ilV"/>
                                         </connections>
-                                    </button>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="dZu-KI-aQI" firstAttribute="centerY" secondItem="E4V-Od-9gE" secondAttribute="centerY" constant="5" id="8nH-dq-YMC"/>
                                     <constraint firstItem="dZu-KI-aQI" firstAttribute="centerX" secondItem="E4V-Od-9gE" secondAttribute="centerX" id="Ivh-jm-vc0"/>
                                     <constraint firstAttribute="height" constant="100" id="L6f-kV-R5C"/>
-                                    <constraint firstItem="OcY-mR-OkY" firstAttribute="top" secondItem="E4V-Od-9gE" secondAttribute="top" constant="16" id="PGd-bA-pYd"/>
+                                    <constraint firstItem="adt-QC-e0q" firstAttribute="top" secondItem="E4V-Od-9gE" secondAttribute="top" constant="16" id="NOf-Ld-QZu"/>
+                                    <constraint firstAttribute="trailing" secondItem="adt-QC-e0q" secondAttribute="trailing" constant="16" id="PdZ-vX-Tyv"/>
                                     <constraint firstItem="Q6C-0K-vCN" firstAttribute="top" secondItem="E4V-Od-9gE" secondAttribute="top" constant="16" id="WVi-yP-Fso"/>
                                     <constraint firstItem="Q6C-0K-vCN" firstAttribute="leading" secondItem="E4V-Od-9gE" secondAttribute="leading" constant="16" id="cnp-Ag-lIO"/>
-                                    <constraint firstAttribute="trailing" secondItem="OcY-mR-OkY" secondAttribute="trailing" constant="16" id="zlL-6z-2k0"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -304,6 +302,7 @@ Phone: 202.288.5245</string>
                     </view>
                     <size key="freeformSize" width="414" height="1225"/>
                     <connections>
+                        <outlet property="accountSettingsImageView" destination="adt-QC-e0q" id="1dv-pZ-oZ0"/>
                         <outlet property="gradientView" destination="E4V-Od-9gE" id="S28-W7-RDG"/>
                         <outlet property="gradientViewHeight" destination="L6f-kV-R5C" id="lKj-c9-ThF"/>
                         <outlet property="locationLbl" destination="rhe-8X-Nng" id="d06-eC-MpR"/>
@@ -316,6 +315,11 @@ Phone: 202.288.5245</string>
                 <tapGestureRecognizer id="VdN-xI-s1m" userLabel="Open Maps Tap Gesture Recognizer">
                     <connections>
                         <action selector="openMapsToLocation:" destination="bH8-1u-VSq" id="40E-hK-xVV"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="BIt-Ma-rhu" userLabel="accountSettingsImageViewTapGestureRecognizer">
+                    <connections>
+                        <segue destination="D9c-sc-o2H" kind="show" id="nul-0X-SWa"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -741,7 +745,7 @@ Phone: 202.288.5245</string>
                                                             <constraint firstAttribute="width" constant="50" id="IUE-Lb-TlL"/>
                                                             <constraint firstAttribute="height" constant="30" id="hbh-ra-tJf"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
+                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
                                                         <state key="normal">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
@@ -849,28 +853,26 @@ Phone: 202.288.5245</string>
                                             <segue destination="ECW-nJ-Zo5" kind="show" id="CFn-zx-hpt"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NMI-M9-zq1" userLabel="Account Btn">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="3Fa-Jd-nf8">
                                         <rect key="frame" x="358" y="17" width="40" height="38.666666666666671"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="40" id="AuX-Ek-3Aj"/>
-                                            <constraint firstAttribute="height" constant="40" id="iSa-ce-KGr"/>
-                                        </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" backgroundImage="person.circle" catalog="system">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="0CU-pK-YVv"/>
+                                            <constraint firstAttribute="height" constant="40" id="mh1-KU-3su"/>
+                                        </constraints>
                                         <connections>
-                                            <segue destination="D9c-sc-o2H" kind="presentation" id="13v-vZ-tnK"/>
+                                            <outletCollection property="gestureRecognizers" destination="zad-FT-c96" appends="YES" id="DYl-ja-MYt"/>
                                         </connections>
-                                    </button>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="7uh-km-9YW"/>
-                                    <constraint firstItem="NMI-M9-zq1" firstAttribute="top" secondItem="cXw-42-buD" secondAttribute="top" constant="16" id="MEA-4s-zVk"/>
                                     <constraint firstItem="ucQ-X1-3da" firstAttribute="top" secondItem="cXw-42-buD" secondAttribute="top" constant="16" id="Z05-Bh-qlB"/>
+                                    <constraint firstItem="3Fa-Jd-nf8" firstAttribute="top" secondItem="cXw-42-buD" secondAttribute="top" constant="16" id="Zic-1U-ijJ"/>
                                     <constraint firstItem="yxy-7o-B0d" firstAttribute="centerY" secondItem="cXw-42-buD" secondAttribute="centerY" constant="5" id="bmX-ju-t3T"/>
-                                    <constraint firstAttribute="trailing" secondItem="NMI-M9-zq1" secondAttribute="trailing" constant="16" id="jZM-jB-tqV"/>
+                                    <constraint firstItem="sM4-dh-VAu" firstAttribute="trailing" secondItem="3Fa-Jd-nf8" secondAttribute="trailing" constant="16" id="kq5-IF-7wR"/>
                                     <constraint firstItem="yxy-7o-B0d" firstAttribute="centerX" secondItem="cXw-42-buD" secondAttribute="centerX" id="utE-96-gOk"/>
                                     <constraint firstItem="ucQ-X1-3da" firstAttribute="leading" secondItem="cXw-42-buD" secondAttribute="leading" constant="16" id="z5m-Tc-6KZ"/>
                                 </constraints>
@@ -899,6 +901,7 @@ Phone: 202.288.5245</string>
                     </view>
                     <size key="freeformSize" width="414" height="900"/>
                     <connections>
+                        <outlet property="accountSettingsImageView" destination="3Fa-Jd-nf8" id="7o3-En-gK5"/>
                         <outlet property="dailyBtn" destination="Xdx-mw-SBM" id="NgB-wv-lgi"/>
                         <outlet property="dailyDateLbl" destination="s8S-P4-4en" id="pNi-3f-VER"/>
                         <outlet property="dailyScrollView" destination="7uq-vL-WCO" id="FCQ-Vi-TBe"/>
@@ -935,6 +938,11 @@ Phone: 202.288.5245</string>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xxV-8X-MPw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="zad-FT-c96" userLabel="accountSettingsImageViewTapGestureRecognizer">
+                    <connections>
+                        <segue destination="D9c-sc-o2H" kind="show" id="uwW-YV-dra"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-424" y="825"/>
         </scene>
@@ -1137,7 +1145,7 @@ Phone: 202.288.5245</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U2v-Qh-GTp">
-                                <rect key="frame" x="16" y="240" width="343" height="23.333333333333314"/>
+                                <rect key="frame" x="16" y="224" width="343" height="23.333333333333343"/>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
                                 <color key="textColor" name="LabelColor"/>
                                 <nil key="highlightedColor"/>
@@ -1152,19 +1160,9 @@ Phone: 202.288.5245</string>
                                 </constraints>
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="light"/>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="JLe-3x-Due" appends="YES" id="AOX-li-zED"/>
+                                    <outletCollection property="gestureRecognizers" destination="R4h-eE-ZtA" appends="YES" id="mCK-2g-hej"/>
                                 </connections>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Iy-Fo-8yA">
-                                <rect key="frame" x="51" y="211" width="30" height="20.666666666666657"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20.670000000000002" id="x5m-Tx-r2B"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
-                                <state key="normal" title="Edit">
-                                    <color key="titleColor" name="LabelColor"/>
-                                </state>
-                            </button>
                             <pickerView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H8d-i7-asj">
                                 <rect key="frame" x="0.0" y="542" width="375" height="216"/>
                                 <color key="backgroundColor" name="ViewColor"/>
@@ -1181,7 +1179,7 @@ Phone: 202.288.5245</string>
                         </subviews>
                         <color key="backgroundColor" name="ViewColor"/>
                         <constraints>
-                            <constraint firstItem="U2v-Qh-GTp" firstAttribute="top" secondItem="gYP-kz-BVS" secondAttribute="bottom" constant="24" id="148-8G-7E3"/>
+                            <constraint firstItem="U2v-Qh-GTp" firstAttribute="top" secondItem="gYP-kz-BVS" secondAttribute="bottom" constant="8" id="148-8G-7E3"/>
                             <constraint firstItem="j6F-a2-tkK" firstAttribute="centerX" secondItem="RWn-1Z-azi" secondAttribute="centerX" id="7Gj-qC-Bbq"/>
                             <constraint firstItem="j6F-a2-tkK" firstAttribute="top" secondItem="aBH-zv-Xul" secondAttribute="bottom" constant="12" id="7ta-SG-VdF"/>
                             <constraint firstItem="T8Z-2D-dEH" firstAttribute="centerX" secondItem="WZ6-LX-trs" secondAttribute="centerX" id="9T1-VY-3cL"/>
@@ -1190,7 +1188,6 @@ Phone: 202.288.5245</string>
                             <constraint firstItem="JZ3-jd-Iqg" firstAttribute="leading" secondItem="hgD-NQ-vKY" secondAttribute="leading" id="Haz-WT-Qm3"/>
                             <constraint firstItem="aBH-zv-Xul" firstAttribute="centerX" secondItem="RWn-1Z-azi" secondAttribute="centerX" id="Hgq-Fg-0q0"/>
                             <constraint firstItem="gYP-kz-BVS" firstAttribute="top" secondItem="JZ3-jd-Iqg" secondAttribute="bottom" constant="16" id="I5c-Ft-ROy"/>
-                            <constraint firstItem="8Iy-Fo-8yA" firstAttribute="top" secondItem="gYP-kz-BVS" secondAttribute="bottom" constant="-5" id="JFi-XF-BQ6"/>
                             <constraint firstAttribute="trailing" secondItem="H8d-i7-asj" secondAttribute="trailing" id="PdT-1X-zYF"/>
                             <constraint firstItem="WZ6-LX-trs" firstAttribute="top" secondItem="JZ3-jd-Iqg" secondAttribute="bottom" constant="45" id="SRE-kx-5Bf"/>
                             <constraint firstItem="JZ3-jd-Iqg" firstAttribute="trailing" secondItem="hgD-NQ-vKY" secondAttribute="trailing" id="U36-W2-NMw"/>
@@ -1200,7 +1197,6 @@ Phone: 202.288.5245</string>
                             <constraint firstItem="F2f-dP-KQA" firstAttribute="centerX" secondItem="RWn-1Z-azi" secondAttribute="centerX" id="bGT-oM-2WO"/>
                             <constraint firstAttribute="bottom" secondItem="j6F-a2-tkK" secondAttribute="bottom" constant="25" id="cd3-RC-y2m"/>
                             <constraint firstItem="WZ6-LX-trs" firstAttribute="leading" secondItem="gYP-kz-BVS" secondAttribute="trailing" constant="16" id="eYD-W0-iVR"/>
-                            <constraint firstItem="8Iy-Fo-8yA" firstAttribute="centerX" secondItem="gYP-kz-BVS" secondAttribute="centerX" id="iP7-rT-nhE"/>
                             <constraint firstItem="T8Z-2D-dEH" firstAttribute="top" secondItem="WZ6-LX-trs" secondAttribute="bottom" id="iRE-En-MD8"/>
                             <constraint firstItem="gYP-kz-BVS" firstAttribute="leading" secondItem="RWn-1Z-azi" secondAttribute="leading" constant="16" id="lvc-oM-vCU"/>
                             <constraint firstItem="hgD-NQ-vKY" firstAttribute="trailing" secondItem="oxr-Cq-GOP" secondAttribute="trailing" constant="8" id="oMf-D0-XDd"/>
@@ -1210,6 +1206,7 @@ Phone: 202.288.5245</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hgD-NQ-vKY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="4ux-ac-FeO"/>
                     <connections>
                         <outlet property="cancelBtn" destination="oxr-Cq-GOP" id="Ydd-SO-GLS"/>
                         <outlet property="emailLbl" destination="U2v-Qh-GTp" id="dHg-NW-4Rv"/>
@@ -1221,7 +1218,11 @@ Phone: 202.288.5245</string>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aoy-dT-eGP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="JLe-3x-Due" userLabel="Change Profile Pic Tap Gesture Recognizer"/>
+                <tapGestureRecognizer id="R4h-eE-ZtA" userLabel="profileImageTapGestureRecognizer">
+                    <connections>
+                        <action selector="chooseProfileImage:" destination="D9c-sc-o2H" id="28H-bw-CPO"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="832.79999999999995" y="1839.9014778325125"/>
         </scene>
@@ -1312,29 +1313,27 @@ $375</string>
                                             <segue destination="ECW-nJ-Zo5" kind="show" id="RM7-KP-pjo"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bl4-nt-0lH" userLabel="Account Btn">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="3Dw-am-jHS" userLabel="accountSettingsImageView">
                                         <rect key="frame" x="319" y="17" width="40" height="38.666666666666671"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="VhJ-zV-bI6"/>
-                                            <constraint firstAttribute="width" constant="40" id="nGr-mG-VTv"/>
-                                        </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" backgroundImage="person.circle" catalog="system">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="39m-HG-ZOX"/>
+                                            <constraint firstAttribute="width" constant="40" id="x1g-5r-1dh"/>
+                                        </constraints>
                                         <connections>
-                                            <segue destination="D9c-sc-o2H" kind="presentation" id="0gP-vi-mhT"/>
+                                            <outletCollection property="gestureRecognizers" destination="Qmt-yH-ian" appends="YES" id="Ur9-Dn-X0P"/>
                                         </connections>
-                                    </button>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="7fy-Cg-hTG"/>
-                                    <constraint firstItem="bl4-nt-0lH" firstAttribute="top" secondItem="kr4-03-y19" secondAttribute="top" constant="16" id="UmN-PQ-x3W"/>
+                                    <constraint firstAttribute="trailing" secondItem="3Dw-am-jHS" secondAttribute="trailing" constant="16" id="N5u-Dk-ixK"/>
                                     <constraint firstItem="WYD-fk-ieQ" firstAttribute="leading" secondItem="kr4-03-y19" secondAttribute="leading" constant="16" id="Utc-H6-QpJ"/>
-                                    <constraint firstAttribute="trailing" secondItem="bl4-nt-0lH" secondAttribute="trailing" constant="16" id="X5R-3W-AHh"/>
                                     <constraint firstItem="dCK-ah-geS" firstAttribute="centerX" secondItem="kr4-03-y19" secondAttribute="centerX" id="YkJ-XI-dwr"/>
                                     <constraint firstItem="WYD-fk-ieQ" firstAttribute="top" secondItem="kr4-03-y19" secondAttribute="top" constant="16" id="eLE-K2-4Ol"/>
+                                    <constraint firstItem="3Dw-am-jHS" firstAttribute="top" secondItem="kr4-03-y19" secondAttribute="top" constant="16" id="myy-ye-3nn"/>
                                     <constraint firstItem="dCK-ah-geS" firstAttribute="centerY" secondItem="kr4-03-y19" secondAttribute="centerY" constant="5" id="tv7-hj-QvO"/>
                                 </constraints>
                             </view>
@@ -1352,6 +1351,7 @@ $375</string>
                         <viewLayoutGuide key="safeArea" id="5Bv-hQ-KB6"/>
                     </view>
                     <connections>
+                        <outlet property="accountSettingsImageView" destination="3Dw-am-jHS" id="rYQ-SF-6Mg"/>
                         <outlet property="gradientView" destination="kr4-03-y19" id="d8Y-st-Rgi"/>
                         <outlet property="gradientViewHeight" destination="7fy-Cg-hTG" id="lOw-4y-SXn"/>
                         <outlet property="productsCollection" destination="nEi-nu-aGc" id="vx6-Ut-83g"/>
@@ -1360,6 +1360,11 @@ $375</string>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8HV-gq-bco" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Qmt-yH-ian" userLabel="accountSettingsImageViewTapGestureRecognizer">
+                    <connections>
+                        <segue destination="D9c-sc-o2H" kind="show" id="b66-rs-3uw"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="377" y="793"/>
         </scene>
@@ -1528,12 +1533,26 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="48P-Lo-5LU" userLabel="accountSettingsImageView">
+                                        <rect key="frame" x="319" y="17" width="40" height="38.666666666666671"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="868-ES-YJj"/>
+                                            <constraint firstAttribute="height" constant="40" id="NYn-VO-FsE"/>
+                                        </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="knD-0v-eih" appends="YES" id="KIB-Hu-mf5"/>
+                                        </connections>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="MdU-L6-JD5" firstAttribute="centerY" secondItem="7qZ-6e-4gC" secondAttribute="centerY" constant="5" id="Off-GJ-0xj"/>
                                     <constraint firstItem="MdU-L6-JD5" firstAttribute="centerX" secondItem="7qZ-6e-4gC" secondAttribute="centerX" id="RHF-PL-SdM"/>
+                                    <constraint firstAttribute="trailing" secondItem="48P-Lo-5LU" secondAttribute="trailing" constant="16" id="WpS-r6-eWb"/>
                                     <constraint firstAttribute="height" constant="100" id="XkF-Nm-exH"/>
+                                    <constraint firstItem="48P-Lo-5LU" firstAttribute="top" secondItem="7qZ-6e-4gC" secondAttribute="top" constant="16" id="tiT-F3-HMd"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tb1-Xi-Kio" userLabel="Settings Btn">
@@ -1549,20 +1568,6 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                     <segue destination="ECW-nJ-Zo5" kind="show" id="4VI-xZ-OTW"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Bn-MX-rLx" userLabel="Account Btn">
-                                <rect key="frame" x="319" y="17" width="40" height="38.666666666666671"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="5ZM-To-WdG"/>
-                                    <constraint firstAttribute="height" constant="40" id="tHt-dz-9Zp"/>
-                                </constraints>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" backgroundImage="person.circle" catalog="system">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <segue destination="D9c-sc-o2H" kind="presentation" id="FyG-rU-agW"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" name="ViewColor"/>
                         <constraints>
@@ -1573,8 +1578,6 @@ A: We have a variety of games and books as well as a gym and playground to occup
                             <constraint firstItem="7qZ-6e-4gC" firstAttribute="leading" secondItem="boU-Ua-Adt" secondAttribute="leading" id="K1f-D7-Ta3"/>
                             <constraint firstItem="grX-QG-9rR" firstAttribute="trailing" secondItem="boU-Ua-Adt" secondAttribute="trailing" id="RPd-jc-NZ8"/>
                             <constraint firstItem="grX-QG-9rR" firstAttribute="top" secondItem="8VS-e5-9M6" secondAttribute="top" constant="108" id="WNY-Cq-Fnj"/>
-                            <constraint firstItem="6Bn-MX-rLx" firstAttribute="top" secondItem="8VS-e5-9M6" secondAttribute="top" constant="16" id="Xfn-C3-6I1"/>
-                            <constraint firstAttribute="trailing" secondItem="6Bn-MX-rLx" secondAttribute="trailing" constant="16" id="Z7a-md-1SI"/>
                             <constraint firstItem="7qZ-6e-4gC" firstAttribute="trailing" secondItem="boU-Ua-Adt" secondAttribute="trailing" id="k1T-w2-1XT"/>
                             <constraint firstItem="7qZ-6e-4gC" firstAttribute="top" secondItem="8VS-e5-9M6" secondAttribute="top" id="mLG-Mn-DgX"/>
                         </constraints>
@@ -1583,12 +1586,18 @@ A: We have a variety of games and books as well as a gym and playground to occup
                     <size key="freeformSize" width="375" height="1200"/>
                     <connections>
                         <outlet property="FAQLblYConstraint" destination="Off-GJ-0xj" id="kQa-1A-66X"/>
+                        <outlet property="accountSettingsImageView" destination="48P-Lo-5LU" id="aJu-Uh-7Ru"/>
                         <outlet property="gradientView" destination="7qZ-6e-4gC" id="GFl-5x-iMA"/>
                         <outlet property="gradientViewHeight" destination="XkF-Nm-exH" id="7CW-bb-BdR"/>
                         <outlet property="scrollViewYConstraint" destination="WNY-Cq-Fnj" id="F66-Td-i2Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uBk-Hx-su6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="knD-0v-eih" userLabel="accountSettingsImageViewTapGestureRecognizer">
+                    <connections>
+                        <segue destination="D9c-sc-o2H" kind="show" id="504-Hf-zMV"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1172" y="935"/>
         </scene>
@@ -1750,20 +1759,18 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                             <segue destination="ECW-nJ-Zo5" kind="show" id="i74-cw-zSX"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1NM-gb-9Bb" userLabel="Account Btn">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="lgs-0j-80A" userLabel="accountSettingsImageView">
                                         <rect key="frame" x="319" y="17" width="40" height="38.666666666666671"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="40" id="AUU-fa-DBS"/>
-                                            <constraint firstAttribute="height" constant="40" id="gKv-Nr-uCw"/>
-                                        </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" backgroundImage="person.circle" catalog="system">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="HsE-HE-HJR"/>
+                                            <constraint firstAttribute="height" constant="40" id="IGh-Fq-mfN"/>
+                                        </constraints>
                                         <connections>
-                                            <segue destination="D9c-sc-o2H" kind="presentation" id="ey9-lr-fUT"/>
+                                            <outletCollection property="gestureRecognizers" destination="ZXi-ZH-mVr" appends="YES" id="izE-tG-hzC"/>
                                         </connections>
-                                    </button>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -1771,9 +1778,9 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                     <constraint firstItem="5rT-LV-p55" firstAttribute="leading" secondItem="kdO-CT-UdU" secondAttribute="leading" constant="16" id="EO3-4T-1fb"/>
                                     <constraint firstItem="OhW-dJ-0nM" firstAttribute="centerY" secondItem="kdO-CT-UdU" secondAttribute="centerY" constant="5" id="FN3-Tg-kHP"/>
                                     <constraint firstItem="5rT-LV-p55" firstAttribute="top" secondItem="kdO-CT-UdU" secondAttribute="top" constant="16" id="KyP-pf-ycc"/>
+                                    <constraint firstAttribute="trailing" secondItem="lgs-0j-80A" secondAttribute="trailing" constant="16" id="PrK-xA-hu3"/>
                                     <constraint firstItem="OhW-dJ-0nM" firstAttribute="centerX" secondItem="kdO-CT-UdU" secondAttribute="centerX" id="Pwd-Ww-caP"/>
-                                    <constraint firstAttribute="trailing" secondItem="1NM-gb-9Bb" secondAttribute="trailing" constant="16" id="Tb4-2o-Dof"/>
-                                    <constraint firstItem="1NM-gb-9Bb" firstAttribute="top" secondItem="kdO-CT-UdU" secondAttribute="top" constant="16" id="iwU-fE-cdf"/>
+                                    <constraint firstItem="lgs-0j-80A" firstAttribute="top" secondItem="kdO-CT-UdU" secondAttribute="top" constant="16" id="wHm-ol-jWx"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1791,6 +1798,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                     </view>
                     <size key="freeformSize" width="375" height="812"/>
                     <connections>
+                        <outlet property="accountSettingsImageView" destination="lgs-0j-80A" id="VL6-Df-2yb"/>
                         <outlet property="camperInfoLblYConstraint" destination="FN3-Tg-kHP" id="rla-XV-seG"/>
                         <outlet property="camperInfoView" destination="zQz-Ii-lcy" id="s2R-ee-RiO"/>
                         <outlet property="camperName" destination="0kj-HB-fqT" id="NAa-L5-Jz6"/>
@@ -1806,6 +1814,11 @@ A: We have a variety of games and books as well as a gym and playground to occup
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ooO-Ce-bYw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="ZXi-ZH-mVr" userLabel="accountSettingsImageViewTapGestureRecognizer">
+                    <connections>
+                        <segue destination="D9c-sc-o2H" kind="show" id="SNw-F0-iiv"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1927" y="791"/>
         </scene>
@@ -2115,29 +2128,42 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                     <constraint firstItem="WFi-Tg-OYo" firstAttribute="centerX" secondItem="1lx-NS-scX" secondAttribute="centerX" id="zku-cQ-AFz"/>
                                 </constraints>
                             </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="zTC-OI-wyz" userLabel="Profile Image View">
+                                <rect key="frame" x="137.66666666666666" y="109" width="100" height="98.333333333333329"/>
+                                <color key="tintColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="OKk-ij-KTH"/>
+                                    <constraint firstAttribute="width" constant="100" id="QMd-zW-ecl"/>
+                                </constraints>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="light"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="RQF-s0-mUV" appends="YES" id="gai-DZ-GfK"/>
+                                </connections>
+                            </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O6n-C3-gRh">
-                                <rect key="frame" x="16" y="116" width="343" height="34"/>
+                                <rect key="frame" x="16" y="216" width="343" height="34"/>
                                 <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done" textContentType="email"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GNk-Ht-aHI">
-                                <rect key="frame" x="16" y="166" width="343" height="34"/>
+                                <rect key="frame" x="16" y="266" width="343" height="34"/>
                                 <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES" textContentType="new-password"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3u5-72-jbV">
-                                <rect key="frame" x="16" y="216" width="343" height="34"/>
+                                <rect key="frame" x="16" y="316" width="343" height="34"/>
                                 <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES" textContentType="new-password"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I am a" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ILc-KA-kIH">
-                                <rect key="frame" x="15.999999999999996" y="272" width="46.666666666666657" height="20.666666666666686"/>
+                                <rect key="frame" x="15.999999999999996" y="372" width="46.666666666666657" height="20.666666666666686"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="46.670000000000002" id="H9Y-Vh-tmU"/>
                                 </constraints>
@@ -2146,7 +2172,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qf8-Wn-zz9" userLabel="User Type Lbl">
-                                <rect key="frame" x="66.666666666666657" y="266" width="292.33333333333337" height="34"/>
+                                <rect key="frame" x="66.666666666666657" y="366" width="292.33333333333337" height="34"/>
                                 <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -2160,7 +2186,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 </connections>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ra-2Z-TlZ" userLabel="Check Box">
-                                <rect key="frame" x="13" y="310.33333333333331" width="25" height="25"/>
+                                <rect key="frame" x="13" y="410.33333333333331" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="KJ9-md-jns"/>
                                     <constraint firstAttribute="width" constant="25" id="i3Y-IW-h3I"/>
@@ -2173,7 +2199,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keep me signed in" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rje-J8-oBE" userLabel="Keep Me Signed In">
-                                <rect key="frame" x="42.000000000000007" y="317" width="88.666666666666686" height="13"/>
+                                <rect key="frame" x="42.000000000000007" y="417" width="88.666666666666686" height="13"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="88.670000000000002" id="JD9-Id-OgX"/>
                                     <constraint firstAttribute="height" constant="13" id="VUS-7L-2MU"/>
@@ -2183,7 +2209,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5fa-Sm-lDz" userLabel="Check Box">
-                                <rect key="frame" x="13" y="345.33333333333331" width="25" height="25"/>
+                                <rect key="frame" x="13" y="445.33333333333331" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="Gdo-s2-9C5"/>
                                     <constraint firstAttribute="height" constant="25" id="JLd-UU-dZ6"/>
@@ -2196,7 +2222,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I have read and agree to the" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8bD-Zf-iA1" userLabel="Agree Lbl">
-                                <rect key="frame" x="42" y="352" width="135.33333333333334" height="12"/>
+                                <rect key="frame" x="42" y="452" width="135.33333333333334" height="12"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="135.33000000000001" id="bJW-Uj-KAg"/>
                                 </constraints>
@@ -2205,7 +2231,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6V0-zb-pDi" userLabel="Privacy Policy Btn">
-                                <rect key="frame" x="180.33333333333334" y="351" width="67" height="15"/>
+                                <rect key="frame" x="180.33333333333334" y="451" width="67" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="67" id="LXy-Cx-dha"/>
                                     <constraint firstAttribute="height" constant="15" id="VVE-sO-cQJ"/>
@@ -2227,7 +2253,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ajG-sE-VYd">
-                                <rect key="frame" x="112.66666666666669" y="382" width="150" height="45"/>
+                                <rect key="frame" x="112.66666666666669" y="482" width="150" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="0yC-cd-1Kq"/>
                                     <constraint firstAttribute="width" constant="150" id="oWa-uw-8YP"/>
@@ -2241,7 +2267,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 </connections>
                             </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="gnJ-16-wrf">
-                                <rect key="frame" x="169" y="386" width="37" height="37"/>
+                                <rect key="frame" x="169" y="486" width="37" height="37"/>
                             </activityIndicatorView>
                             <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Privacy Policy" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kzh-E1-mfx" userLabel="Privacy Policy">
                                 <rect key="frame" x="16" y="16" width="343" height="726"/>
@@ -2271,7 +2297,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                             <constraint firstItem="1lx-NS-scX" firstAttribute="top" secondItem="VUr-xS-gve" secondAttribute="top" id="DZu-jQ-h50"/>
                             <constraint firstItem="3u5-72-jbV" firstAttribute="leading" secondItem="VUr-xS-gve" secondAttribute="leading" constant="16" id="E5C-Eb-Hsb"/>
                             <constraint firstItem="Kzh-E1-mfx" firstAttribute="leading" secondItem="2Sb-N8-kMT" secondAttribute="leading" constant="16" id="E9K-yM-YEH"/>
-                            <constraint firstItem="O6n-C3-gRh" firstAttribute="top" secondItem="1lx-NS-scX" secondAttribute="bottom" constant="16" id="J2w-Mv-paG"/>
+                            <constraint firstItem="O6n-C3-gRh" firstAttribute="top" secondItem="zTC-OI-wyz" secondAttribute="bottom" constant="8" id="J2w-Mv-paG"/>
                             <constraint firstItem="VUr-xS-gve" firstAttribute="trailing" secondItem="O6n-C3-gRh" secondAttribute="trailing" constant="16" id="LRi-Uk-m1M"/>
                             <constraint firstItem="1lx-NS-scX" firstAttribute="trailing" secondItem="VUr-xS-gve" secondAttribute="trailing" id="Lkh-r4-WQv"/>
                             <constraint firstItem="8bD-Zf-iA1" firstAttribute="leading" secondItem="5fa-Sm-lDz" secondAttribute="trailing" constant="4" id="MOa-N2-FFY"/>
@@ -2279,6 +2305,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                             <constraint firstItem="GNk-Ht-aHI" firstAttribute="top" secondItem="O6n-C3-gRh" secondAttribute="bottom" constant="16" id="Pfy-5R-DpU"/>
                             <constraint firstItem="Rje-J8-oBE" firstAttribute="top" secondItem="qf8-Wn-zz9" secondAttribute="bottom" constant="17" id="Qms-QZ-2kB"/>
                             <constraint firstItem="3u5-72-jbV" firstAttribute="top" secondItem="GNk-Ht-aHI" secondAttribute="bottom" constant="16" id="Uo1-u1-H4m"/>
+                            <constraint firstItem="zTC-OI-wyz" firstAttribute="centerX" secondItem="2Sb-N8-kMT" secondAttribute="centerX" id="WE7-Ok-3Md"/>
                             <constraint firstItem="6V0-zb-pDi" firstAttribute="leading" secondItem="8bD-Zf-iA1" secondAttribute="trailing" constant="3" id="YiB-Jw-pU5"/>
                             <constraint firstAttribute="trailing" secondItem="Kzh-E1-mfx" secondAttribute="trailing" constant="16" id="alr-Mz-bIl"/>
                             <constraint firstAttribute="bottom" secondItem="YuM-PM-C54" secondAttribute="bottom" id="fo2-MD-ufw"/>
@@ -2296,6 +2323,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                             <constraint firstItem="O6n-C3-gRh" firstAttribute="leading" secondItem="VUr-xS-gve" secondAttribute="leading" constant="16" id="tRA-sb-pFy"/>
                             <constraint firstAttribute="bottom" secondItem="Kzh-E1-mfx" secondAttribute="bottom" constant="16" id="vwX-fz-5Nn"/>
                             <constraint firstItem="VUr-xS-gve" firstAttribute="trailing" secondItem="3u5-72-jbV" secondAttribute="trailing" constant="16" id="wQ7-Od-qyG"/>
+                            <constraint firstItem="zTC-OI-wyz" firstAttribute="top" secondItem="1lx-NS-scX" secondAttribute="bottom" constant="8" id="xJO-jm-DQ9"/>
                             <constraint firstItem="5fa-Sm-lDz" firstAttribute="top" secondItem="5ra-2Z-TlZ" secondAttribute="bottom" constant="10" id="yRO-6i-NPf"/>
                             <constraint firstItem="YuM-PM-C54" firstAttribute="leading" secondItem="VUr-xS-gve" secondAttribute="leading" id="yaF-bz-ME7"/>
                             <constraint firstItem="VUr-xS-gve" firstAttribute="trailing" secondItem="GNk-Ht-aHI" secondAttribute="trailing" constant="16" id="zhu-Ej-3iQ"/>
@@ -2312,6 +2340,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                         <outlet property="gradientViewHeight" destination="Ptp-Qi-M9e" id="zfO-12-r04"/>
                         <outlet property="passTxtField" destination="GNk-Ht-aHI" id="c5F-tV-zWi"/>
                         <outlet property="privacyPolicyTxtView" destination="Kzh-E1-mfx" id="c2d-Ig-GTc"/>
+                        <outlet property="profileImageView" destination="zTC-OI-wyz" id="MDt-ei-ogj"/>
                         <outlet property="signUpBtn" destination="ajG-sE-VYd" id="rvm-Am-rg7"/>
                         <outlet property="signUpBtnProgressWheel" destination="gnJ-16-wrf" id="2JD-TC-7xz"/>
                         <outlet property="signedInBtn" destination="5ra-2Z-TlZ" id="ir5-XE-ayL"/>
@@ -2335,6 +2364,11 @@ A: We have a variety of games and books as well as a gym and playground to occup
                 <tapGestureRecognizer id="cZw-p2-ndt" userLabel="Dismiss Privacy Policy">
                     <connections>
                         <action selector="dismissPrivacyPolicy:" destination="A2Z-6c-UZy" id="IhL-Wa-tq2"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="RQF-s0-mUV" userLabel="profileImageTapGestureRecognizer">
+                    <connections>
+                        <action selector="chooseProfileImage:" destination="A2Z-6c-UZy" id="nzG-xA-ZEV"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -2467,14 +2501,14 @@ A: We have a variety of games and books as well as a gym and playground to occup
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
         <namedColor name="LabelColor">
-            <color white="0.89999997615814209" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
         <namedColor name="ViewColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="FyG-rU-agW"/>
+        <segue reference="504-Hf-zMV"/>
         <segue reference="4VI-xZ-OTW"/>
         <segue reference="8gZ-wr-hIi"/>
     </inferredMetricsTieBreakers>

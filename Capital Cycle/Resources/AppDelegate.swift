@@ -17,6 +17,7 @@ var Week: [[String]]!
 var camperInfo: [[String]]!
 var hapticFeedback: Bool!
 let databaseRef = Firestore.firestore().collection("Users")
+var profileImage: UIImage!
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

@@ -16,6 +16,7 @@ class OverviewPage: UIViewController {
     @IBOutlet weak var gradientView: UIView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
     @IBOutlet weak var overviewLblYConstraint: NSLayoutConstraint!
+    @IBOutlet weak var accountSettingsImageView: UIImageView!
     @IBOutlet weak var scrollViewYConstraint: NSLayoutConstraint!
     @IBOutlet weak var scrollViewDisplay: UIView!
     @IBOutlet weak var locationLbl: UILabel!
@@ -42,6 +43,11 @@ class OverviewPage: UIViewController {
         
         // Readjusts the Y constraints
         scrollViewYConstraint.constant = gradientViewHeight.constant + 8
+        
+        // Sets the profile image on the account settings button
+        accountSettingsImageView.isUserInteractionEnabled = true
+        accountSettingsImageView.layer.cornerRadius = 20
+        accountSettingsImageView.image = profileImage
         
         // Sets up the location lbl
         locationLbl.isUserInteractionEnabled = true
