@@ -252,27 +252,6 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
         }
     }
     
-    // Uploads the users profile image to Firebase
-    func getProfileImageUrl() {
-        let uid = Auth.auth().currentUser?.uid
-        let storageReference = Storage.storage().reference().child("user/\(String(describing: uid))")
-        let imageData = profileImage.jpegData(compressionQuality: 1.0)!
-        storageReference.putData(imageData, metadata: nil) { (metaData, error) in
-            if error == nil {
-                storageReference.downloadURL(completion: { (url, error) in
-                    if error == nil {
-                        let urlString = url?.absoluteString
-                        SignUp.Instance.profileImageUrl = urlString
-                    } else {
-                        self.showAlert(title: "Error", message: "Could not upload image", actionTitle: "OK", actionStyle: .default)
-                    }
-                })
-            } else {
-                self.showAlert(title: "Error", message: "Could not upload image", actionTitle: "OK", actionStyle: .default)
-            }
-        }
-    }
-    
     // Signs up the user
     func signUp(email: String, password: String) {
         formatProgressWheel(toShow: true)
@@ -315,6 +294,29 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
         }
         
         return tooWeak
+    }
+    
+    // MARK: Firebase
+    
+    // Uploads the users profile image to Firebase
+    func getProfileImageUrl() {
+        let uid = Auth.auth().currentUser?.uid
+        let storageReference = Storage.storage().reference().child("user/\(String(describing: uid))")
+        let imageData = profileImage.jpegData(compressionQuality: 1.0)!
+        storageReference.putData(imageData, metadata: nil) { (metaData, error) in
+            if error == nil {
+                storageReference.downloadURL(completion: { (url, error) in
+                    if error == nil {
+                        let urlString = url?.absoluteString
+                        SignUp.Instance.profileImageUrl = urlString
+                    } else {
+                        self.showAlert(title: "Error", message: "Could not upload image", actionTitle: "OK", actionStyle: .default)
+                    }
+                })
+            } else {
+                self.showAlert(title: "Error", message: "Could not upload image", actionTitle: "OK", actionStyle: .default)
+            }
+        }
     }
     
     // MARK: Dismiss

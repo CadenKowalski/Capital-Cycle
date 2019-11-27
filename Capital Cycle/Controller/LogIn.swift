@@ -23,6 +23,7 @@ class LogIn: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var logInBtnProgressWheel: UIActivityIndicatorView!
     // Code global vars
     let databaseRef = Firestore.firestore().collection("Users")
+    var profileImgUrl: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -176,6 +177,7 @@ class LogIn: UIViewController, UITextFieldDelegate {
         userRef.getDocument { (document, error) in
             if error == nil {
                 signedIn = document?.get("signedIn") as? Bool
+                self.profileImgUrl = document?.get("profileImageUrl") as? String
                 switch document?.get("type") as! String {
                 case "Camper":
                     userType = .camper
@@ -189,12 +191,31 @@ class LogIn: UIViewController, UITextFieldDelegate {
                     return
                 }
                 
+                self.downloadProfileImg(withURL: NSURL(string: self.profileImgUrl)! as URL) { image in
+                    profileImage = image
+                }
+                
                 completion()
             } else {
                 self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
                 completion()
             }
         }
+    }
+    
+    func downloadProfileImg(withURL: URL, completion: @escaping (_ image: UIImage?) -> ()) {
+        let dataTask = URLSession.shared.dataTask(with: withURL) { data, url, error in
+            var downloadedImg: UIImage?
+            if let data = data {
+                downloadedImg = UIImage(data: data)
+            }
+            
+            DispatchQueue.main.async {
+                completion(downloadedImg)
+            }
+        }
+        
+        dataTask.resume()
     }
     
     // MARK: Dismiss Keyboard
