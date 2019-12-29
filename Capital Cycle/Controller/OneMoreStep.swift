@@ -23,10 +23,7 @@ class OneMoreStep: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     @IBOutlet weak var privacyPolicyTxtView: CustomTextView!
     @IBOutlet weak var userTypePickerView: UIPickerView!
     // Code global vars
-    static let Instance = OneMoreStep()
-    var signUpEmail: String!
-    var profileImgUrl: String!
-    var Agree = false
+     var Agree = false
     var typesOfUser = ["--", "Camper", "Parent", "Counselor"]
     
     override func viewDidLoad() {
@@ -71,8 +68,8 @@ class OneMoreStep: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     // Sets the selected image to the users profile image
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let Image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-            profileImg = Image
-            profileImgView.image = profileImg
+            user.profileImg = Image
+            profileImgView.image = user.profileImg
         }
         
         dismiss(animated: true, completion: nil)
@@ -81,11 +78,11 @@ class OneMoreStep: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     // Keep the user signed in or not
     @IBAction func keepSignedIn(_ sender: UIButton) {
         giveHapticFeedback(error: false)
-        if !signedIn {
-            signedIn = true
+        if !user.signedIn! {
+            user.signedIn = true
             sender.setImage(UIImage(named: "Checked"), for: .normal)
         } else {
-            signedIn = false
+            user.signedIn = false
             sender.setImage(UIImage(named: "Unchecked"), for: .normal)
         }
     }
@@ -169,18 +166,18 @@ class OneMoreStep: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     // Called when the picker view is used
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if typesOfUser[row] == "--" {
-            userType = SignUp.UserType.none
+            user.type = FirebaseUser.type.none
         } else if typesOfUser[row] == "Camper" {
-            userType = .camper
+            user.type = .camper
         } else if typesOfUser[row] == "Parent" {
-            userType = .parent
+            user.type = .parent
         } else {
-            userType = .counselor
+            user.type = .counselor
         }
         
         userTypePickerView.isHidden = true
         userTypeLbl.text = typesOfUser[row]
-        if userType != SignUp.UserType.none {
+        if user.type != FirebaseUser.type.none {
             userTypeLbl.backgroundColor = #colorLiteral(red: 0.75, green: 0.75, blue: 0.75, alpha: 1)
             userTypeLbl.alpha = 1.0
             giveHapticFeedback(error: false)
@@ -193,19 +190,19 @@ class OneMoreStep: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     @IBAction func verifyInputs(_ sender: CustomButton) {
         if Agree == false {
             showAlert(title: "Uh oh", message: "Please agree to the privacy policy and terms of serivce", actionTitle: "OK", actionStyle: .default)
-        } else if userType == SignUp.UserType.none && userType != .admin {
+        } else if user.type == FirebaseUser.type.none && user.type != .admin {
             userTypeLbl.backgroundColor = .red
             userTypeLbl.alpha = 0.5
             giveHapticFeedback(error: true)
         } else {
-            if userType == .counselor || userType == .admin {
+            if user.type == .counselor || user.type == .admin {
                 performSegue(withIdentifier: "VerifyCounselorFromApple", sender: nil)
             } else {
                 performSegue(withIdentifier: "VerifiedUserFromApple", sender: nil)
             }
             
             getProfileImgUrl {
-                self.uploadUser(email: OneMoreStep.Instance.signUpEmail)
+                self.uploadUser(email: user.email!)
             }
         }
     }
@@ -216,13 +213,13 @@ class OneMoreStep: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     func getProfileImgUrl(completion: @escaping() -> Void) {
         let uid = Auth.auth().currentUser?.uid
         let storageReference = Storage.storage().reference().child("user/\(String(describing: uid))")
-        let imageData = profileImg.jpegData(compressionQuality: 1.0)!
+        let imageData = user.profileImg!.jpegData(compressionQuality: 1.0)!
         storageReference.putData(imageData, metadata: nil) { (metaData, error) in
             if error == nil {
                 storageReference.downloadURL(completion: { (url, error) in
                     if error == nil {
                         let urlString = url?.absoluteString
-                        OneMoreStep.Instance.profileImgUrl = urlString
+                        user.profileImgUrl = urlString
                         completion()
                     } else {
                         self.showAlert(title: "Error", message: "Could not upload image", actionTitle: "OK", actionStyle: .default)
@@ -237,7 +234,7 @@ class OneMoreStep: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     // Uploads a user to the Firebase Firestore
     func uploadUser(email: String) {
         var userTypeString: String
-        switch userType {
+        switch user.type {
         case .camper:
             userTypeString = "Camper"
         case .parent:
@@ -246,7 +243,7 @@ class OneMoreStep: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
             return
         }
         
-        databaseRef.document(email).setData(["email": email, "type": userTypeString, "signedIn": signedIn!, "profileImgUrl": OneMoreStep.Instance.profileImgUrl!]) { error in
+        databaseRef.document(email).setData(["email": email, "type": userTypeString, "signedIn": user.signedIn!, "profileImgUrl": user.profileImgUrl!]) { error in
             if error != nil {
                 self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
             }

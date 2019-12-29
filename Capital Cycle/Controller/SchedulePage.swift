@@ -136,7 +136,7 @@ class SchedulePage: UIViewController {
     
     // Sets the profile image on the account settings button
     func setProfileImg() {
-        accountSettingsImgView.image = profileImg
+        accountSettingsImgView.image = user.profileImg
     }
     
     // MARK: Daily Spreadsheet Data
@@ -230,7 +230,7 @@ class SchedulePage: UIViewController {
             overviewScrollView.isHidden = true
         }
         
-        if hapticFeedback {
+        if user.prefersHapticFeedback! {
             let feedbackGenerator = UISelectionFeedbackGenerator()
             feedbackGenerator.selectionChanged()
         }

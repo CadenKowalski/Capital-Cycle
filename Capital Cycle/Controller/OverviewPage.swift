@@ -55,12 +55,12 @@ class OverviewPage: UIViewController {
     
     // Sets the profile image on the account settings button
     func setProfileImg() {
-        accountSettingsImgView.image = profileImg
+        accountSettingsImgView.image = user.profileImg!
     }
     
     // Initiates haptic feedback
     func giveHapticFeedback() {
-        if hapticFeedback {
+        if user.prefersHapticFeedback! {
             let feedbackGenerator = UISelectionFeedbackGenerator()
             feedbackGenerator.selectionChanged()
         }

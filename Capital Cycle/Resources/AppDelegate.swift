@@ -10,14 +10,15 @@ import UIKit
 import Firebase
 import CoreData
 
-var signedIn: Bool!
-var userType: SignUp.UserType!
+var user = FirebaseUser()
+//var signedIn: Bool!
+//var userType: FirebaseUser.type!
+//var hapticFeedback: Bool!
+//var profileImg = UIImage(systemName: "person.circle")!
 var weekActivitiesList: [[String]]!
 var Week: [[String]]!
 var camperInfo: [[String]]!
-var hapticFeedback: Bool!
 let databaseRef = Firestore.firestore().collection("Users")
-var profileImg = UIImage(systemName: "person.circle")!
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -51,14 +52,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Configures the settings entities
         let Settings = fetchRecordsOfEntity(Entity: "Settings", Context: Context)
         if let Settings = Settings.first {
-            hapticFeedback = Settings.value(forKey: "hapticFeedback") as? Bool
+            user.prefersHapticFeedback = Settings.value(forKey: "hapticFeedback") as? Bool
         } else if let Settings = instantiateRecordForEntity(Entity: "Settings", Context: Context) {
             Settings.setValue(true, forKey: "hapticFeedback")
-            hapticFeedback = true
+            user.prefersHapticFeedback = true
         }
         
-        signedIn = false
-        userType = SignUp.UserType.none
+        user.signedIn = false
+        user.type = FirebaseUser.type.none
+        user.profileImg = UIImage(systemName: "person.circle")
         SaveContext(ContextName: Context)
         return true
     }

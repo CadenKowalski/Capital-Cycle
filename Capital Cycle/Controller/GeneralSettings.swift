@@ -38,8 +38,8 @@ class GeneralSettings: UIViewController {
         }
 
         // Sets the switches to reflect their actual values
-        signedInSwitch.isOn = signedIn
-        hapticFeedbackSwitch.isOn = hapticFeedback
+        signedInSwitch.isOn = user.signedIn!
+        hapticFeedbackSwitch.isOn = user.prefersHapticFeedback!
     }
     
     // Shows an alert
@@ -47,7 +47,7 @@ class GeneralSettings: UIViewController {
         let Alert = UIAlertController(title: title, message:  message, preferredStyle: .alert)
         Alert.addAction(UIAlertAction(title: actionTitle, style: actionStyle, handler: nil))
         present(Alert, animated: true, completion: nil)
-        if hapticFeedback {
+        if user.prefersHapticFeedback! {
             let feedbackGenerator = UINotificationFeedbackGenerator()
             feedbackGenerator.prepare()
             feedbackGenerator.notificationOccurred(.error)
@@ -59,9 +59,9 @@ class GeneralSettings: UIViewController {
     // Allows the user to update whether they want to stay signed in or not
     @IBAction func staySignedIn(_ sender: UISwitch) {
         if sender.isOn {
-            signedIn = true
+            user.signedIn = true
         } else {
-            signedIn = false
+            user.signedIn = false
         }
         
         updateUser(email: (Auth.auth().currentUser?.email)!, key: "signedIn")
@@ -74,9 +74,9 @@ class GeneralSettings: UIViewController {
     // Allows the user to decide whether they want to get haptic feedback or not
     @IBAction func hapticVibration(_ sender: UISwitch) {
         if sender.isOn {
-            hapticFeedback = true
+            user.prefersHapticFeedback = true
         } else {
-            hapticFeedback = false
+            user.prefersHapticFeedback = false
         }
         
         updateContext()
@@ -92,7 +92,7 @@ class GeneralSettings: UIViewController {
             do {
                 let fetchResults = try Context.fetch(fetchRequest)
                 let Settings = fetchResults.first as! NSManagedObject
-                Settings.setValue(hapticFeedback, forKey: "hapticFeedback")
+                Settings.setValue(user.prefersHapticFeedback, forKey: "hapticFeedback")
                 try Context.save()
             } catch {
                 let nserror = error as NSError
@@ -103,7 +103,7 @@ class GeneralSettings: UIViewController {
     // MARK: Firebase
 
     func updateUser(email: String, key: String) {
-        databaseRef.document(email).updateData([key: signedIn!]) { error in
+        databaseRef.document(email).updateData([key: user.signedIn!]) { error in
             if error != nil {
                 self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
             }

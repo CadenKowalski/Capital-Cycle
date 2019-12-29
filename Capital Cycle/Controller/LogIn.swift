@@ -7,9 +7,8 @@
 //
 
 import UIKit
-import SwiftUI
-import FirebaseAuth
 import CryptoKit
+import FirebaseAuth
 import FirebaseFirestore
 import AuthenticationServices
 
@@ -27,7 +26,7 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
     @IBOutlet weak var signUpBtn: CustomButton!
     // Code global vars
     let databaseRef = Firestore.firestore().collection("Users")
-    var profileImgUrl: String!
+    let firebaseFunctions = FirebaseFunctions()
     var currentNonce: String?
     
     override func viewDidLoad() {
@@ -42,7 +41,7 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
             if Auth.auth().currentUser != nil {
                 self.formatProgressWheel(toShow: true)
                 self.fetchUserValues(email: (Auth.auth().currentUser?.email)!) {
-                    if Auth.auth().currentUser != nil && signedIn == true {
+                    if Auth.auth().currentUser != nil && user.signedIn == true {
                         self.performSegue(withIdentifier: "AlreadyLoggedIn", sender: nil)
                         self.formatProgressWheel(toShow: false)
                         self.giveHapticFeedback()
@@ -90,11 +89,11 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
     // Keep the user signed in or not
     @IBAction func keepSignedIn(_ sender: UIButton) {
         giveHapticFeedback()
-        if !signedIn {
-            signedIn = true
+        if !user.signedIn! {
+            user.signedIn = true
             sender.setImage(UIImage(named: "Checked"), for: .normal)
         } else {
-            signedIn = false
+            user.signedIn = false
             sender.setImage(UIImage(named: "Unchecked"), for: .normal)
         }
     }
@@ -110,7 +109,7 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
         let Alert = UIAlertController(title: title, message:  message, preferredStyle: .alert)
         Alert.addAction(UIAlertAction(title: actionTitle, style: actionStyle, handler: nil))
         present(Alert, animated: true, completion: nil)
-        if hapticFeedback {
+        if user.prefersHapticFeedback! {
             let feedbackGenerator = UINotificationFeedbackGenerator()
             feedbackGenerator.prepare()
             feedbackGenerator.notificationOccurred(.error)
@@ -233,7 +232,7 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
     
     // Updates the users signed in value if they choose to change it when logging in
     func updateUser(email: String) {
-        databaseRef.document(email).updateData(["signedIn": signedIn!]) { error in
+        databaseRef.document(email).updateData(["signedIn": user.signedIn!]) { error in
             if error != nil {
                 self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
             }
@@ -245,22 +244,22 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
         let userRef = databaseRef.document(email)
         userRef.getDocument { (document, error) in
             if error == nil {
-                signedIn = document?.get("signedIn") as? Bool
-                self.profileImgUrl = document?.get("profileImgUrl") as? String
+                user.signedIn = document?.get("signedIn") as? Bool
+                user.profileImgUrl = document?.get("profileImgUrl") as? String
                 switch document?.get("type") as! String {
                 case "Camper":
-                    userType = .camper
+                    user.type = .camper
                 case "Parent":
-                    userType = .parent
+                    user.type = .parent
                 case "Counselor":
-                    userType = .counselor
+                    user.type = .counselor
                 case "Admin":
-                    userType = .admin
+                    user.type = .admin
                 default:
                     return
                 }
                 
-                profileImg = self.downloadProfileImg(withURL: self.profileImgUrl)
+                user.profileImg = self.downloadProfileImg(withURL: user.profileImgUrl!)
                 completion()
             } else {
                 self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
@@ -314,7 +313,7 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
                     print(error!.localizedDescription)
                     return
                 } else {
-                    OneMoreStep.Instance.signUpEmail = appleIDCredential.email
+                    user.email = appleIDCredential.email
                     self.performSegue(withIdentifier: "SignUpFromApple", sender: nil)
                 }
             }

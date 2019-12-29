@@ -32,7 +32,7 @@ class PageVC: UIPageViewController, UIPageViewControllerDelegate, UIPageViewCont
             setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
         }
         
-        switch userType {
+        switch user.type {
         case .camper:
             orderedVCs.append(newVC(VC: "FAQPage"))
         case .parent:

@@ -23,7 +23,6 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
     static let Instance = AccountSettings()
     let databaseRef = Firestore.firestore().collection("Users")
     var typesOfUser = ["Current", "Camper", "Parent", "Counselor"]
-    var urlString: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,13 +40,13 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
         }
 
         // Formats the profile image view
-        profileImgView.image = profileImg
+        profileImgView.image = user.profileImg
         
         // Formats the email and userType labels
         emailLbl.text = "Email: \((Auth.auth().currentUser?.email)!)"
-        userTypeLbl.text = "I am a " + "\(userType!)".capitalized
-        if userType == .admin {
-            userTypeLbl.text = "I am an " + "\(userType!)".capitalized
+        userTypeLbl.text = "I am a " + "\(user.type!)".capitalized
+        if user.type == .admin {
+            userTypeLbl.text = "I am an " + "\(user.type!)".capitalized
         }
         
         // Sets up the picker view
@@ -58,7 +57,7 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
     
     // Initiates haptic feedback
     func giveHapticFeedback() {
-        if hapticFeedback {
+        if user.prefersHapticFeedback! {
             let feedbackGenerator = UISelectionFeedbackGenerator()
             feedbackGenerator.selectionChanged()
         }
@@ -75,7 +74,7 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
         let Alert = UIAlertController(title: title, message:  message, preferredStyle: .alert)
         Alert.addAction(UIAlertAction(title: actionTitle, style: actionStyle, handler: nil))
         present(Alert, animated: true, completion: nil)
-        if hapticFeedback {
+        if user.prefersHapticFeedback! {
             let feedbackGenerator = UINotificationFeedbackGenerator()
             feedbackGenerator.prepare()
             feedbackGenerator.notificationOccurred(.error)
@@ -102,18 +101,18 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
     // Called when the picker view is used
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if typesOfUser[row] == "Camper" {
-            userType = .camper
+            user.type = .camper
         } else if typesOfUser[row] == "Parent" {
-            userType = .parent
+            user.type = .parent
         } else {
-            userType = .counselor
+            user.type = .counselor
         }
         
         userTypePickerView.isHidden = true
         cancelBtn.isHidden = true
         if typesOfUser[row] != "Current" {
             userTypeLbl.text = "I am a " + "\(typesOfUser[row])".capitalized
-            if userType == .admin {
+            if user.type == .admin {
                 userTypeLbl.text = "I am an " + "\(typesOfUser[row])".capitalized
             }
 
@@ -154,8 +153,8 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
     // Sets the selected image to the users profile image
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let Image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-            profileImg = Image
-            profileImgView.image = profileImg
+            user.profileImg = Image
+            profileImgView.image = user.profileImg
             updateUser(email: (Auth.auth().currentUser?.email)!)
         }
         
@@ -165,7 +164,7 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
     // Logs out the user
     @IBAction func logOut(_ sender: UIButton?) {
         giveHapticFeedback()
-        signedIn = false
+        user.signedIn = false
         do {
             if sender == nil {
                 let email = Auth.auth().currentUser?.email
@@ -234,13 +233,12 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
     func getProfileImgUrl() {
         let uid = Auth.auth().currentUser?.uid
         let storageReference = Storage.storage().reference().child("user/\(String(describing: uid))")
-        let imageData = profileImg.jpegData(compressionQuality: 1.0)!
+        let imageData = user.profileImg!.jpegData(compressionQuality: 1.0)!
         storageReference.putData(imageData, metadata: nil) { (metaData, error) in
             if error == nil {
                 storageReference.downloadURL(completion: { (url, error) in
                     if error == nil {
-                        AccountSettings.Instance.urlString = url?.absoluteString
-                        print(AccountSettings.Instance.urlString)
+                        user.profileImgUrl = url?.absoluteString
                     } else {
                         self.showAlert(title: "Error", message: "Could not upload image", actionTitle: "OK", actionStyle: .default)
                     }
@@ -255,7 +253,7 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
     func updateUser(email: String) {
         getProfileImgUrl()
         var userTypeString: String
-        switch userType {
+        switch user.type {
         case .camper:
             userTypeString = "Camper"
         case .parent:
@@ -266,7 +264,7 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
             return
         }
         
-        databaseRef.document(email).updateData(["signedIn": signedIn!, "type": userTypeString, "profileImgUrl": AccountSettings.Instance.urlString!]) { error in
+        databaseRef.document(email).updateData(["signedIn": user.signedIn!, "type": userTypeString, "profileImgUrl": user.profileImgUrl!]) { error in
             if error != nil {
                 self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
             }

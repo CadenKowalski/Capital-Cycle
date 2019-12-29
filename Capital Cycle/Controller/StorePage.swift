@@ -65,7 +65,7 @@ class StorePage: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     
     // Sets the profile image on the account settings button
     func setProfileImg() {
-        accountSettingsImgView.image = profileImg
+        accountSettingsImgView.image = user.profileImg
     }
     
     // MARK: Collection View Setup
@@ -98,7 +98,7 @@ class StorePage: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         let websiteURL = URL(string: "\(websiteURLs[indexPath.row])")!
         let sVC = SFSafariViewController(url: websiteURL)
         present(sVC, animated: true, completion: nil)
-        if hapticFeedback {
+        if user.prefersHapticFeedback! {
             let feedbackGenerator = UISelectionFeedbackGenerator()
             feedbackGenerator.selectionChanged()
         }

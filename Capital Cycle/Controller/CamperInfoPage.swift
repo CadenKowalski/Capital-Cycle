@@ -68,7 +68,7 @@ class CamperInfoPage: UIViewController {
     
     // Sets the profile image on the account settings button
     func setProfileImg() {
-        accountSettingsImgView.image = profileImg
+        accountSettingsImgView.image = user.profileImg
     }
     
     // MARK: Camper Info Data
@@ -142,7 +142,7 @@ class CamperInfoPage: UIViewController {
         parentPhoneLbl.text = "\(camperInfo[camperBtns.firstIndex(of: sender)!][2])"
         parentEmailLbl.text = "\(camperInfo[camperBtns.firstIndex(of: sender)!][3])"
         signedWaiverLbl.text = "\(camperInfo[camperBtns.firstIndex(of: sender)!][4])"
-        if hapticFeedback {
+        if user.prefersHapticFeedback! {
             let feedbackGenerator = UISelectionFeedbackGenerator()
             feedbackGenerator.selectionChanged()
         }

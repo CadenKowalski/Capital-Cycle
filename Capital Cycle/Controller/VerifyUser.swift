@@ -44,7 +44,7 @@ class VerifyUser: UIViewController, UIAdaptivePresentationControllerDelegate {
         let Alert = UIAlertController(title: title, message:  message, preferredStyle: .alert)
         Alert.addAction(UIAlertAction(title: actionTitle, style: actionStyle, handler: nil))
         present(Alert, animated: true, completion: nil)
-        if hapticFeedback {
+        if user.prefersHapticFeedback! {
             let feedbackGenerator = UINotificationFeedbackGenerator()
             feedbackGenerator.prepare()
             feedbackGenerator.notificationOccurred(.error)
@@ -68,10 +68,11 @@ class VerifyUser: UIViewController, UIAdaptivePresentationControllerDelegate {
     // Signs up the user
     @IBAction func signUp(_ sender: CustomButton) {
         self.performSegue(withIdentifier: "verifiedUser", sender: nil)
-        if hapticFeedback {
+        if user.prefersHapticFeedback! {
             let feedbackGenerator = UISelectionFeedbackGenerator()
             feedbackGenerator.selectionChanged()
         }
+        
         self.uploadUser(email: (Auth.auth().currentUser?.email)!)
     }
     
@@ -80,7 +81,7 @@ class VerifyUser: UIViewController, UIAdaptivePresentationControllerDelegate {
     // Uploads a user to the Firebase Firestore
     func uploadUser(email: String) {
         var userTypeString: String
-        switch userType {
+        switch user.type {
         case .camper:
             userTypeString = "Camper"
         case .parent:
@@ -89,7 +90,7 @@ class VerifyUser: UIViewController, UIAdaptivePresentationControllerDelegate {
             return
         }
         
-        databaseRef.document(email).setData(["email": email, "type": userTypeString, "signedIn": signedIn!, "profileImgUrl": SignUp.Instance.profileImgUrl!]) { error in
+        databaseRef.document(email).setData(["email": email, "type": userTypeString, "signedIn": user.signedIn!, "profileImgUrl": user.profileImgUrl!]) { error in
             if error != nil {
                 self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
             }

@@ -10,7 +10,6 @@
 		5700629922E3BB400032EFAB /* LogIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5700629822E3BB400032EFAB /* LogIn.swift */; };
 		5700629B22E3BB590032EFAB /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5700629A22E3BB590032EFAB /* SignUp.swift */; };
 		571C2F3F22E41CB6001D4438 /* GeneralSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571C2F3E22E41CB6001D4438 /* GeneralSettings.swift */; };
-		573839E2239DEEE7006AB022 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573839E1239DEEE7006AB022 /* User.swift */; };
 		576FCFB322E4B82F00C346E4 /* CamperInfoPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576FCFB222E4B82F00C346E4 /* CamperInfoPage.swift */; };
 		578AF9DC22D41F2E007B42A9 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578AF9DB22D41F2E007B42A9 /* Product.swift */; };
 		578AF9DE22D41FA0007B42A9 /* ProductData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578AF9DD22D41FA0007B42A9 /* ProductData.swift */; };
@@ -34,6 +33,8 @@
 		57CB685B2306F15200570D86 /* CounselorNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CB685A2306F15200570D86 /* CounselorNavigationController.swift */; };
 		57DE34E223B2D19A00221F53 /* CustomUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DE34E123B2D19A00221F53 /* CustomUI.swift */; };
 		57E226F723B5428E007DF227 /* OneMoreStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E226F623B5428E007DF227 /* OneMoreStep.swift */; };
+		57E226FB23B84387007DF227 /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E226FA23B84387007DF227 /* Firebase.swift */; };
+		57E226FD23B84F8A007DF227 /* FirebaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E226FC23B84F8A007DF227 /* FirebaseUser.swift */; };
 		57ED6A2F22D578A200E3A362 /* FAQPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57ED6A2E22D578A200E3A362 /* FAQPage.swift */; };
 		587C376EC4CB7518541634C2 /* Pods_Capital_Cycle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEF63791B26DFB42FF56342B /* Pods_Capital_Cycle.framework */; };
 /* End PBXBuildFile section */
@@ -45,7 +46,6 @@
 		5700629A22E3BB590032EFAB /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		571C2F3E22E41CB6001D4438 /* GeneralSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettings.swift; sourceTree = "<group>"; };
 		573839E0239DDDB4006AB022 /* Capital Cycle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Capital Cycle.entitlements"; sourceTree = "<group>"; };
-		573839E1239DEEE7006AB022 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		576FCFB222E4B82F00C346E4 /* CamperInfoPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CamperInfoPage.swift; path = "../../../../../../../System/Volumes/Data/Users/cadenkowalski/Desktop/Xcode Projects/Capital Cycle/Capital Cycle/Controller/CamperInfoPage.swift"; sourceTree = "<group>"; };
 		578AF9DB22D41F2E007B42A9 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		578AF9DD22D41FA0007B42A9 /* ProductData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductData.swift; sourceTree = "<group>"; };
@@ -71,6 +71,8 @@
 		57CB685A2306F15200570D86 /* CounselorNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounselorNavigationController.swift; sourceTree = "<group>"; };
 		57DE34E123B2D19A00221F53 /* CustomUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUI.swift; sourceTree = "<group>"; };
 		57E226F623B5428E007DF227 /* OneMoreStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneMoreStep.swift; sourceTree = "<group>"; };
+		57E226FA23B84387007DF227 /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
+		57E226FC23B84F8A007DF227 /* FirebaseUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUser.swift; sourceTree = "<group>"; };
 		57ED6A2E22D578A200E3A362 /* FAQPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQPage.swift; sourceTree = "<group>"; };
 		DEF63791B26DFB42FF56342B /* Pods_Capital_Cycle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Capital_Cycle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -152,7 +154,8 @@
 				578AF9DB22D41F2E007B42A9 /* Product.swift */,
 				578AF9DD22D41FA0007B42A9 /* ProductData.swift */,
 				5795C62322EA6CC200A0A171 /* TestForConnection.swift */,
-				573839E1239DEEE7006AB022 /* User.swift */,
+				57E226FA23B84387007DF227 /* Firebase.swift */,
+				57E226FC23B84F8A007DF227 /* FirebaseUser.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				578AF9DE22D41FA0007B42A9 /* ProductData.swift in Sources */,
 				571C2F3F22E41CB6001D4438 /* GeneralSettings.swift in Sources */,
 				57ED6A2F22D578A200E3A362 /* FAQPage.swift in Sources */,
+				57E226FB23B84387007DF227 /* Firebase.swift in Sources */,
 				578AF9DC22D41F2E007B42A9 /* Product.swift in Sources */,
 				57A3457422D2AEBD0070898F /* PageVC.swift in Sources */,
 				57A3457A22D2BB970070898F /* SchedulePage.swift in Sources */,
@@ -334,11 +338,11 @@
 				57CB685B2306F15200570D86 /* CounselorNavigationController.swift in Sources */,
 				57E226F723B5428E007DF227 /* OneMoreStep.swift in Sources */,
 				5795C62422EA6CC200A0A171 /* TestForConnection.swift in Sources */,
+				57E226FD23B84F8A007DF227 /* FirebaseUser.swift in Sources */,
 				57A3457C22D2BBB90070898F /* StorePage.swift in Sources */,
 				57B7FCA523064A0200D97E3A /* AccountSettings.swift in Sources */,
 				57CB68592306ECAC00570D86 /* UserNavigationController.swift in Sources */,
 				578AF9E422D428AF007B42A9 /* Capital_Cycle.xcdatamodeld in Sources */,
-				573839E2239DEEE7006AB022 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

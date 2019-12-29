@@ -50,6 +50,6 @@ class FAQPage: UIViewController {
     
     // Sets the profile image on the account settings button
     func setProfileImg() {
-        accountSettingsImgView.image = profileImg
+        accountSettingsImgView.image = user.profileImg
     }
 }

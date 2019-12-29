@@ -19,7 +19,6 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate, UIAdaptivePresenta
     @IBOutlet weak var signUpBtn: CustomButton!
     // Global code vars
     let databaseRef = Firestore.firestore().collection("Users")
-    var senderVC: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,13 +41,6 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate, UIAdaptivePresenta
         
         // Prevents the user from dismissing the view without deleting the account
         isModalInPresentation = true
-        
-        // Determines the sender view controller
-        if SignUp.Instance.signUpEmail != nil {
-            senderVC = "SignUp"
-        } else {
-            senderVC = "OneMoreStep"
-        }
     }
     
     // Shows an alert
@@ -77,11 +69,7 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate, UIAdaptivePresenta
         if counselorIdTxtField.text == "082404" {
             performSegue(withIdentifier: "VerifiedCounselor", sender: nil)
             giveHapticFeedback(error: false)
-            if senderVC == "SignUp" {
-                self.uploadUser(email: SignUp.Instance.signUpEmail)
-            } else {
-                self.uploadUser(email: OneMoreStep.Instance.signUpEmail)
-            }
+            uploadUser(email: user.email!)
         } else {
             counselorIdTxtField.backgroundColor = .red
             counselorIdTxtField.alpha = 0.5
@@ -94,7 +82,7 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate, UIAdaptivePresenta
     // Uploads a user to the Firebase Firestore
     func uploadUser(email: String) {
         var userTypeString: String
-        switch userType {
+        switch user.type {
         case .counselor:
             userTypeString = "Counselor"
         case .admin:
@@ -102,18 +90,10 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate, UIAdaptivePresenta
         default:
             return
         }
-        
-        if senderVC == "SignUp" {
-            databaseRef.document(email).setData(["email": email, "type": userTypeString, "signedIn": signedIn!,  "profileImgUrl": SignUp.Instance.profileImgUrl!]) { error in
-                if error != nil {
-                    self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
-                }
-            }
-        } else {
-            databaseRef.document(email).setData(["email": email, "type": userTypeString, "signedIn": signedIn!,  "profileImgUrl": OneMoreStep.Instance.profileImgUrl!]) { error in
-                if error != nil {
-                    self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
-                }
+
+        databaseRef.document(email).setData(["email": email, "type": userTypeString, "signedIn": user.signedIn!,  "profileImgUrl": user.profileImgUrl!]) { error in
+            if error != nil {
+                self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
             }
         }
     }

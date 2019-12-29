@@ -25,9 +25,6 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
     @IBOutlet weak var privacyPolicyTxtView: CustomTextView!
     @IBOutlet weak var userTypePickerView: UIPickerView!
     // Code global vars
-    static let Instance = SignUp()
-    var signUpEmail: String!
-    var profileImgUrl: String!
     var Agree = false
     var typesOfUser = ["--", "Camper", "Parent", "Counselor"]
     
@@ -81,8 +78,8 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
     // Sets the selected image to the users profile image
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let Image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-            profileImg = Image
-            profileImgView.image = profileImg
+            user.profileImg = Image
+            profileImgView.image = user.profileImg
         }
         
         dismiss(animated: true, completion: nil)
@@ -91,11 +88,11 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
     // Keep the user signed in or not
     @IBAction func keepSignedIn(_ sender: UIButton) {
         giveHapticFeedback(error: false)
-        if !signedIn {
-            signedIn = true
+        if !user.signedIn! {
+            user.signedIn = true
             sender.setImage(UIImage(named: "Checked"), for: .normal)
         } else {
-            signedIn = false
+            user.signedIn = false
             sender.setImage(UIImage(named: "Unchecked"), for: .normal)
         }
     }
@@ -189,18 +186,18 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
     // Called when the picker view is used
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if typesOfUser[row] == "--" {
-            userType = SignUp.UserType.none
+            user.type = FirebaseUser.type.none
         } else if typesOfUser[row] == "Camper" {
-            userType = .camper
+            user.type = .camper
         } else if typesOfUser[row] == "Parent" {
-            userType = .parent
+            user.type = .parent
         } else {
-            userType = .counselor
+            user.type = .counselor
         }
         
         userTypePickerView.isHidden = true
         userTypeLbl.text = typesOfUser[row]
-        if userType != UserType.none {
+        if user.type != FirebaseUser.type.none {
             userTypeLbl.backgroundColor = #colorLiteral(red: 0.75, green: 0.75, blue: 0.75, alpha: 1)
             userTypeLbl.alpha = 1.0
             giveHapticFeedback(error: false)
@@ -214,14 +211,14 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
         let email = emailTxtField.text ?? ""
         let password = passTxtField.text ?? ""
         if email == "cadenkowalski1@gmail.com" {
-            userType = .admin
+            user.type = .admin
         }
 
         if password != confmPassTxtField.text {
             showAlert(title: "Passwords don't match", message: "Please make sure your passwords match", actionTitle: "OK", actionStyle: .default)
         } else if Agree == false {
             showAlert(title: "Uh oh", message: "Please agree to the privacy policy and terms of serivce", actionTitle: "OK", actionStyle: .default)
-        } else if userType == SignUp.UserType.none && userType != .admin {
+        } else if user.type == FirebaseUser.type.none && user.type != .admin {
             userTypeLbl.backgroundColor = .red
             userTypeLbl.alpha = 0.5
             giveHapticFeedback(error: true)
@@ -241,10 +238,11 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
     // Signs up the user
     func signUp(email: String, password: String) {
         formatProgressWheel(toShow: true)
-        SignUp.Instance.signUpEmail = email
+        user.email = email
+        user.password = password
         Auth.auth().createUser(withEmail: email, password: password) { (_, error) in
             if error == nil {
-                if userType == .counselor  || userType == .admin {
+                if user.type == .counselor  || user.type == .admin {
                     self.performSegue(withIdentifier: "VerifyCounselor", sender: nil)
                 } else {
                     self.performSegue(withIdentifier: "VerifyUser", sender: nil)
@@ -288,13 +286,13 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
     func getProfileImgUrl() {
         let uid = Auth.auth().currentUser?.uid
         let storageReference = Storage.storage().reference().child("user/\(String(describing: uid))")
-        let imageData = profileImg.jpegData(compressionQuality: 1.0)!
+        let imageData = user.profileImg!.jpegData(compressionQuality: 1.0)!
         storageReference.putData(imageData, metadata: nil) { (metaData, error) in
             if error == nil {
                 storageReference.downloadURL(completion: { (url, error) in
                     if error == nil {
                         let urlString = url?.absoluteString
-                        SignUp.Instance.profileImgUrl = urlString
+                        user.profileImgUrl = urlString
                     } else {
                         self.showAlert(title: "Error", message: "Could not upload image", actionTitle: "OK", actionStyle: .default)
                     }
