@@ -7,22 +7,23 @@
 //
 
 import UIKit
-import FirebaseFirestore
-import FirebaseAuth
+import Firebase
 
 class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     // Storyboard outlets
-    @IBOutlet weak var gradientView: UIView!
+    @IBOutlet weak var gradientView: CustomView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var profileImgView: CustomImageView!
     @IBOutlet weak var emailLbl: UILabel!
     @IBOutlet weak var userTypeLbl: UILabel!
     @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var userTypePickerView: UIPickerView!
     // Code global vars
+    static let Instance = AccountSettings()
     let databaseRef = Firestore.firestore().collection("Users")
     var typesOfUser = ["Current", "Camper", "Parent", "Counselor"]
+    var urlString: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,14 +39,9 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
             gradientViewHeight.constant = 0.15 * view.frame.height
             gradientView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.15)
         }
-        
-        // Sets the gradients
-        gradientView.setGradientBackground()
-        
+
         // Formats the profile image view
-        profileImageView.layer.cornerRadius = 50
-        profileImageView.isUserInteractionEnabled = true
-        profileImageView.image = profileImage
+        profileImgView.image = profileImg
         
         // Formats the email and userType labels
         emailLbl.text = "Email: \((Auth.auth().currentUser?.email)!)"
@@ -69,7 +65,7 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
     }
     
     // Dismisses the UIPickerView
-    @IBAction func dismissUserTypePickerView(_ sender: Any) {
+    @IBAction func dismissUserTypePickerView(_ sender: UIButton) {
         userTypePickerView.isHidden = true
         cancelBtn.isHidden = true
     }
@@ -140,7 +136,7 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
     }
     
     // Displays the image picker to allow users to set/reset their profile image
-    @IBAction func chooseProfileImage(_ sender: UITapGestureRecognizer) {
+    @IBAction func chooseProfileImg(_ sender: UITapGestureRecognizer) {
         let Alert = UIAlertController(title: nil, message: "How do you want to select your image?", preferredStyle: .actionSheet)
         Alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: nil))
         Alert.addAction(UIAlertAction(title: "Photos Library", style: .default, handler:  { (Action) in
@@ -158,8 +154,9 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
     // Sets the selected image to the users profile image
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let Image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-            profileImage = Image
-            profileImageView.image = profileImage
+            profileImg = Image
+            profileImgView.image = profileImg
+            updateUser(email: (Auth.auth().currentUser?.email)!)
         }
         
         dismiss(animated: true, completion: nil)
@@ -233,7 +230,30 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
     
     // MARK: Firebase
     
+    // Uploads the users profile image to Firebase
+    func getProfileImgUrl() {
+        let uid = Auth.auth().currentUser?.uid
+        let storageReference = Storage.storage().reference().child("user/\(String(describing: uid))")
+        let imageData = profileImg.jpegData(compressionQuality: 1.0)!
+        storageReference.putData(imageData, metadata: nil) { (metaData, error) in
+            if error == nil {
+                storageReference.downloadURL(completion: { (url, error) in
+                    if error == nil {
+                        AccountSettings.Instance.urlString = url?.absoluteString
+                        print(AccountSettings.Instance.urlString)
+                    } else {
+                        self.showAlert(title: "Error", message: "Could not upload image", actionTitle: "OK", actionStyle: .default)
+                    }
+                })
+            } else {
+                self.showAlert(title: "Error", message: "Could not upload image", actionTitle: "OK", actionStyle: .default)
+            }
+        }
+    }
+    
+    // Updates the users data in Firebase
     func updateUser(email: String) {
+        getProfileImgUrl()
         var userTypeString: String
         switch userType {
         case .camper:
@@ -246,7 +266,7 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
             return
         }
         
-        databaseRef.document(email).updateData(["signedIn": signedIn!, "type": userTypeString]) { error in
+        databaseRef.document(email).updateData(["signedIn": signedIn!, "type": userTypeString, "profileImgUrl": AccountSettings.Instance.urlString!]) { error in
             if error != nil {
                 self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
             }

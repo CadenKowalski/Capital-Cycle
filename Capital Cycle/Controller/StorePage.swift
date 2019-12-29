@@ -12,14 +12,15 @@ import SafariServices
 class StorePage: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     // Storyboard outlets
-    @IBOutlet weak var gradientView: UIView!
+    @IBOutlet weak var gradientView: CustomView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
     @IBOutlet weak var storeLblYConstraint: NSLayoutConstraint!
-    @IBOutlet weak var accountSettingsImageView: UIImageView!
+    @IBOutlet weak var accountSettingsImgView: CustomImageView!
     @IBOutlet weak var productsCollection: UICollectionView!
     @IBOutlet weak var productsCollectionHeight: NSLayoutConstraint!
     private(set) public var Products = [Product]()
     // Code global vars
+    static let Instance = StorePage()
     let websiteURLs = ["https://capitalcyclecamp.org/pay-for-camp/5-day-session-1-6216",
                        "https://capitalcyclecamp.org/pay-for-camp/1-5-day-session-of-cycle-camp-spring-break-and-summer-session-1245",
                        "https://capitalcyclecamp.org/pay-for-camp/4-day-session-of-cycle-camp",
@@ -35,6 +36,11 @@ class StorePage: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         loadProducts()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        setProfileImg()
+    }
+    
     // MARK: View Setup
     
     // Formats the UI
@@ -46,19 +52,20 @@ class StorePage: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         } else if view.frame.height >= 812 {
             storeLblYConstraint.constant = 15
         }
-        
-        // Sets the gradients
-        gradientView.setGradientBackground()
-        
+
         // Sets the profile image on the account settings button
-        accountSettingsImageView.isUserInteractionEnabled = true
-        accountSettingsImageView.layer.cornerRadius = 20
-        accountSettingsImageView.image = profileImage
+        StorePage.Instance.accountSettingsImgView = accountSettingsImgView
+        setProfileImg()
         
         // Formats the products collection view
         productsCollection.delegate = self
         productsCollection.dataSource = self
         productsCollectionHeight.constant = view.frame.maxY - gradientView.frame.maxY
+    }
+    
+    // Sets the profile image on the account settings button
+    func setProfileImg() {
+        accountSettingsImgView.image = profileImg
     }
     
     // MARK: Collection View Setup

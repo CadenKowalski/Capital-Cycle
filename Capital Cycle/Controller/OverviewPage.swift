@@ -13,17 +13,24 @@ import SafariServices
 class OverviewPage: UIViewController {
 
     // Storyboard outlets
-    @IBOutlet weak var gradientView: UIView!
+    @IBOutlet weak var gradientView: CustomView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
     @IBOutlet weak var overviewLblYConstraint: NSLayoutConstraint!
-    @IBOutlet weak var accountSettingsImageView: UIImageView!
+    @IBOutlet weak var accountSettingsImgView: CustomImageView!
     @IBOutlet weak var scrollViewYConstraint: NSLayoutConstraint!
     @IBOutlet weak var scrollViewDisplay: UIView!
     @IBOutlet weak var locationLbl: UILabel!
+    // Global code vars
+    static let Instance = OverviewPage()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         customizeLayout()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        setProfileImg()
     }
     
     // MARK: View Setup
@@ -37,20 +44,18 @@ class OverviewPage: UIViewController {
         } else if view.frame.height >= 812 {
            overviewLblYConstraint.constant = 15
         }
-        
-        // Sets the gradients
-        gradientView.setGradientBackground()
-        
+
         // Readjusts the Y constraints
         scrollViewYConstraint.constant = gradientViewHeight.constant + 8
         
         // Sets the profile image on the account settings button
-        accountSettingsImageView.isUserInteractionEnabled = true
-        accountSettingsImageView.layer.cornerRadius = 20
-        accountSettingsImageView.image = profileImage
-        
-        // Sets up the location lbl
-        locationLbl.isUserInteractionEnabled = true
+        OverviewPage.Instance.accountSettingsImgView = accountSettingsImgView
+        setProfileImg()
+    }
+    
+    // Sets the profile image on the account settings button
+    func setProfileImg() {
+        accountSettingsImgView.image = profileImg
     }
     
     // Initiates haptic feedback

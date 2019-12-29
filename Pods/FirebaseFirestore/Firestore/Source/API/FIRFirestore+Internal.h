@@ -34,6 +34,14 @@ namespace util = firebase::firestore::util;
 
 NS_ASSUME_NONNULL_BEGIN
 
+/** Provides a registry management interface for FIRFirestore instances. */
+@protocol FSTFirestoreInstanceRegistry
+
+/** Removes the FIRFirestore instance with given database name from registry. */
+- (void)removeInstanceWithDatabase:(NSString *)database;
+
+@end
+
 @interface FIRFirestore (/* Init */)
 
 /**
@@ -42,9 +50,10 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (instancetype)initWithDatabaseID:(model::DatabaseId)databaseID
                     persistenceKey:(std::string)persistenceKey
-               credentialsProvider:(std::unique_ptr<auth::CredentialsProvider>)credentialsProvider
+               credentialsProvider:(std::shared_ptr<auth::CredentialsProvider>)credentialsProvider
                        workerQueue:(std::shared_ptr<util::AsyncQueue>)workerQueue
-                       firebaseApp:(FIRApp *)app;
+                       firebaseApp:(FIRApp *)app
+                  instanceRegistry:(nullable id<FSTFirestoreInstanceRegistry>)registry;
 @end
 
 /** Internal FIRFirestore API we don't want exposed in our public header files. */
@@ -55,30 +64,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (FIRFirestore *)recoverFromFirestore:(std::shared_ptr<api::Firestore>)firestore;
 
-/**
- * Shutdown this `FIRFirestore`, releasing all resources (abandoning any outstanding writes,
- * removing all listens, closing all network connections, etc.).
- *
- * @param completion A block to execute once everything has shut down.
- */
-- (void)shutdownWithCompletion:(nullable void (^)(NSError *_Nullable error))completion
-    NS_SWIFT_NAME(shutdown(completion:));
-
-/**
- * Clears the persistent storage. This includes pending writes and cached documents.
- *
- * Must be called while the firestore instance is not started (after the app is shutdown or when
- * the app is first initialized). On startup, this method must be called before other methods
- * (other than `FIRFirestore.settings`). If the firestore instance is still running, the function
- * will complete with an error code of `FailedPrecondition`.
- *
- * Note: `clearPersistence(completion:)` is primarily intended to help write reliable tests that
- * use Firestore. It uses the most efficient mechanism possible for dropping existing data but
- * does not attempt to securely overwrite or otherwise make cached data unrecoverable. For
- * applications that are sensitive to the disclosure of cache data in between user sessions we
- * strongly recommend not to enable persistence in the first place.
- */
-- (void)clearPersistenceWithCompletion:(nullable void (^)(NSError *_Nullable error))completion;
+- (void)terminateInternalWithCompletion:(nullable void (^)(NSError *_Nullable error))completion;
 
 - (const std::shared_ptr<util::AsyncQueue> &)workerQueue;
 

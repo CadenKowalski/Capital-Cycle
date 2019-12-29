@@ -13,10 +13,10 @@ import FirebaseFirestore
 class VerifyUser: UIViewController, UIAdaptivePresentationControllerDelegate {
 
     // Storyboard outlets
-    @IBOutlet weak var gradientView: UIView!
+    @IBOutlet weak var gradientView: CustomView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
     @IBOutlet weak var refreshBtn: UIButton!
-    @IBOutlet weak var signUpBtn: UIButton!
+    @IBOutlet weak var signUpBtn: CustomButton!
     // Global code vars
     let databaseRef = Firestore.firestore().collection("Users")
     
@@ -34,10 +34,6 @@ class VerifyUser: UIViewController, UIAdaptivePresentationControllerDelegate {
             gradientViewHeight.constant = 0.15 * view.frame.height
             gradientView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.15)
         }
-        
-        // Sets the gradients
-        gradientView.setGradientBackground()
-        signUpBtn.setGradientButton(cornerRadius: 22.5)
         
         // Prevents the user from dismissing the view without deleting the account
         isModalInPresentation = true
@@ -70,7 +66,7 @@ class VerifyUser: UIViewController, UIAdaptivePresentationControllerDelegate {
     }
     
     // Signs up the user
-    @IBAction func signUp(_ sender: UIButton) {
+    @IBAction func signUp(_ sender: CustomButton) {
         self.performSegue(withIdentifier: "verifiedUser", sender: nil)
         if hapticFeedback {
             let feedbackGenerator = UISelectionFeedbackGenerator()
@@ -93,7 +89,7 @@ class VerifyUser: UIViewController, UIAdaptivePresentationControllerDelegate {
             return
         }
         
-        databaseRef.document(email).setData(["email": email, "type": userTypeString, "signedIn": signedIn!, "profileImageUrl": SignUp.Instance.profileImageUrl!]) { error in
+        databaseRef.document(email).setData(["email": email, "type": userTypeString, "signedIn": signedIn!, "profileImgUrl": SignUp.Instance.profileImgUrl!]) { error in
             if error != nil {
                 self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
             }

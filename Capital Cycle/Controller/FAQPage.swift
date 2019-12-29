@@ -11,15 +11,22 @@ import UIKit
 class FAQPage: UIViewController {
 
     // Storyboard outlets
-    @IBOutlet weak var gradientView: UIView!
+    @IBOutlet weak var gradientView: CustomView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
     @IBOutlet weak var FAQLblYConstraint: NSLayoutConstraint!
-    @IBOutlet weak var accountSettingsImageView: UIImageView!
+    @IBOutlet weak var accountSettingsImgView: CustomImageView!
     @IBOutlet weak var scrollViewYConstraint: NSLayoutConstraint!
+    // Global code vars
+    static let Instance = FAQPage()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         customizeLayout()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        setProfileImg()
     }
     
     // MARK: View Setup
@@ -34,14 +41,15 @@ class FAQPage: UIViewController {
         }
         
         // Sets the profile image on the account settings button
-        accountSettingsImageView.isUserInteractionEnabled = true
-        accountSettingsImageView.layer.cornerRadius = 20
-        accountSettingsImageView.image = profileImage
+        FAQPage.Instance.accountSettingsImgView = accountSettingsImgView
+        setProfileImg()
         
         // Readjusts the Y constraints
         scrollViewYConstraint.constant = gradientViewHeight.constant + 8
-        
-        // Sets the gradients
-        gradientView.setGradientBackground()
+    }
+    
+    // Sets the profile image on the account settings button
+    func setProfileImg() {
+        accountSettingsImgView.image = profileImg
     }
 }

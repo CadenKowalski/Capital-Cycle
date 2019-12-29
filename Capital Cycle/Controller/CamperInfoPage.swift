@@ -13,10 +13,10 @@ import GoogleAPIClientForREST
 class CamperInfoPage: UIViewController {
 
     // Storyboard outlets
-    @IBOutlet weak var gradientView: UIView!
+    @IBOutlet weak var gradientView: CustomView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
     @IBOutlet weak var camperInfoLblYConstraint: NSLayoutConstraint!
-    @IBOutlet weak var accountSettingsImageView: UIImageView!
+    @IBOutlet weak var accountSettingsImgView: CustomImageView!
     @IBOutlet weak var camperScrollViewYConstraint: NSLayoutConstraint!
     @IBOutlet weak var scrollViewDisplay: UIView!
     @IBOutlet weak var scrollViewDisplayHeight: NSLayoutConstraint!
@@ -27,6 +27,7 @@ class CamperInfoPage: UIViewController {
     @IBOutlet weak var parentEmailLbl: UILabel!
     @IBOutlet weak var signedWaiverLbl: UILabel!
     //Code global vars
+    static let Instance = CamperInfoPage()
     let spreadsheetID = "1alCW-eSX-lC6CUi0lbmNK7hpfkUhpOqhrbWZCBJgXuk"
     let Service = GTLRSheetsService()
     var camperBtns = [UIButton]()
@@ -35,6 +36,11 @@ class CamperInfoPage: UIViewController {
         super.viewDidLoad()
         customizeLayout()
         fetchNumCampers()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        setProfileImg()
     }
     
     // MARK: View Setup
@@ -48,23 +54,21 @@ class CamperInfoPage: UIViewController {
         } else if view.frame.height >= 812 {
             camperInfoLblYConstraint.constant = 15
         }
-        
-        // Sets the gradients
-        gradientView.setGradientBackground()
-        
+
         // Readjusts the Y constraints relative to the gradient view height
         camperScrollViewYConstraint.constant = gradientView.frame.height + 10
         
         // Sets the profile image on the account settings button
-        accountSettingsImageView.isUserInteractionEnabled = true
-        accountSettingsImageView.layer.cornerRadius = 20
-        accountSettingsImageView.image = profileImage
-        
-        // Formats the camper info view
-        camperInfoView.layer.cornerRadius = 20
+        CamperInfoPage.Instance.accountSettingsImgView = accountSettingsImgView
+        setProfileImg()
         
         // Sets the API key for the GTLR Service so that the app can access the spreadhseet without credentials
         Service.apiKey = "AIzaSyBIdPHR_nqgL9G6fScmlcPMReBM5PmtVD8"
+    }
+    
+    // Sets the profile image on the account settings button
+    func setProfileImg() {
+        accountSettingsImgView.image = profileImg
     }
     
     // MARK: Camper Info Data

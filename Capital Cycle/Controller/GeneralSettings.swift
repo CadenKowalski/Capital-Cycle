@@ -14,7 +14,7 @@ import FirebaseFirestore
 class GeneralSettings: UIViewController {
 
     // Storyboard outlets
-    @IBOutlet weak var gradientView: UIView!
+    @IBOutlet weak var gradientView: CustomView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
     @IBOutlet weak var signedInSwitch: UISwitch!
     @IBOutlet weak var notificationsSwitch: UISwitch!
@@ -36,10 +36,7 @@ class GeneralSettings: UIViewController {
             gradientViewHeight.constant = 0.15 * view.frame.height
             gradientView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.15)
         }
-        
-        // Sets the gradients
-        gradientView.setGradientBackground()
-        
+
         // Sets the switches to reflect their actual values
         signedInSwitch.isOn = signedIn
         hapticFeedbackSwitch.isOn = hapticFeedback

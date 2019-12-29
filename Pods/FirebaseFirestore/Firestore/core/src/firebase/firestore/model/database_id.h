@@ -17,8 +17,10 @@
 #ifndef FIRESTORE_CORE_SRC_FIREBASE_FIRESTORE_MODEL_DATABASE_ID_H_
 #define FIRESTORE_CORE_SRC_FIREBASE_FIRESTORE_MODEL_DATABASE_ID_H_
 
+#include <iosfwd>
 #include <memory>
 #include <string>
+#include <utility>
 
 #include "Firestore/core/src/firebase/firestore/util/comparison.h"
 
@@ -59,17 +61,25 @@ class DatabaseId : public util::Comparable<DatabaseId> {
 
   util::ComparisonResult CompareTo(const DatabaseId& rhs) const;
 
+  std::string ToString() const;
+  friend std::ostream& operator<<(std::ostream& out,
+                                  const DatabaseId& database_id);
+
   size_t Hash() const;
 
  private:
   // DocumentIds are copied into every ReferenceValue we create so hide the
   // actual values behind a shared_ptr to make copying cheaper.
   struct Rep {
+    Rep(std::string&& project_id, std::string&& database_id)
+        : project_id{std::move(project_id)},
+          database_id{std::move(database_id)} {
+    }
     std::string project_id;
     std::string database_id;
   };
 
-  std::shared_ptr<Rep> rep_;
+  std::shared_ptr<const Rep> rep_;
 };
 
 }  // namespace model

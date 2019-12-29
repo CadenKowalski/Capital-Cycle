@@ -7,23 +7,28 @@
 //
 
 import UIKit
+import SwiftUI
 import FirebaseAuth
+import CryptoKit
 import FirebaseFirestore
+import AuthenticationServices
 
-class LogIn: UIViewController, UITextFieldDelegate {
+class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
 
     // Storyboard outlets
-    @IBOutlet weak var gradientView: UIView!
+    @IBOutlet weak var gradientView: CustomView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
     @IBOutlet weak var logInLblYConstraint: NSLayoutConstraint!
     @IBOutlet weak var emailTxtField: UITextField!
     @IBOutlet weak var passTxtField: UITextField!
     @IBOutlet weak var signedInBtn: UIButton!
-    @IBOutlet weak var logInBtn: UIButton!
+    @IBOutlet weak var logInBtn: CustomButton!
     @IBOutlet weak var logInBtnProgressWheel: UIActivityIndicatorView!
+    @IBOutlet weak var signUpBtn: CustomButton!
     // Code global vars
     let databaseRef = Firestore.firestore().collection("Users")
     var profileImgUrl: String!
+    var currentNonce: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,17 +58,13 @@ class LogIn: UIViewController, UITextFieldDelegate {
     
     // Formats the UI
     func customizeLayout() {
-        //Formats the grdient view
+        //Formats the gradient view
         if view.frame.height < 700 {
             gradientViewHeight.constant = 0.15 * view.frame.height
             gradientView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.15)
         } else if view.frame.height >= 812 {
             logInLblYConstraint.constant = 15
         }
-
-        // Sets the gradients
-        gradientView.setGradientBackground()
-        logInBtn.setGradientButton(cornerRadius: 22.5)
 
         // Sets up the text fields
         emailTxtField.delegate = self
@@ -73,6 +74,17 @@ class LogIn: UIViewController, UITextFieldDelegate {
         
         // Formats the progress wheel
         logInBtnProgressWheel.isHidden = true
+        
+        // Formats the Aign in with Apple button
+        let appleButton = ASAuthorizationAppleIDButton()
+        appleButton.addTarget(self, action: #selector(signInWithApple), for: .touchDown)
+        appleButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(appleButton)
+        NSLayoutConstraint.activate([
+            appleButton.topAnchor.constraint(equalTo: signUpBtn.bottomAnchor, constant: 8),
+            appleButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 60),
+            appleButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -60)
+        ])
     }
     
     // Keep the user signed in or not
@@ -105,6 +117,7 @@ class LogIn: UIViewController, UITextFieldDelegate {
         }
     }
     
+    // Fromats the progress wheel
     func formatProgressWheel(toShow: Bool) {
         if toShow {
             logInBtnProgressWheel.isHidden = false
@@ -117,10 +130,65 @@ class LogIn: UIViewController, UITextFieldDelegate {
         }
     }
     
+    // MARK: Sign In With Apple
+    
+    func randomNonceString(length: Int = 32) -> String {
+        precondition(length > 0)
+        let charset: Array<Character> = Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
+        var result = ""
+        var remainingLength = length
+        while remainingLength > 0 {
+            let randoms: [UInt8] = (0 ..< 16).map { _ in
+                var random: UInt8 = 0
+                let errorCode = SecRandomCopyBytes(kSecRandomDefault, 1, &random)
+                if errorCode != errSecSuccess {
+                    fatalError("Unable to generate nonce. SecRandomCopyBytes failed with OSStatus \(errorCode)")
+                }
+                return random
+            }
+
+            randoms.forEach { random in
+                if length == 0 {
+                    return
+                }
+
+                if random < charset.count {
+                    result.append(charset[Int(random)])
+                    remainingLength -= 1
+                }
+            }
+        }
+
+        return result
+    }
+    
+    func sha256(_ input: String) -> String {
+        let inputData = Data(input.utf8)
+        let hashedData = SHA256.hash(data: inputData)
+        let hashString = hashedData.compactMap {
+            return String(format: "%02x", $0)
+        }.joined()
+        
+        return hashString
+    }
+    
+    @objc func signInWithApple() {
+        let nonce = randomNonceString()
+        currentNonce = nonce
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        let request = appleIDProvider.createRequest()
+        request.requestedScopes = [.fullName, .email]
+        request.nonce = sha256(nonce)
+        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+        authorizationController.delegate = self
+        authorizationController.presentationContextProvider = self
+        authorizationController.performRequests()
+    }
+    
     // MARK: Log In
     
     // Logs the user in
-    @IBAction func logIn(_ sender: UIButton) {
+    @IBAction func logIn(_ sender: CustomButton) {
         formatProgressWheel(toShow: true)
         Auth.auth().signIn(withEmail: emailTxtField.text!, password: passTxtField.text!) {(user, error) in
             if error == nil {
@@ -163,6 +231,7 @@ class LogIn: UIViewController, UITextFieldDelegate {
     
     // MARK: Firebase
     
+    // Updates the users signed in value if they choose to change it when logging in
     func updateUser(email: String) {
         databaseRef.document(email).updateData(["signedIn": signedIn!]) { error in
             if error != nil {
@@ -177,7 +246,7 @@ class LogIn: UIViewController, UITextFieldDelegate {
         userRef.getDocument { (document, error) in
             if error == nil {
                 signedIn = document?.get("signedIn") as? Bool
-                self.profileImgUrl = document?.get("profileImageUrl") as? String
+                self.profileImgUrl = document?.get("profileImgUrl") as? String
                 switch document?.get("type") as! String {
                 case "Camper":
                     userType = .camper
@@ -191,10 +260,7 @@ class LogIn: UIViewController, UITextFieldDelegate {
                     return
                 }
                 
-                self.downloadProfileImg(withURL: NSURL(string: self.profileImgUrl)! as URL) { image in
-                    profileImage = image
-                }
-                
+                profileImg = self.downloadProfileImg(withURL: self.profileImgUrl)
                 completion()
             } else {
                 self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
@@ -203,19 +269,11 @@ class LogIn: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func downloadProfileImg(withURL: URL, completion: @escaping (_ image: UIImage?) -> ()) {
-        let dataTask = URLSession.shared.dataTask(with: withURL) { data, url, error in
-            var downloadedImg: UIImage?
-            if let data = data {
-                downloadedImg = UIImage(data: data)
-            }
-            
-            DispatchQueue.main.async {
-                completion(downloadedImg)
-            }
-        }
-        
-        dataTask.resume()
+    // Downloads the users profile image
+    func downloadProfileImg(withURL url: String) -> UIImage {
+        let url = URL(string: url)!
+        let data = (try? Data(contentsOf: url))
+        return UIImage(data: data!)!
     }
     
     // MARK: Dismiss Keyboard
@@ -229,5 +287,47 @@ class LogIn: UIViewController, UITextFieldDelegate {
     // Dismiss keyboard when view tapped
     @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
         self.view.endEditing(true)
+    }
+    
+    // MARK: Extensions
+    
+    // Creates a Firebase User from data
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
+            guard let nonce = currentNonce else {
+                fatalError("Invalid state: A login callback was received, but no login request was sent.")
+            }
+            
+            guard let appleIDToken = appleIDCredential.identityToken else {
+                print("Unable to fetch identity token")
+                return
+            }
+            
+            guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
+                print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
+                return
+            }
+            
+            let credential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString, rawNonce: nonce)
+            Auth.auth().signIn(with: credential) { (authResult, error) in
+                if error != nil {
+                    print(error!.localizedDescription)
+                    return
+                } else {
+                    OneMoreStep.Instance.signUpEmail = appleIDCredential.email
+                    self.performSegue(withIdentifier: "SignUpFromApple", sender: nil)
+                }
+            }
+        }
+    }
+    
+    // Function to print message if authorization through controller fails on user end
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        print("Something bad happened", error)
+    }
+    
+    // Function for authorization controller presenttion context delegate
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return view.window!
     }
 }

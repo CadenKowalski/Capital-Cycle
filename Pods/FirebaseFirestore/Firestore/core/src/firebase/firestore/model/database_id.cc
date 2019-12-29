@@ -16,7 +16,7 @@
 
 #include "Firestore/core/src/firebase/firestore/model/database_id.h"
 
-#include <utility>
+#include <ostream>
 
 #include "Firestore/core/src/firebase/firestore/util/hard_assert.h"
 #include "Firestore/core/src/firebase/firestore/util/hashing.h"
@@ -31,9 +31,7 @@ DatabaseId::DatabaseId(std::string project_id, std::string database_id) {
   HARD_ASSERT(!project_id.empty());
   HARD_ASSERT(!database_id.empty());
 
-  rep_ = std::make_shared<Rep>();
-  rep_->project_id = std::move(project_id);
-  rep_->database_id = std::move(database_id);
+  rep_ = std::make_shared<Rep>(std::move(project_id), std::move(database_id));
 }
 
 util::ComparisonResult DatabaseId::CompareTo(
@@ -42,6 +40,14 @@ util::ComparisonResult DatabaseId::CompareTo(
   if (!util::Same(cmp)) return cmp;
 
   return util::Compare(database_id(), rhs.database_id());
+}
+
+std::string DatabaseId::ToString() const {
+  return absl::StrCat("DatabaseId(", project_id(), ":", database_id(), ")");
+}
+
+std::ostream& operator<<(std::ostream& out, const DatabaseId& database_id) {
+  return out << database_id.ToString();
 }
 
 size_t DatabaseId::Hash() const {

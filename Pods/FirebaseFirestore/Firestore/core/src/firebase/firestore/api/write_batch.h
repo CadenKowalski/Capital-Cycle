@@ -22,12 +22,8 @@
 #include <vector>
 
 #include "Firestore/core/src/firebase/firestore/api/document_reference.h"
-#include "Firestore/core/src/firebase/firestore/objc/objc_class.h"
-#include "Firestore/core/src/firebase/firestore/util/status.h"
-
-NS_ASSUME_NONNULL_BEGIN
-
-OBJC_CLASS(FSTMutation);
+#include "Firestore/core/src/firebase/firestore/model/mutation.h"
+#include "Firestore/core/src/firebase/firestore/util/status_fwd.h"
 
 namespace firebase {
 namespace firestore {
@@ -49,16 +45,20 @@ class WriteBatch {
   }
 
   void SetData(const DocumentReference& reference,
-               core::ParsedSetData&& setData);
+               core::ParsedSetData&& set_data);
   void UpdateData(const DocumentReference& reference,
-                  core::ParsedUpdateData&& updateData);
+                  core::ParsedUpdateData&& update_data);
   void DeleteData(const DocumentReference& reference);
 
   void Commit(util::StatusCallback callback);
 
+  const std::shared_ptr<Firestore>& firestore() const {
+    return firestore_;
+  }
+
  private:
   std::shared_ptr<Firestore> firestore_;
-  std::vector<FSTMutation*> mutations_;
+  std::vector<model::Mutation> mutations_;
   bool committed_ = false;
 
   void VerifyNotCommitted() const;
@@ -68,7 +68,5 @@ class WriteBatch {
 }  // namespace api
 }  // namespace firestore
 }  // namespace firebase
-
-NS_ASSUME_NONNULL_END
 
 #endif  // FIRESTORE_CORE_SRC_FIREBASE_FIRESTORE_API_WRITE_BATCH_H_

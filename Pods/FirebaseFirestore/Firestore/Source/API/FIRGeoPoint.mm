@@ -17,10 +17,10 @@
 #import "Firestore/Source/API/FIRGeoPoint+Internal.h"
 
 #include "Firestore/core/include/firebase/firestore/geo_point.h"
-#include "Firestore/core/src/firebase/firestore/api/input_validation.h"
 #include "Firestore/core/src/firebase/firestore/util/comparison.h"
+#include "Firestore/core/src/firebase/firestore/util/exception.h"
 
-using firebase::firestore::api::ThrowInvalidArgument;
+using firebase::firestore::util::ThrowInvalidArgument;
 using firebase::firestore::util::DoubleBitwiseEquals;
 using firebase::firestore::util::DoubleBitwiseHash;
 using firebase::firestore::util::WrapCompare;
@@ -46,15 +46,6 @@ NS_ASSUME_NONNULL_BEGIN
     _longitude = longitude;
   }
   return self;
-}
-
-- (NSComparisonResult)compare:(FIRGeoPoint *)other {
-  NSComparisonResult result = WrapCompare<double>(self.latitude, other.latitude);
-  if (result != NSOrderedSame) {
-    return result;
-  } else {
-    return WrapCompare<double>(self.longitude, other.longitude);
-  }
 }
 
 #pragma mark - NSObject methods
@@ -88,8 +79,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @implementation FIRGeoPoint (Internal)
 
-- (firestore::GeoPoint)toGeoPoint {
-  return firestore::GeoPoint(self.latitude, self.longitude);
+- (NSComparisonResult)compare:(FIRGeoPoint *)other {
+  NSComparisonResult result = WrapCompare<double>(self.latitude, other.latitude);
+  if (result != NSOrderedSame) {
+    return result;
+  } else {
+    return WrapCompare<double>(self.longitude, other.longitude);
+  }
 }
 
 @end

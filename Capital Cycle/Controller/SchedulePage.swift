@@ -12,17 +12,17 @@ import CoreData
 
 class SchedulePage: UIViewController {
     // Storyboard outlets
-    @IBOutlet weak var gradientView: UIView!
+    @IBOutlet weak var gradientView: CustomView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
     @IBOutlet weak var scheduleLblYConstraint: NSLayoutConstraint!
-    @IBOutlet weak var accountSettingsImageView: UIImageView!
+    @IBOutlet weak var accountSettingsImgView: CustomImageView!
     // Daily scroll view
     @IBOutlet weak var dailyScrollView: UIScrollView!
     @IBOutlet weak var dailyScrollViewYConstraint: NSLayoutConstraint!
     @IBOutlet weak var dailyScrollViewDisplay: UIView!
     @IBOutlet weak var dayLbl: UILabel!
     @IBOutlet weak var dailyDateLbl: UILabel!
-    @IBOutlet weak var overviewBtn: UIButton!
+    @IBOutlet weak var overviewBtn: CustomButton!
     @IBOutlet weak var eightActivityLbl: UILabel!
     @IBOutlet weak var nineActivityLbl: UILabel!
     @IBOutlet weak var tenActivityLbl: UILabel!
@@ -41,7 +41,7 @@ class SchedulePage: UIViewController {
     @IBOutlet weak var overviewScroll: UIScrollView!
     @IBOutlet weak var overviewScrollViewDisplay: UIView!
     @IBOutlet weak var overviewDateLbl: UILabel!
-    @IBOutlet weak var dailyBtn: UIButton!
+    @IBOutlet weak var dailyBtn: CustomButton!
     @IBOutlet weak var mondayLbl: UILabel!
     @IBOutlet weak var tuesdayLbl: UILabel!
     @IBOutlet weak var wednesdayLbl: UILabel!
@@ -49,6 +49,7 @@ class SchedulePage: UIViewController {
     @IBOutlet weak var fridayLbl: UILabel!
     @IBOutlet weak var noConnectionView: UIView!
     // Code global vars
+    static let Instance = SchedulePage()
     let Day = Calendar.current.component(.weekday, from: Date())
     let Hour = Calendar.current.component(.hour, from: Date())
     let spreadsheetID = "1alCW-eSX-lC6CUi0lbmNK7hpfkUhpOqhrbWZCBJgXuk"
@@ -65,6 +66,7 @@ class SchedulePage: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
+        setProfileImg()
         if !Reachability.isConnectedToNetwork() {
             UIView.animate(withDuration: 0.25, animations: { () -> Void in
                 self.noConnectionView.alpha = 1})
@@ -91,15 +93,9 @@ class SchedulePage: UIViewController {
         dailyScrollViewYConstraint.constant = gradientView.frame.height + 8
         overviewScrollViewYConstraint.constant = gradientView.frame.height + 8
         
-        // Sets gradients
-        gradientView.setGradientBackground()
-        dailyBtn.setGradientButton(cornerRadius: 10)
-        overviewBtn.setGradientButton(cornerRadius: 11)
-        
         // Sets the profile image on the account settings button
-        accountSettingsImageView.isUserInteractionEnabled = true
-        accountSettingsImageView.layer.cornerRadius = 20
-        accountSettingsImageView.image = profileImage
+        SchedulePage.Instance.accountSettingsImgView = accountSettingsImgView
+        setProfileImg()
         
         // Sets the API key for the GTLR Service so that the app can access the spreadhseet without credentials
         Service.apiKey = "AIzaSyBIdPHR_nqgL9G6fScmlcPMReBM5PmtVD8"
@@ -129,10 +125,6 @@ class SchedulePage: UIViewController {
             }
         }
         
-        // Formats the no connection view
-        noConnectionView.layer.cornerRadius = 20
-        noConnectionView.alpha = 0
-        
         // Formats the refresh view
         dailyRefreshControl.backgroundColor = UIColor(named: "ViewColor")
         dailyRefreshControl.addTarget(self, action: #selector(updateData), for: .valueChanged)
@@ -140,6 +132,11 @@ class SchedulePage: UIViewController {
         overviewRefreshControl.backgroundColor = UIColor(named: "ViewColor")
         overviewRefreshControl.addTarget(self, action: #selector(updateData), for: .valueChanged)
         overviewScroll.refreshControl = overviewRefreshControl
+    }
+    
+    // Sets the profile image on the account settings button
+    func setProfileImg() {
+        accountSettingsImgView.image = profileImg
     }
     
     // MARK: Daily Spreadsheet Data
@@ -226,7 +223,7 @@ class SchedulePage: UIViewController {
     }
     
     // Switches between the overview and daily views
-    @IBAction func switchViews(_ sender: UIButton) {
+    @IBAction func switchViews(_ sender: CustomButton) {
         if overviewScrollView.isHidden {
             overviewScrollView.isHidden = false
         } else {

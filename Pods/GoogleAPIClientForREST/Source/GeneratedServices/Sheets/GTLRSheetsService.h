@@ -8,9 +8,6 @@
 // Documentation:
 //   https://developers.google.com/sheets/
 
-#import <GTMSessionFetcher/GTMSessionFetcher.h>
-#import <GTMSessionFetcher/GTMSessionFetcherService.h>
-
 #if GTLR_BUILT_AS_FRAMEWORK
   #import "GTLR/GTLRService.h"
 #else

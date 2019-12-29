@@ -13,12 +13,13 @@ import FirebaseFirestore
 class VerifyCounselor: UIViewController, UITextFieldDelegate, UIAdaptivePresentationControllerDelegate {
 
     // Storyboard outlets
-    @IBOutlet weak var gradientView: UIView!
+    @IBOutlet weak var gradientView: CustomView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
     @IBOutlet weak var counselorIdTxtField: UITextField!
-    @IBOutlet weak var signUpBtn: UIButton!
+    @IBOutlet weak var signUpBtn: CustomButton!
     // Global code vars
     let databaseRef = Firestore.firestore().collection("Users")
+    var senderVC: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,16 +36,19 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate, UIAdaptivePresenta
             gradientView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.15)
         }
         
-        // Sets the gradients
-        gradientView.setGradientBackground()
-        signUpBtn.setGradientButton(cornerRadius: 22.5)
-        
         // Sets up the text field
         counselorIdTxtField.delegate = self
         counselorIdTxtField.attributedPlaceholder = NSAttributedString(string: "Counselor ID", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
         
         // Prevents the user from dismissing the view without deleting the account
         isModalInPresentation = true
+        
+        // Determines the sender view controller
+        if SignUp.Instance.signUpEmail != nil {
+            senderVC = "SignUp"
+        } else {
+            senderVC = "OneMoreStep"
+        }
     }
     
     // Shows an alert
@@ -52,28 +56,36 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate, UIAdaptivePresenta
         let Alert = UIAlertController(title: title, message:  message, preferredStyle: .alert)
         Alert.addAction(UIAlertAction(title: actionTitle, style: actionStyle, handler: nil))
         present(Alert, animated: true, completion: nil)
-        if hapticFeedback {
+        giveHapticFeedback(error: true)
+    }
+    
+    func giveHapticFeedback(error: Bool) {
+        if error {
             let feedbackGenerator = UINotificationFeedbackGenerator()
             feedbackGenerator.prepare()
             feedbackGenerator.notificationOccurred(.error)
+        } else {
+            let feedbackGenerator = UISelectionFeedbackGenerator()
+            feedbackGenerator.selectionChanged()
         }
     }
     
     // MARK: Sign Up
     
     // Signs up the user
-    @IBAction func signUp(_ sender: UIButton) {
+    @IBAction func signUp(_ sender: CustomButton) {
         if counselorIdTxtField.text == "082404" {
             performSegue(withIdentifier: "VerifiedCounselor", sender: nil)
-            if hapticFeedback {
-                let feedbackGenerator = UISelectionFeedbackGenerator()
-                feedbackGenerator.selectionChanged()
+            giveHapticFeedback(error: false)
+            if senderVC == "SignUp" {
+                self.uploadUser(email: SignUp.Instance.signUpEmail)
+            } else {
+                self.uploadUser(email: OneMoreStep.Instance.signUpEmail)
             }
-            
-            self.uploadUser(email: SignUp.Instance.signUpEmail)
         } else {
             counselorIdTxtField.backgroundColor = .red
             counselorIdTxtField.alpha = 0.5
+            giveHapticFeedback(error: true)
         }
     }
     
@@ -91,9 +103,17 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate, UIAdaptivePresenta
             return
         }
         
-        databaseRef.document(email).setData(["email": email, "type": userTypeString, "signedIn": signedIn!,  "profileImageUrl": SignUp.Instance.profileImageUrl!]) { error in
-            if error != nil {
-                self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
+        if senderVC == "SignUp" {
+            databaseRef.document(email).setData(["email": email, "type": userTypeString, "signedIn": signedIn!,  "profileImgUrl": SignUp.Instance.profileImgUrl!]) { error in
+                if error != nil {
+                    self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
+                }
+            }
+        } else {
+            databaseRef.document(email).setData(["email": email, "type": userTypeString, "signedIn": signedIn!,  "profileImgUrl": OneMoreStep.Instance.profileImgUrl!]) { error in
+                if error != nil {
+                    self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
+                }
             }
         }
     }
