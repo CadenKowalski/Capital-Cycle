@@ -20,7 +20,7 @@ class GeneralSettings: UIViewController {
     @IBOutlet weak var notificationsSwitch: UISwitch!
     @IBOutlet weak var hapticFeedbackSwitch: UISwitch!
     // Code global vars
-    let databaseRef = Firestore.firestore().collection("Users")
+    let firebaseFunctions = FirebaseFunctions()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,11 +64,12 @@ class GeneralSettings: UIViewController {
             user.signedIn = false
         }
         
-        updateUser(email: (Auth.auth().currentUser?.email)!, key: "signedIn")
+        firebaseFunctions.updateUserData()
     }
     
     // Allows the user to update whether they want to receive notifications or not
     @IBAction func receiveNotifications(_ sender: UISwitch) {
+        firebaseFunctions.updateUserData()
     }
     
     // Allows the user to decide whether they want to get haptic feedback or not
@@ -99,14 +100,4 @@ class GeneralSettings: UIViewController {
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
-    
-    // MARK: Firebase
-
-    func updateUser(email: String, key: String) {
-        databaseRef.document(email).updateData([key: user.signedIn!]) { error in
-            if error != nil {
-                self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
-            }
-        }
-    }
 }

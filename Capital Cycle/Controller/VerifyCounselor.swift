@@ -18,7 +18,7 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate, UIAdaptivePresenta
     @IBOutlet weak var counselorIdTxtField: UITextField!
     @IBOutlet weak var signUpBtn: CustomButton!
     // Global code vars
-    let databaseRef = Firestore.firestore().collection("Users")
+    let firebaseFunctions = FirebaseFunctions()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,32 +69,11 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate, UIAdaptivePresenta
         if counselorIdTxtField.text == "082404" {
             performSegue(withIdentifier: "VerifiedCounselor", sender: nil)
             giveHapticFeedback(error: false)
-            uploadUser(email: user.email!)
+            firebaseFunctions.uploadUserData()
         } else {
             counselorIdTxtField.backgroundColor = .red
             counselorIdTxtField.alpha = 0.5
             giveHapticFeedback(error: true)
-        }
-    }
-    
-    // MARK: Firebase
-    
-    // Uploads a user to the Firebase Firestore
-    func uploadUser(email: String) {
-        var userTypeString: String
-        switch user.type {
-        case .counselor:
-            userTypeString = "Counselor"
-        case .admin:
-            userTypeString = "Admin"
-        default:
-            return
-        }
-
-        databaseRef.document(email).setData(["email": email, "type": userTypeString, "signedIn": user.signedIn!,  "profileImgUrl": user.profileImgUrl!]) { error in
-            if error != nil {
-                self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
-            }
         }
     }
     

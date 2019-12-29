@@ -2565,7 +2565,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                         <outlet property="privacyPolicyTxtView" destination="Kzh-E1-mfx" id="c2d-Ig-GTc"/>
                         <outlet property="profileImgView" destination="zTC-OI-wyz" id="MDt-ei-ogj"/>
                         <outlet property="signUpBtn" destination="ajG-sE-VYd" id="rvm-Am-rg7"/>
-                        <outlet property="signUpBtnProgressWheel" destination="gnJ-16-wrf" id="2JD-TC-7xz"/>
+                        <outlet property="signUpBtnProgressWheel" destination="gnJ-16-wrf" id="ZXU-Iw-2kL"/>
                         <outlet property="signedInBtn" destination="5ra-2Z-TlZ" id="ir5-XE-ayL"/>
                         <outlet property="userTypeLbl" destination="qf8-Wn-zz9" id="jsr-iE-gsQ"/>
                         <outlet property="userTypePickerView" destination="YuM-PM-C54" id="QEB-vs-07b"/>
@@ -3018,9 +3018,9 @@ A: We have a variety of games and books as well as a gym and playground to occup
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fEj-ak-nJB"/>
-        <segue reference="nul-0X-SWa"/>
-        <segue reference="stl-Sk-OpA"/>
-        <segue reference="uHf-Nt-zpe"/>
+        <segue reference="tBS-Ou-0eG"/>
+        <segue reference="SNw-F0-iiv"/>
+        <segue reference="i74-cw-zSX"/>
+        <segue reference="JVj-89-k2w"/>
     </inferredMetricsTieBreakers>
 </document>

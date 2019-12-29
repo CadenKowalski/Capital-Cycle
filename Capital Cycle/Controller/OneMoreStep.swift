@@ -24,6 +24,7 @@ class OneMoreStep: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     @IBOutlet weak var userTypePickerView: UIPickerView!
     // Code global vars
      var Agree = false
+    let firebaseFunctions = FirebaseFunctions()
     var typesOfUser = ["--", "Camper", "Parent", "Counselor"]
     
     override func viewDidLoad() {
@@ -188,6 +189,10 @@ class OneMoreStep: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     
     // Verifies the user's inputs and signs in the user
     @IBAction func verifyInputs(_ sender: CustomButton) {
+        if user.email == "cadenkowalski1@gmail.com" {
+            user.type = .admin
+        }
+        
         if Agree == false {
             showAlert(title: "Uh oh", message: "Please agree to the privacy policy and terms of serivce", actionTitle: "OK", actionStyle: .default)
         } else if user.type == FirebaseUser.type.none && user.type != .admin {
@@ -201,51 +206,8 @@ class OneMoreStep: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
                 performSegue(withIdentifier: "VerifiedUserFromApple", sender: nil)
             }
             
-            getProfileImgUrl {
-                self.uploadUser(email: user.email!)
-            }
-        }
-    }
-    
-    // MARK: Firebase
-    
-    // Gets the image URL for the users profile image
-    func getProfileImgUrl(completion: @escaping() -> Void) {
-        let uid = Auth.auth().currentUser?.uid
-        let storageReference = Storage.storage().reference().child("user/\(String(describing: uid))")
-        let imageData = user.profileImg!.jpegData(compressionQuality: 1.0)!
-        storageReference.putData(imageData, metadata: nil) { (metaData, error) in
-            if error == nil {
-                storageReference.downloadURL(completion: { (url, error) in
-                    if error == nil {
-                        let urlString = url?.absoluteString
-                        user.profileImgUrl = urlString
-                        completion()
-                    } else {
-                        self.showAlert(title: "Error", message: "Could not upload image", actionTitle: "OK", actionStyle: .default)
-                    }
-                })
-            } else {
-                self.showAlert(title: "Error", message: "Could not upload image", actionTitle: "OK", actionStyle: .default)
-            }
-        }
-    }
-    
-    // Uploads a user to the Firebase Firestore
-    func uploadUser(email: String) {
-        var userTypeString: String
-        switch user.type {
-        case .camper:
-            userTypeString = "Camper"
-        case .parent:
-            userTypeString = "Parent"
-        default:
-            return
-        }
-        
-        databaseRef.document(email).setData(["email": email, "type": userTypeString, "signedIn": user.signedIn!, "profileImgUrl": user.profileImgUrl!]) { error in
-            if error != nil {
-                self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
+            firebaseFunctions.getProfileImgUrl {
+                self.firebaseFunctions.uploadUserData()
             }
         }
     }

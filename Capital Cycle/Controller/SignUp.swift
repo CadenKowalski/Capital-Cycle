@@ -26,7 +26,9 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
     @IBOutlet weak var userTypePickerView: UIPickerView!
     // Code global vars
     var Agree = false
+    let firebaseFunctions = FirebaseFunctions()
     var typesOfUser = ["--", "Camper", "Parent", "Counselor"]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -148,8 +150,11 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
     func formatProgressWheel(toShow: Bool) {
         if toShow {
             signUpBtnProgressWheel.isHidden = false
+            print("Caden")
             signUpBtn.alpha = 0.25
+            print("H")
             signUpBtnProgressWheel.startAnimating()
+            print("Hello")
         } else {
             signUpBtnProgressWheel.isHidden = true
             signUpBtn.alpha = 1.0
@@ -208,13 +213,13 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
 
     // Verifies the users information
     @IBAction func verifyInputs(_ sender: CustomButton) {
-        let email = emailTxtField.text ?? ""
-        let password = passTxtField.text ?? ""
-        if email == "cadenkowalski1@gmail.com" {
+        user.email = emailTxtField.text ?? ""
+        user.password = passTxtField.text ?? ""
+        if user.email == "cadenkowalski1@gmail.com" {
             user.type = .admin
         }
 
-        if password != confmPassTxtField.text {
+        if user.password != confmPassTxtField.text {
             showAlert(title: "Passwords don't match", message: "Please make sure your passwords match", actionTitle: "OK", actionStyle: .default)
         } else if Agree == false {
             showAlert(title: "Uh oh", message: "Please agree to the privacy policy and terms of serivce", actionTitle: "OK", actionStyle: .default)
@@ -222,48 +227,25 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
             userTypeLbl.backgroundColor = .red
             userTypeLbl.alpha = 0.5
             giveHapticFeedback(error: true)
-        } else if passwordIsTooWeak(password: password) && password.count > 5 {
-            let Alert = UIAlertController(title: "Password not recommended", message: "We recommend that your password contain a number or symbol and be different cases", preferredStyle: .alert)
+        } else if passwordIsTooWeak() && user.password!.count < 6 {
+            let Alert = UIAlertController(title: "Password not recommended", message: "We recommend that your password contain a number or symbol and have different cases", preferredStyle: .alert)
             Alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             Alert.addAction(UIAlertAction(title: "Continue", style: .destructive, handler: { action in
-                self.signUp(email: email, password: password)
+                self.signUp()
             }))
             
             present(Alert, animated: true, completion: nil)
         } else {
-            signUp(email: email, password: password)
-        }
-    }
-    
-    // Signs up the user
-    func signUp(email: String, password: String) {
-        formatProgressWheel(toShow: true)
-        user.email = email
-        user.password = password
-        Auth.auth().createUser(withEmail: email, password: password) { (_, error) in
-            if error == nil {
-                if user.type == .counselor  || user.type == .admin {
-                    self.performSegue(withIdentifier: "VerifyCounselor", sender: nil)
-                } else {
-                    self.performSegue(withIdentifier: "VerifyUser", sender: nil)
-                    Auth.auth().currentUser?.sendEmailVerification(completion: nil)
-                }
-                
-                self.getProfileImgUrl()
-            } else {
-                self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
-            }
-            
-            self.formatProgressWheel(toShow: false)
+            signUp()
         }
     }
     
     // Tests if a password is too weak
-    func passwordIsTooWeak(password: String) -> Bool {
+    func passwordIsTooWeak() -> Bool {
         var tooWeak: Bool
         var passwordContainsSymbol = false
         let letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-        for letter in password {
+        for letter in user.password! {
             if !letters.contains(String(letter)) {
                 passwordContainsSymbol = true
             }
@@ -271,7 +253,7 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
         
         if !passwordContainsSymbol {
             tooWeak = true
-        } else if password == password.lowercased() || password == password.uppercased() {
+        } else if user.password == user.password!.lowercased() || user.password == user.password!.uppercased() {
             tooWeak = true
         } else {
             tooWeak = false
@@ -280,27 +262,19 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
         return tooWeak
     }
     
-    // MARK: Firebase
-    
-    // Uploads the users profile image to Firebase
-    func getProfileImgUrl() {
-        let uid = Auth.auth().currentUser?.uid
-        let storageReference = Storage.storage().reference().child("user/\(String(describing: uid))")
-        let imageData = user.profileImg!.jpegData(compressionQuality: 1.0)!
-        storageReference.putData(imageData, metadata: nil) { (metaData, error) in
-            if error == nil {
-                storageReference.downloadURL(completion: { (url, error) in
-                    if error == nil {
-                        let urlString = url?.absoluteString
-                        user.profileImgUrl = urlString
-                    } else {
-                        self.showAlert(title: "Error", message: "Could not upload image", actionTitle: "OK", actionStyle: .default)
-                    }
-                })
+    // Signs up the user
+    func signUp() {
+        formatProgressWheel(toShow: true)
+        firebaseFunctions.CreateUser {
+            if user.type == .counselor || user.type == .admin {
+                self.performSegue(withIdentifier: "VerifyCounselor", sender: nil)
             } else {
-                self.showAlert(title: "Error", message: "Could not upload image", actionTitle: "OK", actionStyle: .default)
+                self.performSegue(withIdentifier: "VerifyUser", sender: nil)
+                Auth.auth().currentUser?.sendEmailVerification(completion: nil)
             }
         }
+        
+        formatProgressWheel(toShow: false)
     }
     
     // MARK: Dismiss

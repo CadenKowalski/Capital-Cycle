@@ -11,10 +11,6 @@ import Firebase
 import CoreData
 
 var user = FirebaseUser()
-//var signedIn: Bool!
-//var userType: FirebaseUser.type!
-//var hapticFeedback: Bool!
-//var profileImg = UIImage(systemName: "person.circle")!
 var weekActivitiesList: [[String]]!
 var Week: [[String]]!
 var camperInfo: [[String]]!
@@ -59,6 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         user.signedIn = false
+        user.prefersNotifications = true
         user.type = FirebaseUser.type.none
         user.profileImg = UIImage(systemName: "person.circle")
         SaveContext(ContextName: Context)

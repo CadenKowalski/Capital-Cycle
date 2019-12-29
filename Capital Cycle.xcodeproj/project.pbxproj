@@ -33,8 +33,8 @@
 		57CB685B2306F15200570D86 /* CounselorNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CB685A2306F15200570D86 /* CounselorNavigationController.swift */; };
 		57DE34E223B2D19A00221F53 /* CustomUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DE34E123B2D19A00221F53 /* CustomUI.swift */; };
 		57E226F723B5428E007DF227 /* OneMoreStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E226F623B5428E007DF227 /* OneMoreStep.swift */; };
-		57E226FB23B84387007DF227 /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E226FA23B84387007DF227 /* Firebase.swift */; };
 		57E226FD23B84F8A007DF227 /* FirebaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E226FC23B84F8A007DF227 /* FirebaseUser.swift */; };
+		57E226FF23B85DF8007DF227 /* FirebaseFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E226FE23B85DF8007DF227 /* FirebaseFunctions.swift */; };
 		57ED6A2F22D578A200E3A362 /* FAQPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57ED6A2E22D578A200E3A362 /* FAQPage.swift */; };
 		587C376EC4CB7518541634C2 /* Pods_Capital_Cycle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEF63791B26DFB42FF56342B /* Pods_Capital_Cycle.framework */; };
 /* End PBXBuildFile section */
@@ -71,8 +71,8 @@
 		57CB685A2306F15200570D86 /* CounselorNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounselorNavigationController.swift; sourceTree = "<group>"; };
 		57DE34E123B2D19A00221F53 /* CustomUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUI.swift; sourceTree = "<group>"; };
 		57E226F623B5428E007DF227 /* OneMoreStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneMoreStep.swift; sourceTree = "<group>"; };
-		57E226FA23B84387007DF227 /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
 		57E226FC23B84F8A007DF227 /* FirebaseUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUser.swift; sourceTree = "<group>"; };
+		57E226FE23B85DF8007DF227 /* FirebaseFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFunctions.swift; sourceTree = "<group>"; };
 		57ED6A2E22D578A200E3A362 /* FAQPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQPage.swift; sourceTree = "<group>"; };
 		DEF63791B26DFB42FF56342B /* Pods_Capital_Cycle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Capital_Cycle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -154,7 +154,7 @@
 				578AF9DB22D41F2E007B42A9 /* Product.swift */,
 				578AF9DD22D41FA0007B42A9 /* ProductData.swift */,
 				5795C62322EA6CC200A0A171 /* TestForConnection.swift */,
-				57E226FA23B84387007DF227 /* Firebase.swift */,
+				57E226FE23B85DF8007DF227 /* FirebaseFunctions.swift */,
 				57E226FC23B84F8A007DF227 /* FirebaseUser.swift */,
 			);
 			path = Model;
@@ -322,8 +322,8 @@
 				578AF9E022D4201E007B42A9 /* ProductCell.swift in Sources */,
 				578AF9DE22D41FA0007B42A9 /* ProductData.swift in Sources */,
 				571C2F3F22E41CB6001D4438 /* GeneralSettings.swift in Sources */,
+				57E226FF23B85DF8007DF227 /* FirebaseFunctions.swift in Sources */,
 				57ED6A2F22D578A200E3A362 /* FAQPage.swift in Sources */,
-				57E226FB23B84387007DF227 /* Firebase.swift in Sources */,
 				578AF9DC22D41F2E007B42A9 /* Product.swift in Sources */,
 				57A3457422D2AEBD0070898F /* PageVC.swift in Sources */,
 				57A3457A22D2BB970070898F /* SchedulePage.swift in Sources */,

@@ -25,7 +25,6 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
     @IBOutlet weak var logInBtnProgressWheel: UIActivityIndicatorView!
     @IBOutlet weak var signUpBtn: CustomButton!
     // Code global vars
-    let databaseRef = Firestore.firestore().collection("Users")
     let firebaseFunctions = FirebaseFunctions()
     var currentNonce: String?
     
@@ -39,8 +38,9 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
         super.viewDidAppear(animated)
         Auth.auth().currentUser?.reload(completion: { (action) in
             if Auth.auth().currentUser != nil {
+                user.email = Auth.auth().currentUser?.email
                 self.formatProgressWheel(toShow: true)
-                self.fetchUserValues(email: (Auth.auth().currentUser?.email)!) {
+                self.firebaseFunctions.fetchUserData {
                     if Auth.auth().currentUser != nil && user.signedIn == true {
                         self.performSegue(withIdentifier: "AlreadyLoggedIn", sender: nil)
                         self.formatProgressWheel(toShow: false)
@@ -191,8 +191,8 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
         formatProgressWheel(toShow: true)
         Auth.auth().signIn(withEmail: emailTxtField.text!, password: passTxtField.text!) {(user, error) in
             if error == nil {
-                self.updateUser(email: (Auth.auth().currentUser?.email)!)
-                self.fetchUserValues(email: (Auth.auth().currentUser?.email)!) {
+                self.firebaseFunctions.updateUserData()
+                self.firebaseFunctions.fetchUserData {
                     self.performSegue(withIdentifier: "LogIn", sender: self)
                     self.formatProgressWheel(toShow: false)
                     self.giveHapticFeedback()
@@ -226,53 +226,6 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
             }))
         
         self.present(resetPasswordAlert, animated: true, completion: nil)
-    }
-    
-    // MARK: Firebase
-    
-    // Updates the users signed in value if they choose to change it when logging in
-    func updateUser(email: String) {
-        databaseRef.document(email).updateData(["signedIn": user.signedIn!]) { error in
-            if error != nil {
-                self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
-            }
-        }
-    }
-    
-    // Fetches user values from the Firebase Firestore
-    func fetchUserValues(email: String, completion: @escaping() -> Void) {
-        let userRef = databaseRef.document(email)
-        userRef.getDocument { (document, error) in
-            if error == nil {
-                user.signedIn = document?.get("signedIn") as? Bool
-                user.profileImgUrl = document?.get("profileImgUrl") as? String
-                switch document?.get("type") as! String {
-                case "Camper":
-                    user.type = .camper
-                case "Parent":
-                    user.type = .parent
-                case "Counselor":
-                    user.type = .counselor
-                case "Admin":
-                    user.type = .admin
-                default:
-                    return
-                }
-                
-                user.profileImg = self.downloadProfileImg(withURL: user.profileImgUrl!)
-                completion()
-            } else {
-                self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
-                completion()
-            }
-        }
-    }
-    
-    // Downloads the users profile image
-    func downloadProfileImg(withURL url: String) -> UIImage {
-        let url = URL(string: url)!
-        let data = (try? Data(contentsOf: url))
-        return UIImage(data: data!)!
     }
     
     // MARK: Dismiss Keyboard

@@ -18,7 +18,7 @@ class VerifyUser: UIViewController, UIAdaptivePresentationControllerDelegate {
     @IBOutlet weak var refreshBtn: UIButton!
     @IBOutlet weak var signUpBtn: CustomButton!
     // Global code vars
-    let databaseRef = Firestore.firestore().collection("Users")
+    let firebaseFunctions = FirebaseFunctions()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,28 +73,7 @@ class VerifyUser: UIViewController, UIAdaptivePresentationControllerDelegate {
             feedbackGenerator.selectionChanged()
         }
         
-        self.uploadUser(email: (Auth.auth().currentUser?.email)!)
-    }
-    
-    // MARK: Firebase
-    
-    // Uploads a user to the Firebase Firestore
-    func uploadUser(email: String) {
-        var userTypeString: String
-        switch user.type {
-        case .camper:
-            userTypeString = "Camper"
-        case .parent:
-            userTypeString = "Parent"
-        default:
-            return
-        }
-        
-        databaseRef.document(email).setData(["email": email, "type": userTypeString, "signedIn": user.signedIn!, "profileImgUrl": user.profileImgUrl!]) { error in
-            if error != nil {
-                self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
-            }
-        }
+        firebaseFunctions.uploadUserData()
     }
     
     // MARK: Dismiss
