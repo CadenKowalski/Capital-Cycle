@@ -9,6 +9,7 @@
 import UIKit
 
 struct FirebaseUser {
+    var uid: String?
     var email: String?
     var password: String?
     var profileImg: UIImage?
@@ -27,6 +28,7 @@ struct FirebaseUser {
     }
     
     mutating func reset() {
+        self.uid = ""
         self.email = ""
         self.password = ""
         self.profileImg = UIImage(systemName: "person.circle")

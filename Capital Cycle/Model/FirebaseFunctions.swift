@@ -10,9 +10,6 @@ import Firebase
 
 class FirebaseFunctions {
     
-    // Code global vars
-    let storageReference = Storage.storage().reference().child("user/\(String(describing: Auth.auth().currentUser?.uid))")
-    
     // MARK: Firebase Functions
     
     // Returns the user's type as a string
@@ -51,6 +48,7 @@ class FirebaseFunctions {
     func createUser(completion: @escaping(String?) -> Void) {
         Auth.auth().createUser(withEmail: user.email!, password: user.password!) { (_, error) in
             if error == nil {
+                user.uid = Auth.auth().currentUser!.uid
                 self.getProfileImgUrl { error in
                     if error == nil {
                         completion(nil)
@@ -80,9 +78,10 @@ class FirebaseFunctions {
         }
         
         let imageData = user.profileImg!.jpegData(compressionQuality: 1.0)!
+        let storageReference = Storage.storage().reference().child("User: \(String(describing: user.uid!))/Profile Image")
         storageReference.putData(imageData, metadata: nil) { (metaData, error) in
             if error == nil {
-                self.storageReference.downloadURL() { (url, error) in
+                storageReference.downloadURL() { (url, error) in
                     if error == nil {
                         let urlString = url?.absoluteString
                         user.profileImgUrl = urlString
@@ -161,6 +160,7 @@ class FirebaseFunctions {
     // Logs out the user
     func logOut(_ sender: UIButton?, completion: @escaping(String?) -> ()) {
         user.signedIn = false
+        let storageReference = Storage.storage().reference().child("User: \(String(describing: user.uid!))/Profile Image")
         do {
             if sender == nil {
                 Auth.auth().currentUser?.delete() { error in
@@ -168,7 +168,7 @@ class FirebaseFunctions {
                         databaseRef.document(user.email!).delete() { error in
                             if error == nil {
                                 if user.profileImgUrl! != "Default" {
-                                    self.storageReference.delete() { error in
+                                    storageReference.delete() { error in
                                         if error == nil {
                                             completion(nil)
                                         } else {

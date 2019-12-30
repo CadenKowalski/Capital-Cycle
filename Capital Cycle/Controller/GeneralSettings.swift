@@ -66,7 +66,7 @@ class GeneralSettings: UIViewController {
         
         firebaseFunctions.updateUserData() { error in
             if error != nil {
-                print(error!)
+                self.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default)
             }
         }
     }
@@ -81,7 +81,7 @@ class GeneralSettings: UIViewController {
         
         firebaseFunctions.updateUserData() { error in
             if error != nil {
-                print(error!)
+                self.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default)
             }
         }
     }

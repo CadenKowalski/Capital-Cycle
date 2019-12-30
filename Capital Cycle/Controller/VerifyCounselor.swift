@@ -86,7 +86,7 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate, UIAdaptivePresenta
                     self.performSegue(withIdentifier: "VerifiedCounselor", sender: nil)
                     self.giveHapticFeedback(error: false)
                 } else {
-                    print(error!)
+                    self.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default)
                 }
                 
                 self.formatProgressWheel(toShow: true)

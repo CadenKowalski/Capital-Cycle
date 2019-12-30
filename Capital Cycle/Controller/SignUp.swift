@@ -23,6 +23,7 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
     @IBOutlet weak var signUpBtn: CustomButton!
     @IBOutlet weak var signUpBtnProgressWheel: UIActivityIndicatorView!
     @IBOutlet weak var privacyPolicyTxtView: CustomTextView!
+    @IBOutlet weak var doneBtn: UIButton!
     @IBOutlet weak var userTypePickerView: UIPickerView!
     // Code global vars
     var Agree = false
@@ -52,6 +53,9 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
         emailTxtField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
         passTxtField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
         confmPassTxtField.attributedPlaceholder = NSAttributedString(string: "Confirm Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
+        
+        // Sets up the privacy policy text view
+        doneBtn.isHidden = true
         
         // Sets up the picker view
         userTypePickerView.delegate = self
@@ -109,7 +113,16 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
     // Displays the privacy policy text view
     @IBAction func privacyPolicy(_ sender: UIButton) {
         privacyPolicyTxtView.isHidden = false
+        doneBtn.isHidden = false
+        isModalInPresentation = true
     }
+    
+    @IBAction func dismissPrivacyPolicy(_ sender: UIButton) {
+        privacyPolicyTxtView.isHidden = true
+        sender.isHidden = true
+        isModalInPresentation = false
+    }
+    
     
     // User agrees to privacy policy and terms of service
     @IBAction func agreeToPolicies(_ sender: UIButton) {
@@ -280,10 +293,5 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
     // Dismiss keyboard when view is tapped
     @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
         self.view.endEditing(true)
-    }
-    
-    // Dismiss the privacy policy view when view is tapped
-    @IBAction func dismissPrivacyPolicy(_ sender: UITapGestureRecognizer) {
-        privacyPolicyTxtView.isHidden = true
     }
 }

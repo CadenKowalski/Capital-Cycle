@@ -40,6 +40,7 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
         Auth.auth().currentUser?.reload(completion: { action in
             if Auth.auth().currentUser != nil {
                 user.email = Auth.auth().currentUser?.email
+                user.uid = Auth.auth().currentUser!.uid
                 self.formatProgressWheel(toShow: true)
                 self.firebaseFunctions.fetchUserData() { error in
                     if error == nil {
@@ -48,7 +49,7 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
                             self.giveHapticFeedback()
                         }
                     } else {
-                        print(error!)
+                        self.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default)
                     }
                     
                     self.formatProgressWheel(toShow: false)
@@ -84,7 +85,7 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
         appleButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(appleButton)
         NSLayoutConstraint.activate([
-            appleButton.heightAnchor.constraint(equalToConstant: 35),
+            appleButton.heightAnchor.constraint(equalToConstant: 32.5),
             appleButton.topAnchor.constraint(equalTo: signUpBtn.bottomAnchor, constant: 8),
             appleButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 60),
             appleButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -60)
@@ -196,7 +197,8 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
         user.email = emailTxtField.text!
         user.password = passTxtField.text!
         formatProgressWheel(toShow: true)
-        Auth.auth().signIn(withEmail: user.email!, password: user.password!) { (user, error) in
+        Auth.auth().signIn(withEmail: user.email!, password: user.password!) { (authUser, error) in
+            user.uid = Auth.auth().currentUser!.uid
             if error == nil {
                 self.firebaseFunctions.updateUserData() { error in
                     if error == nil {
@@ -208,12 +210,12 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
                                 self.emailTxtField.text = ""
                                 self.passTxtField.text = ""
                             } else {
-                                print(error!)
+                                self.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default)
                                 self.formatProgressWheel(toShow: false)
                             }
                         }
                     } else {
-                        print(error!)
+                        self.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default)
                         self.formatProgressWheel(toShow: false)
                     }
                 }
@@ -280,7 +282,7 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
             let credential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString, rawNonce: nonce)
             Auth.auth().signIn(with: credential) { (authResult, error) in
                 if error != nil {
-                    print(error!.localizedDescription)
+                    self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
                     return
                 } else {
                     user.email = appleIDCredential.email

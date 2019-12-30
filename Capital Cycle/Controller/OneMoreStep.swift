@@ -21,6 +21,7 @@ class OneMoreStep: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     @IBOutlet weak var signUpBtn: CustomButton!
     @IBOutlet weak var signUpBtnProgressWheel: UIActivityIndicatorView!
     @IBOutlet weak var privacyPolicyTxtView: CustomTextView!
+    @IBOutlet weak var doneBtn: UIButton!
     @IBOutlet weak var userTypePickerView: UIPickerView!
     // Code global vars
      var Agree = false
@@ -41,6 +42,9 @@ class OneMoreStep: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
             gradientViewHeight.constant = 0.15 * view.frame.height
             gradientView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.15)
         }
+        
+        // Sets up the privacy policy text view
+        doneBtn.isHidden = true
         
         // Sets up the picker view
         userTypePickerView.delegate = self
@@ -97,6 +101,14 @@ class OneMoreStep: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     // Displays the privacy policy text view
     @IBAction func privacyPolicy(_ sender: UIButton) {
         privacyPolicyTxtView.isHidden = false
+        doneBtn.isHidden = false
+        isModalInPresentation = true
+    }
+    
+    @IBAction func dismissPrivacyPolicy(_ sender: UIButton) {
+        privacyPolicyTxtView.isHidden = true
+        sender.isHidden = true
+        isModalInPresentation = false
     }
     
     // User agrees to privacy policy and terms of service
@@ -210,12 +222,12 @@ class OneMoreStep: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
                             
                             self.formatProgressWheel(toShow: false)
                         } else {
-                            print(error!)
+                            self.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default)
                             self.formatProgressWheel(toShow: false)
                         }
                     }
                 } else {
-                    print(error!)
+                    self.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default)
                     self.formatProgressWheel(toShow: false)
                 }
             }
