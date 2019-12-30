@@ -25,4 +25,15 @@ struct FirebaseUser {
         case counselor
         case admin
     }
+    
+    mutating func reset() {
+        self.email = ""
+        self.password = ""
+        self.profileImg = UIImage(systemName: "person.circle")
+        self.profileImgUrl = "Default"
+        self.signedIn = false
+        self.type = FirebaseUser.type.none
+        self.prefersHapticFeedback = true
+        self.prefersNotifications = true
+    }
 }

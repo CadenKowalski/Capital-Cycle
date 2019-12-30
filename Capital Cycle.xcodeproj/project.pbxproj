@@ -28,13 +28,13 @@
 		57A3457C22D2BBB90070898F /* StorePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A3457B22D2BBB90070898F /* StorePage.swift */; };
 		57AFA1B022F77F5100C2988C /* VerifyUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AFA1AF22F77F5100C2988C /* VerifyUser.swift */; };
 		57AFFD652300FAF000B6CD7B /* VerifyCounselor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AFFD642300FAF000B6CD7B /* VerifyCounselor.swift */; };
+		57B57CEA23B9673400841442 /* FirebaseFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B57CE923B9673400841442 /* FirebaseFunctions.swift */; };
 		57B7FCA523064A0200D97E3A /* AccountSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B7FCA423064A0200D97E3A /* AccountSettings.swift */; };
 		57CB68592306ECAC00570D86 /* UserNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CB68582306ECAC00570D86 /* UserNavigationController.swift */; };
 		57CB685B2306F15200570D86 /* CounselorNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CB685A2306F15200570D86 /* CounselorNavigationController.swift */; };
 		57DE34E223B2D19A00221F53 /* CustomUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DE34E123B2D19A00221F53 /* CustomUI.swift */; };
 		57E226F723B5428E007DF227 /* OneMoreStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E226F623B5428E007DF227 /* OneMoreStep.swift */; };
 		57E226FD23B84F8A007DF227 /* FirebaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E226FC23B84F8A007DF227 /* FirebaseUser.swift */; };
-		57E226FF23B85DF8007DF227 /* FirebaseFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E226FE23B85DF8007DF227 /* FirebaseFunctions.swift */; };
 		57ED6A2F22D578A200E3A362 /* FAQPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57ED6A2E22D578A200E3A362 /* FAQPage.swift */; };
 		587C376EC4CB7518541634C2 /* Pods_Capital_Cycle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEF63791B26DFB42FF56342B /* Pods_Capital_Cycle.framework */; };
 /* End PBXBuildFile section */
@@ -66,13 +66,13 @@
 		57A3457B22D2BBB90070898F /* StorePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorePage.swift; sourceTree = "<group>"; };
 		57AFA1AF22F77F5100C2988C /* VerifyUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyUser.swift; sourceTree = "<group>"; };
 		57AFFD642300FAF000B6CD7B /* VerifyCounselor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyCounselor.swift; sourceTree = "<group>"; };
+		57B57CE923B9673400841442 /* FirebaseFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFunctions.swift; sourceTree = "<group>"; };
 		57B7FCA423064A0200D97E3A /* AccountSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettings.swift; sourceTree = "<group>"; };
 		57CB68582306ECAC00570D86 /* UserNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNavigationController.swift; sourceTree = "<group>"; };
 		57CB685A2306F15200570D86 /* CounselorNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounselorNavigationController.swift; sourceTree = "<group>"; };
 		57DE34E123B2D19A00221F53 /* CustomUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUI.swift; sourceTree = "<group>"; };
 		57E226F623B5428E007DF227 /* OneMoreStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneMoreStep.swift; sourceTree = "<group>"; };
 		57E226FC23B84F8A007DF227 /* FirebaseUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUser.swift; sourceTree = "<group>"; };
-		57E226FE23B85DF8007DF227 /* FirebaseFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFunctions.swift; sourceTree = "<group>"; };
 		57ED6A2E22D578A200E3A362 /* FAQPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQPage.swift; sourceTree = "<group>"; };
 		DEF63791B26DFB42FF56342B /* Pods_Capital_Cycle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Capital_Cycle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -126,7 +126,6 @@
 		57A3455622D2AA080070898F /* Capital Cycle */ = {
 			isa = PBXGroup;
 			children = (
-				573839E0239DDDB4006AB022 /* Capital Cycle.entitlements */,
 				578AF9E122D4288F007B42A9 /* Core Data */,
 				57A3456B22D2AA4C0070898F /* Resources */,
 				57A3456C22D2AA750070898F /* Model */,
@@ -144,6 +143,7 @@
 				57A3456022D2AA0B0070898F /* Assets.xcassets */,
 				57A3456522D2AA0B0070898F /* Info.plist */,
 				57A3457522D2B3360070898F /* GoogleService-Info.plist */,
+				573839E0239DDDB4006AB022 /* Capital Cycle.entitlements */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -154,8 +154,8 @@
 				578AF9DB22D41F2E007B42A9 /* Product.swift */,
 				578AF9DD22D41FA0007B42A9 /* ProductData.swift */,
 				5795C62322EA6CC200A0A171 /* TestForConnection.swift */,
-				57E226FE23B85DF8007DF227 /* FirebaseFunctions.swift */,
 				57E226FC23B84F8A007DF227 /* FirebaseUser.swift */,
+				57B57CE923B9673400841442 /* FirebaseFunctions.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -321,8 +321,8 @@
 				57A3457822D2BB5B0070898F /* OverviewPage.swift in Sources */,
 				578AF9E022D4201E007B42A9 /* ProductCell.swift in Sources */,
 				578AF9DE22D41FA0007B42A9 /* ProductData.swift in Sources */,
+				57B57CEA23B9673400841442 /* FirebaseFunctions.swift in Sources */,
 				571C2F3F22E41CB6001D4438 /* GeneralSettings.swift in Sources */,
-				57E226FF23B85DF8007DF227 /* FirebaseFunctions.swift in Sources */,
 				57ED6A2F22D578A200E3A362 /* FAQPage.swift in Sources */,
 				578AF9DC22D41F2E007B42A9 /* Product.swift in Sources */,
 				57A3457422D2AEBD0070898F /* PageVC.swift in Sources */,
@@ -487,7 +487,7 @@
 			baseConfigurationReference = 3ED851B8F1F29AADABBA5620 /* Pods-Capital Cycle.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Capital Cycle/Capital Cycle.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Capital Cycle//Resources/Capital Cycle.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7ZA9Y8B6FF;
 				INFOPLIST_FILE = "Capital Cycle/Info.plist";
@@ -509,7 +509,7 @@
 			baseConfigurationReference = 0B759B91042E916978C852B7 /* Pods-Capital Cycle.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Capital Cycle/Capital Cycle.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Capital Cycle//Resources/Capital Cycle.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7ZA9Y8B6FF;
 				INFOPLIST_FILE = "Capital Cycle/Info.plist";

@@ -64,12 +64,26 @@ class GeneralSettings: UIViewController {
             user.signedIn = false
         }
         
-        firebaseFunctions.updateUserData()
+        firebaseFunctions.updateUserData() { error in
+            if error != nil {
+                print(error!)
+            }
+        }
     }
     
     // Allows the user to update whether they want to receive notifications or not
     @IBAction func receiveNotifications(_ sender: UISwitch) {
-        firebaseFunctions.updateUserData()
+        if sender.isOn {
+            user.prefersNotifications = true
+        } else {
+            user.prefersNotifications = false
+        }
+        
+        firebaseFunctions.updateUserData() { error in
+            if error != nil {
+                print(error!)
+            }
+        }
     }
     
     // Allows the user to decide whether they want to get haptic feedback or not
@@ -86,18 +100,18 @@ class GeneralSettings: UIViewController {
     // MARK: Core Data
         
     // Updates the context with new values
-        func updateContext() {
-            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-            let Context = appDelegate.persistentContainer.viewContext
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Settings")
-            do {
-                let fetchResults = try Context.fetch(fetchRequest)
-                let Settings = fetchResults.first as! NSManagedObject
-                Settings.setValue(user.prefersHapticFeedback, forKey: "hapticFeedback")
-                try Context.save()
-            } catch {
-                let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-            }
+    func updateContext() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let Context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Settings")
+        do {
+            let fetchResults = try Context.fetch(fetchRequest)
+            let Settings = fetchResults.first as! NSManagedObject
+            Settings.setValue(user.prefersHapticFeedback, forKey: "hapticFeedback")
+            try Context.save()
+        } catch {
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
+    }
 }

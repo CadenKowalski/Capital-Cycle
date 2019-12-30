@@ -53,9 +53,6 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
         passTxtField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
         confmPassTxtField.attributedPlaceholder = NSAttributedString(string: "Confirm Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
         
-        // Formats the progress wheel
-        signUpBtnProgressWheel.isHidden = true
-        
         // Sets up the picker view
         userTypePickerView.delegate = self
         userTypePickerView.dataSource = self
@@ -128,13 +125,15 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
     
     // Initiates haptic feedback
     func giveHapticFeedback(error: Bool) {
-        if error {
-            let feedbackGenerator = UINotificationFeedbackGenerator()
-            feedbackGenerator.prepare()
-            feedbackGenerator.notificationOccurred(.error)
-        } else {
-            let feedbackGenerator = UISelectionFeedbackGenerator()
-            feedbackGenerator.selectionChanged()
+        if user.prefersHapticFeedback! {
+            if error {
+                let feedbackGenerator = UINotificationFeedbackGenerator()
+                feedbackGenerator.prepare()
+                feedbackGenerator.notificationOccurred(.error)
+            } else {
+                let feedbackGenerator = UISelectionFeedbackGenerator()
+                feedbackGenerator.selectionChanged()
+            }
         }
     }
     
@@ -149,29 +148,16 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
     // Switches on and off the progress wheel
     func formatProgressWheel(toShow: Bool) {
         if toShow {
-            signUpBtnProgressWheel.isHidden = false
-            print("Caden")
-            signUpBtn.alpha = 0.25
-            print("H")
-            signUpBtnProgressWheel.startAnimating()
-            print("Hello")
+            self.signUpBtnProgressWheel.isHidden = false
+            self.signUpBtn.alpha = 0.25
+            self.signUpBtnProgressWheel.startAnimating()
         } else {
-            signUpBtnProgressWheel.isHidden = true
-            signUpBtn.alpha = 1.0
-            signUpBtnProgressWheel.stopAnimating()
+            self.signUpBtn.alpha = 1.0
+            self.signUpBtnProgressWheel.stopAnimating()
         }
     }
     
     // MARK: UIPickerView Setup
-    
-    // Defines the poosible types of users
-    enum UserType {
-        case none
-        case camper
-        case parent
-        case counselor
-        case admin
-    }
     
     // Sets the number of columns
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -265,16 +251,22 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
     // Signs up the user
     func signUp() {
         formatProgressWheel(toShow: true)
-        firebaseFunctions.CreateUser {
-            if user.type == .counselor || user.type == .admin {
-                self.performSegue(withIdentifier: "VerifyCounselor", sender: nil)
+        self.firebaseFunctions.createUser() { error in
+            if error == nil {
+                if user.type == .counselor || user.type == .admin {
+                    self.performSegue(withIdentifier: "VerifyCounselor", sender: nil)
+                } else {
+                    self.performSegue(withIdentifier: "VerifyUser", sender: nil)
+                    Auth.auth().currentUser?.sendEmailVerification(completion: nil)
+                }
+                
+                self.formatProgressWheel(toShow: false)
             } else {
-                self.performSegue(withIdentifier: "VerifyUser", sender: nil)
-                Auth.auth().currentUser?.sendEmailVerification(completion: nil)
+                print("Could not sign up user")
+                self.dismiss(animated: true, completion: nil)
+                self.formatProgressWheel(toShow: false)
             }
         }
-        
-        formatProgressWheel(toShow: false)
     }
     
     // MARK: Dismiss

@@ -12,6 +12,7 @@ import Firebase
 class PageVC: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
 
     // Code global vars
+    static let Instance = PageVC()
     var pageControl = UIPageControl()
     lazy var orderedVCs: [UIViewController] = {
         return [newVC(VC: "OverviewPage"), newVC(VC: "SchedulePage")]
@@ -20,6 +21,12 @@ class PageVC: UIPageViewController, UIPageViewControllerDelegate, UIPageViewCont
     override func viewDidLoad() {
         super.viewDidLoad()
         configurePageControl()
+    }
+    
+    // MARK: View Control
+    
+    func dismissWhenLoggingOut() {
+        dismiss(animated: true, completion: nil)
     }
     
     // MARK: Page View Controller Setup

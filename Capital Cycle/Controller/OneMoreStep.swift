@@ -42,9 +42,6 @@ class OneMoreStep: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
             gradientView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.15)
         }
         
-        // Formats the progress wheel
-        signUpBtnProgressWheel.isHidden = true
-        
         // Sets up the picker view
         userTypePickerView.delegate = self
         userTypePickerView.dataSource = self
@@ -200,14 +197,27 @@ class OneMoreStep: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
             userTypeLbl.alpha = 0.5
             giveHapticFeedback(error: true)
         } else {
-            if user.type == .counselor || user.type == .admin {
-                performSegue(withIdentifier: "VerifyCounselorFromApple", sender: nil)
-            } else {
-                performSegue(withIdentifier: "VerifiedUserFromApple", sender: nil)
-            }
-            
-            firebaseFunctions.getProfileImgUrl {
-                self.firebaseFunctions.uploadUserData()
+            self.formatProgressWheel(toShow: true)
+            firebaseFunctions.getProfileImgUrl() { error in
+                if error == nil {
+                    self.firebaseFunctions.uploadUserData() { error in
+                        if error == nil {
+                            if user.type == .counselor || user.type == .admin {
+                                self.performSegue(withIdentifier: "VerifyCounselorFromApple", sender: nil)
+                            } else {
+                                self.performSegue(withIdentifier: "VerifiedUserFromApple", sender: nil)
+                            }
+                            
+                            self.formatProgressWheel(toShow: false)
+                        } else {
+                            print(error!)
+                            self.formatProgressWheel(toShow: false)
+                        }
+                    }
+                } else {
+                    print(error!)
+                    self.formatProgressWheel(toShow: false)
+                }
             }
         }
     }

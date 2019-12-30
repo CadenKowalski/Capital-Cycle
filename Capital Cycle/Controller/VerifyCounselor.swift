@@ -17,6 +17,7 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate, UIAdaptivePresenta
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
     @IBOutlet weak var counselorIdTxtField: UITextField!
     @IBOutlet weak var signUpBtn: CustomButton!
+    @IBOutlet weak var signUpBtnProgressWheel: UIActivityIndicatorView!
     // Global code vars
     let firebaseFunctions = FirebaseFunctions()
     
@@ -62,18 +63,39 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate, UIAdaptivePresenta
         }
     }
     
+    // Switches on and off the progress wheel
+    func formatProgressWheel(toShow: Bool) {
+        if toShow {
+            self.signUpBtnProgressWheel.isHidden = false
+            self.signUpBtn.alpha = 0.25
+            self.signUpBtnProgressWheel.startAnimating()
+        } else {
+            self.signUpBtn.alpha = 1.0
+            self.signUpBtnProgressWheel.stopAnimating()
+        }
+    }
+    
     // MARK: Sign Up
     
     // Signs up the user
     @IBAction func signUp(_ sender: CustomButton) {
+        formatProgressWheel(toShow: true)
         if counselorIdTxtField.text == "082404" {
-            performSegue(withIdentifier: "VerifiedCounselor", sender: nil)
-            giveHapticFeedback(error: false)
-            firebaseFunctions.uploadUserData()
+            firebaseFunctions.uploadUserData() { error in
+                if error == nil {
+                    self.performSegue(withIdentifier: "VerifiedCounselor", sender: nil)
+                    self.giveHapticFeedback(error: false)
+                } else {
+                    print(error!)
+                }
+                
+                self.formatProgressWheel(toShow: true)
+            }
         } else {
             counselorIdTxtField.backgroundColor = .red
             counselorIdTxtField.alpha = 0.5
             giveHapticFeedback(error: true)
+            formatProgressWheel(toShow: true)
         }
     }
     

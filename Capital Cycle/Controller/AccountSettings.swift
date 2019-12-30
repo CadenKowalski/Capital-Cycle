@@ -56,8 +56,12 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
     }
     
     // Initiates haptic feedback
-    func giveHapticFeedback() {
-        if user.prefersHapticFeedback! {
+    func giveHapticFeedback(error: Bool) {
+        if error {
+            let feedbackGenerator = UINotificationFeedbackGenerator()
+            feedbackGenerator.prepare()
+            feedbackGenerator.notificationOccurred(.error)
+        } else {
             let feedbackGenerator = UISelectionFeedbackGenerator()
             feedbackGenerator.selectionChanged()
         }
@@ -116,7 +120,7 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
                 userTypeLbl.text = "I am an " + "\(typesOfUser[row])".capitalized
             }
 
-            firebaseFunctions.updateUserData()
+            firebaseFunctions.updateUserData { _ in }
         }
     }
     
@@ -124,7 +128,7 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
     
     // Changes the User Type
     @IBAction func changeUserType(_ sender: UIButton) {
-        giveHapticFeedback()
+        giveHapticFeedback(error: false)
         if userTypePickerView.isHidden {
             userTypePickerView.isHidden = false
             cancelBtn.isHidden = false
@@ -155,26 +159,61 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
         if let Image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             user.profileImg = Image
             profileImgView.image = user.profileImg
-            firebaseFunctions.updateUserData()
+            firebaseFunctions.updateUserData { _ in }
         }
         
         dismiss(animated: true, completion: nil)
     }
-    
-    // MARK: Firebase
-    
+        
     // Logs out the user
     @IBAction func logOut(_ sender: UIButton?) {
-        firebaseFunctions.logOut(sender)
+        firebaseFunctions.logOut(sender) { error in
+            if error == nil {
+                self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+            } else {
+                self.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default)
+            }
+        }
     }
     
     // Resets the user's password
     @IBAction func resetPassword(_ sender: UIButton) {
-        firebaseFunctions.resetPassword()
+        giveHapticFeedback(error: false)
+        let resetPasswordAlert = UIAlertController(title: "Reset Password", message: "Enter your email adress", preferredStyle: .alert)
+        resetPasswordAlert.addTextField { textField in
+            textField.placeholder = "Email"
+            textField.keyboardType = .emailAddress
+            textField.font = UIFont(name: "Avenir-Book", size: 13.0)
+        }
+        
+        resetPasswordAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        resetPasswordAlert.addAction(UIAlertAction(title: "Reset Password", style: .destructive, handler: { Action in
+            self.firebaseFunctions.resetPassword(recoveryEmail: (resetPasswordAlert.textFields?.first!.text)!) { error in
+                if error != nil {
+                    print("Could not reset password")
+                }
+            }
+        }))
+        
+        self.present(resetPasswordAlert, animated: true, completion: nil)
     }
     
     // Allows the user to delete their account
     @IBAction func deleteAccount(_ sender: UIButton) {
-        firebaseFunctions.deleteAccount()
+        giveHapticFeedback(error: false)
+        let confirmDeleteAlert = UIAlertController(title: "Confirm", message: "Are you sure you want to delete your account?", preferredStyle: .alert)
+        confirmDeleteAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        confirmDeleteAlert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { action in
+            self.firebaseFunctions.deleteAccount() { error in
+                if error == nil {
+                    user.reset()
+                    self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+                } else {
+                    print("Could not delete account")
+                }
+            }
+        }))
+        
+        self.present(confirmDeleteAlert, animated: true, completion: nil)
     }
 }
