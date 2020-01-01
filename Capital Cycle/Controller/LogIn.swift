@@ -41,20 +41,27 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
         super.viewDidAppear(animated)
         Auth.auth().currentUser?.reload() { action in
             if Auth.auth().currentUser != nil {
-                if Auth.auth().currentUser!.isEmailVerified {
-                    user.email = Auth.auth().currentUser!.email
-                    user.uid = Auth.auth().currentUser!.uid
-                    viewFunctions.formatProgressWheel(progressWheel: self.logInBtnProgressWheel, button: self.logInBtn, toShow: true)
-                    firebaseFunctions.fetchUserData(fetchValue: "all") { error in
-                        if error == nil {
-                            if user.signedIn == true {
-                                viewFunctions.giveHapticFeedback(error: false)
-                                self.performSegue(withIdentifier: "AlreadyLoggedIn", sender: nil)
+                user.email = Auth.auth().currentUser!.email
+                firebaseFunctions.fetchUserData(fetchValue: "isCounselorVerified") { error in
+                    if error == nil {
+                        if Auth.auth().currentUser!.isEmailVerified || user.isCounselorVerified! {
+                            user.uid = Auth.auth().currentUser!.uid
+                            viewFunctions.formatProgressWheel(progressWheel: self.logInBtnProgressWheel, button: self.logInBtn, toShow: true)
+                            firebaseFunctions.fetchUserData(fetchValue: "all") { error in
+                                if error == nil {
+                                    if user.signedIn == true {
+                                        viewFunctions.giveHapticFeedback(error: false)
+                                        self.performSegue(withIdentifier: "AlreadyLoggedIn", sender: nil)
+                                    }
+                                } else {
+                                    viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
+                                }
+                                
+                                viewFunctions.formatProgressWheel(progressWheel: self.logInBtnProgressWheel, button: self.logInBtn, toShow: false)
                             }
-                        } else {
-                            viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
                         }
-                        
+                    } else {
+                        viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
                         viewFunctions.formatProgressWheel(progressWheel: self.logInBtnProgressWheel, button: self.logInBtn, toShow: false)
                     }
                 }
@@ -116,10 +123,9 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
     @IBAction func logIn(_ sender: CustomButton) {
         viewFunctions.formatProgressWheel(progressWheel: logInBtnProgressWheel, button: logInBtn, toShow: true)
         user.email = emailTxtField.text!
-        user.password = passTxtField.text!
-        Auth.auth().signIn(withEmail: user.email!, password: user.password!) { (authUser, error) in
+        Auth.auth().signIn(withEmail: user.email!, password: passTxtField.text!) { (authUser, error) in
             if error == nil {
-                if Auth.auth().currentUser!.isEmailVerified {
+                if Auth.auth().currentUser!.isEmailVerified || user.isCounselorVerified! {
                     user.uid = Auth.auth().currentUser!.uid
                     firebaseFunctions.updateUserData(updateValue: "signedIn") { error in
                         if error == nil {
@@ -142,15 +148,14 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
                 } else {
                     firebaseFunctions.fetchUserData(fetchValue: "type") { error in
                         if error == nil {
-                            if user.type == .camper || user.type == .parent {
-                                self.performSegue(withIdentifier: "UserNotVerifiedYet", sender: nil)
-                            } else {
+                            if user.type == .counselor {
                                 self.performSegue(withIdentifier: "CounselorNotVerifiedYet", sender: nil)
+                            } else {
+                                self.performSegue(withIdentifier: "UserNotVerifiedYet", sender: nil)
                             }
                             
                             viewFunctions.formatProgressWheel(progressWheel: self.logInBtnProgressWheel, button: self.logInBtn, toShow: false)
-                        }
-                        else {
+                        } else {
                             viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
                             viewFunctions.formatProgressWheel(progressWheel: self.logInBtnProgressWheel, button: self.logInBtn, toShow: false)
                         }

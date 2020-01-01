@@ -13,7 +13,7 @@ struct FirebaseFunctions {
     // MARK: Global Variables
     
     // Code global vars
-    let values: [String: Any] = ["email": user.email, "type": user.type, "signedIn": user.signedIn, "profileImgUrl": user.profileImgUrl, "prefersNotifications": user.prefersNotifications, "prefersHapticFeedback": user.prefersHapticFeedback]
+    
     
     // MARK: Firebase Functions
     
@@ -58,8 +58,8 @@ struct FirebaseFunctions {
     }
     
     // Creates a Firebase user via email and password
-    func createUser(completion: @escaping(String?) -> Void) {
-        Auth.auth().createUser(withEmail: user.email!, password: user.password!) { (_, error) in
+    func createUser(password: String, completion: @escaping(String?) -> Void) {
+        Auth.auth().createUser(withEmail: user.email!, password: password) { (_, error) in
             if error == nil {
                 user.uid = Auth.auth().currentUser!.uid
                 self.getProfileImgUrl { error in
@@ -114,7 +114,7 @@ struct FirebaseFunctions {
         getProfileImgUrl() { error in
             if error == nil {
                 let userType = self.stringFromUserType()
-                databaseRef.document(user.email!).setData(["email": user.email!, "type": userType, "signedIn": user.signedIn!, "profileImgUrl": user.profileImgUrl!, "prefersNotifications": user.prefersNotifications!, "prefersHapticFeedback": user.prefersHapticFeedback!]) { error in
+                databaseRef.document(user.email!).setData(["email": user.email!, "type": userType, "signedIn": user.signedIn!, "profileImgUrl": user.profileImgUrl!, "prefersNotifications": user.prefersNotifications!, "prefersHapticFeedback": user.prefersHapticFeedback!, "isCounselorVerified": user.isCounselorVerified!]) { error in
                     if error == nil {
                         completion(nil)
                     } else {
@@ -129,6 +129,7 @@ struct FirebaseFunctions {
     
     // Updates the user's Firebase Firestore data
     func updateUserData(updateValue: String, completion: @escaping(String?) -> Void) {
+        let values: [String: Any] = ["email": user.email, "type": user.type, "signedIn": user.signedIn, "profileImgUrl": user.profileImgUrl, "prefersNotifications": user.prefersNotifications, "prefersHapticFeedback": user.prefersHapticFeedback, "isCounselorVerified": user.isCounselorVerified!]
         switch updateValue {
             case "type":
                 let userType = self.stringFromUserType()
@@ -176,11 +177,20 @@ struct FirebaseFunctions {
                 userRef.getDocument() { (document, error) in
                     if error == nil {
                         user.type = self.userTypeFromString(userTypeString: document?.get("type") as! String)
+                        completion(nil)
                     } else {
                         completion(error!.localizedDescription)
                     }
-                    
-                    completion(nil)
+                }
+            
+            case "isCounselorVerified":
+                userRef.getDocument() { (document, error) in
+                    if error == nil {
+                        user.isCounselorVerified = document?.get("isCounselorVerified") as? Bool
+                        completion(nil)
+                    } else {
+                        completion(error!.localizedDescription)
+                    }
                 }
                 
             case "all":
@@ -205,7 +215,8 @@ struct FirebaseFunctions {
             }
                 
             default:
-            break
+                print(true)
+                break
     }
         
         userRef.getDocument() { (document, error) in
@@ -260,22 +271,17 @@ struct FirebaseFunctions {
     
     // Deletes the user's account
     func deleteAccount(completion: @escaping(String?) -> Void) {
-        print("Function Called")
         Auth.auth().currentUser?.delete() { error in
             if error == nil {
-                print("User deleted")
                 databaseRef.document(user.email!).delete() { error in
                     if error == nil {
-                        print("User data deleted")
                         if user.profileImgUrl! != "Default" {
                             let storageReference = Storage.storage().reference().child("User: \(String(describing: user.uid!))/Profile Image")
                             storageReference.delete() { error in
                                 if error == nil {
-                                    print("User profile pic deleted")
                                     user.reset()
                                     completion(nil)
                                 } else {
-                                    print("Profile picture could not be deleted")
                                     completion(error!.localizedDescription)
                                 }
                             }
@@ -284,12 +290,10 @@ struct FirebaseFunctions {
                             completion(nil)
                         }
                     } else {
-                        print("User data could not be deleted")
                         completion(error!.localizedDescription)
                     }
                 }
             } else {
-                print("User could not be deleted")
                 completion(error!.localizedDescription)
             }
         }

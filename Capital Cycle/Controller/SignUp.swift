@@ -28,6 +28,7 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
     @IBOutlet weak var doneBtn: UIButton!
     @IBOutlet weak var userTypePickerView: UIPickerView!
     // Code global vars
+    var password: String!
     var Agree = false
     var typesOfUser = ["--", "Camper", "Parent", "Counselor"]
     
@@ -184,12 +185,12 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
     // Verifies the users information
     @IBAction func verifyInputs(_ sender: CustomButton) {
         user.email = emailTxtField.text ?? ""
-        user.password = passTxtField.text ?? ""
+        password = passTxtField.text ?? ""
         if user.email == "cadenkowalski1@gmail.com" || user.email == "tester@test.com" {
             user.type = .admin
         }
 
-        if user.password != confmPassTxtField.text {
+        if password != confmPassTxtField.text {
             viewFunctions.showAlert(title: "Passwords don't match", message: "Please make sure your passwords match", actionTitle: "OK", actionStyle: .default, view: self)
         } else if Agree == false {
             viewFunctions.showAlert(title: "Uh oh", message: "Please agree to the privacy policy and terms of serivce", actionTitle: "OK", actionStyle: .default, view: self)
@@ -197,7 +198,7 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
             userTypeLbl.backgroundColor = .red
             userTypeLbl.alpha = 0.5
             viewFunctions.giveHapticFeedback(error: false)
-        } else if passwordIsTooWeak() && user.password!.count < 6 {
+        } else if passwordIsTooWeak() && password.count < 6 {
             let Alert = UIAlertController(title: "Password not recommended", message: "We recommend that your password contain a number or symbol and have different cases", preferredStyle: .alert)
             Alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             Alert.addAction(UIAlertAction(title: "Continue", style: .destructive, handler: { action in
@@ -215,7 +216,7 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
         var tooWeak: Bool
         var passwordContainsSymbol = false
         let letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-        for letter in user.password! {
+        for letter in password {
             if !letters.contains(String(letter)) {
                 passwordContainsSymbol = true
             }
@@ -223,7 +224,7 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
         
         if !passwordContainsSymbol {
             tooWeak = true
-        } else if user.password == user.password!.lowercased() || user.password == user.password!.uppercased() {
+        } else if password == password!.lowercased() || password == password!.uppercased() {
             tooWeak = true
         } else {
             tooWeak = false
@@ -235,10 +236,13 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
     // Signs up the user
     func signUp() {
         viewFunctions.formatProgressWheel(progressWheel: signUpBtnProgressWheel, button: signUpBtn, toShow: true)
-        firebaseFunctions.createUser() { error in
+        firebaseFunctions.createUser(password: password) { error in
             if error == nil {
                 firebaseFunctions.uploadUserData() { error in
                     if error == nil {
+                        self.emailTxtField.text = ""
+                        self.passTxtField.text = ""
+                        self.confmPassTxtField.text = ""
                         if user.type == .admin {
                             self.performSegue(withIdentifier: "Admin", sender: nil)
                         } else if user.type == .counselor {
@@ -252,8 +256,8 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
                     viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: false)
                 }
             } else {
-                print("Could not sign up user")
                 self.dismiss(animated: true, completion: nil)
+                viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
                 viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: false)
             }
         }

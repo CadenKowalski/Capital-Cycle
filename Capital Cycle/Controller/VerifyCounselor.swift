@@ -50,17 +50,29 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate, UIAdaptivePresenta
     
     // Signs up the user
     @IBAction func signUp(_ sender: CustomButton) {
+        viewFunctions.formatProgressWheel(progressWheel: signUpBtnProgressWheel, button: signUpBtn, toShow: true)
         if counselorIdTxtField.text == "082404" {
-            firebaseFunctions.fetchUserData(fetchValue: "all") { error in
+            user.isCounselorVerified = true
+            firebaseFunctions.updateUserData(updateValue: "isCounselorVerified") { error in
                 if error == nil {
-                    self.performSegue(withIdentifier: "VerifiedCounselor", sender: nil)
+                    firebaseFunctions.fetchUserData(fetchValue: "all") { error in
+                        if error == nil {
+                            self.performSegue(withIdentifier: "VerifiedCounselor", sender: nil)
+                        } else {
+                            viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
+                        }
+                        
+                        viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: false)
+                    }
                 } else {
                     viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
+                    viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: false)
                 }
             }
         } else {
             counselorIdTxtField.backgroundColor = .red
             counselorIdTxtField.alpha = 0.5
+            viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: false)
         }
     }
     
