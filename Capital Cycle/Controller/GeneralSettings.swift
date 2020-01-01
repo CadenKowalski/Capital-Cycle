@@ -12,46 +12,38 @@ import FirebaseAuth
 import FirebaseFirestore
 
 class GeneralSettings: UIViewController {
-
+    
+    // MARK: Global Variables
+    
     // Storyboard outlets
     @IBOutlet weak var gradientView: CustomView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
     @IBOutlet weak var signedInSwitch: UISwitch!
     @IBOutlet weak var notificationsSwitch: UISwitch!
     @IBOutlet weak var hapticFeedbackSwitch: UISwitch!
-    // Code global vars
-    let firebaseFunctions = FirebaseFunctions()
     
+    // MARK: View Instantiation
+    
+    // Runs when the view is loaded for the first time
     override func viewDidLoad() {
         super.viewDidLoad()
-        customizeLayout()
+        formatUI()
     }
     
-    // MARK: View Setup / Management
+    // MARK: View Formatting
     
     // Formats the UI
-    func customizeLayout() {
+    func formatUI() {
         // Formats the gradient view
         if view.frame.height < 700 {
             gradientViewHeight.constant = 0.15 * view.frame.height
             gradientView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.15)
         }
 
-        // Sets the switches to reflect their actual values
+        // Formats the settings switches
         signedInSwitch.isOn = user.signedIn!
+        notificationsSwitch.isOn = user.prefersNotifications!
         hapticFeedbackSwitch.isOn = user.prefersHapticFeedback!
-    }
-    
-    // Shows an alert
-    func showAlert(title: String, message: String, actionTitle: String, actionStyle: UIAlertAction.Style) {
-        let Alert = UIAlertController(title: title, message:  message, preferredStyle: .alert)
-        Alert.addAction(UIAlertAction(title: actionTitle, style: actionStyle, handler: nil))
-        present(Alert, animated: true, completion: nil)
-        if user.prefersHapticFeedback! {
-            let feedbackGenerator = UINotificationFeedbackGenerator()
-            feedbackGenerator.prepare()
-            feedbackGenerator.notificationOccurred(.error)
-        }
     }
     
     // MARK: Settings
@@ -64,9 +56,9 @@ class GeneralSettings: UIViewController {
             user.signedIn = false
         }
         
-        firebaseFunctions.updateUserData() { error in
+        firebaseFunctions.updateUserData(updateValue: "signedIn") { error in
             if error != nil {
-                self.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default)
+                viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
             }
         }
     }
@@ -79,9 +71,9 @@ class GeneralSettings: UIViewController {
             user.prefersNotifications = false
         }
         
-        firebaseFunctions.updateUserData() { error in
+        firebaseFunctions.updateUserData(updateValue: "prefersNotifications") { error in
             if error != nil {
-                self.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default)
+                viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
             }
         }
     }

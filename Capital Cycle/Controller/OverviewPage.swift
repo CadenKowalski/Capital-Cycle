@@ -12,6 +12,8 @@ import SafariServices
 
 class OverviewPage: UIViewController {
 
+    // MARK: Global Variables
+    
     // Storyboard outlets
     @IBOutlet weak var gradientView: CustomView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
@@ -23,20 +25,24 @@ class OverviewPage: UIViewController {
     // Global code vars
     static let Instance = OverviewPage()
     
+    // MARK: View Instantiation
+    
+    // Runs when the view is loaded for the first time
     override func viewDidLoad() {
         super.viewDidLoad()
-        customizeLayout()
+        formatUI()
     }
     
+    // Runs when the view is reloaded
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         setProfileImg()
     }
     
-    // MARK: View Setup
+    // MARK: View Formatting
     
     // Formats the UI
-    func customizeLayout() {
+    func formatUI() {
         // Formats the gradient view
         if view.frame.height < 700 {
             gradientViewHeight.constant = 0.15 * view.frame.height
@@ -44,13 +50,13 @@ class OverviewPage: UIViewController {
         } else if view.frame.height >= 812 {
            overviewLblYConstraint.constant = 15
         }
-
-        // Readjusts the Y constraints
-        scrollViewYConstraint.constant = gradientViewHeight.constant + 8
         
-        // Sets the profile image on the account settings button
+        // Formats the account settings button
         OverviewPage.Instance.accountSettingsImgView = accountSettingsImgView
         setProfileImg()
+
+        // Formats the Y constraints
+        scrollViewYConstraint.constant = gradientViewHeight.constant + 8
     }
     
     // Sets the profile image on the account settings button
@@ -58,19 +64,11 @@ class OverviewPage: UIViewController {
         accountSettingsImgView.image = user.profileImg!
     }
     
-    // Initiates haptic feedback
-    func giveHapticFeedback() {
-        if user.prefersHapticFeedback! {
-            let feedbackGenerator = UISelectionFeedbackGenerator()
-            feedbackGenerator.selectionChanged()
-        }
-    }
-    
     // MARK: Actions
     
     // Opens the maps app to the camp location
     @IBAction func openMapsToLocation(_ sender: UITapGestureRecognizer) {
-        giveHapticFeedback()
+        viewFunctions.giveHapticFeedback(error: false)
         let latitude: CLLocationDegrees = 38.8975
         let longitude: CLLocationDegrees = -76.9829
         let regionDistance: CLLocationDistance = 500
@@ -85,7 +83,7 @@ class OverviewPage: UIViewController {
     
     // Takes the user to the CapitalCycleCamp Facebook page
     @IBAction func Facebook(_ sender: UIButton) {
-        giveHapticFeedback()
+        viewFunctions.giveHapticFeedback(error: false)
         let facebookAppURL = URL(string: "fb://profile/839679162770435")!
         if UIApplication.shared.canOpenURL(facebookAppURL) {
             UIApplication.shared.open(facebookAppURL, options: [:], completionHandler: nil)
@@ -96,7 +94,7 @@ class OverviewPage: UIViewController {
     
     // Takes the user to the CapitalCycleCamp Instagram page
     @IBAction func Instagram(_ sender: UIButton) {
-        giveHapticFeedback()
+        viewFunctions.giveHapticFeedback(error: false)
         let instagramURL = NSURL(string: "instagram://capitalcyclecamp/")! as URL
         if UIApplication.shared.canOpenURL(instagramURL as URL) {
             UIApplication.shared.open(instagramURL, options: [:], completionHandler: nil)

@@ -8,39 +8,52 @@
 
 import Firebase
 
-class FirebaseFunctions {
+struct FirebaseFunctions {
+    
+    // MARK: Global Variables
+    
+    // Code global vars
+    let values: [String: Any] = ["email": user.email, "type": user.type, "signedIn": user.signedIn, "profileImgUrl": user.profileImgUrl, "prefersNotifications": user.prefersNotifications, "prefersHapticFeedback": user.prefersHapticFeedback]
     
     // MARK: Firebase Functions
     
     // Returns the user's type as a string
     func stringFromUserType() -> String {
         switch user.type {
-        case .camper:
-            return "Camper"
-        case .parent:
-            return "Parent"
-        case .counselor:
-            return "Counselor"
-        case .admin:
-            return "Admin"
-        default:
-            return ""
+            case .camper:
+                return "Camper"
+                
+            case .parent:
+                return "Parent"
+                
+            case .counselor:
+                return "Counselor"
+                
+            case .admin:
+                return "Admin"
+                
+            default:
+                return ""
         }
     }
     
     // Returns the user's type from a string
     func userTypeFromString(userTypeString: String) -> FirebaseUser.type {
         switch userTypeString {
-        case "Camper":
-            return .camper
-        case "Parent":
-            return .parent
-        case "Counselor":
-            return .counselor
-        case "Admin":
-            return .admin
-        default:
-            return .none
+            case "Camper":
+                return .camper
+            
+            case "Parent":
+                return .parent
+            
+            case "Counselor":
+                return .counselor
+            
+            case "Admin":
+                return .admin
+            
+            default:
+                return .none
         }
     }
     
@@ -101,7 +114,7 @@ class FirebaseFunctions {
         getProfileImgUrl() { error in
             if error == nil {
                 let userType = self.stringFromUserType()
-                databaseRef.document(user.email!).setData(["email": user.email!, "type": userType, "signedIn": user.signedIn!, "profileImgUrl": user.profileImgUrl!, "prefersNotifications": user.prefersNotifications!]) { error in
+                databaseRef.document(user.email!).setData(["email": user.email!, "type": userType, "signedIn": user.signedIn!, "profileImgUrl": user.profileImgUrl!, "prefersNotifications": user.prefersNotifications!, "prefersHapticFeedback": user.prefersHapticFeedback!]) { error in
                     if error == nil {
                         completion(nil)
                     } else {
@@ -115,11 +128,35 @@ class FirebaseFunctions {
     }
     
     // Updates the user's Firebase Firestore data
-    func updateUserData(completion: @escaping(String?) -> Void) {
-        getProfileImgUrl() { error in
-            if error == nil {
+    func updateUserData(updateValue: String, completion: @escaping(String?) -> Void) {
+        switch updateValue {
+            case "type":
                 let userType = self.stringFromUserType()
-                databaseRef.document(user.email!).updateData(["signedIn": user.signedIn!, "type": userType, "profileImgUrl": user.profileImgUrl!, "prefersNotifications": user.prefersNotifications!]) { error in
+                databaseRef.document(user.email!).updateData(["userType": userType]) { error in
+                    if error == nil {
+                        completion(nil)
+                    } else {
+                        completion(error!.localizedDescription)
+                    }
+                }
+                
+            case "profileImgUrl":
+                getProfileImgUrl() { error in
+                    if error == nil {
+                        databaseRef.document(user.email!).updateData(["profileImgUrl": user.profileImgUrl!]) { error in
+                            if error == nil {
+                                completion(nil)
+                            } else {
+                                completion(error!.localizedDescription)
+                            }
+                        }
+                    } else {
+                        completion(error!)
+                    }
+                }
+                
+            default:
+                databaseRef.document(user.email!).updateData([updateValue: values[updateValue]!]) { error in
                     if error == nil {
                         completion(nil)
                     } else {
@@ -128,21 +165,56 @@ class FirebaseFunctions {
                 }
                 
                 completion(nil)
-            } else {
-                completion(error)
-            }
         }
     }
     
     // Fetches the user's Firebase Firestore data
-    func fetchUserData(completion: @escaping(String?) -> Void) {
+    func fetchUserData(fetchValue: String, completion: @escaping(String?) -> Void) {
         let userRef = databaseRef.document(user.email!)
+        switch fetchValue {
+            case "type":
+                userRef.getDocument() { (document, error) in
+                    if error == nil {
+                        user.type = self.userTypeFromString(userTypeString: document?.get("type") as! String)
+                    } else {
+                        completion(error!.localizedDescription)
+                    }
+                    
+                    completion(nil)
+                }
+                
+            case "all":
+                userRef.getDocument() { (document, error) in
+                if error == nil {
+                    user.email = document?.get("email") as? String
+                    user.signedIn = document?.get("signedIn") as? Bool
+                    user.profileImgUrl = document?.get("profileImgUrl") as? String
+                    user.prefersNotifications = document?.get("prefersNotifications") as? Bool
+                    user.prefersHapticFeedback = document?.get("prefersHapticFeedback") as? Bool
+                    user.type = self.userTypeFromString(userTypeString: document?.get("type") as! String)
+                    if user.profileImgUrl == "Default" {
+                        user.profileImg = UIImage(systemName: "person.circle")
+                    } else {
+                        user.profileImg = self.downloadProfileImg(withURL: user.profileImgUrl!)
+                    }
+                    
+                    completion(nil)
+                } else {
+                    completion(error!.localizedDescription)
+                }
+            }
+                
+            default:
+            break
+    }
+        
         userRef.getDocument() { (document, error) in
             if error == nil {
                 user.email = document?.get("email") as? String
                 user.signedIn = document?.get("signedIn") as? Bool
                 user.profileImgUrl = document?.get("profileImgUrl") as? String
                 user.prefersNotifications = document?.get("prefersNotifications") as? Bool
+                user.prefersHapticFeedback = document?.get("prefersHapticFeedback") as? Bool
                 user.type = self.userTypeFromString(userTypeString: document?.get("type") as! String)
                 if user.profileImgUrl == "Default" {
                     user.profileImg = UIImage(systemName: "person.circle")
@@ -158,42 +230,16 @@ class FirebaseFunctions {
     }
     
     // Logs out the user
-    func logOut(_ sender: UIButton?, completion: @escaping(String?) -> ()) {
+    func logOut(completion: @escaping(String?) -> ()) {
         user.signedIn = false
-        let storageReference = Storage.storage().reference().child("User: \(String(describing: user.uid!))/Profile Image")
         do {
-            if sender == nil {
-                Auth.auth().currentUser?.delete() { error in
-                    if error == nil {
-                        databaseRef.document(user.email!).delete() { error in
-                            if error == nil {
-                                if user.profileImgUrl! != "Default" {
-                                    storageReference.delete() { error in
-                                        if error == nil {
-                                            completion(nil)
-                                        } else {
-                                            completion(error!.localizedDescription)
-                                        }
-                                    }
-                                } else {
-                                    completion(nil)
-                                }
-                            } else {
-                                completion(error!.localizedDescription)
-                            }
-                        }
-                    } else {
-                        completion(error!.localizedDescription)
-                    }
-                }
-            } else {
-                try Auth.auth().signOut()
-                updateUserData() { error in
-                    if error == nil {
-                        completion(nil)
-                    } else {
-                        completion(error!)
-                    }
+            try Auth.auth().signOut()
+            updateUserData(updateValue: "signedIn") { error in
+                if error == nil {
+                    user.reset()
+                    completion(nil)
+                } else {
+                    completion(error!)
                 }
             }
         } catch let error as NSError {
@@ -214,11 +260,37 @@ class FirebaseFunctions {
     
     // Deletes the user's account
     func deleteAccount(completion: @escaping(String?) -> Void) {
-        logOut(nil) { error in
+        print("Function Called")
+        Auth.auth().currentUser?.delete() { error in
             if error == nil {
-                completion(nil)
+                print("User deleted")
+                databaseRef.document(user.email!).delete() { error in
+                    if error == nil {
+                        print("User data deleted")
+                        if user.profileImgUrl! != "Default" {
+                            let storageReference = Storage.storage().reference().child("User: \(String(describing: user.uid!))/Profile Image")
+                            storageReference.delete() { error in
+                                if error == nil {
+                                    print("User profile pic deleted")
+                                    user.reset()
+                                    completion(nil)
+                                } else {
+                                    print("Profile picture could not be deleted")
+                                    completion(error!.localizedDescription)
+                                }
+                            }
+                        } else {
+                            user.reset()
+                            completion(nil)
+                        }
+                    } else {
+                        print("User data could not be deleted")
+                        completion(error!.localizedDescription)
+                    }
+                }
             } else {
-                completion(error)
+                print("User could not be deleted")
+                completion(error!.localizedDescription)
             }
         }
     }

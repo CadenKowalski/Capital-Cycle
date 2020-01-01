@@ -11,22 +11,20 @@ import Firebase
 
 class PageVC: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
 
+    // MARK: Global Variables
+    
     // Code global vars
-    static let Instance = PageVC()
     var pageControl = UIPageControl()
     lazy var orderedVCs: [UIViewController] = {
         return [newVC(VC: "OverviewPage"), newVC(VC: "SchedulePage")]
     }()
+        
+    // MARK: View Instantiation
     
+    // Runs when the view is loaded for the first time
     override func viewDidLoad() {
         super.viewDidLoad()
         configurePageControl()
-    }
-    
-    // MARK: View Control
-    
-    func dismissWhenLoggingOut() {
-        dismiss(animated: true, completion: nil)
     }
     
     // MARK: Page View Controller Setup
@@ -40,19 +38,23 @@ class PageVC: UIPageViewController, UIPageViewControllerDelegate, UIPageViewCont
         }
         
         switch user.type {
-        case .camper:
-            orderedVCs.append(newVC(VC: "FAQPage"))
-        case .parent:
-            orderedVCs.append(newVC(VC: "StorePage"))
-            orderedVCs.append(newVC(VC: "FAQPage"))
-        case .counselor:
-            orderedVCs.append(newVC(VC: "CamperInfoPage"))
-        case .admin:
-            orderedVCs.append(newVC(VC: "StorePage"))
-            orderedVCs.append(newVC(VC: "FAQPage"))
-            orderedVCs.append(newVC(VC: "CamperInfoPage"))
-        default:
-            return
+            case .camper:
+                orderedVCs.append(newVC(VC: "FAQPage"))
+                
+            case .parent:
+                orderedVCs.append(newVC(VC: "StorePage"))
+                orderedVCs.append(newVC(VC: "FAQPage"))
+                
+            case .counselor:
+                orderedVCs.append(newVC(VC: "CamperInfoPage"))
+                
+            case .admin:
+                orderedVCs.append(newVC(VC: "StorePage"))
+                orderedVCs.append(newVC(VC: "FAQPage"))
+                orderedVCs.append(newVC(VC: "CamperInfoPage"))
+            
+            default:
+                return
         }
         
         pageControl = UIPageControl(frame: CGRect(x: 0, y: UIScreen.main.bounds.maxY - 50, width: UIScreen.main.bounds.width, height: 50))
@@ -98,7 +100,6 @@ class PageVC: UIPageViewController, UIPageViewControllerDelegate, UIPageViewCont
         }
         
         let nextIndex = VCIndex + 1
-        
         guard orderedVCs.count != nextIndex else {
             return nil
         }

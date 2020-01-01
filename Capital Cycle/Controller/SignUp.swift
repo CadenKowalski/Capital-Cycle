@@ -10,7 +10,9 @@ import UIKit
 import Firebase
 
 class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+    
+    // MARK: Global Variables
+    
     // Storyboard outlets
     @IBOutlet weak var gradientView: CustomView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
@@ -27,26 +29,27 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
     @IBOutlet weak var userTypePickerView: UIPickerView!
     // Code global vars
     var Agree = false
-    let firebaseFunctions = FirebaseFunctions()
     var typesOfUser = ["--", "Camper", "Parent", "Counselor"]
     
+    // MARK: View Instantiation
     
+    // Runs when the view is loaded for the first time
     override func viewDidLoad() {
         super.viewDidLoad()
-        customizeLayout()
+        formatUI()
     }
     
-    // MARK: View Setup / Management
+    // MARK: View Formatting
     
     // Formats the UI
-    func customizeLayout() {
+    func formatUI() {
         // Formats the gradient view
         if view.frame.height < 700 {
             gradientViewHeight.constant = 0.15 * view.frame.height
             gradientView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.15)
         }
         
-        // Sets up the text fields
+        // Formats the text fields
         emailTxtField.delegate = self
         passTxtField.delegate = self
         confmPassTxtField.delegate = self
@@ -54,13 +57,15 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
         passTxtField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
         confmPassTxtField.attributedPlaceholder = NSAttributedString(string: "Confirm Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
         
-        // Sets up the privacy policy text view
+        // Formats privacy policy text view
         doneBtn.isHidden = true
         
-        // Sets up the picker view
+        // Formats picker view
         userTypePickerView.delegate = self
         userTypePickerView.dataSource = self
     }
+    
+    // MARK: View Management
     
     // Displays the image picker to allow users to set/reset their profile image
     @IBAction func chooseProfileImg(_ sender: UITapGestureRecognizer) {
@@ -86,18 +91,6 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
         }
         
         dismiss(animated: true, completion: nil)
-    }
-    
-    // Keep the user signed in or not
-    @IBAction func keepSignedIn(_ sender: UIButton) {
-        giveHapticFeedback(error: false)
-        if !user.signedIn! {
-            user.signedIn = true
-            sender.setImage(UIImage(named: "Checked"), for: .normal)
-        } else {
-            user.signedIn = false
-            sender.setImage(UIImage(named: "Unchecked"), for: .normal)
-        }
     }
     
     // User declares of which type they are
@@ -126,7 +119,7 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
     
     // User agrees to privacy policy and terms of service
     @IBAction func agreeToPolicies(_ sender: UIButton) {
-        giveHapticFeedback(error: false)
+        viewFunctions.giveHapticFeedback(error: false)
         if !Agree {
             Agree = true
             sender.setImage(UIImage(named: "Checked"), for: .normal)
@@ -136,37 +129,15 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
         }
     }
     
-    // Initiates haptic feedback
-    func giveHapticFeedback(error: Bool) {
-        if user.prefersHapticFeedback! {
-            if error {
-                let feedbackGenerator = UINotificationFeedbackGenerator()
-                feedbackGenerator.prepare()
-                feedbackGenerator.notificationOccurred(.error)
-            } else {
-                let feedbackGenerator = UISelectionFeedbackGenerator()
-                feedbackGenerator.selectionChanged()
-            }
-        }
-    }
-    
-    // Shows an alert
-    func showAlert(title: String, message: String, actionTitle: String, actionStyle: UIAlertAction.Style) {
-        let Alert = UIAlertController(title: title, message:  message, preferredStyle: .alert)
-        Alert.addAction(UIAlertAction(title: actionTitle, style: actionStyle, handler: nil))
-        present(Alert, animated: true, completion: nil)
-        giveHapticFeedback(error: true)
-    }
-    
-    // Switches on and off the progress wheel
-    func formatProgressWheel(toShow: Bool) {
-        if toShow {
-            self.signUpBtnProgressWheel.isHidden = false
-            self.signUpBtn.alpha = 0.25
-            self.signUpBtnProgressWheel.startAnimating()
+    // Keep the user signed in or not
+    @IBAction func keepSignedIn(_ sender: UIButton) {
+        viewFunctions.giveHapticFeedback(error: false)
+        if !user.signedIn! {
+            user.signedIn = true
+            sender.setImage(UIImage(named: "Checked"), for: .normal)
         } else {
-            self.signUpBtn.alpha = 1.0
-            self.signUpBtnProgressWheel.stopAnimating()
+            user.signedIn = false
+            sender.setImage(UIImage(named: "Unchecked"), for: .normal)
         }
     }
     
@@ -204,7 +175,7 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
         if user.type != FirebaseUser.type.none {
             userTypeLbl.backgroundColor = #colorLiteral(red: 0.75, green: 0.75, blue: 0.75, alpha: 1)
             userTypeLbl.alpha = 1.0
-            giveHapticFeedback(error: false)
+            viewFunctions.giveHapticFeedback(error: false)
         }
     }
     
@@ -214,18 +185,18 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
     @IBAction func verifyInputs(_ sender: CustomButton) {
         user.email = emailTxtField.text ?? ""
         user.password = passTxtField.text ?? ""
-        if user.email == "cadenkowalski1@gmail.com" {
+        if user.email == "cadenkowalski1@gmail.com" || user.email == "tester@test.com" {
             user.type = .admin
         }
 
         if user.password != confmPassTxtField.text {
-            showAlert(title: "Passwords don't match", message: "Please make sure your passwords match", actionTitle: "OK", actionStyle: .default)
+            viewFunctions.showAlert(title: "Passwords don't match", message: "Please make sure your passwords match", actionTitle: "OK", actionStyle: .default, view: self)
         } else if Agree == false {
-            showAlert(title: "Uh oh", message: "Please agree to the privacy policy and terms of serivce", actionTitle: "OK", actionStyle: .default)
+            viewFunctions.showAlert(title: "Uh oh", message: "Please agree to the privacy policy and terms of serivce", actionTitle: "OK", actionStyle: .default, view: self)
         } else if user.type == FirebaseUser.type.none && user.type != .admin {
             userTypeLbl.backgroundColor = .red
             userTypeLbl.alpha = 0.5
-            giveHapticFeedback(error: true)
+            viewFunctions.giveHapticFeedback(error: false)
         } else if passwordIsTooWeak() && user.password!.count < 6 {
             let Alert = UIAlertController(title: "Password not recommended", message: "We recommend that your password contain a number or symbol and have different cases", preferredStyle: .alert)
             Alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -263,21 +234,27 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
     
     // Signs up the user
     func signUp() {
-        formatProgressWheel(toShow: true)
-        self.firebaseFunctions.createUser() { error in
+        viewFunctions.formatProgressWheel(progressWheel: signUpBtnProgressWheel, button: signUpBtn, toShow: true)
+        firebaseFunctions.createUser() { error in
             if error == nil {
-                if user.type == .counselor || user.type == .admin {
-                    self.performSegue(withIdentifier: "VerifyCounselor", sender: nil)
-                } else {
-                    self.performSegue(withIdentifier: "VerifyUser", sender: nil)
-                    Auth.auth().currentUser?.sendEmailVerification(completion: nil)
+                firebaseFunctions.uploadUserData() { error in
+                    if error == nil {
+                        if user.type == .admin {
+                            self.performSegue(withIdentifier: "Admin", sender: nil)
+                        } else if user.type == .counselor {
+                            self.performSegue(withIdentifier: "VerifyCounselor", sender: nil)
+                        } else {
+                            Auth.auth().currentUser!.sendEmailVerification()
+                            self.performSegue(withIdentifier: "VerifyUser", sender: nil)
+                        }
+                    }
+                    
+                    viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: false)
                 }
-                
-                self.formatProgressWheel(toShow: false)
             } else {
                 print("Could not sign up user")
                 self.dismiss(animated: true, completion: nil)
-                self.formatProgressWheel(toShow: false)
+                viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: false)
             }
         }
     }

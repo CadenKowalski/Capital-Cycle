@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import StoreKit
 import SafariServices
 
 class StorePage: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-
+    
+    // MARK: Global Variables
+    
     // Storyboard outlets
     @IBOutlet weak var gradientView: CustomView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
@@ -29,22 +32,26 @@ class StorePage: UIViewController, UICollectionViewDelegate, UICollectionViewDat
                        "https://capitalcyclecamp.org/pay-for-camp/5-day-session-5-71816-7rnnm",
                        "https://capitalcyclecamp.org",
                        "https://capitalcyclecamp.org/pay-for-camp/bike-camp-t-shirt"]
+
+    // MARK: View Instantiation
     
+    // Runs when the view is loaded for the first time
     override func viewDidLoad() {
         super.viewDidLoad()
-        customizeLayout()
+        formatUI()
         loadProducts()
     }
-    
+
+    // Runs when the view is reloaded
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         setProfileImg()
     }
     
-    // MARK: View Setup
+    // MARK: View Formatting
     
     // Formats the UI
-    func customizeLayout() {
+    func formatUI() {
         // Formats the gradient view
         if view.frame.height < 700 {
             gradientViewHeight.constant = 0.15 * view.frame.height
@@ -52,15 +59,15 @@ class StorePage: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         } else if view.frame.height >= 812 {
             storeLblYConstraint.constant = 15
         }
-
-        // Sets the profile image on the account settings button
-        StorePage.Instance.accountSettingsImgView = accountSettingsImgView
-        setProfileImg()
         
         // Formats the products collection view
         productsCollection.delegate = self
         productsCollection.dataSource = self
         productsCollectionHeight.constant = view.frame.maxY - gradientView.frame.maxY
+
+        // Formats the account settings button
+        StorePage.Instance.accountSettingsImgView = accountSettingsImgView
+        setProfileImg()
     }
     
     // Sets the profile image on the account settings button

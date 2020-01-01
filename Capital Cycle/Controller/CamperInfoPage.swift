@@ -11,7 +11,9 @@ import CoreData
 import GoogleAPIClientForREST
 
 class CamperInfoPage: UIViewController {
-
+    
+    // MARK: Global Variables
+    
     // Storyboard outlets
     @IBOutlet weak var gradientView: CustomView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
@@ -23,7 +25,7 @@ class CamperInfoPage: UIViewController {
     @IBOutlet weak var camperInfoView: UIView!
     @IBOutlet weak var camperName: UILabel!
     @IBOutlet weak var parentNameLbl: UILabel!
-    @IBOutlet weak var parentPhoneLbl: UILabel!
+    @IBOutlet weak var parentNumberLbl: UILabel!
     @IBOutlet weak var parentEmailLbl: UILabel!
     @IBOutlet weak var signedWaiverLbl: UILabel!
     //Code global vars
@@ -32,21 +34,25 @@ class CamperInfoPage: UIViewController {
     let Service = GTLRSheetsService()
     var camperBtns = [UIButton]()
     
+    // MARK: View Instantiation
+    
+    // Runs when the view is loaded for the first time
     override func viewDidLoad() {
         super.viewDidLoad()
-        customizeLayout()
+        formatUI()
         fetchNumCampers()
     }
     
+    // Runs when the view is reloaded
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         setProfileImg()
     }
     
-    // MARK: View Setup
+    // MARK: View Formatting
     
     // Formats the UI
-    func customizeLayout() {
+    func formatUI() {
         // Formats the gradient view
         if view.frame.height < 700 {
             gradientViewHeight.constant = 0.15 * view.frame.height
@@ -55,10 +61,10 @@ class CamperInfoPage: UIViewController {
             camperInfoLblYConstraint.constant = 15
         }
 
-        // Readjusts the Y constraints relative to the gradient view height
+        // Formats the Y constraints relative to the gradient view height
         camperScrollViewYConstraint.constant = gradientView.frame.height + 10
         
-        // Sets the profile image on the account settings button
+        // Formats the account settings button
         CamperInfoPage.Instance.accountSettingsImgView = accountSettingsImgView
         setProfileImg()
         
@@ -71,7 +77,7 @@ class CamperInfoPage: UIViewController {
         accountSettingsImgView.image = user.profileImg
     }
     
-    // MARK: Camper Info Data
+    // MARK: Fetch Camper Info Data
 
     // Fetches the number of campers
     func fetchNumCampers() {
@@ -112,9 +118,9 @@ class CamperInfoPage: UIViewController {
         for camper in 0..<numBtns {
             let camperBtn: UIButton
             if camperBtns.count == 0 {
-                camperBtn = UIButton(frame: CGRect(x: 16, y:  0, width: 150, height: 40))
+                camperBtn = UIButton(frame: CGRect(x: 16, y:  0, width: view.frame.width, height: 40))
             } else {
-                camperBtn = UIButton(frame: CGRect(x: 16, y:  camperBtns[camper - 1].frame.maxY, width: 150, height: 40))
+                camperBtn = UIButton(frame: CGRect(x: 16, y:  camperBtns[camper - 1].frame.maxY, width: view.frame.width, height: 40))
             }
             
             camperBtn.setTitle("\(camperInfo[camper][0])", for: .normal)
@@ -139,7 +145,7 @@ class CamperInfoPage: UIViewController {
         scrollViewDisplay.bringSubviewToFront(camperInfoView)
         camperName.text = "\(camperInfo[camperBtns.firstIndex(of: sender)!][0])"
         parentNameLbl.text = "\(camperInfo[camperBtns.firstIndex(of: sender)!][1])"
-        parentPhoneLbl.text = "\(camperInfo[camperBtns.firstIndex(of: sender)!][2])"
+        parentNumberLbl.text = "\(camperInfo[camperBtns.firstIndex(of: sender)!][2])"
         parentEmailLbl.text = "\(camperInfo[camperBtns.firstIndex(of: sender)!][3])"
         signedWaiverLbl.text = "\(camperInfo[camperBtns.firstIndex(of: sender)!][4])"
         if user.prefersHapticFeedback! {

@@ -16,13 +16,15 @@
 		578AF9E022D4201E007B42A9 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578AF9DF22D4201E007B42A9 /* ProductCell.swift */; };
 		578AF9E422D428AF007B42A9 /* Capital_Cycle.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 578AF9E222D428AF007B42A9 /* Capital_Cycle.xcdatamodeld */; };
 		5795C62422EA6CC200A0A171 /* TestForConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5795C62322EA6CC200A0A171 /* TestForConnection.swift */; };
+		579F1A2223BBB3FB003115FD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 579F1A2123BBB3FB003115FD /* GoogleService-Info.plist */; };
+		579F1A2423BBD32F003115FD /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 579F1A2323BBD32F003115FD /* AuthenticationServices.framework */; };
+		579F1A2823BC2666003115FD /* ViewFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579F1A2723BC2666003115FD /* ViewFunctions.swift */; };
 		57A3455822D2AA080070898F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A3455722D2AA080070898F /* AppDelegate.swift */; };
 		57A3455A22D2AA080070898F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A3455922D2AA080070898F /* SceneDelegate.swift */; };
 		57A3455F22D2AA080070898F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57A3455D22D2AA080070898F /* Main.storyboard */; };
 		57A3456122D2AA0B0070898F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57A3456022D2AA0B0070898F /* Assets.xcassets */; };
 		57A3456422D2AA0B0070898F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57A3456222D2AA0B0070898F /* LaunchScreen.storyboard */; };
 		57A3457422D2AEBD0070898F /* PageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A3457322D2AEBD0070898F /* PageVC.swift */; };
-		57A3457622D2B3360070898F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 57A3457522D2B3360070898F /* GoogleService-Info.plist */; };
 		57A3457822D2BB5B0070898F /* OverviewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A3457722D2BB5B0070898F /* OverviewPage.swift */; };
 		57A3457A22D2BB970070898F /* SchedulePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A3457922D2BB970070898F /* SchedulePage.swift */; };
 		57A3457C22D2BBB90070898F /* StorePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A3457B22D2BBB90070898F /* StorePage.swift */; };
@@ -52,6 +54,9 @@
 		578AF9DF22D4201E007B42A9 /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		578AF9E322D428AF007B42A9 /* Capital_Cycle.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Capital_Cycle.xcdatamodel; sourceTree = "<group>"; };
 		5795C62322EA6CC200A0A171 /* TestForConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TestForConnection.swift; path = "../../../../../../../System/Volumes/Data/Users/cadenkowalski/Desktop/Xcode Projects/Capital Cycle/Capital Cycle/Model/TestForConnection.swift"; sourceTree = "<group>"; };
+		579F1A2123BBB3FB003115FD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		579F1A2323BBD32F003115FD /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
+		579F1A2723BC2666003115FD /* ViewFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFunctions.swift; sourceTree = "<group>"; };
 		57A3455422D2AA080070898F /* Capital Cycle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Capital Cycle.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		57A3455722D2AA080070898F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		57A3455922D2AA080070898F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SceneDelegate.swift; path = ../SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,7 +65,6 @@
 		57A3456322D2AA0B0070898F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		57A3456522D2AA0B0070898F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
 		57A3457322D2AEBD0070898F /* PageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageVC.swift; sourceTree = "<group>"; };
-		57A3457522D2B3360070898F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		57A3457722D2BB5B0070898F /* OverviewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewPage.swift; sourceTree = "<group>"; };
 		57A3457922D2BB970070898F /* SchedulePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePage.swift; sourceTree = "<group>"; };
 		57A3457B22D2BBB90070898F /* StorePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorePage.swift; sourceTree = "<group>"; };
@@ -82,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				579F1A2423BBD32F003115FD /* AuthenticationServices.framework in Frameworks */,
 				587C376EC4CB7518541634C2 /* Pods_Capital_Cycle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -92,6 +97,7 @@
 		45667D88ED611215D1658AE6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				579F1A2323BBD32F003115FD /* AuthenticationServices.framework */,
 				DEF63791B26DFB42FF56342B /* Pods_Capital_Cycle.framework */,
 			);
 			name = Frameworks;
@@ -142,7 +148,7 @@
 				57A3455922D2AA080070898F /* SceneDelegate.swift */,
 				57A3456022D2AA0B0070898F /* Assets.xcassets */,
 				57A3456522D2AA0B0070898F /* Info.plist */,
-				57A3457522D2B3360070898F /* GoogleService-Info.plist */,
+				579F1A2123BBB3FB003115FD /* GoogleService-Info.plist */,
 				573839E0239DDDB4006AB022 /* Capital Cycle.entitlements */,
 			);
 			path = Resources;
@@ -156,6 +162,7 @@
 				5795C62322EA6CC200A0A171 /* TestForConnection.swift */,
 				57E226FC23B84F8A007DF227 /* FirebaseUser.swift */,
 				57B57CE923B9673400841442 /* FirebaseFunctions.swift */,
+				579F1A2723BC2666003115FD /* ViewFunctions.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -263,9 +270,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				57A3456422D2AA0B0070898F /* LaunchScreen.storyboard in Resources */,
+				579F1A2223BBB3FB003115FD /* GoogleService-Info.plist in Resources */,
 				57A3455F22D2AA080070898F /* Main.storyboard in Resources */,
 				57A3456122D2AA0B0070898F /* Assets.xcassets in Resources */,
-				57A3457622D2B3360070898F /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +347,7 @@
 				5795C62422EA6CC200A0A171 /* TestForConnection.swift in Sources */,
 				57E226FD23B84F8A007DF227 /* FirebaseUser.swift in Sources */,
 				57A3457C22D2BBB90070898F /* StorePage.swift in Sources */,
+				579F1A2823BC2666003115FD /* ViewFunctions.swift in Sources */,
 				57B7FCA523064A0200D97E3A /* AccountSettings.swift in Sources */,
 				57CB68592306ECAC00570D86 /* UserNavigationController.swift in Sources */,
 				578AF9E422D428AF007B42A9 /* Capital_Cycle.xcdatamodeld in Sources */,
@@ -496,7 +504,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.example.Capital-Cycle";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cadenkowalski.Capital-Cycle";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
@@ -518,7 +526,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.example.Capital-Cycle";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cadenkowalski.Capital-Cycle";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;

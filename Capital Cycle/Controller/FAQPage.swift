@@ -9,7 +9,9 @@
 import UIKit
 
 class FAQPage: UIViewController {
-
+    
+    // MARK: Global Variables
+    
     // Storyboard outlets
     @IBOutlet weak var gradientView: CustomView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
@@ -19,19 +21,24 @@ class FAQPage: UIViewController {
     // Global code vars
     static let Instance = FAQPage()
     
+    // MARK: View Instantiation
+    
+    // Runs when the view is loaded for the first time
     override func viewDidLoad() {
         super.viewDidLoad()
-        customizeLayout()
+        formatUI()
     }
     
+    // Runs when the view is reloaded
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         setProfileImg()
     }
     
-    // MARK: View Setup
+    // MARK: View Formatting
     
-    func customizeLayout() {
+    // Formats the UI
+    func formatUI() {
         // Formats the gradient view
         if view.frame.height < 700 {
             gradientViewHeight.constant = 0.15 * view.frame.height
@@ -40,12 +47,12 @@ class FAQPage: UIViewController {
             FAQLblYConstraint.constant = 15
         }
         
-        // Sets the profile image on the account settings button
+        // Formats the Y constraints
+        scrollViewYConstraint.constant = gradientViewHeight.constant + 8
+        
+        // Formats the account settings button
         FAQPage.Instance.accountSettingsImgView = accountSettingsImgView
         setProfileImg()
-        
-        // Readjusts the Y constraints
-        scrollViewYConstraint.constant = gradientViewHeight.constant + 8
     }
     
     // Sets the profile image on the account settings button

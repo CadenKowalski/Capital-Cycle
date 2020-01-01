@@ -10,7 +10,9 @@ import UIKit
 import Firebase
 
 class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+    
+    // MARK: Global Variables
+    
     // Storyboard outlets
     @IBOutlet weak var gradientView: CustomView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
@@ -21,19 +23,20 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
     @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var userTypePickerView: UIPickerView!
     // Code global vars
-    static let Instance = AccountSettings()
-    let firebaseFunctions = FirebaseFunctions()
     var typesOfUser = ["Current", "Camper", "Parent", "Counselor"]
     
+    // MARK: View Instantiation
+    
+    // Runs when the view is loaded for the first time
     override func viewDidLoad() {
         super.viewDidLoad()
-        customizeLayout()
+        formatUI()
     }
     
-    // MARK: View Setup / Management
+    // MARK: View Formatting
     
     // Formats the UI
-    func customizeLayout() {
+    func formatUI() {
         // Formats the gradient view
         if view.frame.height < 700 {
             gradientViewHeight.constant = 0.15 * view.frame.height
@@ -50,50 +53,18 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
             userTypeLbl.text = "I am an " + "\(user.type!)".capitalized
         }
         
-        // Sets up the picker view
+        // Formats the picker view
         cancelBtn.isHidden = true
         userTypePickerView.delegate = self
         userTypePickerView.dataSource = self
     }
     
-    // Initiates haptic feedback
-    func giveHapticFeedback(error: Bool) {
-        if error {
-            let feedbackGenerator = UINotificationFeedbackGenerator()
-            feedbackGenerator.prepare()
-            feedbackGenerator.notificationOccurred(.error)
-        } else {
-            let feedbackGenerator = UISelectionFeedbackGenerator()
-            feedbackGenerator.selectionChanged()
-        }
-    }
+    // MARK: View Management
     
     // Dismisses the UIPickerView
     @IBAction func dismissUserTypePickerView(_ sender: UIButton) {
         userTypePickerView.isHidden = true
         cancelBtn.isHidden = true
-    }
-    
-    // Shows an alert
-    func showAlert(title: String, message: String, actionTitle: String, actionStyle: UIAlertAction.Style) {
-        let Alert = UIAlertController(title: title, message:  message, preferredStyle: .alert)
-        Alert.addAction(UIAlertAction(title: actionTitle, style: actionStyle, handler: nil))
-        present(Alert, animated: true, completion: nil)
-        if user.prefersHapticFeedback! {
-            let feedbackGenerator = UINotificationFeedbackGenerator()
-            feedbackGenerator.prepare()
-            feedbackGenerator.notificationOccurred(.error)
-        }
-    }
-    
-    // Switches on and off the progress wheel
-    func formatProgressWheel(toShow: Bool) {
-        if toShow {
-            self.accountSettingsProgressWheel.isHidden = false
-            self.accountSettingsProgressWheel.startAnimating()
-        } else {
-            self.accountSettingsProgressWheel.stopAnimating()
-        }
     }
     
     // MARK: UIPickerView Setup
@@ -115,23 +86,33 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
     
     // Called when the picker view is used
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if typesOfUser[row] == "Camper" {
+        switch typesOfUser[row] {
+        case "Camper":
             user.type = .camper
-        } else if typesOfUser[row] == "Parent" {
+            
+        case "Parent":
             user.type = .parent
-        } else {
+            
+        case "Counselor":
             user.type = .counselor
+            
+        default:
+            break
         }
         
         userTypePickerView.isHidden = true
         cancelBtn.isHidden = true
         if typesOfUser[row] != "Current" {
-            userTypeLbl.text = "I am a " + "\(typesOfUser[row])".capitalized
-            if user.type == .admin {
-                userTypeLbl.text = "I am an " + "\(typesOfUser[row])".capitalized
+            firebaseFunctions.updateUserData(updateValue: "type") { error in
+                if error == nil {
+                    self.userTypeLbl.text = "I am a " + "\(self.typesOfUser[row])".capitalized
+                    if user.type == .admin {
+                        self.userTypeLbl.text = "I am an " + "\(self.typesOfUser[row])".capitalized
+                    }
+                } else {
+                    viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
+                }
             }
-
-            firebaseFunctions.updateUserData { _ in }
         }
     }
     
@@ -139,7 +120,7 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
     
     // Changes the User Type
     @IBAction func changeUserType(_ sender: UIButton) {
-        giveHapticFeedback(error: false)
+        viewFunctions.giveHapticFeedback(error: false)
         if userTypePickerView.isHidden {
             userTypePickerView.isHidden = false
             cancelBtn.isHidden = false
@@ -169,8 +150,13 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let Image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             user.profileImg = Image
-            profileImgView.image = user.profileImg
-            firebaseFunctions.updateUserData { _ in }
+            firebaseFunctions.updateUserData(updateValue: "profileImgUrl") { error in
+                if error == nil {
+                    self.profileImgView.image = user.profileImg
+                } else {
+                    viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
+                }
+            }
         }
         
         dismiss(animated: true, completion: nil)
@@ -178,21 +164,21 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
         
     // Logs out the user
     @IBAction func logOut(_ sender: UIButton?) {
-        formatProgressWheel(toShow: true)
-        firebaseFunctions.logOut(sender) { error in
+        viewFunctions.formatProgressWheel(progressWheel: accountSettingsProgressWheel, button: nil, toShow: true)
+        firebaseFunctions.logOut() { error in
             if error == nil {
                 self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
             } else {
-                self.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default)
+                viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
             }
             
-            self.formatProgressWheel(toShow: false)
+            viewFunctions.formatProgressWheel(progressWheel: self.accountSettingsProgressWheel, button: nil, toShow: false)
         }
     }
     
     // Resets the user's password
     @IBAction func resetPassword(_ sender: UIButton) {
-        giveHapticFeedback(error: false)
+        viewFunctions.giveHapticFeedback(error: false)
         let resetPasswordAlert = UIAlertController(title: "Reset Password", message: "Enter your email adress", preferredStyle: .alert)
         resetPasswordAlert.addTextField { textField in
             textField.placeholder = "Email"
@@ -202,13 +188,13 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
         
         resetPasswordAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         resetPasswordAlert.addAction(UIAlertAction(title: "Reset Password", style: .destructive, handler: { Action in
-            self.formatProgressWheel(toShow: true)
-            self.firebaseFunctions.resetPassword(recoveryEmail: (resetPasswordAlert.textFields?.first!.text)!) { error in
+            viewFunctions.formatProgressWheel(progressWheel: self.accountSettingsProgressWheel, button: nil, toShow: true)
+            firebaseFunctions.resetPassword(recoveryEmail: (resetPasswordAlert.textFields?.first!.text)!) { error in
                 if error != nil {
                     print("Could not reset password")
                 }
                 
-                self.formatProgressWheel(toShow: false)
+                viewFunctions.formatProgressWheel(progressWheel: self.accountSettingsProgressWheel, button: nil, toShow: false)
             }
         }))
         
@@ -217,20 +203,19 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
     
     // Allows the user to delete their account
     @IBAction func deleteAccount(_ sender: UIButton) {
-        giveHapticFeedback(error: false)
+        viewFunctions.giveHapticFeedback(error: false)
         let confirmDeleteAlert = UIAlertController(title: "Confirm", message: "Are you sure you want to delete your account?", preferredStyle: .alert)
         confirmDeleteAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         confirmDeleteAlert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { action in
-            self.formatProgressWheel(toShow: true)
-            self.firebaseFunctions.deleteAccount() { error in
+            viewFunctions.formatProgressWheel(progressWheel: self.accountSettingsProgressWheel, button: nil, toShow: true)
+            firebaseFunctions.deleteAccount() { error in
                 if error == nil {
-                    user.reset()
                     self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
                 } else {
                     print("Could not delete account")
                 }
                 
-                self.formatProgressWheel(toShow: false)
+                viewFunctions.formatProgressWheel(progressWheel: self.accountSettingsProgressWheel, button: nil, toShow: false)
             }
         }))
         

@@ -9,15 +9,15 @@
 import UIKit
 
 struct FirebaseUser {
-    var uid: String?
-    var email: String?
+    var uid: String!
+    var email: String!
     var password: String?
-    var profileImg: UIImage?
-    var profileImgUrl: String?
-    var signedIn: Bool?
-    var type: type?
-    var prefersHapticFeedback: Bool?
-    var prefersNotifications: Bool?
+    var profileImg: UIImage!
+    var profileImgUrl: String!
+    var signedIn: Bool!
+    var type: type!
+    var prefersHapticFeedback: Bool!
+    var prefersNotifications: Bool!
     
     enum type {
         case none

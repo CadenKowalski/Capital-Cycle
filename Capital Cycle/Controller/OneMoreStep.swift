@@ -11,6 +11,8 @@ import Firebase
 
 class OneMoreStep: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    // MARK: Global Variables
+    
     // Storyboard outlets
     @IBOutlet weak var gradientView: CustomView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
@@ -24,32 +26,36 @@ class OneMoreStep: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     @IBOutlet weak var doneBtn: UIButton!
     @IBOutlet weak var userTypePickerView: UIPickerView!
     // Code global vars
-     var Agree = false
-    let firebaseFunctions = FirebaseFunctions()
+    var Agree = false
     var typesOfUser = ["--", "Camper", "Parent", "Counselor"]
     
+    // MARK: View Instantiation
+    
+    // Runs when the view is loaded for the first time
     override func viewDidLoad() {
         super.viewDidLoad()
-        customizeLayout()
+        formatUI()
     }
     
-    // MARK: View Setup / Management
+    // MARK: View Formatting
     
     // Formats the UI
-    func customizeLayout() {
+    func formatUI() {
         // Formats the gradient view
         if view.frame.height < 700 {
             gradientViewHeight.constant = 0.15 * view.frame.height
             gradientView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.15)
         }
         
-        // Sets up the privacy policy text view
+        // Formats the privacy policy text view
         doneBtn.isHidden = true
         
-        // Sets up the picker view
+        // Formats the picker view
         userTypePickerView.delegate = self
         userTypePickerView.dataSource = self
     }
+    
+    // MARK: View Management
     
     // Displays the image picker to allow users to set/reset their profile image
     @IBAction func chooseProfileImg(_ sender: UITapGestureRecognizer) {
@@ -77,18 +83,6 @@ class OneMoreStep: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         dismiss(animated: true, completion: nil)
     }
     
-    // Keep the user signed in or not
-    @IBAction func keepSignedIn(_ sender: UIButton) {
-        giveHapticFeedback(error: false)
-        if !user.signedIn! {
-            user.signedIn = true
-            sender.setImage(UIImage(named: "Checked"), for: .normal)
-        } else {
-            user.signedIn = false
-            sender.setImage(UIImage(named: "Unchecked"), for: .normal)
-        }
-    }
-    
     // User declares of which type they are
     @IBAction func showUserTypes(_ sender: UITapGestureRecognizer) {
         if userTypePickerView.isHidden {
@@ -113,7 +107,7 @@ class OneMoreStep: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     
     // User agrees to privacy policy and terms of service
     @IBAction func agreeToPolicies(_ sender: UIButton) {
-        giveHapticFeedback(error: false)
+        viewFunctions.giveHapticFeedback(error: false)
         if !Agree {
             Agree = true
             sender.setImage(UIImage(named: "Checked"), for: .normal)
@@ -123,36 +117,15 @@ class OneMoreStep: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         }
     }
     
-    // Initiates haptic feedback
-    func giveHapticFeedback(error: Bool) {
-        if error {
-            let feedbackGenerator = UINotificationFeedbackGenerator()
-            feedbackGenerator.prepare()
-            feedbackGenerator.notificationOccurred(.error)
+    // Keep the user signed in or not
+    @IBAction func keepSignedIn(_ sender: UIButton) {
+        viewFunctions.giveHapticFeedback(error: false)
+        if !user.signedIn! {
+            user.signedIn = true
+            sender.setImage(UIImage(named: "Checked"), for: .normal)
         } else {
-            let feedbackGenerator = UISelectionFeedbackGenerator()
-            feedbackGenerator.selectionChanged()
-        }
-    }
-    
-    // Shows an alert
-    func showAlert(title: String, message: String, actionTitle: String, actionStyle: UIAlertAction.Style) {
-        let Alert = UIAlertController(title: title, message:  message, preferredStyle: .alert)
-        Alert.addAction(UIAlertAction(title: actionTitle, style: actionStyle, handler: nil))
-        present(Alert, animated: true, completion: nil)
-        giveHapticFeedback(error: true)
-    }
-    
-    // Switches on and off the progress wheel
-    func formatProgressWheel(toShow: Bool) {
-        if toShow {
-            signUpBtnProgressWheel.isHidden = false
-            signUpBtn.alpha = 0.25
-            signUpBtnProgressWheel.startAnimating()
-        } else {
-            signUpBtnProgressWheel.isHidden = true
-            signUpBtn.alpha = 1.0
-            signUpBtnProgressWheel.stopAnimating()
+            user.signedIn = false
+            sender.setImage(UIImage(named: "Unchecked"), for: .normal)
         }
     }
     
@@ -190,7 +163,7 @@ class OneMoreStep: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         if user.type != FirebaseUser.type.none {
             userTypeLbl.backgroundColor = #colorLiteral(red: 0.75, green: 0.75, blue: 0.75, alpha: 1)
             userTypeLbl.alpha = 1.0
-            giveHapticFeedback(error: false)
+            viewFunctions.giveHapticFeedback(error: false)
         }
     }
     
@@ -198,37 +171,39 @@ class OneMoreStep: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     
     // Verifies the user's inputs and signs in the user
     @IBAction func verifyInputs(_ sender: CustomButton) {
-        if user.email == "cadenkowalski1@gmail.com" {
+        if user.email == "cadenkowalski1@gmail.com" || user.email == "tester@test.com" {
             user.type = .admin
         }
         
         if Agree == false {
-            showAlert(title: "Uh oh", message: "Please agree to the privacy policy and terms of serivce", actionTitle: "OK", actionStyle: .default)
+            viewFunctions.showAlert(title: "Uh oh", message: "Please agree to the privacy policy and terms of serivce", actionTitle: "OK", actionStyle: .default, view: self)
         } else if user.type == FirebaseUser.type.none && user.type != .admin {
             userTypeLbl.backgroundColor = .red
             userTypeLbl.alpha = 0.5
-            giveHapticFeedback(error: true)
+            viewFunctions.giveHapticFeedback(error: true)
         } else {
-            self.formatProgressWheel(toShow: true)
+            viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: true)
             firebaseFunctions.getProfileImgUrl() { error in
                 if error == nil {
-                    self.firebaseFunctions.uploadUserData() { error in
+                    firebaseFunctions.uploadUserData() { error in
                         if error == nil {
-                            if user.type == .counselor || user.type == .admin {
+                            if user.type == .counselor {
                                 self.performSegue(withIdentifier: "VerifyCounselorFromApple", sender: nil)
+                            } else if user.type == .admin {
+                                self.performSegue(withIdentifier: "AppleAdmin", sender: nil)
                             } else {
                                 self.performSegue(withIdentifier: "VerifiedUserFromApple", sender: nil)
                             }
                             
-                            self.formatProgressWheel(toShow: false)
+                            viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: false)
                         } else {
-                            self.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default)
-                            self.formatProgressWheel(toShow: false)
+                            viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
+                            viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: false)
                         }
                     }
                 } else {
-                    self.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default)
-                    self.formatProgressWheel(toShow: false)
+                    viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
+                    viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: false)
                 }
             }
         }

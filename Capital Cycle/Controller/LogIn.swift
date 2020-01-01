@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import Firebase
 import CryptoKit
-import FirebaseAuth
-import FirebaseFirestore
 import AuthenticationServices
 
 class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
 
+    // MARK: Global Variables
+    
     // Storyboard outlets
     @IBOutlet weak var gradientView: CustomView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
@@ -25,52 +26,55 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
     @IBOutlet weak var logInBtnProgressWheel: UIActivityIndicatorView!
     @IBOutlet weak var signUpBtn: CustomButton!
     // Code global vars
-    static let Instance = LogIn()
-    let firebaseFunctions = FirebaseFunctions()
     var currentNonce: String?
     
+    // MARK: View Instantiation
+
+    // Runs when the view is loaded for the first time
     override func viewDidLoad() {
         super.viewDidLoad()
-        customizeLayout()
+        formatUI()
     }
     
-    // Logs in a user automatically if they have already logged in
+    // Logs in the user automatically if they are signedIn
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        Auth.auth().currentUser?.reload(completion: { action in
+        Auth.auth().currentUser?.reload() { action in
             if Auth.auth().currentUser != nil {
-                user.email = Auth.auth().currentUser?.email
-                user.uid = Auth.auth().currentUser!.uid
-                self.formatProgressWheel(toShow: true)
-                self.firebaseFunctions.fetchUserData() { error in
-                    if error == nil {
-                        if Auth.auth().currentUser != nil && user.signedIn == true {
-                            self.performSegue(withIdentifier: "AlreadyLoggedIn", sender: nil)
-                            self.giveHapticFeedback()
+                if Auth.auth().currentUser!.isEmailVerified {
+                    user.email = Auth.auth().currentUser!.email
+                    user.uid = Auth.auth().currentUser!.uid
+                    viewFunctions.formatProgressWheel(progressWheel: self.logInBtnProgressWheel, button: self.logInBtn, toShow: true)
+                    firebaseFunctions.fetchUserData(fetchValue: "all") { error in
+                        if error == nil {
+                            if user.signedIn == true {
+                                viewFunctions.giveHapticFeedback(error: false)
+                                self.performSegue(withIdentifier: "AlreadyLoggedIn", sender: nil)
+                            }
+                        } else {
+                            viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
                         }
-                    } else {
-                        self.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default)
+                        
+                        viewFunctions.formatProgressWheel(progressWheel: self.logInBtnProgressWheel, button: self.logInBtn, toShow: false)
                     }
-                    
-                    self.formatProgressWheel(toShow: false)
                 }
             }
-        })
+        }
     }
     
-    // MARK: View Setup / Management
+    // MARK: View Formatting
     
     // Formats the UI
-    func customizeLayout() {
-        //Formats the gradient view
+    func formatUI() {
+        // Formats the gradient view
         if view.frame.height < 700 {
             gradientViewHeight.constant = 0.15 * view.frame.height
             gradientView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.15)
         } else if view.frame.height >= 812 {
             logInLblYConstraint.constant = 15
         }
-
-        // Sets up the text fields
+        
+        // Formats the text fields
         emailTxtField.delegate = self
         passTxtField.delegate = self
         emailTxtField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
@@ -79,7 +83,7 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
         // Formats the progress wheel
         logInBtnProgressWheel.isHidden = true
         
-        // Formats the Aign in with Apple button
+        // Formats the Sign in with Apple button
         let appleButton = ASAuthorizationAppleIDButton()
         appleButton.addTarget(self, action: #selector(signInWithApple), for: .touchDown)
         appleButton.translatesAutoresizingMaskIntoConstraints = false
@@ -92,9 +96,11 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
         ])
     }
     
+    // MARK: View Management
+    
     // Keep the user signed in or not
     @IBAction func keepSignedIn(_ sender: UIButton) {
-        giveHapticFeedback()
+        viewFunctions.giveHapticFeedback(error: false)
         if !user.signedIn! {
             user.signedIn = true
             sender.setImage(UIImage(named: "Checked"), for: .normal)
@@ -104,39 +110,83 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
         }
     }
     
-    // Initiates haptic feedback
-    func giveHapticFeedback() {
-        let feedbackGenerator = UISelectionFeedbackGenerator()
-        feedbackGenerator.selectionChanged()
-    }
+    // MARK: Log In
     
-    // Shows an alert
-    func showAlert(title: String, message: String, actionTitle: String, actionStyle: UIAlertAction.Style) {
-        let Alert = UIAlertController(title: title, message:  message, preferredStyle: .alert)
-        Alert.addAction(UIAlertAction(title: actionTitle, style: actionStyle, handler: nil))
-        present(Alert, animated: true, completion: nil)
-        if user.prefersHapticFeedback! {
-            let feedbackGenerator = UINotificationFeedbackGenerator()
-            feedbackGenerator.prepare()
-            feedbackGenerator.notificationOccurred(.error)
+    // Logs in the user
+    @IBAction func logIn(_ sender: CustomButton) {
+        viewFunctions.formatProgressWheel(progressWheel: logInBtnProgressWheel, button: logInBtn, toShow: true)
+        user.email = emailTxtField.text!
+        user.password = passTxtField.text!
+        Auth.auth().signIn(withEmail: user.email!, password: user.password!) { (authUser, error) in
+            if error == nil {
+                if Auth.auth().currentUser!.isEmailVerified {
+                    user.uid = Auth.auth().currentUser!.uid
+                    firebaseFunctions.updateUserData(updateValue: "signedIn") { error in
+                        if error == nil {
+                            firebaseFunctions.fetchUserData(fetchValue: "all") { error in
+                                if error == nil {
+                                    viewFunctions.formatProgressWheel(progressWheel: self.logInBtnProgressWheel, button: self.logInBtn, toShow: false)
+                                    self.performSegue(withIdentifier: "LogIn", sender: nil)
+                                    self.emailTxtField.text = ""
+                                    self.passTxtField.text = ""
+                                } else {
+                                    viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
+                                    viewFunctions.formatProgressWheel(progressWheel: self.logInBtnProgressWheel, button: self.logInBtn, toShow: false)
+                                }
+                            }
+                        } else {
+                            viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
+                            viewFunctions.formatProgressWheel(progressWheel: self.logInBtnProgressWheel, button: self.logInBtn, toShow: false)
+                        }
+                    }
+                } else {
+                    firebaseFunctions.fetchUserData(fetchValue: "type") { error in
+                        if error == nil {
+                            if user.type == .camper || user.type == .parent {
+                                self.performSegue(withIdentifier: "UserNotVerifiedYet", sender: nil)
+                            } else {
+                                self.performSegue(withIdentifier: "CounselorNotVerifiedYet", sender: nil)
+                            }
+                            
+                            viewFunctions.formatProgressWheel(progressWheel: self.logInBtnProgressWheel, button: self.logInBtn, toShow: false)
+                        }
+                        else {
+                            viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
+                            viewFunctions.formatProgressWheel(progressWheel: self.logInBtnProgressWheel, button: self.logInBtn, toShow: false)
+                        }
+                    }
+                }
+            } else {
+                viewFunctions.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default, view: self)
+                viewFunctions.formatProgressWheel(progressWheel: self.logInBtnProgressWheel, button: self.logInBtn, toShow: false)
+            }
         }
     }
     
-    // Fromats the progress wheel
-    func formatProgressWheel(toShow: Bool) {
-        if toShow {
-            logInBtnProgressWheel.isHidden = false
-            logInBtn.alpha = 0.25
-            logInBtnProgressWheel.startAnimating()
-        } else {
-            logInBtnProgressWheel.isHidden = true
-            logInBtn.alpha = 1.0
-            logInBtnProgressWheel.stopAnimating()
+    // Resets the user's password
+    @IBAction func resetPassword(_ sender: UIButton) {
+        let resetPasswordAlert = UIAlertController(title: "Reset Password", message: "Enter your email adress", preferredStyle: .alert)
+        resetPasswordAlert.addTextField { (textField) in
+            textField.placeholder = "Email"
+            textField.keyboardType = .emailAddress
+            textField.font = UIFont(name: "Avenir-Book", size: 13.0)
         }
+        
+        resetPasswordAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        resetPasswordAlert.addAction(UIAlertAction(title: "Reset Password", style: .default, handler: { (Action) in
+            firebaseFunctions.resetPassword(recoveryEmail: (resetPasswordAlert.textFields?.first!.text)!) { error in
+                if error != nil {
+                    print("Could not reset password")
+                }
+            }
+        }))
+        
+        self.present(resetPasswordAlert, animated: true, completion: nil)
     }
     
     // MARK: Sign In With Apple
     
+    // Generates a random string of characters
     func randomNonceString(length: Int = 32) -> String {
         precondition(length > 0)
         let charset: Array<Character> = Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
@@ -151,22 +201,23 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
                 }
                 return random
             }
-
+            
             randoms.forEach { random in
                 if length == 0 {
                     return
                 }
-
+                
                 if random < charset.count {
                     result.append(charset[Int(random)])
                     remainingLength -= 1
                 }
             }
         }
-
+        
         return result
     }
     
+    // Encrypts a string of characters
     func sha256(_ input: String) -> String {
         let inputData = Data(input.utf8)
         let hashedData = SHA256.hash(data: inputData)
@@ -177,6 +228,7 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
         return hashString
     }
     
+    // Presents the Sign in with Apple view
     @objc func signInWithApple() {
         let nonce = randomNonceString()
         currentNonce = nonce
@@ -190,61 +242,41 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
         authorizationController.performRequests()
     }
     
-    // MARK: Log In
-    
-    // Logs the user in
-    @IBAction func logIn(_ sender: CustomButton) {
-        user.email = emailTxtField.text!
-        user.password = passTxtField.text!
-        formatProgressWheel(toShow: true)
-        Auth.auth().signIn(withEmail: user.email!, password: user.password!) { (authUser, error) in
-            user.uid = Auth.auth().currentUser!.uid
-            if error == nil {
-                self.firebaseFunctions.updateUserData() { error in
-                    if error == nil {
-                        self.firebaseFunctions.fetchUserData() { error in
-                            if error == nil {
-                                self.performSegue(withIdentifier: "LogIn", sender: self)
-                                self.giveHapticFeedback()
-                                self.formatProgressWheel(toShow: false)
-                                self.emailTxtField.text = ""
-                                self.passTxtField.text = ""
-                            } else {
-                                self.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default)
-                                self.formatProgressWheel(toShow: false)
-                            }
-                        }
-                    } else {
-                        self.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default)
-                        self.formatProgressWheel(toShow: false)
-                    }
+    // Creates a Firebase user via Sign in with Apple
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
+            let nonce = currentNonce
+            guard let appleIDToken = appleIDCredential.identityToken else {
+                viewFunctions.showAlert(title: "Error", message: "Authentication Failed", actionTitle: "OK", actionStyle: .default, view: self)
+                return
+            }
+            
+            guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
+                viewFunctions.showAlert(title: "Error", message: "Authentication Failed", actionTitle: "OK", actionStyle: .default, view: self)
+                return
+            }
+            
+            let credential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString, rawNonce: nonce)
+            Auth.auth().signIn(with: credential) { (authResult, error) in
+                if error == nil {
+                    user.email = appleIDCredential.email!
+                    self.performSegue(withIdentifier: "SignUpFromApple", sender: nil)
+                } else {
+                    viewFunctions.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default, view: self)
+                    return
                 }
-            } else {
-                self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
-                self.formatProgressWheel(toShow: false)
             }
         }
     }
     
-    // Resets the users password
-    @IBAction func resetPassword(_ sender: UIButton) {
-        let resetPasswordAlert = UIAlertController(title: "Reset Password", message: "Enter your email adress", preferredStyle: .alert)
-            resetPasswordAlert.addTextField { (textField) in
-                textField.placeholder = "Email"
-                textField.keyboardType = .emailAddress
-                textField.font = UIFont(name: "Avenir-Book", size: 13.0)
-            }
-            
-            resetPasswordAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-            resetPasswordAlert.addAction(UIAlertAction(title: "Reset Password", style: .default, handler: { (Action) in
-                self.firebaseFunctions.resetPassword(recoveryEmail: (resetPasswordAlert.textFields?.first!.text)!) { error in
-                        if error != nil {
-                            print("Could not reset password")
-                        }
-                    }
-                }))
-                
-                self.present(resetPasswordAlert, animated: true, completion: nil)
+    // Returns the window on which the Sign in with Apple view is presented
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return view.window!
+    }
+    
+    // Called when authentication fails on the user end
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        print("Error: \(error)")
     }
     
     // MARK: Dismiss Keyboard
@@ -258,47 +290,5 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
     // Dismiss keyboard when view tapped
     @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
         self.view.endEditing(true)
-    }
-    
-    // MARK: Extensions
-    
-    // Creates a Firebase User from data
-    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
-        if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
-            guard let nonce = currentNonce else {
-                fatalError("Invalid state: A login callback was received, but no login request was sent.")
-            }
-            
-            guard let appleIDToken = appleIDCredential.identityToken else {
-                print("Unable to fetch identity token")
-                return
-            }
-            
-            guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
-                print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
-                return
-            }
-            
-            let credential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString, rawNonce: nonce)
-            Auth.auth().signIn(with: credential) { (authResult, error) in
-                if error != nil {
-                    self.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default)
-                    return
-                } else {
-                    user.email = appleIDCredential.email
-                    self.performSegue(withIdentifier: "SignUpFromApple", sender: nil)
-                }
-            }
-        }
-    }
-    
-    // Function to print message if authorization through controller fails on user end
-    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        print("Something bad happened", error)
-    }
-    
-    // Function for authorization controller presenttion context delegate
-    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
-        return view.window!
     }
 }

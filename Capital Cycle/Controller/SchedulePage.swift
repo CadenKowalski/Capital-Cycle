@@ -7,10 +7,13 @@
 //
 
 import UIKit
-import GoogleAPIClientForREST
 import CoreData
+import GoogleAPIClientForREST
 
 class SchedulePage: UIViewController {
+    
+    // MARK: Global Variables
+    
     // Storyboard outlets
     @IBOutlet weak var gradientView: CustomView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
@@ -57,13 +60,17 @@ class SchedulePage: UIViewController {
     var overviewRefreshControl = UIRefreshControl()
     let Service = GTLRSheetsService()
     
+    // MARK: View Instantiation
+    
+    // Runs when the view is loaded for the first time
     override func viewDidLoad() {
         super.viewDidLoad()
-        customizeLayout()
+        formatUI()
         fetchDailyData()
         fetchOverviewData()
     }
     
+    // Runs when the view is reloaded
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         setProfileImg()
@@ -77,10 +84,10 @@ class SchedulePage: UIViewController {
         }
     }
     
-    // MARK: View Setup
+    // MARK: View Formatting
     
     // Formats the UI
-    func customizeLayout() {
+    func formatUI() {
         // Formats the gradient view
         if view.frame.height < 700 {
             gradientViewHeight.constant = 0.15 * view.frame.height
@@ -89,25 +96,22 @@ class SchedulePage: UIViewController {
            scheduleLblYConstraint.constant = 15
         }
         
-        // Readjusts the Y constraints relative to the gradient view height
-        dailyScrollViewYConstraint.constant = gradientView.frame.height + 8
-        overviewScrollViewYConstraint.constant = gradientView.frame.height + 8
+        // Formats the refresh view
+        dailyRefreshControl.backgroundColor = UIColor(named: "ViewColor")
+        dailyRefreshControl.addTarget(self, action: #selector(updateData), for: .valueChanged)
+        dailyScrollView.refreshControl = dailyRefreshControl
+        overviewRefreshControl.backgroundColor = UIColor(named: "ViewColor")
+        overviewRefreshControl.addTarget(self, action: #selector(updateData), for: .valueChanged)
+        overviewScroll.refreshControl = overviewRefreshControl
         
-        // Sets the profile image on the account settings button
-        SchedulePage.Instance.accountSettingsImgView = accountSettingsImgView
-        setProfileImg()
-        
-        // Sets the API key for the GTLR Service so that the app can access the spreadhseet without credentials
-        Service.apiKey = "AIzaSyBIdPHR_nqgL9G6fScmlcPMReBM5PmtVD8"
-        
-        // Formats the daily date label
+        // Formats the start of week label
         let formatter = DateFormatter()
         formatter.dateStyle = .short
         formatter.timeStyle = .none
-        dailyDateLbl.text = "\(formatter.string(from: Date()))"
-        
-        // Formats the start of week label
         overviewDateLbl.text = "\(formatter.string(from: Date().startOfWeek!))"
+        
+        // Formats the daily date label
+        dailyDateLbl.text = "\(formatter.string(from: Date()))"
         
         // Formats the daily button
         let Days = ["Mon", "Tues", "Wed", "Thurs", "Fri"]
@@ -125,13 +129,16 @@ class SchedulePage: UIViewController {
             }
         }
         
-        // Formats the refresh view
-        dailyRefreshControl.backgroundColor = UIColor(named: "ViewColor")
-        dailyRefreshControl.addTarget(self, action: #selector(updateData), for: .valueChanged)
-        dailyScrollView.refreshControl = dailyRefreshControl
-        overviewRefreshControl.backgroundColor = UIColor(named: "ViewColor")
-        overviewRefreshControl.addTarget(self, action: #selector(updateData), for: .valueChanged)
-        overviewScroll.refreshControl = overviewRefreshControl
+        // Formats the account settings button
+        SchedulePage.Instance.accountSettingsImgView = accountSettingsImgView
+        setProfileImg()
+        
+        // Formats the Y constraints relative to the gradient view height
+        dailyScrollViewYConstraint.constant = gradientView.frame.height + 8
+        overviewScrollViewYConstraint.constant = gradientView.frame.height + 8
+        
+        // Sets the API key for the GTLR Service so that the app can access the spreadhseet without credentials
+        Service.apiKey = "AIzaSyBIdPHR_nqgL9G6fScmlcPMReBM5PmtVD8"
     }
     
     // Sets the profile image on the account settings button
@@ -235,11 +242,10 @@ class SchedulePage: UIViewController {
             feedbackGenerator.selectionChanged()
         }
     }
-}
 
-// MARK: Core Data
+    // MARK: Core Data
     
-// Updates the context with new values
+    // Updates the context with new values
     func updateContext() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let Context = appDelegate.persistentContainer.viewContext
@@ -255,6 +261,7 @@ class SchedulePage: UIViewController {
             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
     }
+}
 
 // MARK: Extensions
 

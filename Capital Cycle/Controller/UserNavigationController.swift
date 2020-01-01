@@ -10,6 +10,9 @@ import UIKit
 
 class UserNavigationController: UINavigationController {
 
+    // MARK: View Instantiation
+    
+    // Runs when the view is loaded for the first time
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavigationController()
