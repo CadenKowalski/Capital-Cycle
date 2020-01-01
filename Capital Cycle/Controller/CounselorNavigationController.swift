@@ -16,7 +16,6 @@ class CounselorNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavigationController()
-        print(true)
     }
     
     // MARK: Setup

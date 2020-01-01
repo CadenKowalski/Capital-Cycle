@@ -16,9 +16,9 @@ class VerifyUser: UIViewController, UIAdaptivePresentationControllerDelegate {
     // Storyboard outlets
     @IBOutlet weak var gradientView: CustomView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var refreshBtn: UIButton!
     @IBOutlet weak var signUpBtn: CustomButton!
     @IBOutlet weak var signUpBtnProgressWheel: UIActivityIndicatorView!
+    @IBOutlet weak var resendEmailBtn: UIButton!
     
     // MARK: View Instantiation
     
@@ -44,11 +44,21 @@ class VerifyUser: UIViewController, UIAdaptivePresentationControllerDelegate {
     
     // MARK: Sign Up
     
+    
+    @IBAction func resendEmail(_ sender: Any) {
+        Auth.auth().currentUser?.sendEmailVerification() { error in
+            if error != nil {
+                viewFunctions.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default, view: self)
+            }
+        }
+    }
+    
     // Checks if the user has verified their email
     @IBAction func checkForVerifiedUser(_ sender: UIButton) {
         Auth.auth().currentUser?.reload(completion: { Action in
             if Auth.auth().currentUser!.isEmailVerified {
-                self.refreshBtn.isHidden = true
+                sender.isHidden = true
+                self.resendEmailBtn.isHidden = true
                 self.signUpBtn.isHidden = false
             } else {
                 viewFunctions.showAlert(title: "Uh oh", message: "It looks like you haven't verified your email yet", actionTitle: "OK", actionStyle: .default, view: self)

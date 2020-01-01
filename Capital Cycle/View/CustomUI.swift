@@ -53,12 +53,6 @@ class CustomLabel: UILabel {
             self.layer.cornerRadius = self.cornerRadius
         }
     }
-    
-    @IBInspectable var userInteraction: Bool = false {
-        didSet {
-            self.isUserInteractionEnabled = self.userInteraction
-        }
-    }
 }
 
 @IBDesignable
@@ -66,12 +60,6 @@ class CustomImageView: UIImageView {
     @IBInspectable var cornerRadius: CGFloat = 0 {
         didSet {
             self.layer.cornerRadius = self.cornerRadius
-        }
-    }
-    
-    @IBInspectable var userInteraction: Bool = false {
-        didSet {
-            self.isUserInteractionEnabled = self.userInteraction
         }
     }
 }

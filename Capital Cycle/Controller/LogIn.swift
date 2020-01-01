@@ -159,6 +159,8 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
                             viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
                             viewFunctions.formatProgressWheel(progressWheel: self.logInBtnProgressWheel, button: self.logInBtn, toShow: false)
                         }
+                        
+                        print(true)
                     }
                 }
             } else {

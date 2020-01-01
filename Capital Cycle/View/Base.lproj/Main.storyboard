@@ -165,7 +165,7 @@ Phone: 202.288.5245</string>
                                                 <color key="textColor" name="LabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rhe-8X-Nng" userLabel="Location Lbl" customClass="CustomLabel" customModule="Capital_Cycle" customModuleProvider="target">
+                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rhe-8X-Nng" userLabel="Location Lbl" customClass="CustomLabel" customModule="Capital_Cycle" customModuleProvider="target">
                                                 <rect key="frame" x="32" y="286" width="374" height="46.666666666666686"/>
                                                 <gestureRecognizers/>
                                                 <attributedString key="attributedText">
@@ -282,7 +282,7 @@ Phone: 202.288.5245</string>
                                             <segue destination="ECW-nJ-Zo5" kind="presentation" id="stl-Sk-OpA"/>
                                         </connections>
                                     </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="adt-QC-e0q" customClass="CustomImageView" customModule="Capital_Cycle" customModuleProvider="target">
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="adt-QC-e0q" customClass="CustomImageView" customModule="Capital_Cycle" customModuleProvider="target">
                                         <rect key="frame" x="358" y="17" width="40" height="38.666666666666671"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <gestureRecognizers/>
@@ -914,7 +914,7 @@ Phone: 202.288.5245</string>
                                             <segue destination="ECW-nJ-Zo5" kind="show" id="CFn-zx-hpt"/>
                                         </connections>
                                     </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="3Fa-Jd-nf8" customClass="CustomImageView" customModule="Capital_Cycle" customModuleProvider="target">
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="3Fa-Jd-nf8" customClass="CustomImageView" customModule="Capital_Cycle" customModuleProvider="target">
                                         <rect key="frame" x="358" y="17" width="40" height="38.666666666666671"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <gestureRecognizers/>
@@ -1254,7 +1254,7 @@ Phone: 202.288.5245</string>
                                 <color key="textColor" name="LabelColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="gYP-kz-BVS" customClass="CustomImageView" customModule="Capital_Cycle" customModuleProvider="target">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="gYP-kz-BVS" customClass="CustomImageView" customModule="Capital_Cycle" customModuleProvider="target">
                                 <rect key="frame" x="16" y="117" width="100" height="98.333333333333329"/>
                                 <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
@@ -1432,7 +1432,7 @@ $375</string>
                                             <segue destination="ECW-nJ-Zo5" kind="show" id="RM7-KP-pjo"/>
                                         </connections>
                                     </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="3Dw-am-jHS" userLabel="accountSettingsImageView" customClass="CustomImageView" customModule="Capital_Cycle" customModuleProvider="target">
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="3Dw-am-jHS" userLabel="accountSettingsImageView" customClass="CustomImageView" customModule="Capital_Cycle" customModuleProvider="target">
                                         <rect key="frame" x="319" y="17" width="40" height="38.666666666666671"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <gestureRecognizers/>
@@ -1666,7 +1666,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="48P-Lo-5LU" userLabel="accountSettingsImageView" customClass="CustomImageView" customModule="Capital_Cycle" customModuleProvider="target">
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="48P-Lo-5LU" userLabel="accountSettingsImageView" customClass="CustomImageView" customModule="Capital_Cycle" customModuleProvider="target">
                                         <rect key="frame" x="319" y="17" width="40" height="38.666666666666671"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <gestureRecognizers/>
@@ -1761,150 +1761,9 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FX1-S6-vw9" userLabel="Scroll View Display">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="668"/>
-                                        <subviews>
-                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zQz-Ii-lcy" userLabel="Camper Info View" customClass="CustomView" customModule="Capital_Cycle" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="10" width="343" height="642"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Camper Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0kj-HB-fqT">
-                                                        <rect key="frame" x="8" y="8" width="327" height="25"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="25" id="CqO-1R-fWO"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
-                                                        <color key="textColor" name="LabelColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parent Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VvE-cC-Zsu">
-                                                        <rect key="frame" x="8" y="41" width="123" height="27"/>
-                                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
-                                                        <color key="textColor" name="LabelColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Placeholder Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L3U-lf-AnQ">
-                                                        <rect key="frame" x="32" y="76" width="303" height="25"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="25" id="osr-GL-WMA"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parent Phone" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pge-hr-csv">
-                                                        <rect key="frame" x="8" y="109" width="126" height="27.333333333333343"/>
-                                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
-                                                        <color key="textColor" name="LabelColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YJn-C2-UMD" userLabel="Parent Phone Lbl">
-                                                        <rect key="frame" x="32" y="144.33333333333331" width="303" height="25"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="25" id="gCE-mt-Y1S"/>
-                                                        </constraints>
-                                                        <attributedString key="attributedText">
-                                                            <fragment content="Placeholder Number">
-                                                                <attributes>
-                                                                    <font key="NSFont" size="18" name="Avenir-Medium"/>
-                                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                                    <integer key="NSUnderline" value="1"/>
-                                                                </attributes>
-                                                            </fragment>
-                                                        </attributedString>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parent Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zgs-li-Yn9">
-                                                        <rect key="frame" x="8" y="177.33333333333331" width="118" height="27.666666666666657"/>
-                                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
-                                                        <color key="textColor" name="LabelColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SXT-EN-B0A" userLabel="Parent Email Lbl">
-                                                        <rect key="frame" x="32" y="213" width="303" height="25"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="25" id="jHN-7h-9Sl"/>
-                                                        </constraints>
-                                                        <attributedString key="attributedText">
-                                                            <fragment content="Placeholder Email">
-                                                                <attributes>
-                                                                    <font key="NSFont" size="18" name="Avenir-Medium"/>
-                                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                                    <integer key="NSUnderline" value="1"/>
-                                                                </attributes>
-                                                            </fragment>
-                                                        </attributedString>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signed Waiver" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XgM-tu-lN0">
-                                                        <rect key="frame" x="8" y="246" width="135.66666666666666" height="27"/>
-                                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
-                                                        <color key="textColor" name="LabelColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bool" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ajb-0o-pyW">
-                                                        <rect key="frame" x="31.999999999999996" y="281" width="37.666666666666657" height="25"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="25" id="g8i-mc-Kfo"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ixb-Od-qPu">
-                                                        <rect key="frame" x="146" y="606" width="51" height="28"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="28" id="dFd-Am-MKc"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
-                                                        <state key="normal" title="Done">
-                                                            <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="dismissCamperInfoView:" destination="45k-fV-EgM" eventType="touchUpInside" id="yc2-22-mcE"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                                <color key="backgroundColor" name="ContrastViewColor"/>
-                                                <gestureRecognizers/>
-                                                <constraints>
-                                                    <constraint firstItem="SXT-EN-B0A" firstAttribute="top" secondItem="zgs-li-Yn9" secondAttribute="bottom" constant="8" id="32r-Pt-39j"/>
-                                                    <constraint firstItem="L3U-lf-AnQ" firstAttribute="leading" secondItem="zQz-Ii-lcy" secondAttribute="leading" constant="32" id="5Bg-d9-nG0"/>
-                                                    <constraint firstItem="XgM-tu-lN0" firstAttribute="leading" secondItem="zQz-Ii-lcy" secondAttribute="leading" constant="8" id="6Jm-Ba-BLi"/>
-                                                    <constraint firstItem="YJn-C2-UMD" firstAttribute="leading" secondItem="zQz-Ii-lcy" secondAttribute="leading" constant="32" id="77T-By-ipz"/>
-                                                    <constraint firstItem="Pge-hr-csv" firstAttribute="top" secondItem="L3U-lf-AnQ" secondAttribute="bottom" constant="8" id="83d-K5-0JP"/>
-                                                    <constraint firstItem="XgM-tu-lN0" firstAttribute="top" secondItem="SXT-EN-B0A" secondAttribute="bottom" constant="8" id="FaB-in-WiZ"/>
-                                                    <constraint firstItem="Pge-hr-csv" firstAttribute="leading" secondItem="zQz-Ii-lcy" secondAttribute="leading" constant="8" id="GL8-vF-dLo"/>
-                                                    <constraint firstAttribute="trailing" secondItem="YJn-C2-UMD" secondAttribute="trailing" constant="8" id="HrT-KJ-VDh"/>
-                                                    <constraint firstItem="VvE-cC-Zsu" firstAttribute="leading" secondItem="zQz-Ii-lcy" secondAttribute="leading" constant="8" id="Hz9-NH-pTK"/>
-                                                    <constraint firstAttribute="trailing" secondItem="L3U-lf-AnQ" secondAttribute="trailing" constant="8" id="IHl-xU-zQ6"/>
-                                                    <constraint firstItem="L3U-lf-AnQ" firstAttribute="top" secondItem="VvE-cC-Zsu" secondAttribute="bottom" constant="8" id="KYK-i4-3dY"/>
-                                                    <constraint firstItem="0kj-HB-fqT" firstAttribute="centerX" secondItem="zQz-Ii-lcy" secondAttribute="centerX" id="Rtd-nU-tlY"/>
-                                                    <constraint firstItem="YJn-C2-UMD" firstAttribute="top" secondItem="Pge-hr-csv" secondAttribute="bottom" constant="8" id="WqE-YV-Zyg"/>
-                                                    <constraint firstAttribute="bottom" secondItem="Ixb-Od-qPu" secondAttribute="bottom" constant="8" id="XMB-H6-QlG"/>
-                                                    <constraint firstItem="0kj-HB-fqT" firstAttribute="top" secondItem="zQz-Ii-lcy" secondAttribute="top" constant="8" id="Yre-Gh-pUu"/>
-                                                    <constraint firstItem="0kj-HB-fqT" firstAttribute="leading" secondItem="zQz-Ii-lcy" secondAttribute="leading" constant="8" id="Z1y-9a-Poh"/>
-                                                    <constraint firstItem="VvE-cC-Zsu" firstAttribute="top" secondItem="0kj-HB-fqT" secondAttribute="bottom" constant="8" id="emO-2p-RDf"/>
-                                                    <constraint firstItem="ajb-0o-pyW" firstAttribute="leading" secondItem="zQz-Ii-lcy" secondAttribute="leading" constant="32" id="gOf-0P-2z9"/>
-                                                    <constraint firstItem="ajb-0o-pyW" firstAttribute="top" secondItem="XgM-tu-lN0" secondAttribute="bottom" constant="8" id="gxS-fN-Ssg"/>
-                                                    <constraint firstItem="Ixb-Od-qPu" firstAttribute="centerX" secondItem="zQz-Ii-lcy" secondAttribute="centerX" id="iX8-bc-1LS"/>
-                                                    <constraint firstAttribute="trailing" secondItem="0kj-HB-fqT" secondAttribute="trailing" constant="8" id="lMW-yq-NfH"/>
-                                                    <constraint firstItem="zgs-li-Yn9" firstAttribute="top" secondItem="YJn-C2-UMD" secondAttribute="bottom" constant="8" id="n7o-oH-BiZ"/>
-                                                    <constraint firstItem="SXT-EN-B0A" firstAttribute="leading" secondItem="zQz-Ii-lcy" secondAttribute="leading" constant="32" id="ovf-n3-rU8"/>
-                                                    <constraint firstAttribute="trailing" secondItem="SXT-EN-B0A" secondAttribute="trailing" constant="8" id="rV0-30-znz"/>
-                                                    <constraint firstItem="zgs-li-Yn9" firstAttribute="leading" secondItem="zQz-Ii-lcy" secondAttribute="leading" constant="8" id="ytb-sk-a11"/>
-                                                </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="20"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                        </subviews>
                                         <color key="backgroundColor" name="ViewColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="668" id="9lp-nH-p4W"/>
-                                            <constraint firstItem="zQz-Ii-lcy" firstAttribute="leading" secondItem="FX1-S6-vw9" secondAttribute="leading" constant="16" id="AXm-uJ-a1c"/>
-                                            <constraint firstItem="zQz-Ii-lcy" firstAttribute="top" secondItem="FX1-S6-vw9" secondAttribute="top" constant="10" id="LlZ-P8-r0X"/>
-                                            <constraint firstAttribute="trailing" secondItem="zQz-Ii-lcy" secondAttribute="trailing" constant="16" id="XQb-tR-MIL"/>
-                                            <constraint firstAttribute="bottom" secondItem="zQz-Ii-lcy" secondAttribute="bottom" constant="16" id="zXM-aq-lCz"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -1918,6 +1777,144 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                     <constraint firstItem="FX1-S6-vw9" firstAttribute="height" secondItem="aML-ci-l1n" secondAttribute="height" priority="250" id="qxE-E0-hoo"/>
                                 </constraints>
                             </scrollView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zQz-Ii-lcy" userLabel="Camper Info View" customClass="CustomView" customModule="Capital_Cycle" customModuleProvider="target">
+                                <rect key="frame" x="16" y="109.99999999999997" width="343" height="357.33333333333326"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Camper Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0kj-HB-fqT">
+                                        <rect key="frame" x="8" y="8" width="327" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="CqO-1R-fWO"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
+                                        <color key="textColor" name="LabelColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parent Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VvE-cC-Zsu">
+                                        <rect key="frame" x="8" y="41" width="123" height="27"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
+                                        <color key="textColor" name="LabelColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Placeholder Name" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L3U-lf-AnQ">
+                                        <rect key="frame" x="32" y="76" width="303" height="24.666666666666671"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parent Phone" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pge-hr-csv">
+                                        <rect key="frame" x="8" y="108.66666666666666" width="126" height="27.333333333333343"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
+                                        <color key="textColor" name="LabelColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YJn-C2-UMD" userLabel="Parent Phone Lbl">
+                                        <rect key="frame" x="32" y="144" width="303" height="25"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="gCE-mt-Y1S"/>
+                                        </constraints>
+                                        <attributedString key="attributedText">
+                                            <fragment content="Placeholder Number">
+                                                <attributes>
+                                                    <font key="NSFont" size="18" name="Avenir-Medium"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    <integer key="NSUnderline" value="1"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="XH4-94-CIs" appends="YES" id="c4H-NH-lxD"/>
+                                        </connections>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parent Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zgs-li-Yn9">
+                                        <rect key="frame" x="8" y="177" width="118" height="27.666666666666657"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
+                                        <color key="textColor" name="LabelColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SXT-EN-B0A" userLabel="Parent Email Lbl">
+                                        <rect key="frame" x="32" y="212.66666666666669" width="303" height="24.666666666666657"/>
+                                        <gestureRecognizers/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="Placeholder Email">
+                                                <attributes>
+                                                    <font key="NSFont" size="18" name="Avenir-Medium"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    <integer key="NSUnderline" value="1"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="2O8-Vr-I8a" appends="YES" id="9nG-DO-2aO"/>
+                                        </connections>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signed Waiver" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XgM-tu-lN0">
+                                        <rect key="frame" x="8" y="245.33333333333331" width="135.66666666666666" height="27"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
+                                        <color key="textColor" name="LabelColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bool" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ajb-0o-pyW">
+                                        <rect key="frame" x="31.999999999999996" y="280.33333333333331" width="37.666666666666657" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="g8i-mc-Kfo"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ixb-Od-qPu">
+                                        <rect key="frame" x="146" y="321.33333333333331" width="51" height="28"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="28" id="dFd-Am-MKc"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
+                                        <state key="normal" title="Done">
+                                            <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="dismissCamperInfoView:" destination="45k-fV-EgM" eventType="touchUpInside" id="yc2-22-mcE"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" name="ContrastViewColor"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstItem="SXT-EN-B0A" firstAttribute="top" secondItem="zgs-li-Yn9" secondAttribute="bottom" constant="8" id="32r-Pt-39j"/>
+                                    <constraint firstItem="L3U-lf-AnQ" firstAttribute="leading" secondItem="zQz-Ii-lcy" secondAttribute="leading" constant="32" id="5Bg-d9-nG0"/>
+                                    <constraint firstItem="XgM-tu-lN0" firstAttribute="leading" secondItem="zQz-Ii-lcy" secondAttribute="leading" constant="8" id="6Jm-Ba-BLi"/>
+                                    <constraint firstItem="YJn-C2-UMD" firstAttribute="leading" secondItem="zQz-Ii-lcy" secondAttribute="leading" constant="32" id="77T-By-ipz"/>
+                                    <constraint firstItem="Pge-hr-csv" firstAttribute="top" secondItem="L3U-lf-AnQ" secondAttribute="bottom" constant="8" id="83d-K5-0JP"/>
+                                    <constraint firstItem="XgM-tu-lN0" firstAttribute="top" secondItem="SXT-EN-B0A" secondAttribute="bottom" constant="8" id="FaB-in-WiZ"/>
+                                    <constraint firstItem="Pge-hr-csv" firstAttribute="leading" secondItem="zQz-Ii-lcy" secondAttribute="leading" constant="8" id="GL8-vF-dLo"/>
+                                    <constraint firstAttribute="trailing" secondItem="YJn-C2-UMD" secondAttribute="trailing" constant="8" id="HrT-KJ-VDh"/>
+                                    <constraint firstItem="VvE-cC-Zsu" firstAttribute="leading" secondItem="zQz-Ii-lcy" secondAttribute="leading" constant="8" id="Hz9-NH-pTK"/>
+                                    <constraint firstAttribute="trailing" secondItem="L3U-lf-AnQ" secondAttribute="trailing" constant="8" id="IHl-xU-zQ6"/>
+                                    <constraint firstItem="L3U-lf-AnQ" firstAttribute="top" secondItem="VvE-cC-Zsu" secondAttribute="bottom" constant="8" id="KYK-i4-3dY"/>
+                                    <constraint firstItem="0kj-HB-fqT" firstAttribute="centerX" secondItem="zQz-Ii-lcy" secondAttribute="centerX" id="Rtd-nU-tlY"/>
+                                    <constraint firstItem="YJn-C2-UMD" firstAttribute="top" secondItem="Pge-hr-csv" secondAttribute="bottom" constant="8" id="WqE-YV-Zyg"/>
+                                    <constraint firstItem="0kj-HB-fqT" firstAttribute="top" secondItem="zQz-Ii-lcy" secondAttribute="top" constant="8" id="Yre-Gh-pUu"/>
+                                    <constraint firstItem="0kj-HB-fqT" firstAttribute="leading" secondItem="zQz-Ii-lcy" secondAttribute="leading" constant="8" id="Z1y-9a-Poh"/>
+                                    <constraint firstItem="Ixb-Od-qPu" firstAttribute="top" secondItem="ajb-0o-pyW" secondAttribute="bottom" constant="16" id="eDO-at-4T5"/>
+                                    <constraint firstItem="VvE-cC-Zsu" firstAttribute="top" secondItem="0kj-HB-fqT" secondAttribute="bottom" constant="8" id="emO-2p-RDf"/>
+                                    <constraint firstItem="ajb-0o-pyW" firstAttribute="leading" secondItem="zQz-Ii-lcy" secondAttribute="leading" constant="32" id="gOf-0P-2z9"/>
+                                    <constraint firstItem="ajb-0o-pyW" firstAttribute="top" secondItem="XgM-tu-lN0" secondAttribute="bottom" constant="8" id="gxS-fN-Ssg"/>
+                                    <constraint firstItem="Ixb-Od-qPu" firstAttribute="centerX" secondItem="zQz-Ii-lcy" secondAttribute="centerX" id="iX8-bc-1LS"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ixb-Od-qPu" secondAttribute="bottom" constant="8" id="jRN-zd-dPU"/>
+                                    <constraint firstAttribute="trailing" secondItem="0kj-HB-fqT" secondAttribute="trailing" constant="8" id="lMW-yq-NfH"/>
+                                    <constraint firstItem="zgs-li-Yn9" firstAttribute="top" secondItem="YJn-C2-UMD" secondAttribute="bottom" constant="8" id="n7o-oH-BiZ"/>
+                                    <constraint firstItem="SXT-EN-B0A" firstAttribute="leading" secondItem="zQz-Ii-lcy" secondAttribute="leading" constant="32" id="ovf-n3-rU8"/>
+                                    <constraint firstAttribute="trailing" secondItem="SXT-EN-B0A" secondAttribute="trailing" constant="8" id="rV0-30-znz"/>
+                                    <constraint firstItem="zgs-li-Yn9" firstAttribute="leading" secondItem="zQz-Ii-lcy" secondAttribute="leading" constant="8" id="ytb-sk-a11"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kdO-CT-UdU" userLabel="Gradient View" customClass="CustomView" customModule="Capital_Cycle" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                 <subviews>
@@ -1944,7 +1941,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                             <segue destination="ECW-nJ-Zo5" kind="show" id="i74-cw-zSX"/>
                                         </connections>
                                     </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="lgs-0j-80A" userLabel="accountSettingsImageView" customClass="CustomImageView" customModule="Capital_Cycle" customModuleProvider="target">
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="lgs-0j-80A" userLabel="accountSettingsImageView" customClass="CustomImageView" customModule="Capital_Cycle" customModuleProvider="target">
                                         <rect key="frame" x="319" y="17" width="40" height="38.666666666666671"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <gestureRecognizers/>
@@ -1987,11 +1984,14 @@ A: We have a variety of games and books as well as a gym and playground to occup
                         <constraints>
                             <constraint firstItem="3kn-Hd-nEv" firstAttribute="trailing" secondItem="aML-ci-l1n" secondAttribute="trailing" id="NJY-H8-wqg"/>
                             <constraint firstItem="kdO-CT-UdU" firstAttribute="top" secondItem="jhy-7z-bQb" secondAttribute="top" id="Q6m-Sk-jKB"/>
+                            <constraint firstItem="zQz-Ii-lcy" firstAttribute="top" secondItem="kdO-CT-UdU" secondAttribute="bottom" constant="10" id="SPZ-XG-Xcm"/>
+                            <constraint firstItem="zQz-Ii-lcy" firstAttribute="leading" secondItem="3kn-Hd-nEv" secondAttribute="leading" constant="16" id="aiP-tR-6bQ"/>
                             <constraint firstItem="3kn-Hd-nEv" firstAttribute="bottom" secondItem="aML-ci-l1n" secondAttribute="bottom" id="iES-r1-u7w"/>
                             <constraint firstItem="aML-ci-l1n" firstAttribute="leading" secondItem="3kn-Hd-nEv" secondAttribute="leading" id="l9K-2U-2fS"/>
                             <constraint firstItem="aML-ci-l1n" firstAttribute="top" secondItem="jhy-7z-bQb" secondAttribute="top" constant="110" id="lbp-VI-h43"/>
                             <constraint firstItem="kdO-CT-UdU" firstAttribute="trailing" secondItem="3kn-Hd-nEv" secondAttribute="trailing" id="ll0-zM-JjI"/>
                             <constraint firstItem="kdO-CT-UdU" firstAttribute="leading" secondItem="3kn-Hd-nEv" secondAttribute="leading" id="roE-sE-39p"/>
+                            <constraint firstItem="3kn-Hd-nEv" firstAttribute="trailing" secondItem="zQz-Ii-lcy" secondAttribute="trailing" constant="16" id="yyL-VE-mfC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3kn-Hd-nEv"/>
                     </view>
@@ -2001,6 +2001,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                         <outlet property="camperInfoLblYConstraint" destination="FN3-Tg-kHP" id="rla-XV-seG"/>
                         <outlet property="camperInfoView" destination="zQz-Ii-lcy" id="s2R-ee-RiO"/>
                         <outlet property="camperName" destination="0kj-HB-fqT" id="NAa-L5-Jz6"/>
+                        <outlet property="camperScrollView" destination="aML-ci-l1n" id="Q5g-Ih-MBW"/>
                         <outlet property="camperScrollViewYConstraint" destination="lbp-VI-h43" id="7Kn-xd-ErE"/>
                         <outlet property="gradientView" destination="kdO-CT-UdU" id="jae-En-uNs"/>
                         <outlet property="gradientViewHeight" destination="6S0-jD-G92" id="QXj-Tk-4uT"/>
@@ -2016,6 +2017,16 @@ A: We have a variety of games and books as well as a gym and playground to occup
                 <tapGestureRecognizer id="ZXi-ZH-mVr" userLabel="accountSettingsImageViewTapGestureRecognizer">
                     <connections>
                         <segue destination="D9c-sc-o2H" kind="show" id="SNw-F0-iiv"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="XH4-94-CIs" userLabel="phoneTapGestureRecognizer">
+                    <connections>
+                        <action selector="callNumber:" destination="45k-fV-EgM" id="M8W-rr-j6B"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="2O8-Vr-I8a" userLabel="emailTapGestureRecognizer">
+                    <connections>
+                        <action selector="sendEmail:" destination="45k-fV-EgM" id="EfH-Ff-Sh9"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -2396,7 +2407,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="zTC-OI-wyz" userLabel="Profile Img View" customClass="CustomImageView" customModule="Capital_Cycle" customModuleProvider="target">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="zTC-OI-wyz" userLabel="Profile Img View" customClass="CustomImageView" customModule="Capital_Cycle" customModuleProvider="target">
                                 <rect key="frame" x="137.66666666666666" y="109" width="100" height="98.333333333333329"/>
                                 <color key="tintColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
@@ -2445,7 +2456,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qf8-Wn-zz9" userLabel="User Type Lbl" customClass="CustomLabel" customModule="Capital_Cycle" customModuleProvider="target">
+                            <label opaque="NO" clipsSubviews="YES" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qf8-Wn-zz9" userLabel="User Type Lbl" customClass="CustomLabel" customModule="Capital_Cycle" customModuleProvider="target">
                                 <rect key="frame" x="66.666666666666657" y="366" width="292.33333333333337" height="34"/>
                                 <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
@@ -2521,7 +2532,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                         <fragment content="Privacy Policy">
                                             <attributes>
                                                 <color key="NSColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <font key="NSFont" metaFont="menu" size="10"/>
+                                                <font key="NSFont" metaFont="system" size="10"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 <integer key="NSUnderline" value="1"/>
                                             </attributes>
@@ -2718,7 +2729,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ne8-ME-UPd" userLabel="Profile Img View" customClass="CustomImageView" customModule="Capital_Cycle" customModuleProvider="target">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ne8-ME-UPd" userLabel="Profile Img View" customClass="CustomImageView" customModule="Capital_Cycle" customModuleProvider="target">
                                 <rect key="frame" x="137.66666666666666" y="109" width="100" height="98.333333333333329"/>
                                 <color key="tintColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
@@ -2737,7 +2748,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                     <outletCollection property="gestureRecognizers" destination="Hu9-xz-KgG" appends="YES" id="fqR-7x-enY"/>
                                 </connections>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yii-bC-DGO" userLabel="User Type Lbl" customClass="CustomLabel" customModule="Capital_Cycle" customModuleProvider="target">
+                            <label opaque="NO" clipsSubviews="YES" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yii-bC-DGO" userLabel="User Type Lbl" customClass="CustomLabel" customModule="Capital_Cycle" customModuleProvider="target">
                                 <rect key="frame" x="70.666666666666657" y="218" width="288.33333333333337" height="34"/>
                                 <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
@@ -2825,7 +2836,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                         <fragment content="Privacy Policy">
                                             <attributes>
                                                 <color key="NSColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <font key="NSFont" metaFont="menu" size="10"/>
+                                                <font key="NSFont" metaFont="system" size="10"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 <integer key="NSUnderline" value="1"/>
                                             </attributes>
@@ -3071,13 +3082,26 @@ A: We have a variety of games and books as well as a gym and playground to occup
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="FLK-54-I99" userLabel="signUpBtnProgressWheel">
                                 <rect key="frame" x="169" y="200" width="37" height="37"/>
                             </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IFL-BM-vDL" userLabel="New Email Btn">
+                                <rect key="frame" x="100" y="249" width="175" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="175" id="eMS-v6-s3j"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                <state key="normal" title="Send me a new email"/>
+                                <connections>
+                                    <action selector="resendEmail:" destination="EiY-kr-02N" eventType="touchUpInside" id="Hbx-qQ-dzi"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" name="ViewColor"/>
                         <constraints>
                             <constraint firstItem="Xrn-NV-cTi" firstAttribute="top" secondItem="6nR-yb-9oz" secondAttribute="bottom" constant="16" id="1d7-8f-z1a"/>
                             <constraint firstItem="V1b-ew-6lp" firstAttribute="centerX" secondItem="POM-GW-GWI" secondAttribute="centerX" id="5FN-Uy-eAC"/>
                             <constraint firstItem="V1b-ew-6lp" firstAttribute="top" secondItem="6nR-yb-9oz" secondAttribute="bottom" constant="26" id="7Sm-EN-Udp"/>
+                            <constraint firstItem="IFL-BM-vDL" firstAttribute="top" secondItem="Xrn-NV-cTi" secondAttribute="bottom" constant="8" id="8lP-f1-0r7"/>
                             <constraint firstItem="6nR-yb-9oz" firstAttribute="top" secondItem="PCn-Gb-xIH" secondAttribute="bottom" constant="32" id="DB4-VT-WWa"/>
+                            <constraint firstItem="IFL-BM-vDL" firstAttribute="centerX" secondItem="POM-GW-GWI" secondAttribute="centerX" id="Fzv-AY-cKC"/>
                             <constraint firstItem="PCn-Gb-xIH" firstAttribute="leading" secondItem="avs-hS-JXJ" secondAttribute="leading" id="PSR-1J-hNK"/>
                             <constraint firstItem="PCn-Gb-xIH" firstAttribute="top" secondItem="POM-GW-GWI" secondAttribute="top" id="TxP-CD-MlU"/>
                             <constraint firstItem="FLK-54-I99" firstAttribute="centerX" secondItem="Xrn-NV-cTi" secondAttribute="centerX" id="e4B-n3-YxZ"/>
@@ -3092,7 +3116,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                     <connections>
                         <outlet property="gradientView" destination="PCn-Gb-xIH" id="eEk-vO-NGY"/>
                         <outlet property="gradientViewHeight" destination="FiV-5P-ufN" id="lAe-UN-k1l"/>
-                        <outlet property="refreshBtn" destination="V1b-ew-6lp" id="iqr-53-73n"/>
+                        <outlet property="resendEmailBtn" destination="IFL-BM-vDL" id="MwZ-ND-X47"/>
                         <outlet property="signUpBtn" destination="Xrn-NV-cTi" id="nMZ-ae-1Sl"/>
                         <outlet property="signUpBtnProgressWheel" destination="FLK-54-I99" id="A5r-XL-Zu7"/>
                         <segue destination="jM6-Kb-J6q" kind="presentation" identifier="VerifiedUser" modalPresentationStyle="fullScreen" id="TDc-Gp-ks8"/>
@@ -3128,9 +3152,9 @@ A: We have a variety of games and books as well as a gym and playground to occup
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="A25-06-JRb"/>
-        <segue reference="iuh-JS-T4G"/>
-        <segue reference="uwW-YV-dra"/>
-        <segue reference="CFn-zx-hpt"/>
-        <segue reference="wg0-5Q-X08"/>
+        <segue reference="fEj-ak-nJB"/>
+        <segue reference="SNw-F0-iiv"/>
+        <segue reference="i74-cw-zSX"/>
+        <segue reference="uHf-Nt-zpe"/>
     </inferredMetricsTieBreakers>
 </document>

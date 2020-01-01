@@ -8,9 +8,10 @@
 
 import UIKit
 import CoreData
+import MessageUI
 import GoogleAPIClientForREST
 
-class CamperInfoPage: UIViewController {
+class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
     
     // MARK: Global Variables
     
@@ -20,6 +21,7 @@ class CamperInfoPage: UIViewController {
     @IBOutlet weak var camperInfoLblYConstraint: NSLayoutConstraint!
     @IBOutlet weak var accountSettingsImgView: CustomImageView!
     @IBOutlet weak var camperScrollViewYConstraint: NSLayoutConstraint!
+    @IBOutlet weak var camperScrollView: UIScrollView!
     @IBOutlet weak var scrollViewDisplay: UIView!
     @IBOutlet weak var scrollViewDisplayHeight: NSLayoutConstraint!
     @IBOutlet weak var camperInfoView: UIView!
@@ -33,6 +35,9 @@ class CamperInfoPage: UIViewController {
     let spreadsheetID = "1alCW-eSX-lC6CUi0lbmNK7hpfkUhpOqhrbWZCBJgXuk"
     let Service = GTLRSheetsService()
     var camperBtns = [UIButton]()
+    var parentLastName: String!
+    var parentPhone: Int!
+    var parentEmail: String!
     
     // MARK: View Instantiation
     
@@ -72,9 +77,67 @@ class CamperInfoPage: UIViewController {
         Service.apiKey = "AIzaSyBIdPHR_nqgL9G6fScmlcPMReBM5PmtVD8"
     }
     
+    // Formats a parents name
+    func formatParentName(name: String) -> String {
+        var lastName = ""
+        var start = false
+        for character in name {
+            if !start {
+                if character == " " {
+                    start = true
+                }
+            } else {
+                lastName.append(character)
+            }
+        }
+        return lastName
+    }
+    
+    // Formats a phone number so that the app can call it
+    func formatPhoneNumber(number: String) -> Int {
+        let characters = Array("() -")
+        var formattedNumber = ""
+        for character in number {
+            if !characters.contains(character) {
+                formattedNumber.append(character)
+            }
+        }
+        
+        return Int(formattedNumber)!
+    }
+    
     // Sets the profile image on the account settings button
     func setProfileImg() {
         accountSettingsImgView.image = user.profileImg
+    }
+    
+    // MARK: View Management
+    
+    // Calls the parent's phone number
+    @IBAction func callNumber(_ sender: Any) {
+        if let url = URL(string: "tel://\(parentPhone!))"), UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url)
+        }
+    }
+    
+    // Composes an email to a parent
+    @IBAction func sendEmail(_ sender: Any) {
+        let Alert = UIAlertController(title: nil, message:  nil, preferredStyle: .actionSheet)
+        Alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        Alert.addAction(UIAlertAction(title: "Email \(parentEmail!)", style: .default, handler: { error in
+            if MFMailComposeViewController.canSendMail() {
+                let mail = MFMailComposeViewController()
+                mail.mailComposeDelegate = self
+                mail.setToRecipients(["\(self.parentEmail!)"])
+                mail.setSubject("A Message From Your Capital Cycle Counselors")
+                mail.setMessageBody("<p>Good afternoon Mr. and Mrs. \(self.parentLastName!),<br><br>I am emailing you regarding...</p>", isHTML: true)
+                self.present(mail, animated: true)
+            } else {
+                viewFunctions.showAlert(title: "Error", message: "Could not compose email", actionTitle: "OK", actionStyle: .default, view: self)
+            }
+        }))
+            
+        present(Alert, animated: true, completion: nil)
     }
     
     // MARK: Fetch Camper Info Data
@@ -139,19 +202,26 @@ class CamperInfoPage: UIViewController {
         }
     }
     
+    // Displays the camper information
     @objc func displayCamperInfo(_ sender: UIButton) {
-        camperBtns.first?.setTitleColor(UIColor(named: "ViewColor"), for: .normal)
+        if traitCollection.userInterfaceStyle == .light {
+            scrollViewDisplay.backgroundColor = #colorLiteral(red: 0.3000000119, green: 0.3000000119, blue: 0.3000000119, alpha: 1)
+            camperScrollView.backgroundColor = #colorLiteral(red: 0.3000000119, green: 0.3000000119, blue: 0.3000000119, alpha: 1)
+            view.backgroundColor = #colorLiteral(red: 0.3000000119, green: 0.3000000119, blue: 0.3000000119, alpha: 1)
+        }
+        
+        camperScrollView.isUserInteractionEnabled = false
         camperInfoView.isHidden = false
         scrollViewDisplay.bringSubviewToFront(camperInfoView)
         camperName.text = "\(camperInfo[camperBtns.firstIndex(of: sender)!][0])"
         parentNameLbl.text = "\(camperInfo[camperBtns.firstIndex(of: sender)!][1])"
+        parentLastName = formatParentName(name: parentNameLbl.text!)
         parentNumberLbl.text = "\(camperInfo[camperBtns.firstIndex(of: sender)!][2])"
+        parentPhone = formatPhoneNumber(number: "\(camperInfo[camperBtns.firstIndex(of: sender)!][2])")
         parentEmailLbl.text = "\(camperInfo[camperBtns.firstIndex(of: sender)!][3])"
+        parentEmail = "\(camperInfo[camperBtns.firstIndex(of: sender)!][3])"
         signedWaiverLbl.text = "\(camperInfo[camperBtns.firstIndex(of: sender)!][4])"
-        if user.prefersHapticFeedback! {
-            let feedbackGenerator = UISelectionFeedbackGenerator()
-            feedbackGenerator.selectionChanged()
-        }
+        viewFunctions.giveHapticFeedback(error: false)
     }
     
     // MARK: Core Data
@@ -174,8 +244,17 @@ class CamperInfoPage: UIViewController {
     
     // MARK: Dismiss
     
+    // Dismsisses the camper infor view
     @IBAction func dismissCamperInfoView(_ sender: UIButton) {
+        scrollViewDisplay.backgroundColor = UIColor(named: "ViewColor")
+        camperScrollView.backgroundColor = UIColor(named: "ViewColor")
+        view.backgroundColor = UIColor(named: "ViewColor")
         camperInfoView.isHidden = true
-        camperBtns.first?.setTitleColor(UIColor(named: "LabelColor"), for: .normal)
+        camperScrollView.isUserInteractionEnabled = true
+    }
+    
+    // Dismisses the mail controller
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
     }
 }
