@@ -56,7 +56,7 @@ class GeneralSettings: UIViewController {
             user.signedIn = false
         }
         
-        firebaseFunctions.updateUserData(updateValue: "signedIn") { error in
+        firebaseFunctions.manageUserData(dataValues: ["signedIn"], newUser: false) { error in
             if error != nil {
                 viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
             }
@@ -71,7 +71,7 @@ class GeneralSettings: UIViewController {
             user.prefersNotifications = false
         }
         
-        firebaseFunctions.updateUserData(updateValue: "prefersNotifications") { error in
+        firebaseFunctions.manageUserData(dataValues: ["prefersNotifications"], newUser: false) { error in
             if error != nil {
                 viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
             }
@@ -86,7 +86,7 @@ class GeneralSettings: UIViewController {
             user.prefersHapticFeedback = false
         }
         
-        firebaseFunctions.updateUserData(updateValue: "prefersHapticFeedback") { error in
+        firebaseFunctions.manageUserData(dataValues: ["prefersHapticfeadback"], newUser: false) { error in
             if error != nil {
                 viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
             }

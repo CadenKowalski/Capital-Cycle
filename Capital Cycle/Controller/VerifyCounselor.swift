@@ -19,8 +19,10 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var counselorIdTxtField: UITextField!
     @IBOutlet weak var signUpBtn: CustomButton!
     @IBOutlet weak var signUpBtnProgressWheel: UIActivityIndicatorView!
+    @IBOutlet weak var changeBtn: UIButton!
     // Code global vars
     var password: String!
+    var presentedFromSegue = false
     
     // MARK: View Instantiation
     
@@ -43,29 +45,47 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate {
         // Formats the text field
         counselorIdTxtField.delegate = self
         counselorIdTxtField.attributedPlaceholder = NSAttributedString(string: "Counselor ID", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
+        
+        // Formats the buttons
+        if presentedFromSegue {
+            signUpBtn.isHidden = true
+        } else {
+            changeBtn.isHidden = true
+        }
     }
     
     // MARK: Sign Up
     
     // Signs up the user
-    @IBAction func signUp(_ sender: CustomButton) {
+    @IBAction func signUp(_ sender: UIButton) {
         viewFunctions.formatProgressWheel(progressWheel: signUpBtnProgressWheel, button: signUpBtn, toShow: true)
         if counselorIdTxtField.text == "082404" {
             user.isCounselorVerified = true
-            firebaseFunctions.createUser(password: password) { error in
-                if error == nil {
-                    firebaseFunctions.uploadUserData() { error in
-                        if error == nil {
-                            self.performSegue(withIdentifier: "VerifiedCounselor", sender: nil)
-                        } else {
-                            viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
+            if presentedFromSegue == false {
+                firebaseFunctions.createUser(password: password) { error in
+                    if error == nil {
+                        firebaseFunctions.manageUserData(dataValues: ["all"], newUser: true) { error in
+                            if error == nil {
+                                self.performSegue(withIdentifier: "VerifiedCounselor", sender: nil)
+                            } else {
+                                viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
+                            }
+                            
+                            viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: false)
                         }
-                        
+                    } else {
+                        viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
                         viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: false)
                     }
-                } else {
-                    viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
-                    viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: false)
+                }
+            } else {
+                user.type = .counselor
+                firebaseFunctions.manageUserData(dataValues: ["type, isCounselorVerified"], newUser: false) { error in
+                    if error == nil {
+                        self.dismiss(animated: true, completion: nil)
+                    } else {
+                        viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
+                    }
                 }
             }
         } else {

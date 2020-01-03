@@ -1330,6 +1330,7 @@ Phone: 202.288.5245</string>
                         <outlet property="profileImgView" destination="gYP-kz-BVS" id="qcl-qA-myw"/>
                         <outlet property="userTypeLbl" destination="WZ6-LX-trs" id="fSB-ed-2nc"/>
                         <outlet property="userTypePickerView" destination="H8d-i7-asj" id="Vvz-RS-lX0"/>
+                        <segue destination="PqR-3q-0Zd" kind="show" identifier="VerifyCounselorFromSettings" id="HUH-zx-Kae"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aoy-dT-eGP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2286,6 +2287,17 @@ A: We have a variety of games and books as well as a gym and playground to occup
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="j4G-RI-5pZ">
                                 <rect key="frame" x="169" y="226" width="37" height="37"/>
                             </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gcx-Ar-tLz">
+                                <rect key="frame" x="152" y="222" width="71" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="sos-VF-oj3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                <state key="normal" title="Change"/>
+                                <connections>
+                                    <action selector="signUp:" destination="PqR-3q-0Zd" eventType="touchUpInside" id="coc-E6-zzm"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" name="ViewColor"/>
                         <constraints>
@@ -2293,9 +2305,11 @@ A: We have a variety of games and books as well as a gym and playground to occup
                             <constraint firstItem="NLe-SI-3bV" firstAttribute="centerX" secondItem="KbT-6w-SgI" secondAttribute="centerX" id="3tK-lS-rhc"/>
                             <constraint firstItem="j4G-RI-5pZ" firstAttribute="centerX" secondItem="NLe-SI-3bV" secondAttribute="centerX" id="9hr-Pg-aUM"/>
                             <constraint firstItem="ImQ-oN-SYA" firstAttribute="top" secondItem="q6N-tY-NJl" secondAttribute="bottom" constant="32" id="Caw-n8-7Qh"/>
+                            <constraint firstItem="gcx-Ar-tLz" firstAttribute="centerX" secondItem="KbT-6w-SgI" secondAttribute="centerX" id="DhB-Vv-APp"/>
                             <constraint firstItem="ImQ-oN-SYA" firstAttribute="centerX" secondItem="KbT-6w-SgI" secondAttribute="centerX" id="Gcw-1i-22p"/>
                             <constraint firstItem="q6N-tY-NJl" firstAttribute="top" secondItem="KbT-6w-SgI" secondAttribute="top" id="Ggs-fl-841"/>
                             <constraint firstItem="hVU-Ut-g83" firstAttribute="trailing" secondItem="9ow-Jy-lkc" secondAttribute="trailing" constant="16" id="PBm-Ql-AUO"/>
+                            <constraint firstItem="gcx-Ar-tLz" firstAttribute="top" secondItem="9ow-Jy-lkc" secondAttribute="bottom" constant="16" id="RUY-Od-NEm"/>
                             <constraint firstItem="j4G-RI-5pZ" firstAttribute="centerY" secondItem="NLe-SI-3bV" secondAttribute="centerY" id="ThZ-sN-62s"/>
                             <constraint firstItem="9ow-Jy-lkc" firstAttribute="leading" secondItem="hVU-Ut-g83" secondAttribute="leading" constant="16" id="atT-sF-lZ3"/>
                             <constraint firstItem="q6N-tY-NJl" firstAttribute="trailing" secondItem="hVU-Ut-g83" secondAttribute="trailing" id="b3f-35-PDs"/>
@@ -2306,6 +2320,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                     </view>
                     <navigationItem key="navigationItem" id="T3E-AM-VVH"/>
                     <connections>
+                        <outlet property="changeBtn" destination="gcx-Ar-tLz" id="9cf-ey-kna"/>
                         <outlet property="counselorIdTxtField" destination="9ow-Jy-lkc" id="NhQ-zd-Nvj"/>
                         <outlet property="gradientView" destination="q6N-tY-NJl" id="VgH-9C-nzw"/>
                         <outlet property="gradientViewHeight" destination="Qia-lc-zhU" id="7A8-9K-gd9"/>
@@ -3096,9 +3111,9 @@ A: We have a variety of games and books as well as a gym and playground to occup
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="D0e-sq-uIe"/>
-        <segue reference="eec-PI-NOd"/>
+        <segue reference="HUH-zx-Kae"/>
         <segue reference="nul-0X-SWa"/>
         <segue reference="rgh-8f-sJp"/>
-        <segue reference="6V9-QI-sCX"/>
+        <segue reference="8gZ-wr-hIi"/>
     </inferredMetricsTieBreakers>
 </document>

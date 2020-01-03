@@ -185,7 +185,7 @@ class OneMoreStep: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
             viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: true)
             firebaseFunctions.getProfileImgUrl() { error in
                 if error == nil {
-                    firebaseFunctions.uploadUserData() { error in
+                    firebaseFunctions.manageUserData(dataValues: ["all"], newUser: true) { error in
                         if error == nil {
                             if user.type == .counselor {
                                 self.performSegue(withIdentifier: "VerifyCounselorFromApple", sender: nil)

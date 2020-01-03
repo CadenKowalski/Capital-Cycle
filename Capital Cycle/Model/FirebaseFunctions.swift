@@ -104,31 +104,18 @@ struct FirebaseFunctions {
         }
     }
     
-    // Uploads the user's data to Firebase Firestore
-    func uploadUserData(completion: @escaping(String?) -> Void) {
-        getProfileImgUrl() { error in
-            if error == nil {
-                let userType = self.stringFromUserType()
-                collectionRef.document(user.email!).setData(["email": user.email!, "type": userType, "signedIn": user.signedIn!, "profileImgUrl": user.profileImgUrl!, "prefersNotifications": user.prefersNotifications!, "prefersHapticFeedback": user.prefersHapticFeedback!, "isCounselorVerified": user.isCounselorVerified!]) { error in
-                    if error == nil {
-                        completion(nil)
-                    } else {
-                        completion(error!.localizedDescription)
-                    }
-                }
-            } else {
-                completion(error)
-            }
+    // Manages the users Firestore data
+    func manageUserData(dataValues: [String], newUser: Bool, completion: @escaping(String?) -> Void) {
+        if newUser {
+            collectionRef.document(user.email!).setData(["email": user.email!])
         }
-    }
-    
-    // Updates the user's Firebase Firestore data
-    func updateUserData(updateValue: String, completion: @escaping(String?) -> Void) {
-        let values: [String: Any] = ["email": user.email!, "signedIn": user.signedIn!, "prefersNotifications": user.prefersNotifications!, "prefersHapticFeedback": user.prefersHapticFeedback!, "isCounselorVerified": user.isCounselorVerified!]
-        switch updateValue {
+        
+        let values: [String: Any] = ["type": user.type!, "signedIn": user.signedIn!, "profileImgUrl": user.profileImgUrl!, "prefersNotifications": user.prefersNotifications!, "prefersHapticFeedback": user.prefersHapticFeedback!, "isCounselorVerified": user.isCounselorVerified!]
+        for value in dataValues {
+            switch value {
             case "type":
                 let userType = self.stringFromUserType()
-                collectionRef.document(user.email!).updateData(["userType": userType]) { error in
+                collectionRef.document(user.email!).updateData(["type": userType]) { error in
                     if error == nil {
                         completion(nil)
                     } else {
@@ -151,16 +138,41 @@ struct FirebaseFunctions {
                     }
                 }
                 
+            case "all":
+                getProfileImgUrl() { error in
+                    if error == nil {
+                        let userType = self.stringFromUserType()
+                        for element in values {
+                            if element.key == "type" {
+                                collectionRef.document(user.email!).updateData(["type": userType]) { error in
+                                    if error != nil {
+                                        completion(error!.localizedDescription)
+                                    }
+                                }
+                            } else {
+                                collectionRef.document(user.email!).updateData([element.key: element.value]) { error in
+                                    if error == nil {
+                                        completion(nil)
+                                    } else {
+                                        completion(error!.localizedDescription)
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        completion(error!)
+                    }
+                }
+                
             default:
-                collectionRef.document(user.email!).updateData([updateValue: values[updateValue]!]) { error in
+                collectionRef.document(user.email!).updateData([value: values[value]!]) { error in
                     if error == nil {
                         completion(nil)
                     } else {
                         completion(error!.localizedDescription)
                     }
                 }
-            
-            completion(nil)
+            }
         }
     }
     
@@ -211,7 +223,7 @@ struct FirebaseFunctions {
     // Logs out the user
     func logOut(completion: @escaping(String?) -> Void) {
         user.signedIn = false
-        updateUserData(updateValue: "signedIn") { error in
+        manageUserData(dataValues: ["signedIn"], newUser: false) { error in
             if error == nil {
                 user.reset()
                 completion(nil)

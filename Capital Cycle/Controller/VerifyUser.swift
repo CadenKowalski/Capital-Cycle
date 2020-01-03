@@ -85,11 +85,11 @@ class VerifyUser: UIViewController, UIAdaptivePresentationControllerDelegate {
         let Alert = UIAlertController(title: nil, message: "This action will delete your account. Are you sure you want to continue?", preferredStyle: .actionSheet)
         Alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         Alert.addAction(UIAlertAction(title: "Delete my account", style: .destructive) { action in
-            Auth.auth().currentUser!.delete() { error in
+            firebaseFunctions.deleteAccount() { error in
                 if error == nil {
                     self.dismiss(animated: true, completion: nil)
                 } else {
-                    viewFunctions.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default, view: self)
+                    viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
                 }
             }
         })

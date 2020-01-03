@@ -94,7 +94,7 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
             user.type = .parent
             
         case "Counselor":
-            user.type = .counselor
+            performSegue(withIdentifier: "VerifyCounselorFromSettings", sender: nil)
             
         default:
             break
@@ -103,7 +103,7 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
         userTypePickerView.isHidden = true
         cancelBtn.isHidden = true
         if typesOfUser[row] != "Current" {
-            firebaseFunctions.updateUserData(updateValue: "type") { error in
+            firebaseFunctions.manageUserData(dataValues: ["type"], newUser: false) { error in
                 if error == nil {
                     self.userTypeLbl.text = "I am a " + "\(self.typesOfUser[row])".capitalized
                     if user.type == .admin {
@@ -113,6 +113,14 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
                     viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
                 }
             }
+        }
+    }
+    
+    // Prepares VerifyCounselor for the segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "VerifyCounselorFromSettings" {
+            let destination = segue.destination as! VerifyCounselor
+            destination.presentedFromSegue = true
         }
     }
     
@@ -150,7 +158,7 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let Image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             user.profileImg = Image
-            firebaseFunctions.updateUserData(updateValue: "profileImgUrl") { error in
+            firebaseFunctions.manageUserData(dataValues: ["profileImgUrl"], newUser: false) { error in
                 if error == nil {
                     self.profileImgView.image = user.profileImg
                 } else {

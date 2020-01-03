@@ -243,7 +243,7 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
         } else {
             firebaseFunctions.createUser(password: passTxtField.text!) { error in
                 if error == nil {
-                    firebaseFunctions.uploadUserData() { error in
+                    firebaseFunctions.manageUserData(dataValues: ["all"], newUser: true) { error in
                         if error == nil {
                             if user.type == .admin {
                                 self.performSegue(withIdentifier: "Admin", sender: nil)
