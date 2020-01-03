@@ -86,24 +86,10 @@ class GeneralSettings: UIViewController {
             user.prefersHapticFeedback = false
         }
         
-        updateContext()
-    }
-    
-    // MARK: Core Data
-        
-    // Updates the context with new values
-    func updateContext() {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        let Context = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Settings")
-        do {
-            let fetchResults = try Context.fetch(fetchRequest)
-            let Settings = fetchResults.first as! NSManagedObject
-            Settings.setValue(user.prefersHapticFeedback, forKey: "hapticFeedback")
-            try Context.save()
-        } catch {
-            let nserror = error as NSError
-            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        firebaseFunctions.updateUserData(updateValue: "prefersHapticFeedback") { error in
+            if error != nil {
+                viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
+            }
         }
     }
 }

@@ -66,6 +66,10 @@ class OverviewPage: UIViewController {
     
     // MARK: Actions
     
+    @IBAction func openSettings(_ sender: Any) {
+        performSegue(withIdentifier: "showGeneralSettings", sender: nil)
+    }
+    
     // Opens the maps app to the camp location
     @IBAction func openMapsToLocation(_ sender: UITapGestureRecognizer) {
         viewFunctions.giveHapticFeedback(error: false)

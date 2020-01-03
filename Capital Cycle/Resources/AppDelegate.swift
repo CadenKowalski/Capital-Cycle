@@ -14,7 +14,7 @@ var user = FirebaseUser()
 var weekActivitiesList: [[String]]!
 var Week: [[String]]!
 var camperInfo: [[String]]!
-let databaseRef = Firestore.firestore().collection("Users")
+let collectionRef = Firestore.firestore().collection("Users")
 let firebaseFunctions = FirebaseFunctions()
 let viewFunctions = ViewFunctions()
 
@@ -58,6 +58,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let Context = appDelegate.persistentContainer.viewContext
         SaveContext(ContextName: Context)
+        if Auth.auth().currentUser != nil {
+            if (!Auth.auth().currentUser!.isEmailVerified && !user.isCounselorVerified!) || !user.signedIn {
+                do {
+                    try Auth.auth().signOut()
+                } catch let error as NSError {
+                    print(error.localizedDescription)
+                }
+            }
+        }
     }
 
     // MARK: UISceneSession Lifecycle

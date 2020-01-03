@@ -188,9 +188,6 @@ Phone: 202.288.5245</string>
                                                     </fragment>
                                                 </attributedString>
                                                 <nil key="highlightedColor"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="userInteraction" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <outletCollection property="gestureRecognizers" destination="VdN-xI-s1m" appends="YES" id="244-Ib-Zqt"/>
                                                 </connections>
@@ -279,7 +276,7 @@ Phone: 202.288.5245</string>
                                         <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" backgroundImage="gear" catalog="system"/>
                                         <connections>
-                                            <segue destination="ECW-nJ-Zo5" kind="presentation" id="stl-Sk-OpA"/>
+                                            <action selector="openSettings:" destination="bH8-1u-VSq" eventType="touchUpInside" id="1iH-cl-sjz"/>
                                         </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="adt-QC-e0q" customClass="CustomImageView" customModule="Capital_Cycle" customModuleProvider="target">
@@ -294,7 +291,6 @@ Phone: 202.288.5245</string>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="20"/>
                                             </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="userInteraction" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="BIt-Ma-rhu" appends="YES" id="ejz-OM-ilV"/>
@@ -342,6 +338,7 @@ Phone: 202.288.5245</string>
                         <outlet property="overviewLblYConstraint" destination="8nH-dq-YMC" id="LXc-Xf-zSF"/>
                         <outlet property="scrollViewDisplay" destination="YlL-WF-Z3k" id="n6Y-2t-Smf"/>
                         <outlet property="scrollViewYConstraint" destination="W8T-qZ-mDe" id="cgP-Ct-dtd"/>
+                        <segue destination="ECW-nJ-Zo5" kind="show" identifier="showGeneralSettings" id="rgh-8f-sJp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Izh-eE-oWs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -926,7 +923,6 @@ Phone: 202.288.5245</string>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="20"/>
                                             </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="userInteraction" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="zad-FT-c96" appends="YES" id="DYl-ja-MYt"/>
@@ -1138,6 +1134,7 @@ Phone: 202.288.5245</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rZe-8C-x75"/>
                     </view>
+                    <navigationItem key="navigationItem" id="ZeM-2H-w7W"/>
                     <connections>
                         <outlet property="gradientView" destination="hBp-xz-Gw8" id="I94-bk-LKD"/>
                         <outlet property="gradientViewHeight" destination="FUe-lV-muf" id="7VG-cz-a45"/>
@@ -1267,7 +1264,6 @@ Phone: 202.288.5245</string>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="50"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="userInteraction" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="R4h-eE-ZtA" appends="YES" id="mCK-2g-hej"/>
@@ -1444,7 +1440,6 @@ $375</string>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="20"/>
                                             </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="userInteraction" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="Qmt-yH-ian" appends="YES" id="Ur9-Dn-X0P"/>
@@ -1678,7 +1673,6 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="20"/>
                                             </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="userInteraction" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="knD-0v-eih" appends="YES" id="KIB-Hu-mf5"/>
@@ -1953,7 +1947,6 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="20"/>
                                             </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="userInteraction" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="ZXi-ZH-mVr" appends="YES" id="izE-tG-hzC"/>
@@ -2093,29 +2086,6 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qgq-dg-T1L" userLabel="Check Box">
-                                <rect key="frame" x="13" y="231" width="25" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="25" id="Xwg-fC-ncE"/>
-                                    <constraint firstAttribute="height" constant="25" id="g3h-fg-aUZ"/>
-                                </constraints>
-                                <state key="normal" image="Unchecked">
-                                    <color key="titleColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="keepSignedIn:" destination="v2Q-k5-Eoj" eventType="touchUpInside" id="KT4-pY-vpT"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keep me signed in" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="den-8a-0tj">
-                                <rect key="frame" x="42.000000000000007" y="237" width="88.666666666666686" height="14"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="14" id="hR4-4i-GOb"/>
-                                    <constraint firstAttribute="width" constant="88.670000000000002" id="zXe-Sh-YzT"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ovt-Gf-r3U">
                                 <rect key="frame" x="123.66666666666669" y="208" width="128" height="15"/>
                                 <constraints>
@@ -2131,7 +2101,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VQ6-lr-Ida" customClass="CustomButton" customModule="Capital_Cycle" customModuleProvider="target">
-                                <rect key="frame" x="117.66666666666669" y="267" width="140" height="45"/>
+                                <rect key="frame" x="117.66666666666669" y="247" width="140" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="FjA-hs-cA2"/>
                                     <constraint firstAttribute="width" constant="140" id="bFS-s9-dtb"/>
@@ -2156,7 +2126,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 </connections>
                             </button>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="vM3-aN-snM">
-                                <rect key="frame" x="169" y="271" width="37" height="37"/>
+                                <rect key="frame" x="169" y="239" width="37" height="61"/>
                             </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cix-0p-K7z" customClass="CustomButton" customModule="Capital_Cycle" customModuleProvider="target">
                                 <rect key="frame" x="60" y="695.66666666666663" width="255" height="32.333333333333371"/>
@@ -2186,8 +2156,9 @@ A: We have a variety of games and books as well as a gym and playground to occup
                         <color key="backgroundColor" name="ViewColor"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="qgq-dg-T1L" firstAttribute="top" secondItem="ovt-Gf-r3U" secondAttribute="bottom" constant="8" id="86z-Xe-QFE"/>
+                            <constraint firstItem="VQ6-lr-Ida" firstAttribute="top" secondItem="ovt-Gf-r3U" secondAttribute="bottom" constant="24" id="0jy-6S-yHo"/>
                             <constraint firstItem="5Wo-YH-b5x" firstAttribute="trailing" secondItem="wvG-jg-f8l" secondAttribute="trailing" constant="16" id="ACC-z6-Xl3"/>
+                            <constraint firstItem="vM3-aN-snM" firstAttribute="top" secondItem="ovt-Gf-r3U" secondAttribute="bottom" constant="16" id="AH0-DW-zti"/>
                             <constraint firstItem="wvG-jg-f8l" firstAttribute="leading" secondItem="5Wo-YH-b5x" secondAttribute="leading" constant="16" id="Elo-Yw-oOP"/>
                             <constraint firstItem="5Wo-YH-b5x" firstAttribute="bottom" secondItem="Cix-0p-K7z" secondAttribute="bottom" constant="50" id="KsH-rE-e3r"/>
                             <constraint firstItem="5Wo-YH-b5x" firstAttribute="trailing" secondItem="Cix-0p-K7z" secondAttribute="trailing" constant="60" id="NAA-7f-z0g"/>
@@ -2196,14 +2167,10 @@ A: We have a variety of games and books as well as a gym and playground to occup
                             <constraint firstItem="Cix-0p-K7z" firstAttribute="top" secondItem="euE-3o-OpQ" secondAttribute="bottom" constant="8" id="a1Y-Iz-zzH"/>
                             <constraint firstItem="HmA-eO-hef" firstAttribute="leading" secondItem="5Wo-YH-b5x" secondAttribute="leading" id="c9F-Fl-iPg"/>
                             <constraint firstItem="VQ6-lr-Ida" firstAttribute="centerX" secondItem="43c-jI-F7U" secondAttribute="centerX" id="dha-N3-lRH"/>
-                            <constraint firstItem="den-8a-0tj" firstAttribute="leading" secondItem="qgq-dg-T1L" secondAttribute="trailing" constant="4" id="dnJ-IR-gS1"/>
-                            <constraint firstItem="VQ6-lr-Ida" firstAttribute="top" secondItem="den-8a-0tj" secondAttribute="bottom" constant="16" id="hwg-Rr-U0V"/>
-                            <constraint firstItem="den-8a-0tj" firstAttribute="top" secondItem="ovt-Gf-r3U" secondAttribute="bottom" constant="14" id="lPX-im-Tfn"/>
                             <constraint firstItem="Cix-0p-K7z" firstAttribute="leading" secondItem="5Wo-YH-b5x" secondAttribute="leading" constant="60" id="m18-Pn-I2V"/>
                             <constraint firstItem="ovt-Gf-r3U" firstAttribute="top" secondItem="tTZ-I0-VVo" secondAttribute="bottom" constant="8" id="o1T-JU-lvf"/>
                             <constraint firstItem="wvG-jg-f8l" firstAttribute="top" secondItem="HmA-eO-hef" secondAttribute="bottom" constant="16" id="o81-Co-P7y"/>
                             <constraint firstItem="HmA-eO-hef" firstAttribute="trailing" secondItem="5Wo-YH-b5x" secondAttribute="trailing" id="p7X-Fb-wAL"/>
-                            <constraint firstItem="qgq-dg-T1L" firstAttribute="leading" secondItem="5Wo-YH-b5x" secondAttribute="leading" constant="13" id="rFX-FT-OkF"/>
                             <constraint firstItem="5Wo-YH-b5x" firstAttribute="trailing" secondItem="tTZ-I0-VVo" secondAttribute="trailing" constant="16" id="sug-iM-7bQ"/>
                             <constraint firstItem="tTZ-I0-VVo" firstAttribute="top" secondItem="wvG-jg-f8l" secondAttribute="bottom" constant="16" id="szJ-gz-rfk"/>
                             <constraint firstItem="euE-3o-OpQ" firstAttribute="centerX" secondItem="43c-jI-F7U" secondAttribute="centerX" id="v5n-9P-X6E"/>
@@ -2226,12 +2193,10 @@ A: We have a variety of games and books as well as a gym and playground to occup
                         <outlet property="logInLblYConstraint" destination="2Tc-1c-PSP" id="efV-mj-CX0"/>
                         <outlet property="passTxtField" destination="tTZ-I0-VVo" id="Mt6-iM-A0h"/>
                         <outlet property="signUpBtn" destination="Cix-0p-K7z" id="OsW-s6-h8r"/>
-                        <outlet property="signedInBtn" destination="qgq-dg-T1L" id="sTz-1s-2Lt"/>
                         <segue destination="jM6-Kb-J6q" kind="presentation" identifier="LogIn" modalPresentationStyle="fullScreen" id="JVj-89-k2w"/>
                         <segue destination="jM6-Kb-J6q" kind="presentation" identifier="AlreadyLoggedIn" modalPresentationStyle="fullScreen" id="6V9-QI-sCX"/>
                         <segue destination="abT-59-Ebp" kind="show" identifier="SignUpFromApple" id="Xyo-0x-swO"/>
                         <segue destination="mAf-zE-l5X" kind="show" identifier="UserNotVerifiedYet" id="D0e-sq-uIe"/>
-                        <segue destination="6RS-j4-91T" kind="show" identifier="CounselorNotVerifiedYet" id="iuh-JS-T4G"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2JP-Fh-IfX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2351,23 +2316,6 @@ A: We have a variety of games and books as well as a gym and playground to occup
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fji-Wq-9qB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-782" y="217"/>
-        </scene>
-        <!--Counselor Navigation Controller-->
-        <scene sceneID="vU8-yd-3XE">
-            <objects>
-                <navigationController navigationBarHidden="YES" id="6RS-j4-91T" customClass="CounselorNavigationController" customModule="Capital_Cycle" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="jpm-il-iqu"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gz5-0i-Xid">
-                        <rect key="frame" x="0.0" y="-54" width="0.0" height="0.0"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="PqR-3q-0Zd" kind="relationship" relationship="rootViewController" id="9Ok-oP-fJ8"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0zS-DR-EP6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
             <point key="canvasLocation" x="-7" y="217"/>
         </scene>
         <!--Sign Up-->
@@ -2420,7 +2368,6 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="50"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="userInteraction" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="RQF-s0-mUV" appends="YES" id="gai-DZ-GfK"/>
@@ -2470,7 +2417,6 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="6"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="userInteraction" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="V3y-tI-2Fi" appends="YES" id="s3d-pE-h3L"/>
@@ -2668,9 +2614,9 @@ A: We have a variety of games and books as well as a gym and playground to occup
                         <outlet property="signedInBtn" destination="5ra-2Z-TlZ" id="ir5-XE-ayL"/>
                         <outlet property="userTypeLbl" destination="qf8-Wn-zz9" id="jsr-iE-gsQ"/>
                         <outlet property="userTypePickerView" destination="YuM-PM-C54" id="QEB-vs-07b"/>
-                        <segue destination="6RS-j4-91T" kind="presentation" identifier="VerifyCounselor" id="tBS-Ou-0eG"/>
                         <segue destination="mAf-zE-l5X" kind="presentation" identifier="VerifyUser" id="A25-06-JRb"/>
                         <segue destination="jM6-Kb-J6q" kind="presentation" identifier="Admin" modalPresentationStyle="fullScreen" id="eIi-nP-8Bb"/>
+                        <segue destination="PqR-3q-0Zd" kind="show" identifier="VerifyCounselor" id="ccM-UG-piO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fLH-LB-9yH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2742,7 +2688,6 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="50"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="userInteraction" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="Hu9-xz-KgG" appends="YES" id="fqR-7x-enY"/>
@@ -2762,7 +2707,6 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="6"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="userInteraction" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="526-11-HHH" appends="YES" id="rpz-lU-qZU"/>
@@ -2960,8 +2904,8 @@ A: We have a variety of games and books as well as a gym and playground to occup
                         <outlet property="userTypeLbl" destination="yii-bC-DGO" id="Jq6-Rc-Jf8"/>
                         <outlet property="userTypePickerView" destination="KYQ-0f-bN4" id="eJg-X9-JBt"/>
                         <segue destination="jM6-Kb-J6q" kind="presentation" identifier="VerifiedUserFromApple" modalPresentationStyle="fullScreen" id="uHf-Nt-zpe"/>
-                        <segue destination="6RS-j4-91T" kind="show" identifier="VerifyCounselorFromApple" id="fEj-ak-nJB"/>
                         <segue destination="jM6-Kb-J6q" kind="presentation" identifier="AppleAdmin" modalPresentationStyle="fullScreen" id="wg0-5Q-X08"/>
+                        <segue destination="PqR-3q-0Zd" kind="show" identifier="VerifyCounselorFromApple" id="eec-PI-NOd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OOI-gG-xcx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -3151,10 +3095,10 @@ A: We have a variety of games and books as well as a gym and playground to occup
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="A25-06-JRb"/>
-        <segue reference="fEj-ak-nJB"/>
-        <segue reference="SNw-F0-iiv"/>
-        <segue reference="i74-cw-zSX"/>
-        <segue reference="uHf-Nt-zpe"/>
+        <segue reference="D0e-sq-uIe"/>
+        <segue reference="eec-PI-NOd"/>
+        <segue reference="nul-0X-SWa"/>
+        <segue reference="rgh-8f-sJp"/>
+        <segue reference="6V9-QI-sCX"/>
     </inferredMetricsTieBreakers>
 </document>

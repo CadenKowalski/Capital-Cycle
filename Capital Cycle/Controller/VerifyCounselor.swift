@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class VerifyCounselor: UIViewController, UITextFieldDelegate, UIAdaptivePresentationControllerDelegate {
+class VerifyCounselor: UIViewController, UITextFieldDelegate {
     
     // MARK: Global Variables
     
@@ -19,6 +19,8 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate, UIAdaptivePresenta
     @IBOutlet weak var counselorIdTxtField: UITextField!
     @IBOutlet weak var signUpBtn: CustomButton!
     @IBOutlet weak var signUpBtnProgressWheel: UIActivityIndicatorView!
+    // Code global vars
+    var password: String!
     
     // MARK: View Instantiation
     
@@ -41,9 +43,6 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate, UIAdaptivePresenta
         // Formats the text field
         counselorIdTxtField.delegate = self
         counselorIdTxtField.attributedPlaceholder = NSAttributedString(string: "Counselor ID", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
-        
-        // Prevents the user from dismissing the view without deleting their account
-        isModalInPresentation = true
     }
     
     // MARK: Sign Up
@@ -53,9 +52,9 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate, UIAdaptivePresenta
         viewFunctions.formatProgressWheel(progressWheel: signUpBtnProgressWheel, button: signUpBtn, toShow: true)
         if counselorIdTxtField.text == "082404" {
             user.isCounselorVerified = true
-            firebaseFunctions.updateUserData(updateValue: "isCounselorVerified") { error in
+            firebaseFunctions.createUser(password: password) { error in
                 if error == nil {
-                    firebaseFunctions.fetchUserData(fetchValue: "all") { error in
+                    firebaseFunctions.uploadUserData() { error in
                         if error == nil {
                             self.performSegue(withIdentifier: "VerifiedCounselor", sender: nil)
                         } else {
@@ -72,25 +71,7 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate, UIAdaptivePresenta
         } else {
             counselorIdTxtField.backgroundColor = .red
             counselorIdTxtField.alpha = 0.5
-            viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: false)
+            viewFunctions.formatProgressWheel(progressWheel: signUpBtnProgressWheel, button: signUpBtn, toShow: false)
         }
-    }
-    
-    // MARK: Dismiss
-    
-    func presentationControllerDidAttemptToDismiss(_ presentationController: UIPresentationController) {
-        let Alert = UIAlertController(title: nil, message: "This action will delete your account. Are you sure you want to continue?", preferredStyle: .actionSheet)
-        Alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        Alert.addAction(UIAlertAction(title: "Delete my account", style: .destructive) { action in
-            firebaseFunctions.deleteAccount()  { error in
-                if error == nil {
-                    self.dismiss(animated: true, completion: nil)
-                } else {
-                    viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
-                }
-            }
-        })
-        
-        present(Alert, animated: true, completion: nil)
     }
 }

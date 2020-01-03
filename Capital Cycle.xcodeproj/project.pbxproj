@@ -33,7 +33,6 @@
 		57B57CEA23B9673400841442 /* FirebaseFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B57CE923B9673400841442 /* FirebaseFunctions.swift */; };
 		57B7FCA523064A0200D97E3A /* AccountSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B7FCA423064A0200D97E3A /* AccountSettings.swift */; };
 		57CB68592306ECAC00570D86 /* UserNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CB68582306ECAC00570D86 /* UserNavigationController.swift */; };
-		57CB685B2306F15200570D86 /* CounselorNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CB685A2306F15200570D86 /* CounselorNavigationController.swift */; };
 		57DE34E223B2D19A00221F53 /* CustomUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DE34E123B2D19A00221F53 /* CustomUI.swift */; };
 		57E226F723B5428E007DF227 /* OneMoreStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E226F623B5428E007DF227 /* OneMoreStep.swift */; };
 		57E226FD23B84F8A007DF227 /* FirebaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E226FC23B84F8A007DF227 /* FirebaseUser.swift */; };
@@ -73,7 +72,6 @@
 		57B57CE923B9673400841442 /* FirebaseFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFunctions.swift; sourceTree = "<group>"; };
 		57B7FCA423064A0200D97E3A /* AccountSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettings.swift; sourceTree = "<group>"; };
 		57CB68582306ECAC00570D86 /* UserNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNavigationController.swift; sourceTree = "<group>"; };
-		57CB685A2306F15200570D86 /* CounselorNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounselorNavigationController.swift; sourceTree = "<group>"; };
 		57DE34E123B2D19A00221F53 /* CustomUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUI.swift; sourceTree = "<group>"; };
 		57E226F623B5428E007DF227 /* OneMoreStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneMoreStep.swift; sourceTree = "<group>"; };
 		57E226FC23B84F8A007DF227 /* FirebaseUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUser.swift; sourceTree = "<group>"; };
@@ -186,7 +184,6 @@
 				57E226F623B5428E007DF227 /* OneMoreStep.swift */,
 				57CB68582306ECAC00570D86 /* UserNavigationController.swift */,
 				57AFA1AF22F77F5100C2988C /* VerifyUser.swift */,
-				57CB685A2306F15200570D86 /* CounselorNavigationController.swift */,
 				57AFFD642300FAF000B6CD7B /* VerifyCounselor.swift */,
 				57A3457322D2AEBD0070898F /* PageVC.swift */,
 				57A3457722D2BB5B0070898F /* OverviewPage.swift */,
@@ -342,7 +339,6 @@
 				57A3455A22D2AA080070898F /* SceneDelegate.swift in Sources */,
 				576FCFB322E4B82F00C346E4 /* CamperInfoPage.swift in Sources */,
 				5700629B22E3BB590032EFAB /* SignUp.swift in Sources */,
-				57CB685B2306F15200570D86 /* CounselorNavigationController.swift in Sources */,
 				57E226F723B5428E007DF227 /* OneMoreStep.swift in Sources */,
 				5795C62422EA6CC200A0A171 /* TestForConnection.swift in Sources */,
 				57E226FD23B84F8A007DF227 /* FirebaseUser.swift in Sources */,

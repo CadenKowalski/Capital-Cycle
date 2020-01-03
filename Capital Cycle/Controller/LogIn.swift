@@ -41,29 +41,20 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
         super.viewDidAppear(animated)
         Auth.auth().currentUser?.reload() { action in
             if Auth.auth().currentUser != nil {
-                user.email = Auth.auth().currentUser!.email
-                firebaseFunctions.fetchUserData(fetchValue: "isCounselorVerified") { error in
+                viewFunctions.formatProgressWheel(progressWheel: self.logInBtnProgressWheel, button: self.logInBtn, toShow: true)
+                user.email = Auth.auth().currentUser!.email!
+                firebaseFunctions.fetchUserData(fetchValue: "all") { error in
                     if error == nil {
-                        if Auth.auth().currentUser!.isEmailVerified || user.isCounselorVerified! {
-                            user.uid = Auth.auth().currentUser!.uid
-                            viewFunctions.formatProgressWheel(progressWheel: self.logInBtnProgressWheel, button: self.logInBtn, toShow: true)
-                            firebaseFunctions.fetchUserData(fetchValue: "all") { error in
-                                if error == nil {
-                                    if user.signedIn == true {
-                                        viewFunctions.giveHapticFeedback(error: false)
-                                        self.performSegue(withIdentifier: "AlreadyLoggedIn", sender: nil)
-                                    }
-                                } else {
-                                    viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
-                                }
-                                
-                                viewFunctions.formatProgressWheel(progressWheel: self.logInBtnProgressWheel, button: self.logInBtn, toShow: false)
-                            }
+                        if (Auth.auth().currentUser!.isEmailVerified || user.isCounselorVerified!) && user.signedIn {
+                            viewFunctions.giveHapticFeedback(error: false)
+                            self.performSegue(withIdentifier: "AlreadyLoggedIn", sender: nil)
+                            viewFunctions.formatProgressWheel(progressWheel: self.logInBtnProgressWheel, button: self.logInBtn, toShow: false)
                         }
                     } else {
                         viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
-                        viewFunctions.formatProgressWheel(progressWheel: self.logInBtnProgressWheel, button: self.logInBtn, toShow: false)
                     }
+                    
+                    viewFunctions.formatProgressWheel(progressWheel: self.logInBtnProgressWheel, button: self.logInBtn, toShow: false)
                 }
             }
         }
@@ -103,68 +94,50 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
         ])
     }
     
-    // MARK: View Management
-    
-    // Keep the user signed in or not
-    @IBAction func keepSignedIn(_ sender: UIButton) {
-        viewFunctions.giveHapticFeedback(error: false)
-        if !user.signedIn! {
-            user.signedIn = true
-            sender.setImage(UIImage(named: "Checked"), for: .normal)
-        } else {
-            user.signedIn = false
-            sender.setImage(UIImage(named: "Unchecked"), for: .normal)
-        }
-    }
-    
     // MARK: Log In
     
     // Logs in the user
     @IBAction func logIn(_ sender: CustomButton) {
         viewFunctions.formatProgressWheel(progressWheel: logInBtnProgressWheel, button: logInBtn, toShow: true)
         user.email = emailTxtField.text!
-        Auth.auth().signIn(withEmail: user.email!, password: passTxtField.text!) { (authUser, error) in
+        firebaseFunctions.fetchUserData(fetchValue: "all") { error in
             if error == nil {
-                if Auth.auth().currentUser!.isEmailVerified || user.isCounselorVerified! {
-                    user.uid = Auth.auth().currentUser!.uid
-                    firebaseFunctions.updateUserData(updateValue: "signedIn") { error in
-                        if error == nil {
-                            firebaseFunctions.fetchUserData(fetchValue: "all") { error in
-                                if error == nil {
-                                    viewFunctions.formatProgressWheel(progressWheel: self.logInBtnProgressWheel, button: self.logInBtn, toShow: false)
-                                    self.performSegue(withIdentifier: "LogIn", sender: nil)
-                                    self.emailTxtField.text = ""
-                                    self.passTxtField.text = ""
-                                } else {
-                                    viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
-                                    viewFunctions.formatProgressWheel(progressWheel: self.logInBtnProgressWheel, button: self.logInBtn, toShow: false)
-                                }
+                if user.type == .counselor {
+                    if user.isCounselorVerified {
+                        Auth.auth().signIn(withEmail: user.email, password: self.passTxtField.text!) { (authUser, error) in
+                            if error == nil {
+                                user.uid = Auth.auth().currentUser!.uid
+                                self.performSegue(withIdentifier: "LogIn", sender: nil)
+                                self.emailTxtField.text = ""
+                                self.passTxtField.text = ""
+                            } else {
+                                viewFunctions.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default, view: self)
                             }
-                        } else {
-                            viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
+                            
                             viewFunctions.formatProgressWheel(progressWheel: self.logInBtnProgressWheel, button: self.logInBtn, toShow: false)
                         }
                     }
                 } else {
-                    firebaseFunctions.fetchUserData(fetchValue: "type") { error in
+                    Auth.auth().signIn(withEmail: user.email, password: self.passTxtField.text!) { (authUser, error) in
                         if error == nil {
-                            if user.type == .counselor {
-                                self.performSegue(withIdentifier: "CounselorNotVerifiedYet", sender: nil)
+                            user.uid = Auth.auth().currentUser!.uid
+                            if Auth.auth().currentUser!.isEmailVerified || user.type == .admin {
+                                self.performSegue(withIdentifier: "LogIn", sender: nil)
                             } else {
                                 self.performSegue(withIdentifier: "UserNotVerifiedYet", sender: nil)
                             }
                             
+                            self.emailTxtField.text = ""
+                            self.passTxtField.text = ""
                             viewFunctions.formatProgressWheel(progressWheel: self.logInBtnProgressWheel, button: self.logInBtn, toShow: false)
                         } else {
-                            viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
+                            viewFunctions.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default, view: self)
                             viewFunctions.formatProgressWheel(progressWheel: self.logInBtnProgressWheel, button: self.logInBtn, toShow: false)
                         }
-                        
-                        print(true)
                     }
                 }
             } else {
-                viewFunctions.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default, view: self)
+                viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
                 viewFunctions.formatProgressWheel(progressWheel: self.logInBtnProgressWheel, button: self.logInBtn, toShow: false)
             }
         }

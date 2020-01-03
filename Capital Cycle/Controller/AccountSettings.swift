@@ -190,7 +190,9 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
         resetPasswordAlert.addAction(UIAlertAction(title: "Reset Password", style: .destructive, handler: { Action in
             viewFunctions.formatProgressWheel(progressWheel: self.accountSettingsProgressWheel, button: nil, toShow: true)
             firebaseFunctions.resetPassword(recoveryEmail: (resetPasswordAlert.textFields?.first!.text)!) { error in
-                if error != nil {
+                if error == nil {
+                    viewFunctions.showAlert(title: "Success", message: "You have been sent a password reset email", actionTitle: "OK", actionStyle: .default, view: self)
+                } else {
                     print("Could not reset password")
                 }
                 

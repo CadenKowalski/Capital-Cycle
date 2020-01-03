@@ -188,6 +188,7 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
         password = passTxtField.text ?? ""
         if user.email == "cadenkowalski1@gmail.com" || user.email == "tester@test.com" {
             user.type = .admin
+            user.isCounselorVerified = true
         }
 
         if password != confmPassTxtField.text {
@@ -236,30 +237,43 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
     // Signs up the user
     func signUp() {
         viewFunctions.formatProgressWheel(progressWheel: signUpBtnProgressWheel, button: signUpBtn, toShow: true)
-        firebaseFunctions.createUser(password: password) { error in
-            if error == nil {
-                firebaseFunctions.uploadUserData() { error in
-                    if error == nil {
-                        self.emailTxtField.text = ""
-                        self.passTxtField.text = ""
-                        self.confmPassTxtField.text = ""
-                        if user.type == .admin {
-                            self.performSegue(withIdentifier: "Admin", sender: nil)
-                        } else if user.type == .counselor {
-                            self.performSegue(withIdentifier: "VerifyCounselor", sender: nil)
+        if user.type == .counselor {
+            self.performSegue(withIdentifier: "VerifyCounselor", sender: nil)
+            viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: false)
+        } else {
+            firebaseFunctions.createUser(password: passTxtField.text!) { error in
+                if error == nil {
+                    firebaseFunctions.uploadUserData() { error in
+                        if error == nil {
+                            if user.type == .admin {
+                                self.performSegue(withIdentifier: "Admin", sender: nil)
+                            } else {
+                                Auth.auth().currentUser!.sendEmailVerification()
+                                self.performSegue(withIdentifier: "VerifyUser", sender: nil)
+                            }
+                            
+                            viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: false)
                         } else {
-                            Auth.auth().currentUser!.sendEmailVerification()
-                            self.performSegue(withIdentifier: "VerifyUser", sender: nil)
+                            viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
+                            viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: false)
                         }
                     }
-                    
+                } else {
+                    viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
                     viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: false)
                 }
-            } else {
-                self.dismiss(animated: true, completion: nil)
-                viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
-                viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: false)
             }
+        }
+        
+        self.emailTxtField.text = ""
+        self.passTxtField.text = ""
+        self.confmPassTxtField.text = ""
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "VerifyCounselor" {
+            let destinationVC = segue.destination as! VerifyCounselor
+            destinationVC.password = passTxtField.text!
         }
     }
     
