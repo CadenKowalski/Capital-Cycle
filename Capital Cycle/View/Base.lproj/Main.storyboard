@@ -2510,7 +2510,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                     <constraint firstAttribute="width" constant="150" id="oWa-uw-8YP"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
-                                <state key="normal" title="Sign Up">
+                                <state key="normal" title="Continue">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -2830,7 +2830,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                     <constraint firstAttribute="width" constant="150" id="ggC-Zb-jUm"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
-                                <state key="normal" title="Sign Up">
+                                <state key="normal" title="Continue">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -3125,10 +3125,10 @@ A: We have a variety of games and books as well as a gym and playground to occup
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="D0e-sq-uIe"/>
-        <segue reference="eec-PI-NOd"/>
+        <segue reference="A25-06-JRb"/>
+        <segue reference="ccM-UG-piO"/>
         <segue reference="nul-0X-SWa"/>
         <segue reference="u9a-Dv-dnR"/>
-        <segue reference="uHf-Nt-zpe"/>
+        <segue reference="eIi-nP-8Bb"/>
     </inferredMetricsTieBreakers>
 </document>

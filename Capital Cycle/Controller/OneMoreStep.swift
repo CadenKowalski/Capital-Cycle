@@ -207,6 +207,13 @@ class OneMoreStep: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "VerifyCounselorFromApple" {
+            let destination = segue.destination as! VerifyCounselor
+            destination.presentingVC = "OneMoreStep"
+        }
+    }
+    
     // MARK: Dismiss
     
     // Deletes the users account if they dismiss the OneMoreStep view

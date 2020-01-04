@@ -149,6 +149,12 @@ struct FirebaseFunctions {
                                         completion(error!.localizedDescription)
                                     }
                                 }
+                            } else if element.key == "profileImgUrl" {
+                                collectionRef.document(user.email!).updateData(["profileImgUrl": user.profileImgUrl!]) { error in
+                                    if error != nil {
+                                        completion(error!.localizedDescription)
+                                    }
+                                }
                             } else {
                                 collectionRef.document(user.email!).updateData([element.key: element.value]) { error in
                                     if error == nil {

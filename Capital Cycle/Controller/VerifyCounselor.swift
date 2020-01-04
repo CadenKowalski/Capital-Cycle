@@ -22,7 +22,7 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var changeBtn: UIButton!
     // Code global vars
     var password: String!
-    var presentedFromSegue = false
+    var presentingVC = "Sign Up"
     
     // MARK: View Instantiation
     
@@ -47,7 +47,7 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate {
         counselorIdTxtField.attributedPlaceholder = NSAttributedString(string: "Counselor ID", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
         
         // Formats the buttons
-        if presentedFromSegue {
+        if presentingVC == "Account Settings" {
             signUpBtn.isHidden = true
         } else {
             changeBtn.isHidden = true
@@ -61,7 +61,7 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate {
         viewFunctions.formatProgressWheel(progressWheel: signUpBtnProgressWheel, button: signUpBtn, toShow: true, hapticFeedback: true)
         if counselorIdTxtField.text == "082404" {
             user.isCounselorVerified = true
-            if presentedFromSegue == false {
+            if presentingVC == "Sign Up" {
                 firebaseFunctions.createUser(password: password) { error in
                     if error == nil {
                         firebaseFunctions.manageUserData(dataValues: ["all"], newUser: true) { error in
@@ -79,12 +79,20 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate {
                         viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: false, hapticFeedback: false)
                     }
                 }
-            } else {
+            } else if presentingVC == "Account Settings" {
                 user.type = .counselor
                 firebaseFunctions.manageUserData(dataValues: ["type, isCounselorVerified"], newUser: false) { error in
                     if error == nil {
                         viewFunctions.giveHapticFeedback(error: false, prefers: true)
                         self.dismiss(animated: true, completion: nil)
+                    } else {
+                        viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
+                    }
+                }
+            } else {
+                firebaseFunctions.manageUserData(dataValues: ["all"], newUser: true) { error in
+                    if error == nil {
+                        self.performSegue(withIdentifier: "VerifiedCounselor", sender: nil)
                     } else {
                         viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
                     }

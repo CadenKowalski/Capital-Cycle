@@ -247,6 +247,7 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
             Auth.auth().signIn(with: credential) { (authResult, error) in
                 if error == nil {
                     user.email = appleIDCredential.email!
+                    user.uid = Auth.auth().currentUser!.uid
                     viewFunctions.giveHapticFeedback(error: false, prefers: true)
                     self.performSegue(withIdentifier: "SignUpFromApple", sender: nil)
                 } else {

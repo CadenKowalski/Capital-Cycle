@@ -120,7 +120,7 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "VerifyCounselorFromSettings" {
             let destination = segue.destination as! VerifyCounselor
-            destination.presentedFromSegue = true
+            destination.presentingVC = "Account Settings"
         }
     }
     
