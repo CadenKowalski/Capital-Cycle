@@ -11,14 +11,16 @@ import UIKit
 class ViewFunctions: UIViewController {
 
     // Generates haptic feedback
-    func giveHapticFeedback(error: Bool) {
-        if error {
-            let feedbackGenerator = UINotificationFeedbackGenerator()
-            feedbackGenerator.prepare()
-            feedbackGenerator.notificationOccurred(.error)
-        } else {
-            let feedbackGenerator = UISelectionFeedbackGenerator()
-            feedbackGenerator.selectionChanged()
+    func giveHapticFeedback(error: Bool, prefers: Bool) {
+        if prefers {
+            if error {
+                let feedbackGenerator = UINotificationFeedbackGenerator()
+                feedbackGenerator.prepare()
+                feedbackGenerator.notificationOccurred(.error)
+            } else {
+                let feedbackGenerator = UISelectionFeedbackGenerator()
+                feedbackGenerator.selectionChanged()
+            }
         }
     }
     
@@ -27,16 +29,18 @@ class ViewFunctions: UIViewController {
         let Alert = UIAlertController(title: title, message:  message, preferredStyle: .alert)
         Alert.addAction(UIAlertAction(title: actionTitle, style: actionStyle, handler: nil))
         view.present(Alert, animated: true, completion: nil)
-        giveHapticFeedback(error: true)
+        giveHapticFeedback(error: true, prefers: true)
     }
     
     // Formats the progress wheel
-    func formatProgressWheel(progressWheel: UIActivityIndicatorView, button: UIButton?, toShow: Bool) {
-        giveHapticFeedback(error: false)
+    func formatProgressWheel(progressWheel: UIActivityIndicatorView, button: UIButton?, toShow: Bool, hapticFeedback: Bool) {
         if toShow {
             button?.alpha = 0.25
             progressWheel.isHidden = false
             progressWheel.startAnimating()
+            if hapticFeedback {
+                giveHapticFeedback(error: false, prefers: user.prefersHapticFeedback!)
+            }
         } else {
             button?.alpha = 1.0
             progressWheel.stopAnimating()

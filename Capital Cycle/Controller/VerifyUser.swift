@@ -44,6 +44,7 @@ class VerifyUser: UIViewController, UIAdaptivePresentationControllerDelegate {
     
     // MARK: Sign Up
     
+    // Resends a verification email to users
     @IBAction func resendEmail(_ sender: Any) {
         Auth.auth().currentUser?.sendEmailVerification() { error in
             if error != nil {
@@ -56,6 +57,7 @@ class VerifyUser: UIViewController, UIAdaptivePresentationControllerDelegate {
     @IBAction func checkForVerifiedUser(_ sender: UIButton) {
         Auth.auth().currentUser?.reload(completion: { Action in
             if Auth.auth().currentUser!.isEmailVerified {
+                viewFunctions.giveHapticFeedback(error: false, prefers: true)
                 sender.isHidden = true
                 self.resendEmailBtn.isHidden = true
                 self.signUpBtn.isHidden = false
@@ -67,26 +69,29 @@ class VerifyUser: UIViewController, UIAdaptivePresentationControllerDelegate {
     
     // Signs up the user
     @IBAction func signUp(_ sender: CustomButton) {
-        viewFunctions.formatProgressWheel(progressWheel: signUpBtnProgressWheel, button: signUpBtn, toShow: true)
+        viewFunctions.formatProgressWheel(progressWheel: signUpBtnProgressWheel, button: signUpBtn, toShow: true, hapticFeedback: true)
         firebaseFunctions.fetchUserData(fetchValue: "all") { error in
             if error == nil {
+                viewFunctions.giveHapticFeedback(error: false, prefers: true)
                 self.performSegue(withIdentifier: "VerifiedUser", sender: nil)
             } else {
                 viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
             }
             
-            viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: false)
+            viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: false, hapticFeedback: false)
         }
     }
     
     // MARK: Dismiss
     
+    // Deletes the users account if they dismiss the VerifyUser view
     func presentationControllerDidAttemptToDismiss(_ presentationController: UIPresentationController) {
         let Alert = UIAlertController(title: nil, message: "This action will delete your account. Are you sure you want to continue?", preferredStyle: .actionSheet)
         Alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         Alert.addAction(UIAlertAction(title: "Delete my account", style: .destructive) { action in
             firebaseFunctions.deleteAccount() { error in
                 if error == nil {
+                    viewFunctions.giveHapticFeedback(error: false, prefers: true)
                     self.dismiss(animated: true, completion: nil)
                 } else {
                     viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)

@@ -106,6 +106,7 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
 
     // Displays the privacy policy text view
     @IBAction func privacyPolicy(_ sender: UIButton) {
+        viewFunctions.giveHapticFeedback(error: false, prefers: true)
         privacyPolicyTxtView.isHidden = false
         doneBtn.isHidden = false
         isModalInPresentation = true
@@ -120,7 +121,7 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
     
     // User agrees to privacy policy and terms of service
     @IBAction func agreeToPolicies(_ sender: UIButton) {
-        viewFunctions.giveHapticFeedback(error: false)
+        viewFunctions.giveHapticFeedback(error: false, prefers: true)
         if !Agree {
             Agree = true
             sender.setImage(UIImage(named: "Checked"), for: .normal)
@@ -132,7 +133,7 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
     
     // Keep the user signed in or not
     @IBAction func keepSignedIn(_ sender: UIButton) {
-        viewFunctions.giveHapticFeedback(error: false)
+        viewFunctions.giveHapticFeedback(error: false, prefers: true)
         if !user.signedIn! {
             user.signedIn = true
             sender.setImage(UIImage(named: "Checked"), for: .normal)
@@ -176,7 +177,6 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
         if user.type != FirebaseUser.type.none {
             userTypeLbl.backgroundColor = #colorLiteral(red: 0.75, green: 0.75, blue: 0.75, alpha: 1)
             userTypeLbl.alpha = 1.0
-            viewFunctions.giveHapticFeedback(error: false)
         }
     }
     
@@ -184,8 +184,8 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
 
     // Verifies the users information
     @IBAction func verifyInputs(_ sender: CustomButton) {
-        user.email = emailTxtField.text ?? ""
-        password = passTxtField.text ?? ""
+        user.email = emailTxtField.text!
+        password = passTxtField.text!
         if user.email == "cadenkowalski1@gmail.com" || user.email == "tester@test.com" {
             user.type = .admin
             user.isCounselorVerified = true
@@ -193,14 +193,18 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
 
         if password != confmPassTxtField.text {
             viewFunctions.showAlert(title: "Passwords don't match", message: "Please make sure your passwords match", actionTitle: "OK", actionStyle: .default, view: self)
-        } else if Agree == false {
-            viewFunctions.showAlert(title: "Uh oh", message: "Please agree to the privacy policy and terms of serivce", actionTitle: "OK", actionStyle: .default, view: self)
         } else if user.type == FirebaseUser.type.none && user.type != .admin {
             userTypeLbl.backgroundColor = .red
             userTypeLbl.alpha = 0.5
-            viewFunctions.giveHapticFeedback(error: false)
-        } else if passwordIsTooWeak() && password.count < 6 {
-            let Alert = UIAlertController(title: "Password not recommended", message: "We recommend that your password contain a number or symbol and have different cases", preferredStyle: .alert)
+            viewFunctions.giveHapticFeedback(error: true, prefers: true)
+        } else if Agree == false {
+            viewFunctions.showAlert(title: "Uh oh", message: "Please agree to the privacy policy and terms of serivce", actionTitle: "OK", actionStyle: .default, view: self)
+        } else if emailTxtField.text! == "" {
+            viewFunctions.showAlert(title: "Error", message: "Please provide a valid email adress", actionTitle: "OK", actionStyle: .default, view: self)
+        } else if password.count < 6 {
+            viewFunctions.showAlert(title: "Weak Password", message: "Your password mus tbe 6 characters or longer", actionTitle: "OK", actionStyle: .default, view: self)
+        } else if passwordIsTooWeak() {
+            let Alert = UIAlertController(title: "Weak Password", message: "We recommend that your password contain a number or symbol and have different cases", preferredStyle: .alert)
             Alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             Alert.addAction(UIAlertAction(title: "Continue", style: .destructive, handler: { action in
                 self.signUp()
@@ -236,15 +240,16 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
     
     // Signs up the user
     func signUp() {
-        viewFunctions.formatProgressWheel(progressWheel: signUpBtnProgressWheel, button: signUpBtn, toShow: true)
+        viewFunctions.formatProgressWheel(progressWheel: signUpBtnProgressWheel, button: signUpBtn, toShow: true, hapticFeedback: true)
         if user.type == .counselor {
             self.performSegue(withIdentifier: "VerifyCounselor", sender: nil)
-            viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: false)
+            viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: false, hapticFeedback: false)
         } else {
             firebaseFunctions.createUser(password: passTxtField.text!) { error in
                 if error == nil {
                     firebaseFunctions.manageUserData(dataValues: ["all"], newUser: true) { error in
                         if error == nil {
+                            viewFunctions.giveHapticFeedback(error: false, prefers: true)
                             if user.type == .admin {
                                 self.performSegue(withIdentifier: "Admin", sender: nil)
                             } else {
@@ -252,22 +257,21 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
                                 self.performSegue(withIdentifier: "VerifyUser", sender: nil)
                             }
                             
-                            viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: false)
+                            self.emailTxtField.text = ""
+                            self.passTxtField.text = ""
+                            self.confmPassTxtField.text = ""
+                            viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: false, hapticFeedback: false)
                         } else {
                             viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
-                            viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: false)
+                            viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: false, hapticFeedback: false)
                         }
                     }
                 } else {
                     viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
-                    viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: false)
+                    viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: false, hapticFeedback: false)
                 }
             }
         }
-        
-        self.emailTxtField.text = ""
-        self.passTxtField.text = ""
-        self.confmPassTxtField.text = ""
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

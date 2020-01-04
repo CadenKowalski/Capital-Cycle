@@ -183,7 +183,7 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
             if camperBtns.count == 0 {
                 camperBtn = UIButton(frame: CGRect(x: 16, y:  0, width: view.frame.width, height: 40))
             } else {
-                camperBtn = UIButton(frame: CGRect(x: 16, y:  camperBtns[camper - 1].frame.maxY, width: view.frame.width, height: 40))
+                camperBtn = UIButton(frame: CGRect(x: 16, y:  camperBtns[camper - 1].frame.maxY + 8, width: view.frame.width, height: 40))
             }
             
             camperBtn.setTitle("\(camperInfo[camper][0])", for: .normal)
@@ -221,7 +221,6 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
         parentEmailLbl.text = "\(camperInfo[camperBtns.firstIndex(of: sender)!][3])"
         parentEmail = "\(camperInfo[camperBtns.firstIndex(of: sender)!][3])"
         signedWaiverLbl.text = "\(camperInfo[camperBtns.firstIndex(of: sender)!][4])"
-        viewFunctions.giveHapticFeedback(error: false)
     }
     
     // MARK: Core Data

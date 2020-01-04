@@ -276,7 +276,7 @@ Phone: 202.288.5245</string>
                                         <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" backgroundImage="gear" catalog="system"/>
                                         <connections>
-                                            <action selector="openSettings:" destination="bH8-1u-VSq" eventType="touchUpInside" id="1iH-cl-sjz"/>
+                                            <segue destination="ECW-nJ-Zo5" kind="show" id="u9a-Dv-dnR"/>
                                         </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="adt-QC-e0q" customClass="CustomImageView" customModule="Capital_Cycle" customModuleProvider="target">
@@ -338,7 +338,6 @@ Phone: 202.288.5245</string>
                         <outlet property="overviewLblYConstraint" destination="8nH-dq-YMC" id="LXc-Xf-zSF"/>
                         <outlet property="scrollViewDisplay" destination="YlL-WF-Z3k" id="n6Y-2t-Smf"/>
                         <outlet property="scrollViewYConstraint" destination="W8T-qZ-mDe" id="cgP-Ct-dtd"/>
-                        <segue destination="ECW-nJ-Zo5" kind="show" identifier="showGeneralSettings" id="rgh-8f-sJp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Izh-eE-oWs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -3113,7 +3112,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
         <segue reference="D0e-sq-uIe"/>
         <segue reference="HUH-zx-Kae"/>
         <segue reference="nul-0X-SWa"/>
-        <segue reference="rgh-8f-sJp"/>
-        <segue reference="8gZ-wr-hIi"/>
+        <segue reference="u9a-Dv-dnR"/>
+        <segue reference="eIi-nP-8Bb"/>
     </inferredMetricsTieBreakers>
 </document>

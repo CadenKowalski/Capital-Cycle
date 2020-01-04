@@ -86,7 +86,7 @@ class GeneralSettings: UIViewController {
             user.prefersHapticFeedback = false
         }
         
-        firebaseFunctions.manageUserData(dataValues: ["prefersHapticfeadback"], newUser: false) { error in
+        firebaseFunctions.manageUserData(dataValues: ["prefersHapticFeedback"], newUser: false) { error in
             if error != nil {
                 viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
             }

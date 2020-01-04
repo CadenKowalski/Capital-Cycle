@@ -58,7 +58,7 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate {
     
     // Signs up the user
     @IBAction func signUp(_ sender: UIButton) {
-        viewFunctions.formatProgressWheel(progressWheel: signUpBtnProgressWheel, button: signUpBtn, toShow: true)
+        viewFunctions.formatProgressWheel(progressWheel: signUpBtnProgressWheel, button: signUpBtn, toShow: true, hapticFeedback: true)
         if counselorIdTxtField.text == "082404" {
             user.isCounselorVerified = true
             if presentedFromSegue == false {
@@ -66,22 +66,24 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate {
                     if error == nil {
                         firebaseFunctions.manageUserData(dataValues: ["all"], newUser: true) { error in
                             if error == nil {
+                                viewFunctions.giveHapticFeedback(error: false, prefers: true)
                                 self.performSegue(withIdentifier: "VerifiedCounselor", sender: nil)
                             } else {
                                 viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
                             }
                             
-                            viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: false)
+                            viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: false, hapticFeedback: false)
                         }
                     } else {
                         viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
-                        viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: false)
+                        viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: false, hapticFeedback: false)
                     }
                 }
             } else {
                 user.type = .counselor
                 firebaseFunctions.manageUserData(dataValues: ["type, isCounselorVerified"], newUser: false) { error in
                     if error == nil {
+                        viewFunctions.giveHapticFeedback(error: false, prefers: true)
                         self.dismiss(animated: true, completion: nil)
                     } else {
                         viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
@@ -89,9 +91,10 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate {
                 }
             }
         } else {
+            viewFunctions.giveHapticFeedback(error: true, prefers: true)
             counselorIdTxtField.backgroundColor = .red
             counselorIdTxtField.alpha = 0.5
-            viewFunctions.formatProgressWheel(progressWheel: signUpBtnProgressWheel, button: signUpBtn, toShow: false)
+            viewFunctions.formatProgressWheel(progressWheel: signUpBtnProgressWheel, button: signUpBtn, toShow: false, hapticFeedback: false)
         }
     }
 }

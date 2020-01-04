@@ -128,7 +128,7 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
     
     // Changes the User Type
     @IBAction func changeUserType(_ sender: UIButton) {
-        viewFunctions.giveHapticFeedback(error: false)
+        viewFunctions.giveHapticFeedback(error: false, prefers: user.prefersHapticFeedback!)
         if userTypePickerView.isHidden {
             userTypePickerView.isHidden = false
             cancelBtn.isHidden = false
@@ -172,31 +172,31 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
         
     // Logs out the user
     @IBAction func logOut(_ sender: UIButton?) {
-        viewFunctions.formatProgressWheel(progressWheel: accountSettingsProgressWheel, button: nil, toShow: true)
+        viewFunctions.formatProgressWheel(progressWheel: accountSettingsProgressWheel, button: nil, toShow: true, hapticFeedback: false)
         firebaseFunctions.logOut() { error in
             if error == nil {
+                viewFunctions.giveHapticFeedback(error: false, prefers: true)
                 self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
             } else {
                 viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
             }
             
-            viewFunctions.formatProgressWheel(progressWheel: self.accountSettingsProgressWheel, button: nil, toShow: false)
+            viewFunctions.formatProgressWheel(progressWheel: self.accountSettingsProgressWheel, button: nil, toShow: false, hapticFeedback: false)
         }
     }
     
     // Resets the user's password
     @IBAction func resetPassword(_ sender: UIButton) {
-        viewFunctions.giveHapticFeedback(error: false)
         let resetPasswordAlert = UIAlertController(title: "Reset Password", message: "Enter your email adress", preferredStyle: .alert)
         resetPasswordAlert.addTextField { textField in
-            textField.placeholder = "Email"
             textField.keyboardType = .emailAddress
             textField.font = UIFont(name: "Avenir-Book", size: 13.0)
+            textField.attributedText = NSAttributedString(string: "\(user.email!)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
         }
         
         resetPasswordAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         resetPasswordAlert.addAction(UIAlertAction(title: "Reset Password", style: .destructive, handler: { Action in
-            viewFunctions.formatProgressWheel(progressWheel: self.accountSettingsProgressWheel, button: nil, toShow: true)
+            viewFunctions.formatProgressWheel(progressWheel: self.accountSettingsProgressWheel, button: nil, toShow: true, hapticFeedback: false)
             firebaseFunctions.resetPassword(recoveryEmail: (resetPasswordAlert.textFields?.first!.text)!) { error in
                 if error == nil {
                     viewFunctions.showAlert(title: "Success", message: "You have been sent a password reset email", actionTitle: "OK", actionStyle: .default, view: self)
@@ -204,7 +204,7 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
                     print("Could not reset password")
                 }
                 
-                viewFunctions.formatProgressWheel(progressWheel: self.accountSettingsProgressWheel, button: nil, toShow: false)
+                viewFunctions.formatProgressWheel(progressWheel: self.accountSettingsProgressWheel, button: nil, toShow: false, hapticFeedback: false)
             }
         }))
         
@@ -213,19 +213,19 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
     
     // Allows the user to delete their account
     @IBAction func deleteAccount(_ sender: UIButton) {
-        viewFunctions.giveHapticFeedback(error: false)
         let confirmDeleteAlert = UIAlertController(title: "Confirm", message: "Are you sure you want to delete your account?", preferredStyle: .alert)
         confirmDeleteAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         confirmDeleteAlert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { action in
-            viewFunctions.formatProgressWheel(progressWheel: self.accountSettingsProgressWheel, button: nil, toShow: true)
+            viewFunctions.formatProgressWheel(progressWheel: self.accountSettingsProgressWheel, button: nil, toShow: true, hapticFeedback: false)
             firebaseFunctions.deleteAccount() { error in
                 if error == nil {
+                    viewFunctions.giveHapticFeedback(error: false, prefers: user.prefersHapticFeedback!)
                     self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
                 } else {
                     print("Could not delete account")
                 }
                 
-                viewFunctions.formatProgressWheel(progressWheel: self.accountSettingsProgressWheel, button: nil, toShow: false)
+                viewFunctions.formatProgressWheel(progressWheel: self.accountSettingsProgressWheel, button: nil, toShow: false, hapticFeedback: false)
             }
         }))
         

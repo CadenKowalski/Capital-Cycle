@@ -102,13 +102,10 @@ class StorePage: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     
     // Takes the user to the products respective website URL
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewFunctions.giveHapticFeedback(error: false, prefers: user.prefersHapticFeedback!)
         let websiteURL = URL(string: "\(websiteURLs[indexPath.row])")!
         let sVC = SFSafariViewController(url: websiteURL)
         present(sVC, animated: true, completion: nil)
-        if user.prefersHapticFeedback! {
-            let feedbackGenerator = UISelectionFeedbackGenerator()
-            feedbackGenerator.selectionChanged()
-        }
     }
 }
 

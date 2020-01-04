@@ -107,7 +107,7 @@ class OneMoreStep: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     
     // User agrees to privacy policy and terms of service
     @IBAction func agreeToPolicies(_ sender: UIButton) {
-        viewFunctions.giveHapticFeedback(error: false)
+        viewFunctions.giveHapticFeedback(error: false, prefers: true)
         if !Agree {
             Agree = true
             sender.setImage(UIImage(named: "Checked"), for: .normal)
@@ -119,7 +119,7 @@ class OneMoreStep: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     
     // Keep the user signed in or not
     @IBAction func keepSignedIn(_ sender: UIButton) {
-        viewFunctions.giveHapticFeedback(error: false)
+        viewFunctions.giveHapticFeedback(error: false, prefers: true)
         if !user.signedIn! {
             user.signedIn = true
             sender.setImage(UIImage(named: "Checked"), for: .normal)
@@ -163,7 +163,6 @@ class OneMoreStep: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         if user.type != FirebaseUser.type.none {
             userTypeLbl.backgroundColor = #colorLiteral(red: 0.75, green: 0.75, blue: 0.75, alpha: 1)
             userTypeLbl.alpha = 1.0
-            viewFunctions.giveHapticFeedback(error: false)
         }
     }
     
@@ -180,9 +179,9 @@ class OneMoreStep: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         } else if user.type == FirebaseUser.type.none && user.type != .admin {
             userTypeLbl.backgroundColor = .red
             userTypeLbl.alpha = 0.5
-            viewFunctions.giveHapticFeedback(error: true)
+            viewFunctions.giveHapticFeedback(error: true, prefers: true)
         } else {
-            viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: true)
+            viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: true, hapticFeedback: true)
             firebaseFunctions.getProfileImgUrl() { error in
                 if error == nil {
                     firebaseFunctions.manageUserData(dataValues: ["all"], newUser: true) { error in
@@ -195,15 +194,15 @@ class OneMoreStep: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
                                 self.performSegue(withIdentifier: "VerifiedUserFromApple", sender: nil)
                             }
                             
-                            viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: false)
+                            viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: false, hapticFeedback: false)
                         } else {
                             viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
-                            viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: false)
+                            viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: false, hapticFeedback: false)
                         }
                     }
                 } else {
                     viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
-                    viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: false)
+                    viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: false, hapticFeedback: false)
                 }
             }
         }

@@ -157,6 +157,7 @@ class SchedulePage: UIViewController {
     
     // Displays the daily spreadsheet data
     @objc func displayDailyData(Ticket: GTLRServiceTicket, finishedWithObject Result: GTLRSheets_ValueRange, Error: NSError?) {
+        viewFunctions.giveHapticFeedback(error: false, prefers: user.prefersHapticFeedback!)
         let activityLblList = [eightActivityLbl, nineActivityLbl, tenActivityLbl, elevenActivityLbl, twelveActivityLbl, oneActivityLbl, twoActivityLbl, threeActivityLbl, fourActivityLbl,fiveActivityLbl, sixActivityLbl, itemsLbl]
         if Reachability.isConnectedToNetwork() {
             weekActivitiesList = Result.values! as? [[String]]
@@ -231,15 +232,11 @@ class SchedulePage: UIViewController {
     
     // Switches between the overview and daily views
     @IBAction func switchViews(_ sender: CustomButton) {
+        viewFunctions.giveHapticFeedback(error: false, prefers: user.prefersHapticFeedback!)
         if overviewScrollView.isHidden {
             overviewScrollView.isHidden = false
         } else {
             overviewScrollView.isHidden = true
-        }
-        
-        if user.prefersHapticFeedback! {
-            let feedbackGenerator = UISelectionFeedbackGenerator()
-            feedbackGenerator.selectionChanged()
         }
     }
 
