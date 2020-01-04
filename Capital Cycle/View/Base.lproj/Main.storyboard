@@ -2122,7 +2122,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="logIn:" destination="v2Q-k5-Eoj" eventType="touchUpInside" id="NCM-6J-hec"/>
+                                    <action selector="verifyInputs" destination="v2Q-k5-Eoj" eventType="touchUpInside" id="On7-qo-Uc0"/>
                                 </connections>
                             </button>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="vM3-aN-snM">

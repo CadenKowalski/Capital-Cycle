@@ -196,16 +196,31 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
         
         resetPasswordAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         resetPasswordAlert.addAction(UIAlertAction(title: "Reset Password", style: .destructive, handler: { Action in
-            viewFunctions.formatProgressWheel(progressWheel: self.accountSettingsProgressWheel, button: nil, toShow: true, hapticFeedback: false)
-            firebaseFunctions.resetPassword(recoveryEmail: (resetPasswordAlert.textFields?.first!.text)!) { error in
-                if error == nil {
-                    viewFunctions.showAlert(title: "Success", message: "You have been sent a password reset email", actionTitle: "OK", actionStyle: .default, view: self)
-                } else {
-                    print("Could not reset password")
-                }
-                
-                viewFunctions.formatProgressWheel(progressWheel: self.accountSettingsProgressWheel, button: nil, toShow: false, hapticFeedback: false)
+            let enterPasswordAlert = UIAlertController(title: "Enter your password", message: nil, preferredStyle: .alert)
+            enterPasswordAlert.addTextField() { textField in
+                textField.placeholder = "Password"
+                textField.textContentType = .password
+                textField.font = UIFont(name: "Avenir-Book", size: 13.0)
             }
+            
+            enterPasswordAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+            enterPasswordAlert.addAction(UIAlertAction(title: "Done", style: .destructive, handler: { action in
+                let credential = EmailAuthProvider.credential(withEmail: user.email!, password: enterPasswordAlert.textFields!.first!.text!)
+                Auth.auth().currentUser?.reauthenticate(with: credential) { (authResult, error) in
+                    viewFunctions.formatProgressWheel(progressWheel: self.accountSettingsProgressWheel, button: nil, toShow: true, hapticFeedback: false)
+                    firebaseFunctions.resetPassword(recoveryEmail: (resetPasswordAlert.textFields?.first!.text)!) { error in
+                        if error == nil {
+                            viewFunctions.showAlert(title: "Success", message: "You have been sent a password reset email", actionTitle: "OK", actionStyle: .default, view: self)
+                        } else {
+                            print("Could not reset password")
+                        }
+                        
+                        viewFunctions.formatProgressWheel(progressWheel: self.accountSettingsProgressWheel, button: nil, toShow: false, hapticFeedback: false)
+                    }
+                }
+            }))
+            
+            self.present(enterPasswordAlert, animated: true, completion: nil)
         }))
         
         self.present(resetPasswordAlert, animated: true, completion: nil)
@@ -216,17 +231,32 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
         let confirmDeleteAlert = UIAlertController(title: "Confirm", message: "Are you sure you want to delete your account?", preferredStyle: .alert)
         confirmDeleteAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         confirmDeleteAlert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { action in
-            viewFunctions.formatProgressWheel(progressWheel: self.accountSettingsProgressWheel, button: nil, toShow: true, hapticFeedback: false)
-            firebaseFunctions.deleteAccount() { error in
-                if error == nil {
-                    viewFunctions.giveHapticFeedback(error: false, prefers: user.prefersHapticFeedback!)
-                    self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
-                } else {
-                    viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
-                }
-                
-                viewFunctions.formatProgressWheel(progressWheel: self.accountSettingsProgressWheel, button: nil, toShow: false, hapticFeedback: false)
+            let enterPasswordAlert = UIAlertController(title: "Enter your password", message: nil, preferredStyle: .alert)
+            enterPasswordAlert.addTextField() { textField in
+                textField.placeholder = "Password"
+                textField.textContentType = .password
+                textField.font = UIFont(name: "Avenir-Book", size: 13.0)
             }
+            
+            enterPasswordAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+            enterPasswordAlert.addAction(UIAlertAction(title: "Done", style: .destructive, handler: { action in
+                let credential = EmailAuthProvider.credential(withEmail: user.email!, password: enterPasswordAlert.textFields!.first!.text!)
+                Auth.auth().currentUser?.reauthenticate(with: credential) { (authResult, error) in
+                    viewFunctions.formatProgressWheel(progressWheel: self.accountSettingsProgressWheel, button: nil, toShow: true, hapticFeedback: false)
+                        firebaseFunctions.deleteAccount() { error in
+                            if error == nil {
+                                viewFunctions.giveHapticFeedback(error: false, prefers: user.prefersHapticFeedback!)
+                                self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+                            } else {
+                                viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
+                            }
+                            
+                            viewFunctions.formatProgressWheel(progressWheel: self.accountSettingsProgressWheel, button: nil, toShow: false, hapticFeedback: false)
+                        }
+                }
+            }))
+            
+            self.present(enterPasswordAlert, animated: true, completion: nil)
         }))
         
         self.present(confirmDeleteAlert, animated: true, completion: nil)

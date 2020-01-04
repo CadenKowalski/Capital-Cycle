@@ -82,23 +82,59 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
         // Formats the progress wheel
         logInBtnProgressWheel.isHidden = true
         
-        // Formats the Sign in with Apple button
-        let appleButton = ASAuthorizationAppleIDButton()
-        appleButton.addTarget(self, action: #selector(signInWithApple), for: .touchDown)
-        appleButton.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(appleButton)
+        // Formats the Continue with Apple Button
+        let continueWithAppleButton: ASAuthorizationAppleIDButton
+        if traitCollection.userInterfaceStyle == .light {
+            continueWithAppleButton = ASAuthorizationAppleIDButton(authorizationButtonType: .continue, authorizationButtonStyle: .black)
+        } else {
+            continueWithAppleButton = ASAuthorizationAppleIDButton(authorizationButtonType: .continue, authorizationButtonStyle: .white)
+        }
+        
+        continueWithAppleButton.addTarget(self, action: #selector(signInWithApple), for: .touchDown)
+        continueWithAppleButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(continueWithAppleButton)
         NSLayoutConstraint.activate([
-            appleButton.heightAnchor.constraint(equalToConstant: 32.5),
-            appleButton.topAnchor.constraint(equalTo: signUpBtn.bottomAnchor, constant: 8),
-            appleButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 60),
-            appleButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -60)
+            continueWithAppleButton.heightAnchor.constraint(equalToConstant: 32.5),
+            continueWithAppleButton.topAnchor.constraint(equalTo: logInBtn.bottomAnchor, constant: 8),
+            continueWithAppleButton.widthAnchor.constraint(equalToConstant: 140),
+            continueWithAppleButton.centerXAnchor.constraint(equalToSystemSpacingAfter: view.centerXAnchor, multiplier: 1.0)
         ])
+        
+        // Formats the Sign in with Apple button
+        let appleButton: ASAuthorizationAppleIDButton
+        if #available(iOS 13.2, *) {
+            if traitCollection.userInterfaceStyle == .light {
+                appleButton = ASAuthorizationAppleIDButton(authorizationButtonType: .signUp, authorizationButtonStyle: .black)
+            } else {
+                appleButton = ASAuthorizationAppleIDButton(authorizationButtonType: .signUp, authorizationButtonStyle: .white)
+            }
+            
+            appleButton.addTarget(self, action: #selector(signInWithApple), for: .touchDown)
+            appleButton.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(appleButton)
+            NSLayoutConstraint.activate([
+                appleButton.heightAnchor.constraint(equalToConstant: 32.5),
+                appleButton.topAnchor.constraint(equalTo: signUpBtn.bottomAnchor, constant: 8),
+                appleButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 60),
+                appleButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -60)
+            ])
+        }
     }
     
     // MARK: Log In
     
+    @IBAction func verifyInputs() {
+        if emailTxtField.text == "" {
+            viewFunctions.showAlert(title: "Uh oh", message: "Please enter a valid email adress", actionTitle: "OK", actionStyle: .default, view: self)
+        } else if passTxtField.text == "" {
+            viewFunctions.showAlert(title: "Uh oh", message: "Please enter a valid password ", actionTitle: "OK", actionStyle: .default, view: self)
+        } else {
+            logIn()
+        }
+    }
+    
     // Logs in the user
-    @IBAction func logIn(_ sender: CustomButton) {
+    func logIn() {
         viewFunctions.formatProgressWheel(progressWheel: logInBtnProgressWheel, button: logInBtn, toShow: true, hapticFeedback: false)
         user.email = emailTxtField.text!
         firebaseFunctions.fetchUserData(fetchValue: "all") { error in
@@ -221,7 +257,7 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
         currentNonce = nonce
         let appleIDProvider = ASAuthorizationAppleIDProvider()
         let request = appleIDProvider.createRequest()
-        request.requestedScopes = [.fullName, .email]
+        request.requestedScopes = [.email]
         request.nonce = sha256(nonce)
         let authorizationController = ASAuthorizationController(authorizationRequests: [request])
         authorizationController.delegate = self
@@ -246,10 +282,20 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
             let credential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString, rawNonce: nonce)
             Auth.auth().signIn(with: credential) { (authResult, error) in
                 if error == nil {
-                    user.email = appleIDCredential.email!
-                    user.uid = Auth.auth().currentUser!.uid
                     viewFunctions.giveHapticFeedback(error: false, prefers: true)
-                    self.performSegue(withIdentifier: "SignUpFromApple", sender: nil)
+                    user.email = Auth.auth().currentUser!.email
+                    user.uid = Auth.auth().currentUser!.uid
+                    if appleIDCredential.email != nil {
+                        self.performSegue(withIdentifier: "SignUpFromApple", sender: nil)
+                    } else {
+                        firebaseFunctions.fetchUserData(fetchValue: "all") { error in
+                            if error == nil {
+                                self.performSegue(withIdentifier: "LogIn", sender: nil)
+                            } else {
+                                viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
+                            }
+                        }
+                    }
                 } else {
                     viewFunctions.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default, view: self)
                     return
