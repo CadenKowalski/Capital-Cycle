@@ -2195,8 +2195,8 @@ A: We have a variety of games and books as well as a gym and playground to occup
                         <outlet property="signUpBtn" destination="Cix-0p-K7z" id="OsW-s6-h8r"/>
                         <segue destination="jM6-Kb-J6q" kind="presentation" identifier="LogIn" modalPresentationStyle="fullScreen" id="JVj-89-k2w"/>
                         <segue destination="jM6-Kb-J6q" kind="presentation" identifier="AlreadyLoggedIn" modalPresentationStyle="fullScreen" id="6V9-QI-sCX"/>
-                        <segue destination="abT-59-Ebp" kind="show" identifier="SignUpFromApple" id="Xyo-0x-swO"/>
                         <segue destination="mAf-zE-l5X" kind="show" identifier="UserNotVerifiedYet" id="D0e-sq-uIe"/>
+                        <segue destination="JRo-de-F7Z" kind="show" identifier="SignUpFromApple" id="yrQ-nI-E9y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2JP-Fh-IfX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2652,6 +2652,23 @@ A: We have a variety of games and books as well as a gym and playground to occup
             </objects>
             <point key="canvasLocation" x="-7" y="-582"/>
         </scene>
+        <!--Apple User Navigation Controller-->
+        <scene sceneID="wCM-Cm-1pa">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="JRo-de-F7Z" customClass="AppleUserNavigationController" customModule="Capital_Cycle" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Crk-yU-3WD"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hMO-s7-o7P">
+                        <rect key="frame" x="0.0" y="-54" width="0.0" height="0.0"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="abT-59-Ebp" kind="relationship" relationship="rootViewController" id="i8Y-HE-DYu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sql-TL-Qmx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="766" y="-582"/>
+        </scene>
         <!--One More Step-->
         <scene sceneID="uHh-CV-Tks">
             <objects>
@@ -2918,7 +2935,6 @@ A: We have a variety of games and books as well as a gym and playground to occup
                         <outlet property="userTypeLbl" destination="yii-bC-DGO" id="Jq6-Rc-Jf8"/>
                         <outlet property="userTypePickerView" destination="KYQ-0f-bN4" id="eJg-X9-JBt"/>
                         <segue destination="jM6-Kb-J6q" kind="presentation" identifier="VerifiedUserFromApple" modalPresentationStyle="fullScreen" id="uHf-Nt-zpe"/>
-                        <segue destination="jM6-Kb-J6q" kind="presentation" identifier="AppleAdmin" modalPresentationStyle="fullScreen" id="wg0-5Q-X08"/>
                         <segue destination="PqR-3q-0Zd" kind="show" identifier="VerifyCounselorFromApple" id="eec-PI-NOd"/>
                     </connections>
                 </viewController>
@@ -2934,7 +2950,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="765.60000000000002" y="-582.26600985221683"/>
+            <point key="canvasLocation" x="1502" y="-582"/>
         </scene>
         <!--User Navigation Controller-->
         <scene sceneID="hHi-TU-fIg">
@@ -3110,9 +3126,9 @@ A: We have a variety of games and books as well as a gym and playground to occup
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="D0e-sq-uIe"/>
-        <segue reference="HUH-zx-Kae"/>
+        <segue reference="eec-PI-NOd"/>
         <segue reference="nul-0X-SWa"/>
         <segue reference="u9a-Dv-dnR"/>
-        <segue reference="eIi-nP-8Bb"/>
+        <segue reference="uHf-Nt-zpe"/>
     </inferredMetricsTieBreakers>
 </document>

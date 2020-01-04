@@ -11,6 +11,7 @@
 		5700629B22E3BB590032EFAB /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5700629A22E3BB590032EFAB /* SignUp.swift */; };
 		571C2F3F22E41CB6001D4438 /* GeneralSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571C2F3E22E41CB6001D4438 /* GeneralSettings.swift */; };
 		576FCFB322E4B82F00C346E4 /* CamperInfoPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576FCFB222E4B82F00C346E4 /* CamperInfoPage.swift */; };
+		57713CAF23C023030039B347 /* AppleUserNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57713CAE23C023020039B347 /* AppleUserNavigationController.swift */; };
 		578AF9DC22D41F2E007B42A9 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578AF9DB22D41F2E007B42A9 /* Product.swift */; };
 		578AF9DE22D41FA0007B42A9 /* ProductData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578AF9DD22D41FA0007B42A9 /* ProductData.swift */; };
 		578AF9E022D4201E007B42A9 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578AF9DF22D4201E007B42A9 /* ProductCell.swift */; };
@@ -48,6 +49,7 @@
 		571C2F3E22E41CB6001D4438 /* GeneralSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettings.swift; sourceTree = "<group>"; };
 		573839E0239DDDB4006AB022 /* Capital Cycle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Capital Cycle.entitlements"; sourceTree = "<group>"; };
 		576FCFB222E4B82F00C346E4 /* CamperInfoPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CamperInfoPage.swift; path = "../../../../../../../System/Volumes/Data/Users/cadenkowalski/Desktop/Xcode Projects/Capital Cycle/Capital Cycle/Controller/CamperInfoPage.swift"; sourceTree = "<group>"; };
+		57713CAE23C023020039B347 /* AppleUserNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleUserNavigationController.swift; sourceTree = "<group>"; };
 		578AF9DB22D41F2E007B42A9 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		578AF9DD22D41FA0007B42A9 /* ProductData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductData.swift; sourceTree = "<group>"; };
 		578AF9DF22D4201E007B42A9 /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
@@ -180,8 +182,9 @@
 			isa = PBXGroup;
 			children = (
 				5700629822E3BB400032EFAB /* LogIn.swift */,
-				5700629A22E3BB590032EFAB /* SignUp.swift */,
+				57713CAE23C023020039B347 /* AppleUserNavigationController.swift */,
 				57E226F623B5428E007DF227 /* OneMoreStep.swift */,
+				5700629A22E3BB590032EFAB /* SignUp.swift */,
 				57CB68582306ECAC00570D86 /* UserNavigationController.swift */,
 				57AFA1AF22F77F5100C2988C /* VerifyUser.swift */,
 				57AFFD642300FAF000B6CD7B /* VerifyCounselor.swift */,
@@ -335,6 +338,7 @@
 				57DE34E223B2D19A00221F53 /* CustomUI.swift in Sources */,
 				5700629922E3BB400032EFAB /* LogIn.swift in Sources */,
 				57AFFD652300FAF000B6CD7B /* VerifyCounselor.swift in Sources */,
+				57713CAF23C023030039B347 /* AppleUserNavigationController.swift in Sources */,
 				57A3455822D2AA080070898F /* AppDelegate.swift in Sources */,
 				57A3455A22D2AA080070898F /* SceneDelegate.swift in Sources */,
 				576FCFB322E4B82F00C346E4 /* CamperInfoPage.swift in Sources */,

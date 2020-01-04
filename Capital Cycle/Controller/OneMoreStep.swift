@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class OneMoreStep: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class OneMoreStep: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIAdaptivePresentationControllerDelegate {
     
     // MARK: Global Variables
     
@@ -53,6 +53,9 @@ class OneMoreStep: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         // Formats the picker view
         userTypePickerView.delegate = self
         userTypePickerView.dataSource = self
+        
+        // Prevents the user from dismissing the view without deleting their account
+        isModalInPresentation = true
     }
     
     // MARK: View Management
@@ -181,30 +184,46 @@ class OneMoreStep: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
             userTypeLbl.alpha = 0.5
             viewFunctions.giveHapticFeedback(error: true, prefers: true)
         } else {
-            viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: true, hapticFeedback: true)
-            firebaseFunctions.getProfileImgUrl() { error in
+            signUp()
+        }
+    }
+    
+    // Signs up the user
+    func signUp() {
+        viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: true, hapticFeedback: true)
+        if user.type == .counselor {
+            self.performSegue(withIdentifier: "VerifyCounselorFromApple", sender: nil)
+            viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: false, hapticFeedback: false)
+        } else {
+            firebaseFunctions.manageUserData(dataValues: ["all"], newUser: true) { error in
                 if error == nil {
-                    firebaseFunctions.manageUserData(dataValues: ["all"], newUser: true) { error in
-                        if error == nil {
-                            if user.type == .counselor {
-                                self.performSegue(withIdentifier: "VerifyCounselorFromApple", sender: nil)
-                            } else if user.type == .admin {
-                                self.performSegue(withIdentifier: "AppleAdmin", sender: nil)
-                            } else {
-                                self.performSegue(withIdentifier: "VerifiedUserFromApple", sender: nil)
-                            }
-                            
-                            viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: false, hapticFeedback: false)
-                        } else {
-                            viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
-                            viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: false, hapticFeedback: false)
-                        }
-                    }
+                    self.performSegue(withIdentifier: "VerifiedUserFromApple", sender: nil)
                 } else {
                     viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
-                    viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: false, hapticFeedback: false)
                 }
+                
+                viewFunctions.formatProgressWheel(progressWheel: self.signUpBtnProgressWheel, button: self.signUpBtn, toShow: false, hapticFeedback: false)
             }
         }
+    }
+    
+    // MARK: Dismiss
+    
+    // Deletes the users account if they dismiss the OneMoreStep view
+    func presentationControllerDidAttemptToDismiss(_ presentationController: UIPresentationController) {
+        let Alert = UIAlertController(title: nil, message: "This action will delete your account. Are you sure you want to continue?", preferredStyle: .actionSheet)
+        Alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        Alert.addAction(UIAlertAction(title: "Delete my account", style: .destructive) { action in
+            Auth.auth().currentUser?.delete() { error in
+                if error == nil {
+                    viewFunctions.giveHapticFeedback(error: false, prefers: true)
+                    self.dismiss(animated: true, completion: nil)
+                } else {
+                    viewFunctions.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default, view: self)
+                }
+            }
+        })
+        
+        present(Alert, animated: true, completion: nil)
     }
 }

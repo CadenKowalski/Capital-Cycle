@@ -222,7 +222,7 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
                     viewFunctions.giveHapticFeedback(error: false, prefers: user.prefersHapticFeedback!)
                     self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
                 } else {
-                    print("Could not delete account")
+                    viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
                 }
                 
                 viewFunctions.formatProgressWheel(progressWheel: self.accountSettingsProgressWheel, button: nil, toShow: false, hapticFeedback: false)

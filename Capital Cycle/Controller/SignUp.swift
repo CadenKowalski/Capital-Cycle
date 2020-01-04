@@ -249,7 +249,6 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
                 if error == nil {
                     firebaseFunctions.manageUserData(dataValues: ["all"], newUser: true) { error in
                         if error == nil {
-                            viewFunctions.giveHapticFeedback(error: false, prefers: true)
                             if user.type == .admin {
                                 self.performSegue(withIdentifier: "Admin", sender: nil)
                             } else {
