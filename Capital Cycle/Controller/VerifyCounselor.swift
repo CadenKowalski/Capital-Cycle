@@ -66,7 +66,7 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate {
                     if error == nil {
                         firebaseFunctions.manageUserData(dataValues: ["all"], newUser: true) { error in
                             if error == nil {
-                                viewFunctions.giveHapticFeedback(error: false, prefers: true)
+                                user.authenticationMethod = "Email"
                                 self.performSegue(withIdentifier: "VerifiedCounselor", sender: nil)
                             } else {
                                 viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)

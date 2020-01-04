@@ -1179,7 +1179,7 @@ Phone: 202.288.5245</string>
                                     <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="deleteAccount:" destination="D9c-sc-o2H" eventType="touchUpInside" id="UhA-3s-XXU"/>
+                                    <action selector="getAuthorization:" destination="D9c-sc-o2H" eventType="touchUpInside" id="UhA-3s-XXU"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aBH-zv-Xul">
@@ -3125,10 +3125,10 @@ A: We have a variety of games and books as well as a gym and playground to occup
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="A25-06-JRb"/>
+        <segue reference="D0e-sq-uIe"/>
         <segue reference="ccM-UG-piO"/>
         <segue reference="nul-0X-SWa"/>
         <segue reference="u9a-Dv-dnR"/>
-        <segue reference="eIi-nP-8Bb"/>
+        <segue reference="JVj-89-k2w"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -250,6 +250,7 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
                     firebaseFunctions.manageUserData(dataValues: ["all"], newUser: true) { error in
                         if error == nil {
                             if user.type == .admin {
+                                user.authenticationMethod = "Email"
                                 self.performSegue(withIdentifier: "Admin", sender: nil)
                             } else {
                                 Auth.auth().currentUser!.sendEmailVerification()

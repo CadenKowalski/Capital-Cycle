@@ -72,6 +72,7 @@ class VerifyUser: UIViewController, UIAdaptivePresentationControllerDelegate {
         viewFunctions.formatProgressWheel(progressWheel: signUpBtnProgressWheel, button: signUpBtn, toShow: true, hapticFeedback: true)
         firebaseFunctions.fetchUserData(fetchValue: "all") { error in
             if error == nil {
+                user.authenticationMethod = "Email"
                 self.performSegue(withIdentifier: "VerifiedUser", sender: nil)
             } else {
                 viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)

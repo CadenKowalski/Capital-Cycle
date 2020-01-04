@@ -17,6 +17,7 @@ var camperInfo: [[String]]!
 let collectionRef = Firestore.firestore().collection("Users")
 let firebaseFunctions = FirebaseFunctions()
 let viewFunctions = ViewFunctions()
+let authenticationFunctions = AuthenticationFunctions()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

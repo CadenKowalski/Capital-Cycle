@@ -18,6 +18,7 @@ struct FirebaseUser {
     var prefersHapticFeedback: Bool!
     var prefersNotifications: Bool!
     var isCounselorVerified: Bool!
+    var authenticationMethod: String!
     
     enum type {
         case none
@@ -37,5 +38,6 @@ struct FirebaseUser {
         self.prefersHapticFeedback = true
         self.prefersNotifications = true
         self.isCounselorVerified = false
+        self.authenticationMethod = ""
     }
 }

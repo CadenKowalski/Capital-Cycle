@@ -8,7 +8,6 @@
 
 import UIKit
 import Firebase
-import CryptoKit
 import AuthenticationServices
 
 class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
@@ -91,10 +90,11 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
         }
         
         continueWithAppleButton.addTarget(self, action: #selector(signInWithApple), for: .touchDown)
+        continueWithAppleButton.cornerRadius = 22.5
         continueWithAppleButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(continueWithAppleButton)
         NSLayoutConstraint.activate([
-            continueWithAppleButton.heightAnchor.constraint(equalToConstant: 32.5),
+            continueWithAppleButton.heightAnchor.constraint(equalToConstant: 45),
             continueWithAppleButton.topAnchor.constraint(equalTo: logInBtn.bottomAnchor, constant: 8),
             continueWithAppleButton.widthAnchor.constraint(equalToConstant: 140),
             continueWithAppleButton.centerXAnchor.constraint(equalToSystemSpacingAfter: view.centerXAnchor, multiplier: 1.0)
@@ -209,56 +209,15 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
     
     // MARK: Sign In With Apple
     
-    // Generates a random string of characters
-    func randomNonceString(length: Int = 32) -> String {
-        precondition(length > 0)
-        let charset: Array<Character> = Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
-        var result = ""
-        var remainingLength = length
-        while remainingLength > 0 {
-            let randoms: [UInt8] = (0 ..< 16).map { _ in
-                var random: UInt8 = 0
-                let errorCode = SecRandomCopyBytes(kSecRandomDefault, 1, &random)
-                if errorCode != errSecSuccess {
-                    fatalError("Unable to generate nonce. SecRandomCopyBytes failed with OSStatus \(errorCode)")
-                }
-                return random
-            }
-            
-            randoms.forEach { random in
-                if length == 0 {
-                    return
-                }
-                
-                if random < charset.count {
-                    result.append(charset[Int(random)])
-                    remainingLength -= 1
-                }
-            }
-        }
-        
-        return result
-    }
-    
-    // Encrypts a string of characters
-    func sha256(_ input: String) -> String {
-        let inputData = Data(input.utf8)
-        let hashedData = SHA256.hash(data: inputData)
-        let hashString = hashedData.compactMap {
-            return String(format: "%02x", $0)
-        }.joined()
-        
-        return hashString
-    }
-    
-    // Presents the Sign in with Apple view
+    // Presents the authorization controller
     @objc func signInWithApple() {
-        let nonce = randomNonceString()
+        let nonce = authenticationFunctions.randomNonceString()
         currentNonce = nonce
         let appleIDProvider = ASAuthorizationAppleIDProvider()
         let request = appleIDProvider.createRequest()
         request.requestedScopes = [.email]
-        request.nonce = sha256(nonce)
+        request.requestedOperation = .operationLogin
+        request.nonce = authenticationFunctions.sha256(nonce)
         let authorizationController = ASAuthorizationController(authorizationRequests: [request])
         authorizationController.delegate = self
         authorizationController.presentationContextProvider = self
@@ -285,6 +244,7 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
                     viewFunctions.giveHapticFeedback(error: false, prefers: true)
                     user.email = Auth.auth().currentUser!.email
                     user.uid = Auth.auth().currentUser!.uid
+                    user.authenticationMethod = "Apple"
                     if appleIDCredential.email != nil {
                         self.performSegue(withIdentifier: "SignUpFromApple", sender: nil)
                     } else {

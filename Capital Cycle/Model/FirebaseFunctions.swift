@@ -110,7 +110,7 @@ struct FirebaseFunctions {
             collectionRef.document(user.email!).setData(["email": user.email!])
         }
         
-        let values: [String: Any] = ["type": user.type!, "signedIn": user.signedIn!, "profileImgUrl": user.profileImgUrl!, "prefersNotifications": user.prefersNotifications!, "prefersHapticFeedback": user.prefersHapticFeedback!, "isCounselorVerified": user.isCounselorVerified!]
+        let values: [String: Any] = ["type": user.type!, "signedIn": user.signedIn!, "profileImgUrl": user.profileImgUrl!, "prefersNotifications": user.prefersNotifications!, "prefersHapticFeedback": user.prefersHapticFeedback!, "isCounselorVerified": user.isCounselorVerified!, "authenticationMethod": user.authenticationMethod!]
         for value in dataValues {
             switch value {
             case "type":
@@ -205,6 +205,7 @@ struct FirebaseFunctions {
                             user.prefersNotifications = document?.get("prefersNotifications") as? Bool
                             user.prefersHapticFeedback = document?.get("prefersHapticFeedback") as? Bool
                             user.isCounselorVerified = document?.get("isCounselorVerified") as? Bool
+                            user.authenticationMethod = document?.get("authenticationMethod") as? String
                             user.type = self.userTypeFromString(userTypeString: document?.get("type") as! String)
                             if user.profileImgUrl == "Default" {
                                 user.profileImg = UIImage(systemName: "person.circle")
