@@ -39,6 +39,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // Called as the scene transitions from the background to the foreground.
     func sceneWillEnterForeground(_ scene: UIScene) {
         // Use this method to undo the changes made on entering the background.
+        
+        if Reachability.isConnectedToNetwork() {
+            googleFunctions.unsecureFetchDataWithConnection()
+        } else {
+            googleFunctions.fetchDataWithoutConnection()
+        }
     }
 
     // Called as the scene transitions from the foreground to the background.

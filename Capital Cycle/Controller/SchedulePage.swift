@@ -185,7 +185,7 @@ class SchedulePage: UIViewController {
     
     // Fetches updated spreadsheet data
     func fetchScheduleData() {
-        googleFunctions.unsecureFetchData()
+        googleFunctions.unsecureFetchDataWithConnection()
         formatDailyData()
         formatOverviewData()
     }

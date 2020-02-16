@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="v2Q-k5-Eoj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="v2Q-k5-Eoj">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -366,7 +366,7 @@ Phone: 202.288.5245</string>
                                 <rect key="frame" x="0.0" y="110" width="414" height="756"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n5w-1x-fUR" userLabel="Scroll View Display">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="900"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="678"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="asp-o6-c41" userLabel="Day Lbl">
                                                 <rect key="frame" x="189" y="0.0" width="36" height="28"/>
@@ -664,7 +664,7 @@ Phone: 202.288.5245</string>
                                             <constraint firstItem="YKZ-ur-20S" firstAttribute="trailing" secondItem="KGt-jH-Zfr" secondAttribute="trailing" constant="8" id="tTe-mG-rEg"/>
                                             <constraint firstItem="14S-6m-x47" firstAttribute="leading" secondItem="YKZ-ur-20S" secondAttribute="leading" constant="16" id="tmB-fQ-Dfv"/>
                                             <constraint firstItem="Q5u-fA-xFm" firstAttribute="top" secondItem="AnL-oW-lHu" secondAttribute="bottom" constant="30" id="uhp-7l-GxW"/>
-                                            <constraint firstItem="Q5u-fA-xFm" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="YKZ-ur-20S" secondAttribute="bottom" constant="-32" id="xLR-co-cst"/>
+                                            <constraint firstItem="Q5u-fA-xFm" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="YKZ-ur-20S" secondAttribute="bottom" constant="-32" id="xLR-co-cst"/>
                                             <constraint firstItem="bTA-Hq-0Dx" firstAttribute="trailing" secondItem="YKZ-ur-20S" secondAttribute="trailing" constant="-8" id="z4E-Ld-ceF"/>
                                             <constraint firstItem="0Mq-iy-g5m" firstAttribute="leading" secondItem="YKZ-ur-20S" secondAttribute="leading" constant="16" id="zZi-CJ-ErD"/>
                                         </constraints>
@@ -693,7 +693,7 @@ Phone: 202.288.5245</string>
                                                             <constraint firstAttribute="width" constant="20" id="Cf0-5i-IkZ"/>
                                                             <constraint firstAttribute="height" constant="28" id="PRL-px-0sW"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
+                                                        <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="20"/>
                                                         <color key="textColor" name="LabelColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -703,7 +703,7 @@ Phone: 202.288.5245</string>
                                                             <constraint firstAttribute="height" constant="28" id="k7c-kL-FUK"/>
                                                             <constraint firstAttribute="width" constant="15" id="wvO-Se-In6"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
+                                                        <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="20"/>
                                                         <color key="textColor" name="LabelColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -713,7 +713,7 @@ Phone: 202.288.5245</string>
                                                             <constraint firstAttribute="width" constant="20" id="Wky-5R-bhp"/>
                                                             <constraint firstAttribute="height" constant="28" id="rYc-P7-7OY"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
+                                                        <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="20"/>
                                                         <color key="textColor" name="LabelColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -723,7 +723,7 @@ Phone: 202.288.5245</string>
                                                             <constraint firstAttribute="height" constant="28" id="TYk-x1-lJa"/>
                                                             <constraint firstAttribute="width" constant="23" id="nO9-kf-ZdX"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
+                                                        <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="20"/>
                                                         <color key="textColor" name="LabelColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -733,7 +733,7 @@ Phone: 202.288.5245</string>
                                                             <constraint firstAttribute="height" constant="28" id="3r3-de-uBU"/>
                                                             <constraint firstAttribute="width" constant="15" id="P0i-Vn-xkx"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
+                                                        <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="20"/>
                                                         <color key="textColor" name="LabelColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -2492,7 +2492,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                         <fragment content="Privacy Policy">
                                             <attributes>
                                                 <color key="NSColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <font key="NSFont" metaFont="system" size="10"/>
+                                                <font key="NSFont" metaFont="label"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 <integer key="NSUnderline" value="1"/>
                                             </attributes>
@@ -2811,7 +2811,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                         <fragment content="Privacy Policy">
                                             <attributes>
                                                 <color key="NSColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <font key="NSFont" metaFont="system" size="10"/>
+                                                <font key="NSFont" metaFont="label"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 <integer key="NSUnderline" value="1"/>
                                             </attributes>
@@ -3127,8 +3127,8 @@ A: We have a variety of games and books as well as a gym and playground to occup
     <inferredMetricsTieBreakers>
         <segue reference="D0e-sq-uIe"/>
         <segue reference="ccM-UG-piO"/>
-        <segue reference="nul-0X-SWa"/>
-        <segue reference="u9a-Dv-dnR"/>
+        <segue reference="uwW-YV-dra"/>
+        <segue reference="CFn-zx-hpt"/>
         <segue reference="JVj-89-k2w"/>
     </inferredMetricsTieBreakers>
 </document>
