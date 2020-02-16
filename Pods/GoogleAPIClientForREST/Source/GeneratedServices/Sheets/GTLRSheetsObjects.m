@@ -18,6 +18,11 @@ NSString * const kGTLRSheets_AppendDimensionRequest_Dimension_Columns = @"COLUMN
 NSString * const kGTLRSheets_AppendDimensionRequest_Dimension_DimensionUnspecified = @"DIMENSION_UNSPECIFIED";
 NSString * const kGTLRSheets_AppendDimensionRequest_Dimension_Rows = @"ROWS";
 
+// GTLRSheets_BaselineValueFormat.comparisonType
+NSString * const kGTLRSheets_BaselineValueFormat_ComparisonType_AbsoluteDifference = @"ABSOLUTE_DIFFERENCE";
+NSString * const kGTLRSheets_BaselineValueFormat_ComparisonType_ComparisonTypeUndefined = @"COMPARISON_TYPE_UNDEFINED";
+NSString * const kGTLRSheets_BaselineValueFormat_ComparisonType_PercentageDifference = @"PERCENTAGE_DIFFERENCE";
+
 // GTLRSheets_BasicChartAxis.position
 NSString * const kGTLRSheets_BasicChartAxis_Position_BasicChartAxisPositionUnspecified = @"BASIC_CHART_AXIS_POSITION_UNSPECIFIED";
 NSString * const kGTLRSheets_BasicChartAxis_Position_BottomAxis = @"BOTTOM_AXIS";
@@ -203,6 +208,18 @@ NSString * const kGTLRSheets_ChartSpec_HiddenDimensionStrategy_ShowAll = @"SHOW_
 NSString * const kGTLRSheets_ChartSpec_HiddenDimensionStrategy_SkipHiddenColumns = @"SKIP_HIDDEN_COLUMNS";
 NSString * const kGTLRSheets_ChartSpec_HiddenDimensionStrategy_SkipHiddenRows = @"SKIP_HIDDEN_ROWS";
 NSString * const kGTLRSheets_ChartSpec_HiddenDimensionStrategy_SkipHiddenRowsAndColumns = @"SKIP_HIDDEN_ROWS_AND_COLUMNS";
+
+// GTLRSheets_ColorStyle.themeColor
+NSString * const kGTLRSheets_ColorStyle_ThemeColor_Accent1     = @"ACCENT1";
+NSString * const kGTLRSheets_ColorStyle_ThemeColor_Accent2     = @"ACCENT2";
+NSString * const kGTLRSheets_ColorStyle_ThemeColor_Accent3     = @"ACCENT3";
+NSString * const kGTLRSheets_ColorStyle_ThemeColor_Accent4     = @"ACCENT4";
+NSString * const kGTLRSheets_ColorStyle_ThemeColor_Accent5     = @"ACCENT5";
+NSString * const kGTLRSheets_ColorStyle_ThemeColor_Accent6     = @"ACCENT6";
+NSString * const kGTLRSheets_ColorStyle_ThemeColor_Background  = @"BACKGROUND";
+NSString * const kGTLRSheets_ColorStyle_ThemeColor_Link        = @"LINK";
+NSString * const kGTLRSheets_ColorStyle_ThemeColor_Text        = @"TEXT";
+NSString * const kGTLRSheets_ColorStyle_ThemeColor_ThemeColorTypeUnspecified = @"THEME_COLOR_TYPE_UNSPECIFIED";
 
 // GTLRSheets_ConditionValue.relativeDate
 NSString * const kGTLRSheets_ConditionValue_RelativeDate_PastMonth = @"PAST_MONTH";
@@ -414,10 +431,30 @@ NSString * const kGTLRSheets_PivotValue_SummarizeFunction_Sum  = @"SUM";
 NSString * const kGTLRSheets_PivotValue_SummarizeFunction_Var  = @"VAR";
 NSString * const kGTLRSheets_PivotValue_SummarizeFunction_Varp = @"VARP";
 
+// GTLRSheets_ScorecardChartSpec.aggregateType
+NSString * const kGTLRSheets_ScorecardChartSpec_AggregateType_Average = @"AVERAGE";
+NSString * const kGTLRSheets_ScorecardChartSpec_AggregateType_ChartAggregateTypeUnspecified = @"CHART_AGGREGATE_TYPE_UNSPECIFIED";
+NSString * const kGTLRSheets_ScorecardChartSpec_AggregateType_Count = @"COUNT";
+NSString * const kGTLRSheets_ScorecardChartSpec_AggregateType_Max = @"MAX";
+NSString * const kGTLRSheets_ScorecardChartSpec_AggregateType_Median = @"MEDIAN";
+NSString * const kGTLRSheets_ScorecardChartSpec_AggregateType_Min = @"MIN";
+NSString * const kGTLRSheets_ScorecardChartSpec_AggregateType_Sum = @"SUM";
+
+// GTLRSheets_ScorecardChartSpec.numberFormatSource
+NSString * const kGTLRSheets_ScorecardChartSpec_NumberFormatSource_ChartNumberFormatSourceUndefined = @"CHART_NUMBER_FORMAT_SOURCE_UNDEFINED";
+NSString * const kGTLRSheets_ScorecardChartSpec_NumberFormatSource_Custom = @"CUSTOM";
+NSString * const kGTLRSheets_ScorecardChartSpec_NumberFormatSource_FromData = @"FROM_DATA";
+
 // GTLRSheets_SheetProperties.sheetType
 NSString * const kGTLRSheets_SheetProperties_SheetType_Grid    = @"GRID";
 NSString * const kGTLRSheets_SheetProperties_SheetType_Object  = @"OBJECT";
 NSString * const kGTLRSheets_SheetProperties_SheetType_SheetTypeUnspecified = @"SHEET_TYPE_UNSPECIFIED";
+
+// GTLRSheets_SlicerSpec.horizontalAlignment
+NSString * const kGTLRSheets_SlicerSpec_HorizontalAlignment_Center = @"CENTER";
+NSString * const kGTLRSheets_SlicerSpec_HorizontalAlignment_HorizontalAlignUnspecified = @"HORIZONTAL_ALIGN_UNSPECIFIED";
+NSString * const kGTLRSheets_SlicerSpec_HorizontalAlignment_Left = @"LEFT";
+NSString * const kGTLRSheets_SlicerSpec_HorizontalAlignment_Right = @"RIGHT";
 
 // GTLRSheets_SortSpec.sortOrder
 NSString * const kGTLRSheets_SortSpec_SortOrder_Ascending      = @"ASCENDING";
@@ -449,6 +486,18 @@ NSString * const kGTLRSheets_TextToColumnsRequest_DelimiterType_DelimiterTypeUns
 NSString * const kGTLRSheets_TextToColumnsRequest_DelimiterType_Period = @"PERIOD";
 NSString * const kGTLRSheets_TextToColumnsRequest_DelimiterType_Semicolon = @"SEMICOLON";
 NSString * const kGTLRSheets_TextToColumnsRequest_DelimiterType_Space = @"SPACE";
+
+// GTLRSheets_ThemeColorPair.colorType
+NSString * const kGTLRSheets_ThemeColorPair_ColorType_Accent1  = @"ACCENT1";
+NSString * const kGTLRSheets_ThemeColorPair_ColorType_Accent2  = @"ACCENT2";
+NSString * const kGTLRSheets_ThemeColorPair_ColorType_Accent3  = @"ACCENT3";
+NSString * const kGTLRSheets_ThemeColorPair_ColorType_Accent4  = @"ACCENT4";
+NSString * const kGTLRSheets_ThemeColorPair_ColorType_Accent5  = @"ACCENT5";
+NSString * const kGTLRSheets_ThemeColorPair_ColorType_Accent6  = @"ACCENT6";
+NSString * const kGTLRSheets_ThemeColorPair_ColorType_Background = @"BACKGROUND";
+NSString * const kGTLRSheets_ThemeColorPair_ColorType_Link     = @"LINK";
+NSString * const kGTLRSheets_ThemeColorPair_ColorType_Text     = @"TEXT";
+NSString * const kGTLRSheets_ThemeColorPair_ColorType_ThemeColorTypeUnspecified = @"THEME_COLOR_TYPE_UNSPECIFIED";
 
 // GTLRSheets_ValueRange.majorDimension
 NSString * const kGTLRSheets_ValueRange_MajorDimension_Columns = @"COLUMNS";
@@ -620,6 +669,26 @@ NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_WaterfallStackedType
 
 // ----------------------------------------------------------------------------
 //
+//   GTLRSheets_AddSlicerRequest
+//
+
+@implementation GTLRSheets_AddSlicerRequest
+@dynamic slicer;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLRSheets_AddSlicerResponse
+//
+
+@implementation GTLRSheets_AddSlicerResponse
+@dynamic slicer;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
 //   GTLRSheets_AppendCellsRequest
 //
 
@@ -698,6 +767,22 @@ NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_WaterfallStackedType
 
 // ----------------------------------------------------------------------------
 //
+//   GTLRSheets_BaselineValueFormat
+//
+
+@implementation GTLRSheets_BaselineValueFormat
+@dynamic comparisonType, descriptionProperty, negativeColor, negativeColorStyle,
+         position, positiveColor, positiveColorStyle, textFormat;
+
++ (NSDictionary<NSString *, NSString *> *)propertyToJSONKeyMap {
+  return @{ @"descriptionProperty" : @"description" };
+}
+
+@end
+
+
+// ----------------------------------------------------------------------------
+//
 //   GTLRSheets_BasicChartAxis
 //
 
@@ -722,7 +807,7 @@ NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_WaterfallStackedType
 //
 
 @implementation GTLRSheets_BasicChartSeries
-@dynamic color, lineStyle, series, targetAxis, type;
+@dynamic color, colorStyle, lineStyle, series, targetAxis, type;
 @end
 
 
@@ -1073,9 +1158,9 @@ NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_WaterfallStackedType
 //
 
 @implementation GTLRSheets_BubbleChartSpec
-@dynamic bubbleBorderColor, bubbleLabels, bubbleMaxRadiusSize,
-         bubbleMinRadiusSize, bubbleOpacity, bubbleSizes, bubbleTextStyle,
-         domain, groupIds, legendPosition, series;
+@dynamic bubbleBorderColor, bubbleBorderColorStyle, bubbleLabels,
+         bubbleMaxRadiusSize, bubbleMinRadiusSize, bubbleOpacity, bubbleSizes,
+         bubbleTextStyle, domain, groupIds, legendPosition, series;
 @end
 
 
@@ -1171,6 +1256,16 @@ NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_WaterfallStackedType
 
 // ----------------------------------------------------------------------------
 //
+//   GTLRSheets_ChartCustomNumberFormatOptions
+//
+
+@implementation GTLRSheets_ChartCustomNumberFormatOptions
+@dynamic prefix, suffix;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
 //   GTLRSheets_ChartData
 //
 
@@ -1203,9 +1298,10 @@ NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_WaterfallStackedType
 //
 
 @implementation GTLRSheets_ChartSpec
-@dynamic altText, backgroundColor, basicChart, bubbleChart, candlestickChart,
-         fontName, hiddenDimensionStrategy, histogramChart, maximized, orgChart,
-         pieChart, subtitle, subtitleTextFormat, subtitleTextPosition, title,
+@dynamic altText, backgroundColor, backgroundColorStyle, basicChart,
+         bubbleChart, candlestickChart, fontName, hiddenDimensionStrategy,
+         histogramChart, maximized, orgChart, pieChart, scorecardChart,
+         subtitle, subtitleTextFormat, subtitleTextPosition, title,
          titleTextFormat, titleTextPosition, treemapChart, waterfallChart;
 @end
 
@@ -1246,6 +1342,16 @@ NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_WaterfallStackedType
 
 @implementation GTLRSheets_Color
 @dynamic alpha, blue, green, red;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLRSheets_ColorStyle
+//
+
+@implementation GTLRSheets_ColorStyle
+@dynamic rgbColor, themeColor;
 @end
 
 
@@ -1733,7 +1839,8 @@ NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_WaterfallStackedType
 //
 
 @implementation GTLRSheets_FilterCriteria
-@dynamic condition, hiddenValues;
+@dynamic condition, hiddenValues, visibleBackgroundColor,
+         visibleForegroundColor;
 
 + (NSDictionary<NSString *, Class> *)arrayPropertyToClassMap {
   NSDictionary<NSString *, Class> *map = @{
@@ -1913,7 +2020,7 @@ NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_WaterfallStackedType
 //
 
 @implementation GTLRSheets_HistogramSeries
-@dynamic barColor, data;
+@dynamic barColor, barColorStyle, data;
 @end
 
 
@@ -1954,6 +2061,16 @@ NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_WaterfallStackedType
 
 @implementation GTLRSheets_IterativeCalculationSettings
 @dynamic convergenceThreshold, maxIterations;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLRSheets_KeyValueFormat
+//
+
+@implementation GTLRSheets_KeyValueFormat
+@dynamic position, textFormat;
 @end
 
 
@@ -2085,7 +2202,8 @@ NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_WaterfallStackedType
 //
 
 @implementation GTLRSheets_OrgChartSpec
-@dynamic labels, nodeColor, nodeSize, parentLabels, selectedNodeColor, tooltips;
+@dynamic labels, nodeColor, nodeColorStyle, nodeSize, parentLabels,
+         selectedNodeColor, selectedNodeColorStyle, tooltips;
 @end
 
 
@@ -2299,21 +2417,21 @@ NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_WaterfallStackedType
 
 @implementation GTLRSheets_Request
 @dynamic addBanding, addChart, addConditionalFormatRule, addDimensionGroup,
-         addFilterView, addNamedRange, addProtectedRange, addSheet, appendCells,
-         appendDimension, autoFill, autoResizeDimensions, clearBasicFilter,
-         copyPaste, createDeveloperMetadata, cutPaste, deleteBanding,
-         deleteConditionalFormatRule, deleteDeveloperMetadata, deleteDimension,
-         deleteDimensionGroup, deleteDuplicates, deleteEmbeddedObject,
-         deleteFilterView, deleteNamedRange, deleteProtectedRange, deleteRange,
-         deleteSheet, duplicateFilterView, duplicateSheet, findReplace,
-         insertDimension, insertRange, mergeCells, moveDimension, pasteData,
-         randomizeRange, repeatCell, setBasicFilter, setDataValidation,
-         sortRange, textToColumns, trimWhitespace, unmergeCells, updateBanding,
-         updateBorders, updateCells, updateChartSpec,
-         updateConditionalFormatRule, updateDeveloperMetadata,
+         addFilterView, addNamedRange, addProtectedRange, addSheet, addSlicer,
+         appendCells, appendDimension, autoFill, autoResizeDimensions,
+         clearBasicFilter, copyPaste, createDeveloperMetadata, cutPaste,
+         deleteBanding, deleteConditionalFormatRule, deleteDeveloperMetadata,
+         deleteDimension, deleteDimensionGroup, deleteDuplicates,
+         deleteEmbeddedObject, deleteFilterView, deleteNamedRange,
+         deleteProtectedRange, deleteRange, deleteSheet, duplicateFilterView,
+         duplicateSheet, findReplace, insertDimension, insertRange, mergeCells,
+         moveDimension, pasteData, randomizeRange, repeatCell, setBasicFilter,
+         setDataValidation, sortRange, textToColumns, trimWhitespace,
+         unmergeCells, updateBanding, updateBorders, updateCells,
+         updateChartSpec, updateConditionalFormatRule, updateDeveloperMetadata,
          updateDimensionGroup, updateDimensionProperties,
          updateEmbeddedObjectPosition, updateFilterView, updateNamedRange,
-         updateProtectedRange, updateSheetProperties,
+         updateProtectedRange, updateSheetProperties, updateSlicerSpec,
          updateSpreadsheetProperties;
 @end
 
@@ -2325,7 +2443,7 @@ NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_WaterfallStackedType
 
 @implementation GTLRSheets_Response
 @dynamic addBanding, addChart, addDimensionGroup, addFilterView, addNamedRange,
-         addProtectedRange, addSheet, createDeveloperMetadata,
+         addProtectedRange, addSheet, addSlicer, createDeveloperMetadata,
          deleteConditionalFormatRule, deleteDeveloperMetadata,
          deleteDimensionGroup, deleteDuplicates, duplicateFilterView,
          duplicateSheet, findReplace, trimWhitespace,
@@ -2349,6 +2467,18 @@ NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_WaterfallStackedType
   return map;
 }
 
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLRSheets_ScorecardChartSpec
+//
+
+@implementation GTLRSheets_ScorecardChartSpec
+@dynamic aggregateType, baselineValueData, baselineValueFormat,
+         customFormatOptions, keyValueData, keyValueFormat, numberFormatSource,
+         scaleFactor;
 @end
 
 
@@ -2416,7 +2546,7 @@ NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_WaterfallStackedType
 @implementation GTLRSheets_Sheet
 @dynamic bandedRanges, basicFilter, charts, columnGroups, conditionalFormats,
          data, developerMetadata, filterViews, merges, properties,
-         protectedRanges, rowGroups;
+         protectedRanges, rowGroups, slicers;
 
 + (NSDictionary<NSString *, Class> *)arrayPropertyToClassMap {
   NSDictionary<NSString *, Class> *map = @{
@@ -2429,7 +2559,8 @@ NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_WaterfallStackedType
     @"filterViews" : [GTLRSheets_FilterView class],
     @"merges" : [GTLRSheets_GridRange class],
     @"protectedRanges" : [GTLRSheets_ProtectedRange class],
-    @"rowGroups" : [GTLRSheets_DimensionGroup class]
+    @"rowGroups" : [GTLRSheets_DimensionGroup class],
+    @"slicers" : [GTLRSheets_Slicer class]
   };
   return map;
 }
@@ -2445,6 +2576,27 @@ NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_WaterfallStackedType
 @implementation GTLRSheets_SheetProperties
 @dynamic gridProperties, hidden, index, rightToLeft, sheetId, sheetType,
          tabColor, title;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLRSheets_Slicer
+//
+
+@implementation GTLRSheets_Slicer
+@dynamic position, slicerId, spec;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLRSheets_SlicerSpec
+//
+
+@implementation GTLRSheets_SlicerSpec
+@dynamic applyToPivotTables, backgroundColor, columnIndex, dataRange,
+         filterCriteria, horizontalAlignment, textFormat, title;
 @end
 
 
@@ -2472,7 +2624,7 @@ NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_WaterfallStackedType
 //
 
 @implementation GTLRSheets_SortSpec
-@dynamic dimensionIndex, sortOrder;
+@dynamic backgroundColor, dimensionIndex, foregroundColor, sortOrder;
 @end
 
 
@@ -2514,7 +2666,25 @@ NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_WaterfallStackedType
 
 @implementation GTLRSheets_SpreadsheetProperties
 @dynamic autoRecalc, defaultFormat, iterativeCalculationSettings, locale,
-         timeZone, title;
+         spreadsheetTheme, timeZone, title;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
+//   GTLRSheets_SpreadsheetTheme
+//
+
+@implementation GTLRSheets_SpreadsheetTheme
+@dynamic primaryFontFamily, themeColors;
+
++ (NSDictionary<NSString *, Class> *)arrayPropertyToClassMap {
+  NSDictionary<NSString *, Class> *map = @{
+    @"themeColors" : [GTLRSheets_ThemeColorPair class]
+  };
+  return map;
+}
+
 @end
 
 
@@ -2571,11 +2741,22 @@ NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_WaterfallStackedType
 
 // ----------------------------------------------------------------------------
 //
+//   GTLRSheets_ThemeColorPair
+//
+
+@implementation GTLRSheets_ThemeColorPair
+@dynamic color, colorType;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
 //   GTLRSheets_TreemapChartColorScale
 //
 
 @implementation GTLRSheets_TreemapChartColorScale
-@dynamic maxValueColor, midValueColor, minValueColor, noDataColor;
+@dynamic maxValueColor, maxValueColorStyle, midValueColor, midValueColorStyle,
+         minValueColor, minValueColorStyle, noDataColor, noDataColorStyle;
 @end
 
 
@@ -2585,8 +2766,9 @@ NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_WaterfallStackedType
 //
 
 @implementation GTLRSheets_TreemapChartSpec
-@dynamic colorData, colorScale, headerColor, hideTooltips, hintedLevels, labels,
-         levels, maxValue, minValue, parentLabels, sizeData, textFormat;
+@dynamic colorData, colorScale, headerColor, headerColorStyle, hideTooltips,
+         hintedLevels, labels, levels, maxValue, minValue, parentLabels,
+         sizeData, textFormat;
 @end
 
 
@@ -2806,6 +2988,16 @@ NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_WaterfallStackedType
 
 // ----------------------------------------------------------------------------
 //
+//   GTLRSheets_UpdateSlicerSpecRequest
+//
+
+@implementation GTLRSheets_UpdateSlicerSpecRequest
+@dynamic fields, slicerId, spec;
+@end
+
+
+// ----------------------------------------------------------------------------
+//
 //   GTLRSheets_UpdateSpreadsheetPropertiesRequest
 //
 
@@ -2860,7 +3052,7 @@ NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_WaterfallStackedType
 //
 
 @implementation GTLRSheets_WaterfallChartColumnStyle
-@dynamic color, label;
+@dynamic color, colorStyle, label;
 @end
 
 

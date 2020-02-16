@@ -33,12 +33,15 @@
 @class GTLRSheets_AddProtectedRangeResponse;
 @class GTLRSheets_AddSheetRequest;
 @class GTLRSheets_AddSheetResponse;
+@class GTLRSheets_AddSlicerRequest;
+@class GTLRSheets_AddSlicerResponse;
 @class GTLRSheets_AppendCellsRequest;
 @class GTLRSheets_AppendDimensionRequest;
 @class GTLRSheets_AutoFillRequest;
 @class GTLRSheets_AutoResizeDimensionsRequest;
 @class GTLRSheets_BandedRange;
 @class GTLRSheets_BandingProperties;
+@class GTLRSheets_BaselineValueFormat;
 @class GTLRSheets_BasicChartAxis;
 @class GTLRSheets_BasicChartDomain;
 @class GTLRSheets_BasicChartSeries;
@@ -57,11 +60,13 @@
 @class GTLRSheets_CellData;
 @class GTLRSheets_CellFormat;
 @class GTLRSheets_ChartAxisViewWindowOptions;
+@class GTLRSheets_ChartCustomNumberFormatOptions;
 @class GTLRSheets_ChartData;
 @class GTLRSheets_ChartSourceRange;
 @class GTLRSheets_ChartSpec;
 @class GTLRSheets_ClearBasicFilterRequest;
 @class GTLRSheets_Color;
+@class GTLRSheets_ColorStyle;
 @class GTLRSheets_ConditionalFormatRule;
 @class GTLRSheets_ConditionValue;
 @class GTLRSheets_CopyPasteRequest;
@@ -120,6 +125,7 @@
 @class GTLRSheets_InsertRangeRequest;
 @class GTLRSheets_InterpolationPoint;
 @class GTLRSheets_IterativeCalculationSettings;
+@class GTLRSheets_KeyValueFormat;
 @class GTLRSheets_LineStyle;
 @class GTLRSheets_ManualRule;
 @class GTLRSheets_ManualRuleGroup;
@@ -148,20 +154,25 @@
 @class GTLRSheets_Request;
 @class GTLRSheets_Response;
 @class GTLRSheets_RowData;
+@class GTLRSheets_ScorecardChartSpec;
 @class GTLRSheets_SetBasicFilterRequest;
 @class GTLRSheets_SetDataValidationRequest;
 @class GTLRSheets_Sheet;
 @class GTLRSheets_SheetProperties;
+@class GTLRSheets_Slicer;
+@class GTLRSheets_SlicerSpec;
 @class GTLRSheets_SortRangeRequest;
 @class GTLRSheets_SortSpec;
 @class GTLRSheets_SourceAndDestination;
 @class GTLRSheets_Spreadsheet;
 @class GTLRSheets_SpreadsheetProperties;
+@class GTLRSheets_SpreadsheetTheme;
 @class GTLRSheets_TextFormat;
 @class GTLRSheets_TextFormatRun;
 @class GTLRSheets_TextPosition;
 @class GTLRSheets_TextRotation;
 @class GTLRSheets_TextToColumnsRequest;
+@class GTLRSheets_ThemeColorPair;
 @class GTLRSheets_TreemapChartColorScale;
 @class GTLRSheets_TreemapChartSpec;
 @class GTLRSheets_TrimWhitespaceRequest;
@@ -183,6 +194,7 @@
 @class GTLRSheets_UpdateNamedRangeRequest;
 @class GTLRSheets_UpdateProtectedRangeRequest;
 @class GTLRSheets_UpdateSheetPropertiesRequest;
+@class GTLRSheets_UpdateSlicerSpecRequest;
 @class GTLRSheets_UpdateSpreadsheetPropertiesRequest;
 @class GTLRSheets_UpdateValuesByDataFilterResponse;
 @class GTLRSheets_UpdateValuesResponse;
@@ -224,6 +236,28 @@ GTLR_EXTERN NSString * const kGTLRSheets_AppendDimensionRequest_Dimension_Dimens
  *  Value: "ROWS"
  */
 GTLR_EXTERN NSString * const kGTLRSheets_AppendDimensionRequest_Dimension_Rows;
+
+// ----------------------------------------------------------------------------
+// GTLRSheets_BaselineValueFormat.comparisonType
+
+/**
+ *  Use absolute difference between key and baseline value.
+ *
+ *  Value: "ABSOLUTE_DIFFERENCE"
+ */
+GTLR_EXTERN NSString * const kGTLRSheets_BaselineValueFormat_ComparisonType_AbsoluteDifference;
+/**
+ *  Default value, do not use.
+ *
+ *  Value: "COMPARISON_TYPE_UNDEFINED"
+ */
+GTLR_EXTERN NSString * const kGTLRSheets_BaselineValueFormat_ComparisonType_ComparisonTypeUndefined;
+/**
+ *  Use percentage difference between key and baseline value.
+ *
+ *  Value: "PERCENTAGE_DIFFERENCE"
+ */
+GTLR_EXTERN NSString * const kGTLRSheets_BaselineValueFormat_ComparisonType_PercentageDifference;
 
 // ----------------------------------------------------------------------------
 // GTLRSheets_BasicChartAxis.position
@@ -1319,6 +1353,70 @@ GTLR_EXTERN NSString * const kGTLRSheets_ChartSpec_HiddenDimensionStrategy_SkipH
 GTLR_EXTERN NSString * const kGTLRSheets_ChartSpec_HiddenDimensionStrategy_SkipHiddenRowsAndColumns;
 
 // ----------------------------------------------------------------------------
+// GTLRSheets_ColorStyle.themeColor
+
+/**
+ *  Represents the first accent color
+ *
+ *  Value: "ACCENT1"
+ */
+GTLR_EXTERN NSString * const kGTLRSheets_ColorStyle_ThemeColor_Accent1;
+/**
+ *  Represents the second accent color
+ *
+ *  Value: "ACCENT2"
+ */
+GTLR_EXTERN NSString * const kGTLRSheets_ColorStyle_ThemeColor_Accent2;
+/**
+ *  Represents the third accent color
+ *
+ *  Value: "ACCENT3"
+ */
+GTLR_EXTERN NSString * const kGTLRSheets_ColorStyle_ThemeColor_Accent3;
+/**
+ *  Represents the fourth accent color
+ *
+ *  Value: "ACCENT4"
+ */
+GTLR_EXTERN NSString * const kGTLRSheets_ColorStyle_ThemeColor_Accent4;
+/**
+ *  Represents the fifth accent color
+ *
+ *  Value: "ACCENT5"
+ */
+GTLR_EXTERN NSString * const kGTLRSheets_ColorStyle_ThemeColor_Accent5;
+/**
+ *  Represents the sixth accent color
+ *
+ *  Value: "ACCENT6"
+ */
+GTLR_EXTERN NSString * const kGTLRSheets_ColorStyle_ThemeColor_Accent6;
+/**
+ *  Represents the primary background color
+ *
+ *  Value: "BACKGROUND"
+ */
+GTLR_EXTERN NSString * const kGTLRSheets_ColorStyle_ThemeColor_Background;
+/**
+ *  Represents the color to use for hyperlinks
+ *
+ *  Value: "LINK"
+ */
+GTLR_EXTERN NSString * const kGTLRSheets_ColorStyle_ThemeColor_Link;
+/**
+ *  Represents the primary text color
+ *
+ *  Value: "TEXT"
+ */
+GTLR_EXTERN NSString * const kGTLRSheets_ColorStyle_ThemeColor_Text;
+/**
+ *  Unspecified theme color
+ *
+ *  Value: "THEME_COLOR_TYPE_UNSPECIFIED"
+ */
+GTLR_EXTERN NSString * const kGTLRSheets_ColorStyle_ThemeColor_ThemeColorTypeUnspecified;
+
+// ----------------------------------------------------------------------------
 // GTLRSheets_ConditionValue.relativeDate
 
 /**
@@ -2399,6 +2497,74 @@ GTLR_EXTERN NSString * const kGTLRSheets_PivotValue_SummarizeFunction_Var;
 GTLR_EXTERN NSString * const kGTLRSheets_PivotValue_SummarizeFunction_Varp;
 
 // ----------------------------------------------------------------------------
+// GTLRSheets_ScorecardChartSpec.aggregateType
+
+/**
+ *  Average aggregate function.
+ *
+ *  Value: "AVERAGE"
+ */
+GTLR_EXTERN NSString * const kGTLRSheets_ScorecardChartSpec_AggregateType_Average;
+/**
+ *  Default value, do not use.
+ *
+ *  Value: "CHART_AGGREGATE_TYPE_UNSPECIFIED"
+ */
+GTLR_EXTERN NSString * const kGTLRSheets_ScorecardChartSpec_AggregateType_ChartAggregateTypeUnspecified;
+/**
+ *  Count aggregate function.
+ *
+ *  Value: "COUNT"
+ */
+GTLR_EXTERN NSString * const kGTLRSheets_ScorecardChartSpec_AggregateType_Count;
+/**
+ *  Maximum aggregate function.
+ *
+ *  Value: "MAX"
+ */
+GTLR_EXTERN NSString * const kGTLRSheets_ScorecardChartSpec_AggregateType_Max;
+/**
+ *  Median aggregate function.
+ *
+ *  Value: "MEDIAN"
+ */
+GTLR_EXTERN NSString * const kGTLRSheets_ScorecardChartSpec_AggregateType_Median;
+/**
+ *  Minimum aggregate function.
+ *
+ *  Value: "MIN"
+ */
+GTLR_EXTERN NSString * const kGTLRSheets_ScorecardChartSpec_AggregateType_Min;
+/**
+ *  Sum aggregate function.
+ *
+ *  Value: "SUM"
+ */
+GTLR_EXTERN NSString * const kGTLRSheets_ScorecardChartSpec_AggregateType_Sum;
+
+// ----------------------------------------------------------------------------
+// GTLRSheets_ScorecardChartSpec.numberFormatSource
+
+/**
+ *  Default value, do not use.
+ *
+ *  Value: "CHART_NUMBER_FORMAT_SOURCE_UNDEFINED"
+ */
+GTLR_EXTERN NSString * const kGTLRSheets_ScorecardChartSpec_NumberFormatSource_ChartNumberFormatSourceUndefined;
+/**
+ *  Apply custom formatting as specified by ChartCustomNumberFormatOptions.
+ *
+ *  Value: "CUSTOM"
+ */
+GTLR_EXTERN NSString * const kGTLRSheets_ScorecardChartSpec_NumberFormatSource_Custom;
+/**
+ *  Inherit number formatting from data.
+ *
+ *  Value: "FROM_DATA"
+ */
+GTLR_EXTERN NSString * const kGTLRSheets_ScorecardChartSpec_NumberFormatSource_FromData;
+
+// ----------------------------------------------------------------------------
 // GTLRSheets_SheetProperties.sheetType
 
 /**
@@ -2419,6 +2585,34 @@ GTLR_EXTERN NSString * const kGTLRSheets_SheetProperties_SheetType_Object;
  *  Value: "SHEET_TYPE_UNSPECIFIED"
  */
 GTLR_EXTERN NSString * const kGTLRSheets_SheetProperties_SheetType_SheetTypeUnspecified;
+
+// ----------------------------------------------------------------------------
+// GTLRSheets_SlicerSpec.horizontalAlignment
+
+/**
+ *  The text is explicitly aligned to the center of the cell.
+ *
+ *  Value: "CENTER"
+ */
+GTLR_EXTERN NSString * const kGTLRSheets_SlicerSpec_HorizontalAlignment_Center;
+/**
+ *  The horizontal alignment is not specified. Do not use this.
+ *
+ *  Value: "HORIZONTAL_ALIGN_UNSPECIFIED"
+ */
+GTLR_EXTERN NSString * const kGTLRSheets_SlicerSpec_HorizontalAlignment_HorizontalAlignUnspecified;
+/**
+ *  The text is explicitly aligned to the left of the cell.
+ *
+ *  Value: "LEFT"
+ */
+GTLR_EXTERN NSString * const kGTLRSheets_SlicerSpec_HorizontalAlignment_Left;
+/**
+ *  The text is explicitly aligned to the right of the cell.
+ *
+ *  Value: "RIGHT"
+ */
+GTLR_EXTERN NSString * const kGTLRSheets_SlicerSpec_HorizontalAlignment_Right;
 
 // ----------------------------------------------------------------------------
 // GTLRSheets_SortSpec.sortOrder
@@ -2565,6 +2759,70 @@ GTLR_EXTERN NSString * const kGTLRSheets_TextToColumnsRequest_DelimiterType_Semi
  *  Value: "SPACE"
  */
 GTLR_EXTERN NSString * const kGTLRSheets_TextToColumnsRequest_DelimiterType_Space;
+
+// ----------------------------------------------------------------------------
+// GTLRSheets_ThemeColorPair.colorType
+
+/**
+ *  Represents the first accent color
+ *
+ *  Value: "ACCENT1"
+ */
+GTLR_EXTERN NSString * const kGTLRSheets_ThemeColorPair_ColorType_Accent1;
+/**
+ *  Represents the second accent color
+ *
+ *  Value: "ACCENT2"
+ */
+GTLR_EXTERN NSString * const kGTLRSheets_ThemeColorPair_ColorType_Accent2;
+/**
+ *  Represents the third accent color
+ *
+ *  Value: "ACCENT3"
+ */
+GTLR_EXTERN NSString * const kGTLRSheets_ThemeColorPair_ColorType_Accent3;
+/**
+ *  Represents the fourth accent color
+ *
+ *  Value: "ACCENT4"
+ */
+GTLR_EXTERN NSString * const kGTLRSheets_ThemeColorPair_ColorType_Accent4;
+/**
+ *  Represents the fifth accent color
+ *
+ *  Value: "ACCENT5"
+ */
+GTLR_EXTERN NSString * const kGTLRSheets_ThemeColorPair_ColorType_Accent5;
+/**
+ *  Represents the sixth accent color
+ *
+ *  Value: "ACCENT6"
+ */
+GTLR_EXTERN NSString * const kGTLRSheets_ThemeColorPair_ColorType_Accent6;
+/**
+ *  Represents the primary background color
+ *
+ *  Value: "BACKGROUND"
+ */
+GTLR_EXTERN NSString * const kGTLRSheets_ThemeColorPair_ColorType_Background;
+/**
+ *  Represents the color to use for hyperlinks
+ *
+ *  Value: "LINK"
+ */
+GTLR_EXTERN NSString * const kGTLRSheets_ThemeColorPair_ColorType_Link;
+/**
+ *  Represents the primary text color
+ *
+ *  Value: "TEXT"
+ */
+GTLR_EXTERN NSString * const kGTLRSheets_ThemeColorPair_ColorType_Text;
+/**
+ *  Unspecified theme color
+ *
+ *  Value: "THEME_COLOR_TYPE_UNSPECIFIED"
+ */
+GTLR_EXTERN NSString * const kGTLRSheets_ThemeColorPair_ColorType_ThemeColorTypeUnspecified;
 
 // ----------------------------------------------------------------------------
 // GTLRSheets_ValueRange.majorDimension
@@ -2832,6 +3090,34 @@ GTLR_EXTERN NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_Waterfal
 
 
 /**
+ *  Adds a slicer to a sheet in the spreadsheet.
+ */
+@interface GTLRSheets_AddSlicerRequest : GTLRObject
+
+/**
+ *  The slicer that should be added to the spreadsheet, including
+ *  the position where it should be placed. The slicerId field is optional; if
+ *  one is not set, an id
+ *  will be randomly generated. (It is an error to specify the ID
+ *  of a slicer that already exists.)
+ */
+@property(nonatomic, strong, nullable) GTLRSheets_Slicer *slicer;
+
+@end
+
+
+/**
+ *  The result of adding a slicer to a spreadsheet.
+ */
+@interface GTLRSheets_AddSlicerResponse : GTLRObject
+
+/** The newly added slicer. */
+@property(nonatomic, strong, nullable) GTLRSheets_Slicer *slicer;
+
+@end
+
+
+/**
  *  Adds new cells after the last row with data in a sheet,
  *  inserting new rows into the sheet if necessary.
  */
@@ -3033,6 +3319,72 @@ GTLR_EXTERN NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_Waterfal
 
 
 /**
+ *  Formatting options for baseline value.
+ */
+@interface GTLRSheets_BaselineValueFormat : GTLRObject
+
+/**
+ *  The comparison type of key value with baseline value.
+ *
+ *  Likely values:
+ *    @arg @c kGTLRSheets_BaselineValueFormat_ComparisonType_AbsoluteDifference
+ *        Use absolute difference between key and baseline value. (Value:
+ *        "ABSOLUTE_DIFFERENCE")
+ *    @arg @c kGTLRSheets_BaselineValueFormat_ComparisonType_ComparisonTypeUndefined
+ *        Default value, do not use. (Value: "COMPARISON_TYPE_UNDEFINED")
+ *    @arg @c kGTLRSheets_BaselineValueFormat_ComparisonType_PercentageDifference
+ *        Use percentage difference between key and baseline value. (Value:
+ *        "PERCENTAGE_DIFFERENCE")
+ */
+@property(nonatomic, copy, nullable) NSString *comparisonType;
+
+/**
+ *  Description which is appended after the baseline value.
+ *  This field is optional.
+ *
+ *  Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
+ */
+@property(nonatomic, copy, nullable) NSString *descriptionProperty;
+
+/**
+ *  Color to be used, in case baseline value represents a negative change for
+ *  key value. This field is optional.
+ */
+@property(nonatomic, strong, nullable) GTLRSheets_Color *negativeColor;
+
+/**
+ *  Color to be used, in case baseline value represents a negative change for
+ *  key value. This field is optional.
+ *  If negative_color is also set, this field takes precedence.
+ */
+@property(nonatomic, strong, nullable) GTLRSheets_ColorStyle *negativeColorStyle;
+
+/**
+ *  Specifies the horizontal text positioning of baseline value.
+ *  This field is optional. If not specified, default positioning is used.
+ */
+@property(nonatomic, strong, nullable) GTLRSheets_TextPosition *position;
+
+/**
+ *  Color to be used, in case baseline value represents a positive change for
+ *  key value. This field is optional.
+ */
+@property(nonatomic, strong, nullable) GTLRSheets_Color *positiveColor;
+
+/**
+ *  Color to be used, in case baseline value represents a positive change for
+ *  key value. This field is optional.
+ *  If positive_color is also set, this field takes precedence.
+ */
+@property(nonatomic, strong, nullable) GTLRSheets_ColorStyle *positiveColorStyle;
+
+/** Text formatting options for baseline value. */
+@property(nonatomic, strong, nullable) GTLRSheets_TextFormat *textFormat;
+
+@end
+
+
+/**
  *  An axis of the chart.
  *  A chart may not have more than one axis per
  *  axis position.
@@ -3116,6 +3468,13 @@ GTLR_EXTERN NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_Waterfal
  *  series. If empty, a default color is used.
  */
 @property(nonatomic, strong, nullable) GTLRSheets_Color *color;
+
+/**
+ *  The color for elements (i.e. bars, lines, points) associated with this
+ *  series. If empty, a default color is used.
+ *  If color is also set, this field takes precedence.
+ */
+@property(nonatomic, strong, nullable) GTLRSheets_ColorStyle *colorStyle;
 
 /**
  *  The line style of this series. Valid only if the
@@ -3399,10 +3758,9 @@ GTLR_EXTERN NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_Waterfal
 @interface GTLRSheets_BatchClearValuesByDataFilterResponse : GTLRObject
 
 /**
- *  The ranges that were cleared, in A1 notation.
- *  (If the requests were for an unbounded range or a ranger larger
- *  than the bounds of the sheet, this will be the actual ranges
- *  that were cleared, bounded to the sheet's limits.)
+ *  The ranges that were cleared, in A1 notation. If the requests are for an
+ *  unbounded range or a ranger larger than the bounds of the sheet, this is
+ *  the actual ranges that were cleared, bounded to the sheet's limits.
  */
 @property(nonatomic, strong, nullable) NSArray<NSString *> *clearedRanges;
 
@@ -3429,10 +3787,9 @@ GTLR_EXTERN NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_Waterfal
 @interface GTLRSheets_BatchClearValuesResponse : GTLRObject
 
 /**
- *  The ranges that were cleared, in A1 notation.
- *  (If the requests were for an unbounded range or a ranger larger
- *  than the bounds of the sheet, this will be the actual ranges
- *  that were cleared, bounded to the sheet's limits.)
+ *  The ranges that were cleared, in A1 notation. If the requests are for an
+ *  unbounded range or a ranger larger than the bounds of the sheet, this is
+ *  the actual ranges that were cleared, bounded to the sheet's limits.
  */
 @property(nonatomic, strong, nullable) NSArray<NSString *> *clearedRanges;
 
@@ -3450,8 +3807,7 @@ GTLR_EXTERN NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_Waterfal
 
 /**
  *  The data filters used to match the ranges of values to retrieve. Ranges
- *  that match any of the specified data filters will be included in the
- *  response.
+ *  that match any of the specified data filters are included in the response.
  */
 @property(nonatomic, strong, nullable) NSArray<GTLRSheets_DataFilter *> *dataFilters;
 
@@ -3482,10 +3838,9 @@ GTLR_EXTERN NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_Waterfal
 /**
  *  The major dimension that results should use.
  *  For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,
- *  then a request that selects that range and sets `majorDimension=ROWS` will
- *  return `[[1,2],[3,4]]`,
- *  whereas a request that sets `majorDimension=COLUMNS` will return
- *  `[[1,3],[2,4]]`.
+ *  then a request that selects that range and sets `majorDimension=ROWS`
+ *  returns `[[1,2],[3,4]]`, whereas a request that sets
+ *  `majorDimension=COLUMNS` returns `[[1,3],[2,4]]`.
  *
  *  Likely values:
  *    @arg @c kGTLRSheets_BatchGetValuesByDataFilterRequest_MajorDimension_Columns
@@ -3625,8 +3980,8 @@ GTLR_EXTERN NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_Waterfal
 
 /**
  *  The new values to apply to the spreadsheet. If more than one range is
- *  matched by the specified DataFilter the specified values will be
- *  applied to all of those ranges.
+ *  matched by the specified DataFilter the specified values are applied to
+ *  all of those ranges.
  */
 @property(nonatomic, strong, nullable) NSArray<GTLRSheets_DataFilterValueRange *> *data;
 
@@ -3634,10 +3989,10 @@ GTLR_EXTERN NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_Waterfal
  *  Determines if the update response should include the values
  *  of the cells that were updated. By default, responses
  *  do not include the updated values. The `updatedData` field within
- *  each of the BatchUpdateValuesResponse.responses will contain
- *  the updated values. If the range to write was larger than than the range
- *  actually written, the response will include all values in the requested
- *  range (excluding trailing empty rows and columns).
+ *  each of the BatchUpdateValuesResponse.responses contains the updated
+ *  values. If the range to write was larger than the range actually written,
+ *  the response includes all values in the requested range (excluding trailing
+ *  empty rows and columns).
  *
  *  Uses NSNumber of boolValue.
  */
@@ -3770,10 +4125,10 @@ GTLR_EXTERN NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_Waterfal
  *  Determines if the update response should include the values
  *  of the cells that were updated. By default, responses
  *  do not include the updated values. The `updatedData` field within
- *  each of the BatchUpdateValuesResponse.responses will contain
- *  the updated values. If the range to write was larger than than the range
- *  actually written, the response will include all values in the requested
- *  range (excluding trailing empty rows and columns).
+ *  each of the BatchUpdateValuesResponse.responses contains the updated
+ *  values. If the range to write was larger than the range actually written,
+ *  the response includes all values in the requested range (excluding trailing
+ *  empty rows and columns).
  *
  *  Uses NSNumber of boolValue.
  */
@@ -4153,6 +4508,12 @@ GTLR_EXTERN NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_Waterfal
 
 /** The bubble border color. */
 @property(nonatomic, strong, nullable) GTLRSheets_Color *bubbleBorderColor;
+
+/**
+ *  The bubble border color.
+ *  If bubble_border_color is also set, this field takes precedence.
+ */
+@property(nonatomic, strong, nullable) GTLRSheets_ColorStyle *bubbleBorderColorStyle;
 
 /** The data containing the bubble labels. These do not need to be unique. */
 @property(nonatomic, strong, nullable) GTLRSheets_ChartData *bubbleLabels;
@@ -4589,6 +4950,26 @@ GTLR_EXTERN NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_Waterfal
 
 
 /**
+ *  Custom number formatting options for chart attributes.
+ */
+@interface GTLRSheets_ChartCustomNumberFormatOptions : GTLRObject
+
+/**
+ *  Custom prefix to be prepended to the chart attribute.
+ *  This field is optional.
+ */
+@property(nonatomic, copy, nullable) NSString *prefix;
+
+/**
+ *  Custom suffix to be appended to the chart attribute.
+ *  This field is optional.
+ */
+@property(nonatomic, copy, nullable) NSString *suffix;
+
+@end
+
+
+/**
  *  The data included in a domain or series.
  */
 @interface GTLRSheets_ChartData : GTLRObject
@@ -4642,6 +5023,13 @@ GTLR_EXTERN NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_Waterfal
  *  Not applicable to Org charts.
  */
 @property(nonatomic, strong, nullable) GTLRSheets_Color *backgroundColor;
+
+/**
+ *  The background color of the entire chart.
+ *  Not applicable to Org charts.
+ *  If background_color is also set, this field takes precedence.
+ */
+@property(nonatomic, strong, nullable) GTLRSheets_ColorStyle *backgroundColorStyle;
 
 /**
  *  A basic chart specification, can be one of many kinds of charts.
@@ -4699,6 +5087,9 @@ GTLR_EXTERN NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_Waterfal
 
 /** A pie chart specification. */
 @property(nonatomic, strong, nullable) GTLRSheets_PieChartSpec *pieChart;
+
+/** A scorecard chart specification. */
+@property(nonatomic, strong, nullable) GTLRSheets_ScorecardChartSpec *scorecardChart;
 
 /** The subtitle of the chart. */
 @property(nonatomic, copy, nullable) NSString *subtitle;
@@ -4923,6 +5314,44 @@ GTLR_EXTERN NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_Waterfal
  *  Uses NSNumber of floatValue.
  */
 @property(nonatomic, strong, nullable) NSNumber *red;
+
+@end
+
+
+/**
+ *  A color value.
+ */
+@interface GTLRSheets_ColorStyle : GTLRObject
+
+/** RGB color. */
+@property(nonatomic, strong, nullable) GTLRSheets_Color *rgbColor;
+
+/**
+ *  Theme color.
+ *
+ *  Likely values:
+ *    @arg @c kGTLRSheets_ColorStyle_ThemeColor_Accent1 Represents the first
+ *        accent color (Value: "ACCENT1")
+ *    @arg @c kGTLRSheets_ColorStyle_ThemeColor_Accent2 Represents the second
+ *        accent color (Value: "ACCENT2")
+ *    @arg @c kGTLRSheets_ColorStyle_ThemeColor_Accent3 Represents the third
+ *        accent color (Value: "ACCENT3")
+ *    @arg @c kGTLRSheets_ColorStyle_ThemeColor_Accent4 Represents the fourth
+ *        accent color (Value: "ACCENT4")
+ *    @arg @c kGTLRSheets_ColorStyle_ThemeColor_Accent5 Represents the fifth
+ *        accent color (Value: "ACCENT5")
+ *    @arg @c kGTLRSheets_ColorStyle_ThemeColor_Accent6 Represents the sixth
+ *        accent color (Value: "ACCENT6")
+ *    @arg @c kGTLRSheets_ColorStyle_ThemeColor_Background Represents the
+ *        primary background color (Value: "BACKGROUND")
+ *    @arg @c kGTLRSheets_ColorStyle_ThemeColor_Link Represents the color to use
+ *        for hyperlinks (Value: "LINK")
+ *    @arg @c kGTLRSheets_ColorStyle_ThemeColor_Text Represents the primary text
+ *        color (Value: "TEXT")
+ *    @arg @c kGTLRSheets_ColorStyle_ThemeColor_ThemeColorTypeUnspecified
+ *        Unspecified theme color (Value: "THEME_COLOR_TYPE_UNSPECIFIED")
+ */
+@property(nonatomic, copy, nullable) NSString *themeColor;
 
 @end
 
@@ -5162,9 +5591,9 @@ GTLR_EXTERN NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_Waterfal
 
 /**
  *  The data to be written. If the provided values exceed any of the ranges
- *  matched by the data filter then the request will fail. If the provided
- *  values are less than the matched ranges only the specified values will be
- *  written, existing values in the matched ranges will remain unaffected.
+ *  matched by the data filter then the request fails. If the provided values
+ *  are less than the matched ranges only the specified values are written,
+ *  existing values in the matched ranges remain unaffected.
  *
  *  Can be any valid JSON type.
  */
@@ -6102,13 +6531,28 @@ GTLR_EXTERN NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_Waterfal
 
 /**
  *  A condition that must be true for values to be shown.
- *  (This does not override hiddenValues -- if a value is listed there,
+ *  (This does not override hidden_values -- if a value is listed there,
  *  it will still be hidden.)
  */
 @property(nonatomic, strong, nullable) GTLRSheets_BooleanCondition *condition;
 
 /** Values that should be hidden. */
 @property(nonatomic, strong, nullable) NSArray<NSString *> *hiddenValues;
+
+/**
+ *  The background fill color to filter by; only cells with this fill color are
+ *  shown. Mutually exclusive with all other filter criteria. Requests to set
+ *  this field will fail with a 400 error if any other filter criteria field is
+ *  set.
+ */
+@property(nonatomic, strong, nullable) GTLRSheets_Color *visibleBackgroundColor;
+
+/**
+ *  The text color to filter by; only cells with this text color are shown.
+ *  Mutually exclusive with all other filter criteria. Requests to set this
+ *  field will fail with a 400 error if any other filter criteria field is set.
+ */
+@property(nonatomic, strong, nullable) GTLRSheets_Color *visibleForegroundColor;
 
 @end
 
@@ -6668,6 +7112,13 @@ GTLR_EXTERN NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_Waterfal
  */
 @property(nonatomic, strong, nullable) GTLRSheets_Color *barColor;
 
+/**
+ *  The color of the column representing this series in each bucket.
+ *  This field is optional.
+ *  If bar_color is also set, this field takes precedence.
+ */
+@property(nonatomic, strong, nullable) GTLRSheets_ColorStyle *barColorStyle;
+
 /** The data for this histogram series. */
 @property(nonatomic, strong, nullable) GTLRSheets_ChartData *data;
 
@@ -6805,6 +7256,23 @@ GTLR_EXTERN NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_Waterfal
  *  Uses NSNumber of intValue.
  */
 @property(nonatomic, strong, nullable) NSNumber *maxIterations;
+
+@end
+
+
+/**
+ *  Formatting options for key value.
+ */
+@interface GTLRSheets_KeyValueFormat : GTLRObject
+
+/**
+ *  Specifies the horizontal text positioning of key value.
+ *  This field is optional. If not specified, default positioning is used.
+ */
+@property(nonatomic, strong, nullable) GTLRSheets_TextPosition *position;
+
+/** Text formatting options for key value. */
+@property(nonatomic, strong, nullable) GTLRSheets_TextFormat *textFormat;
 
 @end
 
@@ -7084,6 +7552,12 @@ GTLR_EXTERN NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_Waterfal
 @property(nonatomic, strong, nullable) GTLRSheets_Color *nodeColor;
 
 /**
+ *  The color of the org chart nodes.
+ *  If node_color is also set, this field takes precedence.
+ */
+@property(nonatomic, strong, nullable) GTLRSheets_ColorStyle *nodeColorStyle;
+
+/**
  *  The size of the org chart nodes.
  *
  *  Likely values:
@@ -7108,6 +7582,12 @@ GTLR_EXTERN NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_Waterfal
 
 /** The color of the selected org chart nodes. */
 @property(nonatomic, strong, nullable) GTLRSheets_Color *selectedNodeColor;
+
+/**
+ *  The color of the selected org chart nodes.
+ *  If selected_node_color is also set, this field takes precedence.
+ */
+@property(nonatomic, strong, nullable) GTLRSheets_ColorStyle *selectedNodeColorStyle;
 
 /**
  *  The data containing the tooltip for the corresponding node. A blank value
@@ -7769,6 +8249,9 @@ GTLR_EXTERN NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_Waterfal
 /** Adds a sheet. */
 @property(nonatomic, strong, nullable) GTLRSheets_AddSheetRequest *addSheet;
 
+/** Adds a slicer. */
+@property(nonatomic, strong, nullable) GTLRSheets_AddSlicerRequest *addSlicer;
+
 /** Appends cells after the last row with data in a sheet. */
 @property(nonatomic, strong, nullable) GTLRSheets_AppendCellsRequest *appendCells;
 
@@ -7922,6 +8405,9 @@ GTLR_EXTERN NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_Waterfal
 /** Updates a sheet's properties. */
 @property(nonatomic, strong, nullable) GTLRSheets_UpdateSheetPropertiesRequest *updateSheetProperties;
 
+/** Updates a slicer's specifications. */
+@property(nonatomic, strong, nullable) GTLRSheets_UpdateSlicerSpecRequest *updateSlicerSpec;
+
 /** Updates the spreadsheet's properties. */
 @property(nonatomic, strong, nullable) GTLRSheets_UpdateSpreadsheetPropertiesRequest *updateSpreadsheetProperties;
 
@@ -7953,6 +8439,9 @@ GTLR_EXTERN NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_Waterfal
 
 /** A reply from adding a sheet. */
 @property(nonatomic, strong, nullable) GTLRSheets_AddSheetResponse *addSheet;
+
+/** A reply from adding a slicer. */
+@property(nonatomic, strong, nullable) GTLRSheets_AddSlicerResponse *addSlicer;
 
 /** A reply from creating a developer metadata entry. */
 @property(nonatomic, strong, nullable) GTLRSheets_CreateDeveloperMetadataResponse *createDeveloperMetadata;
@@ -8005,6 +8494,91 @@ GTLR_EXTERN NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_Waterfal
 
 
 /**
+ *  A scorecard chart. Scorecard charts are used to highlight key performance
+ *  indicators, known as KPIs, on the spreadsheet. A scorecard chart can
+ *  represent things like total sales, average cost, or a top selling item. You
+ *  can specify a single data value, or aggregate over a range of data.
+ *  Percentage or absolute difference from a baseline value can be highlighted,
+ *  like changes over time.
+ */
+@interface GTLRSheets_ScorecardChartSpec : GTLRObject
+
+/**
+ *  The aggregation type for key and baseline chart data in scorecard chart.
+ *  This field is optional.
+ *
+ *  Likely values:
+ *    @arg @c kGTLRSheets_ScorecardChartSpec_AggregateType_Average Average
+ *        aggregate function. (Value: "AVERAGE")
+ *    @arg @c kGTLRSheets_ScorecardChartSpec_AggregateType_ChartAggregateTypeUnspecified
+ *        Default value, do not use. (Value: "CHART_AGGREGATE_TYPE_UNSPECIFIED")
+ *    @arg @c kGTLRSheets_ScorecardChartSpec_AggregateType_Count Count aggregate
+ *        function. (Value: "COUNT")
+ *    @arg @c kGTLRSheets_ScorecardChartSpec_AggregateType_Max Maximum aggregate
+ *        function. (Value: "MAX")
+ *    @arg @c kGTLRSheets_ScorecardChartSpec_AggregateType_Median Median
+ *        aggregate function. (Value: "MEDIAN")
+ *    @arg @c kGTLRSheets_ScorecardChartSpec_AggregateType_Min Minimum aggregate
+ *        function. (Value: "MIN")
+ *    @arg @c kGTLRSheets_ScorecardChartSpec_AggregateType_Sum Sum aggregate
+ *        function. (Value: "SUM")
+ */
+@property(nonatomic, copy, nullable) NSString *aggregateType;
+
+/**
+ *  The data for scorecard baseline value.
+ *  This field is optional.
+ */
+@property(nonatomic, strong, nullable) GTLRSheets_ChartData *baselineValueData;
+
+/**
+ *  Formatting options for baseline value.
+ *  This field is needed only if baseline_value_data is specified.
+ */
+@property(nonatomic, strong, nullable) GTLRSheets_BaselineValueFormat *baselineValueFormat;
+
+/**
+ *  Custom formatting options for numeric key/baseline values in scorecard
+ *  chart. This field is used only when number_format_source is set to
+ *  CUSTOM. This field is optional.
+ */
+@property(nonatomic, strong, nullable) GTLRSheets_ChartCustomNumberFormatOptions *customFormatOptions;
+
+/** The data for scorecard key value. */
+@property(nonatomic, strong, nullable) GTLRSheets_ChartData *keyValueData;
+
+/** Formatting options for key value. */
+@property(nonatomic, strong, nullable) GTLRSheets_KeyValueFormat *keyValueFormat;
+
+/**
+ *  The number format source used in the scorecard chart.
+ *  This field is optional.
+ *
+ *  Likely values:
+ *    @arg @c kGTLRSheets_ScorecardChartSpec_NumberFormatSource_ChartNumberFormatSourceUndefined
+ *        Default value, do not use. (Value:
+ *        "CHART_NUMBER_FORMAT_SOURCE_UNDEFINED")
+ *    @arg @c kGTLRSheets_ScorecardChartSpec_NumberFormatSource_Custom Apply
+ *        custom formatting as specified by ChartCustomNumberFormatOptions.
+ *        (Value: "CUSTOM")
+ *    @arg @c kGTLRSheets_ScorecardChartSpec_NumberFormatSource_FromData Inherit
+ *        number formatting from data. (Value: "FROM_DATA")
+ */
+@property(nonatomic, copy, nullable) NSString *numberFormatSource;
+
+/**
+ *  Value to scale scorecard key and baseline value. For example, a factor of
+ *  10 can be used to divide all values in the chart by 10.
+ *  This field is optional.
+ *
+ *  Uses NSNumber of doubleValue.
+ */
+@property(nonatomic, strong, nullable) NSNumber *scaleFactor;
+
+@end
+
+
+/**
  *  A request to retrieve all developer metadata matching the set of specified
  *  criteria.
  */
@@ -8013,7 +8587,7 @@ GTLR_EXTERN NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_Waterfal
 /**
  *  The data filters describing the criteria used to determine which
  *  DeveloperMetadata entries to return. DeveloperMetadata matching any of the
- *  specified filters will be included in the response.
+ *  specified filters are included in the response.
  */
 @property(nonatomic, strong, nullable) NSArray<GTLRSheets_DataFilter *> *dataFilters;
 
@@ -8116,6 +8690,9 @@ GTLR_EXTERN NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_Waterfal
  */
 @property(nonatomic, strong, nullable) NSArray<GTLRSheets_DimensionGroup *> *rowGroups;
 
+/** The slicers on this sheet. */
+@property(nonatomic, strong, nullable) NSArray<GTLRSheets_Slicer *> *slicers;
+
 @end
 
 
@@ -8194,6 +8771,86 @@ GTLR_EXTERN NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_Waterfal
 
 
 /**
+ *  A slicer in a sheet.
+ */
+@interface GTLRSheets_Slicer : GTLRObject
+
+/**
+ *  The position of the slicer. Note that slicer can be positioned only on
+ *  existing sheet. Also, width and height of slicer can be automatically
+ *  adjusted to keep it within permitted limits.
+ */
+@property(nonatomic, strong, nullable) GTLRSheets_EmbeddedObjectPosition *position;
+
+/**
+ *  The ID of the slicer.
+ *
+ *  Uses NSNumber of intValue.
+ */
+@property(nonatomic, strong, nullable) NSNumber *slicerId;
+
+/** The specification of the slicer. */
+@property(nonatomic, strong, nullable) GTLRSheets_SlicerSpec *spec;
+
+@end
+
+
+/**
+ *  The specifications of a slicer.
+ */
+@interface GTLRSheets_SlicerSpec : GTLRObject
+
+/**
+ *  True if the filter should apply to pivot tables.
+ *  If not set, default to `True`.
+ *
+ *  Uses NSNumber of boolValue.
+ */
+@property(nonatomic, strong, nullable) NSNumber *applyToPivotTables;
+
+/** The background color of the slicer. */
+@property(nonatomic, strong, nullable) GTLRSheets_Color *backgroundColor;
+
+/**
+ *  The column index in the data table on which the filter is applied to.
+ *
+ *  Uses NSNumber of intValue.
+ */
+@property(nonatomic, strong, nullable) NSNumber *columnIndex;
+
+/** The data range of the slicer. */
+@property(nonatomic, strong, nullable) GTLRSheets_GridRange *dataRange;
+
+/** The filtering criteria of the slicer. */
+@property(nonatomic, strong, nullable) GTLRSheets_FilterCriteria *filterCriteria;
+
+/**
+ *  The horizontal alignment of title in the slicer.
+ *  If unspecified, defaults to `LEFT`
+ *
+ *  Likely values:
+ *    @arg @c kGTLRSheets_SlicerSpec_HorizontalAlignment_Center The text is
+ *        explicitly aligned to the center of the cell. (Value: "CENTER")
+ *    @arg @c kGTLRSheets_SlicerSpec_HorizontalAlignment_HorizontalAlignUnspecified
+ *        The horizontal alignment is not specified. Do not use this. (Value:
+ *        "HORIZONTAL_ALIGN_UNSPECIFIED")
+ *    @arg @c kGTLRSheets_SlicerSpec_HorizontalAlignment_Left The text is
+ *        explicitly aligned to the left of the cell. (Value: "LEFT")
+ *    @arg @c kGTLRSheets_SlicerSpec_HorizontalAlignment_Right The text is
+ *        explicitly aligned to the right of the cell. (Value: "RIGHT")
+ */
+@property(nonatomic, copy, nullable) NSString *horizontalAlignment;
+
+/** The text format of title in the slicer. */
+@property(nonatomic, strong, nullable) GTLRSheets_TextFormat *textFormat;
+
+/** The title of the slicer. */
+@property(nonatomic, copy, nullable) NSString *title;
+
+@end
+
+
+/**
  *  Sorts data in rows based on a sort order per column.
  */
 @interface GTLRSheets_SortRangeRequest : GTLRObject
@@ -8216,11 +8873,25 @@ GTLR_EXTERN NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_Waterfal
 @interface GTLRSheets_SortSpec : GTLRObject
 
 /**
+ *  The background fill color to sort by. Mutually exclusive with sorting by
+ *  text color. Requests to set this field will fail with a 400 error if
+ *  foreground color is also set.
+ */
+@property(nonatomic, strong, nullable) GTLRSheets_Color *backgroundColor;
+
+/**
  *  The dimension the sort should be applied to.
  *
  *  Uses NSNumber of intValue.
  */
 @property(nonatomic, strong, nullable) NSNumber *dimensionIndex;
+
+/**
+ *  The text color to sort by. Mutually exclusive with sorting by background
+ *  fill color. Requests to set this field will fail with a 400 error if
+ *  background color is also set.
+ */
+@property(nonatomic, strong, nullable) GTLRSheets_Color *foregroundColor;
 
 /**
  *  The order data should be sorted.
@@ -8335,8 +9006,8 @@ GTLR_EXTERN NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_Waterfal
 
 /**
  *  Determines whether and how circular references are resolved with iterative
- *  calculation. Absence of this field means that circular references will
- *  result in calculation errors.
+ *  calculation. Absence of this field means that circular references result
+ *  in calculation errors.
  */
 @property(nonatomic, strong, nullable) GTLRSheets_IterativeCalculationSettings *iterativeCalculationSettings;
 
@@ -8349,6 +9020,9 @@ GTLR_EXTERN NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_Waterfal
  */
 @property(nonatomic, copy, nullable) NSString *locale;
 
+/** Theme applied to the spreadsheet. */
+@property(nonatomic, strong, nullable) GTLRSheets_SpreadsheetTheme *spreadsheetTheme;
+
 /**
  *  The time zone of the spreadsheet, in CLDR format such as
  *  `America/New_York`. If the time zone isn't recognized, this may
@@ -8358,6 +9032,23 @@ GTLR_EXTERN NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_Waterfal
 
 /** The title of the spreadsheet. */
 @property(nonatomic, copy, nullable) NSString *title;
+
+@end
+
+
+/**
+ *  Represents spreadsheet theme
+ */
+@interface GTLRSheets_SpreadsheetTheme : GTLRObject
+
+/** / Name of the primary font family. */
+@property(nonatomic, copy, nullable) NSString *primaryFontFamily;
+
+/**
+ *  The spreadsheet theme color pairs. To update you must provide all theme
+ *  color pairs.
+ */
+@property(nonatomic, strong, nullable) NSArray<GTLRSheets_ThemeColorPair *> *themeColors;
 
 @end
 
@@ -8534,6 +9225,45 @@ GTLR_EXTERN NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_Waterfal
 
 
 /**
+ *  A pair mapping a spreadsheet theme color type to the concrete color it
+ *  represents.
+ */
+@interface GTLRSheets_ThemeColorPair : GTLRObject
+
+/** The concrete color corresponding to the theme color type. */
+@property(nonatomic, strong, nullable) GTLRSheets_ColorStyle *color;
+
+/**
+ *  The type of the spreadsheet theme color.
+ *
+ *  Likely values:
+ *    @arg @c kGTLRSheets_ThemeColorPair_ColorType_Accent1 Represents the first
+ *        accent color (Value: "ACCENT1")
+ *    @arg @c kGTLRSheets_ThemeColorPair_ColorType_Accent2 Represents the second
+ *        accent color (Value: "ACCENT2")
+ *    @arg @c kGTLRSheets_ThemeColorPair_ColorType_Accent3 Represents the third
+ *        accent color (Value: "ACCENT3")
+ *    @arg @c kGTLRSheets_ThemeColorPair_ColorType_Accent4 Represents the fourth
+ *        accent color (Value: "ACCENT4")
+ *    @arg @c kGTLRSheets_ThemeColorPair_ColorType_Accent5 Represents the fifth
+ *        accent color (Value: "ACCENT5")
+ *    @arg @c kGTLRSheets_ThemeColorPair_ColorType_Accent6 Represents the sixth
+ *        accent color (Value: "ACCENT6")
+ *    @arg @c kGTLRSheets_ThemeColorPair_ColorType_Background Represents the
+ *        primary background color (Value: "BACKGROUND")
+ *    @arg @c kGTLRSheets_ThemeColorPair_ColorType_Link Represents the color to
+ *        use for hyperlinks (Value: "LINK")
+ *    @arg @c kGTLRSheets_ThemeColorPair_ColorType_Text Represents the primary
+ *        text color (Value: "TEXT")
+ *    @arg @c kGTLRSheets_ThemeColorPair_ColorType_ThemeColorTypeUnspecified
+ *        Unspecified theme color (Value: "THEME_COLOR_TYPE_UNSPECIFIED")
+ */
+@property(nonatomic, copy, nullable) NSString *colorType;
+
+@end
+
+
+/**
  *  A color scale for a treemap chart.
  */
 @interface GTLRSheets_TreemapChartColorScale : GTLRObject
@@ -8546,12 +9276,29 @@ GTLR_EXTERN NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_Waterfal
 @property(nonatomic, strong, nullable) GTLRSheets_Color *maxValueColor;
 
 /**
+ *  The background color for cells with a color value greater than or equal
+ *  to maxValue. Defaults to #109618 if not
+ *  specified.
+ *  If max_value_color is also set, this field takes precedence.
+ */
+@property(nonatomic, strong, nullable) GTLRSheets_ColorStyle *maxValueColorStyle;
+
+/**
  *  The background color for cells with a color value at the midpoint between
  *  minValue and
  *  maxValue. Defaults to #efe6dc if not
  *  specified.
  */
 @property(nonatomic, strong, nullable) GTLRSheets_Color *midValueColor;
+
+/**
+ *  The background color for cells with a color value at the midpoint between
+ *  minValue and
+ *  maxValue. Defaults to #efe6dc if not
+ *  specified.
+ *  If mid_value_color is also set, this field takes precedence.
+ */
+@property(nonatomic, strong, nullable) GTLRSheets_ColorStyle *midValueColorStyle;
 
 /**
  *  The background color for cells with a color value less than or equal to
@@ -8561,10 +9308,25 @@ GTLR_EXTERN NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_Waterfal
 @property(nonatomic, strong, nullable) GTLRSheets_Color *minValueColor;
 
 /**
+ *  The background color for cells with a color value less than or equal to
+ *  minValue. Defaults to #dc3912 if not
+ *  specified.
+ *  If min_value_color is also set, this field takes precedence.
+ */
+@property(nonatomic, strong, nullable) GTLRSheets_ColorStyle *minValueColorStyle;
+
+/**
  *  The background color for cells that have no color data associated with
  *  them. Defaults to #000000 if not specified.
  */
 @property(nonatomic, strong, nullable) GTLRSheets_Color *noDataColor;
+
+/**
+ *  The background color for cells that have no color data associated with
+ *  them. Defaults to #000000 if not specified.
+ *  If no_data_color is also set, this field takes precedence.
+ */
+@property(nonatomic, strong, nullable) GTLRSheets_ColorStyle *noDataColorStyle;
 
 @end
 
@@ -8605,6 +9367,12 @@ GTLR_EXTERN NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_Waterfal
 
 /** The background color for header cells. */
 @property(nonatomic, strong, nullable) GTLRSheets_Color *headerColor;
+
+/**
+ *  The background color for header cells.
+ *  If header_color is also set, this field takes precedence.
+ */
+@property(nonatomic, strong, nullable) GTLRSheets_ColorStyle *headerColorStyle;
 
 /**
  *  True to hide tooltips.
@@ -9119,6 +9887,35 @@ GTLR_EXTERN NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_Waterfal
 
 
 /**
+ *  Updates a slicer's specifications.
+ *  (This does not move or resize a slicer. To move or resize a slicer use
+ *  UpdateEmbeddedObjectPositionRequest.
+ */
+@interface GTLRSheets_UpdateSlicerSpecRequest : GTLRObject
+
+/**
+ *  The fields that should be updated. At least one field must be specified.
+ *  The root `SlicerSpec` is implied and should not be specified. A single "*"`
+ *  can be used as short-hand for listing every field.
+ *
+ *  String format is a comma-separated list of fields.
+ */
+@property(nonatomic, copy, nullable) NSString *fields;
+
+/**
+ *  The id of the slicer to update.
+ *
+ *  Uses NSNumber of intValue.
+ */
+@property(nonatomic, strong, nullable) NSNumber *slicerId;
+
+/** The specification to apply to the slicer. */
+@property(nonatomic, strong, nullable) GTLRSheets_SlicerSpec *spec;
+
+@end
+
+
+/**
  *  Updates properties of a spreadsheet.
  */
 @interface GTLRSheets_UpdateSpreadsheetPropertiesRequest : GTLRObject
@@ -9283,6 +10080,12 @@ GTLR_EXTERN NSString * const kGTLRSheets_WaterfallChartSpec_StackedType_Waterfal
 
 /** The color of the column. */
 @property(nonatomic, strong, nullable) GTLRSheets_Color *color;
+
+/**
+ *  The color of the column.
+ *  If color is also set, this field takes precedence.
+ */
+@property(nonatomic, strong, nullable) GTLRSheets_ColorStyle *colorStyle;
 
 /** The label of the column's legend. */
 @property(nonatomic, copy, nullable) NSString *label;

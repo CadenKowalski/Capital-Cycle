@@ -12,12 +12,13 @@ import CoreData
 
 var user = FirebaseUser()
 var weekActivitiesList: [[String]]!
-var Week: [[String]]!
+var week: [[String]]!
 var camperInfo: [[String]]!
 let collectionRef = Firestore.firestore().collection("Users")
 let firebaseFunctions = FirebaseFunctions()
 let viewFunctions = ViewFunctions()
 let authenticationFunctions = AuthenticationFunctions()
+let googleFunctions = GoogleFunctions()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -36,15 +37,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Configures the Spreadsheet core data entity
         let Spreadsheet = fetchRecordsOfEntity(Entity: "Spreadsheet", Context: Context)
         if let Sheet = Spreadsheet.first {
-            weekActivitiesList = Sheet.value(forKey: "dailyData") as? [[String]]
-            Week = Sheet.value(forKey: "overviewData") as? [[String]]
             camperInfo = Sheet.value(forKey: "camperInfo") as? [[String]]
         } else if let Spreadsheet = instantiateRecordForEntity(Entity: "Spreadsheet", Context: Context) {
             Spreadsheet.setValue([[""]], forKey: "dailyData")
             Spreadsheet.setValue([[""]], forKey: "overviewData")
             Spreadsheet.setValue([[""]], forKey: "camperInfo")
             weekActivitiesList = [[""]]
-            Week = [[""]]
+            week = [[""]]
             camperInfo = [[""]]
         }
         

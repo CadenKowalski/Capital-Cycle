@@ -10,6 +10,8 @@ import UIKit
 
 class ViewFunctions: UIViewController {
 
+    // MARK: View Fucntions
+    
     // Generates haptic feedback
     func giveHapticFeedback(error: Bool, prefers: Bool) {
         if prefers {

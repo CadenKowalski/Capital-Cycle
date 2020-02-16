@@ -55,10 +55,8 @@ class SchedulePage: UIViewController {
     static let Instance = SchedulePage()
     let Day = Calendar.current.component(.weekday, from: Date())
     let Hour = Calendar.current.component(.hour, from: Date())
-    let spreadsheetID = "1alCW-eSX-lC6CUi0lbmNK7hpfkUhpOqhrbWZCBJgXuk"
     var dailyRefreshControl = UIRefreshControl()
     var overviewRefreshControl = UIRefreshControl()
-    let Service = GTLRSheetsService()
     
     // MARK: View Instantiation
     
@@ -66,8 +64,8 @@ class SchedulePage: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         formatUI()
-        fetchDailyData()
-        fetchOverviewData()
+        formatDailyData()
+        formatOverviewData()
     }
     
     // Runs when the view is reloaded
@@ -120,8 +118,8 @@ class SchedulePage: UIViewController {
         } else {
             if Hour > 17 {
                 if Day == 6 {
-                    dailyBtn.setTitle("Mon", for: .normal)                }
-                else {
+                    dailyBtn.setTitle("Mon", for: .normal)
+                } else {
                     dailyBtn.setTitle("\(Days[Day - 1])", for: .normal)
                 }
             } else {
@@ -136,9 +134,6 @@ class SchedulePage: UIViewController {
         // Formats the Y constraints relative to the gradient view height
         dailyScrollViewYConstraint.constant = gradientView.frame.height + 8
         overviewScrollViewYConstraint.constant = gradientView.frame.height + 8
-        
-        // Sets the API key for the GTLR Service so that the app can access the spreadhseet without credentials
-        Service.apiKey = "AIzaSyBIdPHR_nqgL9G6fScmlcPMReBM5PmtVD8"
     }
     
     // Sets the profile image on the account settings button
@@ -146,24 +141,11 @@ class SchedulePage: UIViewController {
         accountSettingsImgView.image = user.profileImg
     }
     
-    // MARK: Daily Spreadsheet Data
+    // MARK: Spreadsheet Data
 
-    // Fetches the daily spreadsheet data
-    func fetchDailyData() {
-        let Range = "Schedule Data!A2:M6"
-        let Query = GTLRSheetsQuery_SpreadsheetsValuesGet.query(withSpreadsheetId: spreadsheetID, range: Range)
-        Service.executeQuery(Query, delegate: self, didFinish: #selector(displayDailyData(Ticket:finishedWithObject:Error:)))
-    }
-    
-    // Displays the daily spreadsheet data
-    @objc func displayDailyData(Ticket: GTLRServiceTicket, finishedWithObject Result: GTLRSheets_ValueRange, Error: NSError?) {
-        viewFunctions.giveHapticFeedback(error: false, prefers: user.prefersHapticFeedback!)
+    // Formats the daily spreadsheet data
+    func formatDailyData() {
         let activityLblList = [eightActivityLbl, nineActivityLbl, tenActivityLbl, elevenActivityLbl, twelveActivityLbl, oneActivityLbl, twoActivityLbl, threeActivityLbl, fourActivityLbl,fiveActivityLbl, sixActivityLbl, itemsLbl]
-        if Reachability.isConnectedToNetwork() {
-            weekActivitiesList = Result.values! as? [[String]]
-            updateContext()
-        }
-        
         let dayActivitiesList: Array<Any>
         
         // Decides which days data to show
@@ -173,7 +155,7 @@ class SchedulePage: UIViewController {
             if Hour > 17 {
                 if Day == 6 {
                     dayActivitiesList = weekActivitiesList[0]
-            } else {
+                } else {
                     dayActivitiesList = weekActivitiesList[Day - 1]
                 }
             } else {
@@ -191,35 +173,27 @@ class SchedulePage: UIViewController {
         dayLbl.text = "\(dayActivitiesList[0])"
     }
     
-    // MARK: Overview Spreadhseet Data
-    
-    // Fetches overview spreadhseet data
-    func fetchOverviewData() {
-        let Range = "Schedule Data!A9:C13"
-        let Query = GTLRSheetsQuery_SpreadsheetsValuesGet.query(withSpreadsheetId: spreadsheetID, range: Range)
-        Service.executeQuery(Query, delegate: self, didFinish: #selector(setOverviewData(Ticket:finishedWithObject:Error:)))
-    }
-    
-    // Displays the overview spreadsheet data
-    @objc func setOverviewData(Ticket: GTLRServiceTicket, finishedWithObject Result: GTLRSheets_ValueRange, Error: NSError?) {
+    // Formats the overview spreadhseet data
+    func formatOverviewData() {
         let overviewList = [mondayLbl, tuesdayLbl, wednesdayLbl, thursdayLbl, fridayLbl]
-        if Reachability.isConnectedToNetwork() {
-            Week = Result.values! as? [[String]]
-            updateContext()
-        }
-        
         var Index = 0
-        for Day in Week {
+        for Day in week {
             overviewList[Index]?.text = "\(Day[1])\n\(Day[2])"
             Index += 1
         }
     }
     
+    // Fetches updated spreadsheet data
+    func fetchScheduleData() {
+        googleFunctions.unsecureFetchData()
+        formatDailyData()
+        formatOverviewData()
+    }
+    
     // Refreshes the schedule labels if there is an internet connection
     @objc func updateData(_ sender: UIRefreshControl) {
         if Reachability.isConnectedToNetwork() {
-            fetchDailyData()
-            fetchOverviewData()
+            fetchScheduleData()
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
                 sender.endRefreshing()
             })
@@ -237,25 +211,6 @@ class SchedulePage: UIViewController {
             overviewScrollView.isHidden = false
         } else {
             overviewScrollView.isHidden = true
-        }
-    }
-
-    // MARK: Core Data
-    
-    // Updates the context with new values
-    func updateContext() {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        let Context = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Spreadsheet")
-        do {
-            let fetchResults = try Context.fetch(fetchRequest)
-            let Spreadsheet = fetchResults.first as! NSManagedObject
-            Spreadsheet.setValue(weekActivitiesList, forKey: "dailyData")
-            Spreadsheet.setValue(Week, forKey: "overviewData")
-            try Context.save()
-        } catch {
-            let nserror = error as NSError
-            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
     }
 }

@@ -32,6 +32,7 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
     override func viewDidLoad() {
         super.viewDidLoad()
         formatUI()
+        googleFunctions.unsecureFetchData()
     }
     
     // Logs in the user automatically if they are signedIn

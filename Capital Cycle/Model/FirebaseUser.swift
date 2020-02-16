@@ -9,6 +9,10 @@
 import UIKit
 
 struct FirebaseUser {
+    
+    // MARK: Global Variables
+    
+    // Code global vars
     var uid: String!
     var email: String!
     var profileImg: UIImage!
@@ -19,6 +23,8 @@ struct FirebaseUser {
     var prefersNotifications: Bool!
     var isCounselorVerified: Bool!
     var authenticationMethod: String!
+    
+    // MARK: Firebase User
     
     enum type {
         case none
