@@ -19,6 +19,7 @@ let firebaseFunctions = FirebaseFunctions()
 let viewFunctions = ViewFunctions()
 let authenticationFunctions = AuthenticationFunctions()
 let googleFunctions = GoogleFunctions()
+let coreDataFunctions = CoreDataFunctions()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

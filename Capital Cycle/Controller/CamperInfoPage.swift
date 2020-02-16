@@ -169,7 +169,7 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
     @objc func addCamperInfo(Ticket: GTLRServiceTicket, finishedWithObject Result: GTLRSheets_ValueRange, Error: NSError?) {
         if Reachability.isConnectedToNetwork() {
             camperInfo = Result.values as? [[String]]
-            updateContext()
+            coreDataFunctions.updateContext()
         }
         
         createBtn(numBtns: (camperInfo?.count)!)
@@ -221,24 +221,6 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
         parentEmailLbl.text = "\(camperInfo[camperBtns.firstIndex(of: sender)!][3])"
         parentEmail = "\(camperInfo[camperBtns.firstIndex(of: sender)!][3])"
         signedWaiverLbl.text = "\(camperInfo[camperBtns.firstIndex(of: sender)!][4])"
-    }
-    
-    // MARK: Core Data
-        
-    // Updates the context with new values
-    func updateContext() {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        let Context = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Spreadsheet")
-        do {
-            let fetchResults = try Context.fetch(fetchRequest)
-            let Spreadsheet = fetchResults.first as! NSManagedObject
-            Spreadsheet.setValue(camperInfo, forKey: "camperInfo")
-            try Context.save()
-        } catch {
-            let nserror = error as NSError
-            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-        }
     }
     
     // MARK: Dismiss

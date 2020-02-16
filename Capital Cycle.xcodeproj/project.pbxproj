@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -33,6 +33,7 @@
 		57AFFD652300FAF000B6CD7B /* VerifyCounselor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AFFD642300FAF000B6CD7B /* VerifyCounselor.swift */; };
 		57B57CEA23B9673400841442 /* FirebaseFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B57CE923B9673400841442 /* FirebaseFunctions.swift */; };
 		57B7FCA523064A0200D97E3A /* AccountSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B7FCA423064A0200D97E3A /* AccountSettings.swift */; };
+		57C2CFC623F9A0DA00FCA9A0 /* CoreDataFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2CFC523F9A0DA00FCA9A0 /* CoreDataFunctions.swift */; };
 		57CB68592306ECAC00570D86 /* UserNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CB68582306ECAC00570D86 /* UserNavigationController.swift */; };
 		57DA742F23F8D49400F0E9E7 /* GoogleFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA742E23F8D49400F0E9E7 /* GoogleFunctions.swift */; };
 		57DE34E223B2D19A00221F53 /* CustomUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DE34E123B2D19A00221F53 /* CustomUI.swift */; };
@@ -73,6 +74,7 @@
 		57AFFD642300FAF000B6CD7B /* VerifyCounselor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyCounselor.swift; sourceTree = "<group>"; };
 		57B57CE923B9673400841442 /* FirebaseFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFunctions.swift; sourceTree = "<group>"; };
 		57B7FCA423064A0200D97E3A /* AccountSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettings.swift; sourceTree = "<group>"; };
+		57C2CFC523F9A0DA00FCA9A0 /* CoreDataFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataFunctions.swift; sourceTree = "<group>"; };
 		57CB68582306ECAC00570D86 /* UserNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNavigationController.swift; sourceTree = "<group>"; };
 		57DA742E23F8D49400F0E9E7 /* GoogleFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleFunctions.swift; sourceTree = "<group>"; };
 		57DE34E123B2D19A00221F53 /* CustomUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUI.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				579F1A2723BC2666003115FD /* ViewFunctions.swift */,
 				57713CB023C045580039B347 /* AuthenticationFunctions.swift */,
 				57DA742E23F8D49400F0E9E7 /* GoogleFunctions.swift */,
+				57C2CFC523F9A0DA00FCA9A0 /* CoreDataFunctions.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -208,7 +211,6 @@
 				3174679D4EABB1C401780B8D /* Pods-Capital Cycle.debug.xcconfig */,
 				A8D83388A52E1E0EEF96944A /* Pods-Capital Cycle.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -336,6 +338,7 @@
 				57ED6A2F22D578A200E3A362 /* FAQPage.swift in Sources */,
 				578AF9DC22D41F2E007B42A9 /* Product.swift in Sources */,
 				57713CB123C045580039B347 /* AuthenticationFunctions.swift in Sources */,
+				57C2CFC623F9A0DA00FCA9A0 /* CoreDataFunctions.swift in Sources */,
 				57A3457422D2AEBD0070898F /* PageVC.swift in Sources */,
 				57A3457A22D2BB970070898F /* SchedulePage.swift in Sources */,
 				57AFA1B022F77F5100C2988C /* VerifyUser.swift in Sources */,
