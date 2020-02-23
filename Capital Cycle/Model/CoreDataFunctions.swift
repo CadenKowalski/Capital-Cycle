@@ -13,16 +13,34 @@ struct CoreDataFunctions {
     
     // MARK: Core Data Functions
     
-    func updateContext() {
+    func updateContext(values: [String], _ refreshToken: String?, _ info: [[String]]?) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let Context = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Spreadsheet")
         do {
             let fetchResults = try Context.fetch(fetchRequest)
             let Spreadsheet = fetchResults.first as! NSManagedObject
-            Spreadsheet.setValue(weekActivitiesList, forKey: "dailyData")
-            Spreadsheet.setValue(week, forKey: "overviewData")
-            Spreadsheet.setValue(camperInfo, forKey: "camperInfo")
+            for value in values {
+                switch value {
+                case "refresh_token":
+                    if let refreshToken = refreshToken {
+                        Spreadsheet.setValue(refreshToken, forKey: "refresh_token")
+                    }
+                    
+                case "dailyData":
+                    Spreadsheet.setValue(dailyData, forKey: "dailyData")
+                    
+                case "overviewData":
+                    Spreadsheet.setValue(overviewData, forKey: "overviewData")
+                    
+                case "camperInfo":
+                    Spreadsheet.setValue(info!, forKey: "camperInfo")
+                    
+                default:
+                    return
+                }
+            }
+            
             try Context.save()
         } catch {
             let nserror = error as NSError
@@ -39,11 +57,14 @@ struct CoreDataFunctions {
             let Spreadsheet = fetchResults.first as! NSManagedObject
             for value in contextValues {
                 switch value {
+                case "refresh_token":
+                    refresh_token = Spreadsheet.value(forKey: value) as? String
+                    
                 case "dailyData":
-                    weekActivitiesList = Spreadsheet.value(forKey: value) as? [[String]]
+                    dailyData = Spreadsheet.value(forKey: value) as? [[String]]
                     
                 case "overviewData":
-                    week = Spreadsheet.value(forKey: value) as? [[String]]
+                    overviewData = Spreadsheet.value(forKey: value) as? [[String]]
                     
                 case "camperInfo":
                     camperInfo = Spreadsheet.value(forKey: value) as? [[String]]

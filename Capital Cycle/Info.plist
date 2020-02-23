@@ -25,7 +25,15 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.242371580492-dvtjp00f44f2duq3jbh9emlom424j8ad</string>
+				<string>com.googleusercontent.apps.242371580492-iv4vu3010s8cjpfhlrc8a0l2gq97h1mo</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.cadenkowalski.Capital-Cycle</string>
 			</array>
 		</dict>
 	</array>

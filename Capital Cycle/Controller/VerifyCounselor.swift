@@ -8,8 +8,9 @@
 
 import UIKit
 import Firebase
+import AuthenticationServices
 
-class VerifyCounselor: UIViewController, UITextFieldDelegate {
+class VerifyCounselor: UIViewController, UITextFieldDelegate, ASWebAuthenticationPresentationContextProviding {
     
     // MARK: Global Variables
     
@@ -17,10 +18,12 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var gradientView: CustomView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
     @IBOutlet weak var counselorIdTxtField: UITextField!
+    @IBOutlet weak var disableBtn: UIButton!
     @IBOutlet weak var signUpBtn: CustomButton!
     @IBOutlet weak var signUpBtnProgressWheel: UIActivityIndicatorView!
     @IBOutlet weak var changeBtn: UIButton!
     // Code global vars
+    var googleSignIn = true
     var password: String!
     var presentingVC = "Sign Up"
     
@@ -54,13 +57,26 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate {
         }
     }
     
+    func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
+        return self.view.window ?? ASPresentationAnchor()
+    }
+    
     // MARK: Sign Up
+    
+    @IBAction func disableGoogleSignIn(_ sender: UIButton) {
+        disableBtn.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
+        googleSignIn = false
+    }
     
     // Signs up the user
     @IBAction func signUp(_ sender: UIButton) {
         viewFunctions.formatProgressWheel(progressWheel: signUpBtnProgressWheel, button: signUpBtn, toShow: true, hapticFeedback: true)
         if counselorIdTxtField.text == "082404" {
             user.isCounselorVerified = true
+            if googleSignIn {
+                googleFunctions.getAuthCode(context: self)
+            }
+            
             if presentingVC == "Sign Up" {
                 firebaseFunctions.createUser(password: password) { error in
                     if error == nil {

@@ -11,9 +11,10 @@ import Firebase
 import CoreData
 
 var user = FirebaseUser()
-var weekActivitiesList: [[String]]!
-var week: [[String]]!
+var dailyData: [[String]]!
+var overviewData: [[String]]!
 var camperInfo: [[String]]!
+var refresh_token: String!
 let collectionRef = Firestore.firestore().collection("Users")
 let firebaseFunctions = FirebaseFunctions()
 let viewFunctions = ViewFunctions()
@@ -37,15 +38,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Configures the Spreadsheet core data entity
         let Spreadsheet = fetchRecordsOfEntity(Entity: "Spreadsheet", Context: Context)
-        if let Sheet = Spreadsheet.first {
-            camperInfo = Sheet.value(forKey: "camperInfo") as? [[String]]
-        } else if let Spreadsheet = instantiateRecordForEntity(Entity: "Spreadsheet", Context: Context) {
-            Spreadsheet.setValue([[""]], forKey: "dailyData")
-            Spreadsheet.setValue([[""]], forKey: "overviewData")
-            Spreadsheet.setValue([[""]], forKey: "camperInfo")
-            weekActivitiesList = [[""]]
-            week = [[""]]
-            camperInfo = [[""]]
+        if Spreadsheet.count == 0 {
+            if let Spreadsheet = instantiateRecordForEntity(Entity: "Spreadsheet", Context: Context) {
+                Spreadsheet.setValue([[""]], forKey: "dailyData")
+                Spreadsheet.setValue([[""]], forKey: "overviewData")
+                Spreadsheet.setValue([[""]], forKey: "camperInfo")
+                dailyData = [[""]]
+                overviewData = [[""]]
+                camperInfo = [[""]]
+            }
         }
         
         user.reset()

@@ -4,8 +4,9 @@
         <attribute name="camperInfo" optional="YES" attributeType="Transformable" customClassName="[[String]]"/>
         <attribute name="dailyData" optional="YES" attributeType="Transformable" customClassName="[[String]]" storedInTruthFile="YES"/>
         <attribute name="overviewData" optional="YES" attributeType="Transformable"/>
+        <attribute name="refresh_token" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Spreadsheet" positionX="160" positionY="192" width="128" height="88"/>
+        <element name="Spreadsheet" positionX="160" positionY="192" width="128" height="103"/>
     </elements>
 </model>

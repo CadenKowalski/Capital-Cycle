@@ -42,6 +42,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         if Reachability.isConnectedToNetwork() {
             googleFunctions.unsecureFetchDataWithConnection()
+            googleFunctions.refreshAccessToken() {_ in}
         } else {
             googleFunctions.fetchDataWithoutConnection()
         }

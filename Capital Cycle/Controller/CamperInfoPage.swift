@@ -7,12 +7,10 @@
 //
 
 import UIKit
-import CoreData
 import MessageUI
 import GoogleAPIClientForREST
 
 class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
-    
     // MARK: Global Variables
     
     // Storyboard outlets
@@ -24,6 +22,7 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
     @IBOutlet weak var camperScrollView: UIScrollView!
     @IBOutlet weak var scrollViewDisplay: UIView!
     @IBOutlet weak var scrollViewDisplayHeight: NSLayoutConstraint!
+    @IBOutlet weak var noConnectionView: CustomView!
     @IBOutlet weak var camperInfoView: UIView!
     @IBOutlet weak var camperName: UILabel!
     @IBOutlet weak var parentNameLbl: UILabel!
@@ -34,6 +33,7 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
     static let Instance = CamperInfoPage()
     let spreadsheetID = "1alCW-eSX-lC6CUi0lbmNK7hpfkUhpOqhrbWZCBJgXuk"
     let Service = GTLRSheetsService()
+    var camperInfoRefreshControl = UIRefreshControl()
     var camperBtns = [UIButton]()
     var parentLastName: String!
     var parentPhone: Int!
@@ -45,13 +45,21 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         formatUI()
-        fetchNumCampers()
+        createBtn()
     }
     
     // Runs when the view is reloaded
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         setProfileImg()
+        if !Reachability.isConnectedToNetwork() {
+            UIView.animate(withDuration: 0.25, animations: { () -> Void in
+                self.noConnectionView.alpha = 1})
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
+                UIView.animate(withDuration: 0.25, animations: { () -> Void in
+                    self.noConnectionView.alpha = 0})
+            })
+        }
     }
     
     // MARK: View Formatting
@@ -73,8 +81,10 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
         CamperInfoPage.Instance.accountSettingsImgView = accountSettingsImgView
         setProfileImg()
         
-        // Sets the API key for the GTLR Service so that the app can access the spreadhseet without credentials
-        Service.apiKey = "AIzaSyBIdPHR_nqgL9G6fScmlcPMReBM5PmtVD8"
+        // Formats the refresh view
+        camperInfoRefreshControl.backgroundColor = UIColor(named: "ViewColor")
+        camperInfoRefreshControl.addTarget(self, action: #selector(updateData), for: .valueChanged)
+        camperScrollView.refreshControl = camperInfoRefreshControl
     }
     
     // Formats a parents name
@@ -112,7 +122,7 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
     }
     
     // MARK: View Management
-    
+        
     // Calls the parent's phone number
     @IBAction func callNumber(_ sender: Any) {
         if let url = URL(string: "tel://\(parentPhone!))"), UIApplication.shared.canOpenURL(url) {
@@ -140,45 +150,10 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
         present(Alert, animated: true, completion: nil)
     }
     
-    // MARK: Fetch Camper Info Data
-
-    // Fetches the number of campers
-    func fetchNumCampers() {
-        let Range = "Camper Info!F2"
-        let Query = GTLRSheetsQuery_SpreadsheetsValuesGet.query(withSpreadsheetId: spreadsheetID, range: Range)
-        Service.executeQuery(Query, delegate: self, didFinish: #selector(setNumCampers(Ticket:finishedWithObject:Error:)))
-    }
-    
-    // Sets the number of campers
-    @objc func setNumCampers(Ticket: GTLRServiceTicket, finishedWithObject Result: GTLRSheets_ValueRange, Error: NSError?) {
-        if Reachability.isConnectedToNetwork() {
-            fetchCamperInfo(numCampers: (Result.values![0][0] as! String))
-        } else {
-            fetchCamperInfo(numCampers: String(camperInfo!.count))
-        }
-    }
-    
-    // Fetches the camper info data
-    func fetchCamperInfo(numCampers: String) {
-        let Range = "Camper Info!A2:E\(numCampers)"
-        let Query = GTLRSheetsQuery_SpreadsheetsValuesGet.query(withSpreadsheetId: spreadsheetID, range: Range)
-        Service.executeQuery(Query, delegate: self, didFinish: #selector(addCamperInfo(Ticket:finishedWithObject:Error:)))
-    }
-    
-    // Adds the camper info to a list of UIButtons
-    @objc func addCamperInfo(Ticket: GTLRServiceTicket, finishedWithObject Result: GTLRSheets_ValueRange, Error: NSError?) {
-        if Reachability.isConnectedToNetwork() {
-            camperInfo = Result.values as? [[String]]
-            coreDataFunctions.updateContext()
-        }
-        
-        createBtn(numBtns: (camperInfo?.count)!)
-    }
-    
     // MARK: Display Camper Info
     
-    func createBtn(numBtns: Int) {
-        for camper in 0..<numBtns {
+    func createBtn() {
+        for camper in 0..<camperInfo.count {
             let camperBtn: UIButton
             if camperBtns.count == 0 {
                 camperBtn = UIButton(frame: CGRect(x: 16, y:  0, width: view.frame.width, height: 40))
@@ -199,6 +174,28 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
             scrollViewDisplayHeight.constant = CGFloat(camperBtns.count * 40) + 25
         } else {
             scrollViewDisplayHeight.constant = view.frame.height - (gradientView.frame.height + 35)
+        }
+    }
+    
+    @objc func updateData(_ sender: UIRefreshControl) {
+        if Reachability.isConnectedToNetwork() {
+            googleFunctions.refreshAccessToken() { error in
+                DispatchQueue.main.async {
+                    if error == nil {
+                        for button in 0..<self.camperBtns.count {
+                            self.camperBtns[button].setTitle("\(camperInfo[button][0])", for: .normal)
+                        }
+                    } else {
+                        print(error!)
+                    }
+                    
+                    sender.endRefreshing()
+                }
+            }
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
+                sender.endRefreshing()
+            })
         }
     }
     
@@ -225,7 +222,7 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
     
     // MARK: Dismiss
     
-    // Dismsisses the camper infor view
+    // Dismsisses the camper info view
     @IBAction func dismissCamperInfoView(_ sender: UIButton) {
         scrollViewDisplay.backgroundColor = UIColor(named: "ViewColor")
         camperScrollView.backgroundColor = UIColor(named: "ViewColor")

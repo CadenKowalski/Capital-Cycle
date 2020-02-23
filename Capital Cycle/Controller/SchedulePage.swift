@@ -149,16 +149,16 @@ class SchedulePage: UIViewController {
         
         // Decides which days data to show
         if Day == 7 || Day == 1 {
-            dayActivitiesList = weekActivitiesList[0]
+            dayActivitiesList = dailyData[0]
         } else {
             if Hour > 17 {
                 if Day == 6 {
-                    dayActivitiesList = weekActivitiesList[0]
+                    dayActivitiesList = dailyData[0]
                 } else {
-                    dayActivitiesList = weekActivitiesList[Day - 1]
+                    dayActivitiesList = dailyData[Day - 1]
                 }
             } else {
-                dayActivitiesList = weekActivitiesList[Day - 2]
+                dayActivitiesList = dailyData[Day - 2]
             }
         }
         
@@ -176,7 +176,7 @@ class SchedulePage: UIViewController {
     func formatOverviewData() {
         let overviewList = [mondayLbl, tuesdayLbl, wednesdayLbl, thursdayLbl, fridayLbl]
         var Index = 0
-        for Day in week {
+        for Day in overviewData {
             overviewList[Index]?.text = "\(Day[1])\n\(Day[2])"
             Index += 1
         }
