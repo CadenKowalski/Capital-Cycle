@@ -13,7 +13,8 @@ struct CoreDataFunctions {
     
     // MARK: Core Data Functions
     
-    func updateContext(values: [String], _ refreshToken: String?, _ info: [[String]]?) {
+    // Updates core data values
+    func updateContext(values: [String], _ refreshToken: String?, _ dData: [[String]]?, _ oData: [[String]]?, _ info: [[String]]?) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let Context = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Spreadsheet")
@@ -28,13 +29,19 @@ struct CoreDataFunctions {
                     }
                     
                 case "dailyData":
-                    Spreadsheet.setValue(dailyData, forKey: "dailyData")
+                    if let dData = dData {
+                        Spreadsheet.setValue(dData, forKey: "dailyData")
+                    }
                     
                 case "overviewData":
-                    Spreadsheet.setValue(overviewData, forKey: "overviewData")
+                    if let oData = oData {
+                        Spreadsheet.setValue(oData, forKey: "overviewData")
+                    }
                     
                 case "camperInfo":
-                    Spreadsheet.setValue(info!, forKey: "camperInfo")
+                    if let info = info {
+                        Spreadsheet.setValue(info, forKey: "camperInfo")
+                    }
                     
                 default:
                     return
@@ -48,6 +55,7 @@ struct CoreDataFunctions {
         }
     }
     
+    // Fetches core data values
     func fetchData(contextValues: [String]) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let Context = appDelegate.persistentContainer.viewContext

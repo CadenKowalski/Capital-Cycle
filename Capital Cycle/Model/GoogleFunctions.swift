@@ -8,41 +8,19 @@
 
 import Foundation
 import AuthenticationServices
-import GoogleAPIClientForREST
 
 class GoogleFunctions: NSObject {
     
     // MARK: Global Variables
     
     // Code global vars
-    let service = GTLRSheetsService()
     let unsecureSpreadsheetID = "1alCW-eSX-lC6CUi0lbmNK7hpfkUhpOqhrbWZCBJgXuk"
     let secureSpreadhseetID = "1P6ruvsdZWGYGdUNajnIc3VqYLjuy9yNqQbpUIc-a1HM"
     var webAuthSession: ASWebAuthenticationSession?
     
     // MARK: Google Functions
     
-    func unsecureFetchDataWithConnection() {
-        service.apiKey = "AIzaSyBIdPHR_nqgL9G6fScmlcPMReBM5PmtVD8"
-        let Query = GTLRSheetsQuery_SpreadsheetsValuesGet.query(withSpreadsheetId: unsecureSpreadsheetID, range: "Schedule Data!A2:M13")
-        service.executeQuery(Query, delegate: self, didFinish: #selector(unsecureReturnData(Ticket:finishedWithObject:Error:)))
-    }
-    
-    @objc func unsecureReturnData(Ticket: GTLRServiceTicket, finishedWithObject Result: GTLRSheets_ValueRange, Error: NSError?) {
-        if Error == nil {
-            guard let results = Result.values! as? [[String]] else {
-                return
-            }
-            
-            dailyData = Array(results[0...4])
-            overviewData = Array(results[7...11])
-            coreDataFunctions.updateContext(values: ["dailyData", "overviewData"], nil, nil)
-        } else {
-            print(Error!.localizedDescription)
-        }
-    }
-    
-    // Fetches an authorization code for the user if they allow access
+    // Fetches an authorization code if the user allows access
     func getAuthCode(context: ASWebAuthenticationPresentationContextProviding) {
         var components = URLComponents()
         components.scheme = "https"
@@ -74,7 +52,7 @@ class GoogleFunctions: NSObject {
         webAuthSession?.start()
     }
     
-    // Exchanges authorization code for access token that can be used to fetch private data
+    // Exchanges authorization code for access token which is used in private Google Sheet requests
     func exchangeAuthCodeForAccessToken(authCode: String) {
         var components = URLComponents()
         components.scheme = "https"
@@ -96,7 +74,8 @@ class GoogleFunctions: NSObject {
                 let jsonData = try JSONSerialization.jsonObject(with: data!) as! [String: Any]
                 let accessToken = jsonData["access_token"] as! String
                 let refreshToken = jsonData["refresh_token"] as! String
-                self.secureFetchData(accessToken: accessToken, refreshToken: refreshToken) {_ in}
+                self.updateCoreDataValuesOnMainThread(refreshToken, nil, nil, nil)
+                self.fetchData(secure: true, accessToken: accessToken) {_ in}
             } catch {
                 print(error.localizedDescription)
             }
@@ -105,24 +84,36 @@ class GoogleFunctions: NSObject {
         task.resume()
     }
     
-    func secureFetchData(accessToken: String, refreshToken: String?, completion: @escaping(String?) -> Void) {
+    // Uses access token to fetch private Google Sheet data
+    func fetchData(secure: Bool, accessToken: String?, completion: @escaping(String?) -> Void) {
         var components = URLComponents()
         components.scheme = "https"
         components.host = "sheets.googleapis.com"
-        components.path = "/v4/spreadsheets/1P6ruvsdZWGYGdUNajnIc3VqYLjuy9yNqQbpUIc-a1HM/values/A2:E5"
-        components.queryItems = [
-            URLQueryItem(name: "access_token", value: accessToken)
-        ]
+        if secure {
+            components.path = "/v4/spreadsheets/\(secureSpreadhseetID)/values/A2:E5"
+            components.queryItems = [
+                URLQueryItem(name: "access_token", value: accessToken)
+            ]
+        } else {
+            components.path = "/v4/spreadsheets/\(unsecureSpreadsheetID)/values/A2:M13"
+            components.queryItems = [
+                URLQueryItem(name: "key", value: "AIzaSyBIdPHR_nqgL9G6fScmlcPMReBM5PmtVD8")
+            ]
+        }
         
         let fetchURL = components.url
-        var request = URLRequest(url: fetchURL!)
-        request.httpMethod = "GET"
+        let request = URLRequest(url: fetchURL!)
         let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
             do {
                 let jsonData = try JSONSerialization.jsonObject(with: data!) as! [String: Any]
                 if let values = jsonData["values"] as? [[Any]] {
-                    let info = values as? [[String]]
-                    self.updateContextValuesOnMainThread(refreshToken, info!)
+                    let sheetData = values as? [[String]]
+                    if secure {
+                        self.updateCoreDataValuesOnMainThread(nil, nil, nil, sheetData!)
+                    } else {
+                        self.updateCoreDataValuesOnMainThread(nil, Array(sheetData![0...4]), Array(sheetData![7...11]), nil)
+                    }
+                    
                     completion(nil)
                 }
             } catch let error as NSError {
@@ -133,6 +124,7 @@ class GoogleFunctions: NSObject {
         task.resume()
     }
     
+    // Refreshes an access token via the refresh token generated in exchangeAuthCodeForAccesstoken(authCode:)
     func refreshAccessToken(completion: @escaping(String?) -> Void) {
         coreDataFunctions.fetchData(contextValues: ["refresh_token"])
         var components = URLComponents()
@@ -152,7 +144,7 @@ class GoogleFunctions: NSObject {
             do {
                 let jsonData = try JSONSerialization.jsonObject(with: data!) as! [String: Any]
                 if let token = jsonData["access_token"] as? String {
-                    self.secureFetchData(accessToken: token, refreshToken: nil) { error in
+                    self.fetchData(secure: true, accessToken: token) { error in
                         if error == nil {
                             completion(nil)
                         } else {
@@ -168,14 +160,16 @@ class GoogleFunctions: NSObject {
         task.resume()
     }
     
+    // Fetches data from core data if there is no internet or cellular connection
     func fetchDataWithoutConnection() {
         coreDataFunctions.fetchData(contextValues: ["dailyData", "overviewData", "camperInfo"])
     }
     
-    func updateContextValuesOnMainThread(_ refreshToken: String?, _ info: [[String]]) {
+    // Updates core data values since requests must be performed on the main thread
+    func updateCoreDataValuesOnMainThread(_ refreshToken: String?, _ dailyData: [[String]]?, _ overviewData: [[String]]?, _ info: [[String]]?) {
         DispatchQueue.main.async {
-            coreDataFunctions.updateContext(values: ["refresh_token", "camperInfo"], refreshToken, info)
-            coreDataFunctions.fetchData(contextValues: ["refresh_token", "camperInfo"])
+            coreDataFunctions.updateContext(values: ["refresh_token", "dailyData", "overviewData", "camperInfo"], refreshToken, dailyData, overviewData, info)
+            coreDataFunctions.fetchData(contextValues: ["refresh_token", "dailyData", "overviewData", "camperInfo"])
         }
     }
 }

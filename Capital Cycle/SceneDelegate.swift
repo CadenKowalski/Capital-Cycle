@@ -41,7 +41,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to undo the changes made on entering the background.
         
         if Reachability.isConnectedToNetwork() {
-            googleFunctions.unsecureFetchDataWithConnection()
+            googleFunctions.fetchData(secure: false, accessToken: nil) {_ in}
             googleFunctions.refreshAccessToken() {_ in}
         } else {
             googleFunctions.fetchDataWithoutConnection()

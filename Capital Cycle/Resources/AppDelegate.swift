@@ -39,14 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Configures the Spreadsheet core data entity
         let Spreadsheet = fetchRecordsOfEntity(Entity: "Spreadsheet", Context: Context)
         if Spreadsheet.count == 0 {
-            if let Spreadsheet = instantiateRecordForEntity(Entity: "Spreadsheet", Context: Context) {
-                Spreadsheet.setValue([[""]], forKey: "dailyData")
-                Spreadsheet.setValue([[""]], forKey: "overviewData")
-                Spreadsheet.setValue([[""]], forKey: "camperInfo")
-                dailyData = [[""]]
-                overviewData = [[""]]
-                camperInfo = [[""]]
-            }
+            instantiateRecordForEntity(Entity: "Spreadsheet", Context: Context)
         }
         
         user.reset()
@@ -112,10 +105,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     // Creates a record for a given entity
-    func instantiateRecordForEntity(Entity: String, Context: NSManagedObjectContext) -> NSManagedObject? {
+    func instantiateRecordForEntity(Entity: String, Context: NSManagedObjectContext) {
         let entityDescription = NSEntityDescription.entity(forEntityName: Entity, in: Context)
-        let entityRecord = NSManagedObject(entity: entityDescription!, insertInto: Context)
-        return entityRecord
+        _ = NSManagedObject(entity: entityDescription!, insertInto: Context)
     }
     
     // Returns the records for a given entity

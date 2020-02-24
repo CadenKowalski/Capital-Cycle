@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import GoogleAPIClientForREST
 
 class SchedulePage: UIViewController {
     
@@ -182,20 +181,21 @@ class SchedulePage: UIViewController {
         }
     }
     
-    // Fetches updated spreadsheet data
-    func fetchScheduleData() {
-        googleFunctions.unsecureFetchDataWithConnection()
-        formatDailyData()
-        formatOverviewData()
-    }
-    
     // Refreshes the schedule labels if there is an internet connection
     @objc func updateData(_ sender: UIRefreshControl) {
         if Reachability.isConnectedToNetwork() {
-            fetchScheduleData()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
-                sender.endRefreshing()
-            })
+            googleFunctions.fetchData(secure: false, accessToken: nil) { error in
+                DispatchQueue.main.async {
+                    if error == nil {
+                        self.formatDailyData()
+                        self.formatOverviewData()
+                    } else {
+                        print(error!)
+                    }
+                    
+                    sender.endRefreshing()
+                }
+            }
         } else {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
                 sender.endRefreshing()

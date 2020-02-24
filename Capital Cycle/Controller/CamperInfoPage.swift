@@ -8,7 +8,6 @@
 
 import UIKit
 import MessageUI
-import GoogleAPIClientForREST
 
 class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
     // MARK: Global Variables
@@ -31,8 +30,6 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
     @IBOutlet weak var signedWaiverLbl: UILabel!
     //Code global vars
     static let Instance = CamperInfoPage()
-    let spreadsheetID = "1alCW-eSX-lC6CUi0lbmNK7hpfkUhpOqhrbWZCBJgXuk"
-    let Service = GTLRSheetsService()
     var camperInfoRefreshControl = UIRefreshControl()
     var camperBtns = [UIButton]()
     var parentLastName: String!
@@ -152,6 +149,7 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
     
     // MARK: Display Camper Info
     
+    // Presents Google Sheet data in an array of buttons
     func createBtn() {
         for camper in 0..<camperInfo.count {
             let camperBtn: UIButton
@@ -177,6 +175,7 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
         }
     }
     
+    // Refreshes the camper info
     @objc func updateData(_ sender: UIRefreshControl) {
         if Reachability.isConnectedToNetwork() {
             googleFunctions.refreshAccessToken() { error in
@@ -199,7 +198,7 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
         }
     }
     
-    // Displays the camper information
+    // Displays the camper information when their name is clicked
     @objc func displayCamperInfo(_ sender: UIButton) {
         if traitCollection.userInterfaceStyle == .light {
             scrollViewDisplay.backgroundColor = #colorLiteral(red: 0.3000000119, green: 0.3000000119, blue: 0.3000000119, alpha: 1)
