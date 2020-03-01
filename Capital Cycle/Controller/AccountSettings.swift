@@ -23,6 +23,7 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
     @IBOutlet weak var accountSettingsProgressWheel: UIActivityIndicatorView!
     @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var userTypePickerView: UIPickerView!
+    @IBOutlet weak var resetPasswordBtn: UIButton!
     // Code global vars
     var typesOfUser = ["Current", "Camper", "Parent", "Counselor"]
     var deletingAccount: Bool?
@@ -60,6 +61,12 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
         cancelBtn.isHidden = true
         userTypePickerView.delegate = self
         userTypePickerView.dataSource = self
+        
+        // Formats the reset password button
+        if user.authenticationMethod == "Apple" {
+            resetPasswordBtn.isUserInteractionEnabled = false
+            resetPasswordBtn.setTitleColor(UIColor(named: "CellColor"), for: .normal)
+        }
     }
     
     // MARK: View Management
@@ -190,40 +197,39 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
     
     // Gets the user's authorization to reset threir password
     @IBAction func resetPassword(_ sender: UIButton) {
-        deletingAccount = false
-        if user.authenticationMethod == "Apple" {
-            self.performDestructiveProfileChange()
-        } else {
-            let enterPasswordAlert = UIAlertController(title: "Enter your password", message: nil, preferredStyle: .alert)
-            enterPasswordAlert.addTextField() { textField in
-                textField.placeholder = "Password"
-                textField.textContentType = .password
-                textField.font = UIFont(name: "Avenir-Book", size: 13.0)
-            }
-            
-            enterPasswordAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-            enterPasswordAlert.addAction(UIAlertAction(title: "Done", style: .destructive, handler: { action in
-                let credential = EmailAuthProvider.credential(withEmail: user.email!, password: enterPasswordAlert.textFields!.first!.text!)
-                Auth.auth().currentUser?.reauthenticate(with: credential) { (authResult, error) in
-                    self.sendPasswordResetEmail()
-                }
-            }))
-            
-            present(enterPasswordAlert, animated: true, completion: nil)
+        let enterPasswordAlert = UIAlertController(title: "Enter your password", message: nil, preferredStyle: .alert)
+        enterPasswordAlert.addTextField() { textField in
+            textField.placeholder = "Password"
+            textField.textContentType = .password
+            textField.font = UIFont(name: "Avenir-Book", size: 13.0)
         }
+        
+        enterPasswordAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        enterPasswordAlert.addAction(UIAlertAction(title: "Continue", style: .default, handler: { action in
+            let credential = EmailAuthProvider.credential(withEmail: user.email!, password: enterPasswordAlert.textFields!.first!.text!)
+            Auth.auth().currentUser?.reauthenticate(with: credential) { (authResult, error) in
+                if error == nil {
+                    self.sendPasswordResetEmail()
+                } else {
+                    viewFunctions.showAlert(title: "Uh Oh", message: "The password you entered is incorrect", actionTitle: "OK", actionStyle: .default, view: self)
+                }
+            }
+        }))
+        
+        present(enterPasswordAlert, animated: true, completion: nil)
     }
     
     // Sends a password reset email after recieving authorization
     func sendPasswordResetEmail() {
-        let resetPasswordAlert = UIAlertController(title: "Reset Password", message: "Enter your email adress", preferredStyle: .alert)
+        let resetPasswordAlert = UIAlertController(title: "Reset Password", message: "Enter your email adress, we will send you a password reset email", preferredStyle: .alert)
         resetPasswordAlert.addTextField { textField in
             textField.keyboardType = .emailAddress
             textField.font = UIFont(name: "Avenir-Book", size: 13.0)
-            textField.attributedText = NSAttributedString(string: "\(user.email!)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
+            textField.attributedText = NSAttributedString(string: "\(user.email!)", attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "LabelColor")!, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
         }
         
         resetPasswordAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        resetPasswordAlert.addAction(UIAlertAction(title: "Reset Password", style: .destructive, handler: { Action in
+        resetPasswordAlert.addAction(UIAlertAction(title: "Reset Password", style: .destructive, handler: { action in
             firebaseFunctions.resetPassword(recoveryEmail: (resetPasswordAlert.textFields?.first!.text)!) { error in
                 if error == nil {
                     viewFunctions.showAlert(title: "Success", message: "You have been sent a password reset email", actionTitle: "OK", actionStyle: .default, view: self)
@@ -238,7 +244,6 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
     
     // Gets the user's authorization to delete their account
     @IBAction func getAuthorization(_ sender: UIButton) {
-        deletingAccount = true
         if user.authenticationMethod == "Apple" {
             self.performDestructiveProfileChange()
         } else {
@@ -250,10 +255,14 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
             }
             
             enterPasswordAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-            enterPasswordAlert.addAction(UIAlertAction(title: "Done", style: .destructive, handler: { action in
+            enterPasswordAlert.addAction(UIAlertAction(title: "Continue", style: .default, handler: { action in
                 let credential = EmailAuthProvider.credential(withEmail: user.email!, password: enterPasswordAlert.textFields!.first!.text!)
                 Auth.auth().currentUser?.reauthenticate(with: credential) { (authResult, error) in
-                    self.deleteAccount()
+                    if error == nil {
+                        self.deleteAccount()
+                    } else {
+                        viewFunctions.showAlert(title: "Uh Oh", message: "The password you entered is incorrect", actionTitle: "OK", actionStyle: .default, view: self)
+                    }
                 }
             }))
             
@@ -271,7 +280,7 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
                     viewFunctions.giveHapticFeedback(error: false, prefers: user.prefersHapticFeedback!)
                     self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
                 } else {
-                    viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
+                    print(error!)
                 }
             }
         }))
@@ -299,7 +308,6 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
     // Creates a Firebase credential used to reauthenticate the current user in case the current one has expired
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
-            let nonce = currentNonce
             guard let appleIDToken = appleIDCredential.identityToken else {
                 viewFunctions.showAlert(title: "Error", message: "Authentication Failed", actionTitle: "OK", actionStyle: .default, view: self)
                 return
@@ -310,12 +318,12 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
                 return
             }
             
-            let credential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString, rawNonce: nonce)
+            let credential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString, rawNonce: currentNonce)
             Auth.auth().currentUser!.reauthenticate(with: credential) { (authResult, error) in
-                if self.deletingAccount! {
+                if error == nil {
                     self.deleteAccount()
                 } else {
-                    self.sendPasswordResetEmail()
+                    print(error!.localizedDescription)
                 }
             }
         }

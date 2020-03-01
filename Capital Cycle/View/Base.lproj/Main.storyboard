@@ -44,12 +44,12 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ihh-44-Xpe" userLabel="Dates Lbl">
                                                 <rect key="frame" x="32" y="36" width="374" height="139.33333333333334"/>
-                                                <string key="text">Session 1: Jun 17 - 21 
-Session 2: Jun 24 - 28 
-Session 3: Jul 1 - 5 
-Session 4: Jul 8 - 12 
-Session 5: Jul 15 - 19 
-Session 6: Jul 22 - 26</string>
+                                                <string key="text">Session 1: Jun 23 - 26 
+Session 2: Jun/Jul 30 - 3 
+Session 3: Jul 6 - 10 
+Session 4: Jul 13 - 17 
+Session 5: Jul 20 - 24 
+Session 6: Jul 27 - 31</string>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
                                                 <color key="textColor" name="LabelColor"/>
                                                 <nil key="highlightedColor"/>
@@ -82,8 +82,8 @@ Session 6: Jul 22 - 26</string>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="srY-QF-c10" userLabel="Price Lbl">
                                                 <rect key="frame" x="32" y="376.66666666666669" width="374" height="69.666666666666686"/>
-                                                <string key="text">Sessions 1 &amp; 3: $375 
-Sessions 2, 4, 5 &amp; 6: $430
+                                                <string key="text">Sessions 1 &amp; 2: $375 
+Sessions 3, 4, 5 &amp; 6: $430
 Before Care: $10 per day</string>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
                                                 <color key="textColor" name="LabelColor"/>
@@ -102,10 +102,10 @@ Before Care: $10 per day</string>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yHx-Q1-GR3" userLabel="Contacts Lbl">
                                                 <rect key="frame" x="32" y="490.33333333333331" width="374" height="116.33333333333331"/>
                                                 <string key="text">Email: CapitalCycleCamp@gmail.com
-Camp Owner - Ben Berkow
-Phone: 202.510.1342 
-Site Manager - Chris Prosser
-Phone: 202.288.5245</string>
+Camp Owner - Curtis Taylor
+Phone: TBD
+Site Manager - TBD
+Phone: TBD</string>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
                                                 <color key="textColor" name="LabelColor"/>
                                                 <nil key="highlightedColor"/>
@@ -380,106 +380,106 @@ Phone: 202.288.5245</string>
                                                 <color key="textColor" name="LabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8AM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i2l-59-IRZ" userLabel="8AM Lbl">
-                                                <rect key="frame" x="16" y="36" width="45" height="28"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8 AM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i2l-59-IRZ" userLabel="8AM Lbl">
+                                                <rect key="frame" x="16" y="36" width="51" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28" id="IG6-oM-kwu"/>
-                                                    <constraint firstAttribute="width" constant="45" id="Zzt-95-Qk6"/>
+                                                    <constraint firstAttribute="width" constant="51" id="XOL-va-w2z"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                 <color key="textColor" name="LabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activity" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bTA-Hq-0Dx" userLabel="8AM Activity Lbl">
-                                                <rect key="frame" x="89" y="36" width="317" height="23.333333333333329"/>
+                                                <rect key="frame" x="95" y="36" width="311" height="23.333333333333329"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
                                                 <color key="textColor" name="LabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9AM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="14S-6m-x47" userLabel="9AM Lbl">
-                                                <rect key="frame" x="16" y="89.333333333333343" width="45" height="28"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9 AM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="14S-6m-x47" userLabel="9AM Lbl">
+                                                <rect key="frame" x="16" y="89.333333333333343" width="51" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28" id="BNj-uV-ogS"/>
-                                                    <constraint firstAttribute="width" constant="45" id="xNr-IE-PCo"/>
+                                                    <constraint firstAttribute="width" constant="51" id="xNr-IE-PCo"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                 <color key="textColor" name="LabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activity" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s4T-0P-Cii" userLabel="9AM Activity Lbl">
-                                                <rect key="frame" x="89" y="89.333333333333343" width="317" height="23.333333333333329"/>
+                                                <rect key="frame" x="95" y="89.333333333333343" width="311" height="23.333333333333329"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
                                                 <color key="textColor" name="LabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10AM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KBB-9W-3o3" userLabel="10AM Lbl">
-                                                <rect key="frame" x="16" y="142.66666666666666" width="57" height="28"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 AM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KBB-9W-3o3" userLabel="10AM Lbl">
+                                                <rect key="frame" x="16" y="142.66666666666666" width="63" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28" id="dM1-Ab-SoB"/>
-                                                    <constraint firstAttribute="width" constant="57" id="trs-ZA-1jG"/>
+                                                    <constraint firstAttribute="width" constant="63" id="trs-ZA-1jG"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                 <color key="textColor" name="LabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activity" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nn3-34-utR" userLabel="10AM Activity Lbl">
-                                                <rect key="frame" x="89" y="142.66666666666666" width="317" height="23.333333333333343"/>
+                                                <rect key="frame" x="95" y="142.66666666666666" width="311" height="23.333333333333343"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
                                                 <color key="textColor" name="LabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11AM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Mq-iy-g5m" userLabel="11AM Lbl">
-                                                <rect key="frame" x="16" y="196" width="57" height="28"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11 AM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Mq-iy-g5m" userLabel="11AM Lbl">
+                                                <rect key="frame" x="16" y="196" width="63" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28" id="WEn-tC-0TP"/>
-                                                    <constraint firstAttribute="width" constant="57" id="tvv-3V-kUd"/>
+                                                    <constraint firstAttribute="width" constant="63" id="tvv-3V-kUd"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                 <color key="textColor" name="LabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activity" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KTh-v1-b7w" userLabel="11AM Activity Lbl">
-                                                <rect key="frame" x="89" y="196" width="317" height="23.333333333333343"/>
+                                                <rect key="frame" x="95" y="196" width="311" height="23.333333333333343"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
                                                 <color key="textColor" name="LabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6yx-LN-b3u" userLabel="12PM Lbl">
-                                                <rect key="frame" x="16" y="249.33333333333331" width="55" height="28"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6yx-LN-b3u" userLabel="12PM Lbl">
+                                                <rect key="frame" x="16" y="249.33333333333331" width="61" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28" id="KtQ-zt-dO6"/>
-                                                    <constraint firstAttribute="width" constant="55" id="O7z-GT-785"/>
+                                                    <constraint firstAttribute="width" constant="61" id="O7z-GT-785"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                 <color key="textColor" name="LabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activity" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PtR-I2-aeg" userLabel="12PM Activity Lbl">
-                                                <rect key="frame" x="89" y="249.33333333333334" width="317" height="23.333333333333343"/>
+                                                <rect key="frame" x="95" y="249.33333333333334" width="311" height="23.333333333333343"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
                                                 <color key="textColor" name="LabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Grn-TK-OPP" userLabel="1PM Lbl">
-                                                <rect key="frame" x="16" y="302.66666666666669" width="43" height="28"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Grn-TK-OPP" userLabel="1PM Lbl">
+                                                <rect key="frame" x="16" y="302.66666666666669" width="49" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28" id="DSa-Xq-0ec"/>
-                                                    <constraint firstAttribute="width" constant="43" id="OsF-7Y-AGD"/>
+                                                    <constraint firstAttribute="width" constant="49" id="OsF-7Y-AGD"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                 <color key="textColor" name="LabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activity" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kAb-Rn-ckE" userLabel="1PM Activity Lbl">
-                                                <rect key="frame" x="89" y="302.66666666666669" width="317" height="23.333333333333314"/>
+                                                <rect key="frame" x="95" y="302.66666666666669" width="311" height="23.333333333333314"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
                                                 <color key="textColor" name="LabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HAw-59-EfD" userLabel="2PM Lbl">
-                                                <rect key="frame" x="16" y="356" width="43" height="28"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HAw-59-EfD" userLabel="2PM Lbl">
+                                                <rect key="frame" x="16" y="356" width="49" height="28"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="43" id="Uhx-MK-S54"/>
+                                                    <constraint firstAttribute="width" constant="49" id="Uhx-MK-S54"/>
                                                     <constraint firstAttribute="height" constant="28" id="a5U-7O-gCn"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
@@ -487,15 +487,15 @@ Phone: 202.288.5245</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activity" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8pm-ev-dbA" userLabel="2PM Activity Lbl">
-                                                <rect key="frame" x="89" y="356" width="317" height="23.333333333333314"/>
+                                                <rect key="frame" x="95" y="356" width="311" height="23.333333333333314"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
                                                 <color key="textColor" name="LabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Sg-Dz-EZu" userLabel="3PM Lbl">
-                                                <rect key="frame" x="16" y="409.33333333333337" width="43" height="28"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Sg-Dz-EZu" userLabel="3PM Lbl">
+                                                <rect key="frame" x="16" y="409.33333333333337" width="49" height="28"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="43" id="L1c-HG-YqX"/>
+                                                    <constraint firstAttribute="width" constant="49" id="L1c-HG-YqX"/>
                                                     <constraint firstAttribute="height" constant="28" id="wjD-2U-uIP"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
@@ -503,15 +503,15 @@ Phone: 202.288.5245</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activity" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7gl-U5-obT" userLabel="3PM Activity Lbl">
-                                                <rect key="frame" x="89" y="409.33333333333337" width="317" height="23.333333333333314"/>
+                                                <rect key="frame" x="95" y="409.33333333333337" width="311" height="23.333333333333314"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
                                                 <color key="textColor" name="LabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q3N-6P-VEa" userLabel="4PM Lbl">
-                                                <rect key="frame" x="16" y="462.66666666666663" width="43" height="28"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q3N-6P-VEa" userLabel="4PM Lbl">
+                                                <rect key="frame" x="16" y="462.66666666666663" width="49" height="28"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="43" id="MdD-ow-5iU"/>
+                                                    <constraint firstAttribute="width" constant="49" id="MdD-ow-5iU"/>
                                                     <constraint firstAttribute="height" constant="28" id="pjC-j4-ffb"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
@@ -519,39 +519,39 @@ Phone: 202.288.5245</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activity" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ych-FS-vqx" userLabel="4PM Activity Lbl">
-                                                <rect key="frame" x="89" y="462.66666666666663" width="317" height="23.333333333333314"/>
+                                                <rect key="frame" x="95" y="462.66666666666663" width="311" height="23.333333333333314"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
                                                 <color key="textColor" name="LabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IG2-sH-Onn" userLabel="5PM Lbl">
-                                                <rect key="frame" x="16" y="516" width="43" height="28"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IG2-sH-Onn" userLabel="5PM Lbl">
+                                                <rect key="frame" x="16" y="516" width="49" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28" id="3Oa-yY-1W2"/>
-                                                    <constraint firstAttribute="width" constant="43" id="fet-vH-F8E"/>
+                                                    <constraint firstAttribute="width" constant="49" id="fet-vH-F8E"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                 <color key="textColor" name="LabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activity" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ogf-Fb-5v9" userLabel="5PM Activity Lbl">
-                                                <rect key="frame" x="89" y="516" width="317" height="23.333333333333371"/>
+                                                <rect key="frame" x="95" y="516" width="311" height="23.333333333333371"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
                                                 <color key="textColor" name="LabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="84G-Nv-7S0" userLabel="6PM Lbl">
-                                                <rect key="frame" x="16" y="569.33333333333337" width="43" height="28"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="84G-Nv-7S0" userLabel="6PM Lbl">
+                                                <rect key="frame" x="16" y="569.33333333333337" width="49" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28" id="2oy-FJ-dVD"/>
-                                                    <constraint firstAttribute="width" constant="43" id="g0s-0B-BWr"/>
+                                                    <constraint firstAttribute="width" constant="49" id="g0s-0B-BWr"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                 <color key="textColor" name="LabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activity" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AnL-oW-lHu" userLabel="6PM Activity Lbl">
-                                                <rect key="frame" x="89" y="569.33333333333337" width="317" height="23.333333333333371"/>
+                                                <rect key="frame" x="95" y="569.33333333333337" width="311" height="23.333333333333371"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
                                                 <color key="textColor" name="LabelColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1327,6 +1327,7 @@ Phone: 202.288.5245</string>
                         <outlet property="gradientView" destination="JZ3-jd-Iqg" id="WBg-nb-GG9"/>
                         <outlet property="gradientViewHeight" destination="cS0-pL-qq5" id="QjX-Qz-A9h"/>
                         <outlet property="profileImgView" destination="gYP-kz-BVS" id="qcl-qA-myw"/>
+                        <outlet property="resetPasswordBtn" destination="aBH-zv-Xul" id="sax-Z8-HVk"/>
                         <outlet property="userTypeLbl" destination="WZ6-LX-trs" id="fSB-ed-2nc"/>
                         <outlet property="userTypePickerView" destination="H8d-i7-asj" id="Vvz-RS-lX0"/>
                         <segue destination="PqR-3q-0Zd" kind="show" identifier="VerifyCounselorFromSettings" id="HUH-zx-Kae"/>
@@ -3183,9 +3184,9 @@ A: We have a variety of games and books as well as a gym and playground to occup
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="D0e-sq-uIe"/>
-        <segue reference="eec-PI-NOd"/>
-        <segue reference="SNw-F0-iiv"/>
-        <segue reference="i74-cw-zSX"/>
-        <segue reference="8gZ-wr-hIi"/>
+        <segue reference="HUH-zx-Kae"/>
+        <segue reference="uwW-YV-dra"/>
+        <segue reference="CFn-zx-hpt"/>
+        <segue reference="JVj-89-k2w"/>
     </inferredMetricsTieBreakers>
 </document>
