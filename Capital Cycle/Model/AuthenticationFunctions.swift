@@ -54,4 +54,26 @@ struct AuthenticationFunctions {
         
         return hashString
     }
+    
+    // Tests if a password is too weak
+    func passwordIsTooWeak(password: String) -> Bool {
+        var tooWeak: Bool
+        var passwordContainsSymbol = false
+        let letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+        for letter in password {
+            if !letters.contains(String(letter)) {
+                passwordContainsSymbol = true
+            }
+        }
+        
+        if !passwordContainsSymbol {
+            tooWeak = true
+        } else if password == password.lowercased() || password == password.uppercased() {
+            tooWeak = true
+        } else {
+            tooWeak = false
+        }
+        
+        return tooWeak
+    }
 }

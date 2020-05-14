@@ -48,4 +48,11 @@ class ViewFunctions: UIViewController {
             progressWheel.stopAnimating()
         }
     }
+    
+    // Waits a given amount of time and then performs actions in the completion block
+    func wait(time: Double, completion: @escaping() -> Void) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + time, execute: {
+            completion()
+        })
+    }
 }

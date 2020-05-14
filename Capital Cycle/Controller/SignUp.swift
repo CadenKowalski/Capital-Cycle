@@ -8,8 +8,10 @@
 
 import UIKit
 import Firebase
+import AuthenticationServices
 
-class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, ASWebAuthenticationPresentationContextProviding {
+    
     
     // MARK: Global Variables
     
@@ -28,7 +30,6 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
     @IBOutlet weak var doneBtn: UIButton!
     @IBOutlet weak var userTypePickerView: UIPickerView!
     // Code global vars
-    var password: String!
     var Agree = false
     var typesOfUser = ["--", "Camper", "Parent", "Counselor"]
     
@@ -185,7 +186,7 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
     // Verifies the users information
     @IBAction func verifyInputs(_ sender: CustomButton) {
         user.email = emailTxtField.text!
-        password = passTxtField.text!
+        let password = passTxtField.text!
         if user.email == "cadenkowalski1@gmail.com" || user.email == "tester@test.com" {
             user.type = .admin
             user.isCounselorVerified = true
@@ -203,7 +204,7 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
             viewFunctions.showAlert(title: "Error", message: "Please provide a valid email adress", actionTitle: "OK", actionStyle: .default, view: self)
         } else if password.count < 6 {
             viewFunctions.showAlert(title: "Weak Password", message: "Your password mus tbe 6 characters or longer", actionTitle: "OK", actionStyle: .default, view: self)
-        } else if passwordIsTooWeak() {
+        } else if authenticationFunctions.passwordIsTooWeak(password: password) {
             let Alert = UIAlertController(title: "Weak Password", message: "We recommend that your password contain a number or symbol and have different cases", preferredStyle: .alert)
             Alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             Alert.addAction(UIAlertAction(title: "Continue", style: .destructive, handler: { action in
@@ -214,28 +215,6 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
         } else {
             signUp()
         }
-    }
-    
-    // Tests if a password is too weak
-    func passwordIsTooWeak() -> Bool {
-        var tooWeak: Bool
-        var passwordContainsSymbol = false
-        let letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-        for letter in password {
-            if !letters.contains(String(letter)) {
-                passwordContainsSymbol = true
-            }
-        }
-        
-        if !passwordContainsSymbol {
-            tooWeak = true
-        } else if password == password!.lowercased() || password == password!.uppercased() {
-            tooWeak = true
-        } else {
-            tooWeak = false
-        }
-        
-        return tooWeak
     }
     
     // Signs up the user
@@ -251,6 +230,7 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
                         if error == nil {
                             if user.type == .admin {
                                 user.authenticationMethod = "Email"
+                                googleFunctions.getAuthCode(context: self)
                                 self.performSegue(withIdentifier: "Admin", sender: nil)
                             } else {
                                 Auth.auth().currentUser!.sendEmailVerification()
@@ -272,6 +252,10 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
                 }
             }
         }
+    }
+    
+    func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
+        return self.view.window ?? ASPresentationAnchor()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

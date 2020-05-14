@@ -20,7 +20,7 @@ class SchedulePage: UIViewController {
     // Daily scroll view
     @IBOutlet weak var dailyScrollView: UIScrollView!
     @IBOutlet weak var dailyScrollViewYConstraint: NSLayoutConstraint!
-    @IBOutlet weak var dailyScrollViewDisplay: UIView!
+    @IBOutlet weak var dailyContentView: UIView!
     @IBOutlet weak var dayLbl: UILabel!
     @IBOutlet weak var dailyDateLbl: UILabel!
     @IBOutlet weak var overviewBtn: CustomButton!
@@ -40,7 +40,7 @@ class SchedulePage: UIViewController {
     @IBOutlet weak var overviewScrollView: UIView!
     @IBOutlet weak var overviewScrollViewYConstraint: NSLayoutConstraint!
     @IBOutlet weak var overviewScroll: UIScrollView!
-    @IBOutlet weak var overviewScrollViewDisplay: UIView!
+    @IBOutlet weak var overviewContentView: UIView!
     @IBOutlet weak var overviewDateLbl: UILabel!
     @IBOutlet weak var dailyBtn: CustomButton!
     @IBOutlet weak var mondayLbl: UILabel!
@@ -71,11 +71,14 @@ class SchedulePage: UIViewController {
         super.viewDidAppear(true)
         setProfileImg()
         if !Reachability.isConnectedToNetwork() {
-            UIView.animate(withDuration: 0.25, animations: { () -> Void in
-                self.noConnectionView.alpha = 1})
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
-                UIView.animate(withDuration: 0.25, animations: { () -> Void in
-                    self.noConnectionView.alpha = 0})
+            UIView.animate(withDuration: 0.25, animations: {
+                self.noConnectionView.alpha = 1
+            })
+            
+            viewFunctions.wait(time: 1.5, completion: {
+                UIView.animate(withDuration: 0.25, animations: {
+                    self.noConnectionView.alpha = 0
+                })
             })
         }
     }
@@ -197,7 +200,7 @@ class SchedulePage: UIViewController {
                 }
             }
         } else {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
+            viewFunctions.wait(time: 1.0, completion: {
                 sender.endRefreshing()
             })
         }

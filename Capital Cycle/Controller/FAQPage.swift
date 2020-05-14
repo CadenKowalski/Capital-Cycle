@@ -17,7 +17,6 @@ class FAQPage: UIViewController {
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
     @IBOutlet weak var FAQLblYConstraint: NSLayoutConstraint!
     @IBOutlet weak var accountSettingsImgView: CustomImageView!
-    @IBOutlet weak var scrollViewYConstraint: NSLayoutConstraint!
     // Global code vars
     static let Instance = FAQPage()
     
@@ -46,9 +45,6 @@ class FAQPage: UIViewController {
         } else if view.frame.height >= 812 {
             FAQLblYConstraint.constant = 15
         }
-        
-        // Formats the Y constraints
-        scrollViewYConstraint.constant = gradientViewHeight.constant + 8
         
         // Formats the account settings button
         FAQPage.Instance.accountSettingsImgView = accountSettingsImgView

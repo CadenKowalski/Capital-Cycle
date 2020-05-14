@@ -19,9 +19,6 @@ class OverviewPage: UIViewController {
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
     @IBOutlet weak var overviewLblYConstraint: NSLayoutConstraint!
     @IBOutlet weak var accountSettingsImgView: CustomImageView!
-    @IBOutlet weak var scrollViewYConstraint: NSLayoutConstraint!
-    @IBOutlet weak var scrollViewDisplay: UIView!
-    @IBOutlet weak var locationLbl: UILabel!
     // Global code vars
     static let Instance = OverviewPage()
     
@@ -55,9 +52,6 @@ class OverviewPage: UIViewController {
         // Formats the account settings button
         OverviewPage.Instance.accountSettingsImgView = accountSettingsImgView
         setProfileImg()
-
-        // Formats the Y constraints
-        scrollViewYConstraint.constant = gradientViewHeight.constant + 8
     }
     
     // Sets the profile image on the account settings button

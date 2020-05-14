@@ -90,7 +90,7 @@ class GoogleFunctions: NSObject {
         components.scheme = "https"
         components.host = "sheets.googleapis.com"
         if secure {
-            components.path = "/v4/spreadsheets/\(secureSpreadhseetID)/values/A2:E5"
+            components.path = "/v4/spreadsheets/\(secureSpreadhseetID)/values/A2:F5"
             components.queryItems = [
                 URLQueryItem(name: "access_token", value: accessToken)
             ]

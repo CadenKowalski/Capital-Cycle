@@ -104,7 +104,7 @@ struct FirebaseFunctions {
         }
     }
     
-    // Manages the users Firestore data
+    // Manages the user's Firestore data
     func manageUserData(dataValues: [String], newUser: Bool, completion: @escaping(String?) -> Void) {
         if newUser {
             collectionRef.document(user.email!).setData(["email": user.email!])

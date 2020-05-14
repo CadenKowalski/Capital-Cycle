@@ -24,6 +24,7 @@ class CustomView: UIView {
             gradientLayer.colors = [self.gradientColorOne.cgColor, self.gradientColorTwo.cgColor]
             gradientLayer.startPoint = CGPoint(x: 1.0, y: 1.0)
             gradientLayer.endPoint = CGPoint(x: 0.0, y: 0.0)
+            gradientLayer.cornerRadius = self.cornerRadius
             layer.insertSublayer(gradientLayer, at: 0)
         }
     }

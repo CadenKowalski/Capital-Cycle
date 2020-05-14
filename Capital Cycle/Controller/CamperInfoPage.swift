@@ -10,6 +10,7 @@ import UIKit
 import MessageUI
 
 class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
+    
     // MARK: Global Variables
     
     // Storyboard outlets
@@ -17,24 +18,26 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
     @IBOutlet weak var camperInfoLblYConstraint: NSLayoutConstraint!
     @IBOutlet weak var accountSettingsImgView: CustomImageView!
-    @IBOutlet weak var camperScrollViewYConstraint: NSLayoutConstraint!
     @IBOutlet weak var camperScrollView: UIScrollView!
-    @IBOutlet weak var scrollViewDisplay: UIView!
-    @IBOutlet weak var scrollViewDisplayHeight: NSLayoutConstraint!
+    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var contentViewHeight: NSLayoutConstraint!
     @IBOutlet weak var noConnectionView: CustomView!
-    @IBOutlet weak var camperInfoView: UIView!
-    @IBOutlet weak var camperName: UILabel!
+    @IBOutlet weak var camperInfoView: CustomView!
+    @IBOutlet weak var camperNameLbl: UILabel!
     @IBOutlet weak var parentNameLbl: UILabel!
     @IBOutlet weak var parentNumberLbl: UILabel!
     @IBOutlet weak var parentEmailLbl: UILabel!
     @IBOutlet weak var signedWaiverLbl: UILabel!
+    @IBOutlet weak var notesLbl: UILabel!
     //Code global vars
     static let Instance = CamperInfoPage()
     var camperInfoRefreshControl = UIRefreshControl()
-    var camperBtns = [UIButton]()
+    var camperCells = [CustomButton]()
+    var camperInfoViewItems = [UILabel]()
     var parentLastName: String!
     var parentPhone: Int!
     var parentEmail: String!
+    var viewHeight: CGFloat!
     
     // MARK: View Instantiation
     
@@ -42,7 +45,7 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         formatUI()
-        createBtn()
+        createCamperCell()
     }
     
     // Runs when the view is reloaded
@@ -50,11 +53,14 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
         super.viewDidAppear(true)
         setProfileImg()
         if !Reachability.isConnectedToNetwork() {
-            UIView.animate(withDuration: 0.25, animations: { () -> Void in
-                self.noConnectionView.alpha = 1})
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
-                UIView.animate(withDuration: 0.25, animations: { () -> Void in
-                    self.noConnectionView.alpha = 0})
+            UIView.animate(withDuration: 0.25, animations: {
+                self.noConnectionView.alpha = 1
+            })
+            
+            viewFunctions.wait(time: 1.5, completion: {
+                UIView.animate(withDuration: 0.25, animations: {
+                    self.noConnectionView.alpha = 0
+                })
             })
         }
     }
@@ -70,9 +76,6 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
         } else if view.frame.height >= 812 {
             camperInfoLblYConstraint.constant = 15
         }
-
-        // Formats the Y constraints relative to the gradient view height
-        camperScrollViewYConstraint.constant = gradientView.frame.height + 10
         
         // Formats the account settings button
         CamperInfoPage.Instance.accountSettingsImgView = accountSettingsImgView
@@ -82,10 +85,16 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
         camperInfoRefreshControl.backgroundColor = UIColor(named: "ViewColor")
         camperInfoRefreshControl.addTarget(self, action: #selector(updateData), for: .valueChanged)
         camperScrollView.refreshControl = camperInfoRefreshControl
+        
+        // Sets the height of a fixed form view
+        viewHeight = contentView.frame.height
+        
+        // Formats the camper info view
+        camperInfoView.alpha = 0
     }
     
-    // Formats a parents name
-    func formatParentName(name: String) -> String {
+    // Gets a parent's last name
+    func getLastName(name: String) -> String {
         var lastName = ""
         var start = false
         for character in name {
@@ -97,11 +106,12 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
                 lastName.append(character)
             }
         }
+        
         return lastName
     }
     
     // Formats a phone number so that the app can call it
-    func formatPhoneNumber(number: String) -> Int {
+    func formatPhoneNumber(number: String) -> Int? {
         let characters = Array("() -")
         var formattedNumber = ""
         for character in number {
@@ -110,7 +120,7 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
             }
         }
         
-        return Int(formattedNumber)!
+        return Int(formattedNumber)
     }
     
     // Sets the profile image on the account settings button
@@ -122,8 +132,10 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
         
     // Calls the parent's phone number
     @IBAction func callNumber(_ sender: Any) {
-        if let url = URL(string: "tel://\(parentPhone!))"), UIApplication.shared.canOpenURL(url) {
-            UIApplication.shared.open(url)
+        if let phoneNumber = parentPhone {
+            if let url = URL(string: "tel://\(phoneNumber))"), UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url)
+            }
         }
     }
     
@@ -150,29 +162,59 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
     // MARK: Display Camper Info
     
     // Presents Google Sheet data in an array of buttons
-    func createBtn() {
+    func createCamperCell() {
         for camper in 0..<camperInfo.count {
-            let camperBtn: UIButton
-            if camperBtns.count == 0 {
-                camperBtn = UIButton(frame: CGRect(x: 16, y:  0, width: view.frame.width, height: 40))
+            let camperCell: CustomButton
+            if camper == 0 {
+                camperCell = CustomButton(frame: CGRect(x: 16, y: 8, width: view.frame.width - 32, height: 40))
             } else {
-                camperBtn = UIButton(frame: CGRect(x: 16, y:  camperBtns[camper - 1].frame.maxY + 8, width: view.frame.width, height: 40))
+                camperCell = CustomButton(frame: CGRect(x: 16, y: camperCells[camper - 1].frame.maxY + 12, width: view.frame.width - 32, height: 40))
             }
             
-            camperBtn.setTitle("\(camperInfo[camper][0])", for: .normal)
-            camperBtn.setTitleColor(UIColor(named: "LabelColor"), for: .normal)
-            camperBtn.titleLabel?.font = UIFont(name: "Avenir-Heavy", size: 20)
-            camperBtn.contentHorizontalAlignment = .left
-            camperBtn.addTarget(self, action: #selector(displayCamperInfo(_:)), for: .touchUpInside)
-            scrollViewDisplay.addSubview(camperBtn)
-            camperBtns.append(camperBtn)
+            camperCell.setTitle("\(camperInfo[camper][0])", for: .normal)
+            camperCell.setTitleColor(UIColor(named: "LabelColor"), for: .normal)
+            camperCell.titleLabel?.font = UIFont(name: "Avenir-Heavy", size: 20)
+            camperCell.addTarget(self, action: #selector(displayCamperInfo(_:)), for: .touchUpInside)
+            camperCell.cornerRadius = 10
+            camperCell.gradientColorOne = UIColor(named: "DarkPurple")!
+            camperCell.gradientColorTwo = UIColor(named: "LightPurple")!
+            contentView.addSubview(camperCell)
+            camperCells.append(camperCell)
         }
         
-        if (camperBtns.count * 40 + 25) > 668 {
-            scrollViewDisplayHeight.constant = CGFloat(camperBtns.count * 40) + 25
-        } else {
-            scrollViewDisplayHeight.constant = view.frame.height - (gradientView.frame.height + 35)
+        contentViewHeight.constant = CGFloat(camperCells.count * 52) + 25
+    }
+    
+    // Displays the camper information when a camper's name is clicked
+    @objc func displayCamperInfo(_ sender: CustomButton) {
+        sender.isHidden = true
+        viewFunctions.giveHapticFeedback(error: false, prefers: user.prefersHapticFeedback)
+        camperInfoViewItems = [camperNameLbl, parentNameLbl, parentNumberLbl, parentEmailLbl, signedWaiverLbl, notesLbl]
+        for index in 0 ..< 6 {
+            camperInfoViewItems[index].text = "\(camperInfo[camperCells.firstIndex(of: sender)!][index])"
         }
+        
+        parentLastName = getLastName(name: parentNameLbl.text!)
+        parentPhone = formatPhoneNumber(number: "\(camperInfo[camperCells.firstIndex(of: sender)!][2])")
+        parentEmail = "\(camperInfo[camperCells.firstIndex(of: sender)!][3])"
+        let visibleRect = camperScrollView.convert(camperScrollView.bounds, to: contentView)
+        let placeholderView = UIView(frame: CGRect(x: 8, y: sender.frame.maxY - 20, width: view.frame.width - 16, height: 40))
+        placeholderView.backgroundColor = #colorLiteral(red: 0.3019607843, green: 0.1450980392, blue: 0.3294117647, alpha: 1)
+        placeholderView.layer.cornerRadius = 20
+        contentView.addSubview(placeholderView)
+        var frame = placeholderView.frame
+        frame = CGRect(x: 8, y: visibleRect.minY, width: view.frame.width - 16, height: 40)
+        frame.size = CGSize(width: view.frame.width - 16, height: viewHeight)
+        UIView.animate(withDuration: 0.5, animations: {
+            placeholderView.frame = frame
+        }, completion: { success in
+            UIView.animate(withDuration: 0.25, animations: {
+                self.camperInfoView.alpha = 1
+            }, completion: { success in
+                placeholderView.removeFromSuperview()
+                sender.isHidden = false
+            })
+        })
     }
     
     // Refreshes the camper info
@@ -181,8 +223,8 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
             googleFunctions.refreshAccessToken() { error in
                 DispatchQueue.main.async {
                     if error == nil {
-                        for button in 0..<self.camperBtns.count {
-                            self.camperBtns[button].setTitle("\(camperInfo[button][0])", for: .normal)
+                        for cell in 0 ..< self.camperCells.count {
+                            self.camperCells[cell].setTitle("\(camperInfo[cell][0])", for: .normal)
                         }
                     } else {
                         print(error!)
@@ -192,41 +234,17 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
                 }
             }
         } else {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
+            viewFunctions.wait(time: 1.0, completion: {
                 sender.endRefreshing()
             })
         }
-    }
-    
-    // Displays the camper information when their name is clicked
-    @objc func displayCamperInfo(_ sender: UIButton) {
-        if traitCollection.userInterfaceStyle == .light {
-            scrollViewDisplay.backgroundColor = #colorLiteral(red: 0.3000000119, green: 0.3000000119, blue: 0.3000000119, alpha: 1)
-            camperScrollView.backgroundColor = #colorLiteral(red: 0.3000000119, green: 0.3000000119, blue: 0.3000000119, alpha: 1)
-            view.backgroundColor = #colorLiteral(red: 0.3000000119, green: 0.3000000119, blue: 0.3000000119, alpha: 1)
-        }
-        
-        camperScrollView.isUserInteractionEnabled = false
-        camperInfoView.isHidden = false
-        scrollViewDisplay.bringSubviewToFront(camperInfoView)
-        camperName.text = "\(camperInfo[camperBtns.firstIndex(of: sender)!][0])"
-        parentNameLbl.text = "\(camperInfo[camperBtns.firstIndex(of: sender)!][1])"
-        parentLastName = formatParentName(name: parentNameLbl.text!)
-        parentNumberLbl.text = "\(camperInfo[camperBtns.firstIndex(of: sender)!][2])"
-        parentPhone = formatPhoneNumber(number: "\(camperInfo[camperBtns.firstIndex(of: sender)!][2])")
-        parentEmailLbl.text = "\(camperInfo[camperBtns.firstIndex(of: sender)!][3])"
-        parentEmail = "\(camperInfo[camperBtns.firstIndex(of: sender)!][3])"
-        signedWaiverLbl.text = "\(camperInfo[camperBtns.firstIndex(of: sender)!][4])"
     }
     
     // MARK: Dismiss
     
     // Dismsisses the camper info view
     @IBAction func dismissCamperInfoView(_ sender: UIButton) {
-        scrollViewDisplay.backgroundColor = UIColor(named: "ViewColor")
-        camperScrollView.backgroundColor = UIColor(named: "ViewColor")
-        view.backgroundColor = UIColor(named: "ViewColor")
-        camperInfoView.isHidden = true
+        camperInfoView.alpha = 0
         camperScrollView.isUserInteractionEnabled = true
     }
     
