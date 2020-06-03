@@ -172,7 +172,7 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
             }
             
             camperCell.setTitle("\(camperInfo[camper][0])", for: .normal)
-            camperCell.setTitleColor(UIColor(named: "LabelColor"), for: .normal)
+            camperCell.setTitleColor(#colorLiteral(red: 0.8700000048, green: 0.8700000048, blue: 0.8700000048, alpha: 1), for: .normal)
             camperCell.titleLabel?.font = UIFont(name: "Avenir-Heavy", size: 20)
             camperCell.addTarget(self, action: #selector(displayCamperInfo(_:)), for: .touchUpInside)
             camperCell.cornerRadius = 10
@@ -199,13 +199,13 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
         parentEmail = "\(camperInfo[camperCells.firstIndex(of: sender)!][3])"
         let visibleRect = camperScrollView.convert(camperScrollView.bounds, to: contentView)
         let placeholderView = UIView(frame: CGRect(x: 8, y: sender.frame.maxY - 20, width: view.frame.width - 16, height: 40))
-        placeholderView.backgroundColor = #colorLiteral(red: 0.3019607843, green: 0.1450980392, blue: 0.3294117647, alpha: 1)
+        placeholderView.backgroundColor = UIColor(named: "PlaceholderViewColor")
         placeholderView.layer.cornerRadius = 20
         contentView.addSubview(placeholderView)
         var frame = placeholderView.frame
         frame = CGRect(x: 8, y: visibleRect.minY, width: view.frame.width - 16, height: 40)
         frame.size = CGSize(width: view.frame.width - 16, height: viewHeight)
-        UIView.animate(withDuration: 0.5, animations: {
+        UIView.animate(withDuration: 0.25, animations: {
             placeholderView.frame = frame
         }, completion: { success in
             UIView.animate(withDuration: 0.25, animations: {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="v2Q-k5-Eoj">
-    <device id="retina5_9" orientation="portrait" appearance="dark"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="v2Q-k5-Eoj">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -1045,7 +1045,7 @@
                                                     <string key="text">Session 1
 $375</string>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                                                    <color key="textColor" name="LabelColor"/>
+                                                    <color key="textColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -1247,7 +1247,7 @@ $375</string>
                                                         <string key="text">Q: When do you usually head out in the morning?
 A: Around 10:00 - 10:30</string>
                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
-                                                        <color key="textColor" name="LabelColor"/>
+                                                        <color key="textColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -1277,7 +1277,7 @@ A: Around 10:00 - 10:30</string>
                                                         <string key="text">Q: When do you usually arrive back at camp?
 A: Around 3:00 - 4:00</string>
                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
-                                                        <color key="textColor" name="LabelColor"/>
+                                                        <color key="textColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -1307,7 +1307,7 @@ A: Around 3:00 - 4:00</string>
                                                         <string key="text">Q: What if it rains?
 A: We will play it by ear but will err on the side of caution to ensure that campers remain safe</string>
                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
-                                                        <color key="textColor" name="LabelColor"/>
+                                                        <color key="textColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -1337,7 +1337,7 @@ A: We will play it by ear but will err on the side of caution to ensure that cam
                                                         <string key="text">Q: Do you group kids by ability or age?
 A: Both. It usually depends on the length of the ride.</string>
                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
-                                                        <color key="textColor" name="LabelColor"/>
+                                                        <color key="textColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -1367,7 +1367,7 @@ A: Both. It usually depends on the length of the ride.</string>
                                                         <string key="text">Q: What if my kid is unable to bike back from the destination?
 A: We generally push kids to make it back on their own but we are prepared to call an Uber or Lyft and ride back with them.</string>
                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
-                                                        <color key="textColor" name="LabelColor"/>
+                                                        <color key="textColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -1397,7 +1397,7 @@ A: We generally push kids to make it back on their own but we are prepared to ca
                                                         <string key="text">Q: Can I get a sibling discount?
 A: TBD</string>
                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
-                                                        <color key="textColor" name="LabelColor"/>
+                                                        <color key="textColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -1427,7 +1427,7 @@ A: TBD</string>
                                                         <string key="text">Q: What if my child is not a confident rider?
 A: We will work with them throughout the week pushing them outside their comfort zone but we can always put them in a less advanced group that will go a shorter distance. </string>
                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
-                                                        <color key="textColor" name="LabelColor"/>
+                                                        <color key="textColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -1457,7 +1457,7 @@ A: We will work with them throughout the week pushing them outside their comfort
                                                         <string key="text">Q: What if I need to pick my child up early one day?
 A: Contact Curtis, at &lt;Phone number&gt; and we will make sure to have your child back in time.</string>
                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
-                                                        <color key="textColor" name="LabelColor"/>
+                                                        <color key="textColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -1487,7 +1487,7 @@ A: Contact Curtis, at &lt;Phone number&gt; and we will make sure to have your ch
                                                         <string key="text">Q: What if my child doesn't have a bike?
 A: We ask that all campers who attend bike camp, have a bike.</string>
                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
-                                                        <color key="textColor" name="LabelColor"/>
+                                                        <color key="textColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -1517,7 +1517,7 @@ A: We ask that all campers who attend bike camp, have a bike.</string>
                                                         <string key="text">Q: Can my child arrive and/ or leave camp by themselves or do I need to be present?
 A: If you give the counselors explicit permission for your child to arrive and/or leave camp by themselves, that is an option.</string>
                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
-                                                        <color key="textColor" name="LabelColor"/>
+                                                        <color key="textColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -1547,7 +1547,7 @@ A: If you give the counselors explicit permission for your child to arrive and/o
                                                         <string key="text">Q: What do you do when not biking?
 A: We have a variety of games and books as well as a gym and playground to occupy down time.</string>
                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
-                                                        <color key="textColor" name="LabelColor"/>
+                                                        <color key="textColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -1688,25 +1688,25 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                             <constraint firstAttribute="height" constant="25" id="CqO-1R-fWO"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
-                                        <color key="textColor" name="LabelColor"/>
+                                        <color key="textColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parent Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VvE-cC-Zsu">
                                         <rect key="frame" x="16" y="65" width="123" height="27"/>
                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
-                                        <color key="textColor" name="LabelColor"/>
+                                        <color key="textColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Placeholder Name" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L3U-lf-AnQ">
                                         <rect key="frame" x="40" y="100" width="319" height="24.666666666666671"/>
                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parent Phone" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pge-hr-csv">
                                         <rect key="frame" x="16" y="132.66666666666666" width="126" height="27.333333333333343"/>
                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
-                                        <color key="textColor" name="LabelColor"/>
+                                        <color key="textColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YJn-C2-UMD" userLabel="Parent Phone Lbl">
@@ -1718,6 +1718,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                         <attributedString key="attributedText">
                                             <fragment content="Placeholder Number">
                                                 <attributes>
+                                                    <color key="NSColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <font key="NSFont" size="18" name="Avenir-Medium"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                     <integer key="NSUnderline" value="1"/>
@@ -1732,7 +1733,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parent Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zgs-li-Yn9">
                                         <rect key="frame" x="16" y="201" width="118" height="27.666666666666657"/>
                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
-                                        <color key="textColor" name="LabelColor"/>
+                                        <color key="textColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SXT-EN-B0A" userLabel="Parent Email Lbl">
@@ -1741,6 +1742,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                         <attributedString key="attributedText">
                                             <fragment content="Placeholder Email">
                                                 <attributes>
+                                                    <color key="NSColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <font key="NSFont" size="18" name="Avenir-Medium"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                     <integer key="NSUnderline" value="1"/>
@@ -1755,7 +1757,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signed Waiver" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XgM-tu-lN0">
                                         <rect key="frame" x="16" y="269.33333333333331" width="135.66666666666666" height="27"/>
                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
-                                        <color key="textColor" name="LabelColor"/>
+                                        <color key="textColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bool" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ajb-0o-pyW">
@@ -1764,7 +1766,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                             <constraint firstAttribute="height" constant="25" id="g8i-mc-Kfo"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ixb-Od-qPu">
@@ -1774,7 +1776,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                         <state key="normal" title="Done">
-                                            <color key="titleColor" name="LabelColor"/>
+                                            <color key="titleColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="dismissCamperInfoView:" destination="45k-fV-EgM" eventType="touchUpInside" id="yc2-22-mcE"/>
@@ -1783,13 +1785,13 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Special Notes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Nj-6I-I1b">
                                         <rect key="frame" x="16" y="337.33333333333331" width="129" height="28"/>
                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
-                                        <color key="textColor" name="LabelColor"/>
+                                        <color key="textColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v7q-lo-sDj">
                                         <rect key="frame" x="40" y="373.33333333333331" width="50" height="24.666666666666686"/>
                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -3171,7 +3173,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                                             <constraint firstAttribute="height" constant="28" id="VQt-0O-Y7Q"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
-                                                        <color key="textColor" name="LabelColor"/>
+                                                        <color key="textColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5t7-cO-c9z" userLabel="Dates Lbl">
@@ -3183,7 +3185,7 @@ Session 4: Jul 13 - 17
 Session 5: Jul 20 - 24 
 Session 6: Jul 27 - 31</string>
                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
-                                                        <color key="textColor" name="LabelColor"/>
+                                                        <color key="textColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -3217,7 +3219,7 @@ Session 6: Jul 27 - 31</string>
                                                             <constraint firstAttribute="height" constant="28" id="qe6-RF-ARS"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
-                                                        <color key="textColor" name="LabelColor"/>
+                                                        <color key="textColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HiA-9Q-Vct" userLabel="Hours Lbl">
@@ -3226,7 +3228,7 @@ Session 6: Jul 27 - 31</string>
 OR
 8AM - 6PM with before care</string>
                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
-                                                        <color key="textColor" name="LabelColor"/>
+                                                        <color key="textColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -3260,7 +3262,7 @@ OR
                                                             <constraint firstAttribute="height" constant="27.329999999999998" id="WGP-Bj-QVh"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
-                                                        <color key="textColor" name="LabelColor"/>
+                                                        <color key="textColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YwD-Lf-623" userLabel="Location Lbl" customClass="CustomLabel" customModule="Capital_Cycle" customModuleProvider="target">
@@ -3271,14 +3273,14 @@ OR
                                                                 <string key="content">Minor Elementary 
 </string>
                                                                 <attributes>
-                                                                    <color key="NSColor" name="LabelColor"/>
+                                                                    <color key="NSColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <font key="NSFont" size="17" name="Avenir-Medium"/>
                                                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                 </attributes>
                                                             </fragment>
                                                             <fragment content="601 15th St NE, Washington, DC 20002">
                                                                 <attributes>
-                                                                    <color key="NSColor" name="LabelColor"/>
+                                                                    <color key="NSColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <font key="NSFont" size="17" name="Avenir-Medium"/>
                                                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                     <integer key="NSUnderline" value="1"/>
@@ -3321,7 +3323,7 @@ OR
                                                             <constraint firstAttribute="height" constant="28" id="ggU-8k-ywS"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
-                                                        <color key="textColor" name="LabelColor"/>
+                                                        <color key="textColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pJ9-3z-R9C" userLabel="Price Lbl">
@@ -3330,7 +3332,7 @@ OR
 Sessions 3, 4, 5 &amp; 6: $430
 Before Care: $10 per day</string>
                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
-                                                        <color key="textColor" name="LabelColor"/>
+                                                        <color key="textColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -3364,7 +3366,7 @@ Before Care: $10 per day</string>
                                                             <constraint firstAttribute="height" constant="28" id="JsW-I9-tyY"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
-                                                        <color key="textColor" name="LabelColor"/>
+                                                        <color key="textColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oeh-gc-jpf" userLabel="Contacts Lbl">
@@ -3375,7 +3377,7 @@ TBD
 Email:
 CapitalCycleCamp@gmail.com</string>
                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
-                                                        <color key="textColor" name="LabelColor"/>
+                                                        <color key="textColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -3409,14 +3411,14 @@ CapitalCycleCamp@gmail.com</string>
                                                             <constraint firstAttribute="height" constant="28" id="g1V-ep-9Jq"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
-                                                        <color key="textColor" name="LabelColor"/>
+                                                        <color key="textColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8tj-eg-6Yj" userLabel="Day Lbl">
                                                         <rect key="frame" x="32" y="44" width="319" height="325.33333333333331"/>
                                                         <string key="text">Early drop off begins at 8AM and parents can drop their kids off any time after that. Camp begins at 9AM and campers will play a variety of games at the school for about an hour. At around 10AM, we prepare to leave (apply sunscreen, fill waterbottles, use the restroom, pack backpacks). We will usually bike all of the way to our destination and once we get there, we will eat lunch and do the activity that we have planned. At around 3-4PM we will bike back to the school and play games until parents come to pick up campers.</string>
                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
-                                                        <color key="textColor" name="LabelColor"/>
+                                                        <color key="textColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -3557,8 +3559,8 @@ CapitalCycleCamp@gmail.com</string>
     <inferredMetricsTieBreakers>
         <segue reference="A25-06-JRb"/>
         <segue reference="HUH-zx-Kae"/>
-        <segue reference="u0K-Hh-Bui"/>
-        <segue reference="GM2-12-Vy0"/>
+        <segue reference="b66-rs-3uw"/>
+        <segue reference="RM7-KP-pjo"/>
         <segue reference="8gZ-wr-hIi"/>
     </inferredMetricsTieBreakers>
     <resources>
@@ -3573,19 +3575,16 @@ CapitalCycleCamp@gmail.com</string>
             <color white="0.75" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
         <namedColor name="DarkPurple">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="LabelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color red="0.27297468831964755" green="0.16502071010999927" blue="0.31694958455373856" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="LabelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
         <namedColor name="LightPurple">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.52638459659460513" green="0.31821397234930043" blue="0.61118259803921571" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="ViewColor">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color white="0.94816611842105269" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
     </resources>
 </document>
