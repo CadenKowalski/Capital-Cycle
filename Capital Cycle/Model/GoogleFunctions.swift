@@ -109,6 +109,11 @@ class GoogleFunctions: NSObject {
                 if let values = jsonData["values"] as? [[Any]] {
                     let sheetData = values as? [[String]]
                     if secure {
+                        user.isGoogleVerified = true
+                        firebaseFunctions.manageUserData(dataValues: ["isGoogleVerified"], newUser: false) { error in
+                            completion(error)
+                        }
+                        
                         self.updateCoreDataValuesOnMainThread(nil, nil, nil, sheetData!)
                     } else {
                         self.updateCoreDataValuesOnMainThread(nil, Array(sheetData![0...4]), Array(sheetData![7...11]), nil)
@@ -154,6 +159,33 @@ class GoogleFunctions: NSObject {
                 }
             } catch let error as NSError {
                 completion(error.localizedDescription)
+            }
+        })
+        
+        task.resume()
+    }
+    
+    // Revokes a token
+    func revokeToken(completion: @escaping(String?) -> Void) {
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = "oauth2.googleapis.com"
+        components.path = "/revoke"
+        components.queryItems = [
+            URLQueryItem(name: "token", value: refresh_token),
+        ]
+        
+        let revokeURL = components.url
+        var request = URLRequest(url: revokeURL!)
+        request.httpMethod = "POST"
+        let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+            if error == nil {
+                completion(nil)
+                firebaseFunctions.manageUserData(dataValues: ["isGoogleVerified"], newUser: false) { success in
+                    coreDataFunctions.updateContext(values: ["refresh_token", "camperInfo"], "", nil, nil, [[""]])
+                }
+            } else {
+                completion(error?.localizedDescription)
             }
         })
         

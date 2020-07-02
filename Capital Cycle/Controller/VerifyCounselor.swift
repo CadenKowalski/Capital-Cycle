@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import AuthenticationServices
 
-class VerifyCounselor: UIViewController, UITextFieldDelegate, ASWebAuthenticationPresentationContextProviding {
+class VerifyCounselor: UIViewController, UITextFieldDelegate {
     
     // MARK: Global Variables
     
@@ -23,7 +23,6 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate, ASWebAuthenticatio
     @IBOutlet weak var signUpBtnProgressWheel: UIActivityIndicatorView!
     @IBOutlet weak var changeBtn: UIButton!
     // Code global vars
-    var googleSignIn = true
     var password: String!
     var presentingVC = "Sign Up"
     
@@ -57,15 +56,10 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate, ASWebAuthenticatio
         }
     }
     
-    func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
-        return self.view.window ?? ASPresentationAnchor()
-    }
-    
     // MARK: Sign Up
     
     @IBAction func disableGoogleSignIn(_ sender: UIButton) {
         disableBtn.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
-        googleSignIn = false
     }
     
     // Signs up the user
@@ -73,10 +67,6 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate, ASWebAuthenticatio
         viewFunctions.formatProgressWheel(progressWheel: signUpBtnProgressWheel, button: signUpBtn, toShow: true, hapticFeedback: true)
         if counselorIdTxtField.text == "082404" {
             user.isCounselorVerified = true
-            if googleSignIn {
-                googleFunctions.getAuthCode(context: self)
-            }
-            
             if presentingVC == "Sign Up" {
                 firebaseFunctions.createUser(password: password) { error in
                     if error == nil {
@@ -97,7 +87,7 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate, ASWebAuthenticatio
                 }
             } else if presentingVC == "Account Settings" {
                 user.type = .counselor
-                firebaseFunctions.manageUserData(dataValues: ["type, isCounselorVerified"], newUser: false) { error in
+                firebaseFunctions.manageUserData(dataValues: ["type", "isCounselorVerified"], newUser: false) { error in
                     if error == nil {
                         viewFunctions.giveHapticFeedback(error: false, prefers: true)
                         self.dismiss(animated: true, completion: nil)

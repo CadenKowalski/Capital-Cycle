@@ -20,8 +20,9 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
     @IBOutlet weak var logInLblYConstraint: NSLayoutConstraint!
     @IBOutlet weak var emailTxtField: UITextField!
     @IBOutlet weak var passTxtField: UITextField!
-    @IBOutlet weak var logInBtn: CustomButton!
-    @IBOutlet weak var logInBtnProgressWheel: UIActivityIndicatorView!
+    @IBOutlet weak var forgotPasswordBtn: UIButton!
+    @IBOutlet weak var loginBtn: CustomButton!
+    @IBOutlet weak var loginBtnProgressWheel: UIActivityIndicatorView!
     @IBOutlet weak var signUpBtn: CustomButton!
     // Code global vars
     var currentNonce: String?
@@ -39,7 +40,7 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
         super.viewDidAppear(animated)
         Auth.auth().currentUser?.reload() { action in
             if Auth.auth().currentUser != nil {
-                viewFunctions.formatProgressWheel(progressWheel: self.logInBtnProgressWheel, button: self.logInBtn, toShow: true, hapticFeedback: false)
+                viewFunctions.formatProgressWheel(progressWheel: self.loginBtnProgressWheel, button: self.loginBtn, toShow: true, hapticFeedback: false)
                 user.email = Auth.auth().currentUser!.email!
                 user.uid = Auth.auth().currentUser!.uid
                 firebaseFunctions.fetchUserData(fetchValue: "all") { error in
@@ -49,12 +50,12 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
                             self.performSegue(withIdentifier: "AlreadyLoggedIn", sender: nil)
                         }
                         
-                        viewFunctions.formatProgressWheel(progressWheel: self.logInBtnProgressWheel, button: self.logInBtn, toShow: false, hapticFeedback: false)
+                        viewFunctions.formatProgressWheel(progressWheel: self.loginBtnProgressWheel, button: self.loginBtn, toShow: false, hapticFeedback: false)
                     } else {
                         viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
                     }
                     
-                    viewFunctions.formatProgressWheel(progressWheel: self.logInBtnProgressWheel, button: self.logInBtn, toShow: false, hapticFeedback: false)
+                    viewFunctions.formatProgressWheel(progressWheel: self.loginBtnProgressWheel, button: self.loginBtn, toShow: false, hapticFeedback: false)
                 }
             }
         }
@@ -79,7 +80,7 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
         passTxtField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
         
         // Formats the progress wheel
-        logInBtnProgressWheel.isHidden = true
+        loginBtnProgressWheel.isHidden = true
         
         // Formats the Continue with Apple Button
         let continueWithAppleButton: ASAuthorizationAppleIDButton
@@ -95,9 +96,9 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
         view.addSubview(continueWithAppleButton)
         NSLayoutConstraint.activate([
             continueWithAppleButton.heightAnchor.constraint(equalToConstant: 45),
-            continueWithAppleButton.topAnchor.constraint(equalTo: logInBtn.bottomAnchor, constant: 8),
+            continueWithAppleButton.topAnchor.constraint(equalTo: forgotPasswordBtn.bottomAnchor, constant: 24),
             continueWithAppleButton.widthAnchor.constraint(equalToConstant: 140),
-            continueWithAppleButton.centerXAnchor.constraint(equalToSystemSpacingAfter: view.centerXAnchor, multiplier: 1.0)
+            continueWithAppleButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 85)
         ])
         
         // Formats the Sign in with Apple button
@@ -135,7 +136,7 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
     
     // Logs in the user
     func logIn() {
-        viewFunctions.formatProgressWheel(progressWheel: logInBtnProgressWheel, button: logInBtn, toShow: true, hapticFeedback: false)
+        viewFunctions.formatProgressWheel(progressWheel: loginBtnProgressWheel, button: loginBtn, toShow: true, hapticFeedback: false)
         user.email = emailTxtField.text!
         firebaseFunctions.fetchUserData(fetchValue: "all") { error in
             if error == nil {
@@ -151,7 +152,7 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
                             viewFunctions.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default, view: self)
                         }
                         
-                        viewFunctions.formatProgressWheel(progressWheel: self.logInBtnProgressWheel, button: self.logInBtn, toShow: false, hapticFeedback: false)
+                        viewFunctions.formatProgressWheel(progressWheel: self.loginBtnProgressWheel, button: self.loginBtn, toShow: false, hapticFeedback: false)
                     }
                 } else {
                     Auth.auth().signIn(withEmail: user.email, password: self.passTxtField.text!) { (authUser, error) in
@@ -166,16 +167,16 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
                             
                             self.emailTxtField.text = ""
                             self.passTxtField.text = ""
-                            viewFunctions.formatProgressWheel(progressWheel: self.logInBtnProgressWheel, button: self.logInBtn, toShow: false, hapticFeedback: false)
+                            viewFunctions.formatProgressWheel(progressWheel: self.loginBtnProgressWheel, button: self.loginBtn, toShow: false, hapticFeedback: false)
                         } else {
                             viewFunctions.showAlert(title: "Error", message: error!.localizedDescription, actionTitle: "OK", actionStyle: .default, view: self)
-                            viewFunctions.formatProgressWheel(progressWheel: self.logInBtnProgressWheel, button: self.logInBtn, toShow: false, hapticFeedback: false)
+                            viewFunctions.formatProgressWheel(progressWheel: self.loginBtnProgressWheel, button: self.loginBtn, toShow: false, hapticFeedback: false)
                         }
                     }
                 }
             } else {
                 viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
-                viewFunctions.formatProgressWheel(progressWheel: self.logInBtnProgressWheel, button: self.logInBtn, toShow: false, hapticFeedback: false)
+                viewFunctions.formatProgressWheel(progressWheel: self.loginBtnProgressWheel, button: self.loginBtn, toShow: false, hapticFeedback: false)
             }
         }
     }

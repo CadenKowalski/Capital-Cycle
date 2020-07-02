@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import AuthenticationServices
 
-class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
+class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding, ASWebAuthenticationPresentationContextProviding  {
     
     // MARK: Global Variables
     
@@ -20,6 +20,7 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
     @IBOutlet weak var profileImgView: CustomImageView!
     @IBOutlet weak var emailLbl: UILabel!
     @IBOutlet weak var userTypeLbl: UILabel!
+    @IBOutlet weak var googleAccessSwitch: UISwitch!
     @IBOutlet weak var accountSettingsProgressWheel: UIActivityIndicatorView!
     @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var userTypePickerView: UIPickerView!
@@ -57,6 +58,9 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
             userTypeLbl.text = "I am an " + "\(user.type!)".capitalized
         }
         
+        // Formats the google access switch
+        googleAccessSwitch.isOn = user.isGoogleVerified
+        
         // Formats the picker view
         cancelBtn.isHidden = true
         userTypePickerView.delegate = self
@@ -67,6 +71,10 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
             resetPasswordBtn.isUserInteractionEnabled = false
             resetPasswordBtn.setTitleColor(UIColor(named: "CellColor"), for: .normal)
         }
+    }
+    
+    func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
+        return self.view.window ?? ASPresentationAnchor()
     }
     
     // MARK: View Management
@@ -179,7 +187,16 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
         
         dismiss(animated: true, completion: nil)
     }
-        
+    
+    @IBAction func googleAccess(_ sender: UISwitch) {
+        if sender.isOn {
+            googleFunctions.getAuthCode(context: self)
+        } else {
+            user.isGoogleVerified = false
+            googleFunctions.revokeToken() {_ in}
+        }
+    }
+    
     // Logs out the user
     @IBAction func logOut(_ sender: UIButton?) {
         viewFunctions.formatProgressWheel(progressWheel: accountSettingsProgressWheel, button: nil, toShow: true, hapticFeedback: false)

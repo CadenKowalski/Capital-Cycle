@@ -42,7 +42,6 @@ class OverviewPage: UIViewController {
     func formatUI() {
         // Formats the gradient view
         if view.frame.height < 700 {
-            print(true)
             gradientViewHeight.constant = 0.15 * view.frame.height
             gradientView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: gradientViewHeight.constant)
         } else if view.frame.height >= 812 {

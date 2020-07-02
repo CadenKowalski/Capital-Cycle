@@ -18,6 +18,7 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
     @IBOutlet weak var camperInfoLblYConstraint: NSLayoutConstraint!
     @IBOutlet weak var accountSettingsImgView: CustomImageView!
+    @IBOutlet weak var permissionBtn: UIButton!
     @IBOutlet weak var camperScrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var contentViewHeight: NSLayoutConstraint!
@@ -37,7 +38,8 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
     var parentLastName: String!
     var parentPhone: Int!
     var parentEmail: String!
-    var viewHeight: CGFloat!
+    var clickedButton: CustomButton!
+    //var viewHeight: CGFloat!
     
     // MARK: View Instantiation
     
@@ -45,7 +47,10 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         formatUI()
-        createCamperCell()
+        if user.isGoogleVerified {
+            permissionBtn.isHidden = true
+            createCamperCell()
+        }
     }
     
     // Runs when the view is reloaded
@@ -85,9 +90,6 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
         camperInfoRefreshControl.backgroundColor = UIColor(named: "ViewColor")
         camperInfoRefreshControl.addTarget(self, action: #selector(updateData), for: .valueChanged)
         camperScrollView.refreshControl = camperInfoRefreshControl
-        
-        // Sets the height of a fixed form view
-        viewHeight = contentView.frame.height
         
         // Formats the camper info view
         camperInfoView.alpha = 0
@@ -187,7 +189,9 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
     
     // Displays the camper information when a camper's name is clicked
     @objc func displayCamperInfo(_ sender: CustomButton) {
-        sender.isHidden = true
+        camperScrollView.isUserInteractionEnabled = false
+        clickedButton = sender
+        clickedButton.isHidden = true
         viewFunctions.giveHapticFeedback(error: false, prefers: user.prefersHapticFeedback)
         camperInfoViewItems = [camperNameLbl, parentNameLbl, parentNumberLbl, parentEmailLbl, signedWaiverLbl, notesLbl]
         for index in 0 ..< 6 {
@@ -204,7 +208,7 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
         contentView.addSubview(placeholderView)
         var frame = placeholderView.frame
         frame = CGRect(x: 8, y: visibleRect.minY, width: view.frame.width - 16, height: 40)
-        frame.size = CGSize(width: view.frame.width - 16, height: viewHeight)
+        frame.size = CGSize(width: view.frame.width - 16, height: camperInfoView.frame.height)
         UIView.animate(withDuration: 0.25, animations: {
             placeholderView.frame = frame
         }, completion: { success in
@@ -212,41 +216,64 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
                 self.camperInfoView.alpha = 1
             }, completion: { success in
                 placeholderView.removeFromSuperview()
-                sender.isHidden = false
+            })
+        })
+    }
+    
+    // Dismsisses the camper info view
+    @IBAction func dismissCamperInfoView(_ sender: UIButton) {
+        let visibleRect = camperScrollView.convert(camperScrollView.bounds, to: contentView)
+        let placeholderView = UIView(frame: CGRect(x: 8, y: visibleRect.minY, width: view.frame.width - 16, height: camperInfoView.frame.height))
+        placeholderView.backgroundColor = UIColor(named: "PlaceholderViewColor")
+        placeholderView.layer.cornerRadius = 20
+        contentView.addSubview(placeholderView)
+        var frame = placeholderView.frame
+        frame = CGRect(x: 8, y: clickedButton.frame.minY, width: view.frame.width - 16, height: camperInfoView.frame.height)
+        frame.size = CGSize(width: view.frame.width - 16, height: 40)
+        UIView.animate(withDuration: 0.25, animations: {
+            self.camperInfoView.alpha = 0
+        }, completion: { success in
+            UIView.animate(withDuration: 0.25, animations: {
+                placeholderView.frame = frame
+            }, completion: { success in
+                placeholderView.removeFromSuperview()
+                self.clickedButton.isHidden = false
+                self.camperScrollView.isUserInteractionEnabled = true
             })
         })
     }
     
     // Refreshes the camper info
     @objc func updateData(_ sender: UIRefreshControl) {
-        if Reachability.isConnectedToNetwork() {
-            googleFunctions.refreshAccessToken() { error in
-                DispatchQueue.main.async {
-                    if error == nil {
-                        for cell in 0 ..< self.camperCells.count {
-                            self.camperCells[cell].setTitle("\(camperInfo[cell][0])", for: .normal)
+        if user.isGoogleVerified {
+            if Reachability.isConnectedToNetwork() {
+                googleFunctions.refreshAccessToken() { error in
+                    DispatchQueue.main.async {
+                        if error == nil {
+                            for cell in 0 ..< self.camperCells.count {
+                                self.camperCells[cell].setTitle("\(camperInfo[cell][0])", for: .normal)
+                            }
+                        } else {
+                            print(error!)
                         }
-                    } else {
-                        print(error!)
+                        
+                        sender.endRefreshing()
                     }
-                    
-                    sender.endRefreshing()
                 }
+            } else {
+                viewFunctions.wait(time: 1.0, completion: {
+                    sender.endRefreshing()
+                })
             }
         } else {
-            viewFunctions.wait(time: 1.0, completion: {
+            permissionBtn.isHidden = false
+            viewFunctions.wait(time: 0.5, completion: {
                 sender.endRefreshing()
             })
         }
     }
     
     // MARK: Dismiss
-    
-    // Dismsisses the camper info view
-    @IBAction func dismissCamperInfoView(_ sender: UIButton) {
-        camperInfoView.alpha = 0
-        camperScrollView.isUserInteractionEnabled = true
-    }
     
     // Dismisses the mail controller
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {

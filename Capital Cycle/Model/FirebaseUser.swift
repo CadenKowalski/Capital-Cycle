@@ -22,6 +22,7 @@ struct FirebaseUser {
     var prefersHapticFeedback: Bool!
     var prefersNotifications: Bool!
     var isCounselorVerified: Bool!
+    var isGoogleVerified: Bool!
     var authenticationMethod: String!
     
     // MARK: Firebase User
@@ -44,6 +45,7 @@ struct FirebaseUser {
         self.prefersHapticFeedback = true
         self.prefersNotifications = true
         self.isCounselorVerified = false
+        self.isGoogleVerified = false
         self.authenticationMethod = ""
     }
 }

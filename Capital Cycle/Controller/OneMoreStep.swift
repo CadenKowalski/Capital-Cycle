@@ -22,8 +22,6 @@ class OneMoreStep: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     @IBOutlet weak var signedInBtn: UIButton!
     @IBOutlet weak var signUpBtn: CustomButton!
     @IBOutlet weak var signUpBtnProgressWheel: UIActivityIndicatorView!
-    @IBOutlet weak var privacyPolicyTxtView: CustomTextView!
-    @IBOutlet weak var doneBtn: UIButton!
     @IBOutlet weak var userTypePickerView: UIPickerView!
     // Code global vars
     var Agree = false
@@ -46,9 +44,6 @@ class OneMoreStep: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
             gradientViewHeight.constant = 0.15 * view.frame.height
             gradientView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.15)
         }
-        
-        // Formats the privacy policy text view
-        doneBtn.isHidden = true
         
         // Formats the picker view
         userTypePickerView.delegate = self
@@ -97,15 +92,8 @@ class OneMoreStep: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
 
     // Displays the privacy policy text view
     @IBAction func privacyPolicy(_ sender: UIButton) {
-        privacyPolicyTxtView.isHidden = false
-        doneBtn.isHidden = false
-        isModalInPresentation = true
-    }
-    
-    @IBAction func dismissPrivacyPolicy(_ sender: UIButton) {
-        privacyPolicyTxtView.isHidden = true
-        sender.isHidden = true
-        isModalInPresentation = false
+        viewFunctions.giveHapticFeedback(error: false, prefers: true)
+        performSegue(withIdentifier: "Privacy Policy From Apple", sender: nil)
     }
     
     // User agrees to privacy policy and terms of service
@@ -113,10 +101,10 @@ class OneMoreStep: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         viewFunctions.giveHapticFeedback(error: false, prefers: true)
         if !Agree {
             Agree = true
-            sender.setImage(UIImage(named: "Checked"), for: .normal)
+            sender.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
         } else {
             Agree = false
-            sender.setImage(UIImage(named: "Unchecked"), for: .normal)
+            sender.setImage(UIImage(systemName: "square"), for: .normal)
         }
     }
     
@@ -125,10 +113,10 @@ class OneMoreStep: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         viewFunctions.giveHapticFeedback(error: false, prefers: true)
         if !user.signedIn! {
             user.signedIn = true
-            sender.setImage(UIImage(named: "Checked"), for: .normal)
+            sender.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
         } else {
             user.signedIn = false
-            sender.setImage(UIImage(named: "Unchecked"), for: .normal)
+            sender.setImage(UIImage(systemName: "square"), for: .normal)
         }
     }
     
