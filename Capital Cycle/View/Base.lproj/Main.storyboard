@@ -3014,7 +3014,6 @@ A: We have a variety of games and books as well as a gym and playground to occup
                 <navigationController navigationBarHidden="YES" id="mAf-zE-l5X" customClass="UserNavigationController" customModule="Capital_Cycle" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="ReP-zl-Mdi"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fQZ-ft-Bwe">
-                        <rect key="frame" x="0.0" y="-54" width="0.0" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>

@@ -53,9 +53,9 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
         
         // Formats the email and userType labels
         emailLbl.text = "Email: \((Auth.auth().currentUser?.email)!)"
-        userTypeLbl.text = "I am a " + "\(user.type!)".capitalized
+        userTypeLbl.text = "I am a " + "\(user.type!)"
         if user.type == .admin {
-            userTypeLbl.text = "I am an " + "\(user.type!)".capitalized
+            userTypeLbl.text = "I am an " + "\(user.type!)"
         }
         
         // Formats the google access switch

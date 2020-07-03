@@ -10,6 +10,7 @@
 #endif
 #endif
 
+#import "firebasecore.nanopb 2.h"
 #import "firebasecore.nanopb.h"
 #import "FIRCoreDiagnosticsData.h"
 #import "FIRCoreDiagnosticsInterop.h"

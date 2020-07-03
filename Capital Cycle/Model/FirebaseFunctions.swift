@@ -233,11 +233,27 @@ struct FirebaseFunctions {
         user.signedIn = false
         manageUserData(dataValues: ["signedIn"], newUser: false) { error in
             if error == nil {
-                user.reset()
-                completion(nil)
+                signOutAuthUser() { error in
+                    if error == nil {
+                        user.reset()
+                        completion(nil)
+                    } else {
+                        completion(error)
+                    }
+                }
             } else {
                 completion(error!)
             }
+        }
+    }
+    
+    // Signs out the Auth user
+    func signOutAuthUser(completion: @escaping(String?) -> Void) {
+        do {
+            try Auth.auth().signOut()
+            completion(nil)
+        } catch let error as NSError{
+            completion(error.localizedDescription)
         }
     }
     
