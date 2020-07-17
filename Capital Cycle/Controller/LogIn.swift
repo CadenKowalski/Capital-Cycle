@@ -41,9 +41,7 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
         Auth.auth().currentUser?.reload() { action in
             if Auth.auth().currentUser != nil {
                 viewFunctions.formatProgressWheel(progressWheel: self.loginBtnProgressWheel, button: self.loginBtn, toShow: true, hapticFeedback: false)
-                print(user.email!)
                 user.email = Auth.auth().currentUser!.email!
-                print(user.email!)
                 user.uid = Auth.auth().currentUser!.uid
                 firebaseFunctions.fetchUserData(fetchValue: "all") { error in
                     if error == nil {
