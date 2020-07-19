@@ -10,17 +10,29 @@ import UIKit
 import Firebase
 import CoreData
 
+// User
 var user = FirebaseUser()
+
+// Google data
 var dailyData: [[String]]!
 var overviewData: [[String]]!
 var camperInfo: [[String]]!
 var refresh_token: String!
 let collectionRef = Firestore.firestore().collection("Users")
 let firebaseFunctions = FirebaseFunctions()
+
+// Model functions
 let viewFunctions = ViewFunctions()
 let authenticationFunctions = AuthenticationFunctions()
 let googleFunctions = GoogleFunctions()
 let coreDataFunctions = CoreDataFunctions()
+
+// View Controller Instances
+var overviewPage: OverviewPage?
+var schedulePage: SchedulePage?
+var storePage: StorePage?
+var faqPage: FAQPage?
+var camperInfoPage: CamperInfoPage?
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

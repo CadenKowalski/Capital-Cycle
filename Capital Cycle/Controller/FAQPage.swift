@@ -17,14 +17,13 @@ class FAQPage: UIViewController {
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
     @IBOutlet weak var FAQLblYConstraint: NSLayoutConstraint!
     @IBOutlet weak var accountSettingsImgView: CustomImageView!
-    // Global code vars
-    static let Instance = FAQPage()
     
     // MARK: View Instantiation
     
     // Runs when the view is loaded for the first time
     override func viewDidLoad() {
         super.viewDidLoad()
+        faqPage = self
         formatUI()
     }
     
@@ -47,7 +46,7 @@ class FAQPage: UIViewController {
         }
         
         // Formats the account settings button
-        FAQPage.Instance.accountSettingsImgView = accountSettingsImgView
+        faqPage?.accountSettingsImgView = accountSettingsImgView
         setProfileImg()
     }
     

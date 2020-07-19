@@ -193,7 +193,13 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
             googleFunctions.getAuthCode(context: self)
         } else {
             user.isGoogleVerified = false
-            googleFunctions.revokeToken() {_ in}
+            googleFunctions.revokeToken() { error in
+                if error == nil {
+                    camperInfoPage?.updateData(nil)
+                } else {
+                    print(error!)
+                }
+            }
         }
     }
     

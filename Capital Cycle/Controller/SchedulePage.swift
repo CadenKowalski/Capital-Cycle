@@ -50,7 +50,6 @@ class SchedulePage: UIViewController {
     @IBOutlet weak var fridayLbl: UILabel!
     @IBOutlet weak var noConnectionView: UIView!
     // Code global vars
-    static let Instance = SchedulePage()
     let Day = Calendar.current.component(.weekday, from: Date())
     let Hour = Calendar.current.component(.hour, from: Date())
     var dailyRefreshControl = UIRefreshControl()
@@ -61,6 +60,7 @@ class SchedulePage: UIViewController {
     // Runs when the view is loaded for the first time
     override func viewDidLoad() {
         super.viewDidLoad()
+        schedulePage = self
         formatUI()
         formatDailyData()
         formatOverviewData()
@@ -129,7 +129,7 @@ class SchedulePage: UIViewController {
         }
         
         // Formats the account settings button
-        SchedulePage.Instance.accountSettingsImgView = accountSettingsImgView
+        schedulePage?.accountSettingsImgView = accountSettingsImgView
         setProfileImg()
         
         // Formats the Y constraints relative to the gradient view height

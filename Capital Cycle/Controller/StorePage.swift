@@ -23,7 +23,6 @@ class StorePage: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     @IBOutlet weak var productsCollectionHeight: NSLayoutConstraint!
     private(set) public var Products = [Product]()
     // Code global vars
-    static let Instance = StorePage()
     let websiteURLs = ["https://capitalcyclecamp.org/pay-for-camp/5-day-session-1-6216",
                        "https://capitalcyclecamp.org/pay-for-camp/1-5-day-session-of-cycle-camp-spring-break-and-summer-session-1245",
                        "https://capitalcyclecamp.org/pay-for-camp/4-day-session-of-cycle-camp",
@@ -38,6 +37,7 @@ class StorePage: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     // Runs when the view is loaded for the first time
     override func viewDidLoad() {
         super.viewDidLoad()
+        storePage = self
         formatUI()
         loadProducts()
     }
@@ -66,7 +66,7 @@ class StorePage: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         productsCollectionHeight.constant = view.frame.maxY - gradientView.frame.maxY
 
         // Formats the account settings button
-        StorePage.Instance.accountSettingsImgView = accountSettingsImgView
+        storePage?.accountSettingsImgView = accountSettingsImgView
         setProfileImg()
     }
     

@@ -31,7 +31,6 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
     @IBOutlet weak var signedWaiverLbl: UILabel!
     @IBOutlet weak var notesLbl: UILabel!
     //Code global vars
-    static let Instance = CamperInfoPage()
     var camperInfoRefreshControl = UIRefreshControl()
     var camperCells = [CustomButton]()
     var camperInfoViewItems = [UILabel]()
@@ -39,17 +38,17 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
     var parentPhone: Int!
     var parentEmail: String!
     var clickedButton: CustomButton!
-    //var viewHeight: CGFloat!
     
     // MARK: View Instantiation
     
     // Runs when the view is loaded for the first time
     override func viewDidLoad() {
         super.viewDidLoad()
+        camperInfoPage = self
         formatUI()
         if user.isGoogleVerified {
             permissionBtn.isHidden = true
-            createCamperCell()
+            manageCamperCells()
         }
     }
     
@@ -83,7 +82,7 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
         }
         
         // Formats the account settings button
-        CamperInfoPage.Instance.accountSettingsImgView = accountSettingsImgView
+        camperInfoPage?.accountSettingsImgView = accountSettingsImgView
         setProfileImg()
         
         // Formats the refresh view
@@ -93,6 +92,9 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
         
         // Formats the camper info view
         camperInfoView.alpha = 0
+        
+        // Formats the permission button
+        permissionBtn.titleLabel?.numberOfLines = 0
     }
     
     // Gets a parent's last name
@@ -163,28 +165,70 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
     
     // MARK: Display Camper Info
     
-    // Presents Google Sheet data in an array of buttons
-    func createCamperCell() {
-        for camper in 0..<camperInfo.count {
+    // Manages the camper cells
+    func manageCamperCells() {
+        contentViewHeight.constant = CGFloat(camperInfo.count * 52) + 25
+        for camper in 0 ..< camperInfo.count {
             let camperCell: CustomButton
             if camper == 0 {
-                camperCell = CustomButton(frame: CGRect(x: 16, y: 8, width: view.frame.width - 32, height: 40))
+                camperCell = CustomButton(frame: CGRect(x: 8, y: 8, width: view.frame.width - 16, height: 40))
             } else {
-                camperCell = CustomButton(frame: CGRect(x: 16, y: camperCells[camper - 1].frame.maxY + 12, width: view.frame.width - 32, height: 40))
+                camperCell = CustomButton(frame: CGRect(x: 8, y: camperCells[camper - 1].frame.maxY + 12, width: view.frame.width - 16, height: 40))
             }
             
             camperCell.setTitle("\(camperInfo[camper][0])", for: .normal)
             camperCell.setTitleColor(#colorLiteral(red: 0.8700000048, green: 0.8700000048, blue: 0.8700000048, alpha: 1), for: .normal)
             camperCell.titleLabel?.font = UIFont(name: "Avenir-Heavy", size: 20)
-            camperCell.addTarget(self, action: #selector(displayCamperInfo(_:)), for: .touchUpInside)
+            camperCell.addTarget(self, action: #selector(self.displayCamperInfo(_:)), for: .touchUpInside)
             camperCell.cornerRadius = 10
             camperCell.gradientColorOne = UIColor(named: "DarkPurple")!
             camperCell.gradientColorTwo = UIColor(named: "LightPurple")!
             contentView.addSubview(camperCell)
             camperCells.append(camperCell)
         }
-        
-        contentViewHeight.constant = CGFloat(camperCells.count * 52) + 25
+    }
+    
+    // Called when the camper cells need to be updated
+    @objc func updateData(_ sender: UIRefreshControl?) {
+        if Reachability.isConnectedToNetwork() {
+            DispatchQueue.main.async {
+                for cell in self.camperCells {
+                    cell.removeFromSuperview()
+                }
+                
+                self.camperCells = []
+            }
+            
+            if user.isGoogleVerified {
+                if sender == nil {
+                    DispatchQueue.main.async {
+                        self.permissionBtn.isHidden = true
+                        self.manageCamperCells()
+                    }
+                } else {
+                    googleFunctions.refreshAccessToken() { error in
+                        DispatchQueue.main.async {
+                            if error == nil {
+                                sender?.endRefreshing()
+                            } else {
+                                print(error!)
+                            }
+                        }
+                    }
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.permissionBtn.isHidden = false
+                    sender?.endRefreshing()
+                }
+            }
+        } else {
+            DispatchQueue.main.async {
+                viewFunctions.wait(time: 1.0, completion: {
+                    sender?.endRefreshing()
+                })
+            }
+        }
     }
     
     // Displays the camper information when a camper's name is clicked
@@ -225,7 +269,7 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
         let visibleRect = camperScrollView.convert(camperScrollView.bounds, to: contentView)
         let placeholderView = UIView(frame: CGRect(x: 8, y: visibleRect.minY, width: view.frame.width - 16, height: camperInfoView.frame.height))
         placeholderView.backgroundColor = UIColor(named: "PlaceholderViewColor")
-        placeholderView.layer.cornerRadius = 20
+        placeholderView.layer.cornerRadius = 10
         contentView.addSubview(placeholderView)
         var frame = placeholderView.frame
         frame = CGRect(x: 8, y: clickedButton.frame.minY, width: view.frame.width - 16, height: camperInfoView.frame.height)
@@ -241,36 +285,6 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
                 self.camperScrollView.isUserInteractionEnabled = true
             })
         })
-    }
-    
-    // Refreshes the camper info
-    @objc func updateData(_ sender: UIRefreshControl) {
-        if user.isGoogleVerified {
-            if Reachability.isConnectedToNetwork() {
-                googleFunctions.refreshAccessToken() { error in
-                    DispatchQueue.main.async {
-                        if error == nil {
-                            for cell in 0 ..< self.camperCells.count {
-                                self.camperCells[cell].setTitle("\(camperInfo[cell][0])", for: .normal)
-                            }
-                        } else {
-                            print(error!)
-                        }
-                        
-                        sender.endRefreshing()
-                    }
-                }
-            } else {
-                viewFunctions.wait(time: 1.0, completion: {
-                    sender.endRefreshing()
-                })
-            }
-        } else {
-            permissionBtn.isHidden = false
-            viewFunctions.wait(time: 0.5, completion: {
-                sender.endRefreshing()
-            })
-        }
     }
     
     // MARK: Dismiss

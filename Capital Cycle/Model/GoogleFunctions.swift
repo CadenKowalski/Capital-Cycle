@@ -115,6 +115,7 @@ class GoogleFunctions: NSObject {
                         }
                         
                         self.updateCoreDataValuesOnMainThread(nil, nil, nil, sheetData!)
+                        camperInfoPage?.updateData(nil)
                     } else {
                         self.updateCoreDataValuesOnMainThread(nil, Array(sheetData![0...4]), Array(sheetData![7...11]), nil)
                     }
@@ -131,7 +132,10 @@ class GoogleFunctions: NSObject {
     
     // Refreshes an access token via the refresh token generated in exchangeAuthCodeForAccesstoken(authCode:)
     func refreshAccessToken(completion: @escaping(String?) -> Void) {
-        coreDataFunctions.fetchData(contextValues: ["refresh_token"])
+        DispatchQueue.main.async {
+            coreDataFunctions.fetchData(contextValues: ["refresh_token"])
+        }
+        
         var components = URLComponents()
         components.scheme = "https"
         components.host = "oauth2.googleapis.com"

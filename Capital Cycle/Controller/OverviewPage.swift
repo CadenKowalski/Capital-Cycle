@@ -19,14 +19,13 @@ class OverviewPage: UIViewController {
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
     @IBOutlet weak var overviewLblYConstraint: NSLayoutConstraint!
     @IBOutlet weak var accountSettingsImgView: CustomImageView!
-    // Global code vars
-    static let Instance = OverviewPage()
     
     // MARK: View Instantiation
     
     // Runs when the view is loaded for the first time
     override func viewDidLoad() {
         super.viewDidLoad()
+        overviewPage = self
         formatUI()
     }
     
@@ -49,7 +48,7 @@ class OverviewPage: UIViewController {
         }
         
         // Formats the account settings button
-        OverviewPage.Instance.accountSettingsImgView = accountSettingsImgView
+        overviewPage?.accountSettingsImgView = accountSettingsImgView
         setProfileImg()
     }
     
