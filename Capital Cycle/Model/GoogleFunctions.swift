@@ -132,7 +132,7 @@ class GoogleFunctions: NSObject {
     
     // Refreshes an access token via the refresh token generated in exchangeAuthCodeForAccesstoken(authCode:)
     func refreshAccessToken(completion: @escaping(String?) -> Void) {
-        DispatchQueue.main.async {
+        viewFunctions.main {
             coreDataFunctions.fetchData(contextValues: ["refresh_token"])
         }
         
@@ -203,7 +203,7 @@ class GoogleFunctions: NSObject {
     
     // Updates core data values since requests must be performed on the main thread
     func updateCoreDataValuesOnMainThread(_ refreshToken: String?, _ dailyData: [[String]]?, _ overviewData: [[String]]?, _ info: [[String]]?) {
-        DispatchQueue.main.async {
+        viewFunctions.main {
             coreDataFunctions.updateContext(values: ["refresh_token", "dailyData", "overviewData", "camperInfo"], refreshToken, dailyData, overviewData, info)
             coreDataFunctions.fetchData(contextValues: ["refresh_token", "dailyData", "overviewData", "camperInfo"])
         }

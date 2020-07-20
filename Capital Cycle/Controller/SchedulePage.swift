@@ -69,7 +69,6 @@ class SchedulePage: UIViewController {
     // Runs when the view is reloaded
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        setProfileImg()
         if !Reachability.isConnectedToNetwork() {
             UIView.animate(withDuration: 0.25, animations: {
                 self.noConnectionView.alpha = 1
@@ -188,7 +187,7 @@ class SchedulePage: UIViewController {
     @objc func updateData(_ sender: UIRefreshControl) {
         if Reachability.isConnectedToNetwork() {
             googleFunctions.fetchData(secure: false, accessToken: nil) { error in
-                DispatchQueue.main.async {
+                viewFunctions.main{
                     if error == nil {
                         self.formatDailyData()
                         self.formatOverviewData()

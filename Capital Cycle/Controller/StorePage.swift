@@ -41,12 +41,6 @@ class StorePage: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         formatUI()
         loadProducts()
     }
-
-    // Runs when the view is reloaded
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        setProfileImg()
-    }
     
     // MARK: View Formatting
     

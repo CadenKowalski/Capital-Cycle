@@ -18,7 +18,7 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
     @IBOutlet weak var camperInfoLblYConstraint: NSLayoutConstraint!
     @IBOutlet weak var accountSettingsImgView: CustomImageView!
-    @IBOutlet weak var permissionBtn: UIButton!
+    @IBOutlet weak var permissionLbl: UILabel!
     @IBOutlet weak var camperScrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var contentViewHeight: NSLayoutConstraint!
@@ -47,7 +47,7 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
         camperInfoPage = self
         formatUI()
         if user.isGoogleVerified {
-            permissionBtn.isHidden = true
+            permissionLbl.isHidden = true
             manageCamperCells()
         }
     }
@@ -55,7 +55,6 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
     // Runs when the view is reloaded
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        setProfileImg()
         if !Reachability.isConnectedToNetwork() {
             UIView.animate(withDuration: 0.25, animations: {
                 self.noConnectionView.alpha = 1
@@ -92,9 +91,6 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
         
         // Formats the camper info view
         camperInfoView.alpha = 0
-        
-        // Formats the permission button
-        permissionBtn.titleLabel?.numberOfLines = 0
     }
     
     // Gets a parent's last name
@@ -133,6 +129,12 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
     }
     
     // MARK: View Management
+    
+    // Takes user to account settings to allow Google access
+    @IBAction func permissionLblTapped(_ sender: Any) {
+        performSegue(withIdentifier: "updateGoogleAccess", sender: nil)
+    }
+    
         
     // Calls the parent's phone number
     @IBAction func callNumber(_ sender: Any) {
@@ -181,8 +183,7 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
             camperCell.titleLabel?.font = UIFont(name: "Avenir-Heavy", size: 20)
             camperCell.addTarget(self, action: #selector(self.displayCamperInfo(_:)), for: .touchUpInside)
             camperCell.cornerRadius = 10
-            camperCell.gradientColorOne = UIColor(named: "DarkPurple")!
-            camperCell.gradientColorTwo = UIColor(named: "LightPurple")!
+            camperCell.cellGradient = true
             contentView.addSubview(camperCell)
             camperCells.append(camperCell)
         }
@@ -191,7 +192,7 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
     // Called when the camper cells need to be updated
     @objc func updateData(_ sender: UIRefreshControl?) {
         if Reachability.isConnectedToNetwork() {
-            DispatchQueue.main.async {
+            viewFunctions.main {
                 for cell in self.camperCells {
                     cell.removeFromSuperview()
                 }
@@ -201,13 +202,13 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
             
             if user.isGoogleVerified {
                 if sender == nil {
-                    DispatchQueue.main.async {
-                        self.permissionBtn.isHidden = true
+                    viewFunctions.main {
+                        self.permissionLbl.isHidden = true
                         self.manageCamperCells()
                     }
                 } else {
                     googleFunctions.refreshAccessToken() { error in
-                        DispatchQueue.main.async {
+                        viewFunctions.main {
                             if error == nil {
                                 sender?.endRefreshing()
                             } else {
@@ -217,13 +218,13 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
                     }
                 }
             } else {
-                DispatchQueue.main.async {
-                    self.permissionBtn.isHidden = false
+                viewFunctions.main() {
+                    self.permissionLbl.isHidden = false
                     sender?.endRefreshing()
                 }
             }
         } else {
-            DispatchQueue.main.async {
+            viewFunctions.main {
                 viewFunctions.wait(time: 1.0, completion: {
                     sender?.endRefreshing()
                 })

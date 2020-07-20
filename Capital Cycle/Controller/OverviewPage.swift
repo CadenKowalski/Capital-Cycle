@@ -29,12 +29,6 @@ class OverviewPage: UIViewController {
         formatUI()
     }
     
-    // Runs when the view is reloaded
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        setProfileImg()
-    }
-    
     // MARK: View Formatting
     
     // Formats the UI

@@ -55,4 +55,11 @@ class ViewFunctions: UIViewController {
             completion()
         })
     }
+    
+    // Performs the completion block on the main thread
+    func main(completion: @escaping() -> Void) {
+        DispatchQueue.main.async() {
+            completion()
+        }
+    }
 }

@@ -10,66 +10,132 @@ import UIKit
 
 @IBDesignable
 class CustomView: UIView {
-    @IBInspectable var cornerRadius: CGFloat = 0 {
+    
+    let gradientLayer = CAGradientLayer()
+    
+    @IBInspectable var gradient: Bool = false {
         didSet {
-            self.layer.cornerRadius = self.cornerRadius
+            if gradient == true {
+                gradientLayer.frame = self.bounds
+                gradientLayer.colors = [UIColor(named: "gradientOrange")!.cgColor, UIColor(named: "gradientPurple")!.cgColor]
+                gradientLayer.startPoint = CGPoint(x: 1.0, y: 1.0)
+                gradientLayer.endPoint = CGPoint(x: 0.0, y: 0.0)
+                gradientLayer.cornerRadius = self.cornerRadius
+                layer.insertSublayer(gradientLayer, at: 0)
+            } else {
+                gradientLayer.removeFromSuperlayer()
+            }
         }
     }
     
-    @IBInspectable var gradientColorOne: UIColor = .clear
-    @IBInspectable var gradientColorTwo: UIColor = .clear {
+    @IBInspectable var cellGradient: Bool = false {
         didSet {
-            let gradientLayer = CAGradientLayer()
-            gradientLayer.frame = self.bounds
-            gradientLayer.colors = [self.gradientColorOne.cgColor, self.gradientColorTwo.cgColor]
-            gradientLayer.startPoint = CGPoint(x: 1.0, y: 1.0)
-            gradientLayer.endPoint = CGPoint(x: 0.0, y: 0.0)
-            gradientLayer.cornerRadius = self.cornerRadius
-            layer.insertSublayer(gradientLayer, at: 0)
+            if cellGradient == true {
+                gradientLayer.frame = self.bounds
+                gradientLayer.colors = [UIColor(named: "DarkPurple")!.cgColor, UIColor(named: "LightPurple")!.cgColor]
+                gradientLayer.startPoint = CGPoint(x: 1.0, y: 1.0)
+                gradientLayer.endPoint = CGPoint(x: 0.0, y: 0.0)
+                gradientLayer.cornerRadius = self.cornerRadius
+                layer.insertSublayer(gradientLayer, at: 0)
+            } else {
+                gradientLayer.removeFromSuperlayer()
+            }
+        }
+    }
+    
+    @IBInspectable var cornerRadius: CGFloat = 0 {
+        didSet {
+            self.layer.cornerRadius = self.cornerRadius
         }
     }
 }
 
 @IBDesignable
 class CustomButton: UIButton {
-    @IBInspectable var cornerRadius: CGFloat = 0
-    @IBInspectable var gradientColorOne: UIColor = .clear
-    @IBInspectable var gradientColorTwo: UIColor = .clear {
+    
+    let gradientLayer = CAGradientLayer()
+    
+    @IBInspectable var gradient: Bool = false {
         didSet {
-            let gradientLayer = CAGradientLayer()
-            gradientLayer.frame = self.bounds
-            gradientLayer.colors = [self.gradientColorOne.cgColor, self.gradientColorTwo.cgColor]
-            gradientLayer.startPoint = CGPoint(x: 1.0, y: 1.0)
-            gradientLayer.endPoint = CGPoint(x: 0.0, y: 0.0)
-            gradientLayer.cornerRadius = self.cornerRadius
-            layer.insertSublayer(gradientLayer, at: 0)
+            if gradient == true {
+                gradientLayer.frame = self.bounds
+                gradientLayer.colors = [UIColor(named: "gradientOrange")!.cgColor, UIColor(named: "gradientPurple")!.cgColor]
+                gradientLayer.startPoint = CGPoint(x: 1.0, y: 1.0)
+                gradientLayer.endPoint = CGPoint(x: 0.0, y: 0.0)
+                gradientLayer.cornerRadius = self.cornerRadius
+                layer.insertSublayer(gradientLayer, at: 0)
+            } else {
+                gradientLayer.removeFromSuperlayer()
+            }
+        }
+    }
+    
+    @IBInspectable var cellGradient: Bool = false {
+        didSet {
+            if cellGradient == true {
+                gradientLayer.frame = self.bounds
+                gradientLayer.colors = [UIColor(named: "DarkPurple")!.cgColor, UIColor(named: "LightPurple")!.cgColor]
+                gradientLayer.startPoint = CGPoint(x: 1.0, y: 1.0)
+                gradientLayer.endPoint = CGPoint(x: 0.0, y: 0.0)
+                gradientLayer.cornerRadius = self.cornerRadius
+                layer.insertSublayer(gradientLayer, at: 0)
+            } else {
+                gradientLayer.removeFromSuperlayer()
+            }
+        }
+    }
+    
+    @IBInspectable var cornerRadius: CGFloat = 0 {
+        didSet {
+            self.layer.cornerRadius = self.cornerRadius
+        }
+    }
+    
+    @IBInspectable var borderRadius: CGFloat = 0 {
+        didSet {
+            self.layer.borderWidth = self.borderRadius
+        }
+    }
+    
+    @IBInspectable var borderColor: UIColor = .clear {
+        didSet {
+            self.layer.borderColor = self.borderColor.cgColor
         }
     }
 }
 
 @IBDesignable
 class CustomLabel: UILabel {
+    
     @IBInspectable var cornerRadius: CGFloat = 0 {
         didSet {
-            self.layer.cornerRadius = self.cornerRadius
+            self.layer.cornerRadius = cornerRadius
+        }
+    }
+    
+    @IBInspectable var interactionEnabled: Bool = false {
+        didSet {
+            self.isUserInteractionEnabled = interactionEnabled
         }
     }
 }
 
 @IBDesignable
 class CustomImageView: UIImageView {
+    
     @IBInspectable var cornerRadius: CGFloat = 0 {
         didSet {
-            self.layer.cornerRadius = self.cornerRadius
+            self.layer.cornerRadius = cornerRadius
         }
     }
 }
 
 @IBDesignable
 class CustomTextView: UITextView {
+    
     @IBInspectable var cornerRadius: CGFloat = 0 {
         didSet {
-            self.layer.cornerRadius = self.cornerRadius
+            self.layer.cornerRadius = cornerRadius
         }
     }
 }

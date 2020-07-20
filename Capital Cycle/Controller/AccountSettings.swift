@@ -179,6 +179,11 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
             firebaseFunctions.manageUserData(dataValues: ["profileImgUrl"], newUser: false) { error in
                 if error == nil {
                     self.profileImgView.image = user.profileImg
+                    overviewPage?.setProfileImg()
+                    schedulePage?.setProfileImg()
+                    storePage?.setProfileImg()
+                    faqPage?.setProfileImg()
+                    camperInfoPage?.setProfileImg()
                 } else {
                     viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
                 }

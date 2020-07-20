@@ -212,10 +212,10 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
         } else {
             firebaseFunctions.createUser(password: passTxtField.text!) { error in
                 if error == nil {
+                    user.authenticationMethod = "Email"
                     firebaseFunctions.manageUserData(dataValues: ["all"], newUser: true) { error in
                         if error == nil {
                             if user.type == .admin {
-                                user.authenticationMethod = "Email"
                                 googleFunctions.getAuthCode(context: self)
                                 self.performSegue(withIdentifier: "Admin", sender: nil)
                             } else {
