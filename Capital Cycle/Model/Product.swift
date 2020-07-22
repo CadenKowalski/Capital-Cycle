@@ -9,11 +9,12 @@
 import Foundation
 
 struct Product {
-    private(set) public var Info: String
-    private(set) public var ImgName: String
+    
+    var info: String
+    var imgName: String
     
     init(Info: String, ImgName: String) {
-        self.Info = Info
-        self.ImgName = ImgName
+        self.info = Info
+        self.imgName = ImgName
     }
 }

@@ -251,6 +251,7 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="6"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="gradient" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="switchViews:" destination="taV-Cw-Qjl" eventType="touchUpInside" id="aNW-az-g6B"/>
@@ -1151,422 +1152,6 @@ $375</string>
             </objects>
             <point key="canvasLocation" x="377" y="1701"/>
         </scene>
-        <!--FAQPage-->
-        <scene sceneID="Zpf-cb-M8U">
-            <objects>
-                <viewController storyboardIdentifier="FAQPageOld" title="FAQ Page Old" id="afr-GO-Lxa" userLabel="FAQPage" customClass="FAQPage" customModule="Capital_Cycle" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="wWH-Ti-UbB">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="1781"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lP6-zc-SeC" userLabel="Gradient View" customClass="CustomView" customModule="Capital_Cycle" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FAQ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r5R-hZ-p7e">
-                                        <rect key="frame" x="153.66666666666666" y="41" width="68" height="28"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="68" id="F87-gG-YX7"/>
-                                            <constraint firstAttribute="height" constant="28" id="FIY-Nd-DYS"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nYA-xT-0eP" userLabel="Settings Btn">
-                                        <rect key="frame" x="16" y="15.999999999999996" width="40" height="40.333333333333329"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="Qev-Av-OdD"/>
-                                            <constraint firstAttribute="width" constant="40" id="lOM-F0-F9y"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" backgroundImage="gear" catalog="system"/>
-                                    </button>
-                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="CnX-0M-qCp" userLabel="accountSettingsImageView" customClass="CustomImageView" customModule="Capital_Cycle" customModuleProvider="target">
-                                        <rect key="frame" x="319" y="17" width="40" height="38.666666666666671"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <gestureRecognizers/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="1Us-OJ-qTI"/>
-                                            <constraint firstAttribute="width" constant="40" id="gg3-4s-c7c"/>
-                                        </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="20"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <outletCollection property="gestureRecognizers" destination="eJt-of-8Rx" appends="YES" id="K6a-4H-hSL"/>
-                                        </connections>
-                                    </imageView>
-                                </subviews>
-                                <viewLayoutGuide key="safeArea" id="aFU-MJ-8bw"/>
-                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="r5R-hZ-p7e" firstAttribute="centerX" secondItem="lP6-zc-SeC" secondAttribute="centerX" id="6cJ-hD-pH6"/>
-                                    <constraint firstItem="CnX-0M-qCp" firstAttribute="top" secondItem="lP6-zc-SeC" secondAttribute="top" constant="16" id="82H-f0-OP5"/>
-                                    <constraint firstItem="nYA-xT-0eP" firstAttribute="leading" secondItem="lP6-zc-SeC" secondAttribute="leading" constant="16" id="Awq-8Q-wvw"/>
-                                    <constraint firstAttribute="height" constant="100" id="QqT-ic-eFA"/>
-                                    <constraint firstItem="nYA-xT-0eP" firstAttribute="top" secondItem="lP6-zc-SeC" secondAttribute="top" constant="16" id="bNb-fu-d9z"/>
-                                    <constraint firstAttribute="trailing" secondItem="CnX-0M-qCp" secondAttribute="trailing" constant="16" id="cg3-VV-Xa5"/>
-                                    <constraint firstItem="r5R-hZ-p7e" firstAttribute="centerY" secondItem="lP6-zc-SeC" secondAttribute="centerY" constant="5" id="vMI-R1-SCj"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="gradient" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nbf-wO-epu">
-                                <rect key="frame" x="0.0" y="108" width="375" height="1639"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bNb-g6-zJt" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1638.6666666666667"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G07-rJ-nZo" userLabel="Question 1" customClass="CustomView" customModule="Capital_Cycle" customModuleProvider="target">
-                                                <rect key="frame" x="8" y="8" width="359" height="98"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DK5-Ng-ySl">
-                                                        <rect key="frame" x="8" y="8" width="343" height="82"/>
-                                                        <string key="text">Q: When do you usually head out in the morning?
-A: Around 10:00 - 10:30</string>
-                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
-                                                        <color key="textColor" white="0.87848283816606576" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="bottom" secondItem="DK5-Ng-ySl" secondAttribute="bottom" constant="8" id="bwP-qe-L1C"/>
-                                                    <constraint firstItem="DK5-Ng-ySl" firstAttribute="top" secondItem="G07-rJ-nZo" secondAttribute="top" constant="8" id="k6S-KF-OMj"/>
-                                                    <constraint firstItem="DK5-Ng-ySl" firstAttribute="leading" secondItem="G07-rJ-nZo" secondAttribute="leading" constant="8" id="kKM-15-BgC"/>
-                                                    <constraint firstAttribute="trailing" secondItem="DK5-Ng-ySl" secondAttribute="trailing" constant="8" id="yBn-rs-0zW"/>
-                                                </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="20"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="cellGradient" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zas-Gh-ves" userLabel="Question 2" customClass="CustomView" customModule="Capital_Cycle" customModuleProvider="target">
-                                                <rect key="frame" x="8" y="114" width="359" height="98"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hXQ-Ha-pbC">
-                                                        <rect key="frame" x="8" y="8" width="343" height="82"/>
-                                                        <string key="text">Q: When do you usually arrive back at camp?
-A: Around 3:00 - 4:00</string>
-                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
-                                                        <color key="textColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="hXQ-Ha-pbC" firstAttribute="leading" secondItem="Zas-Gh-ves" secondAttribute="leading" constant="8" id="Dbe-aQ-V76"/>
-                                                    <constraint firstItem="hXQ-Ha-pbC" firstAttribute="top" secondItem="Zas-Gh-ves" secondAttribute="top" constant="8" id="Tqx-P7-FQv"/>
-                                                    <constraint firstAttribute="bottom" secondItem="hXQ-Ha-pbC" secondAttribute="bottom" constant="8" id="kk1-l7-PWW"/>
-                                                    <constraint firstAttribute="trailing" secondItem="hXQ-Ha-pbC" secondAttribute="trailing" constant="8" id="ns9-57-Y0P"/>
-                                                </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="20"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="cellGradient" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yxf-dw-7qK" userLabel="Question 3" customClass="CustomView" customModule="Capital_Cycle" customModuleProvider="target">
-                                                <rect key="frame" x="8" y="220.00000000000003" width="359" height="125.33333333333334"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TrB-Xe-Sgk">
-                                                        <rect key="frame" x="8" y="8" width="343" height="109.33333333333333"/>
-                                                        <string key="text">Q: What if it rains?
-A: We will play it by ear but will err on the side of caution to ensure that campers remain safe</string>
-                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
-                                                        <color key="textColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="TrB-Xe-Sgk" secondAttribute="trailing" constant="8" id="Jsb-lv-v55"/>
-                                                    <constraint firstItem="TrB-Xe-Sgk" firstAttribute="top" secondItem="yxf-dw-7qK" secondAttribute="top" constant="8" id="iwf-sl-oY2"/>
-                                                    <constraint firstItem="TrB-Xe-Sgk" firstAttribute="leading" secondItem="yxf-dw-7qK" secondAttribute="leading" constant="8" id="jfh-Df-44Y"/>
-                                                    <constraint firstAttribute="bottom" secondItem="TrB-Xe-Sgk" secondAttribute="bottom" constant="8" id="zeD-KX-X6L"/>
-                                                </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="20"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="cellGradient" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D56-kh-SwP" userLabel="Question 4" customClass="CustomView" customModule="Capital_Cycle" customModuleProvider="target">
-                                                <rect key="frame" x="8" y="353.33333333333331" width="359" height="125.33333333333331"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M4D-7c-1ig">
-                                                        <rect key="frame" x="8" y="8" width="343" height="109.33333333333333"/>
-                                                        <string key="text">Q: Do you group kids by ability or age?
-A: Both. It usually depends on the length of the ride.</string>
-                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
-                                                        <color key="textColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="bottom" secondItem="M4D-7c-1ig" secondAttribute="bottom" constant="8" id="26g-qW-DwF"/>
-                                                    <constraint firstAttribute="trailing" secondItem="M4D-7c-1ig" secondAttribute="trailing" constant="8" id="K9W-3w-Xhn"/>
-                                                    <constraint firstItem="M4D-7c-1ig" firstAttribute="top" secondItem="D56-kh-SwP" secondAttribute="top" constant="8" id="Nzd-6G-bVF"/>
-                                                    <constraint firstItem="M4D-7c-1ig" firstAttribute="leading" secondItem="D56-kh-SwP" secondAttribute="leading" constant="8" id="QFU-GU-gwc"/>
-                                                </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="20"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="cellGradient" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jSw-pG-ppU" userLabel="Question 5" customClass="CustomView" customModule="Capital_Cycle" customModuleProvider="target">
-                                                <rect key="frame" x="8" y="486.66666666666663" width="359" height="180"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QfD-sT-X3P">
-                                                        <rect key="frame" x="8" y="8" width="343" height="164"/>
-                                                        <string key="text">Q: What if my kid is unable to bike back from the destination?
-A: We generally push kids to make it back on their own but we are prepared to call an Uber or Lyft and ride back with them.</string>
-                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
-                                                        <color key="textColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="QfD-sT-X3P" firstAttribute="leading" secondItem="jSw-pG-ppU" secondAttribute="leading" constant="8" id="563-r9-nKw"/>
-                                                    <constraint firstAttribute="bottom" secondItem="QfD-sT-X3P" secondAttribute="bottom" constant="8" id="80a-sH-xuK"/>
-                                                    <constraint firstItem="QfD-sT-X3P" firstAttribute="top" secondItem="jSw-pG-ppU" secondAttribute="top" constant="8" id="HIc-7d-UY6"/>
-                                                    <constraint firstAttribute="trailing" secondItem="QfD-sT-X3P" secondAttribute="trailing" constant="8" id="YmK-Se-NtF"/>
-                                                </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="20"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="cellGradient" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l9x-PG-UHs" userLabel="Question 6" customClass="CustomView" customModule="Capital_Cycle" customModuleProvider="target">
-                                                <rect key="frame" x="8" y="674.66666666666663" width="359" height="70.666666666666629"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D63-tr-kY5">
-                                                        <rect key="frame" x="8" y="7.9999999999999964" width="343" height="54.666666666666657"/>
-                                                        <string key="text">Q: Can I get a sibling discount?
-A: TBD</string>
-                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
-                                                        <color key="textColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="D63-tr-kY5" secondAttribute="trailing" constant="8" id="1i8-I8-Vq9"/>
-                                                    <constraint firstItem="D63-tr-kY5" firstAttribute="leading" secondItem="l9x-PG-UHs" secondAttribute="leading" constant="8" id="Tkk-iV-HXg"/>
-                                                    <constraint firstAttribute="bottom" secondItem="D63-tr-kY5" secondAttribute="bottom" constant="8" id="cKD-kb-QDl"/>
-                                                    <constraint firstItem="D63-tr-kY5" firstAttribute="top" secondItem="l9x-PG-UHs" secondAttribute="top" constant="8" id="xZU-NX-uNj"/>
-                                                </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="20"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="cellGradient" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lGq-ta-SH7" userLabel="Question 7" customClass="CustomView" customModule="Capital_Cycle" customModuleProvider="target">
-                                                <rect key="frame" x="8" y="753.33333333333337" width="359" height="234.66666666666663"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WhY-9Y-wbx">
-                                                        <rect key="frame" x="8" y="8" width="343" height="218.66666666666666"/>
-                                                        <string key="text">Q: What if my child is not a confident rider?
-A: We will work with them throughout the week pushing them outside their comfort zone but we can always put them in a less advanced group that will go a shorter distance. </string>
-                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
-                                                        <color key="textColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="WhY-9Y-wbx" firstAttribute="top" secondItem="lGq-ta-SH7" secondAttribute="top" constant="8" id="0m0-MQ-fo5"/>
-                                                    <constraint firstAttribute="trailing" secondItem="WhY-9Y-wbx" secondAttribute="trailing" constant="8" id="5zB-2F-SZS"/>
-                                                    <constraint firstAttribute="bottom" secondItem="WhY-9Y-wbx" secondAttribute="bottom" constant="8" id="Dcb-ms-dml"/>
-                                                    <constraint firstItem="WhY-9Y-wbx" firstAttribute="leading" secondItem="lGq-ta-SH7" secondAttribute="leading" constant="8" id="bn9-05-e4u"/>
-                                                </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="20"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="cellGradient" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tSf-4X-dR1" userLabel="Question 8" customClass="CustomView" customModule="Capital_Cycle" customModuleProvider="target">
-                                                <rect key="frame" x="8" y="995.99999999999989" width="359" height="152.66666666666663"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MVb-qP-ddM">
-                                                        <rect key="frame" x="8" y="8" width="343" height="136.66666666666666"/>
-                                                        <string key="text">Q: What if I need to pick my child up early one day?
-A: Contact Curtis, at &lt;Phone number&gt; and we will make sure to have your child back in time.</string>
-                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
-                                                        <color key="textColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="MVb-qP-ddM" firstAttribute="top" secondItem="tSf-4X-dR1" secondAttribute="top" constant="8" id="O84-yX-rjb"/>
-                                                    <constraint firstItem="MVb-qP-ddM" firstAttribute="leading" secondItem="tSf-4X-dR1" secondAttribute="leading" constant="8" id="fUz-q4-22E"/>
-                                                    <constraint firstAttribute="bottom" secondItem="MVb-qP-ddM" secondAttribute="bottom" constant="8" id="mml-Uc-G58"/>
-                                                    <constraint firstAttribute="trailing" secondItem="MVb-qP-ddM" secondAttribute="trailing" constant="8" id="u6Y-uj-c6C"/>
-                                                </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="20"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="cellGradient" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fx8-tF-J1d" userLabel="Question 9" customClass="CustomView" customModule="Capital_Cycle" customModuleProvider="target">
-                                                <rect key="frame" x="8" y="1156.6666666666667" width="359" height="125.33333333333326"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wew-Cr-Klm">
-                                                        <rect key="frame" x="8" y="8" width="343" height="109.33333333333333"/>
-                                                        <string key="text">Q: What if my child doesn't have a bike?
-A: We ask that all campers who attend bike camp, have a bike.</string>
-                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
-                                                        <color key="textColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="wew-Cr-Klm" firstAttribute="top" secondItem="fx8-tF-J1d" secondAttribute="top" constant="8" id="5KI-CF-Awf"/>
-                                                    <constraint firstAttribute="bottom" secondItem="wew-Cr-Klm" secondAttribute="bottom" constant="8" id="dvi-fR-9Hf"/>
-                                                    <constraint firstItem="wew-Cr-Klm" firstAttribute="leading" secondItem="fx8-tF-J1d" secondAttribute="leading" constant="8" id="tRi-ie-ES8"/>
-                                                    <constraint firstAttribute="trailing" secondItem="wew-Cr-Klm" secondAttribute="trailing" constant="8" id="zpH-sm-U5Q"/>
-                                                </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="20"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="cellGradient" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PrZ-vU-GdR" userLabel="Question 10" customClass="CustomView" customModule="Capital_Cycle" customModuleProvider="target">
-                                                <rect key="frame" x="8" y="1290" width="359" height="207.33333333333326"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ZW-VK-r8W">
-                                                        <rect key="frame" x="8" y="8" width="343" height="191.33333333333334"/>
-                                                        <string key="text">Q: Can my child arrive and/ or leave camp by themselves or do I need to be present?
-A: If you give the counselors explicit permission for your child to arrive and/or leave camp by themselves, that is an option.</string>
-                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
-                                                        <color key="textColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="3ZW-VK-r8W" secondAttribute="trailing" constant="8" id="1fg-hp-8Jd"/>
-                                                    <constraint firstItem="3ZW-VK-r8W" firstAttribute="leading" secondItem="PrZ-vU-GdR" secondAttribute="leading" constant="8" id="2xB-T7-KdX"/>
-                                                    <constraint firstAttribute="bottom" secondItem="3ZW-VK-r8W" secondAttribute="bottom" constant="8" id="LmP-fl-piE"/>
-                                                    <constraint firstItem="3ZW-VK-r8W" firstAttribute="top" secondItem="PrZ-vU-GdR" secondAttribute="top" constant="8" id="TLe-W9-nL1"/>
-                                                </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="20"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="cellGradient" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iBH-ie-pcW" userLabel="Question 11" customClass="CustomView" customModule="Capital_Cycle" customModuleProvider="target">
-                                                <rect key="frame" x="8" y="1505.3333333333333" width="359" height="125.33333333333326"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1dD-kU-eR9">
-                                                        <rect key="frame" x="8" y="8" width="343" height="109.33333333333333"/>
-                                                        <string key="text">Q: What do you do when not biking?
-A: We have a variety of games and books as well as a gym and playground to occupy down time.</string>
-                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
-                                                        <color key="textColor" white="0.87" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="bottom" secondItem="1dD-kU-eR9" secondAttribute="bottom" constant="8" id="1ai-rk-ki6"/>
-                                                    <constraint firstItem="1dD-kU-eR9" firstAttribute="leading" secondItem="iBH-ie-pcW" secondAttribute="leading" constant="8" id="8Cb-Ru-eZR"/>
-                                                    <constraint firstItem="1dD-kU-eR9" firstAttribute="top" secondItem="iBH-ie-pcW" secondAttribute="top" constant="8" id="JjD-cT-AKv"/>
-                                                    <constraint firstAttribute="trailing" secondItem="1dD-kU-eR9" secondAttribute="trailing" constant="8" id="PzY-LL-yHC"/>
-                                                </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="20"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="cellGradient" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                        </subviews>
-                                        <color key="backgroundColor" name="ViewColor"/>
-                                        <constraints>
-                                            <constraint firstItem="iBH-ie-pcW" firstAttribute="leading" secondItem="bNb-g6-zJt" secondAttribute="leading" constant="8" id="1jl-Cs-fVw"/>
-                                            <constraint firstAttribute="trailing" secondItem="jSw-pG-ppU" secondAttribute="trailing" constant="8" id="2xM-MA-Dy3"/>
-                                            <constraint firstItem="Zas-Gh-ves" firstAttribute="top" secondItem="G07-rJ-nZo" secondAttribute="bottom" constant="8" id="5up-71-OaX"/>
-                                            <constraint firstAttribute="trailing" secondItem="lGq-ta-SH7" secondAttribute="trailing" constant="8" id="BjN-K4-Udz"/>
-                                            <constraint firstAttribute="trailing" secondItem="PrZ-vU-GdR" secondAttribute="trailing" constant="8" id="CDZ-Sy-Jrh"/>
-                                            <constraint firstItem="tSf-4X-dR1" firstAttribute="top" secondItem="lGq-ta-SH7" secondAttribute="bottom" constant="8" id="CJ1-0v-TQg"/>
-                                            <constraint firstAttribute="trailing" secondItem="iBH-ie-pcW" secondAttribute="trailing" constant="8" id="EAg-Uv-mag"/>
-                                            <constraint firstAttribute="trailing" secondItem="D56-kh-SwP" secondAttribute="trailing" constant="8" id="HgG-hD-L6t"/>
-                                            <constraint firstAttribute="trailing" secondItem="Zas-Gh-ves" secondAttribute="trailing" constant="8" id="I5u-xw-9Ma"/>
-                                            <constraint firstItem="jSw-pG-ppU" firstAttribute="leading" secondItem="bNb-g6-zJt" secondAttribute="leading" constant="8" id="M86-k3-FvC"/>
-                                            <constraint firstItem="lGq-ta-SH7" firstAttribute="leading" secondItem="bNb-g6-zJt" secondAttribute="leading" constant="8" id="MlD-MP-esx"/>
-                                            <constraint firstAttribute="trailing" secondItem="tSf-4X-dR1" secondAttribute="trailing" constant="8" id="MuB-Cl-sMs"/>
-                                            <constraint firstItem="G07-rJ-nZo" firstAttribute="leading" secondItem="bNb-g6-zJt" secondAttribute="leading" constant="8" id="NDN-76-Mvf"/>
-                                            <constraint firstItem="jSw-pG-ppU" firstAttribute="top" secondItem="D56-kh-SwP" secondAttribute="bottom" constant="8" id="NoY-6K-i2Z"/>
-                                            <constraint firstItem="yxf-dw-7qK" firstAttribute="leading" secondItem="bNb-g6-zJt" secondAttribute="leading" constant="8" id="OaG-op-ZEY"/>
-                                            <constraint firstItem="fx8-tF-J1d" firstAttribute="top" secondItem="tSf-4X-dR1" secondAttribute="bottom" constant="8" id="P7U-cI-MDT"/>
-                                            <constraint firstItem="D56-kh-SwP" firstAttribute="leading" secondItem="bNb-g6-zJt" secondAttribute="leading" constant="8" id="Ppw-y9-cFc"/>
-                                            <constraint firstItem="l9x-PG-UHs" firstAttribute="leading" secondItem="bNb-g6-zJt" secondAttribute="leading" constant="8" id="TCw-sU-1Vu"/>
-                                            <constraint firstItem="D56-kh-SwP" firstAttribute="top" secondItem="yxf-dw-7qK" secondAttribute="bottom" constant="8" id="UvK-j4-kjs"/>
-                                            <constraint firstAttribute="trailing" secondItem="fx8-tF-J1d" secondAttribute="trailing" constant="8" id="YAm-mx-iX4"/>
-                                            <constraint firstAttribute="trailing" secondItem="l9x-PG-UHs" secondAttribute="trailing" constant="8" id="bJh-Ma-c5y"/>
-                                            <constraint firstItem="l9x-PG-UHs" firstAttribute="top" secondItem="jSw-pG-ppU" secondAttribute="bottom" constant="8" id="bZ9-Yo-11F"/>
-                                            <constraint firstItem="yxf-dw-7qK" firstAttribute="top" secondItem="Zas-Gh-ves" secondAttribute="bottom" constant="8" id="d2C-q8-6Ou"/>
-                                            <constraint firstItem="tSf-4X-dR1" firstAttribute="leading" secondItem="bNb-g6-zJt" secondAttribute="leading" constant="8" id="h1A-Yo-6zB"/>
-                                            <constraint firstItem="G07-rJ-nZo" firstAttribute="top" secondItem="bNb-g6-zJt" secondAttribute="top" constant="8" id="m6f-aQ-qgQ"/>
-                                            <constraint firstItem="PrZ-vU-GdR" firstAttribute="leading" secondItem="bNb-g6-zJt" secondAttribute="leading" constant="8" id="nmi-R9-wrK"/>
-                                            <constraint firstItem="iBH-ie-pcW" firstAttribute="top" secondItem="PrZ-vU-GdR" secondAttribute="bottom" constant="8" id="pLe-2H-B6u"/>
-                                            <constraint firstItem="lGq-ta-SH7" firstAttribute="top" secondItem="l9x-PG-UHs" secondAttribute="bottom" constant="8" id="q4f-vY-f8f"/>
-                                            <constraint firstItem="PrZ-vU-GdR" firstAttribute="top" secondItem="fx8-tF-J1d" secondAttribute="bottom" constant="8" id="qZC-ql-lkc"/>
-                                            <constraint firstItem="Zas-Gh-ves" firstAttribute="leading" secondItem="bNb-g6-zJt" secondAttribute="leading" constant="8" id="s5b-mD-pMb"/>
-                                            <constraint firstAttribute="bottom" secondItem="iBH-ie-pcW" secondAttribute="bottom" constant="8" id="tFA-Nl-ocw"/>
-                                            <constraint firstAttribute="trailing" secondItem="G07-rJ-nZo" secondAttribute="trailing" constant="8" id="tmH-Ht-KAd"/>
-                                            <constraint firstItem="fx8-tF-J1d" firstAttribute="leading" secondItem="bNb-g6-zJt" secondAttribute="leading" constant="8" id="veb-2x-Ds2"/>
-                                            <constraint firstAttribute="trailing" secondItem="yxf-dw-7qK" secondAttribute="trailing" constant="8" id="zSc-Qb-Tnt"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="bNb-g6-zJt" firstAttribute="width" secondItem="Nbf-wO-epu" secondAttribute="width" id="6r3-yy-IAS"/>
-                                    <constraint firstItem="bNb-g6-zJt" firstAttribute="leading" secondItem="Nbf-wO-epu" secondAttribute="leading" id="DQm-9x-T4k"/>
-                                    <constraint firstItem="bNb-g6-zJt" firstAttribute="height" secondItem="Nbf-wO-epu" secondAttribute="height" priority="250" id="f6d-B4-kHZ"/>
-                                    <constraint firstItem="bNb-g6-zJt" firstAttribute="trailing" secondItem="Nbf-wO-epu" secondAttribute="trailing" id="gjx-7T-p89"/>
-                                    <constraint firstItem="bNb-g6-zJt" firstAttribute="top" secondItem="Nbf-wO-epu" secondAttribute="top" id="j7A-cB-npg"/>
-                                    <constraint firstItem="bNb-g6-zJt" firstAttribute="bottom" secondItem="Nbf-wO-epu" secondAttribute="bottom" id="r21-Iu-4hZ"/>
-                                </constraints>
-                                <viewLayoutGuide key="contentLayoutGuide" id="nQd-XL-FVR"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="ctD-Px-690"/>
-                            </scrollView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="sMX-UC-hwz"/>
-                        <color key="backgroundColor" name="ViewColor"/>
-                        <constraints>
-                            <constraint firstItem="Nbf-wO-epu" firstAttribute="leading" secondItem="sMX-UC-hwz" secondAttribute="leading" id="99D-O4-vcm"/>
-                            <constraint firstItem="Nbf-wO-epu" firstAttribute="top" secondItem="wWH-Ti-UbB" secondAttribute="top" constant="108" id="Ks5-TE-TGm"/>
-                            <constraint firstItem="lP6-zc-SeC" firstAttribute="top" secondItem="wWH-Ti-UbB" secondAttribute="top" id="Nen-ix-YUH"/>
-                            <constraint firstItem="sMX-UC-hwz" firstAttribute="trailing" secondItem="Nbf-wO-epu" secondAttribute="trailing" id="Nws-fV-kHQ"/>
-                            <constraint firstItem="lP6-zc-SeC" firstAttribute="leading" secondItem="wWH-Ti-UbB" secondAttribute="leading" id="U6U-EJ-uhZ"/>
-                            <constraint firstItem="sMX-UC-hwz" firstAttribute="bottom" secondItem="Nbf-wO-epu" secondAttribute="bottom" id="ihw-bz-XcO"/>
-                            <constraint firstItem="sMX-UC-hwz" firstAttribute="trailing" secondItem="lP6-zc-SeC" secondAttribute="trailing" id="t9z-3E-OWB"/>
-                        </constraints>
-                    </view>
-                    <size key="freeformSize" width="375" height="1781"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TyN-xf-crj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="eJt-of-8Rx" userLabel="accountSettingsImageViewTapGestureRecognizer"/>
-            </objects>
-            <point key="canvasLocation" x="1540" y="2059"/>
-        </scene>
         <!--Camper Info Page-->
         <scene sceneID="KI6-gR-f2w">
             <objects>
@@ -1932,7 +1517,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2264.8000000000002" y="1701.7241379310346"/>
+            <point key="canvasLocation" x="1874" y="1702"/>
         </scene>
         <!--FAQ Page-->
         <scene sceneID="98w-dR-03G">
@@ -2002,7 +1587,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="gradient" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BF8-Qd-9W7">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BF8-Qd-9W7" userLabel="HorizontalScrollView">
                                 <rect key="frame" x="0.0" y="116" width="375" height="37"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="skO-yo-3z9" userLabel="contentView">
@@ -2021,25 +1606,48 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                     <constraint firstItem="skO-yo-3z9" firstAttribute="width" secondItem="BF8-Qd-9W7" secondAttribute="width" id="xki-Ns-0fw"/>
                                 </constraints>
                             </scrollView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V6z-Cc-jj9" userLabel="VerticalScrollView">
+                                <rect key="frame" x="0.0" y="161" width="375" height="617"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OBe-G8-bVg" userLabel="contentView">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
+                                        <color key="backgroundColor" name="ViewColor"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="OBe-G8-bVg" firstAttribute="top" secondItem="V6z-Cc-jj9" secondAttribute="top" id="Dfv-OA-oFb"/>
+                                    <constraint firstAttribute="bottom" secondItem="OBe-G8-bVg" secondAttribute="bottom" id="IzV-vb-PK5"/>
+                                    <constraint firstItem="OBe-G8-bVg" firstAttribute="leading" secondItem="V6z-Cc-jj9" secondAttribute="leading" id="JJ6-rX-PR6"/>
+                                    <constraint firstAttribute="trailing" secondItem="OBe-G8-bVg" secondAttribute="trailing" id="V4P-3O-kaD"/>
+                                    <constraint firstItem="OBe-G8-bVg" firstAttribute="height" secondItem="V6z-Cc-jj9" secondAttribute="height" id="cBh-2X-tOa"/>
+                                    <constraint firstItem="OBe-G8-bVg" firstAttribute="width" secondItem="V6z-Cc-jj9" secondAttribute="width" id="vst-s2-cHZ"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="FNc-Pl-Wg8"/>
                         <color key="backgroundColor" name="ViewColor"/>
                         <constraints>
+                            <constraint firstItem="V6z-Cc-jj9" firstAttribute="bottom" secondItem="FNc-Pl-Wg8" secondAttribute="bottom" id="3UM-gO-eMj"/>
                             <constraint firstItem="peL-Ll-XnQ" firstAttribute="trailing" secondItem="FNc-Pl-Wg8" secondAttribute="trailing" id="AcX-5R-bd2"/>
+                            <constraint firstItem="V6z-Cc-jj9" firstAttribute="trailing" secondItem="FNc-Pl-Wg8" secondAttribute="trailing" id="BJ6-gP-qrn"/>
                             <constraint firstItem="FNc-Pl-Wg8" firstAttribute="trailing" secondItem="BF8-Qd-9W7" secondAttribute="trailing" id="Gap-J8-PIJ"/>
                             <constraint firstItem="BF8-Qd-9W7" firstAttribute="top" secondItem="peL-Ll-XnQ" secondAttribute="bottom" constant="16" id="JnJ-xc-hPK"/>
                             <constraint firstItem="BF8-Qd-9W7" firstAttribute="leading" secondItem="FNc-Pl-Wg8" secondAttribute="leading" id="O6d-zd-79w"/>
+                            <constraint firstItem="V6z-Cc-jj9" firstAttribute="top" secondItem="BF8-Qd-9W7" secondAttribute="bottom" constant="8" id="cAI-vo-d7k"/>
                             <constraint firstItem="peL-Ll-XnQ" firstAttribute="leading" secondItem="FNc-Pl-Wg8" secondAttribute="leading" id="jsW-Ba-ox4"/>
                             <constraint firstItem="peL-Ll-XnQ" firstAttribute="top" secondItem="9dw-Ki-vrx" secondAttribute="top" id="mBn-9Q-Dje"/>
+                            <constraint firstItem="V6z-Cc-jj9" firstAttribute="leading" secondItem="FNc-Pl-Wg8" secondAttribute="leading" id="oxf-Dk-0Zb"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="FAQLblYConstraint" destination="j8a-Ha-iO0" id="G07-ds-dcI"/>
                         <outlet property="accountSettingsImgView" destination="rAP-6m-iZk" id="T1G-Vv-dC4"/>
-                        <outlet property="contentView" destination="skO-yo-3z9" id="hxX-pM-UZB"/>
                         <outlet property="gradientView" destination="peL-Ll-XnQ" id="378-KH-KGn"/>
                         <outlet property="gradientViewHeight" destination="8TE-bF-UEa" id="dmN-Ts-bgd"/>
-                        <outlet property="scrollView" destination="BF8-Qd-9W7" id="cX2-oI-mTE"/>
+                        <outlet property="horizontalContentView" destination="skO-yo-3z9" id="hxX-pM-UZB"/>
+                        <outlet property="horizontalScrollView" destination="BF8-Qd-9W7" id="cX2-oI-mTE"/>
+                        <outlet property="verticalContentView" destination="OBe-G8-bVg" id="38b-aU-gil"/>
+                        <outlet property="verticalScrollView" destination="V6z-Cc-jj9" id="lxb-8C-Get"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0sR-OF-o9k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2049,7 +1657,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2965.5999999999999" y="1704.6798029556651"/>
+            <point key="canvasLocation" x="1128.8" y="1701.7241379310346"/>
         </scene>
         <!--Log In-->
         <scene sceneID="MlW-tO-DMH">
@@ -2064,7 +1672,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <color key="textColor" name="LabelColor"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done" textContentType="email"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done" textContentType="username"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="15"/>
@@ -2272,7 +1880,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <color key="textColor" name="LabelColor"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" textContentType="password"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" secureTextEntry="YES"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="15"/>
@@ -2473,7 +2081,7 @@ A: We have a variety of games and books as well as a gym and playground to occup
                                 <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <color key="textColor" name="LabelColor"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done" textContentType="email"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done" textContentType="username"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="15"/>
@@ -3554,9 +3162,6 @@ CapitalCycleCamp@gmail.com</string>
         <designable name="Cix-0p-K7z">
             <size key="intrinsicContentSize" width="50" height="28"/>
         </designable>
-        <designable name="CnX-0M-qCp">
-            <size key="intrinsicContentSize" width="20" height="20.333333333333332"/>
-        </designable>
         <designable name="KGt-jH-Zfr">
             <size key="intrinsicContentSize" width="43" height="33"/>
         </designable>
@@ -3611,11 +3216,11 @@ CapitalCycleCamp@gmail.com</string>
     </designables>
     <inferredMetricsTieBreakers>
         <segue reference="A25-06-JRb"/>
-        <segue reference="wcA-Ia-qYX"/>
-        <segue reference="HUH-zx-Kae"/>
+        <segue reference="3nr-z7-VEo"/>
+        <segue reference="ccM-UG-piO"/>
         <segue reference="9Zo-v6-egz"/>
         <segue reference="pBk-HJ-vbn"/>
-        <segue reference="8gZ-wr-hIi"/>
+        <segue reference="eIi-nP-8Bb"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="CapitalCycleStoreLogo" width="118" height="122"/>

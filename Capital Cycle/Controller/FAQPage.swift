@@ -17,12 +17,18 @@ class FAQPage: UIViewController {
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
     @IBOutlet weak var FAQLblYConstraint: NSLayoutConstraint!
     @IBOutlet weak var accountSettingsImgView: CustomImageView!
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var horizontalScrollView: UIScrollView!
+    @IBOutlet weak var horizontalContentView: UIView!
+    @IBOutlet weak var verticalScrollView: UIScrollView!
+    @IBOutlet weak var verticalContentView: UIView!
     // Code global vars
-    let questionCategories = ["Schedule", "Payment", "Drop-off/Pickup", "Preparation"]
-    let questionWidths = [88, 84, 138, 108]
+    let questionCategories = ["All", "Schedule", "Payment", "Drop-off/Pickup", "Biking"]
+    let categoryWidths = [60, 88, 84, 138, 67]
+    var contentHeight: CGFloat = 8
     var currentCategory: CustomButton!
+    let categories: [FAQ.Category] = [.all, .schedule, .payment, .dropOffPickup, .biking]
+    var faqViews = [CustomView]()
+    let faqs: [FAQ] = [FAQ(Question: "When do you usually head out in the morning?", Answer: "Around 10:00 - 10:30.", Category: .schedule), FAQ(Question: "When do you usually arrive back at camp?", Answer: "Around 3:00 - 4:00.", Category: .schedule), FAQ(Question: "What if it rains?", Answer: "We will play it by ear but will err on the side of caution to ensure that campers remain safe.", Category: .schedule), FAQ(Question: "Do you group kids by age or ability?", Answer: "Both, it typically depends on the length of the ride. However, the primary determining factor is whether or not the counselors believe that yout camper is ready for a given ride.", Category: .biking), FAQ(Question: "What if my kid is unable to bike back from the destination?", Answer: "We generally push campers to make it back on their own but are prepared to call an Uber or Lyft if we beleive that your camper will not be able to make it back themselves.", Category: .biking), FAQ(Question: "Can I get a sibling discout?", Answer: "TBD", Category: .payment), FAQ(Question: "What if my child is not a cinfident rider", Answer: "We will work with them throughout the week pushing them outside their comfort zone but we can always put them in a less advanced group that will go a shorter distance", Category: .biking), FAQ(Question: "What if I need to pick up my child early one day?", Answer: "Contact Curtis at (410) 428-0726 and we will make sure to have your camper back in time.", Category: .dropOffPickup), FAQ(Question: "What if my child doesn't have a bike?", Answer: "We ask that all campers who attend bike camp, have a bike.", Category: .biking), FAQ(Question: "Can my child arrive and/ or leave camp by themselves or di I need to be present?", Answer: "If you give the counselors explicit permission for your camper to arrive and/ or leave camp by themselves, they can do so.", Category: .dropOffPickup), FAQ(Question: "What do you do when not biking?", Answer: "We have a variety of games and books as well as a gym and playground to occupy down time", Category: .schedule)]
     
     // MARK: View Instantiation
     
@@ -31,13 +37,16 @@ class FAQPage: UIViewController {
         super.viewDidLoad()
         faqPage = self
         formatUI()
+        displayFaqs(category: .all)
     }
     
     // Adjusts the size of the scroll view
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        scrollView.contentSize = CGSize(width: 458, height: 37)
-        contentView.frame.size = scrollView.contentSize
+        horizontalScrollView.contentSize = CGSize(width: 504, height: 37)
+        horizontalContentView.frame.size = horizontalScrollView.contentSize
+        verticalScrollView.contentSize = CGSize(width: view.frame.width, height: contentHeight)
+        verticalContentView.frame.size = verticalScrollView.contentSize
     }
     
     // MARK: View Formatting
@@ -56,27 +65,65 @@ class FAQPage: UIViewController {
         faqPage?.accountSettingsImgView = accountSettingsImgView
         setProfileImg()
         
-        // Creates the scroll view
-        scrollView.showsHorizontalScrollIndicator = false
-        var x = 0
+        // Creates the horizontal scroll view
+        horizontalScrollView.showsHorizontalScrollIndicator = false
+        var x = 8
         for i in 0 ..< questionCategories.count {
             let padding = 8 * (i + 1)
-            let button = CustomButton(frame: CGRect(x: x + padding, y: 2, width: questionWidths[i], height: 33))
-            x += questionWidths[i]
+            let button = CustomButton(frame: CGRect(x: x + padding, y: 2, width: categoryWidths[i], height: 33))
+            x += categoryWidths[i]
             button.setTitle(questionCategories[i], for: .normal)
             button.titleLabel?.font = UIFont(name: "Avenir-Medium", size: 16)
             button.addTarget(self, action: #selector(switchCategory(_:)), for: .touchUpInside)
             button.cornerRadius = 16
+            button.tag = i
             if i == 0 {
                 button.gradient = true
                 currentCategory = button
             } else {
                 button.borderRadius = 0.5
                 button.borderColor = UIColor(named: "LabelColor")!
+                button.setTitleColor(UIColor(named: "LabelColor"), for: .normal)
             }
             
-            contentView.addSubview(button)
+            horizontalContentView.addSubview(button)
         }
+    }
+    
+    func displayFaqs(category: FAQ.Category) {
+        for view in faqViews {
+            view.removeFromSuperview()
+        }
+        
+        faqViews = []
+        var newContentHeight: CGFloat = 0
+        for i in 0 ..< faqs.count {
+            if faqs[i].category == category || category == .all {
+                let faqLabel = UILabel(frame: CGRect(x: 8, y: 8, width: view.frame.width - 32, height: 100))
+                faqLabel.numberOfLines = 0
+                faqLabel.font = UIFont(name: "Avenir-Medium", size: 20)
+                faqLabel.textColor = UIColor.white
+                faqLabel.text = "Q: " + "\(faqs[i].question)" + "\n" + "A: " +  "\(faqs[i].answer)"
+                faqLabel.sizeToFit()
+                let faqView = CustomView()
+                if faqViews.count == 0 {
+                    faqView.frame =  CGRect(x: 8, y: 8, width: view.frame.width - 16, height: faqLabel.frame.height + 16)
+                } else {
+                    faqView.frame = CGRect(x: 8, y: faqViews[faqViews.count - 1].frame.maxY + 8, width: view.frame.width - 16, height: faqLabel.frame.height + 16)
+                }
+                
+                contentHeight += (faqView.frame.height + 8)
+                faqView.cornerRadius = 20
+                faqView.cellGradient = true
+                faqView.addSubview(faqLabel)
+                verticalContentView.addSubview(faqView)
+                faqViews.append(faqView)
+                newContentHeight += ((faqView.frame.height) + 8)
+            }
+        }
+        
+        verticalScrollView.contentSize = CGSize(width: view.frame.width, height: newContentHeight)
+        verticalContentView.frame.size = verticalScrollView.contentSize
     }
     
     // Sets the profile image on the account settings button
@@ -89,9 +136,12 @@ class FAQPage: UIViewController {
         currentCategory.gradient = false
         currentCategory.borderRadius = 0.5
         currentCategory.borderColor = UIColor(named: "LabelColor")!
+        currentCategory.setTitleColor(UIColor(named: "LabelColor"), for: .normal)
         sender.gradient = true
         sender.borderRadius = 0
         sender.borderColor = .clear
+        sender.setTitleColor(UIColor.white, for: .normal)
         currentCategory = sender
+        displayFaqs(category: categories[sender.tag])
     }
 }

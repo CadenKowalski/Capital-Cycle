@@ -21,16 +21,24 @@ class StorePage: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     @IBOutlet weak var accountSettingsImgView: CustomImageView!
     @IBOutlet weak var productsCollection: UICollectionView!
     @IBOutlet weak var productsCollectionHeight: NSLayoutConstraint!
-    private(set) public var Products = [Product]()
     // Code global vars
+    let campProducts = [
+        Product(Info: "Session 1 (4 days)\nfrom $375", ImgName: "CapitalCycleStoreLogo"),
+        Product(Info: "Session 2 (5 days)\nfrom $430", ImgName: "CapitalCycleStoreLogo"),
+        Product(Info: "Session 3 (4 days)\nfrom $375", ImgName: "CapitalCycleStoreLogo"),
+        Product(Info: "Session 4 (5 days)\nfrom $430", ImgName: "CapitalCycleStoreLogo"),
+        Product(Info: "Session 5 (5 days)\nfrom $430", ImgName: "CapitalCycleStoreLogo"),
+        Product(Info: "Session 6 (5 days)\nfrom $430", ImgName: "CapitalCycleStoreLogo"),
+        Product(Info: "Before care\n$10 per day", ImgName: "CapitalCycleStoreLogo"),
+        Product(Info: "Camp T-shirt\n$20", ImgName: "ShirtImg")]
     let websiteURLs = ["https://capitalcyclecamp.org/pay-for-camp/5-day-session-1-6216",
-                       "https://capitalcyclecamp.org/pay-for-camp/1-5-day-session-of-cycle-camp-spring-break-and-summer-session-1245",
-                       "https://capitalcyclecamp.org/pay-for-camp/4-day-session-of-cycle-camp",
-                       "https://capitalcyclecamp.org/pay-for-camp/session-4-5-day-71116",
-                       "https://capitalcyclecamp.org/pay-for-camp/5-day-session-5-71816",
-                       "https://capitalcyclecamp.org/pay-for-camp/5-day-session-5-71816-7rnnm",
-                       "https://capitalcyclecamp.org",
-                       "https://capitalcyclecamp.org/pay-for-camp/bike-camp-t-shirt"]
+        "https://capitalcyclecamp.org/pay-for-camp/1-5-day-session-of-cycle-camp-spring-break-and-summer-session-1245",
+        "https://capitalcyclecamp.org/pay-for-camp/4-day-session-of-cycle-camp",
+        "https://capitalcyclecamp.org/pay-for-camp/session-4-5-day-71116",
+        "https://capitalcyclecamp.org/pay-for-camp/5-day-session-5-71816",
+        "https://capitalcyclecamp.org/pay-for-camp/5-day-session-5-71816-7rnnm",
+        "https://capitalcyclecamp.org",
+        "https://capitalcyclecamp.org/pay-for-camp/bike-camp-t-shirt"]
 
     // MARK: View Instantiation
     
@@ -39,7 +47,6 @@ class StorePage: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         super.viewDidLoad()
         storePage = self
         formatUI()
-        loadProducts()
     }
     
     // MARK: View Formatting
@@ -71,20 +78,15 @@ class StorePage: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     
     // MARK: Collection View Setup
     
-    // Loads the product information
-    func loadProducts() {
-        Products = ProductData.Instance.getProducts()
-    }
-    
     // Returns the number of products
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Products.count
+        return campProducts.count
     }
     
     // Loads the product data into the collection view
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let Cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductCell", for: indexPath) as? ProductCell {
-            let Product = Products[indexPath.row]
+            let Product = campProducts[indexPath.row]
             Cell.updateViews(Product: Product)
             Cell.layer.cornerRadius = 20
             Cell.layer.masksToBounds = true

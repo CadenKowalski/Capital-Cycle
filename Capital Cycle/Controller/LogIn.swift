@@ -187,11 +187,7 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
         resetPasswordAlert.addTextField { (textField) in
             textField.keyboardType = .emailAddress
             textField.font = UIFont(name: "Avenir-Book", size: 13.0)
-            if self.traitCollection.userInterfaceStyle == .light {
-                textField.attributedText = NSAttributedString(string: "\(user.email!)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
-            } else {
-                textField.attributedText = NSAttributedString(string: "\(user.email!)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
-            }
+            textField.attributedText = NSAttributedString(string: "\(user.email!)", attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "LabelColor")!, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
         }
         
         resetPasswordAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))

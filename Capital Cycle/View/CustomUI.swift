@@ -37,6 +37,7 @@ class CustomView: UIView {
                 gradientLayer.endPoint = CGPoint(x: 0.0, y: 0.0)
                 gradientLayer.cornerRadius = self.cornerRadius
                 layer.insertSublayer(gradientLayer, at: 0)
+                
             } else {
                 gradientLayer.removeFromSuperlayer()
             }

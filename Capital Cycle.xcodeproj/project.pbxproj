@@ -11,11 +11,11 @@
 		5700629922E3BB400032EFAB /* LogIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5700629822E3BB400032EFAB /* LogIn.swift */; };
 		5700629B22E3BB590032EFAB /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5700629A22E3BB590032EFAB /* SignUp.swift */; };
 		571C2F3F22E41CB6001D4438 /* GeneralSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571C2F3E22E41CB6001D4438 /* GeneralSettings.swift */; };
+		572DD64F24C776D0005E455E /* FAQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572DD64E24C776D0005E455E /* FAQ.swift */; };
 		576FCFB322E4B82F00C346E4 /* CamperInfoPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576FCFB222E4B82F00C346E4 /* CamperInfoPage.swift */; };
 		57713CAF23C023030039B347 /* AppleUserNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57713CAE23C023020039B347 /* AppleUserNavigationController.swift */; };
 		57713CB123C045580039B347 /* AuthenticationFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57713CB023C045580039B347 /* AuthenticationFunctions.swift */; };
 		578AF9DC22D41F2E007B42A9 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578AF9DB22D41F2E007B42A9 /* Product.swift */; };
-		578AF9DE22D41FA0007B42A9 /* ProductData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578AF9DD22D41FA0007B42A9 /* ProductData.swift */; };
 		578AF9E022D4201E007B42A9 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578AF9DF22D4201E007B42A9 /* ProductCell.swift */; };
 		578AF9E422D428AF007B42A9 /* Capital_Cycle.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 578AF9E222D428AF007B42A9 /* Capital_Cycle.xcdatamodeld */; };
 		5795C62422EA6CC200A0A171 /* TestForConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5795C62322EA6CC200A0A171 /* TestForConnection.swift */; };
@@ -47,12 +47,12 @@
 		5700629822E3BB400032EFAB /* LogIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogIn.swift; sourceTree = "<group>"; };
 		5700629A22E3BB590032EFAB /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		571C2F3E22E41CB6001D4438 /* GeneralSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettings.swift; sourceTree = "<group>"; };
+		572DD64E24C776D0005E455E /* FAQ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQ.swift; sourceTree = "<group>"; };
 		573839E0239DDDB4006AB022 /* Capital Cycle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Capital Cycle.entitlements"; sourceTree = "<group>"; };
 		576FCFB222E4B82F00C346E4 /* CamperInfoPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CamperInfoPage.swift; path = "../../../../../../../System/Volumes/Data/Users/cadenkowalski/Desktop/Xcode Projects/Capital Cycle/Capital Cycle/Controller/CamperInfoPage.swift"; sourceTree = "<group>"; };
 		57713CAE23C023020039B347 /* AppleUserNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleUserNavigationController.swift; sourceTree = "<group>"; };
 		57713CB023C045580039B347 /* AuthenticationFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationFunctions.swift; sourceTree = "<group>"; };
 		578AF9DB22D41F2E007B42A9 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
-		578AF9DD22D41FA0007B42A9 /* ProductData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductData.swift; sourceTree = "<group>"; };
 		578AF9DF22D4201E007B42A9 /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		578AF9E322D428AF007B42A9 /* Capital_Cycle.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Capital_Cycle.xcdatamodel; sourceTree = "<group>"; };
 		5795C62322EA6CC200A0A171 /* TestForConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TestForConnection.swift; path = "../../../../../../../System/Volumes/Data/Users/cadenkowalski/Desktop/Xcode Projects/Capital Cycle/Capital Cycle/Model/TestForConnection.swift"; sourceTree = "<group>"; };
@@ -160,7 +160,6 @@
 			isa = PBXGroup;
 			children = (
 				578AF9DB22D41F2E007B42A9 /* Product.swift */,
-				578AF9DD22D41FA0007B42A9 /* ProductData.swift */,
 				5795C62322EA6CC200A0A171 /* TestForConnection.swift */,
 				57E226FC23B84F8A007DF227 /* FirebaseUser.swift */,
 				57B57CE923B9673400841442 /* FirebaseFunctions.swift */,
@@ -168,6 +167,7 @@
 				57713CB023C045580039B347 /* AuthenticationFunctions.swift */,
 				57DA742E23F8D49400F0E9E7 /* GoogleFunctions.swift */,
 				57C2CFC523F9A0DA00FCA9A0 /* CoreDataFunctions.swift */,
+				572DD64E24C776D0005E455E /* FAQ.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -332,7 +332,6 @@
 			files = (
 				57A3457822D2BB5B0070898F /* OverviewPage.swift in Sources */,
 				578AF9E022D4201E007B42A9 /* ProductCell.swift in Sources */,
-				578AF9DE22D41FA0007B42A9 /* ProductData.swift in Sources */,
 				57B57CEA23B9673400841442 /* FirebaseFunctions.swift in Sources */,
 				571C2F3F22E41CB6001D4438 /* GeneralSettings.swift in Sources */,
 				57ED6A2F22D578A200E3A362 /* FAQPage.swift in Sources */,
@@ -342,6 +341,7 @@
 				57A3457422D2AEBD0070898F /* PageVC.swift in Sources */,
 				57A3457A22D2BB970070898F /* SchedulePage.swift in Sources */,
 				57AFA1B022F77F5100C2988C /* VerifyUser.swift in Sources */,
+				572DD64F24C776D0005E455E /* FAQ.swift in Sources */,
 				57DE34E223B2D19A00221F53 /* CustomUI.swift in Sources */,
 				5700629922E3BB400032EFAB /* LogIn.swift in Sources */,
 				57AFFD652300FAF000B6CD7B /* VerifyCounselor.swift in Sources */,

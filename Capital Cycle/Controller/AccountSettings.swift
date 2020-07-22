@@ -225,39 +225,16 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
     
     // Gets the user's authorization to reset threir password
     @IBAction func resetPassword(_ sender: UIButton) {
-        let enterPasswordAlert = UIAlertController(title: "Enter your password", message: nil, preferredStyle: .alert)
-        enterPasswordAlert.addTextField() { textField in
-            textField.placeholder = "Password"
-            textField.textContentType = .password
-            textField.font = UIFont(name: "Avenir-Book", size: 13.0)
-        }
-        
-        enterPasswordAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        enterPasswordAlert.addAction(UIAlertAction(title: "Continue", style: .default, handler: { action in
-            let credential = EmailAuthProvider.credential(withEmail: user.email!, password: enterPasswordAlert.textFields!.first!.text!)
-            Auth.auth().currentUser?.reauthenticate(with: credential) { (authResult, error) in
-                if error == nil {
-                    self.sendPasswordResetEmail()
-                } else {
-                    viewFunctions.showAlert(title: "Uh Oh", message: "The password you entered is incorrect", actionTitle: "OK", actionStyle: .default, view: self)
-                }
-            }
-        }))
-        
-        present(enterPasswordAlert, animated: true, completion: nil)
-    }
-    
-    // Sends a password reset email after recieving authorization
-    func sendPasswordResetEmail() {
         let resetPasswordAlert = UIAlertController(title: "Reset Password", message: "Enter your email adress, we will send you a password reset email", preferredStyle: .alert)
         resetPasswordAlert.addTextField { textField in
             textField.keyboardType = .emailAddress
+            textField.textContentType = .username
             textField.font = UIFont(name: "Avenir-Book", size: 13.0)
             textField.attributedText = NSAttributedString(string: "\(user.email!)", attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "LabelColor")!, NSAttributedString.Key.font: UIFont(name: "Avenir-Book", size: 13)!])
         }
         
         resetPasswordAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        resetPasswordAlert.addAction(UIAlertAction(title: "Reset Password", style: .destructive, handler: { action in
+        resetPasswordAlert.addAction(UIAlertAction(title: "Reset", style: .destructive, handler: { action in
             firebaseFunctions.resetPassword(recoveryEmail: (resetPasswordAlert.textFields?.first!.text)!) { error in
                 if error == nil {
                     viewFunctions.showAlert(title: "Success", message: "You have been sent a password reset email", actionTitle: "OK", actionStyle: .default, view: self)
@@ -267,7 +244,7 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
             }
         }))
         
-        self.present(resetPasswordAlert, animated: true, completion: nil)
+        present(resetPasswordAlert, animated: true, completion: nil)
     }
     
     // Gets the user's authorization to delete their account
@@ -279,6 +256,7 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
             enterPasswordAlert.addTextField() { textField in
                 textField.placeholder = "Password"
                 textField.textContentType = .password
+                textField.isSecureTextEntry = true
                 textField.font = UIFont(name: "Avenir-Book", size: 13.0)
             }
             
