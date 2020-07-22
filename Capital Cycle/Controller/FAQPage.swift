@@ -26,9 +26,9 @@ class FAQPage: UIViewController {
     let categoryWidths = [60, 88, 84, 138, 67]
     var contentHeight: CGFloat!
     var currentCategory: CustomButton!
-    let categories: [FAQ.Category] = [.all, .schedule, .payment, .dropOffPickup, .biking]
+    let categories: [FAQCell.Category] = [.all, .schedule, .payment, .dropOffPickup, .biking]
     var faqViews = [CustomView]()
-    let faqs: [FAQ] = [FAQ(Question: "When do you usually head out in the morning?", Answer: "Around 10:00 - 10:30.", Category: .schedule), FAQ(Question: "When do you usually arrive back at camp?", Answer: "Around 3:00 - 4:00.", Category: .schedule), FAQ(Question: "What if it rains?", Answer: "We will play it by ear but will err on the side of caution to ensure that campers remain safe.", Category: .schedule), FAQ(Question: "Do you group kids by age or ability?", Answer: "Both, it typically depends on the length of the ride. However, the primary determining factor is whether or not the counselors believe that yout camper is ready for a given ride.", Category: .biking), FAQ(Question: "What if my kid is unable to bike back from the destination?", Answer: "We generally push campers to make it back on their own but are prepared to call an Uber or Lyft if we beleive that your camper will not be able to make it back themselves.", Category: .biking), FAQ(Question: "Can I get a sibling discout?", Answer: "TBD", Category: .payment), FAQ(Question: "What if my child is not a cinfident rider", Answer: "We will work with them throughout the week pushing them outside their comfort zone but we can always put them in a less advanced group that will go a shorter distance", Category: .biking), FAQ(Question: "What if I need to pick up my child early one day?", Answer: "Contact Curtis at (410) 428-0726 and we will make sure to have your camper back in time.", Category: .dropOffPickup), FAQ(Question: "What if my child doesn't have a bike?", Answer: "We ask that all campers who attend bike camp, have a bike.", Category: .biking), FAQ(Question: "Can my child arrive and/ or leave camp by themselves or di I need to be present?", Answer: "If you give the counselors explicit permission for your camper to arrive and/ or leave camp by themselves, they can do so.", Category: .dropOffPickup), FAQ(Question: "What do you do when not biking?", Answer: "We have a variety of games and books as well as a gym and playground to occupy down time", Category: .schedule)]
+    let faqs: [FAQCell] = [FAQCell(Question: "When do you usually head out in the morning?", Answer: "Around 10:00 - 10:30.", Category: .schedule), FAQCell(Question: "When do you usually arrive back at camp?", Answer: "Around 3:00 - 4:00.", Category: .schedule), FAQCell(Question: "What if it rains?", Answer: "We will play it by ear but will err on the side of caution to ensure that campers remain safe.", Category: .schedule), FAQCell(Question: "Do you group kids by age or ability?", Answer: "Both, it typically depends on the length of the ride. However, the primary determining factor is whether or not the counselors believe that yout camper is ready for a given ride.", Category: .biking), FAQCell(Question: "What if my kid is unable to bike back from the destination?", Answer: "We generally push campers to make it back on their own but are prepared to call an Uber or Lyft if we beleive that your camper will not be able to make it back themselves.", Category: .biking), FAQCell(Question: "Can I get a sibling discout?", Answer: "TBD", Category: .payment), FAQCell(Question: "What if my child is not a cinfident rider", Answer: "We will work with them throughout the week pushing them outside their comfort zone but we can always put them in a less advanced group that will go a shorter distance", Category: .biking), FAQCell(Question: "What if I need to pick up my child early one day?", Answer: "Contact Curtis at (410) 428-0726 and we will make sure to have your camper back in time.", Category: .dropOffPickup), FAQCell(Question: "What if my child doesn't have a bike?", Answer: "We ask that all campers who attend bike camp, have a bike.", Category: .biking), FAQCell(Question: "Can my child arrive and/ or leave camp by themselves or di I need to be present?", Answer: "If you give the counselors explicit permission for your camper to arrive and/ or leave camp by themselves, they can do so.", Category: .dropOffPickup), FAQCell(Question: "What do you do when not biking?", Answer: "We have a variety of games and books as well as a gym and playground to occupy down time", Category: .schedule)]
     
     // MARK: View Instantiation
     
@@ -91,28 +91,23 @@ class FAQPage: UIViewController {
     }
     
     // Manages the FAQs
-    func displayFaqs(category: FAQ.Category) {
+    func displayFaqs(category: FAQCell.Category) {
         for view in faqViews {
             view.removeFromSuperview()
         }
         
         faqViews = []
         contentHeight = 8
-        for i in 0 ..< faqs.count {
-            if faqs[i].category == category || category == .all {
+        for faq in faqs {
+            if faq.category == category || category == .all {
                 let faqLabel = UILabel(frame: CGRect(x: 8, y: 8, width: view.frame.width - 32, height: 100))
                 faqLabel.numberOfLines = 0
                 faqLabel.font = UIFont(name: "Avenir-Medium", size: 20)
-                faqLabel.textColor = UIColor.white
-                faqLabel.text = "Q: " + "\(faqs[i].question)" + "\n" + "A: " +  "\(faqs[i].answer)"
+                faqLabel.textColor = UIColor(named: "CellTextColor")
+                faqLabel.text = "Q: " + "\(faq.question)" + "\n" + "A: " +  "\(faq.answer)"
                 faqLabel.sizeToFit()
                 let faqView = CustomView()
-                if faqViews.count == 0 {
-                    faqView.frame =  CGRect(x: 8, y: 8, width: view.frame.width - 16, height: faqLabel.frame.height + 16)
-                } else {
-                    faqView.frame = CGRect(x: 8, y: faqViews[faqViews.count - 1].frame.maxY + 8, width: view.frame.width - 16, height: faqLabel.frame.height + 16)
-                }
-                
+                faqView.frame =  CGRect(x: 8, y: contentHeight, width: view.frame.width - 16, height: faqLabel.frame.height + 16)
                 contentHeight += (faqView.frame.height + 8)
                 faqView.cornerRadius = 20
                 faqView.cellGradient = true
@@ -122,10 +117,11 @@ class FAQPage: UIViewController {
             }
         }
         
-        if verticalContentView.frame.height - contentHeight > 0 {
-            contentHeight += (verticalContentView.frame.height - contentHeight) + 1
+        let contentViewHeight = view.frame.height - (87 + gradientViewHeight.constant)
+        if contentViewHeight - contentHeight > 0 {
+            contentHeight += (contentViewHeight - contentHeight) + 1
         }
-        
+
         verticalScrollView.contentSize = CGSize(width: view.frame.width, height: contentHeight)
         verticalContentView.frame.size = verticalScrollView.contentSize
     }
@@ -144,7 +140,7 @@ class FAQPage: UIViewController {
         sender.gradient = true
         sender.borderRadius = 0
         sender.borderColor = .clear
-        sender.setTitleColor(UIColor.white, for: .normal)
+        sender.setTitleColor(UIColor(named: "CellTextColor"), for: .normal)
         currentCategory = sender
         displayFaqs(category: categories[sender.tag])
     }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct FAQ {
+struct FAQCell {
     
     enum Category {
         case all
