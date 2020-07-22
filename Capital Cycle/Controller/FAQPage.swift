@@ -24,7 +24,7 @@ class FAQPage: UIViewController {
     // Code global vars
     let questionCategories = ["All", "Schedule", "Payment", "Drop-off/Pickup", "Biking"]
     let categoryWidths = [60, 88, 84, 138, 67]
-    var contentHeight: CGFloat = 8
+    var contentHeight: CGFloat!
     var currentCategory: CustomButton!
     let categories: [FAQ.Category] = [.all, .schedule, .payment, .dropOffPickup, .biking]
     var faqViews = [CustomView]()
@@ -90,13 +90,14 @@ class FAQPage: UIViewController {
         }
     }
     
+    // Manages the FAQs
     func displayFaqs(category: FAQ.Category) {
         for view in faqViews {
             view.removeFromSuperview()
         }
         
         faqViews = []
-        var newContentHeight: CGFloat = 0
+        contentHeight = 8
         for i in 0 ..< faqs.count {
             if faqs[i].category == category || category == .all {
                 let faqLabel = UILabel(frame: CGRect(x: 8, y: 8, width: view.frame.width - 32, height: 100))
@@ -118,11 +119,14 @@ class FAQPage: UIViewController {
                 faqView.addSubview(faqLabel)
                 verticalContentView.addSubview(faqView)
                 faqViews.append(faqView)
-                newContentHeight += ((faqView.frame.height) + 8)
             }
         }
         
-        verticalScrollView.contentSize = CGSize(width: view.frame.width, height: newContentHeight)
+        if verticalContentView.frame.height - contentHeight > 0 {
+            contentHeight += (verticalContentView.frame.height - contentHeight) + 1
+        }
+        
+        verticalScrollView.contentSize = CGSize(width: view.frame.width, height: contentHeight)
         verticalContentView.frame.size = verticalScrollView.contentSize
     }
     

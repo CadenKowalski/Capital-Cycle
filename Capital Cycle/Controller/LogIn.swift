@@ -103,23 +103,21 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
         
         // Formats the Sign in with Apple button
         let appleButton: ASAuthorizationAppleIDButton
-        if #available(iOS 13.2, *) {
-            if traitCollection.userInterfaceStyle == .light {
-                appleButton = ASAuthorizationAppleIDButton(authorizationButtonType: .signUp, authorizationButtonStyle: .black)
-            } else {
-                appleButton = ASAuthorizationAppleIDButton(authorizationButtonType: .signUp, authorizationButtonStyle: .white)
-            }
-            
-            appleButton.addTarget(self, action: #selector(signInWithApple), for: .touchDown)
-            appleButton.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview(appleButton)
-            NSLayoutConstraint.activate([
-                appleButton.heightAnchor.constraint(equalToConstant: 32.5),
-                appleButton.topAnchor.constraint(equalTo: signUpBtn.bottomAnchor, constant: 8),
-                appleButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 60),
-                appleButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -60)
-            ])
+        if traitCollection.userInterfaceStyle == .light {
+            appleButton = ASAuthorizationAppleIDButton(authorizationButtonType: .signUp, authorizationButtonStyle: .black)
+        } else {
+            appleButton = ASAuthorizationAppleIDButton(authorizationButtonType: .signUp, authorizationButtonStyle: .white)
         }
+        
+        appleButton.addTarget(self, action: #selector(signInWithApple), for: .touchDown)
+        appleButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(appleButton)
+        NSLayoutConstraint.activate([
+            appleButton.heightAnchor.constraint(equalToConstant: 32.5),
+            appleButton.topAnchor.constraint(equalTo: signUpBtn.bottomAnchor, constant: 8),
+            appleButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 60),
+            appleButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -60)
+        ])
     }
     
     // MARK: Log In
