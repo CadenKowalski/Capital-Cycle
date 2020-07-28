@@ -212,6 +212,7 @@ class SignUp: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPic
         } else {
             firebaseFunctions.createUser(password: passTxtField.text!) { error in
                 if error == nil {
+                    authenticationFunctions.createUser(email: self.emailTxtField.text!, password: self.passTxtField.text!)
                     user.authenticationMethod = "Email"
                     firebaseFunctions.manageUserData(dataValues: ["all"], newUser: true) { error in
                         if error == nil {

@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import LocalAuthentication
 import AuthenticationServices
 
 class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
@@ -33,28 +34,49 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
     override func viewDidLoad() {
         super.viewDidLoad()
         formatUI()
+        if Auth.auth().currentUser == nil {
+            if UserDefaults.standard.value(forKey: "email") != nil {
+                authenticationFunctions.authenticateUser() { error in
+                    if error == nil {
+                        viewFunctions.formatProgressWheel(progressWheel: self.loginBtnProgressWheel, button: self.loginBtn, toShow: true, hapticFeedback: false)
+                        if error == nil {
+                            authenticationFunctions.returnCredentials() { (email, password, error) in
+                                if error == nil {
+                                    user.email = email
+                                    self.emailTxtField.text = email
+                                    self.passTxtField.text = password
+                                    self.logIn()
+                                } else {
+                                    viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
+                                }
+                                
+                                viewFunctions.formatProgressWheel(progressWheel: self.loginBtnProgressWheel, button: self.loginBtn, toShow: false, hapticFeedback: false)
+                            }
+                        }
+                    } else {
+                        viewFunctions.formatProgressWheel(progressWheel: self.loginBtnProgressWheel, button: self.loginBtn, toShow: false, hapticFeedback: false)
+                    }
+                }
+            }
+        }
     }
     
-    // Logs in the user automatically if they are signedIn
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         Auth.auth().currentUser?.reload() { action in
-            if Auth.auth().currentUser != nil {
-                viewFunctions.formatProgressWheel(progressWheel: self.loginBtnProgressWheel, button: self.loginBtn, toShow: true, hapticFeedback: false)
-                user.email = Auth.auth().currentUser!.email!
-                user.uid = Auth.auth().currentUser!.uid
-                firebaseFunctions.fetchUserData(fetchValue: "all") { error in
-                    if error == nil {
-                        if (Auth.auth().currentUser!.isEmailVerified || user.isCounselorVerified!) && user.signedIn {
-                            viewFunctions.giveHapticFeedback(error: false, prefers: user.prefersHapticFeedback!)
-                            self.performSegue(withIdentifier: "AlreadyLoggedIn", sender: nil)
-                        }
-                        
-                        viewFunctions.formatProgressWheel(progressWheel: self.loginBtnProgressWheel, button: self.loginBtn, toShow: false, hapticFeedback: false)
-                    } else {
-                        viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
+            viewFunctions.formatProgressWheel(progressWheel: self.loginBtnProgressWheel, button: self.loginBtn, toShow: true, hapticFeedback: false)
+            user.email = Auth.auth().currentUser!.email!
+            user.uid = Auth.auth().currentUser!.uid
+            firebaseFunctions.fetchUserData(fetchValue: "all") { error in
+                if error == nil {
+                    if (Auth.auth().currentUser!.isEmailVerified || user.isCounselorVerified!) && user.signedIn {
+                        viewFunctions.giveHapticFeedback(error: false, prefers: user.prefersHapticFeedback!)
+                        self.performSegue(withIdentifier: "AlreadyLoggedIn", sender: nil)
                     }
                     
+                    viewFunctions.formatProgressWheel(progressWheel: self.loginBtnProgressWheel, button: self.loginBtn, toShow: false, hapticFeedback: false)
+                } else {
+                    viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
                     viewFunctions.formatProgressWheel(progressWheel: self.loginBtnProgressWheel, button: self.loginBtn, toShow: false, hapticFeedback: false)
                 }
             }
@@ -141,6 +163,7 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
                 if user.type == .counselor {
                     Auth.auth().signIn(withEmail: user.email, password: self.passTxtField.text!) { (authUser, error) in
                         if error == nil {
+                            UserDefaults.standard.setValue(user.email, forKey: "email")
                             user.uid = Auth.auth().currentUser!.uid
                             viewFunctions.giveHapticFeedback(error: false, prefers: user.prefersHapticFeedback!)
                             self.performSegue(withIdentifier: "LogIn", sender: nil)
@@ -155,6 +178,7 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
                 } else {
                     Auth.auth().signIn(withEmail: user.email, password: self.passTxtField.text!) { (authUser, error) in
                         if error == nil {
+                            UserDefaults.standard.setValue(user.email, forKey: "email")
                             user.uid = Auth.auth().currentUser!.uid
                             viewFunctions.giveHapticFeedback(error: false, prefers: user.prefersHapticFeedback!)
                             if Auth.auth().currentUser!.isEmailVerified || user.type == .admin {

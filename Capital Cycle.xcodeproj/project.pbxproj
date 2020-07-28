@@ -19,6 +19,7 @@
 		578AF9E022D4201E007B42A9 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578AF9DF22D4201E007B42A9 /* ProductCell.swift */; };
 		578AF9E422D428AF007B42A9 /* Capital_Cycle.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 578AF9E222D428AF007B42A9 /* Capital_Cycle.xcdatamodeld */; };
 		5795C62422EA6CC200A0A171 /* TestForConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5795C62322EA6CC200A0A171 /* TestForConnection.swift */; };
+		579A2CF424CF9C13001C7CA9 /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579A2CF324CF9C13001C7CA9 /* KeychainPasswordItem.swift */; };
 		579F1A2223BBB3FB003115FD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 579F1A2123BBB3FB003115FD /* GoogleService-Info.plist */; };
 		579F1A2823BC2666003115FD /* ViewFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579F1A2723BC2666003115FD /* ViewFunctions.swift */; };
 		57A3455822D2AA080070898F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A3455722D2AA080070898F /* AppDelegate.swift */; };
@@ -57,6 +58,7 @@
 		578AF9DF22D4201E007B42A9 /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		578AF9E322D428AF007B42A9 /* Capital_Cycle.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Capital_Cycle.xcdatamodel; sourceTree = "<group>"; };
 		5795C62322EA6CC200A0A171 /* TestForConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TestForConnection.swift; path = "../../../../../../../System/Volumes/Data/Users/cadenkowalski/Desktop/Xcode Projects/Capital Cycle/Capital Cycle/Model/TestForConnection.swift"; sourceTree = "<group>"; };
+		579A2CF324CF9C13001C7CA9 /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainPasswordItem.swift; sourceTree = "<group>"; };
 		579F1A2123BBB3FB003115FD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		579F1A2723BC2666003115FD /* ViewFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFunctions.swift; sourceTree = "<group>"; };
 		57A3455422D2AA080070898F /* Capital Cycle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Capital Cycle.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -169,6 +171,7 @@
 				57B57CE923B9673400841442 /* FirebaseFunctions.swift */,
 				579F1A2723BC2666003115FD /* ViewFunctions.swift */,
 				57713CB023C045580039B347 /* AuthenticationFunctions.swift */,
+				579A2CF324CF9C13001C7CA9 /* KeychainPasswordItem.swift */,
 				57DA742E23F8D49400F0E9E7 /* GoogleFunctions.swift */,
 				57C2CFC523F9A0DA00FCA9A0 /* CoreDataFunctions.swift */,
 			);
@@ -356,6 +359,7 @@
 				5700629B22E3BB590032EFAB /* SignUp.swift in Sources */,
 				57E226F723B5428E007DF227 /* OneMoreStep.swift in Sources */,
 				5795C62422EA6CC200A0A171 /* TestForConnection.swift in Sources */,
+				579A2CF424CF9C13001C7CA9 /* KeychainPasswordItem.swift in Sources */,
 				57E226FD23B84F8A007DF227 /* FirebaseUser.swift in Sources */,
 				57A3457C22D2BBB90070898F /* StorePage.swift in Sources */,
 				579F1A2823BC2666003115FD /* ViewFunctions.swift in Sources */,

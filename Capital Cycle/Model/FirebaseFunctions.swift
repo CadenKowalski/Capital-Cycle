@@ -274,6 +274,7 @@ struct FirebaseFunctions {
             if error == nil {
                 collectionRef.document(user.email!).delete() { error in
                     if error == nil {
+                        authenticationFunctions.deleteUser()
                         if user.profileImgUrl! != "Default" {
                             let storageReference = Storage.storage().reference().child("User: \(String(describing: user.uid!))/Profile Image")
                             storageReference.delete() { error in

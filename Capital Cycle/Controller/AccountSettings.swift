@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import AuthenticationServices
 
-class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding, ASWebAuthenticationPresentationContextProviding  {
+class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, ASWebAuthenticationPresentationContextProviding  {
     
     // MARK: Global Variables
     
@@ -249,30 +249,34 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
     
     // Gets the user's authorization to delete their account
     @IBAction func getAuthorization(_ sender: UIButton) {
-        if user.authenticationMethod == "Apple" {
-            self.performDestructiveProfileChange()
-        } else {
-            let enterPasswordAlert = UIAlertController(title: "Enter your password", message: nil, preferredStyle: .alert)
-            enterPasswordAlert.addTextField() { textField in
-                textField.placeholder = "Password"
-                textField.textContentType = .password
-                textField.isSecureTextEntry = true
-                textField.font = UIFont(name: "Avenir-Book", size: 13.0)
-            }
-            
-            enterPasswordAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-            enterPasswordAlert.addAction(UIAlertAction(title: "Continue", style: .default, handler: { action in
-                let credential = EmailAuthProvider.credential(withEmail: user.email!, password: enterPasswordAlert.textFields!.first!.text!)
-                Auth.auth().currentUser?.reauthenticate(with: credential) { (authResult, error) in
-                    if error == nil {
-                        self.deleteAccount()
-                    } else {
-                        viewFunctions.showAlert(title: "Uh Oh", message: "The password you entered is incorrect", actionTitle: "OK", actionStyle: .default, view: self)
+        authenticationFunctions.authenticateUser() { error in
+            if error == nil {
+                self.deleteAccount()
+            } else if error == "Fallback" {
+                if user.authenticationMethod == "Email" {
+                    let enterPasswordAlert = UIAlertController(title: "Enter your password", message: nil, preferredStyle: .alert)
+                    enterPasswordAlert.addTextField() { textField in
+                        textField.placeholder = "Password"
+                        textField.textContentType = .password
+                        textField.isSecureTextEntry = true
+                        textField.font = UIFont(name: "Avenir-Book", size: 13.0)
                     }
+                    
+                    enterPasswordAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+                    enterPasswordAlert.addAction(UIAlertAction(title: "Continue", style: .default, handler: { action in
+                        let credential = EmailAuthProvider.credential(withEmail: user.email!, password: enterPasswordAlert.textFields!.first!.text!)
+                        Auth.auth().currentUser?.reauthenticate(with: credential) { (authResult, error) in
+                            if error == nil {
+                                self.deleteAccount()
+                            } else {
+                                viewFunctions.showAlert(title: "Uh Oh", message: "The password you entered is incorrect", actionTitle: "OK", actionStyle: .default, view: self)
+                            }
+                        }
+                    }))
+                    
+                    self.present(enterPasswordAlert, animated: true, completion: nil)
                 }
-            }))
-            
-            self.present(enterPasswordAlert, animated: true, completion: nil)
+            }
         }
     }
     
@@ -292,52 +296,6 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
         }))
         
         present(confirmDeleteAlert, animated: true, completion: nil)
-    }
-    
-    // MARK: Reauthentication with Apple
-    
-    // Presents the authorization controller
-    func performDestructiveProfileChange() {
-        let nonce = authenticationFunctions.randomNonceString()
-        currentNonce = nonce
-        let appleIDProvider = ASAuthorizationAppleIDProvider()
-        let request = appleIDProvider.createRequest()
-        request.requestedScopes = []
-        request.requestedOperation = .operationRefresh
-        request.nonce = authenticationFunctions.sha256(nonce)
-        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
-        authorizationController.delegate = self
-        authorizationController.presentationContextProvider = self
-        authorizationController.performRequests()
-    }
-    
-    // Creates a Firebase credential used to reauthenticate the current user in case the current one has expired
-    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
-        if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
-            guard let appleIDToken = appleIDCredential.identityToken else {
-                viewFunctions.showAlert(title: "Error", message: "Authentication Failed", actionTitle: "OK", actionStyle: .default, view: self)
-                return
-            }
-            
-            guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
-                viewFunctions.showAlert(title: "Error", message: "Authentication Failed", actionTitle: "OK", actionStyle: .default, view: self)
-                return
-            }
-            
-            let credential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString, rawNonce: currentNonce)
-            Auth.auth().currentUser!.reauthenticate(with: credential) { (authResult, error) in
-                if error == nil {
-                    self.deleteAccount()
-                } else {
-                    print(error!.localizedDescription)
-                }
-            }
-        }
-    }
-    
-    // Returns the window on which the Sign in with Apple view is presented
-    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
-        return view.window!
     }
     
     // Called when authentication fails on the user end

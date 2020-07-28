@@ -697,7 +697,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="gradient" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keep me signed in" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v4f-EM-SRo">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keep me signed in" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v4f-EM-SRo" userLabel="Signed In Label">
                                 <rect key="frame" x="16" y="116" width="143.33333333333334" height="23.333333333333343"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="23.329999999999998" id="R1C-mG-Fhk"/>
@@ -715,7 +715,7 @@
                                     <action selector="staySignedIn:" destination="ECW-nJ-Zo5" eventType="valueChanged" id="aXt-p2-fGt"/>
                                 </connections>
                             </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send me notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NcP-na-i5u">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send me notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NcP-na-i5u" userLabel="Notifications Label">
                                 <rect key="frame" x="16" y="155.33333333333334" width="166.66666666666666" height="23"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="166.66999999999999" id="2Tc-XW-0qt"/>
@@ -724,10 +724,19 @@
                                 <color key="textColor" name="LabelColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Haptic feedback" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="anc-el-uxP">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Haptic feedback" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="anc-el-uxP" userLabel="Haptics Label">
                                 <rect key="frame" x="16.000000000000007" y="194.33333333333334" width="126.66666666666669" height="23"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="126.67" id="62U-17-3sB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
+                                <color key="textColor" name="LabelColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use Face ID to login" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eFs-rL-QSp" userLabel="Cace ID Label">
+                                <rect key="frame" x="16" y="233.33333333333334" width="156" height="23.000000000000028"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="156" id="uTx-4W-pUl"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
                                 <color key="textColor" name="LabelColor"/>
@@ -755,6 +764,14 @@
                                 <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nSC-Dx-ncx" userLabel="Face ID Switch">
+                                <rect key="frame" x="310" y="229" width="51" height="31"/>
+                                <color key="onTintColor" name="LabelColor"/>
+                                <color key="thumbTintColor" name="ViewColor"/>
+                                <connections>
+                                    <action selector="hapticVibration:" destination="ECW-nJ-Zo5" eventType="valueChanged" id="zf5-gH-1Hr"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rZe-8C-x75"/>
                         <color key="backgroundColor" name="ViewColor"/>
@@ -768,14 +785,18 @@
                             <constraint firstItem="v4f-EM-SRo" firstAttribute="top" secondItem="hBp-xz-Gw8" secondAttribute="bottom" constant="16" id="IAw-vY-Xel"/>
                             <constraint firstItem="2dq-Ws-yyw" firstAttribute="top" secondItem="vEF-3o-tyJ" secondAttribute="bottom" constant="8" id="NRf-KD-MqZ"/>
                             <constraint firstItem="rZe-8C-x75" firstAttribute="trailing" secondItem="vEF-3o-tyJ" secondAttribute="trailing" constant="16" id="QsV-1Y-oaS"/>
+                            <constraint firstItem="rZe-8C-x75" firstAttribute="trailing" secondItem="nSC-Dx-ncx" secondAttribute="trailing" constant="16" id="Rqc-nT-Jfo"/>
                             <constraint firstItem="hBp-xz-Gw8" firstAttribute="top" secondItem="rZe-8C-x75" secondAttribute="top" id="Vs9-AV-nzK"/>
+                            <constraint firstItem="nSC-Dx-ncx" firstAttribute="top" secondItem="wBn-Fw-OgL" secondAttribute="bottom" constant="8" id="ZLU-aa-91s"/>
                             <constraint firstItem="anc-el-uxP" firstAttribute="leading" secondItem="rZe-8C-x75" secondAttribute="leading" constant="16" id="ePa-DZ-qqx"/>
                             <constraint firstItem="wBn-Fw-OgL" firstAttribute="top" secondItem="2dq-Ws-yyw" secondAttribute="bottom" constant="8" id="fte-Ri-2UQ"/>
                             <constraint firstItem="anc-el-uxP" firstAttribute="top" secondItem="NcP-na-i5u" secondAttribute="bottom" constant="16" id="iy1-bp-CwV"/>
                             <constraint firstItem="mKV-n0-Tql" firstAttribute="centerY" secondItem="zlY-FZ-jSm" secondAttribute="centerY" constant="334.5" id="lMv-kn-vK5"/>
+                            <constraint firstItem="eFs-rL-QSp" firstAttribute="leading" secondItem="rZe-8C-x75" secondAttribute="leading" constant="16" id="lXs-h4-wiO"/>
                             <constraint firstItem="v4f-EM-SRo" firstAttribute="leading" secondItem="rZe-8C-x75" secondAttribute="leading" constant="16" id="pYL-pX-qG9"/>
                             <constraint firstItem="vEF-3o-tyJ" firstAttribute="top" secondItem="hBp-xz-Gw8" secondAttribute="bottom" constant="12" id="xSc-G9-zAe"/>
                             <constraint firstItem="rZe-8C-x75" firstAttribute="trailing" secondItem="wBn-Fw-OgL" secondAttribute="trailing" constant="16" id="yBt-Uf-oUK"/>
+                            <constraint firstItem="eFs-rL-QSp" firstAttribute="top" secondItem="anc-el-uxP" secondAttribute="bottom" constant="16" id="zAD-Rh-7Ak"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ZeM-2H-w7W"/>
@@ -2897,8 +2918,8 @@ $375</string>
         <segue reference="A25-06-JRb"/>
         <segue reference="3nr-z7-VEo"/>
         <segue reference="ccM-UG-piO"/>
-        <segue reference="fLm-vS-o42"/>
-        <segue reference="6sF-6Q-8DV"/>
+        <segue reference="SNw-F0-iiv"/>
+        <segue reference="i74-cw-zSX"/>
         <segue reference="eIi-nP-8Bb"/>
     </inferredMetricsTieBreakers>
     <resources>

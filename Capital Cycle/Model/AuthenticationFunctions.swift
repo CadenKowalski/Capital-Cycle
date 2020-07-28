@@ -7,9 +7,19 @@
 //
 
 import Foundation
+import Firebase
 import CryptoKit
+import LocalAuthentication
+
+struct KeychainConfiguration {
+    let serviceName: String!
+    let accessGroup: String?
+}
 
 struct AuthenticationFunctions {
+    
+    // Code global vars
+    var passwordItems: [KeychainPasswordItem] = []
     
     // MARK: Authentication Functions
     
@@ -75,5 +85,78 @@ struct AuthenticationFunctions {
         }
         
         return tooWeak
+    }
+    
+    // Creates a keychain user
+    func createUser(email: String, password: String) {
+        do {
+            UserDefaults.standard.setValue(email, forKey: "email")
+            let passwordItem = KeychainPasswordItem(service: "account", account: email)
+            try passwordItem.savePassword(password)
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    // Returns the Firebase credentials if biometric policy is succesful
+    func returnCredentials(completion: @escaping(String?, String?, String?) -> Void){
+        do {
+            let email = UserDefaults.standard.string(forKey: "email")
+            let passwordItem = KeychainPasswordItem(service: "account", account: email!)
+            let password = try passwordItem.readPassword()
+            completion(email, password, nil)
+        } catch {
+            completion(nil, nil, error.localizedDescription)
+        }
+    }
+    
+    // Deletes a keychain user
+    func deleteUser() {
+        do {
+            UserDefaults.standard.setValue(nil, forKey: "email")
+            let passwordItem = KeychainPasswordItem(service: "account", account: user.email)
+            try passwordItem.deleteItem()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    // Evaluates a biometric policy
+    func authenticateUser(completion: @escaping(String?) -> Void) {
+        let context = LAContext()
+        guard context.canEvaluatePolicy(.deviceOwnerAuthentication, error: nil) else {
+            return
+        }
+        
+        if user.authenticationMethod == "Email" {
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Use biometrics to authenticate") { (success, error) in
+                if success {
+                    viewFunctions.main {
+                        completion(nil)
+                    }
+                } else {
+                    viewFunctions.main {
+                        switch error {
+                            case LAError.userFallback?:
+                                completion("Fallback")
+                            default:
+                                completion(error!.localizedDescription)
+                        }
+                    }
+                }
+            }
+        } else {
+            context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "Use Touch ID to authenticate") { (success, error) in
+                if success {
+                    viewFunctions.main {
+                        completion(nil)
+                    }
+                } else {
+                    viewFunctions.main {
+                        completion(error!.localizedDescription)
+                    }
+                }
+            }
+        }
     }
 }

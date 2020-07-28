@@ -70,6 +70,7 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate {
             if presentingVC == "Sign Up" {
                 firebaseFunctions.createUser(password: password) { error in
                     if error == nil {
+                        authenticationFunctions.createUser(email: user.email, password: self.password)
                         user.authenticationMethod = "Email"
                         firebaseFunctions.manageUserData(dataValues: ["all"], newUser: true) { error in
                             if error == nil {
