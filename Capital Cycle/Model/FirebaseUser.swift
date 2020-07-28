@@ -24,6 +24,7 @@ struct FirebaseUser {
     var isCounselorVerified: Bool!
     var isGoogleVerified: Bool!
     var authenticationMethod: String!
+    var useFaceIDForAuthentication: Bool!
     
     // MARK: Firebase User
     
@@ -47,5 +48,6 @@ struct FirebaseUser {
         self.isCounselorVerified = false
         self.isGoogleVerified = false
         self.authenticationMethod = ""
+        self.useFaceIDForAuthentication = true
     }
 }

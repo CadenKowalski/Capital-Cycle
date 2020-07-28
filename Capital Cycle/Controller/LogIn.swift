@@ -36,24 +36,32 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
         formatUI()
         if Auth.auth().currentUser == nil {
             if UserDefaults.standard.value(forKey: "email") != nil {
-                authenticationFunctions.authenticateUser() { error in
+                user.email = UserDefaults.standard.value(forKey: "email") as? String
+                firebaseFunctions.fetchUserData(fetchValue: "all") { error in
                     if error == nil {
-                        viewFunctions.formatProgressWheel(progressWheel: self.loginBtnProgressWheel, button: self.loginBtn, toShow: true, hapticFeedback: false)
-                        if error == nil {
-                            authenticationFunctions.returnCredentials() { (email, password, error) in
+                        authenticationFunctions.authenticateUser() { error in
+                            if error == nil {
+                                viewFunctions.formatProgressWheel(progressWheel: self.loginBtnProgressWheel, button: self.loginBtn, toShow: true, hapticFeedback: false)
                                 if error == nil {
-                                    user.email = email
-                                    self.emailTxtField.text = email
-                                    self.passTxtField.text = password
-                                    self.logIn()
-                                } else {
-                                    viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
+                                    authenticationFunctions.returnCredentials() { (email, password, error) in
+                                        if error == nil {
+                                            user.email = email
+                                            self.emailTxtField.text = email
+                                            self.passTxtField.text = password
+                                            self.logIn()
+                                        } else {
+                                            viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
+                                        }
+                                        
+                                        viewFunctions.formatProgressWheel(progressWheel: self.loginBtnProgressWheel, button: self.loginBtn, toShow: false, hapticFeedback: false)
+                                    }
                                 }
-                                
+                            } else {
                                 viewFunctions.formatProgressWheel(progressWheel: self.loginBtnProgressWheel, button: self.loginBtn, toShow: false, hapticFeedback: false)
                             }
                         }
                     } else {
+                        viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
                         viewFunctions.formatProgressWheel(progressWheel: self.loginBtnProgressWheel, button: self.loginBtn, toShow: false, hapticFeedback: false)
                     }
                 }

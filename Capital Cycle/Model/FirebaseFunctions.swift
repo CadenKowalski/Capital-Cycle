@@ -110,7 +110,7 @@ struct FirebaseFunctions {
             collectionRef.document(user.email!).setData(["email": user.email!])
         }
         
-        let values: [String: Any] = ["type": user.type!, "signedIn": user.signedIn!, "profileImgUrl": user.profileImgUrl!, "prefersNotifications": user.prefersNotifications!, "prefersHapticFeedback": user.prefersHapticFeedback!, "isCounselorVerified": user.isCounselorVerified!, "isGoogleVerified": user.isGoogleVerified!,  "authenticationMethod": user.authenticationMethod!]
+        let values: [String: Any] = ["type": user.type!, "signedIn": user.signedIn!, "profileImgUrl": user.profileImgUrl!, "prefersNotifications": user.prefersNotifications!, "prefersHapticFeedback": user.prefersHapticFeedback!, "isCounselorVerified": user.isCounselorVerified!, "isGoogleVerified": user.isGoogleVerified!,  "authenticationMethod": user.authenticationMethod!, "useFaceIDForAuthentication": user.useFaceIDForAuthentication!]
         for value in dataValues {
             switch value {
             case "type":
@@ -207,6 +207,7 @@ struct FirebaseFunctions {
                             user.isCounselorVerified = document?.get("isCounselorVerified") as? Bool
                             user.isGoogleVerified = document?.get("isGoogleVerified") as? Bool
                             user.authenticationMethod = document?.get("authenticationMethod") as? String
+                            user.useFaceIDForAuthentication = document?.get("useFaceIDForAuthentication") as? Bool
                             user.type = self.userTypeFromString(userTypeString: document?.get("type") as! String)
                             if user.profileImgUrl == "Default" {
                                 user.profileImg = UIImage(systemName: "person.circle")

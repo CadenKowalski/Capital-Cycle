@@ -769,7 +769,7 @@
                                 <color key="onTintColor" name="LabelColor"/>
                                 <color key="thumbTintColor" name="ViewColor"/>
                                 <connections>
-                                    <action selector="hapticVibration:" destination="ECW-nJ-Zo5" eventType="valueChanged" id="zf5-gH-1Hr"/>
+                                    <action selector="FaceID:" destination="ECW-nJ-Zo5" eventType="valueChanged" id="7xz-II-iDn"/>
                                 </connections>
                             </switch>
                         </subviews>
@@ -801,6 +801,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="ZeM-2H-w7W"/>
                     <connections>
+                        <outlet property="FaceIDSwitch" destination="nSC-Dx-ncx" id="qUf-3F-frY"/>
                         <outlet property="gradientView" destination="hBp-xz-Gw8" id="I94-bk-LKD"/>
                         <outlet property="gradientViewHeight" destination="FUe-lV-muf" id="7VG-cz-a45"/>
                         <outlet property="hapticFeedbackSwitch" destination="wBn-Fw-OgL" id="Tyl-zv-c11"/>

@@ -123,40 +123,44 @@ struct AuthenticationFunctions {
     
     // Evaluates a biometric policy
     func authenticateUser(completion: @escaping(String?) -> Void) {
-        let context = LAContext()
-        guard context.canEvaluatePolicy(.deviceOwnerAuthentication, error: nil) else {
-            return
-        }
-        
-        if user.authenticationMethod == "Email" {
-            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Use biometrics to authenticate") { (success, error) in
-                if success {
-                    viewFunctions.main {
-                        completion(nil)
+        if user.useFaceIDForAuthentication {
+            let context = LAContext()
+            guard context.canEvaluatePolicy(.deviceOwnerAuthentication, error: nil) else {
+                return
+            }
+            
+            if user.authenticationMethod == "Email" {
+                context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Use biometrics to authenticate") { (success, error) in
+                    if success {
+                        viewFunctions.main {
+                            completion(nil)
+                        }
+                    } else {
+                        viewFunctions.main {
+                            switch error {
+                                case LAError.userFallback?:
+                                    completion("Fallback")
+                                default:
+                                    completion(error!.localizedDescription)
+                            }
+                        }
                     }
-                } else {
-                    viewFunctions.main {
-                        switch error {
-                            case LAError.userFallback?:
-                                completion("Fallback")
-                            default:
-                                completion(error!.localizedDescription)
+                }
+            } else {
+                context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "Use Touch ID to authenticate") { (success, error) in
+                    if success {
+                        viewFunctions.main {
+                            completion(nil)
+                        }
+                    } else {
+                        viewFunctions.main {
+                            completion(error!.localizedDescription)
                         }
                     }
                 }
             }
         } else {
-            context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "Use Touch ID to authenticate") { (success, error) in
-                if success {
-                    viewFunctions.main {
-                        completion(nil)
-                    }
-                } else {
-                    viewFunctions.main {
-                        completion(error!.localizedDescription)
-                    }
-                }
-            }
+            completion("Fallback")
         }
     }
 }

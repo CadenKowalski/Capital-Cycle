@@ -20,6 +20,7 @@ class GeneralSettings: UIViewController {
     @IBOutlet weak var signedInSwitch: UISwitch!
     @IBOutlet weak var notificationsSwitch: UISwitch!
     @IBOutlet weak var hapticFeedbackSwitch: UISwitch!
+    @IBOutlet weak var FaceIDSwitch: UISwitch!
     
     // MARK: View Instantiation
     
@@ -43,6 +44,7 @@ class GeneralSettings: UIViewController {
         signedInSwitch.isOn = user.signedIn!
         notificationsSwitch.isOn = user.prefersNotifications!
         hapticFeedbackSwitch.isOn = user.prefersHapticFeedback!
+        FaceIDSwitch.isOn = user.useFaceIDForAuthentication!
     }
     
     // MARK: Settings
@@ -79,6 +81,7 @@ class GeneralSettings: UIViewController {
     
     // Allows the user to decide whether they want to get haptic feedback or not
     @IBAction func hapticVibration(_ sender: UISwitch) {
+        print(true)
         if sender.isOn {
             user.prefersHapticFeedback = true
         } else {
@@ -86,6 +89,20 @@ class GeneralSettings: UIViewController {
         }
         
         firebaseFunctions.manageUserData(dataValues: ["prefersHapticFeedback"], newUser: false) { error in
+            if error != nil {
+                viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
+            }
+        }
+    }
+    
+    @IBAction func FaceID(_ sender: UISwitch) {
+        if sender.isOn {
+            user.useFaceIDForAuthentication = true
+        } else {
+            user.useFaceIDForAuthentication = false
+        }
+        
+        firebaseFunctions.manageUserData(dataValues: ["useFaceIDForAuthentication"], newUser: false) { error in
             if error != nil {
                 viewFunctions.showAlert(title: "Error", message: error!, actionTitle: "OK", actionStyle: .default, view: self)
             }
