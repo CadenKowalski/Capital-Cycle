@@ -733,10 +733,10 @@
                                 <color key="textColor" name="LabelColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use Face ID to login" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eFs-rL-QSp" userLabel="Cace ID Label">
-                                <rect key="frame" x="16" y="233.33333333333334" width="156" height="23.000000000000028"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use Face ID to authenticate" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eFs-rL-QSp" userLabel="Cace ID Label">
+                                <rect key="frame" x="16" y="233.33333333333334" width="214" height="23.000000000000028"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="156" id="uTx-4W-pUl"/>
+                                    <constraint firstAttribute="width" constant="214" id="MdI-K0-xVK"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
                                 <color key="textColor" name="LabelColor"/>
@@ -887,16 +887,16 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Type" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WZ6-LX-trs">
-                                <rect key="frame" x="132" y="145" width="76.666666666666686" height="21"/>
+                                <rect key="frame" x="182.66666666666666" y="145" width="89.666666666666657" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="eBY-QT-QGw"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
                                 <color key="textColor" name="LabelColor"/>
                                 <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T8Z-2D-dEH" userLabel="Change Btn">
-                                <rect key="frame" x="144" y="166" width="53" height="28"/>
+                                <rect key="frame" x="201" y="166" width="53" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="gka-lm-Xvg"/>
                                 </constraints>
@@ -907,7 +907,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U2v-Qh-GTp">
-                                <rect key="frame" x="16" y="232" width="343" height="23.333333333333343"/>
+                                <rect key="frame" x="16" y="341" width="343" height="23.333333333333314"/>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
                                 <color key="textColor" name="LabelColor"/>
                                 <nil key="highlightedColor"/>
@@ -946,54 +946,86 @@
                                     <action selector="dismissUserTypePickerView:" destination="D9c-sc-o2H" eventType="touchUpInside" id="XId-fq-AfN"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="OoG-hT-yF8">
-                                <rect key="frame" x="169" y="360.66666666666669" width="37" height="37"/>
-                            </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I give Capital Cycle permission to access my Google account" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TID-MT-kKm" userLabel="Google Access Lbl">
-                                <rect key="frame" x="16" y="263.33333333333331" width="262" height="46.666666666666686"/>
+                                <rect key="frame" x="16" y="372.33333333333331" width="262" height="46.666666666666686"/>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
                                 <color key="textColor" name="LabelColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="HHc-lk-Sa2" userLabel="Google Access Switch">
-                                <rect key="frame" x="310" y="271.33333333333331" width="51" height="31"/>
+                                <rect key="frame" x="310" y="380.33333333333331" width="51" height="31"/>
                                 <color key="onTintColor" name="LabelColor"/>
                                 <color key="thumbTintColor" name="ViewColor"/>
                                 <connections>
                                     <action selector="googleAccess:" destination="D9c-sc-o2H" eventType="valueChanged" id="gFL-ty-Ibi"/>
                                 </connections>
                             </switch>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="OoG-hT-yF8">
+                                <rect key="frame" x="169" y="360.66666666666669" width="37" height="37"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* As a 16 year old, I simply cannot make everything perfect. If you have any trouble with the app, please let me know." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vmQ-G5-hvj" userLabel="Report Bug Label" customClass="CustomLabel" customModule="Capital_Cycle" customModuleProvider="target">
+                                <rect key="frame" x="16" y="232.00000000000003" width="343" height="53.333333333333343"/>
+                                <gestureRecognizers/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
+                                <color key="textColor" name="LabelColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="interactionEnabled" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="ZQe-ad-1CC" appends="YES" id="5m2-Ul-e7f"/>
+                                </connections>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="* Alternatively, if you have any suggestions to improve the app or user exprience, please let me know as well." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W0A-rr-FAY" userLabel="Suggest Feedback Label" customClass="CustomLabel" customModule="Capital_Cycle" customModuleProvider="target">
+                                <rect key="frame" x="16" y="294" width="343" height="37"/>
+                                <gestureRecognizers/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
+                                <color key="textColor" name="LabelColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="interactionEnabled" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="MaO-Lb-lyi" appends="YES" id="CC8-RM-KNH"/>
+                                </connections>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hgD-NQ-vKY"/>
                         <color key="backgroundColor" name="ViewColor"/>
                         <constraints>
-                            <constraint firstItem="U2v-Qh-GTp" firstAttribute="top" secondItem="gYP-kz-BVS" secondAttribute="bottom" constant="16" id="148-8G-7E3"/>
+                            <constraint firstAttribute="trailing" secondItem="W0A-rr-FAY" secondAttribute="trailing" constant="16" id="1ZA-Mk-Uxc"/>
+                            <constraint firstItem="W0A-rr-FAY" firstAttribute="top" secondItem="vmQ-G5-hvj" secondAttribute="bottom" constant="4" id="1pM-HA-RQm"/>
+                            <constraint firstItem="WZ6-LX-trs" firstAttribute="centerX" secondItem="RWn-1Z-azi" secondAttribute="centerX" constant="40" id="3ZQ-5m-QzC"/>
                             <constraint firstItem="j6F-a2-tkK" firstAttribute="centerX" secondItem="RWn-1Z-azi" secondAttribute="centerX" id="7Gj-qC-Bbq"/>
                             <constraint firstItem="j6F-a2-tkK" firstAttribute="top" secondItem="aBH-zv-Xul" secondAttribute="bottom" constant="12" id="7ta-SG-VdF"/>
                             <constraint firstItem="T8Z-2D-dEH" firstAttribute="centerX" secondItem="WZ6-LX-trs" secondAttribute="centerX" id="9T1-VY-3cL"/>
                             <constraint firstAttribute="bottom" secondItem="H8d-i7-asj" secondAttribute="bottom" id="BG2-nn-vHD"/>
                             <constraint firstItem="TID-MT-kKm" firstAttribute="top" secondItem="U2v-Qh-GTp" secondAttribute="bottom" constant="8" id="CYU-rg-bP9"/>
+                            <constraint firstItem="vmQ-G5-hvj" firstAttribute="top" secondItem="gYP-kz-BVS" secondAttribute="bottom" constant="16" id="DbG-ew-gAK"/>
                             <constraint firstItem="HHc-lk-Sa2" firstAttribute="centerY" secondItem="TID-MT-kKm" secondAttribute="centerY" id="EIx-mj-tE4"/>
                             <constraint firstItem="JZ3-jd-Iqg" firstAttribute="top" secondItem="RWn-1Z-azi" secondAttribute="top" id="Fxz-JL-UPA"/>
                             <constraint firstItem="HHc-lk-Sa2" firstAttribute="leading" secondItem="TID-MT-kKm" secondAttribute="trailing" constant="32" id="HWS-H0-ON3"/>
                             <constraint firstItem="JZ3-jd-Iqg" firstAttribute="leading" secondItem="hgD-NQ-vKY" secondAttribute="leading" id="Haz-WT-Qm3"/>
                             <constraint firstItem="aBH-zv-Xul" firstAttribute="centerX" secondItem="RWn-1Z-azi" secondAttribute="centerX" id="Hgq-Fg-0q0"/>
                             <constraint firstItem="gYP-kz-BVS" firstAttribute="top" secondItem="JZ3-jd-Iqg" secondAttribute="bottom" constant="16" id="I5c-Ft-ROy"/>
+                            <constraint firstAttribute="trailing" secondItem="vmQ-G5-hvj" secondAttribute="trailing" constant="16" id="IBI-Gq-78Q"/>
                             <constraint firstAttribute="trailing" secondItem="H8d-i7-asj" secondAttribute="trailing" id="PdT-1X-zYF"/>
                             <constraint firstItem="WZ6-LX-trs" firstAttribute="top" secondItem="JZ3-jd-Iqg" secondAttribute="bottom" constant="45" id="SRE-kx-5Bf"/>
                             <constraint firstItem="JZ3-jd-Iqg" firstAttribute="trailing" secondItem="hgD-NQ-vKY" secondAttribute="trailing" id="U36-W2-NMw"/>
+                            <constraint firstItem="vmQ-G5-hvj" firstAttribute="leading" secondItem="hgD-NQ-vKY" secondAttribute="leading" constant="16" id="Xap-6b-Hfx"/>
                             <constraint firstItem="hgD-NQ-vKY" firstAttribute="trailing" secondItem="U2v-Qh-GTp" secondAttribute="trailing" constant="16" id="YBZ-Ws-D4N"/>
                             <constraint firstItem="T8Z-2D-dEH" firstAttribute="centerX" secondItem="WZ6-LX-trs" secondAttribute="centerX" id="Yk7-Kn-56M"/>
+                            <constraint firstItem="W0A-rr-FAY" firstAttribute="leading" secondItem="hgD-NQ-vKY" secondAttribute="leading" constant="16" id="ZPD-ZZ-1fA"/>
                             <constraint firstItem="H8d-i7-asj" firstAttribute="leading" secondItem="RWn-1Z-azi" secondAttribute="leading" id="bCX-iW-OZ8"/>
                             <constraint firstItem="F2f-dP-KQA" firstAttribute="centerX" secondItem="RWn-1Z-azi" secondAttribute="centerX" id="bGT-oM-2WO"/>
                             <constraint firstItem="hgD-NQ-vKY" firstAttribute="bottom" secondItem="j6F-a2-tkK" secondAttribute="bottom" id="cd3-RC-y2m"/>
-                            <constraint firstItem="WZ6-LX-trs" firstAttribute="leading" secondItem="gYP-kz-BVS" secondAttribute="trailing" constant="16" id="eYD-W0-iVR"/>
                             <constraint firstItem="OoG-hT-yF8" firstAttribute="centerX" secondItem="RWn-1Z-azi" secondAttribute="centerX" id="fAk-Ib-V8q"/>
                             <constraint firstItem="TID-MT-kKm" firstAttribute="leading" secondItem="hgD-NQ-vKY" secondAttribute="leading" constant="16" id="fl7-If-5xG"/>
                             <constraint firstItem="hgD-NQ-vKY" firstAttribute="trailing" secondItem="HHc-lk-Sa2" secondAttribute="trailing" constant="16" id="gsY-Cx-thR"/>
                             <constraint firstItem="T8Z-2D-dEH" firstAttribute="top" secondItem="WZ6-LX-trs" secondAttribute="bottom" id="iRE-En-MD8"/>
                             <constraint firstItem="gYP-kz-BVS" firstAttribute="leading" secondItem="RWn-1Z-azi" secondAttribute="leading" constant="16" id="lvc-oM-vCU"/>
                             <constraint firstItem="hgD-NQ-vKY" firstAttribute="trailing" secondItem="oxr-Cq-GOP" secondAttribute="trailing" constant="8" id="oMf-D0-XDd"/>
+                            <constraint firstItem="U2v-Qh-GTp" firstAttribute="top" secondItem="W0A-rr-FAY" secondAttribute="bottom" constant="16" id="pZ5-jM-VXm"/>
                             <constraint firstItem="aBH-zv-Xul" firstAttribute="top" secondItem="F2f-dP-KQA" secondAttribute="bottom" constant="12" id="sYY-qQ-khb"/>
                             <constraint firstItem="U2v-Qh-GTp" firstAttribute="leading" secondItem="hgD-NQ-vKY" secondAttribute="leading" constant="16" id="seo-Kf-Ggw"/>
                             <constraint firstItem="OoG-hT-yF8" firstAttribute="centerY" secondItem="RWn-1Z-azi" secondAttribute="centerY" id="tTD-q3-4eU"/>
@@ -1009,7 +1041,9 @@
                         <outlet property="gradientView" destination="JZ3-jd-Iqg" id="WBg-nb-GG9"/>
                         <outlet property="gradientViewHeight" destination="cS0-pL-qq5" id="QjX-Qz-A9h"/>
                         <outlet property="profileImgView" destination="gYP-kz-BVS" id="qcl-qA-myw"/>
+                        <outlet property="reportBugLbl" destination="vmQ-G5-hvj" id="QWj-Tc-vjv"/>
                         <outlet property="resetPasswordBtn" destination="aBH-zv-Xul" id="sax-Z8-HVk"/>
+                        <outlet property="suggestFeedbackLbl" destination="W0A-rr-FAY" id="du5-jj-piY"/>
                         <outlet property="userTypeLbl" destination="WZ6-LX-trs" id="fSB-ed-2nc"/>
                         <outlet property="userTypePickerView" destination="H8d-i7-asj" id="Vvz-RS-lX0"/>
                         <segue destination="PqR-3q-0Zd" kind="show" identifier="VerifyCounselorFromSettings" id="HUH-zx-Kae"/>
@@ -1019,6 +1053,16 @@
                 <tapGestureRecognizer id="R4h-eE-ZtA" userLabel="profileImgTapGestureRecognizer">
                     <connections>
                         <action selector="chooseProfileImg:" destination="D9c-sc-o2H" id="28H-bw-CPO"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="ZQe-ad-1CC" userLabel="reportBugTapGestureRecognizer">
+                    <connections>
+                        <action selector="reportBug:" destination="D9c-sc-o2H" id="d7r-cN-Mjk"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="MaO-Lb-lyi" userLabel="suggestFeedbackTapGestureRecognizer">
+                    <connections>
+                        <action selector="reportBug:" destination="D9c-sc-o2H" id="WCb-7z-S2p"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -2881,6 +2925,9 @@ $375</string>
         <designable name="VQ6-lr-Ida">
             <size key="intrinsicContentSize" width="50" height="36"/>
         </designable>
+        <designable name="W0A-rr-FAY">
+            <size key="intrinsicContentSize" width="632.33333333333337" height="18"/>
+        </designable>
         <designable name="Xrn-NV-cTi">
             <size key="intrinsicContentSize" width="71" height="36"/>
         </designable>
@@ -2908,6 +2955,9 @@ $375</string>
         <designable name="rAP-6m-iZk">
             <size key="intrinsicContentSize" width="20" height="20.333333333333332"/>
         </designable>
+        <designable name="vmQ-G5-hvj">
+            <size key="intrinsicContentSize" width="680" height="18"/>
+        </designable>
         <designable name="yii-bC-DGO">
             <size key="intrinsicContentSize" width="15.666666666666666" height="20.333333333333332"/>
         </designable>
@@ -2918,7 +2968,7 @@ $375</string>
     <inferredMetricsTieBreakers>
         <segue reference="A25-06-JRb"/>
         <segue reference="3nr-z7-VEo"/>
-        <segue reference="ccM-UG-piO"/>
+        <segue reference="HUH-zx-Kae"/>
         <segue reference="SNw-F0-iiv"/>
         <segue reference="i74-cw-zSX"/>
         <segue reference="eIi-nP-8Bb"/>

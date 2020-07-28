@@ -8,9 +8,10 @@
 
 import UIKit
 import Firebase
+import MessageUI
 import AuthenticationServices
 
-class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, ASWebAuthenticationPresentationContextProviding  {
+class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, ASWebAuthenticationPresentationContextProviding, MFMailComposeViewControllerDelegate  {
     
     // MARK: Global Variables
     
@@ -20,6 +21,8 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
     @IBOutlet weak var profileImgView: CustomImageView!
     @IBOutlet weak var emailLbl: UILabel!
     @IBOutlet weak var userTypeLbl: UILabel!
+    @IBOutlet weak var reportBugLbl: CustomLabel!
+    @IBOutlet weak var suggestFeedbackLbl: CustomLabel!
     @IBOutlet weak var googleAccessSwitch: UISwitch!
     @IBOutlet weak var accountSettingsProgressWheel: UIActivityIndicatorView!
     @IBOutlet weak var cancelBtn: UIButton!
@@ -57,6 +60,16 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
         if user.type == .admin {
             userTypeLbl.text = "I am an " + "\(user.type!)"
         }
+        
+        // Formats the rebort a bug label
+        let reportAttributedString = NSMutableAttributedString.init(string: "* As a 16 year old, I simply cannot make everything perfect. If you have any trouble with the app, please let me know.")
+        reportAttributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: 1, range: NSRange.init(location: 99, length: 19))
+        reportBugLbl.attributedText = reportAttributedString
+        
+        // Formats the suggest feedback label
+        let feedbackAttributedString = NSMutableAttributedString.init(string: "* Alternatively, if you have any suggestions to improve the app or user exprience, please let me know as well.")
+        feedbackAttributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: 1, range: NSRange.init(location: 83, length: 27))
+        suggestFeedbackLbl.attributedText = feedbackAttributedString
         
         // Formats the google access switch
         googleAccessSwitch.isOn = user.isGoogleVerified
@@ -191,6 +204,29 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
         }
         
         dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func reportBug(_ sender: UITapGestureRecognizer) {
+        let Alert = UIAlertController(title: nil, message:  nil, preferredStyle: .actionSheet)
+        Alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        Alert.addAction(UIAlertAction(title: "Email cadenkowalski1@gmail.com", style: .default, handler: { error in
+            if MFMailComposeViewController.canSendMail() {
+                let mail = MFMailComposeViewController()
+                mail.mailComposeDelegate = self
+                mail.setToRecipients(["cadenkowalski1@gmail.com"])
+                if sender.view == self.reportBugLbl {
+                    mail.setSubject("Bug Report")
+                } else {
+                    mail.setSubject("App Suggestion")
+                }
+                mail.setMessageBody("<p>Caden, </p>", isHTML: true)
+                self.present(mail, animated: true)
+            } else {
+                viewFunctions.showAlert(title: "Error", message: "Could not compose email", actionTitle: "OK", actionStyle: .default, view: self)
+            }
+        }))
+            
+        present(Alert, animated: true, completion: nil)
     }
     
     @IBAction func googleAccess(_ sender: UISwitch) {

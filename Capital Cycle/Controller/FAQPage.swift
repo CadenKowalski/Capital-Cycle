@@ -133,6 +133,7 @@ class FAQPage: UIViewController {
     
     // Switches between question categories
     @objc func switchCategory(_ sender: CustomButton) {
+        viewFunctions.giveHapticFeedback(error: false, prefers: user.prefersHapticFeedback)
         currentCategory.gradient = false
         currentCategory.borderRadius = 0.5
         currentCategory.borderColor = UIColor(named: "LabelColor")!

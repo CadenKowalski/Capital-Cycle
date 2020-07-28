@@ -66,8 +66,7 @@ class OverviewPage: UIViewController {
             let bodyLabel = UILabel(frame: CGRect(x: 32, y: 44, width: view.frame.width - 56, height: 100))
             if cell.header == "Camp Location:" {
                 let attributedString = NSMutableAttributedString.init(string: "Miner Elemetary\n601 15th St NE Washington, DC 20002")
-                attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: 1, range:
-                    NSRange.init(location: 15, length: attributedString.length - 15));
+                attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: 1, range: NSRange.init(location: 15, length: 36))
                 bodyLabel.attributedText = attributedString
                 bodyLabel.isUserInteractionEnabled = true
                 let locationTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(openMapsToLocation(_:)))
