@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0D325BE300B8A3DBB6937BFA /* Pods_Capital_Cycle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E943DE9E8ADA92937756310F /* Pods_Capital_Cycle.framework */; };
 		5700629922E3BB400032EFAB /* LogIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5700629822E3BB400032EFAB /* LogIn.swift */; };
 		5700629B22E3BB590032EFAB /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5700629A22E3BB590032EFAB /* SignUp.swift */; };
 		571C2F3F22E41CB6001D4438 /* GeneralSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571C2F3E22E41CB6001D4438 /* GeneralSettings.swift */; };
@@ -43,6 +42,7 @@
 		57E226F723B5428E007DF227 /* OneMoreStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E226F623B5428E007DF227 /* OneMoreStep.swift */; };
 		57E226FD23B84F8A007DF227 /* FirebaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E226FC23B84F8A007DF227 /* FirebaseUser.swift */; };
 		57ED6A2F22D578A200E3A362 /* FAQPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57ED6A2E22D578A200E3A362 /* FAQPage.swift */; };
+		EE31DCB3784CCB11D56F0042 /* Pods_Capital_Cycle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDE64D4546034C255E9F9F66 /* Pods_Capital_Cycle.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +72,7 @@
 		57A3457722D2BB5B0070898F /* OverviewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewPage.swift; sourceTree = "<group>"; };
 		57A3457922D2BB970070898F /* SchedulePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePage.swift; sourceTree = "<group>"; };
 		57A3457B22D2BBB90070898F /* StorePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorePage.swift; sourceTree = "<group>"; };
+		57A48B41240B8DE3E81940D3 /* Pods-Capital Cycle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Capital Cycle.release.xcconfig"; path = "Target Support Files/Pods-Capital Cycle/Pods-Capital Cycle.release.xcconfig"; sourceTree = "<group>"; };
 		57AFA1AF22F77F5100C2988C /* VerifyUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyUser.swift; sourceTree = "<group>"; };
 		57AFFD642300FAF000B6CD7B /* VerifyCounselor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyCounselor.swift; sourceTree = "<group>"; };
 		57B57CE923B9673400841442 /* FirebaseFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFunctions.swift; sourceTree = "<group>"; };
@@ -84,9 +85,8 @@
 		57E226F623B5428E007DF227 /* OneMoreStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneMoreStep.swift; sourceTree = "<group>"; };
 		57E226FC23B84F8A007DF227 /* FirebaseUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUser.swift; sourceTree = "<group>"; };
 		57ED6A2E22D578A200E3A362 /* FAQPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQPage.swift; sourceTree = "<group>"; };
-		E943DE9E8ADA92937756310F /* Pods_Capital_Cycle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Capital_Cycle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F3621168CC414D9E15027ED6 /* Pods-Capital Cycle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Capital Cycle.release.xcconfig"; path = "Target Support Files/Pods-Capital Cycle/Pods-Capital Cycle.release.xcconfig"; sourceTree = "<group>"; };
-		F54D64E8E532E55742D21FCC /* Pods-Capital Cycle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Capital Cycle.debug.xcconfig"; path = "Target Support Files/Pods-Capital Cycle/Pods-Capital Cycle.debug.xcconfig"; sourceTree = "<group>"; };
+		BDE64D4546034C255E9F9F66 /* Pods_Capital_Cycle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Capital_Cycle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D63C6FD36A94CE9615925E2A /* Pods-Capital Cycle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Capital Cycle.debug.xcconfig"; path = "Target Support Files/Pods-Capital Cycle/Pods-Capital Cycle.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,21 +94,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D325BE300B8A3DBB6937BFA /* Pods_Capital_Cycle.framework in Frameworks */,
+				EE31DCB3784CCB11D56F0042 /* Pods_Capital_Cycle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4789847E2C6534CC6358F1BC /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				E943DE9E8ADA92937756310F /* Pods_Capital_Cycle.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		578AF9E122D4288F007B42A9 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -123,7 +115,7 @@
 				57A3455622D2AA080070898F /* Capital Cycle */,
 				57A3455522D2AA080070898F /* Products */,
 				C75B599905291BEDA09BDCB4 /* Pods */,
-				4789847E2C6534CC6358F1BC /* Frameworks */,
+				78DB5A5E3E9100295EA08088 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -211,11 +203,19 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		78DB5A5E3E9100295EA08088 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BDE64D4546034C255E9F9F66 /* Pods_Capital_Cycle.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C75B599905291BEDA09BDCB4 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F54D64E8E532E55742D21FCC /* Pods-Capital Cycle.debug.xcconfig */,
-				F3621168CC414D9E15027ED6 /* Pods-Capital Cycle.release.xcconfig */,
+				D63C6FD36A94CE9615925E2A /* Pods-Capital Cycle.debug.xcconfig */,
+				57A48B41240B8DE3E81940D3 /* Pods-Capital Cycle.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -227,11 +227,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 57A3456822D2AA0B0070898F /* Build configuration list for PBXNativeTarget "Capital Cycle" */;
 			buildPhases = (
-				24222BB7B1DEECFF3B9B81A8 /* [CP] Check Pods Manifest.lock */,
+				7FBC8E818E5445E014FC1120 /* [CP] Check Pods Manifest.lock */,
 				57A3455022D2AA080070898F /* Sources */,
 				57A3455122D2AA080070898F /* Frameworks */,
 				57A3455222D2AA080070898F /* Resources */,
-				1625E74B28C0B35A1A7B4484 /* [CP] Embed Pods Frameworks */,
+				3FA2BFA96BED67ECB43CC6D8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -290,7 +290,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1625E74B28C0B35A1A7B4484 /* [CP] Embed Pods Frameworks */ = {
+		3FA2BFA96BED67ECB43CC6D8 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -307,7 +307,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Capital Cycle/Pods-Capital Cycle-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		24222BB7B1DEECFF3B9B81A8 /* [CP] Check Pods Manifest.lock */ = {
+		7FBC8E818E5445E014FC1120 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -510,7 +510,7 @@
 		};
 		57A3456922D2AA0B0070898F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F54D64E8E532E55742D21FCC /* Pods-Capital Cycle.debug.xcconfig */;
+			baseConfigurationReference = D63C6FD36A94CE9615925E2A /* Pods-Capital Cycle.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Capital Cycle//Resources/Capital Cycle.entitlements";
@@ -533,7 +533,7 @@
 		};
 		57A3456A22D2AA0B0070898F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F3621168CC414D9E15027ED6 /* Pods-Capital Cycle.release.xcconfig */;
+			baseConfigurationReference = 57A48B41240B8DE3E81940D3 /* Pods-Capital Cycle.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Capital Cycle//Resources/Capital Cycle.entitlements";
