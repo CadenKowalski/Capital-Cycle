@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import MessageUI
 
-class FAQPage: UIViewController {
+class FAQPage: UIViewController, MFMailComposeViewControllerDelegate {
     
     // MARK: Global Variables
     
@@ -144,5 +145,24 @@ class FAQPage: UIViewController {
         sender.setTitleColor(UIColor(named: "CellTextColor"), for: .normal)
         currentCategory = sender
         displayFaqs(category: categories[sender.tag])
+    }
+    
+    @IBAction func askQuestion(_ sender: CustomButton) {
+        let Alert = UIAlertController(title: nil, message:  nil, preferredStyle: .actionSheet)
+        Alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        Alert.addAction(UIAlertAction(title: "Ask a Question", style: .default, handler: { error in
+            if MFMailComposeViewController.canSendMail() {
+                let mail = MFMailComposeViewController()
+                mail.mailComposeDelegate = self
+                mail.setToRecipients(["capitalcyclecamp@gmail.com"])
+                mail.setSubject("Question")
+                mail.setMessageBody("<p>Capital Cycle Team, </p>", isHTML: true)
+                self.present(mail, animated: true)
+            } else {
+                viewFunctions.showAlert(title: "Error", message: "Could not compose email", actionTitle: "OK", actionStyle: .default, view: self)
+            }
+        }))
+            
+        present(Alert, animated: true, completion: nil)
     }
 }

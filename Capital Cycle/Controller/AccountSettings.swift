@@ -209,7 +209,7 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
     @IBAction func reportBug(_ sender: UITapGestureRecognizer) {
         let Alert = UIAlertController(title: nil, message:  nil, preferredStyle: .actionSheet)
         Alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        Alert.addAction(UIAlertAction(title: "Email cadenkowalski1@gmail.com", style: .default, handler: { error in
+        Alert.addAction(UIAlertAction(title: "Send and email", style: .default, handler: { error in
             if MFMailComposeViewController.canSendMail() {
                 let mail = MFMailComposeViewController()
                 mail.mailComposeDelegate = self

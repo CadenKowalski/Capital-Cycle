@@ -182,7 +182,7 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
             camperCell.setTitleColor(#colorLiteral(red: 0.8700000048, green: 0.8700000048, blue: 0.8700000048, alpha: 1), for: .normal)
             camperCell.titleLabel?.font = UIFont(name: "Avenir-Heavy", size: 20)
             camperCell.addTarget(self, action: #selector(self.displayCamperInfo(_:)), for: .touchUpInside)
-            camperCell.cornerRadius = 10
+            camperCell.cornerRadius = 15
             camperCell.cellGradient = true
             contentView.addSubview(camperCell)
             camperCells.append(camperCell)
@@ -247,12 +247,11 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
         parentPhone = formatPhoneNumber(number: "\(camperInfo[camperCells.firstIndex(of: sender)!][2])")
         parentEmail = "\(camperInfo[camperCells.firstIndex(of: sender)!][3])"
         let visibleRect = camperScrollView.convert(camperScrollView.bounds, to: contentView)
-        let placeholderView = UIView(frame: CGRect(x: 8, y: sender.frame.maxY - 20, width: view.frame.width - 16, height: 40))
+        let placeholderView = UIView(frame: CGRect(x: 8, y: sender.frame.minY, width: view.frame.width - 16, height: 40))
         placeholderView.backgroundColor = UIColor(named: "PlaceholderViewColor")
         placeholderView.layer.cornerRadius = 20
         contentView.addSubview(placeholderView)
-        var frame = placeholderView.frame
-        frame = CGRect(x: 8, y: visibleRect.minY, width: view.frame.width - 16, height: 40)
+        var frame = CGRect(x: 8, y: visibleRect.minY, width: view.frame.width - 16, height: 40)
         frame.size = CGSize(width: view.frame.width - 16, height: camperInfoView.frame.height)
         UIView.animate(withDuration: 0.25, animations: {
             placeholderView.frame = frame
@@ -270,10 +269,9 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
         let visibleRect = camperScrollView.convert(camperScrollView.bounds, to: contentView)
         let placeholderView = UIView(frame: CGRect(x: 8, y: visibleRect.minY, width: view.frame.width - 16, height: camperInfoView.frame.height))
         placeholderView.backgroundColor = UIColor(named: "PlaceholderViewColor")
-        placeholderView.layer.cornerRadius = 10
+        placeholderView.layer.cornerRadius = 15
         contentView.addSubview(placeholderView)
-        var frame = placeholderView.frame
-        frame = CGRect(x: 8, y: clickedButton.frame.minY, width: view.frame.width - 16, height: camperInfoView.frame.height)
+        var frame = CGRect(x: 8, y: clickedButton.frame.minY, width: view.frame.width - 16, height: camperInfoView.frame.height)
         frame.size = CGSize(width: view.frame.width - 16, height: 40)
         UIView.animate(withDuration: 0.25, animations: {
             self.camperInfoView.alpha = 0
@@ -293,5 +291,15 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
     // Dismisses the mail controller
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true)
+    }
+    
+    func createPlaceholderView(initialFrameY: CGFloat, initialFrameHeight: CGFloat, finalFrameY: CGFloat, finalFrameHeight: CGFloat, sizeHeight: CGFloat) {
+        let placeholderView = UIView(frame: CGRect(x: 8, y: initialFrameY, width: view.frame.width - 16, height: initialFrameHeight))
+        placeholderView.backgroundColor = UIColor(named: "PlaceholderViewColor")
+        placeholderView.layer.cornerRadius = 20
+        contentView.addSubview(placeholderView)
+        var frame = placeholderView.frame
+        frame = CGRect(x: 8, y: finalFrameY, width: view.frame.width - 16, height: finalFrameHeight)
+        frame.size = (CGSize(width: view.frame.width - 16, height: sizeHeight))
     }
 }
