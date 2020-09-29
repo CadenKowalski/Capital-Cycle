@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17140" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="v2Q-k5-Eoj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="v2Q-k5-Eoj">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17115"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17124"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -1711,15 +1711,14 @@ $375</string>
                                     <constraint firstItem="OBe-G8-bVg" firstAttribute="width" secondItem="V6z-Cc-jj9" secondAttribute="width" id="vst-s2-cHZ"/>
                                 </constraints>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o4i-jk-oOs" userLabel="Ask Question Btn" customClass="CustomButton" customModule="Capital_Cycle" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o4i-jk-oOs" userLabel="Ask Question Btn" customClass="CustomButton" customModule="Capital_Cycle" customModuleProvider="target">
                                 <rect key="frame" x="309" y="712" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="PvW-Jg-N1H"/>
                                     <constraint firstAttribute="height" constant="50" id="aq7-lL-rJl"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="30"/>
                                 <color key="tintColor" white="0.94999998807907104" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="?">
+                                <state key="normal" title="?" image="question">
                                     <color key="titleColor" white="0.94999998807907104" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -2169,8 +2168,8 @@ $375</string>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="gradient" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="zTC-OI-wyz" userLabel="Profile Img View" customClass="CustomImageView" customModule="Capital_Cycle" customModuleProvider="target">
-                                <rect key="frame" x="137.66666666666666" y="109" width="100" height="98.333333333333329"/>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="zTC-OI-wyz" userLabel="Profile Img View" customClass="CustomImageView" customModule="Capital_Cycle" customModuleProvider="target">
+                                <rect key="frame" x="137.66666666666666" y="109" width="100" height="100"/>
                                 <color key="tintColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -2946,10 +2945,10 @@ $375</string>
     </scenes>
     <designables>
         <designable name="3Dw-am-jHS">
-            <size key="intrinsicContentSize" width="20" height="20.333333333333332"/>
+            <size key="intrinsicContentSize" width="19.666666666666664" height="20.333333333333332"/>
         </designable>
         <designable name="3Fa-Jd-nf8">
-            <size key="intrinsicContentSize" width="20" height="20.333333333333332"/>
+            <size key="intrinsicContentSize" width="19.666666666666664" height="20.333333333333332"/>
         </designable>
         <designable name="92q-wC-rXg">
             <size key="intrinsicContentSize" width="1084.6666666666667" height="20.666666666666668"/>
@@ -2976,7 +2975,7 @@ $375</string>
             <size key="intrinsicContentSize" width="71" height="36"/>
         </designable>
         <designable name="ZBa-uU-Egb">
-            <size key="intrinsicContentSize" width="20" height="20.333333333333332"/>
+            <size key="intrinsicContentSize" width="19.666666666666664" height="20.333333333333332"/>
         </designable>
         <designable name="aBH-zv-Xul">
             <size key="intrinsicContentSize" width="122" height="36"/>
@@ -2988,28 +2987,28 @@ $375</string>
             <size key="intrinsicContentSize" width="82" height="36"/>
         </designable>
         <designable name="gYP-kz-BVS">
-            <size key="intrinsicContentSize" width="19.666666666666668" height="20.333333333333332"/>
+            <size key="intrinsicContentSize" width="19.333333333333332" height="20.333333333333332"/>
         </designable>
         <designable name="j6F-a2-tkK">
             <size key="intrinsicContentSize" width="148" height="36"/>
         </designable>
         <designable name="lgs-0j-80A">
-            <size key="intrinsicContentSize" width="20" height="20.333333333333332"/>
+            <size key="intrinsicContentSize" width="19.666666666666664" height="20.333333333333332"/>
         </designable>
         <designable name="nGU-Ht-t0f">
             <size key="intrinsicContentSize" width="632.33333333333337" height="18"/>
         </designable>
         <designable name="ne8-ME-UPd">
-            <size key="intrinsicContentSize" width="19.666666666666668" height="20.333333333333332"/>
+            <size key="intrinsicContentSize" width="19.333333333333332" height="20.333333333333332"/>
         </designable>
         <designable name="o4i-jk-oOs">
-            <size key="intrinsicContentSize" width="30" height="47"/>
+            <size key="intrinsicContentSize" width="137" height="128"/>
         </designable>
         <designable name="qf8-Wn-zz9">
             <size key="intrinsicContentSize" width="15.666666666666666" height="20.333333333333332"/>
         </designable>
         <designable name="rAP-6m-iZk">
-            <size key="intrinsicContentSize" width="20" height="20.333333333333332"/>
+            <size key="intrinsicContentSize" width="19.666666666666664" height="20.333333333333332"/>
         </designable>
         <designable name="vmQ-G5-hvj">
             <size key="intrinsicContentSize" width="680" height="18"/>
@@ -3018,21 +3017,22 @@ $375</string>
             <size key="intrinsicContentSize" width="15.666666666666666" height="20.333333333333332"/>
         </designable>
         <designable name="zTC-OI-wyz">
-            <size key="intrinsicContentSize" width="19.666666666666668" height="20.333333333333332"/>
+            <size key="intrinsicContentSize" width="19.333333333333332" height="20.333333333333332"/>
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
         <segue reference="A25-06-JRb"/>
-        <segue reference="3nr-z7-VEo"/>
-        <segue reference="HUH-zx-Kae"/>
-        <segue reference="OHo-9b-vdL"/>
-        <segue reference="i74-cw-zSX"/>
-        <segue reference="eIi-nP-8Bb"/>
+        <segue reference="wcA-Ia-qYX"/>
+        <segue reference="eec-PI-NOd"/>
+        <segue reference="9Zo-v6-egz"/>
+        <segue reference="pBk-HJ-vbn"/>
+        <segue reference="uHf-Nt-zpe"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="CapitalCycleStoreLogo" width="118" height="122"/>
         <image name="gear" catalog="system" width="128" height="119"/>
         <image name="person.circle" catalog="system" width="128" height="121"/>
+        <image name="question" width="128" height="128"/>
         <image name="square" catalog="system" width="128" height="114"/>
         <namedColor name="ContrastViewColor">
             <color white="0.75" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

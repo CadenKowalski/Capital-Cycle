@@ -17,6 +17,7 @@ class SchedulePage: UIViewController {
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
     @IBOutlet weak var scheduleLblYConstraint: NSLayoutConstraint!
     @IBOutlet weak var accountSettingsImgView: CustomImageView!
+    
     // Daily scroll view
     @IBOutlet weak var dailyScrollView: UIScrollView!
     @IBOutlet weak var dailyScrollViewYConstraint: NSLayoutConstraint!
@@ -36,6 +37,7 @@ class SchedulePage: UIViewController {
     @IBOutlet weak var fiveActivityLbl: UILabel!
     @IBOutlet weak var sixActivityLbl: UILabel!
     @IBOutlet weak var itemsLbl: UILabel!
+    
     // Overview scroll view
     @IBOutlet weak var overviewScrollView: UIView!
     @IBOutlet weak var overviewScrollViewYConstraint: NSLayoutConstraint!
@@ -49,6 +51,7 @@ class SchedulePage: UIViewController {
     @IBOutlet weak var thursdayLbl: UILabel!
     @IBOutlet weak var fridayLbl: UILabel!
     @IBOutlet weak var noConnectionView: UIView!
+    
     // Code global vars
     let Day = Calendar.current.component(.weekday, from: Date())
     let Hour = Calendar.current.component(.hour, from: Date())

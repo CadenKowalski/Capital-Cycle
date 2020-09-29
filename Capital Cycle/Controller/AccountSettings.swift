@@ -28,6 +28,7 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
     @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var userTypePickerView: UIPickerView!
     @IBOutlet weak var resetPasswordBtn: UIButton!
+    
     // Code global vars
     var typesOfUser = ["Current", "Camper", "Parent", "Counselor"]
     var deletingAccount: Bool?
@@ -155,7 +156,7 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
         }
     }
     
-    // MARK: Settings
+    // MARK: USer Type
     
     // Changes the User Type
     @IBAction func changeUserType(_ sender: UIButton) {
@@ -168,6 +169,8 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
             cancelBtn.isHidden = true
         }
     }
+    
+    // MARK: Profile Image
     
     // Displays the image picker to allow users to set/reset their profile image
     @IBAction func chooseProfileImg(_ sender: UITapGestureRecognizer) {
@@ -205,6 +208,8 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
         
         dismiss(animated: true, completion: nil)
     }
+    
+    // MARK: Email Developer
     
     @IBAction func reportBug(_ sender: UITapGestureRecognizer) {
         let Alert = UIAlertController(title: nil, message:  nil, preferredStyle: .actionSheet)
@@ -244,6 +249,8 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
         }
     }
     
+    // MARK: Log Out
+    
     // Logs out the user
     @IBAction func logOut(_ sender: UIButton?) {
         viewFunctions.formatProgressWheel(progressWheel: accountSettingsProgressWheel, button: nil, toShow: true, hapticFeedback: false)
@@ -258,6 +265,8 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
             viewFunctions.formatProgressWheel(progressWheel: self.accountSettingsProgressWheel, button: nil, toShow: false, hapticFeedback: false)
         }
     }
+    
+    // MARK: Reset Password
     
     // Gets the user's authorization to reset threir password
     @IBAction func resetPassword(_ sender: UIButton) {
@@ -282,6 +291,8 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
         
         present(resetPasswordAlert, animated: true, completion: nil)
     }
+    
+    // MARK: Delete Account
     
     // Gets the user's authorization to delete their account
     @IBAction func getAuthorization(_ sender: UIButton) {
@@ -337,5 +348,12 @@ class AccountSettings: UIViewController, UIPickerViewDelegate, UIPickerViewDataS
     // Called when authentication fails on the user end
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
         print("Error: \(error)")
+    }
+    
+    //MARK: Dismiss
+    
+    // Dismisses the mail controller
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
     }
 }

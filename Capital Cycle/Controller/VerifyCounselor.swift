@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Firebase
-import AuthenticationServices
 
 class VerifyCounselor: UIViewController, UITextFieldDelegate {
     
@@ -18,10 +16,10 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var gradientView: CustomView!
     @IBOutlet weak var gradientViewHeight: NSLayoutConstraint!
     @IBOutlet weak var counselorIdTxtField: UITextField!
-    @IBOutlet weak var disableBtn: UIButton!
     @IBOutlet weak var signUpBtn: CustomButton!
     @IBOutlet weak var signUpBtnProgressWheel: UIActivityIndicatorView!
     @IBOutlet weak var changeBtn: UIButton!
+    
     // Code global vars
     var password: String!
     var presentingVC = "Sign Up"
@@ -57,10 +55,6 @@ class VerifyCounselor: UIViewController, UITextFieldDelegate {
     }
     
     // MARK: Sign Up
-    
-    @IBAction func disableGoogleSignIn(_ sender: UIButton) {
-        disableBtn.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
-    }
     
     // Signs up the user
     @IBAction func signUp(_ sender: UIButton) {

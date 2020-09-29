@@ -25,10 +25,11 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
     @IBOutlet weak var loginBtn: CustomButton!
     @IBOutlet weak var loginBtnProgressWheel: UIActivityIndicatorView!
     @IBOutlet weak var signUpBtn: CustomButton!
+    
     // Code global vars
     var currentNonce: String?
     
-    // MARK: View Instantiation
+    // MARK: viewDidLoad
 
     // Runs when the view is loaded for the first time
     override func viewDidLoad() {
@@ -69,6 +70,10 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
         }
     }
     
+    
+    // MARK: viewDidAppear
+    
+    // Runs every time the view appears on the screen
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         Auth.auth().currentUser?.reload() { action in
@@ -131,7 +136,7 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
             continueWithAppleButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 85)
         ])
         
-        // Formats the Sign in with Apple button
+        // Formats the Sign up with Apple button
         let appleButton: ASAuthorizationAppleIDButton
         if traitCollection.userInterfaceStyle == .light {
             appleButton = ASAuthorizationAppleIDButton(authorizationButtonType: .signUp, authorizationButtonStyle: .black)
@@ -152,11 +157,10 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
     
     // MARK: Log In
     
+    // Ensures that the text fields are not empty
     @IBAction func verifyInputs() {
         if emailTxtField.text == "" {
             viewFunctions.showAlert(title: "Uh oh", message: "Please enter a valid email adress", actionTitle: "OK", actionStyle: .default, view: self)
-        } else if passTxtField.text == "" {
-            viewFunctions.showAlert(title: "Uh oh", message: "Please enter a valid password ", actionTitle: "OK", actionStyle: .default, view: self)
         } else {
             logIn()
         }
@@ -211,7 +215,9 @@ class LogIn: UIViewController, UITextFieldDelegate, ASAuthorizationControllerDel
         }
     }
     
-    // Resets the user's password
+    // MARK: Forgot Password
+    
+    // Sends the user a password reset email
     @IBAction func resetPassword(_ sender: UIButton) {
         let resetPasswordAlert = UIAlertController(title: "Reset Password", message: "Enter your email adress", preferredStyle: .alert)
         resetPasswordAlert.addTextField { (textField) in

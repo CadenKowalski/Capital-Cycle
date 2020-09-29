@@ -23,6 +23,7 @@ class OneMoreStep: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     @IBOutlet weak var signUpBtn: CustomButton!
     @IBOutlet weak var signUpBtnProgressWheel: UIActivityIndicatorView!
     @IBOutlet weak var userTypePickerView: UIPickerView!
+    
     // Code global vars
     var Agree = false
     var typesOfUser = ["--", "Camper", "Parent", "Counselor"]
@@ -53,7 +54,7 @@ class OneMoreStep: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         isModalInPresentation = true
     }
     
-    // MARK: View Management
+    // MARK: Profile Image
     
     // Displays the image picker to allow users to set/reset their profile image
     @IBAction func chooseProfileImg(_ sender: UITapGestureRecognizer) {
@@ -81,6 +82,8 @@ class OneMoreStep: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         dismiss(animated: true, completion: nil)
     }
     
+    // MARK: User Type
+    
     // User declares of which type they are
     @IBAction func showUserTypes(_ sender: UITapGestureRecognizer) {
         if userTypePickerView.isHidden {
@@ -90,6 +93,8 @@ class OneMoreStep: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         }
     }
 
+    // MARK: Privacy Policy
+    
     // Displays the privacy policy text view
     @IBAction func privacyPolicy(_ sender: UIButton) {
         viewFunctions.giveHapticFeedback(error: false, prefers: true)
@@ -107,6 +112,8 @@ class OneMoreStep: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
             sender.setImage(UIImage(systemName: "square"), for: .normal)
         }
     }
+    
+    // MARK: Signed In
     
     // Keep the user signed in or not
     @IBAction func keepSignedIn(_ sender: UIButton) {

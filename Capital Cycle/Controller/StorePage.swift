@@ -21,6 +21,7 @@ class StorePage: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     @IBOutlet weak var accountSettingsImgView: CustomImageView!
     @IBOutlet weak var productsCollection: UICollectionView!
     @IBOutlet weak var productsCollectionHeight: NSLayoutConstraint!
+    
     // Code global vars
     let campProducts = [
         Product(Info: "Session 1 (4 days)\nfrom $375", ImgName: "CapitalCycleStoreLogo"),

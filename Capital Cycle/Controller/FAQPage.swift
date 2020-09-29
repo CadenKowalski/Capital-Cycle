@@ -22,6 +22,7 @@ class FAQPage: UIViewController, MFMailComposeViewControllerDelegate {
     @IBOutlet weak var horizontalContentView: UIView!
     @IBOutlet weak var verticalScrollView: UIScrollView!
     @IBOutlet weak var verticalContentView: UIView!
+    
     // Code global vars
     let questionCategories = ["All", "Schedule", "Payment", "Drop-off/Pickup", "Biking"]
     let categoryWidths = [60, 88, 84, 138, 67]
@@ -91,6 +92,13 @@ class FAQPage: UIViewController, MFMailComposeViewControllerDelegate {
         }
     }
     
+    // Sets the profile image on the account settings button
+    func setProfileImg() {
+        accountSettingsImgView.image = user.profileImg
+    }
+    
+    // MARK: FAQ Handling
+    
     // Manages the FAQs
     func displayFaqs(category: FAQCell.Category) {
         for view in faqViews {
@@ -127,11 +135,6 @@ class FAQPage: UIViewController, MFMailComposeViewControllerDelegate {
         verticalContentView.frame.size = verticalScrollView.contentSize
     }
     
-    // Sets the profile image on the account settings button
-    func setProfileImg() {
-        accountSettingsImgView.image = user.profileImg
-    }
-    
     // Switches between question categories
     @objc func switchCategory(_ sender: CustomButton) {
         viewFunctions.giveHapticFeedback(error: false, prefers: user.prefersHapticFeedback)
@@ -164,5 +167,12 @@ class FAQPage: UIViewController, MFMailComposeViewControllerDelegate {
         }))
             
         present(Alert, animated: true, completion: nil)
+    }
+    
+    //MARK: Dismiss
+    
+    // Dismisses the mail controller
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
     }
 }

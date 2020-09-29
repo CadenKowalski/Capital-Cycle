@@ -26,7 +26,7 @@ struct FirebaseUser {
     var authenticationMethod: String!
     var useFaceIDForAuthentication: Bool!
     
-    // MARK: Firebase User
+    // MARK: User
     
     enum type {
         case none

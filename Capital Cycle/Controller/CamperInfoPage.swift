@@ -30,6 +30,7 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
     @IBOutlet weak var parentEmailLbl: UILabel!
     @IBOutlet weak var signedWaiverLbl: UILabel!
     @IBOutlet weak var notesLbl: UILabel!
+    
     //Code global vars
     var camperInfoRefreshControl = UIRefreshControl()
     var camperCells = [CustomButton]()
@@ -93,6 +94,11 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
         camperInfoView.alpha = 0
     }
     
+    // Sets the profile image on the account settings button
+    func setProfileImg() {
+        accountSettingsImgView.image = user.profileImg
+    }
+    
     // Gets a parent's last name
     func getLastName(name: String) -> String {
         var lastName = ""
@@ -121,11 +127,6 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
         }
         
         return Int(formattedNumber)
-    }
-    
-    // Sets the profile image on the account settings button
-    func setProfileImg() {
-        accountSettingsImgView.image = user.profileImg
     }
     
     // MARK: View Management
@@ -165,7 +166,7 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
         present(Alert, animated: true, completion: nil)
     }
     
-    // MARK: Display Camper Info
+    // MARK: Manage Camper Cells
     
     // Manages the camper cells
     func manageCamperCells() {
@@ -188,6 +189,8 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
             camperCells.append(camperCell)
         }
     }
+    
+    // MARK: Refresh
     
     // Called when the camper cells need to be updated
     @objc func updateData(_ sender: UIRefreshControl?) {
@@ -231,6 +234,8 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
             }
         }
     }
+    
+    // MARK: Info View Animations
     
     // Displays the camper information when a camper's name is clicked
     @objc func displayCamperInfo(_ sender: CustomButton) {
@@ -291,15 +296,5 @@ class CamperInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
     // Dismisses the mail controller
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true)
-    }
-    
-    func createPlaceholderView(initialFrameY: CGFloat, initialFrameHeight: CGFloat, finalFrameY: CGFloat, finalFrameHeight: CGFloat, sizeHeight: CGFloat) {
-        let placeholderView = UIView(frame: CGRect(x: 8, y: initialFrameY, width: view.frame.width - 16, height: initialFrameHeight))
-        placeholderView.backgroundColor = UIColor(named: "PlaceholderViewColor")
-        placeholderView.layer.cornerRadius = 20
-        contentView.addSubview(placeholderView)
-        var frame = placeholderView.frame
-        frame = CGRect(x: 8, y: finalFrameY, width: view.frame.width - 16, height: finalFrameHeight)
-        frame.size = (CGSize(width: view.frame.width - 16, height: sizeHeight))
     }
 }

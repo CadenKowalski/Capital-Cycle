@@ -18,6 +18,7 @@ class AppleUserNavigationController: UINavigationController {
         setUpNavigationController()
     }
     
+    // Sets the presentation controller
     func setUpNavigationController() {
         self.presentationController?.delegate = self.topViewController as! OneMoreStep
     }
