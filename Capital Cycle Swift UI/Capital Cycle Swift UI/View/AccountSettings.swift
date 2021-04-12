@@ -24,7 +24,7 @@ struct AccountSettings: View {
     
     var body: some View {
         
-        VStack(spacing: 16) {
+        VStack(spacing: 24) {
             
             GradientView(title: "Account", viewIsInSheet: true, viewIsInControlPage: false)
             
@@ -33,94 +33,149 @@ struct AccountSettings: View {
                 .frame(width: 100, height: 100)
                 .foregroundColor(Color("LabelColor"))
             
-            Form {
+            VStack(alignment: .leading) {
                 
-                Section(header: Text("My Information")) {
+                Text("MY INFORMATAION")
+                    .font(Font.system(size: 12))
+                
+                VStack(spacing: 4) {
                     
-                    HStack {
+                    ZStack {
                         
-                        Text("Email")
+                        RoundedRectangle(cornerRadius: 8)
+                            .frame(height: 45)
+                            .foregroundColor(Color("TextFieldColor"))
+                        
+                        HStack {
                             
-                        
-                        Spacer()
-                        
-                        Text("cadenkowalski1@gmail.com")
-                    }
-                    
-                    .font(Font.custom("Avenir-Medium", size: 18))
-                    
-                    HStack {
-                        
-                        Text("I am a")
-                            .font(Font.custom("Avenir-Medium", size: 18))
-                        
-                        Spacer(minLength: 30)
-                        
-                        Picker("", selection: $userTypeIndex) {
-                            ForEach(0 ..< userTypes.count) { index in
-                                Text(userTypes[index])
-                            }
+                            Text("Email")
+                                .font(Font.custom("Avenir-Medium", size: 18))
+                            
+                            Spacer()
+                            
+                            Text("cadenkowalski1@gmail.com")
+                                .font(Font.custom("Avenir-Medium", size: 18))
                         }
                         
-                        .padding(.trailing, -8)
-                        .pickerStyle(SegmentedPickerStyle())
-                    }
-                }
-                
-                Section(header: Text("Linked Accounts")) {
-                    
-                    Toggle(isOn: $hasEnabledGoogleAccess) {
-                        
-                        Text("Google")
-                            .font(Font.custom("Avenir-Medium", size: 18))
-                        
-                        Spacer()
+                        .padding([.leading, .trailing], 16)
                     }
                     
-                    .toggleStyle(SwitchToggleStyle(tint: Color("LabelColor")))
-                }
-                
-                Section(header: Text("Help")) {
-                    
-                    HStack {
+                    ZStack {
                         
-                        Text("Report a bug")
-                            .font(Font.custom("Avenir-Medium", size: 18))
+                        RoundedRectangle(cornerRadius: 8)
+                            .frame(height: 45)
+                            .foregroundColor(Color("TextFieldColor"))
                         
-                        Spacer()
+                        HStack {
+                            
+                            Text("I am a")
+                                .font(Font.custom("Avenir-Medium", size: 18))
+                            
+                            Spacer(minLength: 32)
+                            
+                            Picker("", selection: $userTypeIndex) {
+                                
+                                ForEach(0 ..< userTypes.count) { index in
+                                    
+                                    Text(userTypes[index])
+                                }
+                            }
+                            
+                            .pickerStyle(SegmentedPickerStyle())
+                        }
                         
-                        Image(systemName: "chevron.right").resizable()
-                            .foregroundColor(.white)
-                            .frame(width: 8.3, height: 14.7)
-                    }
-                    
-                    HStack {
-                        
-                        Text("Suggest improvements")
-                            .font(Font.custom("Avenir-Medium", size: 18))
-                        
-                        Spacer()
-                        
-                        Image(systemName: "chevron.right").resizable()
-                            .foregroundColor(.white)
-                            .frame(width: 8.3, height: 14.7)
-                    }
-                    
-                    HStack {
-                        
-                        Text("Privacy Policy")
-                            .font(Font.custom("Avenir-Medium", size: 18))
-                        
-                        Spacer()
-                        
-                        Image(systemName: "chevron.right").resizable()
-                            .foregroundColor(.white)
-                            .frame(width: 8.3, height: 14.7)
+                        .padding(.leading, 16)
+                        .padding(.trailing, 8)
                     }
                 }
             }
             
-            .background(Color("ViewColor"))
+            .padding([.leading, .trailing], 16)
+            
+            VStack(alignment: .leading) {
+                
+                Text("LINKED ACCOUNTS")
+                    .font(Font.system(size: 12))
+                    .padding([.leading, .trailing], 16)
+                                    
+                SettingsCellView(settingName: "Google", toggleValue: $hasEnabledGoogleAccess)
+            }
+                        
+            VStack(alignment: .leading) {
+                
+                Text("HELP")
+                    .font(Font.system(size: 12))
+                
+                VStack(spacing: 4) {
+                    
+                    ZStack {
+                        
+                        RoundedRectangle(cornerRadius: 8)
+                            .frame(height: 45)
+                            .foregroundColor(Color("TextFieldColor"))
+                        
+                        HStack {
+                            
+                            Text("Report a bug")
+                                .font(Font.custom("Avenir-Medium", size: 18))
+                            
+                            Spacer()
+                            
+                            Image(systemName: "chevron.right").resizable()
+                                .foregroundColor(.white)
+                                .frame(width: 8.3, height: 14.7)
+                        }
+                        
+                        .padding([.leading, .trailing], 16)
+                    }
+                    
+                    ZStack {
+                        
+                        RoundedRectangle(cornerRadius: 8)
+                            .frame(height: 45)
+                            .foregroundColor(Color("TextFieldColor"))
+                        
+                        HStack {
+                            
+                            Text("Suggested Improvements")
+                                .font(Font.custom("Avenir-Medium", size: 18))
+                            
+                            Spacer()
+                            
+                            Image(systemName: "chevron.right").resizable()
+                                .foregroundColor(.white)
+                                .frame(width: 8.3, height: 14.7)
+                        }
+                        
+                        .padding([.leading, .trailing], 16)
+                    }
+                    
+                    ZStack {
+                        
+                        RoundedRectangle(cornerRadius: 8)
+                            .frame(height: 45)
+                            .foregroundColor(Color("TextFieldColor"))
+                        
+                        HStack {
+                            
+                            Text("Privacy Policy")
+                                .font(Font.custom("Avenir-Medium", size: 18))
+                            
+                            Spacer()
+                            
+                            Image(systemName: "chevron.right").resizable()
+                                .foregroundColor(.white)
+                                .frame(width: 8.3, height: 14.7)
+                        }
+                        
+                        .padding([.leading, .trailing], 16)
+                    }
+                }
+            }
+            
+            .padding([.leading, .trailing], 16)
+            
+            Spacer()
         }
         
         .background(Color("ViewColor"))

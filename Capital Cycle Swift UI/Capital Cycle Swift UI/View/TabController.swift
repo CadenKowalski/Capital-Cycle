@@ -1,5 +1,5 @@
 //
-//  TabView.swift
+//  TabController.swift
 //  Capital Cycle Swift UI
 //
 //  Created by Caden Kowalski on 8/10/20.
@@ -55,6 +55,8 @@ struct TabController: View {
                     Text("Camper Info")
                 }
         }
+        
+        .accentColor(Color.white)
     }
 }
 

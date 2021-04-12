@@ -13,8 +13,8 @@ class ViewModel: ObservableObject {
     
     private var overviewTabModel = OverviewTabModel()
     private var registerTabModel = RegisterTabModel()
+    private var userModel = User()
     @Published private var faqsTabModel = FAQsTabModel()
-    @EnvironmentObject private var userModel: User
     
     // MARK: Model Variables
     
@@ -51,6 +51,22 @@ class ViewModel: ObservableObject {
         }
     }
     
+    var isCounselorVerified: Bool {
+        get {
+            userModel.isCounselorVerified
+        } set {
+            changeUserCounselorshipStatus(to: newValue)
+        }
+    }
+    
+    var type: User.userType {
+        get {
+            userModel.type
+        } set {
+            changeType(to: newValue)
+        }
+    }
+    
     var remainSignedIn: Bool {
         get {
             userModel.remainSignedIn
@@ -58,6 +74,10 @@ class ViewModel: ObservableObject {
             changeSignedInValue()
         }
     }
+    
+    /*var signUpError: [AuthenticationFunctions.signUpError] {
+        AuthenticationFunctions.verifyInputs(email: "hello", password: "hello", confirmPassword: "hello", userHasAgreedToPrivacyPolicy: false)
+    }*/
         
     // MARK: Intents
     
@@ -85,7 +105,19 @@ class ViewModel: ObservableObject {
         userModel.email = newEmail
     }
     
+    func changeUserCounselorshipStatus(to newValue: Bool) {
+        userModel.isCounselorVerified = newValue
+    }
+    
+    func changeType(to newType: User.userType) {
+        userModel.type = newType
+    }
+    
     func changeSignedInValue() {
         userModel.remainSignedIn.toggle()
+    }
+    
+    func verifyInputs(email: String, password: String, confirmPassword: String, userHasAgreedToPrivacyPolicy: Bool) -> [AuthenticationFunctions.signUpError] {
+        AuthenticationFunctions.verifyInputs(email: email, password: password, confirmPassword: confirmPassword, hasAgreedToPrivacyPolicy: userHasAgreedToPrivacyPolicy)
     }
 }

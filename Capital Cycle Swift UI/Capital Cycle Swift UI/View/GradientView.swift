@@ -29,7 +29,7 @@ struct GradientView: View {
             
             if viewIsInSheet {
                 titleString
-                    .font(.system(size: 35))
+                    .font(.custom("Avenir-Medium", size: 40))
             } else if deviceHasNotch {
                 titleString
                     .padding(.top, 25)

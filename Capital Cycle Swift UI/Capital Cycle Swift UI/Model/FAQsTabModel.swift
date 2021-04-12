@@ -68,6 +68,7 @@ struct FAQsTabModel {
     
     // Swithes FAQ categories
     mutating func switchCategories(from categorySelector: FAQCategorySelector) {
+        
         let currentCategorySelectorIndex = indexWhereSelectedIsTrue()
         let newCategorySelectorIndex = index(of: categorySelector)
         faqCategorySelectors[currentCategorySelectorIndex].isSelected = false
@@ -77,8 +78,11 @@ struct FAQsTabModel {
     
     // Returns the index of the requested FAQCategorySelector in faqCategorySelectors
     func index(of categorySelector: FAQCategorySelector) -> Int {
+        
         for index in 0 ..< faqCategorySelectors.count {
+            
             if faqCategorySelectors[index].id == categorySelector.id {
+                
                 return index
             }
         }
@@ -88,8 +92,11 @@ struct FAQsTabModel {
     
     // Returns the index of the current FAQCategorySelector in faqCategorySelectors
     func indexWhereSelectedIsTrue() -> Int{
+        
         for index in 0 ..< faqCategorySelectors.count {
+            
             if faqCategorySelectors[index].isSelected == true {
+                
                 return index
             }
         }

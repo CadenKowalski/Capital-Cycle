@@ -28,7 +28,7 @@
 		57F228DC24E21B7B0065E627 /* GeneralSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F228DB24E21B7B0065E627 /* GeneralSettings.swift */; };
 		57F228DE24E21BBD0065E627 /* AccountSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F228DD24E21BBD0065E627 /* AccountSettings.swift */; };
 		57F228E024E21C0C0065E627 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F228DF24E21C0C0065E627 /* CustomTextField.swift */; };
-		57F228E224E21D250065E627 /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F228E124E21D250065E627 /* TabView.swift */; };
+		57F228E224E21D250065E627 /* TabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F228E124E21D250065E627 /* TabController.swift */; };
 		57F228E624E222CF0065E627 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F228E524E222CF0065E627 /* ViewModel.swift */; };
 		57F228E824E22FBD0065E627 /* OverviewTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F228E724E22FBD0065E627 /* OverviewTab.swift */; };
 		57F228EC24E2392F0065E627 /* OverviewTabModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F228EB24E2392E0065E627 /* OverviewTabModel.swift */; };
@@ -40,6 +40,9 @@
 		57F228F824E259060065E627 /* VerifyUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F228F724E259060065E627 /* VerifyUser.swift */; };
 		57F228FA24E2594F0065E627 /* VerifyCounselor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F228F924E2594F0065E627 /* VerifyCounselor.swift */; };
 		57F228FC24E25DCD0065E627 /* PrivacyPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F228FB24E25DCD0065E627 /* PrivacyPolicy.swift */; };
+		C83AFA00256808E7007F5F23 /* AuthenticationFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83AF9FF256808E7007F5F23 /* AuthenticationFunctions.swift */; };
+		C83AFA05256B2D9C007F5F23 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83AFA04256B2D9C007F5F23 /* CircleView.swift */; };
+		C8FCC1B7262209070071C1CA /* SettingsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FCC1B6262209070071C1CA /* SettingsCellView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,7 +70,7 @@
 		57F228DB24E21B7B0065E627 /* GeneralSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettings.swift; sourceTree = "<group>"; };
 		57F228DD24E21BBD0065E627 /* AccountSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettings.swift; sourceTree = "<group>"; };
 		57F228DF24E21C0C0065E627 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
-		57F228E124E21D250065E627 /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
+		57F228E124E21D250065E627 /* TabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabController.swift; sourceTree = "<group>"; };
 		57F228E524E222CF0065E627 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		57F228E724E22FBD0065E627 /* OverviewTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewTab.swift; sourceTree = "<group>"; };
 		57F228EB24E2392E0065E627 /* OverviewTabModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewTabModel.swift; sourceTree = "<group>"; };
@@ -79,6 +82,9 @@
 		57F228F724E259060065E627 /* VerifyUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyUser.swift; sourceTree = "<group>"; };
 		57F228F924E2594F0065E627 /* VerifyCounselor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyCounselor.swift; sourceTree = "<group>"; };
 		57F228FB24E25DCD0065E627 /* PrivacyPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicy.swift; sourceTree = "<group>"; };
+		C83AF9FF256808E7007F5F23 /* AuthenticationFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationFunctions.swift; sourceTree = "<group>"; };
+		C83AFA04256B2D9C007F5F23 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		C8FCC1B6262209070071C1CA /* SettingsCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCellView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +155,7 @@
 				57F228EB24E2392E0065E627 /* OverviewTabModel.swift */,
 				57EC3F6524E355D500B239B5 /* RegisterTabModel.swift */,
 				57EC3F6924E36CB800B239B5 /* FAQsTabModel.swift */,
+				C83AF9FF256808E7007F5F23 /* AuthenticationFunctions.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -161,16 +168,17 @@
 				57F228DF24E21C0C0065E627 /* CustomTextField.swift */,
 				57F228D524E21A4B0065E627 /* SignInWithAppleButton.swift */,
 				57F228D724E21A930065E627 /* OverviewCellView.swift */,
-				57EC3F6724E3562200B239B5 /* RegisterCellView.swift */,
 				57EC3F6D24E3807A00B239B5 /* FAQCategoryView.swift */,
 				57EC3F6B24E36F9F00B239B5 /* FAQCellView.swift */,
 				57BC6B6F24E39F1300C24762 /* MailView.swift */,
+				57EC3F6724E3562200B239B5 /* RegisterCellView.swift */,
+				C8FCC1B6262209070071C1CA /* SettingsCellView.swift */,
 				57F228B924E20AB70065E627 /* Login.swift */,
 				57F228F524E23BED0065E627 /* SignUp.swift */,
 				57F228FB24E25DCD0065E627 /* PrivacyPolicy.swift */,
 				57F228F724E259060065E627 /* VerifyUser.swift */,
 				57F228F924E2594F0065E627 /* VerifyCounselor.swift */,
-				57F228E124E21D250065E627 /* TabView.swift */,
+				57F228E124E21D250065E627 /* TabController.swift */,
 				57F228E724E22FBD0065E627 /* OverviewTab.swift */,
 				57F228ED24E23A850065E627 /* ScheduleTab.swift */,
 				57F228EF24E23ACE0065E627 /* RegisterTab.swift */,
@@ -179,6 +187,7 @@
 				57F228DB24E21B7B0065E627 /* GeneralSettings.swift */,
 				57F228DD24E21BBD0065E627 /* AccountSettings.swift */,
 				57F228C024E20ABA0065E627 /* LaunchScreen.storyboard */,
+				C83AFA04256B2D9C007F5F23 /* CircleView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -270,17 +279,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				57F228EE24E23A850065E627 /* ScheduleTab.swift in Sources */,
+				C83AFA00256808E7007F5F23 /* AuthenticationFunctions.swift in Sources */,
 				57F228EC24E2392F0065E627 /* OverviewTabModel.swift in Sources */,
 				57EC3F6824E3562200B239B5 /* RegisterCellView.swift in Sources */,
 				57F228F024E23ACE0065E627 /* RegisterTab.swift in Sources */,
 				57F228F424E23B520065E627 /* CamperInfoTab.swift in Sources */,
 				57EC3F6624E355D500B239B5 /* RegisterTabModel.swift in Sources */,
-				57F228E224E21D250065E627 /* TabView.swift in Sources */,
+				57F228E224E21D250065E627 /* TabController.swift in Sources */,
 				57EC3F6C24E36F9F00B239B5 /* FAQCellView.swift in Sources */,
 				5756638624F43AC1007DBFBC /* User.swift in Sources */,
 				57F228E024E21C0C0065E627 /* CustomTextField.swift in Sources */,
 				57F228B624E20AB70065E627 /* AppDelegate.swift in Sources */,
 				57F228B824E20AB70065E627 /* SceneDelegate.swift in Sources */,
+				C83AFA05256B2D9C007F5F23 /* CircleView.swift in Sources */,
 				57F228E624E222CF0065E627 /* ViewModel.swift in Sources */,
 				57F228F824E259060065E627 /* VerifyUser.swift in Sources */,
 				57F228F624E23BED0065E627 /* SignUp.swift in Sources */,
@@ -296,6 +307,7 @@
 				57F228DE24E21BBD0065E627 /* AccountSettings.swift in Sources */,
 				57F228F224E23B010065E627 /* FAQsTab.swift in Sources */,
 				57F228D824E21A930065E627 /* OverviewCellView.swift in Sources */,
+				C8FCC1B7262209070071C1CA /* SettingsCellView.swift in Sources */,
 				57F228FA24E2594F0065E627 /* VerifyCounselor.swift in Sources */,
 				57EC3F6A24E36CB800B239B5 /* FAQsTabModel.swift in Sources */,
 			);
@@ -437,6 +449,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Capital Cycle Swift UI/Resources/Capital Cycle Swift UI.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Capital Cycle Swift UI/Preview Content\"";
 				DEVELOPMENT_TEAM = 7ZA9Y8B6FF;
@@ -448,6 +461,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cadenkowalski.Capital-Cycle-Swift-UI";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -459,6 +473,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Capital Cycle Swift UI/Resources/Capital Cycle Swift UI.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Capital Cycle Swift UI/Preview Content\"";
 				DEVELOPMENT_TEAM = 7ZA9Y8B6FF;
@@ -470,6 +485,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cadenkowalski.Capital-Cycle-Swift-UI";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

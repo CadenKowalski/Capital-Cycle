@@ -12,6 +12,7 @@ import SwiftUI
 struct Login: View {
     
     @EnvironmentObject var viewModel: ViewModel
+    @EnvironmentObject var user: User
     @State var email = ""
     @State var password = ""
     @State var loginWasSuccessful = false
@@ -28,8 +29,10 @@ struct Login: View {
             VStack(spacing: 8) {
             
                 CustomTextField(placeholderString: "Email", text: $email)
+                    .cornerRadius(8)
                 
                 CustomTextField(placeholderString: "Password", text: $password)
+                    .cornerRadius(8)
             }
             
             .padding([.leading, .trailing],  16)
@@ -47,18 +50,15 @@ struct Login: View {
                 Button(action: {
                     loginWasSuccessful = true
                 }) {
-                    Text("Login")
+                    Text("Log In")
                         .frame(width: 140, height: 45)
                         .background(Gradients.titleGradient)
                         .foregroundColor(.white)
                         .cornerRadius(22.5)
-                        .font(Font.system(size: 20, weight: .medium))
+                        .font(Font.custom("Avenir-Heavy", size: 22))
                 }
                 
                 .padding(.leading, 30)
-                .fullScreenCover(isPresented: $loginWasSuccessful, content: {
-                    TabController().environmentObject(ViewModel())
-                })
                 
                 Spacer()
                 
@@ -88,10 +88,6 @@ struct Login: View {
                         .font(Font.system(size: 13, weight: .semibold))
                 }
                 
-                .sheet(isPresented: $didRequestToSignUp) {
-                    SignUp()
-                }
-                
                 SignInWithAppleButton(cornerRadius: 8, buttonStyle: .signUp)
                     .frame(width: 255, height: 33)
             }
@@ -101,6 +97,13 @@ struct Login: View {
         
         .background(Color("ViewColor"))
         .edgesIgnoringSafeArea(.all)
+        .fullScreenCover(isPresented: $loginWasSuccessful, content: {
+            TabController().environmentObject(ViewModel())
+        })
+        
+        .fullScreenCover(isPresented: $didRequestToSignUp) {
+            SignUp()
+        }
     }
 }
 

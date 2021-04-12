@@ -25,49 +25,39 @@ struct GeneralSettings: View {
     
     var body: some View {
         
-        VStack(spacing: 0) {
+        VStack(alignment: .leading) {
             
             GradientView(title: "Settings", viewIsInSheet: true, viewIsInControlPage: false)
             
-            Form {
+            Text("PREFERENCES")
+                .font(Font.system(size: 12))
+                .padding([.top, .leading], 16)
+            
+            VStack(spacing: 4) {
+            
+                SettingsCellView(settingName: "Keep me signed in", toggleValue: $remainSignedIn)
                 
-                Section(header: Text("Preferences")) {
-                    
-                    Toggle(isOn: $remainSignedIn) {
-                        
-                        Text("Keep me signed in")
-                            .font(Font.custom("Avenir-Medium", size: 18))
-                    }
-                    
-                    Toggle(isOn: $prefersFaceIDToAuthenticate) {
-                        
-                        Text("Use Face ID to authenticate")
-                            .font(Font.custom("Avenir-Medium", size: 18))
-                    }
-                    
-                    Toggle(isOn: $prefersHapticFeedback) {
-                        
-                        Text("Haptic Feedback")
-                            .font(Font.custom("Avenir-Medium", size: 18))
-                    }
-                }
+                SettingsCellView(settingName: "Use Face ID to authenticate", toggleValue: $prefersFaceIDToAuthenticate)
                 
-                Section(header: Text("Notifications")) {
-                    
-                    Toggle(isOn: $prefersNotifications) {
-                        
-                        Text("Send me notifications")
-                            .font(Font.custom("Avenir-Medium", size: 18))
-                    }
-                }
+                SettingsCellView(settingName: "Haptic Feedback", toggleValue: $prefersHapticFeedback)
             }
             
-            .padding(.top, 8)
-            .background(Color("ViewColor"))
-            .toggleStyle(SwitchToggleStyle(tint: Color("LabelColor")))
+            Text("NOTIFICATIONS")
+                .font(Font.system(size: 12))
+                .padding([.top, .leading], 16)
+            
+            VStack(spacing: 4) {
+            
+                SettingsCellView(settingName: "Send me notifications", toggleValue: $prefersNotifications)
+            }
+            
+            Spacer()
+            
         }
         
+        .background(Color("ViewColor"))
         .edgesIgnoringSafeArea(.all)
+
     }
 }
 
