@@ -12,6 +12,7 @@ import SwiftUI
 struct ScheduleTab: View {
     
     @EnvironmentObject var viewModel: ViewModel
+    @EnvironmentObject var user: User
     
     // MARK: View Construction
     
@@ -20,6 +21,8 @@ struct ScheduleTab: View {
         VStack {
             
             GradientView(title: "Schedule", viewIsInSheet: false, viewIsInControlPage: true)
+                .environmentObject(viewModel)
+                .environmentObject(user)
             
             Spacer()
         }

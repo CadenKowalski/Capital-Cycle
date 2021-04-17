@@ -17,6 +17,8 @@ struct GradientView: View {
     var deviceHasNotch = UIScreen.main.bounds.height > 700
     @State var didTapOnGeneralSettings = false
     @State var didTapOnAccountSettings = false
+    @EnvironmentObject var viewModel: ViewModel
+    @EnvironmentObject var user: User
     
     // MARK: View Construction
     
@@ -28,12 +30,15 @@ struct GradientView: View {
                 .fontWeight(.bold)
             
             if viewIsInSheet {
+                
                 titleString
                     .font(.custom("Avenir-Medium", size: 40))
             } else if deviceHasNotch {
+                
                 titleString
                     .padding(.top, 25)
             } else {
+                
                 titleString
                     .padding(.top, 10)
             }
@@ -43,29 +48,39 @@ struct GradientView: View {
                 HStack() {
                     
                     Button(action: {
+                        
                         didTapOnGeneralSettings = true
                     }) {
+                        
                         Image(systemName: "gear").resizable()
                             .frame(width: UIScreen.main.bounds.width / 10.71, height: UIScreen.main.bounds.width / 10.71)
                             .padding(.leading, 20)
                     }
                     
                     .sheet(isPresented: $didTapOnGeneralSettings) {
+                        
                         GeneralSettings()
+                            .environmentObject(viewModel)
+                            .environmentObject(user)
                     }
                     
                     Spacer()
                     
                     Button(action: {
+                        
                         didTapOnAccountSettings = true
                     }) {
+                        
                         Image(systemName: "person.circle").resizable()
                             .frame(width: UIScreen.main.bounds.width / 10.71, height: UIScreen.main.bounds.width / 10.71)
                             .padding(.trailing, 20)
                     }
                     
                     .sheet(isPresented: $didTapOnAccountSettings, content: {
-                        AccountSettings()
+                        
+                        AccountSettings(isPresented: $didTapOnAccountSettings)
+                            .environmentObject(viewModel)
+                            .environmentObject(user)
                     })
                 }
             }

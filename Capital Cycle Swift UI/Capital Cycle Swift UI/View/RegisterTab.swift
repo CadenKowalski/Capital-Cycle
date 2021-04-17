@@ -12,6 +12,7 @@ import SwiftUI
 struct RegisterTab: View {
     
     @EnvironmentObject var viewModel: ViewModel
+    @EnvironmentObject var user: User
     
     // MARK: View Construction
     
@@ -20,6 +21,8 @@ struct RegisterTab: View {
         VStack {
             
             GradientView(title: "Register", viewIsInSheet: false, viewIsInControlPage: true)
+                .environmentObject(viewModel)
+                .environmentObject(user)
             
             ScrollView {
                 

@@ -12,6 +12,7 @@ import SwiftUI
 struct TabController: View {
     
     @EnvironmentObject var viewModel: ViewModel
+    @EnvironmentObject var user: User
     
     // Initializes the tab controller with preferences
     init() {
@@ -25,31 +26,41 @@ struct TabController: View {
         
         TabView {
             
-            OverviewTab().environmentObject(ViewModel())
+            OverviewTab()
+                .environmentObject(viewModel)
+                .environmentObject(user)
                 .tabItem {
                     Image(systemName: "list.dash")
                     Text("Overview")
                 }
             
-            ScheduleTab().environmentObject(ViewModel())
+            ScheduleTab()
+                .environmentObject(viewModel)
+                .environmentObject(user)
                 .tabItem {
                     Image(systemName: "calendar")
                     Text("Schedule")
                 }
             
-            RegisterTab().environmentObject(ViewModel())
+            RegisterTab()
+                .environmentObject(viewModel)
+                .environmentObject(user)
                 .tabItem {
                     Image(systemName: "dollarsign.square")
                     Text("Register")
                 }
             
-            FAQsTab().environmentObject(ViewModel())
+            FAQsTab()
+                .environmentObject(viewModel)
+                .environmentObject(user)
                 .tabItem {
                     Image(systemName: "questionmark.square")
                     Text("FAQs")
                 }
             
-            CamperInfoTab().environmentObject(ViewModel())
+            CamperInfoTab()
+                .environmentObject(viewModel)
+                .environmentObject(user)
                 .tabItem {
                     Image(systemName: "person.crop.square")
                     Text("Camper Info")

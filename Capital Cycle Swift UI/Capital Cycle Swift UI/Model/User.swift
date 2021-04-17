@@ -19,6 +19,7 @@ class User: ObservableObject {
     var authenticationMethod = ""
     @Published var email = ""
     @State var type = userType.none
+    @Published var isSignedIn = false
     @Published var remainSignedIn = false
     @State var prefersNotifications = true
     @State var prefersHapticFeedback = true
@@ -43,6 +44,7 @@ class User: ObservableObject {
         self.email = ""
         self.profileImg = Image(systemName: "person.circle")
         self.profileImgUrl = "Default"
+        self.isSignedIn = false
         self.remainSignedIn = false
         self.type = userType.none
         self.prefersHapticFeedback = true

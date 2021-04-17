@@ -12,6 +12,7 @@ import SwiftUI
 struct OverviewTab: View {
     
     @EnvironmentObject var viewModel: ViewModel
+    @EnvironmentObject var user: User
     
     // MARK: View Construction
     
@@ -20,6 +21,8 @@ struct OverviewTab: View {
         VStack(spacing: 0) {
             
             GradientView(title: "Overview", viewIsInSheet: false, viewIsInControlPage: true)
+                .environmentObject(viewModel)
+                .environmentObject(user)
             
             ScrollView {
                 

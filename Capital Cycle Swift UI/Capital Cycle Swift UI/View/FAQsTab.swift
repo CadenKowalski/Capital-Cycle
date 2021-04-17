@@ -13,6 +13,7 @@ import MessageUI
 struct FAQsTab: View {
     
     @EnvironmentObject var viewModel: ViewModel
+    @EnvironmentObject var user: User
     @State var didRequestToSendEmail = false
     @State var didConfirmIntentToSendEmail = false
     
@@ -25,6 +26,8 @@ struct FAQsTab: View {
             VStack(spacing: 0) {
                 
                 GradientView(title: "FAQs", viewIsInSheet: false, viewIsInControlPage: true)
+                    .environmentObject(viewModel)
+                    .environmentObject(user)
                 
                 ScrollView {
                     

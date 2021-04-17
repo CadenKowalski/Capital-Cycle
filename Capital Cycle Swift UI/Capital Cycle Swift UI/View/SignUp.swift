@@ -19,6 +19,7 @@ struct SignUp: View {
     @State var inputsAreValid = false
     @State var openPrivacyPolicy = false
     @State var userHasAgreedToPrivacyPolicy = false
+    @State var signUpWasSuccessfull = false
     @State var signUpErrors: [AuthenticationFunctions.signUpError] = [.none]
     
     // Initializes the form with preferences
@@ -31,160 +32,171 @@ struct SignUp: View {
     // MARK: View Construction
     
     var body: some View {
-        
-        VStack(spacing: 16) {
+                    
+        VStack(spacing: 8) {
             
             GradientView(title: "Sign Up", viewIsInSheet: false, viewIsInControlPage: false)
             
-            Image(systemName: "person.circle").resizable()
-                .frame(width: 100, height: 100, alignment: .center)
-                .foregroundColor(Color("LabelColor"))
-                .font(Font.title.weight(.light))
-            
-            VStack {
+            GeometryReader { gr in
                 
-                ZStack {
+                ScrollView {
                     
-                    CustomTextField(placeholderString: "Email", text: $viewModel.email)
-                        .foregroundColor(signUpErrors.contains(.emailIsNotValid) ? Color.red.opacity(0.3) : Color.clear)
-                        .keyboardType(.emailAddress)
-                        .textContentType(.emailAddress)
-                        .cornerRadius(8)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 8)
-                            .stroke(signUpErrors.contains(.emailIsNotValid) ? Color.red.opacity(0.3) : Color.clear, lineWidth: 5)
-                        )
-                }
-                
-                
-                
-                CustomTextField(placeholderString: "Password", text: $password)
-                    .textContentType(.newPassword)
-                    .cornerRadius(8)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(signUpErrors.contains(.passwordsDoNotMatch) || signUpErrors.contains(.passwordIsNotValid) ? Color.red.opacity(0.3) : Color.clear, lineWidth: 5)
-                    )
-                
-                CustomTextField(placeholderString: "Confirm Password", text: $confirmPassword)
-                    .textContentType(.newPassword)
-                    .cornerRadius(8)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 8)
-                        .stroke(signUpErrors.contains(.passwordsDoNotMatch) ? Color.red.opacity(0.3) : Color.clear, lineWidth: 5)
-                    )
-                
-                Text("Must be at least 6 chatacters long, contain both cases, and use either a number or a symbol.")
-                    .font(Font.custom("Avenir-Medium", size: 14))
-                    .foregroundColor(Color("LabelColor"))
-                    .padding([.leading, .trailing], 4)
-            }
-            
-            .padding([.leading, .trailing], 16)
-            
-            VStack {
-                
-                ZStack {
+                    VStack(spacing: 16) {
                     
-                    RoundedRectangle(cornerRadius: 8)
-                        .frame(height: 45)
-                        .foregroundColor(Color("TextFieldColor"))
-                    
-                    HStack {
-                        
-                        Text("I am a")
-                            .font(Font.custom("Avenir-Medium", size: 18))
+                        Image(systemName: "person.circle").resizable()
+                            .frame(width: 100, height: 100, alignment: .center)
                             .foregroundColor(Color("LabelColor"))
+                            .font(Font.title.weight(.light))
                         
-                        Spacer(minLength: 32)
-                        
-                        Picker("", selection: $userTypeIndex) {
+                        VStack {
                             
-                            ForEach(0 ..< userTypes.count) { index in
+                            ZStack {
                                 
-                                Text(userTypes[index])
+                                CustomTextField(placeholderString: "Email", text: $viewModel.email)
+                                    .foregroundColor(signUpErrors.contains(.emailIsNotValid) ? Color.red.opacity(0.3) : Color.clear)
+                                    .keyboardType(.emailAddress)
+                                    .textContentType(.emailAddress)
+                                    .cornerRadius(8)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 8)
+                                        .stroke(signUpErrors.contains(.emailIsNotValid) ? Color.red.opacity(0.3) : Color.clear, lineWidth: 5)
+                                    )
                             }
+                            
+                            
+                            
+                            CustomTextField(placeholderString: "Password", text: $password)
+                                .textContentType(.newPassword)
+                                .cornerRadius(8)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .stroke(signUpErrors.contains(.passwordsDoNotMatch) || signUpErrors.contains(.passwordIsNotValid) ? Color.red.opacity(0.3) : Color.clear, lineWidth: 5)
+                                )
+                            
+                            CustomTextField(placeholderString: "Confirm Password", text: $confirmPassword)
+                                .textContentType(.newPassword)
+                                .cornerRadius(8)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 8)
+                                    .stroke(signUpErrors.contains(.passwordsDoNotMatch) ? Color.red.opacity(0.3) : Color.clear, lineWidth: 5)
+                                )
+                            
+                            Text("Must be at least 6 chatacters long, contain both cases, and use either a number or a symbol.")
+                                .font(Font.custom("Avenir-Medium", size: 14))
+                                .foregroundColor(Color("LabelColor"))
+                                .padding([.leading, .trailing], 4)
                         }
                         
-                        .pickerStyle(SegmentedPickerStyle())
-                    }
-                    
-                    .padding(.leading, 16)
-                    .padding(.trailing, 8)
-                }
-                
-                .padding([.leading, .trailing], 16)
-                
-                SettingsCellView(settingName: "Keep me signed in", toggleValue: $viewModel.remainSignedIn)
-                
-                ZStack {
-                    
-                    RoundedRectangle(cornerRadius: 8)
-                        .frame(height: 45)
-                        .foregroundColor(Color("TextFieldColor"))
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 8)
-                            .stroke(signUpErrors.contains(.userHasNotAgreedToPrivacyPolicy) ? Color.red.opacity(0.3) : Color.clear, lineWidth: 5)
-                        )
-                    
-                    HStack {
+                        .padding([.leading, .trailing], 16)
                         
-                        Text("Privacy Policy")
-                            .font(Font.custom("Avenir-Medium", size: 18))
-                            .foregroundColor(Color("LabelColor"))
-                        
-                        Rectangle()
-                            .frame(height: 40)
-                            .foregroundColor(Color("TextFieldColor"))
-                        
-                        Image(systemName: "chevron.right").resizable()
-                            .foregroundColor(.white)
-                            .frame(width: 8.3, height: 14.7)
-                    }
-                    
-                    .padding([.leading, .trailing], 16)
-                    .onTapGesture(count: 1, perform: {
-                        
-                        userHasAgreedToPrivacyPolicy = true
-                        openPrivacyPolicy = true
-                    })
-                }
-                
-                .padding([.leading, .trailing], 16)
-            }
-            
-            .sheet(isPresented: $openPrivacyPolicy, content: {
-                PrivacyPolicy()
-            })
-            
-            Button(action: {
-                        
-                verifyInputs()
-            }) {
-                        
-                Text("Continue")
-                    .frame(width: 140, height: 45)
-                    .background(Gradients.titleGradient)
-                    .foregroundColor(.white)
-                    .cornerRadius(22.5)
-                    .font(Font.system(size: 20, weight: .medium))
-            }
-            
-            .offset(y: 120)
-            .sheet(isPresented: $inputsAreValid) {
-                if userTypeIndex == 2 {
+                        VStack {
                             
-                    VerifyCounselor()
-                } else if viewModel.type != .admin {
+                            ZStack {
+                                
+                                RoundedRectangle(cornerRadius: 8)
+                                    .frame(height: 45)
+                                    .foregroundColor(Color("TextFieldColor"))
+                                
+                                HStack {
+                                    
+                                    Text("I am a")
+                                        .font(Font.custom("Avenir-Medium", size: 18))
+                                        .foregroundColor(Color("LabelColor"))
+                                    
+                                    Spacer(minLength: 32)
+                                    
+                                    Picker("", selection: $userTypeIndex) {
+                                        
+                                        ForEach(0 ..< userTypes.count) { index in
+                                            
+                                            Text(userTypes[index])
+                                        }
+                                    }
+                                    
+                                    .pickerStyle(SegmentedPickerStyle())
+                                }
+                                
+                                .padding(.leading, 16)
+                                .padding(.trailing, 8)
+                            }
+                            
+                            .padding([.leading, .trailing], 16)
+                            
+                            SettingsCellView(settingName: "Keep me signed in", toggleValue: $viewModel.remainSignedIn)
+                            
+                            ZStack {
+                                
+                                RoundedRectangle(cornerRadius: 8)
+                                    .frame(height: 45)
+                                    .foregroundColor(Color("TextFieldColor"))
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 8)
+                                        .stroke(signUpErrors.contains(.userHasNotAgreedToPrivacyPolicy) ? Color.red.opacity(0.3) : Color.clear, lineWidth: 5)
+                                    )
+                                
+                                HStack {
+                                    
+                                    Text("Privacy Policy")
+                                        .font(Font.custom("Avenir-Medium", size: 18))
+                                        .foregroundColor(Color("LabelColor"))
+                                    
+                                    Rectangle()
+                                        .frame(height: 40)
+                                        .foregroundColor(Color("TextFieldColor"))
+                                    
+                                    Image(systemName: "chevron.right").resizable()
+                                        .foregroundColor(.white)
+                                        .frame(width: 8.3, height: 14.7)
+                                }
+                                
+                                .padding([.leading, .trailing], 16)
+                                .onTapGesture(count: 1, perform: {
+                                    
+                                    userHasAgreedToPrivacyPolicy = true
+                                    openPrivacyPolicy = true
+                                })
+                            }
+                            
+                            .padding([.leading, .trailing], 16)
+                        }
+                        
+                        .sheet(isPresented: $openPrivacyPolicy, content: {
+                            PrivacyPolicy()
+                        })
+                        
+                        Spacer(minLength: 20)
+                        
+                        Button(action: {
+                                    
+                            verifyInputs()
+                        }) {
+                                    
+                            Text("Continue")
+                                .frame(width: 140, height: 45)
+                                .background(Gradients.titleGradient)
+                                .foregroundColor(.white)
+                                .cornerRadius(22.5)
+                                .font(Font.system(size: 20, weight: .medium))
+                        }
+                        
+                        .padding(.bottom, 40)
+                        .sheet(isPresented: $inputsAreValid) {
+                            if userTypeIndex == 2 {
+                                        
+                                VerifyCounselor()
+                            } else if viewModel.type != .admin {
+                                
+                                VerifyUser()
+                            } else {
+                                
+                                TabController()
+                            }
+                        }
+                    }
                     
-                    VerifyUser()
-                } else {
-                    
-                    TabController()
+                    .frame(minHeight: gr.size.height)
                 }
             }
-            
-            Spacer()
         }
         
         .background(Color("ViewColor"))

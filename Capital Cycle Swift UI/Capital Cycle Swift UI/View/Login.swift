@@ -15,7 +15,6 @@ struct Login: View {
     @EnvironmentObject var user: User
     @State var email = ""
     @State var password = ""
-    @State var loginWasSuccessful = false
     @State var didRequestToSignUp = false
     
     // MARK: View Construction
@@ -48,8 +47,10 @@ struct Login: View {
             HStack {
             
                 Button(action: {
-                    loginWasSuccessful = true
+                    
+                    user.isSignedIn = true
                 }) {
+                    
                     Text("Log In")
                         .frame(width: 140, height: 45)
                         .background(Gradients.titleGradient)
@@ -78,8 +79,10 @@ struct Login: View {
                     .foregroundColor(Color("LabelColor"))
                 
                 Button(action: {
+                    
                     didRequestToSignUp = true
                 }) {
+                    
                     Text("Sign Up")
                         .frame(width: 255, height: 33)
                         .background(Gradients.titleGradient)
@@ -97,12 +100,16 @@ struct Login: View {
         
         .background(Color("ViewColor"))
         .edgesIgnoringSafeArea(.all)
-        .fullScreenCover(isPresented: $loginWasSuccessful, content: {
-            TabController().environmentObject(ViewModel())
+        .fullScreenCover(isPresented: $user.isSignedIn, content: {
+            TabController()
+                .environmentObject(viewModel)
+                .environmentObject(user)
         })
         
         .fullScreenCover(isPresented: $didRequestToSignUp) {
             SignUp()
+                .environmentObject(viewModel)
+                .environmentObject(user)
         }
     }
 }

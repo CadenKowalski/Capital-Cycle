@@ -41,7 +41,6 @@
 		57F228FA24E2594F0065E627 /* VerifyCounselor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F228F924E2594F0065E627 /* VerifyCounselor.swift */; };
 		57F228FC24E25DCD0065E627 /* PrivacyPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F228FB24E25DCD0065E627 /* PrivacyPolicy.swift */; };
 		C83AFA00256808E7007F5F23 /* AuthenticationFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83AF9FF256808E7007F5F23 /* AuthenticationFunctions.swift */; };
-		C83AFA05256B2D9C007F5F23 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83AFA04256B2D9C007F5F23 /* CircleView.swift */; };
 		C8FCC1B7262209070071C1CA /* SettingsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FCC1B6262209070071C1CA /* SettingsCellView.swift */; };
 /* End PBXBuildFile section */
 
@@ -83,7 +82,6 @@
 		57F228F924E2594F0065E627 /* VerifyCounselor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyCounselor.swift; sourceTree = "<group>"; };
 		57F228FB24E25DCD0065E627 /* PrivacyPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicy.swift; sourceTree = "<group>"; };
 		C83AF9FF256808E7007F5F23 /* AuthenticationFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationFunctions.swift; sourceTree = "<group>"; };
-		C83AFA04256B2D9C007F5F23 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		C8FCC1B6262209070071C1CA /* SettingsCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCellView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -187,7 +185,6 @@
 				57F228DB24E21B7B0065E627 /* GeneralSettings.swift */,
 				57F228DD24E21BBD0065E627 /* AccountSettings.swift */,
 				57F228C024E20ABA0065E627 /* LaunchScreen.storyboard */,
-				C83AFA04256B2D9C007F5F23 /* CircleView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -291,7 +288,6 @@
 				57F228E024E21C0C0065E627 /* CustomTextField.swift in Sources */,
 				57F228B624E20AB70065E627 /* AppDelegate.swift in Sources */,
 				57F228B824E20AB70065E627 /* SceneDelegate.swift in Sources */,
-				C83AFA05256B2D9C007F5F23 /* CircleView.swift in Sources */,
 				57F228E624E222CF0065E627 /* ViewModel.swift in Sources */,
 				57F228F824E259060065E627 /* VerifyUser.swift in Sources */,
 				57F228F624E23BED0065E627 /* SignUp.swift in Sources */,

@@ -67,6 +67,14 @@ class ViewModel: ObservableObject {
         }
     }
     
+    var isSignedIn: Bool {
+        get {
+            userModel.isSignedIn
+        } set {
+            changeUserSignedInStatus(status: newValue)
+        }
+    }
+    
     var remainSignedIn: Bool {
         get {
             userModel.remainSignedIn
@@ -111,6 +119,10 @@ class ViewModel: ObservableObject {
     
     func changeType(to newType: User.userType) {
         userModel.type = newType
+    }
+    
+    func changeUserSignedInStatus(status newValue: Bool) {
+        userModel.isSignedIn = newValue
     }
     
     func changeSignedInValue() {

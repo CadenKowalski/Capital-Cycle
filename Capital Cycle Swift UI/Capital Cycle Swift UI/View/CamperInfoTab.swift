@@ -12,6 +12,7 @@ import SwiftUI
 struct CamperInfoTab: View {
     
     @EnvironmentObject var viewModel: ViewModel
+    @EnvironmentObject var user: User
     
     // MARK: View Construction
     
@@ -20,6 +21,8 @@ struct CamperInfoTab: View {
         VStack {
             
             GradientView(title: "Camper Info", viewIsInSheet: false, viewIsInControlPage: true)
+                .environmentObject(viewModel)
+                .environmentObject(user)
             
             Spacer()
         }

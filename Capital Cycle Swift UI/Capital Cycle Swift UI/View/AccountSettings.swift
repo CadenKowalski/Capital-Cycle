@@ -14,168 +14,223 @@ struct AccountSettings: View {
     var userTypes = ["Camper", "Parent", "Counselor"]
     @State var userTypeIndex = 0
     @State var hasEnabledGoogleAccess = false
-    
-    // Initializes the form with preferences
-    init() {
-        UITableView.appearance().backgroundColor = .clear
-    }
+    @EnvironmentObject var user: User
+    @Binding var isPresented: Bool
     
     // MARK: View Construction
     
     var body: some View {
         
-        VStack(spacing: 24) {
+        VStack(spacing: 8) {
             
             GradientView(title: "Account", viewIsInSheet: true, viewIsInControlPage: false)
             
-            Image(systemName: "person.circle").resizable()
-                .font(Font.title.weight(.light))
-                .frame(width: 100, height: 100)
-                .foregroundColor(Color("LabelColor"))
-            
-            VStack(alignment: .leading) {
+            ScrollView {
                 
-                Text("MY INFORMATAION")
-                    .font(Font.system(size: 12))
-                
-                VStack(spacing: 4) {
+                VStack(spacing: 24) {
                     
-                    ZStack {
-                        
-                        RoundedRectangle(cornerRadius: 8)
-                            .frame(height: 45)
-                            .foregroundColor(Color("TextFieldColor"))
-                        
-                        HStack {
-                            
-                            Text("Email")
-                                .font(Font.custom("Avenir-Medium", size: 18))
-                            
-                            Spacer()
-                            
-                            Text("cadenkowalski1@gmail.com")
-                                .font(Font.custom("Avenir-Medium", size: 18))
-                        }
-                        
-                        .padding([.leading, .trailing], 16)
-                    }
+                    Image(systemName: "person.circle").resizable()
+                        .font(Font.title.weight(.light))
+                        .frame(width: 100, height: 100)
+                        .padding(.top, 16)
+                        .foregroundColor(Color("LabelColor"))
                     
-                    ZStack {
+                    VStack(alignment: .leading) {
                         
-                        RoundedRectangle(cornerRadius: 8)
-                            .frame(height: 45)
-                            .foregroundColor(Color("TextFieldColor"))
+                        Text("MY INFORMATAION")
+                            .font(Font.system(size: 12))
                         
-                        HStack {
+                        VStack(spacing: 4) {
                             
-                            Text("I am a")
-                                .font(Font.custom("Avenir-Medium", size: 18))
-                            
-                            Spacer(minLength: 32)
-                            
-                            Picker("", selection: $userTypeIndex) {
+                            ZStack {
                                 
-                                ForEach(0 ..< userTypes.count) { index in
+                                RoundedRectangle(cornerRadius: 8)
+                                    .frame(height: 45)
+                                    .foregroundColor(Color("TextFieldColor"))
+                                
+                                HStack {
                                     
-                                    Text(userTypes[index])
+                                    Text("Email")
+                                        .font(Font.custom("Avenir-Medium", size: 18))
+                                    
+                                    Spacer()
+                                    
+                                    Text("cadenkowalski1@gmail.com")
+                                        .font(Font.custom("Avenir-Medium", size: 18))
                                 }
+                                
+                                .padding([.leading, .trailing], 16)
                             }
                             
-                            .pickerStyle(SegmentedPickerStyle())
-                        }
-                        
-                        .padding(.leading, 16)
-                        .padding(.trailing, 8)
-                    }
-                }
-            }
-            
-            .padding([.leading, .trailing], 16)
-            
-            VStack(alignment: .leading) {
-                
-                Text("LINKED ACCOUNTS")
-                    .font(Font.system(size: 12))
-                    .padding([.leading, .trailing], 16)
+                            ZStack {
+                                
+                                RoundedRectangle(cornerRadius: 8)
+                                    .frame(height: 45)
+                                    .foregroundColor(Color("TextFieldColor"))
+                                
+                                HStack {
                                     
-                SettingsCellView(settingName: "Google", toggleValue: $hasEnabledGoogleAccess)
-            }
-                        
-            VStack(alignment: .leading) {
-                
-                Text("HELP")
-                    .font(Font.system(size: 12))
-                
-                VStack(spacing: 4) {
-                    
-                    ZStack {
-                        
-                        RoundedRectangle(cornerRadius: 8)
-                            .frame(height: 45)
-                            .foregroundColor(Color("TextFieldColor"))
-                        
-                        HStack {
-                            
-                            Text("Report a bug")
-                                .font(Font.custom("Avenir-Medium", size: 18))
-                            
-                            Spacer()
-                            
-                            Image(systemName: "chevron.right").resizable()
-                                .foregroundColor(.white)
-                                .frame(width: 8.3, height: 14.7)
+                                    Text("I am a")
+                                        .font(Font.custom("Avenir-Medium", size: 18))
+                                    
+                                    Spacer(minLength: 32)
+                                    
+                                    Picker("", selection: $userTypeIndex) {
+                                        
+                                        ForEach(0 ..< userTypes.count) { index in
+                                            
+                                            Text(userTypes[index])
+                                        }
+                                    }
+                                    
+                                    .pickerStyle(SegmentedPickerStyle())
+                                }
+                                
+                                .padding(.leading, 16)
+                                .padding(.trailing, 8)
+                            }
                         }
-                        
-                        .padding([.leading, .trailing], 16)
                     }
                     
-                    ZStack {
+                    .padding([.leading, .trailing], 16)
+                    
+                    VStack(alignment: .leading) {
                         
-                        RoundedRectangle(cornerRadius: 8)
-                            .frame(height: 45)
-                            .foregroundColor(Color("TextFieldColor"))
+                        Text("LINKED ACCOUNTS")
+                            .font(Font.system(size: 12))
+                            .padding([.leading, .trailing], 16)
+                                            
+                        SettingsCellView(settingName: "Google", toggleValue: $hasEnabledGoogleAccess)
+                    }
+                                
+                    VStack(alignment: .leading) {
                         
-                        HStack {
+                        Text("HELP\n\n* As a 16 year old, I simply cannot make everything perfect. If you have any trouble with the app, please let me know\n\n* Alternatively, if you ave any suggestions to improve the app or user experience, please let me know as well")
+                            .font(Font.system(size: 12))
+                        
+                        VStack(spacing: 4) {
                             
-                            Text("Suggested Improvements")
-                                .font(Font.custom("Avenir-Medium", size: 18))
+                            ZStack {
+                                
+                                RoundedRectangle(cornerRadius: 8)
+                                    .frame(height: 45)
+                                    .foregroundColor(Color("TextFieldColor"))
+                                
+                                HStack {
+                                    
+                                    Text("Report a bug")
+                                        .font(Font.custom("Avenir-Medium", size: 18))
+                                    
+                                    Spacer()
+                                    
+                                    Image(systemName: "chevron.right").resizable()
+                                        .foregroundColor(.white)
+                                        .frame(width: 8.3, height: 14.7)
+                                }
+                                
+                                .padding([.leading, .trailing], 16)
+                            }
                             
-                            Spacer()
+                            ZStack {
+                                
+                                RoundedRectangle(cornerRadius: 8)
+                                    .frame(height: 45)
+                                    .foregroundColor(Color("TextFieldColor"))
+                                
+                                HStack {
+                                    
+                                    Text("Suggested Improvements")
+                                        .font(Font.custom("Avenir-Medium", size: 18))
+                                    
+                                    Spacer()
+                                    
+                                    Image(systemName: "chevron.right").resizable()
+                                        .foregroundColor(.white)
+                                        .frame(width: 8.3, height: 14.7)
+                                }
+                                
+                                .padding([.leading, .trailing], 16)
+                            }
                             
-                            Image(systemName: "chevron.right").resizable()
-                                .foregroundColor(.white)
-                                .frame(width: 8.3, height: 14.7)
+                            ZStack {
+                                
+                                RoundedRectangle(cornerRadius: 8)
+                                    .frame(height: 45)
+                                    .foregroundColor(Color("TextFieldColor"))
+                                
+                                HStack {
+                                    
+                                    Text("Privacy Policy")
+                                        .font(Font.custom("Avenir-Medium", size: 18))
+                                    
+                                    Spacer()
+                                    
+                                    Image(systemName: "chevron.right").resizable()
+                                        .foregroundColor(.white)
+                                        .frame(width: 8.3, height: 14.7)
+                                }
+                                
+                                .padding([.leading, .trailing], 16)
+                            }
                         }
-                        
-                        .padding([.leading, .trailing], 16)
                     }
                     
-                    ZStack {
+                    .padding([.leading, .trailing], 16)
+                    
+                    VStack(spacing: 4) {
                         
-                        RoundedRectangle(cornerRadius: 8)
-                            .frame(height: 45)
-                            .foregroundColor(Color("TextFieldColor"))
-                        
-                        HStack {
-                            
-                            Text("Privacy Policy")
-                                .font(Font.custom("Avenir-Medium", size: 18))
-                            
-                            Spacer()
-                            
-                            Image(systemName: "chevron.right").resizable()
+                        Button(action: {
+                                    
+                            isPresented = false
+                            user.isSignedIn = false
+                        }) {
+                                    
+                            Text("Log Out")
+                                .frame(maxWidth: .infinity)
+                                .frame(height: 45)
+                                .background(Color("DestructiveRedColor"))
                                 .foregroundColor(.white)
-                                .frame(width: 8.3, height: 14.7)
+                                .cornerRadius(8)
+                                .padding([.leading, .trailing], 16)
+                                .opacity(0.85)
+                                .font(Font.custom("Avenir-Medium", size: 20))
                         }
                         
-                        .padding([.leading, .trailing], 16)
+                        Button(action: {
+                                    
+                            
+                        }) {
+                                    
+                            Text("Reset Password")
+                                .frame(maxWidth: .infinity)
+                                .frame(height: 45)
+                                .background(Color("DestructiveRedColor"))
+                                .foregroundColor(.white)
+                                .cornerRadius(8)
+                                .padding([.leading, .trailing], 16)
+                                .opacity(0.85)
+                                .font(Font.custom("Avenir-Medium", size: 20))                        }
+                        
+                        Button(action: {
+                                    
+                            
+                        }) {
+                                    
+                            Text("Delete my Account")
+                                .frame(maxWidth: .infinity)
+                                .frame(height: 45)
+                                .background(Color("DestructiveRedColor"))
+                                .foregroundColor(.white)
+                                .cornerRadius(8)
+                                .padding([.leading, .trailing], 16)
+                                .opacity(0.85)
+                                .font(Font.custom("Avenir-Medium", size: 20))
+                        }
                     }
+                    
+                    Spacer()
                 }
             }
-            
-            .padding([.leading, .trailing], 16)
-            
-            Spacer()
         }
         
         .background(Color("ViewColor"))
@@ -186,11 +241,11 @@ struct AccountSettings: View {
 // MARK: Preview
 
 // Initializesthe preview
-struct AccountSettings_Previews: PreviewProvider {
+/*struct AccountSettings_Previews: PreviewProvider {
     
     static var previews: some View {
         
-        AccountSettings()
+        AccountSettings(isPresented: $presented)
             .environment(\.colorScheme, .dark)
     }
-}
+}*/
