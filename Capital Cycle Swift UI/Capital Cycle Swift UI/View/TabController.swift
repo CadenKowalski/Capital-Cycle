@@ -16,7 +16,7 @@ struct TabController: View {
     
     // Initializes the tab controller with preferences
     init() {
-        UITabBar.appearance().barTintColor = UIColor(named: "ViewColor")
+        UITabBar.appearance().barTintColor = UIColor(named: "View")
         UITabBar.appearance().isTranslucent = false
     }
     

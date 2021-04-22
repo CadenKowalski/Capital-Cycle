@@ -64,10 +64,10 @@ struct OverviewTab: View {
             }
             
             .frame(width: UIScreen.main.bounds.width)
-            .background(Color("ViewColor"))
+            .background(Color("View"))
         }
         
-        .background(Color("ViewColor"))
+        .background(Color("View"))
         .edgesIgnoringSafeArea(.all)
     }
 }

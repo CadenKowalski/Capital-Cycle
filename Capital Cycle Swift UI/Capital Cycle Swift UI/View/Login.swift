@@ -25,24 +25,41 @@ struct Login: View {
             
             GradientView(title: "Log In", viewIsInSheet: false, viewIsInControlPage: false)
             
+            VStack(alignment: .leading) {
+                
+                HStack {
+                    
+                    Spacer()
+                }
+                
+                Image("TransparentLogo")
+                    .resizable()
+                    .frame(width: 125, height: 125)
+                    .padding(.bottom, 16)
+                    .padding(.leading, -8)
+                
+                Text("Proceed with your")
+                    .font(Font.custom("Avenir-Medium", size: 25))
+                    .foregroundColor(Color("Label"))
+                
+                Text("Login")
+                    .font(Font.custom("Avenir-Black", size: 30))
+                    .foregroundColor(Color("Label"))
+            }
+            
+            .padding(.leading, 24)
+            .padding(.bottom, 20)
+                        
             VStack(spacing: 8) {
             
                 CustomTextField(placeholderString: "Email", text: $email)
                     .cornerRadius(8)
                 
-                CustomTextField(placeholderString: "Password", text: $password)
+                CustomTextField(placeholderString: "Password", isSecure: true, text: $password)
                     .cornerRadius(8)
             }
             
             .padding([.leading, .trailing],  16)
-            
-            Button("Forgot your password?") {
-            
-            }
-            
-            .padding(.top, -8)
-            .foregroundColor(.blue)
-            .font(Font.custom("Avenir-Light", size: 14))
             
             HStack {
             
@@ -55,28 +72,32 @@ struct Login: View {
                         .frame(width: 140, height: 45)
                         .background(Gradients.titleGradient)
                         .foregroundColor(.white)
-                        .cornerRadius(22.5)
+                        .cornerRadius(10)
                         .font(Font.custom("Avenir-Heavy", size: 22))
                 }
-                
-                .padding(.leading, 30)
-                
-                Spacer()
-                
-                SignInWithAppleButton(cornerRadius: 22.5, buttonStyle: .continue)
-                    .frame(width: 140, height: 45)
-                    .padding(.trailing, 30)
-                
+                                
+                Text("OR")
+                    .font(Font.custom("Avenir-Light", size: 14))
+                    .foregroundColor(Color("Label"))
+                                
+                SignInWithAppleButton(cornerRadius: 10, buttonStyle: .signIn)
+                    .frame(width: 150, height: 45)
+            }
+                        
+            Button("Forgot your password?") {
+            
             }
             
-            .padding(.top, 8)
+            .foregroundColor(.blue)
+            .font(Font.custom("Avenir-Light", size: 14))
+
             
             Spacer()
             
             VStack(spacing: 8) {
             
                 Text("Don't have an account?")
-                    .foregroundColor(Color("LabelColor"))
+                    .foregroundColor(Color("Label"))
                 
                 Button(action: {
                     
@@ -84,21 +105,22 @@ struct Login: View {
                 }) {
                     
                     Text("Sign Up")
-                        .frame(width: 255, height: 33)
+                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 45)
                         .background(Gradients.titleGradient)
                         .foregroundColor(.white)
                         .cornerRadius(8)
-                        .font(Font.system(size: 13, weight: .semibold))
+                        .font(Font.system(size: 18, weight: .semibold))
                 }
-                
-                SignInWithAppleButton(cornerRadius: 8, buttonStyle: .signUp)
-                    .frame(width: 255, height: 33)
+                                
+                SignInWithAppleButton(cornerRadius: 8, buttonStyle: .signIn)
+                    .frame(minWidth: 0, maxWidth: .infinity, maxHeight: 45)
             }
             
+            .padding([.leading, .trailing], 24)
             .padding(.bottom, 40)
         }
         
-        .background(Color("ViewColor"))
+        .background(Color("View"))
         .edgesIgnoringSafeArea(.all)
         .fullScreenCover(isPresented: $user.isSignedIn, content: {
             TabController()
@@ -123,17 +145,19 @@ struct LoginPage_Previews: PreviewProvider {
         
         Group {
             
-            Login().environmentObject(ViewModel())
-                .previewDevice("iPod touch (7th generation)")
+            //Login().environmentObject(ViewModel())
+                //.previewDevice("iPod touch (7th generation)")
             
-            Login().environmentObject(ViewModel())
-                .previewDevice("iPhone 8")
+            //Login().environmentObject(ViewModel())
+                //.previewDevice("iPhone 8")
             
-            Login().environmentObject(ViewModel())
+            Login()
+                .environmentObject(User())
+                .environmentObject(ViewModel())
                 .previewDevice("iPhone 11 Pro")
             
-            Login().environmentObject(ViewModel())
-                .previewDevice("iPhone 11 Pro Max")
+            //Login().environmentObject(ViewModel())
+                //.previewDevice("iPhone 11 Pro Max")
         }
         
         .environment(\.colorScheme, .dark)

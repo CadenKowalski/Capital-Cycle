@@ -22,7 +22,7 @@ struct VerifyUser: View {
             Spacer()
         }
         
-        .background(Color("ViewColor"))
+        .background(Color("View"))
         .edgesIgnoringSafeArea(.all)
     }
 }

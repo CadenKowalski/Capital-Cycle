@@ -45,7 +45,7 @@ struct SignUp: View {
                     
                         Image(systemName: "person.circle").resizable()
                             .frame(width: 100, height: 100, alignment: .center)
-                            .foregroundColor(Color("LabelColor"))
+                            .foregroundColor(Color("Label"))
                             .font(Font.title.weight(.light))
                         
                         VStack {
@@ -54,8 +54,6 @@ struct SignUp: View {
                                 
                                 CustomTextField(placeholderString: "Email", text: $viewModel.email)
                                     .foregroundColor(signUpErrors.contains(.emailIsNotValid) ? Color.red.opacity(0.3) : Color.clear)
-                                    .keyboardType(.emailAddress)
-                                    .textContentType(.emailAddress)
                                     .cornerRadius(8)
                                     .overlay(
                                         RoundedRectangle(cornerRadius: 8)
@@ -65,7 +63,7 @@ struct SignUp: View {
                             
                             
                             
-                            CustomTextField(placeholderString: "Password", text: $password)
+                            CustomTextField(placeholderString: "Password", isSecure: true, text: $password)
                                 .textContentType(.newPassword)
                                 .cornerRadius(8)
                                 .overlay(
@@ -73,7 +71,7 @@ struct SignUp: View {
                                         .stroke(signUpErrors.contains(.passwordsDoNotMatch) || signUpErrors.contains(.passwordIsNotValid) ? Color.red.opacity(0.3) : Color.clear, lineWidth: 5)
                                 )
                             
-                            CustomTextField(placeholderString: "Confirm Password", text: $confirmPassword)
+                            CustomTextField(placeholderString: "Confirm Password", isSecure: true, text: $confirmPassword)
                                 .textContentType(.newPassword)
                                 .cornerRadius(8)
                                 .overlay(
@@ -83,7 +81,7 @@ struct SignUp: View {
                             
                             Text("Must be at least 6 chatacters long, contain both cases, and use either a number or a symbol.")
                                 .font(Font.custom("Avenir-Medium", size: 14))
-                                .foregroundColor(Color("LabelColor"))
+                                .foregroundColor(Color("Label"))
                                 .padding([.leading, .trailing], 4)
                         }
                         
@@ -95,13 +93,13 @@ struct SignUp: View {
                                 
                                 RoundedRectangle(cornerRadius: 8)
                                     .frame(height: 45)
-                                    .foregroundColor(Color("TextFieldColor"))
+                                    .foregroundColor(Color("TextField"))
                                 
                                 HStack {
                                     
                                     Text("I am a")
                                         .font(Font.custom("Avenir-Medium", size: 18))
-                                        .foregroundColor(Color("LabelColor"))
+                                        .foregroundColor(Color("Label"))
                                     
                                     Spacer(minLength: 32)
                                     
@@ -128,7 +126,7 @@ struct SignUp: View {
                                 
                                 RoundedRectangle(cornerRadius: 8)
                                     .frame(height: 45)
-                                    .foregroundColor(Color("TextFieldColor"))
+                                    .foregroundColor(Color("TextField"))
                                     .overlay(
                                         RoundedRectangle(cornerRadius: 8)
                                         .stroke(signUpErrors.contains(.userHasNotAgreedToPrivacyPolicy) ? Color.red.opacity(0.3) : Color.clear, lineWidth: 5)
@@ -138,11 +136,11 @@ struct SignUp: View {
                                     
                                     Text("Privacy Policy")
                                         .font(Font.custom("Avenir-Medium", size: 18))
-                                        .foregroundColor(Color("LabelColor"))
+                                        .foregroundColor(Color("Label"))
                                     
                                     Rectangle()
                                         .frame(height: 40)
-                                        .foregroundColor(Color("TextFieldColor"))
+                                        .foregroundColor(Color("TextField"))
                                     
                                     Image(systemName: "chevron.right").resizable()
                                         .foregroundColor(.white)
@@ -199,7 +197,7 @@ struct SignUp: View {
             }
         }
         
-        .background(Color("ViewColor"))
+        .background(Color("View"))
         .edgesIgnoringSafeArea(.all)
     }
     

@@ -23,11 +23,29 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let loginPge = Login()
             .environmentObject(viewModel)
             .environmentObject(user)
+        
+        let welcomePage = Welcome(progressBarValue: 0)
+            .environmentObject(viewModel)
+            .environmentObject(user)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
+            
+            /// Remove during final release
+             UserDefaults.standard.setValue(false, forKey: "hasAlreadyLaunched")
+             UserDefaults.standard.setValue(false, forKey: "userHasContinuedThroughWelcomePage")
+            /// Remove during final release
+            
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: loginPge)
+            if UserDefaults.standard.bool(forKey: "hasAlreadyLaunched") && UserDefaults.standard.bool(forKey: "userHasContinuedThroughWelcomePage") {
+                
+                window.rootViewController = UIHostingController(rootView: loginPge)
+            } else {
+                
+                UserDefaults.standard.set(true, forKey: "hasAlreadyLaunched")
+                window.rootViewController = UIHostingController(rootView: welcomePage)
+            }
+            
             self.window = window
             window.makeKeyAndVisible()
         }

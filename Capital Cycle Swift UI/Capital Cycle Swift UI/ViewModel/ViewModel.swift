@@ -7,16 +7,27 @@
 
 import SwiftUI
 
+enum PageType {
+    case welcome
+    case login
+}
+
 class ViewModel: ObservableObject {
     
     // MARK: Models
     
     private var overviewTabModel = OverviewTabModel()
     private var registerTabModel = RegisterTabModel()
+    private var welcomePageModel = WelcomePageModel()
     private var userModel = User()
     @Published private var faqsTabModel = FAQsTabModel()
     
     // MARK: Model Variables
+    
+    // Sets the ViewModel's welcomeCells property to the welcomePageModel's welcomeCells property value
+    var welcomeCells: [WelcomeCell] {
+        welcomePageModel.welcomeCells
+    }
     
     // Sets the ViewModel's overviewCells property to the overviewTabModel's overviewCells property value
     var overviewCells: [OverviewCell] {

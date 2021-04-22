@@ -55,7 +55,7 @@ struct GeneralSettings: View {
             
         }
         
-        .background(Color("ViewColor"))
+        .background(Color("View"))
         .edgesIgnoringSafeArea(.all)
 
     }

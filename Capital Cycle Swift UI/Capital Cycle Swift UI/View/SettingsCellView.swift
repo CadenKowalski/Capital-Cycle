@@ -20,18 +20,18 @@ struct SettingsCellView: View {
         
             RoundedRectangle(cornerRadius: 8)
                 .frame(height: 45)
-                .foregroundColor(Color("TextFieldColor"))
+                .foregroundColor(Color("TextField"))
                 .padding([.leading, .trailing], 16)
             
             Toggle(isOn: $toggleValue) {
                 
                 Text(settingName)
                     .font(Font.custom("Avenir-Medium", size: 18))
-                    .foregroundColor(Color("LabelColor"))
+                    .foregroundColor(Color("Label"))
             }
             
             .padding([.leading, .trailing], 32)
-            .toggleStyle(SwitchToggleStyle(tint: Color("LabelColor")))
+            .toggleStyle(SwitchToggleStyle(tint: Color("Label")))
         }
     }
 }

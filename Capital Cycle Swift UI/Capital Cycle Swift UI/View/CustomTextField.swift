@@ -24,7 +24,7 @@ struct PlaceholderStyle: ViewModifier {
             }
             
             content
-                .foregroundColor(Color("LabelColor"))
+                .foregroundColor(Color("Label"))
         }
     }
 }
@@ -32,19 +32,35 @@ struct PlaceholderStyle: ViewModifier {
 struct CustomTextField: View {
     
     var placeholderString: String
+    var isSecure: Bool?
     @Binding var text: String
 
     // MARK: View Construction
     
+    
+    
     var body: some View {
 
-        TextField("", text: $text)
-            .modifier(PlaceholderStyle(showPlaceHolder: text.isEmpty, placeholder: placeholderString))
-            .padding(.all, 10)
-            .font(Font.custom("Avenir-Book", size: 15))
-            .background(Color("TextFieldColor"))
-            .accentColor(Color("LabelColor"))
-            .foregroundColor(Color("LabelColor"))
+        if isSecure == true {
+            
+            SecureField("", text: $text).modifier(PlaceholderStyle(showPlaceHolder: text.isEmpty, placeholder: placeholderString))
+                .padding(.all, 10)
+                .font(Font.custom("Avenir-Book", size: 15))
+                .background(Color("TextField"))
+                .accentColor(Color("Label"))
+                .foregroundColor(Color("Label"))
+        } else {
+            
+            TextField("", text: $text)
+                .modifier(PlaceholderStyle(showPlaceHolder: text.isEmpty, placeholder: placeholderString))
+                .padding(.all, 10)
+                .font(Font.custom("Avenir-Book", size: 15))
+                .background(Color("TextField"))
+                .accentColor(Color("Label"))
+                .keyboardType(.emailAddress)
+                .textContentType(.emailAddress)
+                .foregroundColor(Color("Label"))
+        }
     }
 }
 

@@ -20,14 +20,14 @@ struct PrivacyPolicy: View {
             GradientView(title: "Privacy Policy", viewIsInSheet: true, viewIsInControlPage: false)
             
             Text("  This will be the privacy policy This will be the privacy policy This will be the privacy policy This will be the privacy policy This will be the privacy policy This will be the privacy policy This will be the privacy policy This will be the privacy policy This will be the privacy policy This will be the privacy policy This will be the privacy policy This will be the privacy policy This will be the privacy policy This will be the privacy policy This will be the privacy policy This will be the privacy policy")
-                .foregroundColor(Color("LabelColor"))
+                .foregroundColor(Color("Label"))
                 .font(Font.custom("Avenir-Book", size: 13))
                 .padding([.leading, .trailing], 8)
             
             Spacer()
         }
         
-        .background(Color("ViewColor"))
+        .background(Color("View"))
         .edgesIgnoringSafeArea(.all)
     }
 }

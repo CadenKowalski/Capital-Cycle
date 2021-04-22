@@ -43,7 +43,7 @@ struct RegisterTab: View {
             .padding(.bottom, 8)
         }
         
-        .background(Color("ViewColor"))
+        .background(Color("View"))
         .edgesIgnoringSafeArea(.all)
     }
 }

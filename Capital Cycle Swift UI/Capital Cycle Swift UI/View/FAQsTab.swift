@@ -59,7 +59,7 @@ struct FAQsTab: View {
                 }
                 
                 .padding(.bottom, 8)
-                .background(Color("ViewColor"))
+                .background(Color("View"))
             }
             
             VStack {

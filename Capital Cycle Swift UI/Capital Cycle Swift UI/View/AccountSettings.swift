@@ -33,7 +33,7 @@ struct AccountSettings: View {
                         .font(Font.title.weight(.light))
                         .frame(width: 100, height: 100)
                         .padding(.top, 16)
-                        .foregroundColor(Color("LabelColor"))
+                        .foregroundColor(Color("Label"))
                     
                     VStack(alignment: .leading) {
                         
@@ -46,7 +46,7 @@ struct AccountSettings: View {
                                 
                                 RoundedRectangle(cornerRadius: 8)
                                     .frame(height: 45)
-                                    .foregroundColor(Color("TextFieldColor"))
+                                    .foregroundColor(Color("TextField"))
                                 
                                 HStack {
                                     
@@ -66,7 +66,7 @@ struct AccountSettings: View {
                                 
                                 RoundedRectangle(cornerRadius: 8)
                                     .frame(height: 45)
-                                    .foregroundColor(Color("TextFieldColor"))
+                                    .foregroundColor(Color("TextField"))
                                 
                                 HStack {
                                     
@@ -114,7 +114,7 @@ struct AccountSettings: View {
                                 
                                 RoundedRectangle(cornerRadius: 8)
                                     .frame(height: 45)
-                                    .foregroundColor(Color("TextFieldColor"))
+                                    .foregroundColor(Color("TextField"))
                                 
                                 HStack {
                                     
@@ -135,7 +135,7 @@ struct AccountSettings: View {
                                 
                                 RoundedRectangle(cornerRadius: 8)
                                     .frame(height: 45)
-                                    .foregroundColor(Color("TextFieldColor"))
+                                    .foregroundColor(Color("TextField"))
                                 
                                 HStack {
                                     
@@ -156,7 +156,7 @@ struct AccountSettings: View {
                                 
                                 RoundedRectangle(cornerRadius: 8)
                                     .frame(height: 45)
-                                    .foregroundColor(Color("TextFieldColor"))
+                                    .foregroundColor(Color("TextField"))
                                 
                                 HStack {
                                     
@@ -188,7 +188,7 @@ struct AccountSettings: View {
                             Text("Log Out")
                                 .frame(maxWidth: .infinity)
                                 .frame(height: 45)
-                                .background(Color("DestructiveRedColor"))
+                                .background(Color("DestructiveRed"))
                                 .foregroundColor(.white)
                                 .cornerRadius(8)
                                 .padding([.leading, .trailing], 16)
@@ -204,7 +204,7 @@ struct AccountSettings: View {
                             Text("Reset Password")
                                 .frame(maxWidth: .infinity)
                                 .frame(height: 45)
-                                .background(Color("DestructiveRedColor"))
+                                .background(Color("DestructiveRed"))
                                 .foregroundColor(.white)
                                 .cornerRadius(8)
                                 .padding([.leading, .trailing], 16)
@@ -219,7 +219,7 @@ struct AccountSettings: View {
                             Text("Delete my Account")
                                 .frame(maxWidth: .infinity)
                                 .frame(height: 45)
-                                .background(Color("DestructiveRedColor"))
+                                .background(Color("DestructiveRed"))
                                 .foregroundColor(.white)
                                 .cornerRadius(8)
                                 .padding([.leading, .trailing], 16)
@@ -233,7 +233,7 @@ struct AccountSettings: View {
             }
         }
         
-        .background(Color("ViewColor"))
+        .background(Color("View"))
         .edgesIgnoringSafeArea(.all)
     }
 }

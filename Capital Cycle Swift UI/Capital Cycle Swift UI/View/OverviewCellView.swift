@@ -43,7 +43,7 @@ struct OverviewCellView: View {
         .foregroundColor(.white)
         .background(Gradients.cellGradient)
         .cornerRadius(20)
-        .shadow(color: Color("TextFieldColor"), radius: 5)
+        .shadow(color: Color("TextField"), radius: 5)
     }
 }
 

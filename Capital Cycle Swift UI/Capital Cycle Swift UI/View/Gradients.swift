@@ -11,6 +11,6 @@ import SwiftUI
 
 struct Gradients {
     
-    static let titleGradient = LinearGradient(gradient: Gradient(colors: [Color("gradientPurple"), Color("gradientOrange")]), startPoint: .topLeading, endPoint: .bottomTrailing)
+    static let titleGradient = LinearGradient(gradient: Gradient(colors: [Color("GradientPurple"), Color("GradientOrange")]), startPoint: .topLeading, endPoint: .bottomTrailing)
     static let cellGradient = LinearGradient(gradient: Gradient(colors: [Color("LightPurple"), Color("DarkPurple")]), startPoint: .topLeading, endPoint: .bottomTrailing)
 }
