@@ -18,8 +18,8 @@ struct WelcomeCell: Identifiable {
 struct WelcomePageModel {
     
     let welcomeCells: [WelcomeCell] = [
-        WelcomeCell(symbol: "person", title: "Create an Account", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam luctus mattis eros in egestas.", id: 1),
-        WelcomeCell(symbol: "mappin.and.ellipse", title: "See Couselors' Locaton", description: "Sed facilisis feugiat magna, sed vulputate nunc sollicitudin eu. Fusce ac odio porta, hendrerit urna eget, aliquet augue.", id: 2),
-        WelcomeCell(symbol: "calendar", title: "See What's Happening", description: "Maecenas eleifend pellentesque arcu, sit amet luctus tortor laoreet a. Nulla facilisi.", id: 3)
+        WelcomeCell(symbol: "calendar", title: "See What's Happening", description: "Maecenas eleifend pellentesque arcu, sit amet luctus tortor laoreet a. Nulla facilisi.", id: 1),
+        WelcomeCell(symbol: "envelope", title: "Recieve Important Notifications", description: "Sed facilisis feugiat magna, sed vulputate nunc sollicitudin eu. Fusce ac odio porta, hendrerit urna eget, aliquet augue.", id: 2),
+        WelcomeCell(symbol: "person", title: "Access Contact Information*", description: "Counselors will have access to emergency contact information as well as any allergies or special needs campers may have.", id: 3)
     ]
 }

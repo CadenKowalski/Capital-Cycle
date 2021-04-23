@@ -7,11 +7,6 @@
 
 import SwiftUI
 
-enum PageType {
-    case welcome
-    case login
-}
-
 class ViewModel: ObservableObject {
     
     // MARK: Models

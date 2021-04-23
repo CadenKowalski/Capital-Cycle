@@ -31,7 +31,7 @@ struct SettingsCellView: View {
             }
             
             .padding([.leading, .trailing], 32)
-            .toggleStyle(SwitchToggleStyle(tint: Color("Label")))
+            .toggleStyle(SwitchToggleStyle(tint: Color("MidGradient")))
         }
     }
 }

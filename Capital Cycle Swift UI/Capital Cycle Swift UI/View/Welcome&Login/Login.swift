@@ -75,13 +75,6 @@ struct Login: View {
                         .cornerRadius(10)
                         .font(Font.custom("Avenir-Heavy", size: 22))
                 }
-                                
-                Text("OR")
-                    .font(Font.custom("Avenir-Light", size: 14))
-                    .foregroundColor(Color("Label"))
-                                
-                SignInWithAppleButton(cornerRadius: 10, buttonStyle: .signIn)
-                    .frame(width: 150, height: 45)
             }
                         
             Button("Forgot your password?") {
@@ -111,9 +104,6 @@ struct Login: View {
                         .cornerRadius(8)
                         .font(Font.system(size: 18, weight: .semibold))
                 }
-                                
-                SignInWithAppleButton(cornerRadius: 8, buttonStyle: .signIn)
-                    .frame(minWidth: 0, maxWidth: .infinity, maxHeight: 45)
             }
             
             .padding([.leading, .trailing], 24)

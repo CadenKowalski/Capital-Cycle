@@ -28,6 +28,7 @@ struct WelcomeCellView: View {
             
             Image(systemName: "\(symbol)").resizable()
                 .gradientForeground(colors: [Color("GradientPurple"), Color("GradientOrange")])
+                .aspectRatio(contentMode: .fit)
                 .frame(width: 50, height: 50)
                 .font(Font.title.weight(.semibold))
                 .padding(.leading, 24)
