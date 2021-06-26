@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>242371580492-iv4vu3010s8cjpfhlrc8a0l2gq97h1mo.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.242371580492-iv4vu3010s8cjpfhlrc8a0l2gq97h1mo</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBIdPHR_nqgL9G6fScmlcPMReBM5PmtVD8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>242371580492</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.cadenkowalski.Capital-Cycle</string>
+	<key>PROJECT_ID</key>
+	<string>capital-cycle-app</string>
+	<key>STORAGE_BUCKET</key>
+	<string>capital-cycle-app.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:242371580492:ios:55a754b440da0808e11ae9</string>
+	<key>DATABASE_URL</key>
+	<string>https://capital-cycle-app.firebaseio.com</string>
+</dict>
+</plist>

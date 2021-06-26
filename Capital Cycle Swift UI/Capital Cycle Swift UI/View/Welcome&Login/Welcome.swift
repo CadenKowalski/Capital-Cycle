@@ -9,8 +9,8 @@ import SwiftUI
 
 struct Welcome: View {
     
-    @EnvironmentObject var viewModel: ViewModel
-    @EnvironmentObject var user: User
+    @StateObject var viewModel = ViewModel()
+    @StateObject var user = User()
     @State var progressBarValue: Double
     @State var userAlreadyHasAccount = false
     @State var userCompletedSignUp = false
@@ -47,8 +47,8 @@ struct Welcome: View {
                 
                     case 0.0:
                         
-                        Intro()
-                            .padding(.top, 70)
+                        Intro(screen: screen)
+                            .padding(.top, screen.safeAreaInsets.top + 32)
                         
                     case 0.2:
                         
@@ -57,8 +57,6 @@ struct Welcome: View {
                     case 0.4:
                         
                         Info()
-                            .environmentObject(viewModel)
-                            .environmentObject(user)
                         
                     case 0.6:
                         
@@ -77,7 +75,7 @@ struct Welcome: View {
                         ProfileImage()
                 }
                 
-                Spacer()
+                //Spacer()
                 
                 Button(action: {
                     
@@ -85,8 +83,6 @@ struct Welcome: View {
                 }) {
                         
                     if progressBarValue == 0 {
-                        
-                        
                         
                         ZStack {
                             
@@ -114,7 +110,7 @@ struct Welcome: View {
                         
                     } else if progressBarValue == 0.4 {
                         
-                        Info().verifyInputs()
+                        progressBarValue += 0.2
                     } else {
                         
                         progressBarValue += 0.2
@@ -159,28 +155,28 @@ struct Welcome: View {
                 }
                 
                 .padding([.leading, .trailing], 24)
-                .padding(.bottom, 40)
+                .padding(.bottom, screen.safeAreaInsets.bottom + 16)
                 
                 .fullScreenCover(isPresented: $userAlreadyHasAccount) {
                                     
                         Login()
-                            .environmentObject(viewModel)
-                            .environmentObject(user)
                 }
                 
                 .fullScreenCover(isPresented: $userCompletedSignUp) {
                                     
                         TabController()
-                            .environmentObject(viewModel)
-                            .environmentObject(user)
                 }
             }
             
             .foregroundColor(Color("Label"))
             .background(Color("View"))
             .edgesIgnoringSafeArea(.all)
+            //.statusBar(hidden: true)
             .animation(.linear(duration: 0.25))
         }
+        
+        .environmentObject(viewModel)
+        .environmentObject(user)
     }
 }
 
@@ -188,8 +184,19 @@ struct Welcome_Previews: PreviewProvider {
     
     static var previews: some View {
         
-        Welcome(progressBarValue: 0)
-            .environmentObject(ViewModel())
-            .environmentObject(User())
+        Group {
+            
+            /*Welcome(progressBarValue: 0)
+                .previewDevice("iPhone 11 Pro Max")*/
+            
+            Welcome(progressBarValue: 0)
+                .previewDevice("iPhone 11 Pro")
+            
+            Welcome(progressBarValue: 0)
+                .previewDevice("iPhone 12 mini")
+            
+            Welcome(progressBarValue: 0)
+                .previewDevice("iPhone SE (2nd generation)")
+        }
     }
 }

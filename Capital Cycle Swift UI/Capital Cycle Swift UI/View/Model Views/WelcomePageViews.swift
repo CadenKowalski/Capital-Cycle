@@ -21,44 +21,40 @@ extension AnyTransition {
 struct Intro: View {
     
     @EnvironmentObject var viewModel: ViewModel
+    var screen: GeometryProxy
             
     var body: some View {
-        
+                    
         VStack {
             
             Text("Welcome to\nCapital Cycle")
-                .font(Font.custom("Avenir-Black", size: 56))
+                .font(Font.custom("Avenir-Black", size: screen.size.height / 18))
                 .multilineTextAlignment(.center)
                 .foregroundColor(Color("Label"))
-                .padding(.bottom, 24)
             
             Text("Create an account to:")
                 .font(Font.custom("Avenir-Heavy", size: 25))
+                .padding(.top, screen.size.height / 30)
                 .foregroundColor(Color("Label"))
             
             ForEach(viewModel.welcomeCells) { informationCell in
-                 
-                 WelcomeCellView(symbol: informationCell.symbol, title: informationCell.title, description: informationCell.description)
-                
-                    .padding(.bottom, 16)
+               
+                if screen.safeAreaInsets.top > 20 {
+                    
+                    WelcomeCellView(symbol: informationCell.symbol, title: informationCell.title, description: informationCell.description)
+                        
+                        .padding(.bottom, 16)
+                } else {
+                    
+                    WelcomeCellView(symbol: informationCell.symbol, title: informationCell.title, description: informationCell.description)
+                }
             }
             
-            HStack {
-                
-                Text("* = counselors only")
-                    .font(Font.custom("Avenir-light", size: 14))
-                    .foregroundColor(Color("Label"))
-                
-                Spacer()
-            }
-            
-            .padding(.leading, 25)
-            .padding(.top, -8)
+            Spacer()
         }
         
         .transition(.slideLeading)
         .background(Color("View"))
-        .edgesIgnoringSafeArea(.all)
     }
 }
 
@@ -69,6 +65,8 @@ struct Who: View {
     
     init() {
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(named: "MidGradient")
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(.white)], for: .selected)
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(.white)], for: .normal)
     }
     
     var body: some View {
@@ -139,6 +137,8 @@ struct Who: View {
                 
                 .padding(.leading, 16)
             }
+            
+            Spacer()
         }
         
         .transition(.slideLeading)
@@ -170,7 +170,7 @@ struct Info: View {
                     .font(Font.custom("Avenir-Black", size: 25))
                     .multilineTextAlignment(.center)
                 
-                Text("(You can change things later in settins)")
+                Text("(You can change things later in settings)")
                     .foregroundColor(Color("Label"))
                     .font(Font.custom("Avenir-Medium", size: 14))
                     .padding(.bottom, 24)
@@ -293,6 +293,8 @@ struct ProfileImage: View {
                 
                 Spacer()
             }
+            
+            Spacer()
         }
         
         .transition(.slideLeading)
@@ -320,6 +322,8 @@ struct Verification: View {
                 
                 Spacer()
             }
+            
+            Spacer()
         }
         
         .transition(.slideLeading)
@@ -352,6 +356,8 @@ struct Complete: View {
                 .resizable()
                 .frame(width: 100, height: 100)
                 .gradientForeground(colors: [Color("GradientPurple"), Color("GradientOrange")])
+            
+            Spacer()
         }
         
         .transition(.slideLeading)
@@ -365,8 +371,11 @@ struct WelcomePageViews_Previews: PreviewProvider {
     
     static var previews: some View {
         
-        Intro()
-            .environmentObject(ViewModel())
+        GeometryReader { screen in
+            
+            Intro(screen: screen)
+                .environmentObject(ViewModel())
+        }
         
         Who()
             .preferredColorScheme(.dark)

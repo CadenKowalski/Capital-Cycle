@@ -31,7 +31,7 @@ struct WelcomeCellView: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 50, height: 50)
                 .font(Font.title.weight(.semibold))
-                .padding(.leading, 24)
+                .padding(.leading, 16)
                 .padding(.trailing, 16)
             
             VStack(alignment: .leading) {
