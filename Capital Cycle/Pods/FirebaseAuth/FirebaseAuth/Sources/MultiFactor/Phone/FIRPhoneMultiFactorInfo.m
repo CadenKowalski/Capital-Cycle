@@ -17,11 +17,13 @@
 #import <TargetConditionals.h>
 #if TARGET_OS_IOS
 
-#import "FirebaseAuth/Sources/Public/FIRMultiFactorInfo.h"
-#import "FirebaseAuth/Sources/Public/FIRPhoneMultiFactorInfo.h"
+#import "FirebaseAuth/Sources/Public/FirebaseAuth/FIRMultiFactorInfo.h"
+#import "FirebaseAuth/Sources/Public/FirebaseAuth/FIRPhoneMultiFactorInfo.h"
 
 #import "FirebaseAuth/Sources/Backend/RPC/Proto/FIRAuthProtoMFAEnrollment.h"
 #import "FirebaseAuth/Sources/MultiFactor/FIRMultiFactorInfo+Internal.h"
+
+static NSString *kPhoneNumberCodingKey = @"phoneNumber";
 
 extern NSString *const FIRPhoneMultiFactorID;
 
@@ -31,9 +33,28 @@ extern NSString *const FIRPhoneMultiFactorID;
   self = [super initWithProto:proto];
   if (self) {
     _factorID = FIRPhoneMultiFactorID;
-    _phoneNumber = proto.MFAValue;
+    _phoneNumber = proto.phoneInfo;
   }
   return self;
+}
+
+#pragma mark - NSSecureCoding
+
++ (BOOL)supportsSecureCoding {
+  return YES;
+}
+
+- (nullable instancetype)initWithCoder:(NSCoder *)aDecoder {
+  self = [super initWithCoder:aDecoder];
+  if (self) {
+    _phoneNumber = [aDecoder decodeObjectOfClass:[NSString class] forKey:kPhoneNumberCodingKey];
+  }
+  return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+  [super encodeWithCoder:aCoder];
+  [aCoder encodeObject:_phoneNumber forKey:kPhoneNumberCodingKey];
 }
 
 @end

@@ -38,10 +38,30 @@ static NSString *const kPasswordKey = @"password";
  */
 static NSString *const kDisplayNameKey = @"displayName";
 
+/** @var kCaptchaResponseKey
+    @brief The key for the "captchaResponse" value in the request.
+ */
+static NSString *const kCaptchaResponseKey = @"captchaResponse";
+
+/** @var kClientType
+    @brief The key for the "clientType" value in the request.
+ */
+static NSString *const kClientType = @"clientType";
+
+/** @var kRecaptchaVersion
+    @brief The key for the "recaptchaVersion" value in the request.
+ */
+static NSString *const kRecaptchaVersion = @"recaptchaVersion";
+
 /** @var kReturnSecureTokenKey
     @brief The key for the "returnSecureToken" value in the request.
  */
 static NSString *const kReturnSecureTokenKey = @"returnSecureToken";
+
+/** @var kTenantIDKey
+    @brief The key for the tenant id value in the request.
+ */
+static NSString *const kTenantIDKey = @"tenantId";
 
 @implementation FIRSignUpNewUserRequest
 
@@ -79,10 +99,28 @@ static NSString *const kReturnSecureTokenKey = @"returnSecureToken";
   if (_displayName) {
     postBody[kDisplayNameKey] = _displayName;
   }
+  if (_captchaResponse) {
+    postBody[kCaptchaResponseKey] = _captchaResponse;
+  }
+  if (self.clientType) {
+    postBody[kClientType] = self.clientType;
+  }
+  if (_recaptchaVersion) {
+    postBody[kRecaptchaVersion] = _recaptchaVersion;
+  }
   if (_returnSecureToken) {
     postBody[kReturnSecureTokenKey] = @YES;
   }
+  if (self.tenantID) {
+    postBody[kTenantIDKey] = self.tenantID;
+  }
   return [postBody copy];
+}
+
+- (void)injectRecaptchaFields:(NSString *_Nullable)recaptchaResponse
+             recaptchaVersion:(NSString *)recaptchaVersion {
+  _captchaResponse = recaptchaResponse;
+  _recaptchaVersion = recaptchaVersion;
 }
 
 @end

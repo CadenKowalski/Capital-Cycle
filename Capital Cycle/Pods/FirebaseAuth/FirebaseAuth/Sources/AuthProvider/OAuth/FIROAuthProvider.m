@@ -14,11 +14,14 @@
  * limitations under the License.
  */
 
-#import "FirebaseAuth/Sources/Public/FIROAuthProvider.h"
+#import "FirebaseAuth/Sources/Public/FirebaseAuth/FIROAuthProvider.h"
+
+#import <FirebaseAppCheckInterop/FirebaseAppCheckInterop.h>
+
 #include <CommonCrypto/CommonCrypto.h>
-#import "FirebaseAuth/Sources/Public/FIRFacebookAuthProvider.h"
-#import "FirebaseAuth/Sources/Public/FIROAuthCredential.h"
-#import "FirebaseCore/Sources/Private/FirebaseCoreInternal.h"
+#import "FirebaseAuth/Sources/Public/FirebaseAuth/FIRFacebookAuthProvider.h"
+#import "FirebaseAuth/Sources/Public/FirebaseAuth/FIROAuthCredential.h"
+#import "FirebaseCore/Extension/FirebaseCoreInternal.h"
 
 #import "FirebaseAuth/Sources/Auth/FIRAuthGlobalWorkQueue.h"
 #import "FirebaseAuth/Sources/Auth/FIRAuth_Internal.h"
@@ -47,10 +50,20 @@ typedef void (^FIRHeadfulLiteURLCallBack)(NSURL *_Nullable headfulLiteURL,
  */
 NSString *const kHeadfulLiteURLStringFormat = @"https://%@/__/auth/handler?%@";
 
+/** @var kHeadfulLiteEmulatorURLStringFormat
+    @brief The format of the URL used to open the emulated headful lite page during sign-in.
+ */
+NSString *const kHeadfulLiteEmulatorURLStringFormat = @"http://%@/emulator/auth/handler?%@";
+
 /** @var kauthTypeSignInWithRedirect
     @brief The auth type to be specified in the sign-in request with redirect request and response.
  */
 static NSString *const kAuthTypeSignInWithRedirect = @"signInWithRedirect";
+
+/** @var kCustomUrlSchemePrefix
+    @brief The prefix to append to the Firebase app ID custom callback scheme..
+ */
+static NSString *const kCustomUrlSchemePrefix = @"app-";
 
 @implementation FIROAuthProvider {
   /** @var _auth
@@ -62,6 +75,12 @@ static NSString *const kAuthTypeSignInWithRedirect = @"signInWithRedirect";
       @brief The callback URL scheme used for headful-lite sign-in.
    */
   NSString *_callbackScheme;
+
+  /** @var _usingClientIDScheme
+      @brief True if the reverse client ID is registered as a custom URL scheme, and false
+     otherwise.
+   */
+  BOOL _usingClientIDScheme;
 }
 
 + (FIROAuthCredential *)credentialWithProviderID:(NSString *)providerID
@@ -72,6 +91,7 @@ static NSString *const kAuthTypeSignInWithRedirect = @"signInWithRedirect";
                                                rawNonce:nil
                                             accessToken:accessToken
                                                  secret:nil
+                                               fullName:nil
                                            pendingToken:nil];
 }
 
@@ -82,6 +102,7 @@ static NSString *const kAuthTypeSignInWithRedirect = @"signInWithRedirect";
                                                rawNonce:nil
                                             accessToken:accessToken
                                                  secret:nil
+                                               fullName:nil
                                            pendingToken:nil];
 }
 
@@ -94,6 +115,7 @@ static NSString *const kAuthTypeSignInWithRedirect = @"signInWithRedirect";
                                                rawNonce:rawNonce
                                             accessToken:accessToken
                                                  secret:nil
+                                               fullName:nil
                                            pendingToken:nil];
 }
 
@@ -105,6 +127,19 @@ static NSString *const kAuthTypeSignInWithRedirect = @"signInWithRedirect";
                                                rawNonce:rawNonce
                                             accessToken:nil
                                                  secret:nil
+                                               fullName:nil
+                                           pendingToken:nil];
+}
+
++ (FIROAuthCredential *)appleCredentialWithIDToken:(NSString *)IDToken
+                                          rawNonce:(nullable NSString *)rawNonce
+                                          fullName:(nullable NSPersonNameComponents *)fullName {
+  return [[FIROAuthCredential alloc] initWithProviderID:@"apple.com"
+                                                IDToken:IDToken
+                                               rawNonce:rawNonce
+                                            accessToken:nil
+                                                 secret:nil
+                                               fullName:fullName
                                            pendingToken:nil];
 }
 
@@ -116,7 +151,7 @@ static NSString *const kAuthTypeSignInWithRedirect = @"signInWithRedirect";
   return [[self alloc] initWithProviderID:providerID auth:auth];
 }
 
-#if TARGET_OS_IOS
+#if TARGET_OS_IOS && (!defined(TARGET_OS_VISION) || !TARGET_OS_VISION)
 - (void)getCredentialWithUIDelegate:(nullable id<FIRAuthUIDelegate>)UIDelegate
                          completion:(nullable FIRAuthCredentialCallback)completion {
   if (![FIRAuthWebUtils isCallbackSchemeRegisteredForCustomURLScheme:self->_callbackScheme]) {
@@ -183,7 +218,7 @@ static NSString *const kAuthTypeSignInWithRedirect = @"signInWithRedirect";
                           }];
   });
 }
-#endif  // TARGET_OS_IOS
+#endif  // TARGET_OS_IOS && (!defined(TARGET_OS_VISION) || !TARGET_OS_VISION)
 
 #pragma mark - Internal Methods
 
@@ -193,18 +228,34 @@ static NSString *const kAuthTypeSignInWithRedirect = @"signInWithRedirect";
     @return An Instance of @c FIROAuthProvider.
   */
 - (nullable instancetype)initWithProviderID:(NSString *)providerID auth:(FIRAuth *)auth {
-  NSAssert(![providerID isEqual:FIRFacebookAuthProviderID],
-           @"Sign in with Facebook is not supported via generic IDP; the Facebook TOS "
-            "dictate that you must use the Facebook iOS SDK for Facebook login.");
-  NSAssert(![providerID isEqual:@"apple.com"],
-           @"Sign in with Apple is not supported via generic IDP; You must use the Apple iOS SDK"
-            " for Sign in with Apple.");
+  if (!auth.requestConfiguration.emulatorHostAndPort) {
+    NSAssert(![providerID isEqual:FIRFacebookAuthProviderID],
+             @"Sign in with Facebook is not supported via generic IDP; the Facebook TOS "
+              "dictate that you must use the Facebook iOS SDK for Facebook login.");
+    NSAssert(![providerID isEqual:@"apple.com"],
+             @"Sign in with Apple is not supported via generic IDP; You must use the Apple iOS SDK"
+              " for Sign in with Apple.");
+  }
   self = [super init];
   if (self) {
     _auth = auth;
     _providerID = providerID;
-    _callbackScheme = [[[_auth.app.options.clientID componentsSeparatedByString:@"."]
-                           reverseObjectEnumerator].allObjects componentsJoinedByString:@"."];
+    if (_auth.app.options.clientID) {
+      NSString *reverseClientIDScheme =
+          [[[_auth.app.options.clientID componentsSeparatedByString:@"."]
+               reverseObjectEnumerator].allObjects componentsJoinedByString:@"."];
+      if ([FIRAuthWebUtils isCallbackSchemeRegisteredForCustomURLScheme:reverseClientIDScheme]) {
+        _callbackScheme = reverseClientIDScheme;
+        _usingClientIDScheme = YES;
+      }
+    }
+
+    if (!_usingClientIDScheme) {
+      _callbackScheme = [kCustomUrlSchemePrefix
+          stringByAppendingString:[_auth.app.options.googleAppID
+                                      stringByReplacingOccurrencesOfString:@":"
+                                                                withString:@"-"]];
+    }
   }
   return self;
 }
@@ -272,19 +323,30 @@ static NSString *const kAuthTypeSignInWithRedirect = @"signInWithRedirect";
                                      }
                                      __strong __typeof__(self) strongSelf = weakSelf;
                                      NSString *bundleID = [NSBundle mainBundle].bundleIdentifier;
-                                     NSString *clienID = strongSelf->_auth.app.options.clientID;
+                                     NSString *clientID = strongSelf->_auth.app.options.clientID;
+                                     NSString *appID = strongSelf->_auth.app.options.googleAppID;
                                      NSString *apiKey =
                                          strongSelf->_auth.requestConfiguration.APIKey;
+                                     NSString *tenantID = strongSelf->_auth.tenantID;
+                                     id<FIRAppCheckInterop> appCheck =
+                                         strongSelf->_auth.requestConfiguration.appCheck;
                                      NSMutableDictionary *urlArguments = [@{
                                        @"apiKey" : apiKey,
-                                       @"authType" : @"signInWithRedirect",
+                                       @"authType" : kAuthTypeSignInWithRedirect,
                                        @"ibi" : bundleID ?: @"",
-                                       @"clientId" : clienID,
                                        @"sessionId" : [strongSelf hashforString:sessionID],
                                        @"v" : [FIRAuthBackend authUserAgent],
                                        @"eventId" : eventID,
                                        @"providerId" : strongSelf->_providerID,
                                      } mutableCopy];
+                                     if (strongSelf->_usingClientIDScheme) {
+                                       urlArguments[@"clientId"] = clientID;
+                                     } else {
+                                       urlArguments[@"appId"] = appID;
+                                     }
+                                     if (tenantID) {
+                                       urlArguments[@"tid"] = tenantID;
+                                     }
                                      if (strongSelf.scopes.count) {
                                        urlArguments[@"scopes"] =
                                            [strongSelf.scopes componentsJoinedByString:@","];
@@ -304,21 +366,55 @@ static NSString *const kAuthTypeSignInWithRedirect = @"signInWithRedirect";
                                        urlArguments[@"hl"] =
                                            strongSelf->_auth.requestConfiguration.languageCode;
                                      }
+
                                      NSString *argumentsString = [strongSelf
                                          httpArgumentsStringForArgsDictionary:urlArguments];
-                                     NSString *URLString =
-                                         [NSString stringWithFormat:kHeadfulLiteURLStringFormat,
-                                                                    authDomain, argumentsString];
-                                     if (completion) {
-                                       NSCharacterSet *set =
-                                           [NSCharacterSet URLFragmentAllowedCharacterSet];
-                                       completion(
-                                           [NSURL
-                                               URLWithString:
-                                                   [URLString
-                                                       stringByAddingPercentEncodingWithAllowedCharacters:
-                                                           set]],
-                                           nil);
+                                     NSString *URLString;
+                                     if (strongSelf->_auth.requestConfiguration
+                                             .emulatorHostAndPort) {
+                                       URLString = [NSString
+                                           stringWithFormat:kHeadfulLiteEmulatorURLStringFormat,
+                                                            authDomain, argumentsString];
+                                     } else {
+                                       URLString =
+                                           [NSString stringWithFormat:kHeadfulLiteURLStringFormat,
+                                                                      authDomain, argumentsString];
+                                     }
+                                     NSCharacterSet *set =
+                                         [NSCharacterSet URLFragmentAllowedCharacterSet];
+                                     NSURLComponents *components = [[NSURLComponents alloc]
+                                         initWithString:
+                                             [URLString
+                                                 stringByAddingPercentEncodingWithAllowedCharacters:
+                                                     set]];
+                                     if (appCheck) {
+                                       [appCheck
+                                           getTokenForcingRefresh:false
+                                                       completion:^(
+                                                           id<FIRAppCheckTokenResultInterop> _Nonnull tokenResult) {
+                                                         if (tokenResult.error) {
+                                                           FIRLogWarning(
+                                                               kFIRLoggerAuth, @"I-AUT000018",
+                                                               @"Error getting App Check token; "
+                                                               @"using placeholder token "
+                                                               @"instead. Error: %@",
+                                                               tokenResult.error);
+                                                         }
+                                                         NSString *appCheckTokenFragment = [@"fac="
+                                                             stringByAppendingString:tokenResult
+                                                                                         .token];
+                                                         [components
+                                                             setFragment:appCheckTokenFragment];
+
+                                                         if (completion) {
+                                                           completion([components URL], nil);
+                                                         }
+                                                       }];
+
+                                     } else {
+                                       if (completion) {
+                                         completion([components URL], nil);
+                                       }
                                      }
                                    }];
 }

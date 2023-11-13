@@ -15,7 +15,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "FirebaseAuth/Sources/Public/FIRAuthErrors.h"
+#import "FirebaseAuth/Sources/Public/FirebaseAuth/FIRAuthErrors.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -90,11 +90,11 @@ typedef NS_ENUM(NSInteger, FIRAuthInternalErrorCode) {
   FIRAuthInternalErrorCodeKeychainError = FIRAuthPublicErrorCodeFlag |
                                           FIRAuthErrorCodeKeychainError,
 
-  /** @var FIRAuthInternalErrorCodeMissingClientIdentifier
-      @brief Indicates an error for when the client identifier is missing.
+  /** @var FIRAuthInternalErrorCodeMissingClientType
+      @brief Indicates an error for when the client type is missing.
    */
-  FIRAuthInternalErrorCodeMissingClientIdentifier = FIRAuthPublicErrorCodeFlag |
-                                                    FIRAuthErrorCodeMissingClientIdentifier,
+  FIRAuthInternalErrorCodeMissingClientType = FIRAuthPublicErrorCodeFlag |
+                                              FIRAuthErrorCodeMissingClientType,
 
   /** @var FIRAuthInternalErrorCodeInternalError
       @brief An internal error occurred.
@@ -251,7 +251,7 @@ typedef NS_ENUM(NSInteger, FIRAuthInternalErrorCode) {
   FIRAuthInternalErrorCodeMissingAndroidPackageName = FIRAuthPublicErrorCodeFlag |
                                                       FIRAuthErrorCodeMissingAndroidPackageName,
 
-  /** Indicates that the domain specified in the continue URL is not whitelisted in the Firebase
+  /** Indicates that the domain specified in the continue URL is not allowlisted in the Firebase
         console.
    */
   FIRAuthInternalErrorCodeUnauthorizedDomain = FIRAuthPublicErrorCodeFlag |
@@ -441,6 +441,11 @@ typedef NS_ENUM(NSInteger, FIRAuthInternalErrorCode) {
   FIRAuthInternalErrorCodeEmailChangeNeedsVerification =
       FIRAuthPublicErrorCodeFlag | FIRAuthErrorCodeEmailChangeNeedsVerification,
 
+  /** Indicates that the request does not contain any client identifier.
+   */
+  FIRAuthInternalErrorCodeMissingClientIdentifier = FIRAuthPublicErrorCodeFlag |
+                                                    FIRAuthErrorCodeMissingClientIdentifier,
+
   /** Indicates that the nonce is missing or invalid.
    */
   FIRAuthInternalErrorCodeMissingOrInvalidNonce = FIRAuthPublicErrorCodeFlag |
@@ -456,6 +461,19 @@ typedef NS_ENUM(NSInteger, FIRAuthInternalErrorCode) {
   FIRAuthInternalErrorCodeInvalidProviderID = FIRAuthPublicErrorCodeFlag |
                                               FIRAuthErrorCodeInvalidProviderID,
 
+  /** @var FIRAuthInternalErrorCodeTenantIDMismatch
+      @brief Indicates an error occurred when an attempt is made to update the current user with a
+          tenantId that differs from the current FirebaseAuth instance's tenantId.
+   */
+  FIRAuthInternalErrorCodeTenantIDMismatch = FIRAuthPublicErrorCodeFlag |
+                                             FIRAuthErrorCodeTenantIDMismatch,
+
+  /** @var FIRAuthInternalErrorCodeUnsupportedTenantOperation
+      @brief Indicates an error occurred when operation is not supported in a multi-tenant context.
+   */
+  FIRAuthInternalErrorCodeUnsupportedTenantOperation = FIRAuthPublicErrorCodeFlag |
+                                                       FIRAuthErrorCodeUnsupportedTenantOperation,
+
   /** Indicates that the Firebase Dynamic Link domain used is either not configured or is
      unauthorized for the current project.
    */
@@ -464,12 +482,32 @@ typedef NS_ENUM(NSInteger, FIRAuthInternalErrorCode) {
 
   FIRAuthInternalErrorCodeMalformedJWT = FIRAuthPublicErrorCodeFlag | FIRAuthErrorCodeMalformedJWT,
 
-  /** @var FIRAuthInternalErrorCodeRPCRequestEncodingError
-      @brief Indicates an error encoding the RPC request.
-      @remarks This is typically due to some sort of unexpected input value.
-
-          See the @c NSUnderlyingError value in the @c NSError.userInfo dictionary for details.
+  /** Indicates that an authentication blocking cloud function returned an error.
    */
+  FIRAuthInternalErrorBlockingCloudFunctionError = FIRAuthPublicErrorCodeFlag |
+                                                   FIRAuthErrorCodeBlockingCloudFunctionError,
+
+  /** Indicates that the recaptcha score sent to backend is invalid.
+   */
+  FIRAuthInternalErrorCodeInvalidRecaptchaScore = FIRAuthPublicErrorCodeFlag |
+                                                  FIRAuthErrorCodeCaptchaCheckFailed,
+
+  /** Indicates that the recaptcha integration is not enabled for this project.
+   */
+  FIRAuthInternalErrorCodeRecaptchaNotEnabled = FIRAuthPublicErrorCodeFlag |
+                                                FIRAuthErrorCodeRecaptchaNotEnabled,
+
+  /** Indicates that the recaptcha sdk is not linked to the app.
+   */
+  FIRAuthInternalErrorCodeRecaptchaSDKNotLinked = FIRAuthPublicErrorCodeFlag |
+                                                  FIRAuthErrorCodeRecaptchaSDKNotLinked,
+
+  /** @var FIRAuthInternalErrorCodeRPCRequestEncodingError
+        @brief Indicates an error encoding the RPC request.
+        @remarks This is typically due to some sort of unexpected input value.
+
+            See the @c NSUnderlyingError value in the @c NSError.userInfo dictionary for details.
+     */
   FIRAuthInternalErrorCodeRPCRequestEncodingError = 1,
 
   /** @var FIRAuthInternalErrorCodeJSONSerializationError

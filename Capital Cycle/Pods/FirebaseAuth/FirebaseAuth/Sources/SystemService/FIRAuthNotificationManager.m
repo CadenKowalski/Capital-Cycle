@@ -15,11 +15,12 @@
  */
 
 #import <TargetConditionals.h>
-#if !TARGET_OS_OSX
+#if !TARGET_OS_OSX && !TARGET_OS_WATCH
 
-#import "FirebaseCore/Sources/Private/FirebaseCoreInternal.h"
+#import "FirebaseCore/Extension/FirebaseCoreInternal.h"
 
 #import "FirebaseAuth/Sources/Auth/FIRAuthGlobalWorkQueue.h"
+#import "FirebaseAuth/Sources/Auth/FIRAuth_Internal.h"
 #import "FirebaseAuth/Sources/SystemService/FIRAuthAppCredential.h"
 #import "FirebaseAuth/Sources/SystemService/FIRAuthAppCredentialManager.h"
 #import "FirebaseAuth/Sources/SystemService/FIRAuthNotificationManager.h"
@@ -114,7 +115,7 @@ static const NSTimeInterval kProbingTimeout = 1;
                   didReceiveRemoteNotification:proberNotification
                         fetchCompletionHandler:^(UIBackgroundFetchResult result){
                         }];
-#if !TARGET_OS_TV
+#if !TARGET_OS_TV && (!defined(TARGET_OS_VISION) || !TARGET_OS_VISION)
     } else if ([self->_application.delegate
                    respondsToSelector:@selector(application:didReceiveRemoteNotification:)]) {
 // iOS 10 deprecation
@@ -123,7 +124,7 @@ static const NSTimeInterval kProbingTimeout = 1;
       [self->_application.delegate application:self->_application
                   didReceiveRemoteNotification:proberNotification];
 #pragma clang diagnostic pop
-#endif
+#endif  // !TARGET_OS_TV && (!defined(TARGET_OS_VISION) || !TARGET_OS_VISION)
     } else {
       FIRLogWarning(kFIRLoggerAuth, @"I-AUT000015",
                     @"The UIApplicationDelegate must handle remote notification for phone number "

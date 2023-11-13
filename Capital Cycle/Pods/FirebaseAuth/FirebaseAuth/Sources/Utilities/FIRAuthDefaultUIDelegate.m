@@ -15,10 +15,10 @@
  */
 
 #import <TargetConditionals.h>
-#if !TARGET_OS_OSX
+#if !TARGET_OS_OSX && !TARGET_OS_WATCH
 
+#import <GoogleUtilities/GULAppEnvironmentUtil.h>
 #import <UIKit/UIKit.h>
-#import "GoogleUtilities/Environment/Private/GULAppEnvironmentUtil.h"
 
 #import "FirebaseAuth/Sources/Utilities/FIRAuthDefaultUIDelegate.h"
 
@@ -91,12 +91,14 @@ NS_ASSUME_NONNULL_BEGIN
       }
     }
   } else {
+#if TARGET_OS_IOS && (!defined(TARGET_OS_VISION) || !TARGET_OS_VISION)
     UIApplication *application = [applicationClass sharedApplication];
 // iOS 13 deprecation
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
     topViewController = application.keyWindow.rootViewController;
 #pragma clang diagnostic pop
+#endif  // TARGET_OS_IOS && (!defined(TARGET_OS_VISION) || !TARGET_OS_VISION)
   }
 #else
   UIApplication *application = [applicationClass sharedApplication];

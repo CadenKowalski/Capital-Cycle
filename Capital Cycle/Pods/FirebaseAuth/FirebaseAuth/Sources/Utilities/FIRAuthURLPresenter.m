@@ -15,10 +15,10 @@
  */
 
 #import <TargetConditionals.h>
-#if TARGET_OS_IOS
+#if TARGET_OS_IOS && (!defined(TARGET_OS_VISION) || !TARGET_OS_VISION)
 
 #import <SafariServices/SafariServices.h>
-#import "FirebaseAuth/Sources/Public/FIRAuthUIDelegate.h"
+#import "FirebaseAuth/Sources/Public/FirebaseAuth/FIRAuthUIDelegate.h"
 
 #import "FirebaseAuth/Sources/Auth/FIRAuthGlobalWorkQueue.h"
 #import "FirebaseAuth/Sources/Utilities/FIRAuthDefaultUIDelegate.h"
@@ -91,6 +91,12 @@ NS_ASSUME_NONNULL_BEGIN
   _completion = [completion copy];
   dispatch_async(dispatch_get_main_queue(), ^() {
     self->_UIDelegate = UIDelegate ?: [FIRAuthDefaultUIDelegate defaultUIDelegate];
+#if TARGET_OS_MACCATALYST
+    self->_webViewController = [[FIRAuthWebViewController alloc] initWithURL:URL delegate:self];
+    UINavigationController *navController =
+        [[UINavigationController alloc] initWithRootViewController:self->_webViewController];
+    [self->_UIDelegate presentViewController:navController animated:YES completion:nil];
+#else
     if ([SFSafariViewController class]) {
       self->_safariViewController = [[SFSafariViewController alloc] initWithURL:URL];
       self->_safariViewController.delegate = self;
@@ -104,6 +110,7 @@ NS_ASSUME_NONNULL_BEGIN
           [[UINavigationController alloc] initWithRootViewController:self->_webViewController];
       [self->_UIDelegate presentViewController:navController animated:YES completion:nil];
     }
+#endif
   });
 }
 
@@ -198,4 +205,4 @@ NS_ASSUME_NONNULL_BEGIN
 
 NS_ASSUME_NONNULL_END
 
-#endif
+#endif  // TARGET_OS_IOS && (!defined(TARGET_OS_VISION) || !TARGET_OS_VISION)

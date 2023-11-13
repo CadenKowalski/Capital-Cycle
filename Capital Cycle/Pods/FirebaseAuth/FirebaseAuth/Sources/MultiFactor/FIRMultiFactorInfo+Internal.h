@@ -17,7 +17,7 @@
 #import <TargetConditionals.h>
 #if TARGET_OS_IOS
 
-#import "FirebaseAuth/Sources/Public/FIRMultiFactorInfo.h"
+#import "FirebaseAuth/Sources/Public/FirebaseAuth/FIRMultiFactorInfo.h"
 
 #import "FirebaseAuth/Sources/Backend/RPC/Proto/FIRAuthProtoMFAEnrollment.h"
 
@@ -29,6 +29,14 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (instancetype)initWithProto:(FIRAuthProtoMFAEnrollment *)proto;
+
+#pragma mark - NSSecureCoding
+// Note that we're not able to indicate FIRMultiFactorInfo conforming to NSSecureCoding in an
+// internal header file, so the following NSSecureCoding methods are explicitly declared.
+
+- (nullable instancetype)initWithCoder:(NSCoder *)aDecoder;
+
+- (void)encodeWithCoder:(NSCoder *)aCoder;
 
 @end
 

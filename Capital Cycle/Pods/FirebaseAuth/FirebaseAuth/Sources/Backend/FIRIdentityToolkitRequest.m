@@ -16,11 +16,17 @@
 
 #import "FirebaseAuth/Sources/Backend/FIRIdentityToolkitRequest.h"
 
+#import "FirebaseAuth/Sources/Public/FirebaseAuth/FIRAuth.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
+static NSString *const kHttpsProtocol = @"https:";
+static NSString *const kHttpProtocol = @"http:";
+
 static NSString *const kFirebaseAuthAPIURLFormat =
-    @"https://%@/identitytoolkit/v3/relyingparty/%@?key=%@";
-static NSString *const kIdentityPlatformAPIURLFormat = @"https://%@/v2/%@?key=%@";
+    @"%@//%@/identitytoolkit/v3/relyingparty/%@?key=%@";
+static NSString *const kIdentityPlatformAPIURLFormat = @"%@//%@/v2/%@?key=%@";
+static NSString *const kEmulatorHostAndPrefixFormat = @"%@/%@";
 
 static NSString *gAPIHost = @"www.googleapis.com";
 
@@ -31,12 +37,10 @@ static NSString *kFirebaseAuthStagingAPIHost = @"staging-www.sandbox.googleapis.
 static NSString *kIdentityPlatformStagingAPIHost =
     @"staging-identitytoolkit.sandbox.googleapis.com";
 
+static NSString *const kClientType = @"CLIENT_TYPE_IOS";
+
 @implementation FIRIdentityToolkitRequest {
   FIRAuthRequestConfiguration *_requestConfiguration;
-
-  BOOL _useIdentityPlatform;
-
-  BOOL _useStaging;
 }
 
 - (nullable instancetype)initWithEndpoint:(NSString *)endpoint
@@ -48,18 +52,15 @@ static NSString *kIdentityPlatformStagingAPIHost =
     _requestConfiguration = requestConfiguration;
     _useIdentityPlatform = NO;
     _useStaging = NO;
-  }
-  return self;
-}
+    _clientType = kClientType;
 
-- (nullable instancetype)initWithEndpoint:(NSString *)endpoint
-                     requestConfiguration:(FIRAuthRequestConfiguration *)requestConfiguration
-                      useIdentityPlatform:(BOOL)useIdentityPlatform
-                               useStaging:(BOOL)useStaging {
-  self = [self initWithEndpoint:endpoint requestConfiguration:requestConfiguration];
-  if (self) {
-    _useIdentityPlatform = useIdentityPlatform;
-    _useStaging = useStaging;
+    // Automatically set the tenant ID. If the request is initialized before FIRAuth is configured,
+    // set tenant ID to nil.
+    @try {
+      _tenantID = [self requestConfiguration].auth.tenantID;
+    } @catch (NSException *e) {
+      _tenantID = nil;
+    }
   }
   return self;
 }
@@ -68,25 +69,51 @@ static NSString *kIdentityPlatformStagingAPIHost =
   return YES;
 }
 
+- (nullable NSString *)queryParams {
+  return nil;
+}
+
 - (NSURL *)requestURL {
   NSString *apiURLFormat;
-  NSString *apiHost;
+  NSString *apiProtocol;
+  NSString *apiHostAndPathPrefix;
+
+  NSString *emulatorHostAndPort = _requestConfiguration.emulatorHostAndPort;
+
   if (_useIdentityPlatform) {
     apiURLFormat = kIdentityPlatformAPIURLFormat;
-    if (_useStaging) {
-      apiHost = kIdentityPlatformStagingAPIHost;
+    apiProtocol = kHttpsProtocol;
+    if (emulatorHostAndPort) {
+      apiProtocol = kHttpProtocol;
+      apiHostAndPathPrefix =
+          [NSString stringWithFormat:kEmulatorHostAndPrefixFormat, emulatorHostAndPort,
+                                     kIdentityPlatformAPIHost];
+    } else if (_useStaging) {
+      apiHostAndPathPrefix = kIdentityPlatformStagingAPIHost;
     } else {
-      apiHost = kIdentityPlatformAPIHost;
+      apiHostAndPathPrefix = kIdentityPlatformAPIHost;
     }
   } else {
     apiURLFormat = kFirebaseAuthAPIURLFormat;
-    if (_useStaging) {
-      apiHost = kFirebaseAuthStagingAPIHost;
+    apiProtocol = kHttpsProtocol;
+    if (emulatorHostAndPort) {
+      apiProtocol = kHttpProtocol;
+      apiHostAndPathPrefix = [NSString
+          stringWithFormat:kEmulatorHostAndPrefixFormat, emulatorHostAndPort, kFirebaseAuthAPIHost];
+    } else if (_useStaging) {
+      apiHostAndPathPrefix = kFirebaseAuthStagingAPIHost;
     } else {
-      apiHost = kFirebaseAuthAPIHost;
+      apiHostAndPathPrefix = kFirebaseAuthAPIHost;
     }
   }
-  NSString *URLString = [NSString stringWithFormat:apiURLFormat, apiHost, _endpoint, _APIKey];
+  NSMutableString *URLString = [NSMutableString
+      stringWithFormat:apiURLFormat, apiProtocol, apiHostAndPathPrefix, _endpoint, _APIKey];
+
+  NSString *queryParams = [self queryParams];
+  if (queryParams) {
+    [URLString appendString:queryParams];
+  }
+
   NSURL *URL = [NSURL URLWithString:URLString];
   return URL;
 }

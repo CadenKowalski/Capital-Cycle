@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -518,7 +518,7 @@
 				DEVELOPMENT_TEAM = 7ZA9Y8B6FF;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "Capital Cycle/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -541,7 +541,7 @@
 				DEVELOPMENT_TEAM = 7ZA9Y8B6FF;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "Capital Cycle/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
